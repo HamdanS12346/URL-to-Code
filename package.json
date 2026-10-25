@@ -12,6 +12,7 @@
     "verify": "node scripts/verify.mjs",
     "smoke": "node test/capture-smoke.mjs",
     "smoke:explore": "node test/explore-smoke.mjs",
+    "smoke:behavior": "node test/behavior-smoke.mjs",
     "go": "node scripts/run.mjs",
     "check:plan": "node scripts/check-plan.mjs",
     "port": "node scripts/port.mjs",

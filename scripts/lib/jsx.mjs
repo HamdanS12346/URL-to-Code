@@ -31,6 +31,15 @@ const ATTR = {
   datetime: 'dateTime', usemap: 'useMap', frameborder: 'frameBorder', allowfullscreen: 'allowFullScreen',
   cellpadding: 'cellPadding', cellspacing: 'cellSpacing', 'xlink:href': 'xlinkHref', 'xml:space': 'xmlSpace',
   'xmlns:xlink': 'xmlnsXlink',
+  // React warns ("Invalid DOM property ... Did you mean ...") and drops these when written in HTML case; autoplay never started a video
+  autoplay: 'autoPlay', controlslist: 'controlsList', disablepictureinpicture: 'disablePictureInPicture',
+  disableremoteplayback: 'disableRemotePlayback', hreflang: 'hrefLang', srclang: 'srcLang', srcdoc: 'srcDoc',
+  formaction: 'formAction', formenctype: 'formEncType', formmethod: 'formMethod', formtarget: 'formTarget',
+  formnovalidate: 'formNoValidate', acceptcharset: 'acceptCharset', minlength: 'minLength', nomodule: 'noModule',
+  itemprop: 'itemProp', itemscope: 'itemScope', itemtype: 'itemType', itemid: 'itemID', itemref: 'itemRef',
+  enctype: 'encType', imagesrcset: 'imageSrcSet', imagesizes: 'imageSizes', popovertarget: 'popoverTarget',
+  popovertargetaction: 'popoverTargetAction', contextmenu: 'contextMenu', marginwidth: 'marginWidth',
+  marginheight: 'marginHeight', radiogroup: 'radioGroup',
 };
 const SVG_DASH = /^(fill|stroke|clip|marker|stop|flood|glyph|paint|dominant|alignment|baseline|letter|word|writing|pointer|vector|text|font|color|shape|mask|filter|gradient|pattern|transform)-/;
 // HTML boolean attributes: presence means true, and the DOM serializes them as `hidden=""`.
@@ -50,6 +59,9 @@ const styleObj = (css, rw) => '{' + css.split(/;(?![^(]*\))/).filter((d) => d.in
 
 function jsxAttrs(tag, raw, inSvg, rw) {
   const out = [];
+  // <input type="submit|reset|button|image" value="Sign Up">: React skips `defaultValue` on submit/reset inputs (so the browser's own
+  // "Submit" shows), and these types are exempt from the controlled-input warning, so the label must be a real `value`
+  const buttonLike = tag === 'input' && /(?:^|\s)type\s*=\s*["']?(submit|reset|button|image)\b/i.test(raw);
   const re = /([:a-zA-Z_][-:.a-zA-Z0-9_]*)(\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+)))?/g;
   let m;
   while ((m = re.exec(raw))) {
@@ -68,7 +80,7 @@ function jsxAttrs(tag, raw, inSvg, rw) {
     else if (inSvg && SVG_DASH.test(low)) name = camel(low);
     else name = low;
     // a controlled value without onChange is read-only in React: keep the captured one editable
-    if (name === 'value' && /^(input|textarea|select)$/.test(tag)) name = 'defaultValue';
+    if (name === 'value' && /^(input|textarea|select)$/.test(tag) && !buttonLike) name = 'defaultValue';
     if (name === 'checked' && tag === 'input') name = 'defaultChecked';
     if (!hasVal) { out.push(`${name}={true}`); continue; }
     // `hidden=""` / `hidden="hidden"` are true; a real value (hidden="until-found") stays a string

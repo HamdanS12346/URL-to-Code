@@ -14,6 +14,7 @@ import { INPAGE, installClock, warmUp, freeze, shoot } from './lib/freeze.mjs';
 import { sample, check } from './lib/motion.mjs';
 import { py } from './lib/py.mjs';
 import { reportPreflight } from './lib/keys.mjs';
+import { verifyBehavior, printBehavior } from './lib/verify-behavior.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const readJson = (f, d) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : d);
@@ -90,6 +91,17 @@ const diag = await page.evaluate(({ boxes, refH }) => {
   }
   return { elements, overflow };
 }, { boxes: (rep.clusters || []).map((c) => c.box.map((v) => v / dpr)), refH: r.size_delta_px[1] > 2 ? h / dpr : 0 }).catch(() => null);
+// behavior: the probes that measured the original page (scroll, media, animation timing) run on the rebuild and are compared,
+// plus the console of a fresh load (a React warning such as "Invalid DOM property autoplay" is a defect no picture shows)
+let behavior = null;
+if (process.env.BEHAVIOR !== '0') {
+  try {
+    behavior = await verifyBehavior({
+      browser, viewport, dpr, url: process.env.URL ?? `${base}/#/${screen}`, initScript: INPAGE, waitRoot: !process.env.URL,
+      ref: readJson(path.join(dir, 'explore', 'survey', 'behave.json'), null), states: readJson(path.join(dir, 'explore', 'states.json'), null),
+    });
+  } catch (e) { console.error(`behavior check could not run: ${e.message.split(String.fromCharCode(10))[0]}`); }
+}
 await browser.close();
 if (diag) {
   (rep.clusters || []).forEach((c, i) => { c.css_box = c.box.map((v) => Math.round(v / dpr)); c.element = diag.elements[i]; });
@@ -107,5 +119,6 @@ if (motion) {
   const bad = motion.filter((m) => m.ok === false);
   console.log(`motion: ${motion.filter((m) => m.ok).length}/${motion.length} match${bad.length ? `; wrong: ${bad.map((m) => `${m.id} ${m.detail}`).join(' | ')}` : ''}`);
 }
+if (behavior) { rep.behavior = behavior; printBehavior(behavior); }
 fs.writeFileSync(path.join(outDir, 'report.json'), JSON.stringify(rep, null, 2));
 if (rep.sections) console.log('sections (bad_pct, height delta): ' + rep.sections.map((s) => `${s.n}:${s.label} ${s.bad_pct}%${s.h_delta_px ? ` (${s.h_delta_px > 0 ? '+' : ''}${s.h_delta_px}px)` : ''}`).join(' | '));

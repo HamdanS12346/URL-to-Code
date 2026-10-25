@@ -8,6 +8,10 @@ import path from 'node:path';
 const INPAGE = fs.readFileSync(new URL('./inpage.js', import.meta.url), 'utf8');
 const DROP = /^(__VIEWSTATE|__VIEWSTATEGENERATOR|__EVENTVALIDATION|__VIEWSTATEENCRYPTED|__PREVIOUSPAGE|__ASYNCPOST|__LASTFOCUS)$/;
 const ASSET_TYPES = new Set(['image', 'font', 'stylesheet', 'media']);
+// scripts from other hosts are saved too (js/_ext/<host>/...): a site's real behavior (menus, sticky headers, accordions) usually
+// lives in its CDN bundles, and the spec writer can only read what was saved. Analytics, ads and chat widgets are not behavior.
+const THIRD_PARTY_NOISE = /(google-analytics|googletagmanager|googleadservices|doubleclick|googlesyndication|gstatic\.com\/recaptcha|google\.com\/recaptcha|facebook\.(net|com)|hotjar|clarity\.ms|segment\.(io|com)|mixpanel|amplitude|fullstory|newrelic|nr-data|sentry|datadoghq|intercom|hubspot|hs-(scripts|analytics|banner)|pagesense|salesiq|livechat|tawk\.to|crisp\.chat|onetrust|cookielaw|cookiebot|optimizely|taboola|outbrain|criteo|adsrvr|licdn\.com\/px|ads-twitter|tiktok|snap\.licdn|bing\.com|cloudflareinsights|cdn-cgi|trustpilot|zdassets|drift\.com|quantserve|scorecardresearch|mathtag|adroll)/i;
+const MAX_THIRD_PARTY_SCRIPT = 3e6;
 
 export const samePage = (a, b) => a.origin === b.origin && a.pathname.toLowerCase() === b.pathname.toLowerCase();
 
@@ -42,7 +46,7 @@ const fileFor = (u, start, contentType) => {
     if (!ext) ext = '.' + ((contentType || '').split(';')[0].split('/')[1] || 'bin').replace('svg+xml', 'svg').replace(/^(x-)?javascript$/, 'js');
     p = p.slice(0, p.length - path.posix.extname(p).length) + '__' + h + ext;
   }
-  p = path.posix.join(u.origin === start.origin ? '' : `_ext/${u.host}`, p).replace(/^\//, '');
+  p = path.posix.join(u.origin === start.origin ? '' : `_ext/${u.host.replace(/[<>:"|?*\\]/g, '_')}`, p).replace(/^\//, '');
   // Windows / OneDrive choke on long paths (YouTube's "k=ytembeds.base.../rs=..." could not even be deleted): hash them
   if (p.length > 110 || p.split('/').some((s) => s.length > 60)) {
     const ext = (path.posix.extname(p).match(/^\.[a-z0-9]{1,5}$/i) || ['.' + ((contentType || '').split(';')[0].split('/')[1] || 'bin').replace('svg+xml', 'svg').replace(/[^a-z0-9]/gi, '')])[0];
@@ -109,24 +113,25 @@ export async function openPage(browser, cfg, { url, viewport, dpr, assetsDir, js
   });
 
   // ---------- assets: every image/font/stylesheet/media (+ same-origin scripts) the page loads ----------
-  const pending = [];
+  const pending = [], failed = []; // failed: assets that were seen but could not be written (the capture reports them)
   const save = async (res) => {
     const req = res.request(), url = res.url(), rt = req.resourceType();
     if (!/^https?:/.test(url) || assets[url] || res.status() >= 300) return;
     const u = new URL(url);
-    const isScript = rt === 'script' && u.origin === target.origin;
+    const own = u.origin === target.origin;
+    const isScript = rt === 'script' && (own || (cfg.capture?.thirdPartyScripts !== false && !THIRD_PARTY_NOISE.test(url)));
     if (!(ASSET_TYPES.has(rt) && assetsDir) && !(isScript && jsDir)) return;
     assets[url] = { pending: true };
     try {
       const body = await res.body();
-      if (body.length > 15e6) return void delete assets[url];
+      if (body.length > 15e6 || (isScript && !own && body.length > MAX_THIRD_PARTY_SCRIPT)) return void delete assets[url];
       const ct = res.headers()['content-type'] || null;
       const file = fileFor(u, target, ct);
       const full = path.join(isScript ? jsDir : assetsDir, file);
       fs.mkdirSync(path.dirname(full), { recursive: true });
       if (!fs.existsSync(full)) fs.writeFileSync(full, body);
       assets[url] = { file: (isScript ? 'js/' : 'assets/') + file, type: rt, contentType: ct, bytes: body.length };
-    } catch { delete assets[url]; }
+    } catch (e) { delete assets[url]; failed.push({ url, error: String(e.message).split('\n')[0].slice(0, 120) }); }
   };
   context.on('response', (res) => pending.push(save(res)));
 
@@ -178,7 +183,7 @@ export async function openPage(browser, cfg, { url, viewport, dpr, assetsDir, js
   };
 
   return {
-    context, page, guard, rec, settle, load, assets,
+    context, page, guard, rec, settle, load, assets, failed,
     flush: async () => { await Promise.allSettled(pending); return Object.fromEntries(Object.entries(assets).filter(([, a]) => a.file)); },
     close: async () => { await Promise.allSettled(pending); await context.close().catch(() => {}); },
   };

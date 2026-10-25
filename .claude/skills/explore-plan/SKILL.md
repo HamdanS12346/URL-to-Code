@@ -18,12 +18,14 @@ One screen per run. Work only in `outputs/<screen>/explore/`. Never open the liv
 | 3 | `explore/survey/plan.suggested.json` | the rule-based plan (`--auto`). It is a starting point, not the answer |
 | 4 | `sections/*.png` (optional) | sharper crops of the page, if a map picture is unclear |
 | 5 | `explore/survey/survey.json` (on demand) | every element with its full key list, including look-alikes the table folded |
+| 6 | the **Behavior brief** section of `candidates.md` | what the survey *measured* on the live page, which no picture shows: elements whose JavaScript reacts to hover, what moves or sticks while scrolling, what the videos do. Read it before choosing |
 
 ## 2. Choose
 
 The goal is every distinct behavior once, not every element. There is a time budget: about 1–2 s per hover and about 2–5 s per action, plus a 5–20 s page reload when an action leaves something open.
 
 **Always include** (`actions`, and `hover` too when hovering might open it):
+- **Every group in the brief's "Elements the page's JavaScript reacts to on hover" table**, including footer items and language pickers. A JavaScript hover handler means hovering does something (a menu, a language list, a tooltip, a mega panel) even if no picture shows it. One key per group is enough. `npm run check:plan` fails until each group is under `hover`/`actions`, or under `skip` with a reason.
 - Menus and navigation that open something: hamburger, mega-menu headers, "More", account and location pickers, every popup/expand trigger (magenta, hint `popup/expand trigger`).
 - Tabs, accordions and FAQ questions (one of each look-alike group is enough when they behave the same; FAQ items each reveal different text, so take them all if there are ≤ 12).
 - Carousels and sliders: next/previous arrows and dots, one each.
@@ -40,7 +42,7 @@ The goal is every distinct behavior once, not every element. There is a time bud
 
 **Leave out**:
 - Plain links that only leave the page (`can` = `hover` only, kind `link`): at most one per group, for its hover style.
-- Footer, legal, social, cookie banners, app-store badges and language pickers, unless they are the screen's subject.
+- Footer, legal, social, cookie banners, app-store badges and language pickers, unless they are the screen's subject **or the brief lists them as having a JavaScript hover handler** (then plan them, or `skip` them with a reason).
 - Destructive or real-world actions: buy, checkout, add to cart, pay, delete, log out, send. Safe mode blocks their requests anyway; they waste the budget.
 - Duplicates: the same thing in a sticky header and in the page body. Test it once.
 
@@ -58,11 +60,14 @@ Hidden-at-load elements (the section at the top of `candidates.md`) are revealed
     { "key": "search-bar-input", "value": "milk", "enter": true, "why": "search" },
     "button-how-does-instacart-delivery-and-"
   ],
+  "skip": [ { "key": "hover-locale-picker", "why": "same language list as the footer picker, already planned" } ],
   "notes": "skipped: footer links, app badges, store cards beyond 2"
 }
 ```
 
 - An entry is a key (copy it exactly from the table, backticks removed) or an object `{ key, why?, value?, enter?, submit? }`. `value` and `enter` are for text fields only, `submit` for a form's button.
+- `skip` is for brief items you looked at and deliberately leave out: `{ key, why }`, the reason is required (a key alone is an error). It changes nothing in stage 4; it only records the decision.
+- Scroll behavior (sticky or hiding bars, back-to-top buttons) and media (autoplay, the play/pause control) are **measured automatically**; do not plan them. Animation timing is measured for everything you hover or click (how long an accordion or menu takes to open, and how), so just make sure one item of each kind is in the plan: an accordion that is not clicked is an animation nobody measures.
 - `budgetSec` is optional. **Leave it out by default**: the default is `config.json → explore.timeBudgetSec` (300 s). Never set it below the default, even for a small plan: stage 4 also spends time on follow-ups of what an action revealed (menu sections, dialogs) and on page reloads, and what does not fit in the budget is silently dropped (`facts.md` §13 "limit reached").
   Set it only to raise it, when the plan is bigger than what fits in 300 s (about 40 hovers plus 30 actions on a busy site): estimate hovers × 1.5 s + actions × 4 s + 10 s per action that leaves something open, add ~30% for follow-ups, round up, and say in `notes` why it was raised.
 - Do not invent keys or selectors. Every key must appear in `survey.json`.

@@ -27,7 +27,7 @@ Never open the live site and never run the capture yourself.
 ## 2. Rules
 
 1. **Evidence on every requirement.** Each requirement / table row ends with a tag in brackets:
-   `[T07]` behavior · `[M03]` motion entry · `[ctl:key]` control/element · `[val:key]` validator · `[shot:N]` screenshot · `[asset:path]` file under `capture/` (or `sections/…`) · `[js:file#function]` · `[aspx:file:line]` · `[css:selector]` · `[UNKNOWN: question]`.
+   `[T07]` behavior · `[M03]` motion entry · `[S01]` scroll behavior · `[V01]` video/media · `[ctl:key]` control/element · `[val:key]` validator · `[shot:N]` screenshot · `[asset:path]` file under `capture/` (or `sections/…`) · `[js:file#function]` · `[aspx:file:line]` · `[css:selector]` · `[UNKNOWN: question]`.
    Several in one bracket are fine: `[T04, ctl:chkShip, shot:1]`.
 2. **Never write a value you did not read.** Missing, cut off, or contradictory → `[UNKNOWN: …]` + an entry in Open questions.
 3. **Numbers come from the capture, looks from the screenshots.** Sizes/colors/fonts: copy the computed CSS values (CSS px, already divided by dpr). If the screenshots show something the capture doesn't (different data, logged-in state), describe the screenshot and record the disagreement in Open questions.
@@ -39,6 +39,9 @@ Never open the live site and never run the capture yourself.
 9. **This page only.** Other pages are navigation targets, nothing more.
 10. **Flaky** behaviors (facts §13) may be mentioned, never required.
 11. **Motion is required.** Every entry in facts §15 (`M01…`) gets a requirement in the `Motion` section with its numbers copied (autoplay delay, px/s, duration, easing, keyframes, counter end value). Timing comes from the measurement, never from your impression of a still image. A counter that shows 0 in a picture still ends at the value in §15.
+12. **Scroll behavior and media are required.** Every `[S##]` of facts §16 (a bar that sticks, a part that appears or disappears after N px, a header that hides on the way down) and every `[V##]` of §17 (autoplay, loop, muted, what the pause/mute control does) gets a requirement in `Behavior`, with the measured thresholds and positions. A still picture cannot show them: a part left out of the spec is a part missing from the rebuild, and a video described as "an image" is a video that never plays.
+13. **Animation timing is part of the behavior.** A facts §8 line that says `animate it (measured frame by frame): … height 0→84px over ~243ms (ease-out)` is a requirement: copy the property, the values, the duration and the easing into the behavior (and the Motion section for transitions). Never write an instant show/hide for something with a measured animation.
+14. **Settle an [UNKNOWN] before writing it.** The behavior code of the site is saved: facts §14 lists the page's own scripts and the platform code of other hosts (`capture/js/_ext/<host>/`). If the question is "what triggers X" (hover or click? which element?), search those files first. Only what they cannot answer stays `[UNKNOWN]`, and the final report must list it as an open assumption.
 
 ## 3. EARS
 
@@ -69,6 +72,7 @@ Run `npm run check -- <screen>` and fix everything it reports:
 |---|---|
 | missing controls / behaviors / validators | cite them where they belong (component table, behavior list, field table) |
 | missing motion | cite each `[M##]` in the Motion section |
+| missing scroll behaviors / media | cite each `[S##]` and `[V##]` (facts §16, §17) in Behavior |
 | invented | the id doesn't exist in the capture: correct it or remove the claim |
 | no evidence tag | add the tag, or delete the line if there is no evidence |
 | missing sections | add the section (write "None." if empty) |
