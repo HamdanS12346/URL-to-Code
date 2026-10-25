@@ -434,7 +434,10 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
   const pk = Object.entries(pseudo.byKey || {});
   if (pk.length) {
     w('\nLegacy CSS rules for states (`:hover :focus :active :disabled .aspNetDisabled …`) that apply to controls (full list: `capture/pseudo.json`):');
-    for (const [k, idx] of pk.slice(0, 60)) w(`- [ctl:${k}]: ${idx.slice(0, 4).map((i) => `\`${short(pseudo.rules[i].selector, 70)} { ${short(pseudo.rules[i].css, 120)} }\``).join(' ')}`);
+    // controls with the same rules share one line (the rules print once, every key is still listed)
+    const groups = new Map();
+    for (const [k, idx] of pk) { const g = idx.slice(0, 4).map((i) => `\`${short(pseudo.rules[i].selector, 70)} { ${short(pseudo.rules[i].css, 120)} }\``).join(' '); groups.set(g, [...(groups.get(g) || []), k]); }
+    for (const [g, keys] of groups) w(`- ${keys.map((k) => `[ctl:${k}]`).join(', ')}: ${g}`);
   }
   w('');
 
@@ -483,7 +486,10 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
   w('## 12. Hidden at load, never revealed by any action');
   if (states.unexplained.length) {
     w('These exist in the page but no click/hover/input showed them. The trigger is server-side, data-dependent, or a path not explored: look in `capture/js/` and the legacy source. Each needs a [UNKNOWN] or an evidenced rule in the spec.');
-    for (const u of states.unexplained) w(`- \`${u.key}\`${u.kind ? ` (${u.kind})` : ''}: ${cell(short(u.label, 80))}`);
+    // tooltip-<uuid> ids carry no information beyond their label: one line with the count and the labels (every id stays in facts.json)
+    const tip = states.unexplained.filter((u) => /^tooltip-[0-9a-f-]{36}$/.test(u.key));
+    for (const u of states.unexplained) if (!tip.includes(u)) w(`- \`${u.key}\`${u.kind ? ` (${u.kind})` : ''}: ${cell(short(u.label, 80))}`);
+    if (tip.length) w(`- ${tip.length} elements \`tooltip-<uuid>\` (ids: facts.json → optional.unexplained), labels in order: ${tip.map((u) => cell(short(u.label, 60))).join(' · ')}`);
   } else w('None.');
   w('');
 

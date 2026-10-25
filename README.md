@@ -38,6 +38,25 @@ Optional extras (all off by default, nothing needs an API key):
 - `--selfcheck` re-runs every behavior against the live page to drop flaky ones (5-8 min on a big live site).
 Other flags: `--force` (redo all), `--from survey|plan|explore`, `--skip <step>`, `--headed`.
 Budget: `"budgetSec"` in the plan, else `config.json -> explore.timeBudgetSec` (300). The plan always runs first, in its order; leftover budget follows what it revealed (menu sections, dialog close buttons). If the stage-4 line says `left at the limit: N planned`, raise it or shorten the plan (hover gets 45% of the time, the rest goes to click/fill actions); leftover follow-ups alone are fine.
-Self-tests: `npm run smoke` (capture/motion) and `npm run smoke:explore` (stop at stage 3, agent plan followed exactly, `--auto` folding, no reload storm).
+Self-tests: `npm run smoke` (capture/motion), `npm run smoke:explore` (stop at stage 3, agent plan followed exactly, `--auto` folding, no reload storm), `node test/jsx-attrs.mjs` and `node test/port-regress.mjs` (port and `usedCss` regressions, line-break-only formatting).
+
+## After stage 5: build and check
+
+```
+npm run port -- <screen>       static React page in outputs/<screen>/app/ (formatted: one element per line). Re-running needs --force and overwrites hand edits.
+                               Ends with a preflight: which data-testid keys parity.spec.ts uses that nothing in app/ carries.
+npm run verify -- <screen>     renders the rebuild like the reference, diffs it, prints size_delta_px, bad_pct, per-section bad_pct and the motion N/M line
+npx playwright test outputs/<screen>/spec/parity.spec.ts            the original page (TARGET=legacy, default)
+TARGET=react URL=http://localhost:5173/#/<screen> npx playwright test outputs/<screen>/spec/parity.spec.ts     the rebuild
+```
+
+- **verify** starts its own Vite when none is running (`BASE=http://localhost:<port>` for another port) and exits by itself. It writes `outputs/<screen>/verify/`:
+  `report.json`, `candidate.png`, `diff.png`, `missing-keys.json` (the preflight), and, when something differs, `worst.png` (reference | candidate for the worst region).
+  `report.json -> clusters` has the top 5 diff regions as boxes with the rebuild's element under each; when the rebuild is taller than the reference, `past_reference_height` lists the elements that stick out past its bottom edge.
+- **parity** runs 4 tests in parallel against the rebuild (2 against the live site). An action on a key that no `data-testid` in `app/` carries fails at once instead of waiting 5 s (skipped when the app builds its testids dynamically). Assertions are not weakened.
+- **facts.md** lists controls with identical state rules on one line and collapses `tooltip-<uuid>` ids into one line with a count; every id is still in `facts.json`.
+- **explore** finds an element by its label when its recorded id selector no longer exists (ids such as `#dialog-show-dialog-<uuid>` change on every load).
+- **budgetSec**: leave it out of `plan.json` (default 300); only raise it, never lower it.
+- GateGuard (coding-agent hook) first-touch prompts are skipped for `scripts/**` and `outputs/*/app/**` through `.claude/settings.local.json` (personal, not committed).
 
 

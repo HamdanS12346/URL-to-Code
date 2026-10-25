@@ -13,7 +13,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
-import { toJsx, unsetFirst } from './lib/jsx.mjs';
+import { toJsx, unsetFirst, pretty } from './lib/jsx.mjs';
 import { reportPreflight } from './lib/keys.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
@@ -131,11 +131,11 @@ const head = '// @ts-nocheck - mechanical port of the captured DOM (unknown lega
 for (const p of cut.parts) {
   fs.writeFileSync(path.join(dest, 'components', `${p.name}.tsx`),
     `${head}// Band ${p.i + 1} of ${screen}: ported from outputs/${screen}/snapshot/rendered.html (${p.tag}${p.id ? '#' + p.id : ''}).\n` +
-    `export default function ${p.name}() {\n  return (\n    ${toJsx(p.html, rewriteAttr)}\n  );\n}\n`);
+    `export default function ${p.name}() {\n  return (\n    ${pretty(toJsx(p.html, rewriteAttr))}\n  );\n}\n`);
 }
 
 let body = toJsx(cut.body, rewriteAttr);
-body = body.replace(/<div data-slot="(\d+)"><\/div>/g, (_, i) => `<${cut.parts[+i].name} />`);
+body = pretty(body.replace(/<div data-slot="(\d+)"><\/div>/g, (_, i) => `<${cut.parts[+i].name} />`));
 // The stylesheet is injected while the screen is mounted and removed after, so screens in one app do not leak
 // rules (`body`, `*`, `h1`...) into each other. Same for the title and the id/classes the original page keeps on
 // <body>/<html>, which its CSS may depend on.

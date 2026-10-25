@@ -121,3 +121,33 @@ export function toJsx(html, rw = (s) => s) {
   text(html.slice(last));
   return out.join('');
 }
+
+// One element per line, formatting only. A line break goes only where a tag is directly followed by another opening or
+// closing tag of a different element: JSX drops whitespace-only text that contains a newline, so nothing rendered changes.
+// Quotes count only inside a tag or a {expression}; in text an apostrophe is just text.
+export function pretty(s) {
+  const VOID = /^(area|base|br|col|embed|hr|img|input|link|meta|source|track|wbr)$/i;
+  let out = '', depth = 0, brace = 0, tag = null, q = '';
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    out += c;
+    if (q) { if (c === '\\' && brace) out += s[++i] ?? ''; else if (c === q) q = ''; continue; }
+    if (brace || tag !== null) {
+      if (c === '"' || c === "'" || (brace && c === '`')) { q = c; if (tag !== null) tag += c; continue; }
+      if (c === '{') { brace++; continue; }
+      if (c === '}') { brace--; continue; }
+      if (brace) continue;
+      if (c !== '>') { tag += c; continue; }
+      const name = (tag.match(/^\/?([\w.-]+)/) || [])[1] || '';
+      const closing = tag.startsWith('/'), selfClosing = tag.endsWith('/') || VOID.test(name);
+      if (closing) depth = Math.max(depth - 1, 0); else if (!selfClosing) depth++;
+      tag = null;
+      const emptyPair = !closing && !selfClosing && s[i + 2] === '/'; // <b></b> stays on one line
+      if (s[i + 1] === '<' && !emptyPair) out += '\n' + '  '.repeat(depth);
+      continue;
+    }
+    if (c === '{') brace++;
+    else if (c === '<') tag = '';
+  }
+  return out;
+}

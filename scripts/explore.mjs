@@ -352,22 +352,30 @@ export async function explore(ctx) {
   const t0 = Date.now();
   const timeUp = () => Date.now() - t0 > E.timeBudgetSec * 1000;
   const loc = (sel) => s.page.locator(sel).first();
+  // ids like #dialog-show-dialog-<uuid> are regenerated on every page load: when the recorded selector matches nothing, find the element by its label
+  const find = async (a) => {
+    const l = loc(a.sel);
+    if (!a.label || a.label.length >= 80 || (await l.count().catch(() => 1))) return l;
+    const byLabel = s.page.getByText(a.label, { exact: true }).first();
+    return (await byLabel.count().catch(() => 0)) ? byLabel : l;
+  };
   const run = async (a) => {
     const o = { timeout: E.actionTimeoutMs };
     s.guard.allowPost = allowed(a);
     switch (a.a) {
-      case 'click': await loc(a.sel).click(o); break;
-      case 'hover': await loc(a.sel).hover(o); break;
-      case 'select': await loc(a.sel).selectOption({ index: a.index }, o); break;
-      case 'fill': await loc(a.sel).fill(a.value, o); await loc(a.sel).evaluate((e) => e.blur()).catch(() => {}); break;
-      case 'press': await loc(a.sel).press(a.value, o); break;
+      case 'click': await (await find(a)).click(o); break;
+      case 'hover': await (await find(a)).hover(o); break;
+      case 'select': await (await find(a)).selectOption({ index: a.index }, o); break;
+      case 'fill': { const l = await find(a); await l.fill(a.value, o); await l.evaluate((e) => e.blur()).catch(() => {}); break; }
+      case 'press': await (await find(a)).press(a.value, o); break;
       case 'validate': await s.page.evaluate((g) => __pw.validate(g), a.group); break;
       case 'fillall':
         for (const f of a.fields) {
-          if (f.a === 'select') await loc(f.sel).selectOption({ index: f.index }, o);
-          else { await loc(f.sel).fill(f.value, o); await loc(f.sel).evaluate((e) => e.blur()).catch(() => {}); }
+          const l = await find(f);
+          if (f.a === 'select') await l.selectOption({ index: f.index }, o);
+          else { await l.fill(f.value, o); await l.evaluate((e) => e.blur()).catch(() => {}); }
         }
-        await loc(a.sel).click(o);
+        await (await find(a)).click(o);
         break;
     }
   };

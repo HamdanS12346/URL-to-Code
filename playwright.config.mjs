@@ -5,7 +5,9 @@ export default defineConfig({
   testDir: 'outputs',
   testMatch: '**/spec/parity.spec.ts',
   timeout: 60_000,
-  workers: process.env.TARGET === 'react' ? 4 : 2, // the local rebuild takes more parallelism; the live site stays gentle
+  // the local rebuild takes more parallelism (fullyParallel: one spec file is otherwise one worker); the live site stays gentle
+  fullyParallel: process.env.TARGET === 'react',
+  workers: process.env.TARGET === 'react' ? 4 : 2,
   reporter: 'list',
   use: { headless: true, ignoreHTTPSErrors: true },
 });
