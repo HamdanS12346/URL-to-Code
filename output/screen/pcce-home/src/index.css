@@ -1,0 +1,117 @@
+/* Shell + web fonts (UI_SPEC §2, §3). Font files are the capture's own files,
+   served from public/assets/. Montserrat and Open Sans are NOT in the capture
+   (§3 known gap): their stacks fall back to the generic sans-serif, as the
+   captured page does when those files are missing. */
+
+@font-face { /* variable: one file carries 100-900 */
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/assets/wp-content/uploads/elementor/google-fonts/fonts/roboto-1abb80a1.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/assets/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-c5e794db.woff2') format('woff2');
+}
+@font-face {
+  font-family: Solway;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/assets/wp-content/uploads/elementor/google-fonts/fonts/solway-12e317b3.woff2') format('woff2');
+}
+@font-face {
+  font-family: Solway;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/wp-content/uploads/elementor/google-fonts/fonts/solway-77ad0ad9.woff2') format('woff2');
+}
+@font-face {
+  font-family: Sintony;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/wp-content/uploads/elementor/google-fonts/fonts/sintony-0f65208a.woff2') format('woff2');
+}
+@font-face {
+  font-family: Sintony;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/wp-content/uploads/elementor/google-fonts/fonts/sintony-ac2de26f.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/_ext/fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtM.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'RocknRoll One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/wp-content/uploads/elementor/google-fonts/fonts/rocknrollone-9835144d.woff2') format('woff2');
+}
+
+/* icon fonts */
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-weight: 400;
+  font-display: block;
+  src: url('/assets/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-brands-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-display: block;
+  src: url('/assets/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-solid-900.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 400;
+  font-display: block;
+  src: url('/assets/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-regular-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: eicons;
+  font-weight: 400;
+  font-style: normal;
+  src: url('/assets/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons__3257e875.woff2') format('woff2');
+}
+@font-face {
+  font-family: elementskit;
+  font-weight: normal;
+  font-style: normal;
+  src: url('/assets/wp-content/plugins/elementskit-lite/modules/elementskit-icon-pack/assets/fonts/elementskit__2ff3a605.woff') format('woff');
+}
+@font-face {
+  font-family: remixicon;
+  font-weight: normal;
+  font-style: normal;
+  src: url('/assets/wp-content/plugins/exclusive-addons-for-elementor/assets/fonts/remix-icon/remixicon__609e6491.woff2') format('woff2');
+}
+
+html { font-size: 10px; overflow-x: hidden; } /* as the legacy page: the post carousel overhangs by 15px */
+
+body {
+  margin: 0;
+  background: rgb(255, 255, 255);
+  color: rgb(74, 74, 74);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 25.2px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+a { color: inherit; }
+a:hover, a:active { outline: 0; }
+a:focus { outline: solid 1px; }

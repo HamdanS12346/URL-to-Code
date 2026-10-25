@@ -1,0 +1,54 @@
+{
+  "dpr": 1.5,
+  "mode": "safe",
+  "scrollbars": true,
+  "defaultViewport": {
+    "width": 1366,
+    "height": 900
+  },
+  "auth": {
+    "storageState": "auth/state.json",
+    "httpCredentials": null
+  },
+  "launchArgs": [],
+  "networkIdleMs": 5000,
+  "gemini": {
+    "model": "gemini-3.8-flash"
+  },
+  "explore": {
+    "maxActions": 120,
+    "maxDepth": 2,
+    "maxOptions": 4,
+    "timeBudgetSec": 300,
+    "settleMs": 350,
+    "hoverMs": 250,
+    "actionTimeoutMs": 3000,
+    "quietMaxMs": 3000,
+    "hoverTimeoutMs": 1000,
+    "perGroup": 3,
+    "perGroupActions": 2,
+    "perTrigger": 10,
+    "hoverShare": 0.45,
+    "focusShare": 0.55,
+    "followPerGroup": 4
+  },
+  "denyPattern": "\\b(save|delete|remove|submit|update|approve|reject|pay|send|insert|add|create|upload|import|post|process|confirm|finali[sz]e|cancel|log ?out|log ?off|sign ?out|purchase|checkout|order|place|transfer|archive|reset|register)\\b",
+  "urlOnly": {
+    "dpr": 1,
+    "defaultViewport": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "freeze": "clock",
+  "warmup": {
+    "stepFrac": 0.6,
+    "pauseMs": 400,
+    "maxSteps": 150,
+    "maxHeightPx": 30000
+  },
+  "motion": {
+    "sampleSec": 10,
+    "intervalMs": 250
+  }
+}

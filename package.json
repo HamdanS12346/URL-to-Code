@@ -1,0 +1,37 @@
+{
+  "name": "final-playwright",
+  "private": true,
+  "type": "module",
+  "description": "URL (screenshots optional) -> warmed-up, frozen capture + reference pictures + snapshot + motion -> specs for a React 19 rebuild",
+  "scripts": {
+    "capture": "node scripts/run.mjs",
+    "check": "node scripts/check-spec.mjs",
+    "login": "playwright codegen --save-storage=auth/state.json",
+    "parity": "playwright test",
+    "spec:gemini": "node scripts/spec-gemini.mjs",
+    "verify": "node scripts/verify.mjs",
+    "smoke": "node test/capture-smoke.mjs",
+    "smoke:explore": "node test/explore-smoke.mjs",
+    "go": "node scripts/run.mjs",
+    "check:plan": "node scripts/check-plan.mjs",
+    "port": "node scripts/port.mjs",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "playwright": "1.56.1",
+    "typescript": "^5.8.3",
+    "vite": "^7.1.5"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true
+  }
+}
