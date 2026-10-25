@@ -138,7 +138,7 @@ function contentMd(tree, origin) {
 }
 
 // ---------- parity.spec.ts ----------
-function paritySpec({ url, viewport, dpr, cfg, transitions, sel, ctrl, origin }) {
+function paritySpec({ screen, url, viewport, dpr, cfg, transitions, sel, ctrl, origin }) {
   const deny = new RegExp(cfg.denyPattern, 'i');
   const tests = [];
   for (const t of transitions) {
@@ -195,6 +195,24 @@ const SEL: Record<string, string> = ${JSON.stringify(sel, null, 2)};
 test.use({ viewport: ${JSON.stringify(viewport)}, deviceScaleFactor: ${dpr}, storageState: TARGET === 'legacy' && AUTH && fs.existsSync(AUTH) ? AUTH : undefined });
 
 const el = (page: Page, key: string) => page.locator(TARGET === 'legacy' ? SEL[key] ?? \`[data-testid="\${key}"]\` : \`[data-testid="\${key}"]\`).first();
+// keys that no data-testid in the rebuild's app/ carries: an action on one can only time out, so it fails at once instead
+// (null = legacy target, or an app that builds its data-testids dynamically: nothing is skipped)
+const CARRIED: Set<string> | null = (() => {
+  if (TARGET === 'legacy') return null;
+  const s = new Set<string>();
+  let dynamic = false;
+  const walk = (d: string) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+    const p = d + '/' + e.name;
+    if (e.isDirectory()) { if (e.name !== 'assets') walk(p); continue; }
+    if (!/\\.[jt]sx?$/.test(e.name)) continue;
+    const t = fs.readFileSync(p, 'utf8');
+    if (t.includes('data-testid={')) dynamic = true;
+    for (const m of t.matchAll(/data-testid=["']([^"']+)["']/g)) s.add(m[1]);
+    if (/\\.[jt]s$/.test(e.name)) for (const m of t.matchAll(/["']([\\w-]+)["']/g)) s.add(m[1]);
+  } };
+  try { walk(${JSON.stringify('outputs/' + screen + '/app')}); } catch { return null; }
+  return dynamic ? null : s;
+})();
 const isDisabled = (page: Page, key: string) => el(page, key).evaluate((e: any) => !!(e.disabled || e.classList.contains('aspNetDisabled') || e.getAttribute('aria-disabled') === 'true'));
 
 // load the page; navigations away are blocked and recorded; server posts blocked when the test came from a blocked one
@@ -223,6 +241,7 @@ async function open(page: Page, blockPost: boolean) {
 
 async function act(page: Page, a: any): Promise<void> {
   const o = { timeout: 5000 };
+  if (CARRIED && a.key && !CARRIED.has(a.key)) throw new Error('no data-testid="' + a.key + '" in the rebuild');
   if (a.a === 'click') await el(page, a.key).click(o);
   else if (a.a === 'hover') await el(page, a.key).hover(o);
   else if (a.a === 'select') await el(page, a.key).selectOption(a.value && !String(a.value).startsWith('option #') ? { label: a.value } : { index: a.index }, o);
@@ -560,7 +579,7 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
   }
   fs.writeFileSync(path.join(out, 'spec', 'selectors.json'), JSON.stringify(sel, null, 1));
   const live = T.filter((t) => !flakySet.has(t.id));
-  fs.writeFileSync(path.join(out, 'spec', 'parity.spec.ts'), paritySpec({ url, viewport, dpr, cfg, transitions: live, sel, ctrl, origin }));
+  fs.writeFileSync(path.join(out, 'spec', 'parity.spec.ts'), paritySpec({ screen: path.basename(out), url, viewport, dpr, cfg, transitions: live, sel, ctrl, origin }));
   // verify compares against the tool's own reference when there is one: it is shot the way verify shoots the rebuild
   if (offsets || refMeta) fs.writeFileSync(path.join(out, 'manifest.json'), // css_viewport_width = reference width / dpr (what draw-ui's measure_reference.py maps pixels with); viewport = the browser window (what verify opens)
 JSON.stringify({ reference: refMeta ? refMeta.file : 'reference.png', source: refMeta ? 'tool' : 'user', dpr, css_viewport_width: refMeta?.css_width ?? viewport.width, css_viewport_height: viewport.height, viewport, url,

@@ -119,7 +119,9 @@
   };
 
   const labelOf = (el) => {
-    const tx = (x) => clean(x && (x.innerText || x.textContent));
+    // a hidden element has no innerText: join its text nodes with a space, as innerText would between blocks
+    const flat = (x) => { const w = document.createTreeWalker(x, NodeFilter.SHOW_TEXT); const t = []; while (w.nextNode()) t.push(w.currentNode.nodeValue); return t.join(' '); };
+    const tx = (x) => clean(x && (x.innerText || flat(x)));
     const by = el.getAttribute('aria-labelledby');
     if (by) { const t = clean(by.split(/\s+/).map((id) => tx(document.getElementById(id))).join(' ')); if (t) return cut(t, 80); }
     const al = el.getAttribute('aria-label');
