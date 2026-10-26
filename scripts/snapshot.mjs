@@ -111,7 +111,8 @@ export async function snapshot({ page, out, log }) {
   for (const href of u.blocked) { // cross-origin sheets the browser won't expose (web-font CSS): the saved copy, unfiltered
     const a = assets[href];
     const f = a && path.join(out, 'capture', a.file);
-    if (f && fs.existsSync(f) && fs.statSync(f).size < 400000) css += `\n/* ==== ${href} (saved copy, unfiltered) ==== */\n${inlineImports(fs.readFileSync(f, 'utf8'), href, assets, out, new Set([href]))}\n`;
+    // 4 MB: a full utility framework (Tailwind 2 is ~2.9 MB) is the only copy of its rules the page can use offline
+    if (f && fs.existsSync(f) && fs.statSync(f).size < 4e6) css += `\n/* ==== ${href} (saved copy, unfiltered) ==== */\n${inlineImports(fs.readFileSync(f, 'utf8'), href, assets, out, new Set([href]))}\n`;
   }
   if (u.keyframes.length) css += `\n/* ==== @keyframes in use ==== */\n${u.keyframes.map((k) => k.css).join('\n')}\n`;
   fs.writeFileSync(path.join(dir, 'used.css'), css);

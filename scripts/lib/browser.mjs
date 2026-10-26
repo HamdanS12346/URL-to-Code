@@ -131,6 +131,8 @@ export async function openPage(browser, cfg, { url, viewport, dpr, assetsDir, js
       fs.mkdirSync(path.dirname(full), { recursive: true });
       if (!fs.existsSync(full)) fs.writeFileSync(full, body);
       assets[url] = { file: (isScript ? 'js/' : 'assets/') + file, type: rt, contentType: ct, bytes: body.length };
+      // saved under the final URL of a redirect (unpkg's tailwindcss@^2 -> @2.2.19); the page asked for the first one, so key the chain too
+      for (let r = req.redirectedFrom(); r; r = r.redirectedFrom()) assets[r.url()] ??= assets[url];
     } catch (e) { delete assets[url]; failed.push({ url, error: String(e.message).split('\n')[0].slice(0, 120) }); }
   };
   context.on('response', (res) => pending.push(save(res)));

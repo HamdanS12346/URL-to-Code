@@ -90,11 +90,13 @@ fs.writeFileSync(path.join(dest, 'style.css'), unsetFirst(localizeCss(usedCss)))
 // ---------- markup: cut the frozen DOM into bands ----------
 const bands = readJson(path.join(CAP, 'bands.json'), []);
 const controls = readJson(path.join(CAP, 'controls.json'), []);
+// hover-only targets (CSS :hover menus, cards) are not controls, but the spec and parity.spec.ts address them by key too
+const hoverKeys = (readJson(path.join(OUT, 'explore', 'states.json'), null)?.hoverTargets || []).filter((h) => h.key && h.sel);
 const browser = await chromium.launch();
 const page = await browser.newPage();
 await page.route('**/*', (r) => (r.request().url().startsWith('file:') ? r.continue() : r.abort('aborted')));
 await page.goto('file:///' + path.join(SNAP, 'rendered.html').replace(/\\/g, '/'));
-const cut = await page.evaluate(({ bands, controls }) => {
+const cut = await page.evaluate(({ bands, controls, hoverKeys }) => {
   document.querySelectorAll('script, noscript, style, link, base').forEach((e) => e.remove());
   // the spec and parity.spec.ts address controls by these keys
   let stamped = 0;
@@ -102,6 +104,11 @@ const cut = await page.evaluate(({ bands, controls }) => {
     let el = null;
     try { el = document.querySelector(c.sel); } catch { /* selector from another document state */ }
     if (el) { el.setAttribute('data-testid', c.key); stamped++; }
+  }
+  for (const h of hoverKeys) {
+    let el = null;
+    try { el = document.querySelector(h.sel); } catch { /* skip */ }
+    if (el && !el.hasAttribute('data-testid')) { el.setAttribute('data-testid', h.key); stamped++; }
   }
   // outermost bands only: a band inside another band is part of that band's component
   const els = [];
@@ -123,7 +130,7 @@ const cut = await page.evaluate(({ bands, controls }) => {
     htmlAttrs: [...document.documentElement.attributes].filter((a) => !/^(class|id|style)$/.test(a.name)).map((a) => [a.name, a.value]),
     bodyAttrs: [...document.body.attributes].filter((a) => !/^(class|id|style)$/.test(a.name)).map((a) => [a.name, a.value]),
   };
-}, { bands, controls });
+}, { bands, controls, hoverKeys });
 await browser.close();
 
 // component names: the element id when it is a usable identifier, else its tag (+ number when repeated)

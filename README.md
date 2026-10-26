@@ -59,4 +59,52 @@ TARGET=react URL=http://localhost:5173/#/<screen> npx playwright test outputs/<s
 - **budgetSec**: leave it out of `plan.json` (default 300); only raise it, never lower it.
 - GateGuard (coding-agent hook) first-touch prompts are skipped for `scripts/**` and `outputs/*/app/**` through `.claude/settings.local.json` (personal, not committed).
 
+## Building the React version: step by step (for beginners)
+
+This part runs after the spec is finished (`npm run check -- <screen>` prints ✓). Replace `<screen>` with your screen name. Every command runs in a terminal opened in this folder.
+
+**One time only**
+
+1. Install the project's tools:
+   ```
+   npm install
+   ```
+
+**Every time you build a screen**
+
+2. Create the starting page from the captured files:
+   ```
+   npm run port -- <screen>
+   ```
+   This writes `outputs/<screen>/app/`, a static copy of the page with `Page.tsx`, `components/`, `style.css`, `assets/` and `BEHAVIOR.md`. Run it once to start. Running it again needs `--force`, which overwrites any code you wrote by hand.
+
+3. Measure how close the copy is to the screenshot:
+   ```
+   npm run verify -- <screen>
+   ```
+   Open `outputs/<screen>/verify/report.json`. Check `size_delta_px` (it should be within ±2), the per-section `bad_pct` (the sections with the most difference are listed first), and the `motion` and `behavior` lines. Open the crop named in `worst_band` to see what is wrong.
+
+4. Build the page from `outputs/<screen>/spec/tasks.md`. Work through it from top to bottom: setup, page shell, one task per band of the page, interactive parts (menus, carousels, tabs, forms), validation, and the final checks. Edit the files in `outputs/<screen>/app/` directly. Each task says how to tell it is done.
+
+5. Start the dev server in its own terminal and leave it running:
+   ```
+   npm run dev
+   ```
+   Then open `http://localhost:5173/#/<screen>` in a browser to see your page.
+
+6. Test how the page behaves (clicks, tabs, carousels, forms) against the live page and against your rebuild:
+   ```
+   npx playwright test outputs/<screen>/spec/parity.spec.ts
+   TARGET=react URL=http://localhost:5173/#/<screen> npx playwright test outputs/<screen>/spec/parity.spec.ts
+   ```
+   The first line tests the original page, and the second tests your rebuild. Run `verify` again after each round of fixes; stop after three rounds and list what is left.
+
+7. Write the final report. It lists what matches, what does not, and anything you guessed. A guess is needed when the spec marks something `[UNKNOWN]`. Put each guess on its own line under "Guessed", with the guess you made.
+
+**If something goes wrong**
+
+- `verify` or `port` says a file is missing: run step 2 again, or check that `outputs/<screen>/spec/` still has `UI_SPEC.md` and `tasks.md`.
+- The page is blank at `localhost:5173`: check that the dev server is still running and that the address ends in `/#/<screen>`.
+- The numbers are far off (`size_delta_px` larger than ±2): check that the manifest in `outputs/<screen>/manifest.json` has `"dpr"` and `"css_viewport_width"`. Do not change the screenshot or the spec to fix this.
+
 

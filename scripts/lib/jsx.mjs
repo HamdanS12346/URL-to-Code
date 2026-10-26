@@ -17,7 +17,7 @@ export function unsetFirst(css) {
 const VOID = new Set(['img', 'br', 'hr', 'input', 'meta', 'link', 'source', 'use', 'path', 'circle',
   'rect', 'ellipse', 'line', 'polygon', 'polyline', 'area', 'base', 'col', 'embed', 'track', 'wbr', 'stop']);
 const ATTR = {
-  class: 'className', for: 'htmlFor', srcset: 'srcSet', tabindex: 'tabIndex', colspan: 'colSpan',
+  class: 'className', baseprofile: 'baseProfile', for: 'htmlFor', srcset: 'srcSet', tabindex: 'tabIndex', colspan: 'colSpan',
   rowspan: 'rowSpan', maxlength: 'maxLength', autocomplete: 'autoComplete', autocapitalize: 'autoCapitalize',
   autocorrect: 'autoCorrect', spellcheck: 'spellCheck', crossorigin: 'crossOrigin', readonly: 'readOnly',
   enterkeyhint: 'enterKeyHint', inputmode: 'inputMode', contenteditable: 'contentEditable',
@@ -70,9 +70,13 @@ function jsxAttrs(tag, raw, inSvg, rw) {
     const val = m[3] ?? m[4] ?? m[5] ?? '';
     if (low === 'style') { out.push(`style={${styleObj(val, rw)}}`); continue; }
     if (/^on[a-z]+$/.test(low)) continue; // inline handlers: the page's scripts are not ported
+    // a misspelt `classname` is not an attribute any browser reads; React warns about it and the page's own class is kept
+    if (low === 'classname') continue;
     // attributes the browser ignores: `size` on an <svg> (width/height already carry it), width/height="auto"
     if (low === 'size' && inSvg) continue;
     if ((low === 'width' || low === 'height') && val === 'auto') continue;
+    // an empty src loads the document itself (an iframe re-loads the page), and an empty href on a non-link is a no-op: React warns about both
+    if (val === '' && (low === 'src' || (low === 'href' && tag !== 'a'))) continue;
     let name;
     if (low.startsWith('data-') || low.startsWith('aria-') || low === 'xmlns') name = low;
     else if (ATTR[low]) name = ATTR[low];
@@ -87,7 +91,9 @@ function jsxAttrs(tag, raw, inSvg, rw) {
     if (BOOL.has(low) && (val === '' || val.toLowerCase() === low)) { out.push(`${name}={true}`); continue; }
     // React types these as numbers, not strings
     if (/^(tabIndex|rowSpan|colSpan|maxLength)$/.test(name) && /^-?\d+$/.test(val)) { out.push(`${name}={${val}}`); continue; }
-    out.push(`${name}=${JSON.stringify(rw(val, low))}`);
+    // JSX attribute strings do not decode backslash escapes, so a value with a newline or tab goes in as a JS string expression
+    const v = rw(val, low);
+    out.push(/[\n\r\t]/.test(v) ? `${name}={${JSON.stringify(v)}}` : `${name}=${JSON.stringify(v)}`);
   }
   return out.length ? ' ' + out.join(' ') : '';
 }
