@@ -17,7 +17,7 @@ export function unsetFirst(css) {
 const VOID = new Set(['img', 'br', 'hr', 'input', 'meta', 'link', 'source', 'use', 'path', 'circle',
   'rect', 'ellipse', 'line', 'polygon', 'polyline', 'area', 'base', 'col', 'embed', 'track', 'wbr', 'stop']);
 const ATTR = {
-  class: 'className', for: 'htmlFor', srcset: 'srcSet', tabindex: 'tabIndex', colspan: 'colSpan',
+  class: 'className', baseprofile: 'baseProfile', for: 'htmlFor', srcset: 'srcSet', tabindex: 'tabIndex', colspan: 'colSpan',
   rowspan: 'rowSpan', maxlength: 'maxLength', autocomplete: 'autoComplete', autocapitalize: 'autoCapitalize',
   autocorrect: 'autoCorrect', spellcheck: 'spellCheck', crossorigin: 'crossOrigin', readonly: 'readOnly',
   enterkeyhint: 'enterKeyHint', inputmode: 'inputMode', contenteditable: 'contentEditable',
@@ -31,6 +31,15 @@ const ATTR = {
   datetime: 'dateTime', usemap: 'useMap', frameborder: 'frameBorder', allowfullscreen: 'allowFullScreen',
   cellpadding: 'cellPadding', cellspacing: 'cellSpacing', 'xlink:href': 'xlinkHref', 'xml:space': 'xmlSpace',
   'xmlns:xlink': 'xmlnsXlink',
+  // React warns ("Invalid DOM property ... Did you mean ...") and drops these when written in HTML case; autoplay never started a video
+  autoplay: 'autoPlay', controlslist: 'controlsList', disablepictureinpicture: 'disablePictureInPicture',
+  disableremoteplayback: 'disableRemotePlayback', hreflang: 'hrefLang', srclang: 'srcLang', srcdoc: 'srcDoc',
+  formaction: 'formAction', formenctype: 'formEncType', formmethod: 'formMethod', formtarget: 'formTarget',
+  formnovalidate: 'formNoValidate', acceptcharset: 'acceptCharset', minlength: 'minLength', nomodule: 'noModule',
+  itemprop: 'itemProp', itemscope: 'itemScope', itemtype: 'itemType', itemid: 'itemID', itemref: 'itemRef',
+  enctype: 'encType', imagesrcset: 'imageSrcSet', imagesizes: 'imageSizes', popovertarget: 'popoverTarget',
+  popovertargetaction: 'popoverTargetAction', contextmenu: 'contextMenu', marginwidth: 'marginWidth',
+  marginheight: 'marginHeight', radiogroup: 'radioGroup',
 };
 const SVG_DASH = /^(fill|stroke|clip|marker|stop|flood|glyph|paint|dominant|alignment|baseline|letter|word|writing|pointer|vector|text|font|color|shape|mask|filter|gradient|pattern|transform)-/;
 // HTML boolean attributes: presence means true, and the DOM serializes them as `hidden=""`.
@@ -50,6 +59,9 @@ const styleObj = (css, rw) => '{' + css.split(/;(?![^(]*\))/).filter((d) => d.in
 
 function jsxAttrs(tag, raw, inSvg, rw) {
   const out = [];
+  // <input type="submit|reset|button|image" value="Sign Up">: React skips `defaultValue` on submit/reset inputs (so the browser's own
+  // "Submit" shows), and these types are exempt from the controlled-input warning, so the label must be a real `value`
+  const buttonLike = tag === 'input' && /(?:^|\s)type\s*=\s*["']?(submit|reset|button|image)\b/i.test(raw);
   const re = /([:a-zA-Z_][-:.a-zA-Z0-9_]*)(\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+)))?/g;
   let m;
   while ((m = re.exec(raw))) {
@@ -58,9 +70,13 @@ function jsxAttrs(tag, raw, inSvg, rw) {
     const val = m[3] ?? m[4] ?? m[5] ?? '';
     if (low === 'style') { out.push(`style={${styleObj(val, rw)}}`); continue; }
     if (/^on[a-z]+$/.test(low)) continue; // inline handlers: the page's scripts are not ported
+    // a misspelt `classname` is not an attribute any browser reads; React warns about it and the page's own class is kept
+    if (low === 'classname') continue;
     // attributes the browser ignores: `size` on an <svg> (width/height already carry it), width/height="auto"
     if (low === 'size' && inSvg) continue;
     if ((low === 'width' || low === 'height') && val === 'auto') continue;
+    // an empty src loads the document itself (an iframe re-loads the page), and an empty href on a non-link is a no-op: React warns about both
+    if (val === '' && (low === 'src' || (low === 'href' && tag !== 'a'))) continue;
     let name;
     if (low.startsWith('data-') || low.startsWith('aria-') || low === 'xmlns') name = low;
     else if (ATTR[low]) name = ATTR[low];
@@ -68,14 +84,16 @@ function jsxAttrs(tag, raw, inSvg, rw) {
     else if (inSvg && SVG_DASH.test(low)) name = camel(low);
     else name = low;
     // a controlled value without onChange is read-only in React: keep the captured one editable
-    if (name === 'value' && /^(input|textarea|select)$/.test(tag)) name = 'defaultValue';
+    if (name === 'value' && /^(input|textarea|select)$/.test(tag) && !buttonLike) name = 'defaultValue';
     if (name === 'checked' && tag === 'input') name = 'defaultChecked';
     if (!hasVal) { out.push(`${name}={true}`); continue; }
     // `hidden=""` / `hidden="hidden"` are true; a real value (hidden="until-found") stays a string
     if (BOOL.has(low) && (val === '' || val.toLowerCase() === low)) { out.push(`${name}={true}`); continue; }
     // React types these as numbers, not strings
     if (/^(tabIndex|rowSpan|colSpan|maxLength)$/.test(name) && /^-?\d+$/.test(val)) { out.push(`${name}={${val}}`); continue; }
-    out.push(`${name}=${JSON.stringify(rw(val, low))}`);
+    // JSX attribute strings do not decode backslash escapes, so a value with a newline or tab goes in as a JS string expression
+    const v = rw(val, low);
+    out.push(/[\n\r\t]/.test(v) ? `${name}={${JSON.stringify(v)}}` : `${name}=${JSON.stringify(v)}`);
   }
   return out.length ? ' ' + out.join(' ') : '';
 }
@@ -120,4 +138,34 @@ export function toJsx(html, rw = (s) => s) {
   }
   text(html.slice(last));
   return out.join('');
+}
+
+// One element per line, formatting only. A line break goes only where a tag is directly followed by another opening or
+// closing tag of a different element: JSX drops whitespace-only text that contains a newline, so nothing rendered changes.
+// Quotes count only inside a tag or a {expression}; in text an apostrophe is just text.
+export function pretty(s) {
+  const VOID = /^(area|base|br|col|embed|hr|img|input|link|meta|source|track|wbr)$/i;
+  let out = '', depth = 0, brace = 0, tag = null, q = '';
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    out += c;
+    if (q) { if (c === '\\' && brace) out += s[++i] ?? ''; else if (c === q) q = ''; continue; }
+    if (brace || tag !== null) {
+      if (c === '"' || c === "'" || (brace && c === '`')) { q = c; if (tag !== null) tag += c; continue; }
+      if (c === '{') { brace++; continue; }
+      if (c === '}') { brace--; continue; }
+      if (brace) continue;
+      if (c !== '>') { tag += c; continue; }
+      const name = (tag.match(/^\/?([\w.-]+)/) || [])[1] || '';
+      const closing = tag.startsWith('/'), selfClosing = tag.endsWith('/') || VOID.test(name);
+      if (closing) depth = Math.max(depth - 1, 0); else if (!selfClosing) depth++;
+      tag = null;
+      const emptyPair = !closing && !selfClosing && s[i + 2] === '/'; // <b></b> stays on one line
+      if (s[i + 1] === '<' && !emptyPair) out += '\n' + '  '.repeat(depth);
+      continue;
+    }
+    if (c === '{') brace++;
+    else if (c === '<') tag = '';
+  }
+  return out;
 }

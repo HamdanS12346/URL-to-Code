@@ -66,6 +66,15 @@ Hidden at load (facts §12):
 - WHEN <trigger> THE SYSTEM SHALL <effect> [T…]
 - WHILE <state> THE SYSTEM SHALL <effect> [T…]
 - THE SYSTEM SHALL show <hover/focus/disabled style with values> [ctl:…]
+- WHEN <trigger> THE SYSTEM SHALL <show/hide X>, animating <property> <from>→<to> over <ms>ms (<easing>) [T…]   (copy the measured timing from facts §8)
+
+### 8.y Scroll behavior (facts §16: cite every [S##])
+- WHEN the page is scrolled down past <N>px THE SYSTEM SHALL show <part>, <fixed|sticky> at <top|bottom|corner>, <w>×<h>px; scrolling back to the top hides it [S01]
+- THE SYSTEM SHALL keep <header> stuck to the top while scrolling, and change <class/height> past <N>px [S02]
+
+### 8.z Media (facts §17: cite every [V##])
+- THE SYSTEM SHALL play <video file> automatically, <muted>, <looping>, poster <file> [V01]
+- WHEN the user clicks <control> THE SYSTEM SHALL pause the video; clicking again resumes it [V01]
 
 ## 9. Navigation
 | trigger (key) | destination | how (same tab / new window / route) | evidence |

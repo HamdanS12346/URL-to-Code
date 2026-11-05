@@ -7,17 +7,37 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { openPage } from './lib/browser.mjs';
 import { loadPlan } from './check-plan.mjs';
+import { RECORDER, scanHover, scrollProbe, mediaProbe, renderBrief } from './lib/behave.mjs';
+import { timingStart, timingStop, relevantTiming, timingPhrase } from './lib/timing.mjs';
 
 const readJson = (f, d) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : d);
 const LISTS = ['shown', 'hidden', 'enabled', 'disabled', 'checked', 'unchecked', 'added', 'removed'];
 const EVENTS = new Set(['navigation', 'postback', 'async-postback', 'request', 'dialog', 'popup', 'download', 'pageerror']);
 
 // ---------- diff two snapshots ----------
+// Keys of the elements the scroll probe found to be driven by scroll position (a sticky copy of the header, a back-to-top button):
+// the part itself and everything inside it. Every click scrolls its target into view, so without this a sticky bar "appears"
+// as an effect of an unrelated click, and the rebuild is then tested for a behavior no click has.
+const partKeys = new WeakMap();
+function scrollParts(items, sels) {
+  if (!sels?.size) return new Set();
+  let hit = partKeys.get(items);
+  if (hit) return hit;
+  const roots = new Set(Object.entries(items).filter(([, it]) => sels.has(it.s)).map(([k]) => k));
+  hit = new Set(Object.keys(items).filter((k) => { for (let p = k; p; p = items[p]?.p) if (roots.has(p)) return true; return false; }));
+  partKeys.set(items, hit);
+  return hit;
+}
 export function diff(a, b, vol = { items: new Set(), texts: new Set() }) {
   const d = Object.fromEntries(LISTS.map((k) => [k, []]));
   d.changed = [];
+  // only when the scroll position moved between the two snapshots: that is when a scroll-driven part can have changed by itself
+  const sk = vol.scrollSels && a.y !== undefined && b.y !== undefined && a.y !== b.y ? new Set([...scrollParts(a.items, vol.scrollSels), ...scrollParts(b.items, vol.scrollSels)]) : null;
+  const skText = new Set();
+  if (sk) for (const k of sk) for (const it of [a.items[k], b.items[k]]) { if (it?.t) skText.add(it.t); if (it?.l) skText.add(it.l); }
+  const scrolly = (t) => t.length >= 2 && [...skText].some((s) => s.includes(t.replace(/…$/, '')));
   for (const [k, y] of Object.entries(b.items)) {
-    if (vol.items.has(k)) continue;
+    if (vol.items.has(k) || sk?.has(k)) continue;
     const x = a.items[k];
     if (!x) { if (y.v) d.added.push(k); continue; }
     if (x.v !== y.v) (y.v ? d.shown : d.hidden).push(k);
@@ -26,8 +46,8 @@ export function diff(a, b, vol = { items: new Set(), texts: new Set() }) {
     if (x.c !== y.c && x.c !== undefined) (y.c ? d.checked : d.unchecked).push(k);
     for (const f of ['val', 'opts', 't', 'cls', 'ex']) if (x[f] !== y[f]) d.changed.push({ key: k, field: f, from: x[f], to: y[f] });
   }
-  for (const [k, x] of Object.entries(a.items)) if (!b.items[k] && x.v && !vol.items.has(k)) d.removed.push(k);
-  const ms = (t) => Object.entries(t).filter(([s]) => !vol.texts.has(s));
+  for (const [k, x] of Object.entries(a.items)) if (!b.items[k] && x.v && !vol.items.has(k) && !sk?.has(k)) d.removed.push(k);
+  const ms = (t) => Object.entries(t).filter(([s]) => !vol.texts.has(s) && !(sk && scrolly(s)));
   d.textsAdded = ms(b.texts).filter(([s, n]) => n > (a.texts[s] || 0)).map(([s]) => s);
   d.textsRemoved = ms(a.texts).filter(([s, n]) => n > (b.texts[s] || 0)).map(([s]) => s);
   return d;
@@ -159,17 +179,19 @@ function inputs(out) {
     valsFor: (key) => (wf.validators || []).filter((v) => v.targetKey === key && v.enabled !== false) };
 }
 
-async function session({ browser, cfg, url, viewport, dpr }, I, saveAssets) {
+async function session({ browser, cfg, url, viewport, dpr }, I, saveAssets, { record = false } = {}) {
   const E = cfg.explore;
   // stage 4 adds hover/state images to the capture's assets; the survey saves nothing
   const s = await openPage(browser, cfg, { url, viewport, dpr, ...(saveAssets ? { assetsDir: path.join(I.cap, 'assets'), assets: readJson(path.join(I.cap, 'assets', 'index.json'), {}) } : {}) });
+  // hover/scroll listeners are only visible if they are noted as the page registers them: before its own scripts run
+  if (record) await s.context.addInitScript({ content: RECORDER });
   const snap = async () => {
     for (let i = 0; i < 5; i++) {
       try { return await s.page.evaluate(() => __pw.snap()); } catch { await s.page.waitForLoadState('load').catch(() => {}); await s.page.waitForTimeout(400); }
     }
     throw new Error('page never settled for a snapshot');
   };
-  const reset = async () => { await s.load({ idleMs: E.resetIdleMs ?? 2000, quietMax: E.quietMaxMs ?? 8000 }); await s.page.evaluate((x) => { __pw.extra = x; }, I.listen).catch(() => {}); return snap(); };
+  const reset = async () => { await s.load({ idleMs: E.resetIdleMs ?? 2000, quietMax: E.quietMaxMs ?? 8000 }); await s.page.evaluate((x) => { __pw.extra = x; __pw.stable = true; }, I.listen).catch(() => {}); return snap(); };
   // which of [id, selector] pairs sit inside explore.scope
   const inside = (pairs) => s.page.evaluate(([scope, ps]) => ps.filter(([, sel]) => { try { return !!document.querySelector(sel)?.closest(scope); } catch { return false; } }).map(([k]) => k), [E.scope, pairs]);
   return { s, snap, reset, inside };
@@ -190,7 +212,7 @@ export async function survey(ctx) {
   fs.rmSync(path.join(out, 'explore', 'states.json'), { force: true });
   fs.mkdirSync(path.join(dir, 'map'), { recursive: true });
   const I = inputs(out);
-  const { s, snap, reset, inside } = await session(ctx, I, false);
+  const { s, snap, reset, inside } = await session(ctx, I, false, { record: E.behave !== false });
   try {
     // baseline + volatile elements (clocks, rotating banners): diff two loads, and the same load a few seconds apart
     const b1 = await reset();
@@ -203,6 +225,10 @@ export async function survey(ctx) {
       for (const t of [...d.textsAdded, ...d.textsRemoved]) vol.texts.add(t);
     }
     log(`  [stage 2] baseline: ${Object.keys(base.items).length} tracked elements, ${vol.items.size} volatile (change on their own, ignored)`);
+    // elements the page's JavaScript reacts to on hover (listeners were noted from the start of this load): not visible in any picture
+    const B = E.behave === false ? null : { scroll: true, media: true, maxStops: 14, ...(typeof E.behave === 'object' ? E.behave : {}) };
+    const scanned = B ? await scanHover(s.page) : { elements: [], pageLevel: {} };
+    if (scanned.elements.length) log(`  [behave] ${scanned.elements.length} visible element(s) with a JavaScript hover handler`);
     // explore.scope: only the screen's own area, not the shared master page / site chrome
     let inScope = null;
     if (E.scope) {
@@ -216,6 +242,13 @@ export async function survey(ctx) {
     const allVisible = Object.entries(base.items).filter(([k, it]) => it.i && it.v && it.e && !vol.items.has(k) && scoped(k));
     const used = new Set(Object.keys(base.items));
     let hoverRaw = await s.page.evaluate(() => __pw.hoverTargets()).catch(() => []);
+    {
+      const have = new Map(hoverRaw.map((h) => [h.sel, h])), ctl = new Set(allVisible.map(([, it]) => it.s));
+      for (const h of scanned.elements) {
+        if (have.has(h.sel)) have.get(h.sel).strong = true;
+        else if (!ctl.has(h.sel)) hoverRaw.push({ sel: h.sel, label: h.label, g: h.g, strong: true });
+      }
+    }
     if (inScope) { const ok = new Set(await inside(hoverRaw.map((h, i) => [i, h.sel]))); hoverRaw = hoverRaw.filter((h, i) => ok.has(i)); }
     const extraHover = hoverRaw.map((h) => {
       let k = `hover-${h.label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 30) || 'item'}`;
@@ -234,6 +267,18 @@ export async function survey(ctx) {
       const acts = chainsFor(k, it, I.ctrl[k], I.valsFor(k), E).flat().map((a) => a.a);
       els.set(k, { key: k, kind: it.i, label: it.l || '', sel: it.s, can: [...(canHover.has(k) ? ['hover'] : []), ...new Set(acts)], strong: !!(it.strong || it.x), css: !!it.strong, g: it.g ?? k, item: it });
     }
+    // which planned/plannable keys carry a JavaScript hover handler, folded by look-alike group
+    const jsBySel = new Map(scanned.elements.map((h) => [h.sel, h]));
+    const hoverGroups = new Map();
+    for (const e of els.values()) {
+      const h = jsBySel.get(e.sel);
+      if (!h || !e.can.includes('hover')) continue;
+      e.js = h.types; e.jsVia = h.via;
+      const g = hoverGroups.get(e.g) ?? hoverGroups.set(e.g, { g: e.g, label: e.label, types: [], via: [], keys: [] }).get(e.g);
+      g.keys.push(e.key);
+      for (const t of h.types) if (!g.types.includes(t)) g.types.push(t);
+      for (const v of h.via) if (!g.via.includes(v)) g.via.push(v);
+    }
     const submitter = (k) => !!I.ctrl[k] && isSubmitter(I.ctrl[k]);
     for (const e of els.values()) if (submitter(e.key)) e.submit = true;
     const members = new Map();
@@ -251,6 +296,8 @@ export async function survey(ctx) {
         .filter(([k, it]) => !(/^(button|link|combobox)$/.test(it.i) && !keepAct.has(k)) && els.get(k).can.some((c) => c !== 'hover'))
         .map(([k]) => (submitter(k) ? { key: k, submit: true } : k)),
     };
+    // a JavaScript hover handler is evidence of behavior: the rule-based plan hovers one of each group too
+    for (const g of hoverGroups.values()) if (!g.keys.some((k) => suggested.hover.includes(k) || suggested.actions.some((a) => (a.key ?? a) === k))) suggested.hover.unshift(g.keys[0]);
     const inSuggested = new Set([...suggested.hover, ...suggested.actions].map((e) => e.key ?? e));
 
     // the table lists a few of each look-alike group; every other key stays valid in the plan
@@ -293,8 +340,26 @@ export async function survey(ctx) {
 
     const hiddenAtLoad = topOnly(Object.keys(base.items).filter((k) => !base.items[k].v && !vol.items.has(k) && scoped(k)), base.items)
       .slice(0, 40).map((k) => ({ key: k, label: base.items[k].l || '' }));
+    // scroll + media probes run on a fresh load of their own: the numbered map layer and any scroll-triggered state are gone
+    const behave = { probedAt: new Date().toISOString(), hover: { groups: [...hoverGroups.values()], elements: scanned.elements, pageLevel: scanned.pageLevel }, scroll: null, media: null };
+    if (B && (B.scroll || B.media)) {
+      try {
+        await reset();
+        const keyOf = new Map(Object.entries(base.items).map(([k, it]) => [it.s, k]));
+        if (B.scroll) {
+          behave.scroll = await scrollProbe(s.page, { dir: path.join(dir, 'scroll'), log, maxStops: B.maxStops });
+          for (const b of behave.scroll.behaviors) { const k = keyOf.get(b.sel); if (k) b.key = k; }
+        }
+        if (B.media) {
+          if (B.scroll) await reset();
+          behave.media = await mediaProbe(s.page, { log, guard: s.guard });
+        }
+      } catch (e) { log(`  ! behavior probes failed (${e.message.split('\n')[0]}): the brief only has the hover handlers`); }
+    }
+    fs.writeFileSync(path.join(dir, 'behave.json'), JSON.stringify(behave, null, 1));
     const sv = {
       surveyedAt: new Date().toISOString(), url: ctx.url, title: base.title, viewport,
+      behavior: { hover: { groups: behave.hover.groups, pageLevel: behave.hover.pageLevel }, scroll: behave.scroll ? behave.scroll.behaviors.length : 0, scrollSels: behave.scroll ? behave.scroll.behaviors.map((b) => b.sel) : [], media: behave.media ? behave.media.videos.length : 0 },
       volatile: { items: [...vol.items], texts: [...vol.texts] },
       scope: inScope ? { selector: E.scope, keys: [...inScope] } : undefined,
       hoverTargets: extraHover.map(([k, it]) => ({ key: k, label: it.l, sel: it.s })),
@@ -312,6 +377,7 @@ export async function survey(ctx) {
     w.push(`- ${vol.items.size} volatile elements (carousels, clocks) change on their own: not listed, ignored when diffing.`);
     w.push(`- Rule-based suggestion: \`explore/survey/plan.suggested.json\` (${suggested.hover.length} hovers, ${suggested.actions.length} actions), marked "sugg" below. It is what \`--auto\` runs.`);
     w.push(`- Budget: ${E.timeBudgetSec}s (config explore.timeBudgetSec, or "budgetSec" in the plan). A hover costs ~1-2 s; a click/fill ~2-5 s, plus a page reload (5-20 s on a busy site) when it leaves something open.`, '');
+    if (B) w.push(renderBrief(behave));
     if (hiddenAtLoad.length) {
       w.push('## Hidden at load (something on the page reveals these: find its trigger)', '');
       for (const h of hiddenAtLoad) w.push(`- \`${h.key}\`: ${cell(h.label).slice(0, 80)}`);
@@ -320,7 +386,7 @@ export async function survey(ctx) {
     w.push('## Elements (top to bottom)', '', '| # | key | label | kind | can | y | map | look-alikes | hints |', '|---|---|---|---|---|---|---|---|---|');
     for (const e of rows) {
       const others = members.get(e.g).filter((k) => k !== e.key && !shown.has(k));
-      const hints = [e.css ? 'css :hover' : e.strong ? 'popup/expand trigger' : '', e.submit ? 'submit-like' : '', inSuggested.has(e.key) ? 'sugg' : ''].filter(Boolean).join(', ');
+      const hints = [e.css ? 'css :hover' : e.strong ? 'popup/expand trigger' : '', e.js ? 'js hover handler' : '', e.submit ? 'submit-like' : '', inSuggested.has(e.key) ? 'sugg' : ''].filter(Boolean).join(', ');
       w.push(`| ${e.n} | \`${e.key}\` | ${cell(e.label).slice(0, 50)} | ${e.kind || 'hover-only'} | ${e.can.join(', ') || '-'} | ${e.box ? e.box[1] : 'hidden'} | ${mapOf(e.box)} | ${e.count > 1 ? `×${e.count}${others.length ? ` (also ${others.slice(0, 3).map((k) => `\`${k}\``).join(', ')}${others.length > 3 ? ', …' : ''})` : ''}` : ''} | ${hints} |`);
     }
     fs.writeFileSync(path.join(dir, 'candidates.md'), w.join('\n') + '\n');
@@ -352,22 +418,30 @@ export async function explore(ctx) {
   const t0 = Date.now();
   const timeUp = () => Date.now() - t0 > E.timeBudgetSec * 1000;
   const loc = (sel) => s.page.locator(sel).first();
+  // ids like #dialog-show-dialog-<uuid> are regenerated on every page load: when the recorded selector matches nothing, find the element by its label
+  const find = async (a) => {
+    const l = loc(a.sel);
+    if (!a.label || a.label.length >= 80 || (await l.count().catch(() => 1))) return l;
+    const byLabel = s.page.getByText(a.label, { exact: true }).first();
+    return (await byLabel.count().catch(() => 0)) ? byLabel : l;
+  };
   const run = async (a) => {
     const o = { timeout: E.actionTimeoutMs };
     s.guard.allowPost = allowed(a);
     switch (a.a) {
-      case 'click': await loc(a.sel).click(o); break;
-      case 'hover': await loc(a.sel).hover(o); break;
-      case 'select': await loc(a.sel).selectOption({ index: a.index }, o); break;
-      case 'fill': await loc(a.sel).fill(a.value, o); await loc(a.sel).evaluate((e) => e.blur()).catch(() => {}); break;
-      case 'press': await loc(a.sel).press(a.value, o); break;
+      case 'click': await (await find(a)).click(o); break;
+      case 'hover': await (await find(a)).hover(o); break;
+      case 'select': await (await find(a)).selectOption({ index: a.index }, o); break;
+      case 'fill': { const l = await find(a); await l.fill(a.value, o); await l.evaluate((e) => e.blur()).catch(() => {}); break; }
+      case 'press': await (await find(a)).press(a.value, o); break;
       case 'validate': await s.page.evaluate((g) => __pw.validate(g), a.group); break;
       case 'fillall':
         for (const f of a.fields) {
-          if (f.a === 'select') await loc(f.sel).selectOption({ index: f.index }, o);
-          else { await loc(f.sel).fill(f.value, o); await loc(f.sel).evaluate((e) => e.blur()).catch(() => {}); }
+          const l = await find(f);
+          if (f.a === 'select') await l.selectOption({ index: f.index }, o);
+          else { await l.fill(f.value, o); await l.evaluate((e) => e.blur()).catch(() => {}); }
         }
-        await loc(a.sel).click(o);
+        await (await find(a)).click(o);
         break;
     }
   };
@@ -375,7 +449,7 @@ export async function explore(ctx) {
   try {
     const base = await reset();
     // volatile = what the survey saw move, plus anything moving now (a short second look)
-    const vol = { items: new Set(sv.volatile.items), texts: new Set(sv.volatile.texts) };
+    const vol = { items: new Set(sv.volatile.items), texts: new Set(sv.volatile.texts), scrollSels: new Set(sv.behavior?.scrollSels || []) };
     await s.page.waitForTimeout(2000);
     { const d = diff(base, await snap()); for (const k of keysOf(d)) vol.items.add(k); for (const t of [...d.textsAdded, ...d.textsRemoved]) vol.texts.add(t); }
     const inScope = sv.scope ? new Set(sv.scope.keys) : null;
@@ -396,7 +470,7 @@ export async function explore(ctx) {
     // cheap "is the page still as loaded?" check (one snapshot, no reload): a reload is 15-20 s on a busy site
     const recheck = async () => { const now = await snap().catch(() => null); dirty = !now || now.url !== base.url || any(diff(base, now, vol)); };
 
-    const record = async (prefix, a, d, events, before, after) => {
+    const record = async (prefix, a, d, events, before, after, rawTiming) => {
       const id = 'T' + String(transitions.length + 1).padStart(2, '0');
       const it = (k) => after.items[k] || before.items[k] || {};
       const lab = (k) => ({ key: k, label: it(k).l || '', sel: it(k).s });
@@ -425,7 +499,13 @@ export async function explore(ctx) {
           await s.page.screenshot({ path: path.join(out, shot), fullPage: true, clip: { x, y, width: w, height: h } }).catch(() => { shot = undefined; });
         }
       }
-      transitions.push({ id, depth: prefix.length + 1, prefix: prefix.map(sum), action: sum(a), effects: fx, events, url: after.url !== base.url ? after.url : undefined, shot });
+      // how it moved: only the animated elements that belong to this action (the diff's elements, their ancestors/descendants, or what overlaps them)
+      let timing;
+      if (rawTiming) {
+        const touched = [...d.shown, ...d.added, ...d.hidden, ...d.removed, ...d.changed.map((c) => c.key)].map((k) => after.items[k] || before.items[k]).filter(Boolean);
+        timing = relevantTiming(rawTiming, touched.map((i) => i.s).filter(Boolean), touched.map((i) => i.b).filter(Boolean), [...d.textsAdded, ...d.textsRemoved]);
+      }
+      transitions.push({ id, depth: prefix.length + 1, prefix: prefix.map(sum), action: sum(a), effects: fx, events, url: after.url !== base.url ? after.url : undefined, shot, ...(timing ? { timing } : {}) });
       return id;
     };
 
@@ -458,8 +538,10 @@ export async function explore(ctx) {
         await ensureBase();
         const pre = await snap();
         const st0 = await s.page.evaluate((q) => __pw.styleFor(q), it.s);
+        const timed = E.timing !== false && await timingStart(s.page);
         await loc(it.s).hover({ timeout: E.hoverTimeoutMs ?? 1000 });
-        await s.page.waitForTimeout(E.hoverMs);
+        await s.page.waitForTimeout(timed ? Math.max(E.hoverMs, E.timingMs ?? 450) : E.hoverMs); // a 300 ms fade must have finished before the sampler stops
+        const rawTiming = timed ? await timingStop(s.page) : null;
         const st1 = await s.page.evaluate((q) => __pw.styleFor(q), it.s);
         const style = styleDelta(st0, st1);
         if (Object.keys(style).length) hovers.push({ key, label: it.l, style });
@@ -467,7 +549,7 @@ export async function explore(ctx) {
         const d = diff(pre, after, vol); // against the state just before THIS hover: an earlier menu still open, or a rotating banner, is not this hover's effect
         if (any(d)) {
           const a = { a: 'hover', key, sel: it.s, label: it.l };
-          await record([], a, d, [], pre, after);
+          await record([], a, d, [], pre, after, rawTiming);
           if (E.maxDepth > 1) for (const k of newControls(d, after)) for (const ch of chainsFor(k, after.items[k], ctrl[k], valsFor(k), E)) enqueue([a], ch.slice(0, 1));
         }
       } catch { /* covered / off-screen / detached: nothing changed, move on without a reload */ }
@@ -538,7 +620,9 @@ export async function explore(ctx) {
         const mark = s.guard.events.length;
         const nav0 = before.url;
         let error;
+        const timed = E.timing !== false && await timingStart(s.page);
         try { await run(a); await s.settle(undefined, E.quietMaxMs ?? 8000); } catch (e) { error = e.message.split('\n')[0]; }
+        const rawTiming = timed && !error ? await timingStop(s.page) : null;
         s.guard.allowPost = cfg.mode !== 'readonly';
         const after = await snap();
         const events = s.guard.events.slice(mark).filter((e) => EVENTS.has(e.type)).map(({ at, ...e }) => e);
@@ -554,7 +638,7 @@ export async function explore(ctx) {
         if (a.a === 'fillall') { const fk = new Set(a.fields.map((f) => f.key)); d.changed = d.changed.filter((c) => !(fk.has(c.key) && c.field === 'val')); }
         if (a.a === 'click' && ctrl[a.key]?.kind === 'radio') d.unchecked = d.unchecked.filter((k) => ctrl[k]?.group !== ctrl[a.key]?.group);
         if (any(d) || events.length) {
-          await record([...prefix, ...done], a, d, events, before, after);
+          await record([...prefix, ...done], a, d, events, before, after, rawTiming);
           if (prefix.length + 1 < E.maxDepth) for (const k of newControls(d, after)) for (const ch of chainsFor(k, after.items[k], ctrl[k], valsFor(k), E)) enqueue([...prefix, ...done, a], ch);
         } else noEffect.push({ ...sum(a), ownChange: own.length ? own.map((c) => c.field) : undefined });
         done.push(a);

@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const readJson = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
 
-// entries may be "key" or { key, why, value, enter, submit }
+// entries may be "key" or { key, why, value, enter, submit }; "skip" entries are { key, why }: left out on purpose
 const norm = (e) => (typeof e === 'string' ? { key: e } : e && typeof e === 'object' ? e : { key: undefined });
 
 export function validatePlan(plan, survey) {
@@ -37,6 +37,22 @@ export function validatePlan(plan, survey) {
       if (e.value !== undefined && typeof e.value !== 'string') errors.push(`actions: "${e.key}" value must be a string`);
       if (e.submit !== undefined && (f !== 'actions' || !el.can.includes('click'))) warnings.push(`${f}: "submit" only applies to clickable buttons under "actions" ("${e.key}"): ignored`);
     }
+  }
+  // behavior the survey MEASURED (a JavaScript hover handler on the element): the plan must cover each look-alike group, or
+  // say why not. A planner that only looks at pictures cannot see these, and the rebuild then misses a whole behavior.
+  const planned = new Set([...hover, ...actions].map((e) => e.key));
+  const skipped = new Map();
+  if (plan.skip !== undefined && !Array.isArray(plan.skip)) errors.push('"skip" must be an array of { "key", "why" }');
+  for (const e of Array.isArray(plan.skip) ? plan.skip.map(norm) : []) {
+    if (typeof e.key !== 'string' || !e.key) { errors.push(`skip: entry without a "key": ${JSON.stringify(e)}`); continue; }
+    if (typeof e.why !== 'string' || e.why.trim().length < 3) { errors.push(`skip: "${e.key}" needs a "why" (what makes it not worth exploring)`); continue; }
+    if (!els.has(e.key)) warnings.push(`skip: unknown key "${e.key}"`);
+    skipped.set(e.key, e.why);
+  }
+  for (const g of survey.behavior?.hover?.groups || []) {
+    if (g.keys.some((k) => planned.has(k) || skipped.has(k))) continue;
+    const more = g.keys.length > 1 ? `; look-alikes: ${g.keys.slice(1, 4).map((k) => `"${k}"`).join(', ')}${g.keys.length > 4 ? ', …' : ''}` : '';
+    errors.push(`behavior: "${g.keys[0]}"${g.label ? ` (${g.label})` : ''} has a JavaScript ${g.types.join('/')} handler, so hovering it does something; put it under "hover" (or "actions"), or under "skip" with a "why"${more}`);
   }
   if (plan.budgetSec !== undefined && !(Number.isFinite(plan.budgetSec) && plan.budgetSec >= 30 && plan.budgetSec <= 3600)) errors.push('"budgetSec" must be a number of seconds between 30 and 3600');
   return { errors, warnings, plan: { ...plan, hover: hover.filter((e) => els.has(e.key)), actions: actions.filter((e) => els.has(e.key)) } };

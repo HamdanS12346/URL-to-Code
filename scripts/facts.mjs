@@ -6,6 +6,8 @@
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
+import { scrollEars, scrollDirectional, mediaEars } from './lib/behave.mjs';
+import { timingPhrase } from './lib/timing.mjs';
 
 const readJson = (f, d) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : d);
 const cell = (s) => String(s ?? '').replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ').trim();
@@ -51,6 +53,7 @@ function effectPhrases(t, origin) {
   const shownText = [...(e.shown || []), ...(e.added || [])].map((x) => x.label || '').join(' ');
   for (const s of (e.textsAdded || []).filter((s) => !shownText.includes(s.replace(/…$/, ''))).slice(0, 3)) out.push(`display "${short(s, 80)}"`);
   if (!out.length) for (const s of (e.textsRemoved || []).slice(0, 2)) out.push(`stop displaying "${short(s, 80)}"`);
+  if (t.timing?.length) out.push(`animate it (measured frame by frame): ${t.timing.slice(0, 3).map(timingPhrase).join('; ')}`);
   for (const ev of t.events || []) {
     const p = relPath(ev.url, origin);
     const target = ev.post?.__EVENTTARGET ? ` (event target ${ev.post.__EVENTTARGET})` : '';
@@ -138,7 +141,7 @@ function contentMd(tree, origin) {
 }
 
 // ---------- parity.spec.ts ----------
-function paritySpec({ url, viewport, dpr, cfg, transitions, sel, ctrl, origin }) {
+function paritySpec({ screen, url, viewport, dpr, cfg, transitions, sel, ctrl, origin }) {
   const deny = new RegExp(cfg.denyPattern, 'i');
   const tests = [];
   for (const t of transitions) {
@@ -158,7 +161,7 @@ function paritySpec({ url, viewport, dpr, cfg, transitions, sel, ctrl, origin })
       if (c.field === 't' && c.to && c.to.length < 150 && !c.to.endsWith('…')) asserts.push(`await expect(el(page, ${k(c)})).toHaveText(${JSON.stringify(c.to)});`);
       if (c.field === 'ex') asserts.push(`await expect(el(page, ${k(c)})).toHaveAttribute('aria-expanded', ${JSON.stringify(c.to)});`);
     }
-    for (const s of (e.textsAdded || []).slice(0, 2)) asserts.push(`await expect(page.getByText(${JSON.stringify(s.replace(/…$/, '').slice(0, 80))}, { exact: false }).first()).toBeVisible();`);
+    for (const s of (e.textsAdded || []).slice(0, 2)) asserts.push(`await expect(page.getByText(${JSON.stringify(s.replace(/…$/, '').slice(0, 80))}, { exact: false }).filter({ visible: true }).first()).toBeVisible();`);
     for (const ev of t.events || []) {
       if (ev.type === 'navigation') {
         const p = relPath(ev.url, origin).split('#')[0].toLowerCase();
@@ -195,6 +198,24 @@ const SEL: Record<string, string> = ${JSON.stringify(sel, null, 2)};
 test.use({ viewport: ${JSON.stringify(viewport)}, deviceScaleFactor: ${dpr}, storageState: TARGET === 'legacy' && AUTH && fs.existsSync(AUTH) ? AUTH : undefined });
 
 const el = (page: Page, key: string) => page.locator(TARGET === 'legacy' ? SEL[key] ?? \`[data-testid="\${key}"]\` : \`[data-testid="\${key}"]\`).first();
+// keys that no data-testid in the rebuild's app/ carries: an action on one can only time out, so it fails at once instead
+// (null = legacy target, or an app that builds its data-testids dynamically: nothing is skipped)
+const CARRIED: Set<string> | null = (() => {
+  if (TARGET === 'legacy') return null;
+  const s = new Set<string>();
+  let dynamic = false;
+  const walk = (d: string) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+    const p = d + '/' + e.name;
+    if (e.isDirectory()) { if (e.name !== 'assets') walk(p); continue; }
+    if (!/\\.[jt]sx?$/.test(e.name)) continue;
+    const t = fs.readFileSync(p, 'utf8');
+    if (t.includes('data-testid={')) dynamic = true;
+    for (const m of t.matchAll(/data-testid=["']([^"']+)["']/g)) s.add(m[1]);
+    if (/\\.[jt]s$/.test(e.name)) for (const m of t.matchAll(/["']([\\w-]+)["']/g)) s.add(m[1]);
+  } };
+  try { walk(${JSON.stringify('outputs/' + screen + '/app')}); } catch { return null; }
+  return dynamic ? null : s;
+})();
 const isDisabled = (page: Page, key: string) => el(page, key).evaluate((e: any) => !!(e.disabled || e.classList.contains('aspNetDisabled') || e.getAttribute('aria-disabled') === 'true'));
 
 // load the page; navigations away are blocked and recorded; server posts blocked when the test came from a blocked one
@@ -223,6 +244,7 @@ async function open(page: Page, blockPost: boolean) {
 
 async function act(page: Page, a: any): Promise<void> {
   const o = { timeout: 5000 };
+  if (CARRIED && a.key && !CARRIED.has(a.key)) throw new Error('no data-testid="' + a.key + '" in the rebuild');
   if (a.a === 'click') await el(page, a.key).click(o);
   else if (a.a === 'hover') await el(page, a.key).hover(o);
   else if (a.a === 'select') await el(page, a.key).selectOption(a.value && !String(a.value).startsWith('option #') ? { label: a.value } : { index: a.index }, o);
@@ -415,7 +437,10 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
   const pk = Object.entries(pseudo.byKey || {});
   if (pk.length) {
     w('\nLegacy CSS rules for states (`:hover :focus :active :disabled .aspNetDisabled …`) that apply to controls (full list: `capture/pseudo.json`):');
-    for (const [k, idx] of pk.slice(0, 60)) w(`- [ctl:${k}]: ${idx.slice(0, 4).map((i) => `\`${short(pseudo.rules[i].selector, 70)} { ${short(pseudo.rules[i].css, 120)} }\``).join(' ')}`);
+    // controls with the same rules share one line (the rules print once, every key is still listed)
+    const groups = new Map();
+    for (const [k, idx] of pk) { const g = idx.slice(0, 4).map((i) => `\`${short(pseudo.rules[i].selector, 70)} { ${short(pseudo.rules[i].css, 120)} }\``).join(' '); groups.set(g, [...(groups.get(g) || []), k]); }
+    for (const [g, keys] of groups) w(`- ${keys.map((k) => `[ctl:${k}]`).join(', ')}: ${g}`);
   }
   w('');
 
@@ -464,7 +489,10 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
   w('## 12. Hidden at load, never revealed by any action');
   if (states.unexplained.length) {
     w('These exist in the page but no click/hover/input showed them. The trigger is server-side, data-dependent, or a path not explored: look in `capture/js/` and the legacy source. Each needs a [UNKNOWN] or an evidenced rule in the spec.');
-    for (const u of states.unexplained) w(`- \`${u.key}\`${u.kind ? ` (${u.kind})` : ''}: ${cell(short(u.label, 80))}`);
+    // tooltip-<uuid> ids carry no information beyond their label: one line with the count and the labels (every id stays in facts.json)
+    const tip = states.unexplained.filter((u) => /^tooltip-[0-9a-f-]{36}$/.test(u.key));
+    for (const u of states.unexplained) if (!tip.includes(u)) w(`- \`${u.key}\`${u.kind ? ` (${u.kind})` : ''}: ${cell(short(u.label, 80))}`);
+    if (tip.length) w(`- ${tip.length} elements \`tooltip-<uuid>\` (ids: facts.json → optional.unexplained), labels in order: ${tip.map((u) => cell(short(u.label, 60))).join(' · ')}`);
   } else w('None.');
   w('');
 
@@ -484,7 +512,8 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
   // ---------- 14. scripts / platform ----------
   w('## 14. Page scripts, styles and platform details');
   const jsDir = path.join(out, 'capture', 'js');
-  const jsFiles = fs.existsSync(jsDir) ? fs.readdirSync(jsDir, { recursive: true }).filter((f) => /\.js$/.test(f)) : [];
+  const jsAll = fs.existsSync(jsDir) ? fs.readdirSync(jsDir, { recursive: true }).filter((f) => /\.js$/.test(f)) : [];
+  const jsFiles = jsAll.filter((f) => !/^_ext[\\/]/.test(f)), jsExt = jsAll.filter((f) => /^_ext[\\/]/.test(f));
   for (const f of jsFiles.slice(0, 40)) {
     const src = fs.readFileSync(path.join(jsDir, f), 'utf8');
     const name = `js/${String(f).replaceAll('\\', '/')}`;
@@ -492,6 +521,7 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
     const fns = [...new Set([...src.matchAll(/function\s+([A-Za-z_$][\w$]*)\s*\(/g)].map((m) => m[1]))];
     w(`- \`${name}\`${fns.length ? `: ${fns.slice(0, 25).join(', ')}${fns.length > 25 ? ' …' : ''}` : ''}`);
   }
+  if (jsExt.length) w(`- ${jsExt.length} script(s) from other hosts, saved under \`capture/js/_ext/<host>/\` (the site's platform code: menus, sticky headers and accordions often live there; read them to settle an [UNKNOWN] about how something is triggered): ${[...new Set(jsExt.map((x) => String(x).split(/[\\/]/)[1]))].slice(0, 8).join(', ')}`);
   if (wf.updatePanels) w(`- UpdatePanels: ${JSON.stringify(wf.updatePanels)}`);
   for (const c of (wf.components || []).slice(0, 30)) w(`- AJAX component ${c.type} on ${c.elementKey || c.element}: ${short(JSON.stringify(c.props), 300)}`);
   for (const [g, cmds] of Object.entries(wf.grids || {})) w(`- Grid ${g}: ${Object.entries(cmds).map(([k, v]) => `${k}(${[...new Set(v)].slice(0, 8).join(',')})`).join(' ')}`);
@@ -528,6 +558,31 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
     w('');
   }
 
+  // ---------- 16/17. scroll + media: measured on the live page before planning (explore/survey/behave.json) ----------
+  const behave = readJson(path.join(out, 'explore', 'survey', 'behave.json'), null);
+  const sb = behave?.scroll?.behaviors || [], vids = behave?.media?.videos || [];
+  if (behave?.scroll) {
+    w('## 16. Scroll behavior (the live page was scrolled down and back up, in real time)');
+    w('A still picture cannot show these. Every entry has an id; the spec must cite each as `[S01]` in its Behavior section and build it (a sticky or fixed part that is missing from the rebuild is a visible defect).');
+    w('');
+    for (const b of sb) w(`- **[${b.id}]** ${scrollEars(b)}${scrollDirectional(b)}${b.shot ? ` — picture: \`explore/survey/scroll/${b.shot}\`` : ''}${b.key ? ` — control [ctl:${b.key}]` : ''}`);
+    for (const r of behave.scroll.rootChanges || []) w(`- WHEN the page is scrolled past about ${r.toY}px THE SYSTEM SHALL change the <${r.el}> class: ${[...r.added.map((x) => '+' + x), ...r.removed.map((x) => '−' + x)].join(' ')}.`);
+    if (!sb.length) w('Nothing fixed, sticky or scroll-dependent was found.');
+    w(`\nProbed ${behave.scroll.stops.length} scroll positions down to ${behave.scroll.docHeight}px, then back up. Pictures: \`explore/survey/scroll/\`.`);
+    w('');
+  }
+  if (behave?.media) {
+    w('## 17. Media (videos, animated images, canvases)');
+    w('Autoplay, loop and the effect of each play/pause/mute control were measured on the live page. Every video has an id; the spec must cite each as `[V01]`. Use the original files from `capture/assets/` (an animated image replaced by a still is a defect).');
+    w('');
+    for (const v of vids) for (const [i, line] of mediaEars(v).entries()) w(`- ${i === 0 ? `**[${v.id}]** ` : ''}${line}`);
+    for (const im of behave.media.images || []) w(`- Animated image \`${String(im.src).split('/').pop().split('?')[0]}\` (${im.sel}, ${im.box[2]}×${im.box[3]}px): keep the original file, it animates.`);
+    if (behave.media.canvases) w(`- ${behave.media.canvases} visible <canvas> element(s): drawn by script; pictures of them are in capture/assets/_canvas/.`);
+    if (behave.media.lottie) w(`- ${behave.media.lottie} Lottie player element(s).`);
+    if (!vids.length && !behave.media.images?.length && !behave.media.canvases && !behave.media.lottie) w('No video, audio, animated image or canvas.');
+    w('');
+  }
+
   fs.writeFileSync(path.join(out, 'facts.md'), L2.join('\n'));
   fs.writeFileSync(path.join(out, 'content.md'), `# CONTENT — ${screen}\nPage text verbatim in document order. {key} = control/element id. <!-- box --> = styled container (CSS px).\n\n` + contentMd(tree, origin));
 
@@ -538,6 +593,8 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
     transitions: T.filter((t) => !flakySet.has(t.id)).map((t) => t.id),
     validators: (wf.validators || []).map((v) => v.key || v.id),
     motion: (motion?.entries || []).map((e) => e.id),
+    ...(behave?.scroll ? { scroll: sb.map((b) => b.id) } : {}),
+    ...(behave?.media ? { media: vids.map((v) => v.id) } : {}),
   };
   const effectKeys = T.flatMap((t) => [t.action.key, ...t.prefix.map((p) => p.key), ...Object.values(t.effects).flat().map((x) => x?.key)].filter(Boolean));
   const domKeys = [];
@@ -546,7 +603,7 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
   fs.writeFileSync(path.join(out, 'facts.json'), JSON.stringify({
     screen, url, required, optional: { links: controls.filter(plainLink).map((c) => c.key), unexplained: states.unexplained.map((u) => u.key) },
     all: { controls: controls.map((c) => c.key), elements: [...new Set([...controls.map((c) => c.key), ...states.unexplained.map((u) => u.key), ...effectKeys])],
-      transitions: T.map((t) => t.id), validators: (wf.validators || []).map((v) => v.key || v.id), shots: offsets?.shots.length || 0, motion: required.motion },
+      transitions: T.map((t) => t.id), validators: (wf.validators || []).map((v) => v.key || v.id), shots: offsets?.shots.length || 0, motion: required.motion, scroll: required.scroll || [], media: required.media || [] },
     flaky: [...flakySet],
   }, null, 1));
 
@@ -560,7 +617,7 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
   }
   fs.writeFileSync(path.join(out, 'spec', 'selectors.json'), JSON.stringify(sel, null, 1));
   const live = T.filter((t) => !flakySet.has(t.id));
-  fs.writeFileSync(path.join(out, 'spec', 'parity.spec.ts'), paritySpec({ url, viewport, dpr, cfg, transitions: live, sel, ctrl, origin }));
+  fs.writeFileSync(path.join(out, 'spec', 'parity.spec.ts'), paritySpec({ screen: path.basename(out), url, viewport, dpr, cfg, transitions: live, sel, ctrl, origin }));
   // verify compares against the tool's own reference when there is one: it is shot the way verify shoots the rebuild
   if (offsets || refMeta) fs.writeFileSync(path.join(out, 'manifest.json'), // css_viewport_width = reference width / dpr (what draw-ui's measure_reference.py maps pixels with); viewport = the browser window (what verify opens)
 JSON.stringify({ reference: refMeta ? refMeta.file : 'reference.png', source: refMeta ? 'tool' : 'user', dpr, css_viewport_width: refMeta?.css_width ?? viewport.width, css_viewport_height: viewport.height, viewport, url,

@@ -13,7 +13,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
-import { toJsx, unsetFirst } from './lib/jsx.mjs';
+import { toJsx, unsetFirst, pretty } from './lib/jsx.mjs';
+import { reportPreflight } from './lib/keys.mjs';
+import { inlineImports } from './lib/cssimport.mjs';
+import { timingPhrase } from './lib/timing.mjs';
+import { scrollEars, scrollDirectional, mediaEars } from './lib/behave.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const args = process.argv.slice(2);
@@ -49,6 +53,7 @@ for (const [url, a] of Object.entries(index)) {
   if (!a.file) continue;
   const f = assetBase + a.file.replace(/^assets\//, '');
   local.set(url, f);
+  if (/^https?:/.test(url)) local.set(url.replace(/^https?:/, ''), f); // CSS and HTML often write //host/path
   const b = decodeURIComponent(url.split(/[?#]/)[0].split('/').pop() || '');
   if (b) byBase.set(b, byBase.has(b) && byBase.get(b) !== f ? null : f);
 }
@@ -77,16 +82,21 @@ const rewriteAttr = (v, attr) => {
 
 // ---------- css ----------
 fs.mkdirSync(path.join(dest, 'components'), { recursive: true });
-fs.writeFileSync(path.join(dest, 'style.css'), unsetFirst(localizeCss(fs.readFileSync(path.join(SNAP, 'used.css'), 'utf8'))));
+// a capture made before snapshot.mjs resolved @import still has them in used.css (ignored by the browser mid-file): paste them in now
+const pageUrl = readJson(path.join(OUT, 'run.json'), {}).url || 'https://localhost/';
+const usedCss = inlineImports(fs.readFileSync(path.join(SNAP, 'used.css'), 'utf8'), pageUrl, index, OUT);
+fs.writeFileSync(path.join(dest, 'style.css'), unsetFirst(localizeCss(usedCss)));
 
 // ---------- markup: cut the frozen DOM into bands ----------
 const bands = readJson(path.join(CAP, 'bands.json'), []);
 const controls = readJson(path.join(CAP, 'controls.json'), []);
+// hover-only targets (CSS :hover menus, cards) are not controls, but the spec and parity.spec.ts address them by key too
+const hoverKeys = (readJson(path.join(OUT, 'explore', 'states.json'), null)?.hoverTargets || []).filter((h) => h.key && h.sel);
 const browser = await chromium.launch();
 const page = await browser.newPage();
 await page.route('**/*', (r) => (r.request().url().startsWith('file:') ? r.continue() : r.abort('aborted')));
 await page.goto('file:///' + path.join(SNAP, 'rendered.html').replace(/\\/g, '/'));
-const cut = await page.evaluate(({ bands, controls }) => {
+const cut = await page.evaluate(({ bands, controls, hoverKeys }) => {
   document.querySelectorAll('script, noscript, style, link, base').forEach((e) => e.remove());
   // the spec and parity.spec.ts address controls by these keys
   let stamped = 0;
@@ -94,6 +104,11 @@ const cut = await page.evaluate(({ bands, controls }) => {
     let el = null;
     try { el = document.querySelector(c.sel); } catch { /* selector from another document state */ }
     if (el) { el.setAttribute('data-testid', c.key); stamped++; }
+  }
+  for (const h of hoverKeys) {
+    let el = null;
+    try { el = document.querySelector(h.sel); } catch { /* skip */ }
+    if (el && !el.hasAttribute('data-testid')) { el.setAttribute('data-testid', h.key); stamped++; }
   }
   // outermost bands only: a band inside another band is part of that band's component
   const els = [];
@@ -115,7 +130,7 @@ const cut = await page.evaluate(({ bands, controls }) => {
     htmlAttrs: [...document.documentElement.attributes].filter((a) => !/^(class|id|style)$/.test(a.name)).map((a) => [a.name, a.value]),
     bodyAttrs: [...document.body.attributes].filter((a) => !/^(class|id|style)$/.test(a.name)).map((a) => [a.name, a.value]),
   };
-}, { bands, controls });
+}, { bands, controls, hoverKeys });
 await browser.close();
 
 // component names: the element id when it is a usable identifier, else its tag (+ number when repeated)
@@ -130,11 +145,11 @@ const head = '// @ts-nocheck - mechanical port of the captured DOM (unknown lega
 for (const p of cut.parts) {
   fs.writeFileSync(path.join(dest, 'components', `${p.name}.tsx`),
     `${head}// Band ${p.i + 1} of ${screen}: ported from outputs/${screen}/snapshot/rendered.html (${p.tag}${p.id ? '#' + p.id : ''}).\n` +
-    `export default function ${p.name}() {\n  return (\n    ${toJsx(p.html, rewriteAttr)}\n  );\n}\n`);
+    `export default function ${p.name}() {\n  return (\n    ${pretty(toJsx(p.html, rewriteAttr))}\n  );\n}\n`);
 }
 
 let body = toJsx(cut.body, rewriteAttr);
-body = body.replace(/<div data-slot="(\d+)"><\/div>/g, (_, i) => `<${cut.parts[+i].name} />`);
+body = pretty(body.replace(/<div data-slot="(\d+)"><\/div>/g, (_, i) => `<${cut.parts[+i].name} />`));
 // The stylesheet is injected while the screen is mounted and removed after, so screens in one app do not leak
 // rules (`body`, `*`, `h1`...) into each other. Same for the title and the id/classes the original page keeps on
 // <body>/<html>, which its CSS may depend on.
@@ -159,11 +174,12 @@ fs.writeFileSync(path.join(dest, 'Page.tsx'),
 
 // ---------- behavior digest: explore/states.json, one line per transition ----------
 const states = readJson(path.join(OUT, 'explore', 'states.json'), null);
+const behave = readJson(path.join(OUT, 'explore', 'survey', 'behave.json'), null);
 let digest = 0;
-if (states?.transitions?.length) {
+if (states?.transitions?.length || behave) {
   const keys = (xs) => xs.map((x) => x.key || x.label || x.sel).join(', ');
   const act = (a) => `${a.a} \`${a.key || a.sel}\`${a.value ? ` "${a.value}"` : ''}${a.label ? ` (${a.label})` : ''}`;
-  const lines = states.transitions.map((t) => {
+  const lines = (states?.transitions || []).map((t) => {
     const e = t.effects || {};
     const fx = [['added', e.added], ['shown', e.shown], ['hidden', e.hidden], ['removed', e.removed], ['enabled', e.enabled], ['checked', e.checked]]
       .filter(([, v]) => v?.length).map(([n, v]) => `${n} ${keys(v)}`);
@@ -172,12 +188,17 @@ if (states?.transitions?.length) {
     if (e.textsRemoved?.length) fx.push('text- ' + e.textsRemoved.slice(0, 6).join(' | '));
     const reqs = [...new Set((t.events || []).filter((v) => v.type === 'request' && v.url).map((v) => `${v.method} ${v.url.split('?')[0].replace(/^https?:\/\/[^/]+/, '')}`))].slice(0, 3);
     const nav = (t.events || []).filter((v) => v.type === 'navigation').map((v) => `navigates ${v.kind || ''} ${v.url || ''}`.trim());
+    const anim = (t.timing || []).slice(0, 2).map(timingPhrase);
     const after = t.prefix?.length ? ` (after ${t.prefix.map(act).join(' → ')})` : '';
-    return `- **${t.id}**${after} ${act(t.action)} → ${fx.join('; ') || 'no visible change'}${[...nav, ...(reqs.length ? [`requests ${reqs.join(', ')}`] : [])].map((x) => ' · ' + x).join('')}${t.shot ? ` · picture outputs/${screen}/${t.shot}` : ''}`;
+    return `- **${t.id}**${after} ${act(t.action)} → ${fx.join('; ') || 'no visible change'}${[...nav, ...(reqs.length ? [`requests ${reqs.join(', ')}`] : []), ...(anim.length ? [`animation: ${anim.join('; ')}`] : [])].map((x) => ' · ' + x).join('')}${t.shot ? ` · picture outputs/${screen}/${t.shot}` : ''}`;
   });
   fs.writeFileSync(path.join(dest, 'BEHAVIOR.md'),
     `# ${screen}: what each explored action did\n\nGenerated by \`npm run port\` from \`outputs/${screen}/explore/states.json\`; \`spec/UI_SPEC.md\` is the authority.\n` +
-    `Keys are the \`data-testid\`s in Page.tsx. A class swap (\`from\` → \`to\`) names rules that already exist in \`style.css\` only if the page had them at capture time; otherwise they are unknown and need a measured value from the picture.\n\n${lines.join('\n')}\n`);
+    `Keys are the \`data-testid\`s in Page.tsx. A class swap (\`from\` → \`to\`) names rules that already exist in \`style.css\` only if the page had them at capture time; otherwise they are unknown and need a measured value from the picture.\n` +
+    `"animation:" lines are measured frame by frame on the live page: build them with those durations and easings, not with an instant show/hide.\n\n${lines.join('\n')}\n` +
+    // measured by scrolling / playing the live page: a port copies the markup, not the script that makes a header stick or a video play
+    (behave?.scroll?.behaviors?.length || behave?.scroll?.rootChanges?.length ? `\n## Scroll (the port is static: none of this exists until it is built)\n\n${behave.scroll.behaviors.map((b) => `- **[${b.id}]** ${scrollEars(b)}${scrollDirectional(b)}${b.key ? ` (control \`${b.key}\`)` : ''}`).join('\n')}\n${(behave.scroll.rootChanges || []).map((r) => `- scrolled past ~${r.toY}px: <${r.el}> class ${[...r.added.map((x) => '+' + x), ...r.removed.map((x) => '−' + x)].join(' ')}`).join('\n')}\n` : '') +
+    (behave?.media?.videos?.length ? `\n## Media (React drops or ignores some attributes: check each video actually plays)\n\n${behave.media.videos.map((v) => mediaEars(v).map((l) => `- **[${v.id}]** ${l}`).join('\n')).join('\n')}\n` : ''));
   digest = lines.length;
 }
 

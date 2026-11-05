@@ -13,6 +13,8 @@ import { launch } from './lib/browser.mjs';
 import { INPAGE, installClock, warmUp, freeze, shoot } from './lib/freeze.mjs';
 import { sample, check } from './lib/motion.mjs';
 import { py } from './lib/py.mjs';
+import { reportPreflight } from './lib/keys.mjs';
+import { verifyBehavior, printBehavior } from './lib/verify-behavior.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const readJson = (f, d) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : d);
@@ -32,6 +34,7 @@ const [w, h] = [png.readUInt32BE(16), png.readUInt32BE(20)]; // PNG IHDR
 const viewport = tool ? manifest.viewport ?? { width: manifest.css_viewport_width, height: manifest.css_viewport_height } : { width: Math.round(w / dpr), height: Math.round(h / dpr) };
 const outDir = path.join(dir, 'verify');
 fs.mkdirSync(outDir, { recursive: true });
+reportPreflight(dir, path.join(outDir, 'missing-keys.json'));
 
 const cfg = readJson(path.join(ROOT, 'config.json'), {});
 const browser = await launch(cfg); // same launch as the capture: scrollbars take layout width in both
@@ -43,6 +46,7 @@ const base = process.env.BASE ?? 'http://localhost:5173';
 const up = () => fetch(base).then((r) => r.ok, () => false);
 if (!process.env.URL && !(await up())) { // no dev server running: start this repo's own Vite for the length of the run
   const vite = spawn(process.execPath, [path.join(ROOT, 'node_modules/vite/bin/vite.js'), '--port', new URL(base).port || '5173', '--strictPort'], { cwd: ROOT, stdio: 'ignore' });
+  vite.unref(); // a ref'd child kept this process alive after the run (it never returned); 'exit' still kills it
   process.on('exit', () => vite.kill());
   for (let i = 0; i < 120 && !(await up()); i++) await new Promise((r) => setTimeout(r, 500));
   console.error(`verify: started the dev server at ${base}`);
@@ -66,14 +70,45 @@ if (tool) {
   await page.screenshot({ path: path.join(outDir, 'candidate.png'), fullPage: true });
 }
 const env = await page.evaluate(() => ({ innerWidth, dpr: devicePixelRatio, compat: document.compatMode, overflowX: document.documentElement.scrollWidth > innerWidth }));
-await browser.close();
 
 console.log(JSON.stringify({ reference: [w, h], viewport, ...env }));
 const bandsFile = path.join(dir, manifest.sections || 'capture/bands.json');
 const r = py('diff.py', refFile, path.join(outDir, 'candidate.png'), outDir, ...(tool && fs.existsSync(bandsFile) ? [bandsFile, dpr] : []));
 console.log(JSON.stringify(r));
 
+// diagnosis, output only: which element of the rebuild sits under each diff cluster, and (when the page is taller than the
+// reference) which elements stick out past the reference's bottom edge
 const rep = readJson(path.join(outDir, 'report.json'), {});
+const diag = await page.evaluate(({ boxes, refH }) => {
+  const all = [...document.querySelectorAll('body *')].map((e) => { const b = e.getBoundingClientRect(); return { e, x: b.left + scrollX, y: b.top + scrollY, w: b.width, h: b.height }; }).filter((o) => o.w > 0 && o.h > 0);
+  const name = (e) => e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + (typeof e.className === 'string' && e.className.trim() ? '.' + e.className.trim().split(/\s+/).slice(0, 2).join('.') : '') + (e.dataset.testid ? `[data-testid=${e.dataset.testid}]` : '');
+  const describe = (o) => o && { el: name(o.e), text: (o.e.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 40), box: [o.x, o.y, o.w, o.h].map(Math.round) };
+  const elements = boxes.map(([x, y, w, h]) => describe(all.filter((o) => o.x <= x + w / 2 && x + w / 2 <= o.x + o.w && o.y <= y + h / 2 && y + h / 2 <= o.y + o.h).sort((a, b) => a.w * a.h - b.w * b.h)[0]) ?? null);
+  let overflow = null;
+  if (refH) { // leaf-most elements whose bottom edge passes the reference height: what made the page taller
+    const past = new Set(all.filter((o) => o.y + o.h > refH + 1).map((o) => o.e));
+    overflow = all.filter((o) => past.has(o.e) && ![...o.e.children].some((c) => past.has(c))).slice(0, 15).map(describe);
+  }
+  return { elements, overflow };
+}, { boxes: (rep.clusters || []).map((c) => c.box.map((v) => v / dpr)), refH: r.size_delta_px[1] > 2 ? h / dpr : 0 }).catch(() => null);
+// behavior: the probes that measured the original page (scroll, media, animation timing) run on the rebuild and are compared,
+// plus the console of a fresh load (a React warning such as "Invalid DOM property autoplay" is a defect no picture shows)
+let behavior = null;
+if (process.env.BEHAVIOR !== '0') {
+  try {
+    behavior = await verifyBehavior({
+      browser, viewport, dpr, url: process.env.URL ?? `${base}/#/${screen}`, initScript: INPAGE, waitRoot: !process.env.URL,
+      ref: readJson(path.join(dir, 'explore', 'survey', 'behave.json'), null), states: readJson(path.join(dir, 'explore', 'states.json'), null),
+    });
+  } catch (e) { console.error(`behavior check could not run: ${e.message.split(String.fromCharCode(10))[0]}`); }
+}
+await browser.close();
+if (diag) {
+  (rep.clusters || []).forEach((c, i) => { c.css_box = c.box.map((v) => Math.round(v / dpr)); c.element = diag.elements[i]; });
+  if (diag.overflow) rep.past_reference_height = diag.overflow;
+}
+(rep.clusters || []).slice(0, 3).forEach((c, i) => console.log(`cluster ${i + 1}: css box ${c.css_box} bad_px ${c.bad_px} under ${c.element ? `${c.element.el} "${c.element.text}"` : '?'}`));
+if (rep.worst_crop) console.log(`worst cluster, ref | candidate: ${path.join(outDir, rep.worst_crop)}`);
 const bands = readJson(bandsFile, null);
 if (rep.sections && bands && bandsNow) { // same number of bands: how much taller/shorter is each one in the rebuild?
   if (bands.length === bandsNow.length) rep.sections.forEach((s, i) => { s.h_delta_px = Math.round(bandsNow[i].h - bands[i].h); });
@@ -84,5 +119,6 @@ if (motion) {
   const bad = motion.filter((m) => m.ok === false);
   console.log(`motion: ${motion.filter((m) => m.ok).length}/${motion.length} match${bad.length ? `; wrong: ${bad.map((m) => `${m.id} ${m.detail}`).join(' | ')}` : ''}`);
 }
+if (behavior) { rep.behavior = behavior; printBehavior(behavior); }
 fs.writeFileSync(path.join(outDir, 'report.json'), JSON.stringify(rep, null, 2));
 if (rep.sections) console.log('sections (bad_pct, height delta): ' + rep.sections.map((s) => `${s.n}:${s.label} ${s.bad_pct}%${s.h_delta_px ? ` (${s.h_delta_px > 0 ? '+' : ''}${s.h_delta_px}px)` : ''}`).join(' | '));

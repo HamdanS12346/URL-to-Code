@@ -19,7 +19,25 @@
     const r = el.getBoundingClientRect();
     if (r.right + scrollX < 0 || r.bottom + scrollY < 0) return false; // parked off-screen (left:-9999px)
     if (r.width <= 1 && r.height <= 1) return false; // sr-only
+    // survey/explore only (the capture's own flags stay as they were): content inside a closed accordion. The panel is
+    // `height:0; overflow:hidden` (or max-height:0), its text still has a box, and without this it counts as visible before the
+    // click, so "the answer appears" is never seen. Only a clipping ancestor with no height/width counts: off-screen carousel slides do not.
+    if (window.__pw && window.__pw.stable && getComputedStyle(el).position !== 'fixed' && collapsed(el)) return false;
     return true;
+  };
+  const collapsed = (el) => {
+    const memo = window.__pw && window.__pw._cm;
+    const walk = (e) => {
+      if (!e || e === document.body || e === document.documentElement) return false;
+      if (memo && memo.has(e)) return memo.get(e);
+      const cs = getComputedStyle(e);
+      let r = false;
+      if (cs.overflowX !== 'visible' || cs.overflowY !== 'visible') { const b = e.getBoundingClientRect(); r = b.height < 1 || b.width < 1; }
+      if (!r) r = walk(e.parentElement);
+      if (memo) memo.set(e, r);
+      return r;
+    };
+    return walk(el);
   };
 
   const STYLE_PROPS = ['color', 'backgroundColor', 'backgroundImage', 'borderTop', 'borderRight', 'borderBottom', 'borderLeft', 'borderRadius',
@@ -119,7 +137,9 @@
   };
 
   const labelOf = (el) => {
-    const tx = (x) => clean(x && (x.innerText || x.textContent));
+    // a hidden element has no innerText: join its text nodes with a space, as innerText would between blocks
+    const flat = (x) => { const w = document.createTreeWalker(x, NodeFilter.SHOW_TEXT); const t = []; while (w.nextNode()) t.push(w.currentNode.nodeValue); return t.join(' '); };
+    const tx = (x) => clean(x && (x.innerText || flat(x)));
     const by = el.getAttribute('aria-labelledby');
     if (by) { const t = clean(by.split(/\s+/).map((id) => tx(document.getElementById(id))).join(' ')); if (t) return cut(t, 80); }
     const al = el.getAttribute('aria-label');
@@ -152,6 +172,12 @@
     for (const [s, types] of Object.entries(extra)) { try { const e = document.querySelector(s); if (e) e.__pwListen = types; } catch {} }
     const out = [], used = new Map(), keyOf = new Map();
     if (!document.body) return out;
+    // __pw.stable (set by survey/explore after the page loaded): an element keeps the key it first got for the life of
+    // the page. Otherwise a dialog inserted before `button-3` renumbers every later button, and the before/after diff
+    // of that action blames the wrong controls. The first snapshot after a load numbers exactly as without it.
+    const memory = window.__pw.stable ? (window.__pw._keys ||= new WeakMap()) : null;
+    const owned = new Set();
+    if (memory) for (const el of document.body.querySelectorAll('*')) { const k = memory.get(el); if (k) owned.add(k); }
     for (const el of document.body.querySelectorAll('*')) {
       if (/^(SCRIPT|STYLE|NOSCRIPT|TEMPLATE|LINK|META|BR)$/.test(el.tagName)) continue;
       if (el instanceof SVGElement && !(el instanceof SVGSVGElement)) continue;
@@ -169,9 +195,14 @@
         const lbl = slug(kind ? labelOf(el) : (el.getAttribute('aria-label') || (el.textContent || '').slice(0, 80)));
         base = lbl ? `${what}-${lbl}` : what;
       }
-      const n = (used.get(base) || 0) + 1;
-      used.set(base, n);
-      const key = n === 1 ? base : `${base}-${n}`;
+      let key = memory && memory.get(el);
+      if (!key) {
+        let n = (used.get(base) || 0) + 1;
+        key = n === 1 ? base : `${base}-${n}`;
+        if (memory) while (owned.has(key) || used.has('key:' + key)) { n++; key = `${base}-${n}`; }
+        used.set(base, n);
+        if (memory) { used.set('key:' + key, 1); memory.set(el, key); owned.add(key); }
+      } else used.set('key:' + key, 1);
       let p = el.parentElement, parentKey;
       while (p && !parentKey) { parentKey = keyOf.get(p); p = p.parentElement; }
       keyOf.set(el, key);
@@ -265,7 +296,9 @@
   const trigger = (el) => el.hasAttribute('aria-haspopup') || el.hasAttribute('aria-expanded') || el.hasAttribute('aria-controls') || el.tagName === 'SUMMARY';
 
   // ---------- snapshot: the state diffed before/after every action ----------
-  const snap = () => {
+  // one snapshot = one layout state: the collapsed-ancestor answers are remembered for its duration only
+  const snap = () => { window.__pw._cm = new Map(); try { return snapInner(); } finally { window.__pw._cm = null; } };
+  const snapInner = () => {
     const sel = makeSel(), items = {};
     for (const { el, key, kind, parentKey } of index()) {
       const v = vis(el);
@@ -309,7 +342,7 @@
       texts[k] = (texts[k] || 0) + 1;
       count++;
     }
-    return { url: location.href, title: document.title, items, texts, h: document.documentElement.scrollHeight };
+    return { url: location.href, title: document.title, items, texts, h: document.documentElement.scrollHeight, y: Math.round(scrollY) };
   };
 
   // ---------- visual tree of <body>: boxes, style deltas, text runs, images, tables, controls ----------
@@ -772,20 +805,27 @@
       cache.set(sel, r);
       return r;
     };
-    const kf = [], stats = { rules: 0, kept: 0 };
+    const kf = [], stats = { rules: 0, kept: 0 }, blocked = [];
     const walk = (list) => {
       const res = [];
       for (const r of list) {
         stats.rules++;
         if (r.type === 1) { if (match(r.selectorText)) { res.push(r.cssText); stats.kept++; } }
         else if (r.type === 7) kf.push({ name: r.name, css: r.cssText });
-        else if (r.type === 3) continue;
+        else if (r.type === 3) {
+          // @import: the imported sheet is not in document.styleSheets, its rules are only reachable through this rule
+          // (a site's header/footer styles often live there). Cross-origin ones are listed as blocked, like any other sheet
+          const imp = r.styleSheet;
+          let inner;
+          try { inner = imp ? walk(imp.cssRules) : []; } catch { blocked.push((imp && imp.href) || r.href); continue; }
+          if (inner.length) { const mq = r.media && r.media.mediaText; res.push(mq && mq !== 'all' ? `@media ${mq} {\n${inner.join('\n')}\n}` : inner.join('\n')); }
+        }
         else if (r.type === 5 || r.type === 10 || !r.cssRules) res.push(r.cssText);
         else { const inner = walk(r.cssRules); if (inner.length) res.push(r.cssText.slice(0, r.cssText.indexOf('{')).trim() + ' {\n' + inner.join('\n') + '\n}'); }
       }
       return res;
     };
-    const sheets = [], blocked = [];
+    const sheets = [];
     for (const s of [...document.styleSheets, ...(document.adoptedStyleSheets || [])]) {
       let list;
       try { list = s.cssRules; } catch { blocked.push(s.href); continue; }
@@ -880,6 +920,6 @@
     return [r2(r.x + scrollX), r2(r.y + scrollY), r2(r.width), cs.opacity, cs.transform, el.childElementCount <= 40 ? clean(el.textContent).slice(0, 32) : ''];
   });
 
-  window.__pw = { extra: {}, vis, index, controls, snap, tree, scrape, webforms, pseudo, pointerCandidates, hoverTargets, scopeFields, styleFor, validate,
+  window.__pw = { extra: {}, makeSel, vis, index, controls, snap, tree, scrape, webforms, pseudo, pointerCandidates, hoverTargets, scopeFields, styleFor, validate,
     freezeDom, hideOverlays, expandScroller, bands, usedCss, motionStatic, probeInit, probeRead };
 })();

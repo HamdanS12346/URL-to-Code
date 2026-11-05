@@ -99,6 +99,7 @@ export async function capture({ browser, cfg, url, out, viewport, dpr, log, user
     }
 
     const assets = await s.flush();
+    if (s.failed.length) log(`  ! ${s.failed.length} asset(s) were loaded by the page but could not be saved (the offline copy and the port will lack them): ${s.failed.slice(0, 3).map((f) => `${f.url} (${f.error})`).join('; ')}${s.failed.length > 3 ? ' …' : ''}`);
 
     // link the tree to local files: images, CSS backgrounds, inline SVG (saved as files), data: URIs
     const byUrl = Object.fromEntries(Object.entries(assets).map(([u, a]) => [u, a.file]));

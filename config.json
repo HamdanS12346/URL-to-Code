@@ -16,10 +16,10 @@
     "model": "gemini-3.8-flash"
   },
   "explore": {
-    "maxActions": 120,
+    "maxActions": 150,
     "maxDepth": 2,
     "maxOptions": 4,
-    "timeBudgetSec": 300,
+    "timeBudgetSec": 900,
     "settleMs": 350,
     "hoverMs": 250,
     "actionTimeoutMs": 3000,

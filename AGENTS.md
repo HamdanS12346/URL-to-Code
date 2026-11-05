@@ -15,6 +15,7 @@ so a new screen needs no edit outside its own folder. `scripts/` holds site-agno
 
 `npm run go -- <screen>` stops after its survey and asks for a plan ("plan the exploration for <screen>").
 Follow `.claude/skills/explore-plan/SKILL.md`: read `outputs/<screen>/explore/survey/candidates.md` and every `map/*.jpg`, write `outputs/<screen>/explore/plan.json`,
+also read the **Behavior brief** inside it (what the survey measured: JavaScript hover handlers, scroll behavior, media), write `outputs/<screen>/explore/plan.json` (every hover-handler group in the brief goes under `hover`/`actions`, or under `skip` with a reason),
 and finish when `npm run check:plan -- <screen>` prints ✓. `plan.json` is the only file you write in this phase. The user then re-runs `npm run go -- <screen>`; don't run it yourself unless asked.
 
 ## Phase 1 — Spec (skill `ui-spec`)
@@ -79,7 +80,12 @@ Skip the design path (`ui-design.md`, `full-page.md`). There is no design phase 
 - Text, icons, and layout are code. Images are images.
 
 ### Reporting
-State what matched, what didn't, and anything you couldn't verify. "Looks close" is not a result — report `verify` output: `size_delta_px`, `bad_pct`, `worst_section` and the per-section `bad_pct` / `h_delta_px` (fix the earliest band that drifts first), and the `motion: N/M match` line.
+**Behavior is measured, not guessed.** The page's scripts are not ported, so a port is static: nothing sticks, slides, hovers open, or plays until you build it.
+Build it from `app/BEHAVIOR.md` (animation lines carry measured durations/easings; the Scroll and Media sections carry the sticky/fixed parts, thresholds and the video/pause behavior) and the spec's `[S##]`/`[V##]`/`[T##]` lines. `verify` replays the same probes on the rebuild and prints
+`behavior: scroll N/M | media N/M | timing N/M | console: …` with one `✗` line per mismatch (a part that does not stick, a video that does not play or a pause button that does nothing, an animation that is instant, a React warning such as `Invalid DOM property autoplay`). Fix those before polishing pixels.
+Anything you had to assume because the spec says `[UNKNOWN]` goes in the report under **Guessed**, one line each, with the guess you made.
+
+State what matched, what didn't, and anything you couldn't verify. "Looks close" is not a result — report `verify` output: `size_delta_px`, `bad_pct`, `worst_section` and the per-section `bad_pct` / `h_delta_px` (fix the earliest band that drifts first), the `motion: N/M match` line, and the `behavior:` line (scroll / media / timing / console).
 `size_delta_px` beyond ±2 is a layout/DPR error, not antialiasing: fix it before anything else.
 
 ## Commands
