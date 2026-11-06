@@ -15,7 +15,9 @@ const MAX_THIRD_PARTY_SCRIPT = 3e6;
 
 export const samePage = (a, b) => a.origin === b.origin && a.pathname.toLowerCase() === b.pathname.toLowerCase();
 
+// browserChannel "msedge" / "chrome": the browser installed on the machine, when Playwright's own download is blocked
 export const launch = (cfg) => chromium.launch({
+  channel: cfg.browserChannel || undefined,
   headless: !cfg.headed,
   args: cfg.launchArgs ?? [],
   ignoreDefaultArgs: cfg.scrollbars ? ['--hide-scrollbars'] : [], // real browsers show scrollbars; they take layout width
@@ -57,7 +59,9 @@ const fileFor = (u, start, contentType) => {
 
 export async function openPage(browser, cfg, { url, viewport, dpr, assetsDir, jsDir, assets = {} }) {
   const target = new URL(url);
-  const storageState = cfg.auth?.storageState && fs.existsSync(cfg.auth.storageState) ? cfg.auth.storageState : undefined;
+  // a file path (npm run login), or the session itself held in memory (npm run ui: never on disk, where Codex could read it)
+  const st = cfg.auth?.storageState;
+  const storageState = st && (typeof st === 'object' || fs.existsSync(st)) ? st : undefined;
   const context = await browser.newContext({
     viewport, deviceScaleFactor: dpr, storageState, httpCredentials: cfg.auth?.httpCredentials || undefined,
     ignoreHTTPSErrors: true, acceptDownloads: true, serviceWorkers: 'block', locale: cfg.locale || undefined, timezoneId: cfg.timezone || undefined,

@@ -8,6 +8,7 @@ import path from 'node:path';
 import { INPAGE, shoot } from './lib/freeze.mjs';
 import { py } from './lib/py.mjs';
 import { inlineImports } from './lib/cssimport.mjs';
+import { ROOT } from './lib/paths.mjs';
 
 const readJson = (f, d) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : d);
 
@@ -86,7 +87,7 @@ export async function reference({ page, context, out, dpr, userShots, tree, maxH
   const m00 = path.join(out, 'measure-00');
   fs.rmSync(m00, { recursive: true, force: true });
   try {
-    const m = py(path.join(out, '..', '..', '.claude', 'skills', 'draw-ui', 'scripts', 'measure_reference.py'), '--manifest', path.join(out, 'regions.json'), '--out-dir', m00);
+    const m = py(path.join(ROOT, '.claude', 'skills', 'draw-ui', 'scripts', 'measure_reference.py'), '--manifest', path.join(out, 'regions.json'), '--out-dir', m00);
     log(`  regions.json: ${regions.length} regions (${m.groups} repeated rows) measured by draw-ui -> measure-00/`);
   } catch (e) { log(`  ! draw-ui measure_reference failed on regions.json: ${e.message.split('\n')[0]}`); }
   return { file, bands: bands.length };

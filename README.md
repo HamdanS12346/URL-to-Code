@@ -83,6 +83,15 @@ PowerShell: `$env:TARGET="react"; $env:URL="http://localhost:5173/#/portfolio"; 
 
 **Reading `verify`** (`outputs/<screen>/verify/report.json`): `size_delta_px` must be within ±2 (otherwise it's a scaling error, fix that first). Keep `bad_pct` low. `motion` and `behavior` should be N/M with N = M. `worst.png` shows original and copy side by side for the worst part.
 
+## A whole portal module (logged in, Codex)
+
+```
+npm run ui -- file-transfer --out C:\path\to\new-app
+```
+Logs in (USERNAME in `.env`; it asks for the password and keeps it in memory only), asks for the home page and a menu item, finds the screens under it, then specs the home page,
+its header/menu and every screen, and writes the React 19 app to `--out`, with Codex as the writer. Everything else runs unattended.
+Full guide: [docs/client-runbook.md](docs/client-runbook.md). Before the first run on a new machine: [lookout.md](lookout.md) (checklist, with `npm run check:writer` for Codex). Self-test: `npm run smoke:ui`.
+
 ## Login pages
 
 ```
@@ -125,4 +134,6 @@ You or your agent only write `explore/plan.json`, `spec/UI_SPEC.md`, `spec/tasks
 | `npm run verify -- <screen>` | compare the copy with the original (`BASE=http://localhost:<port>` if not 5173) |
 | `npm run dev` | dev server, `http://localhost:5173/` lists all screens |
 | `npm run login -- "<url>"` | save a login session |
-| `npm run smoke`, `smoke:explore`, `smoke:behavior` | self-tests |
+| `npm run ui -- <pack>` | a whole portal module: login → menu → specs → app (see [docs/client-runbook.md](docs/client-runbook.md)) |
+| `npm run check:writer` | can the writer (Codex) do what `npm run ui` needs? (see [lookout.md](lookout.md)) |
+| `npm run smoke`, `smoke:explore`, `smoke:behavior`, `smoke:ui` | self-tests |

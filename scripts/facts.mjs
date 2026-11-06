@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { scrollEars, scrollDirectional, mediaEars } from './lib/behave.mjs';
 import { timingPhrase } from './lib/timing.mjs';
+import { ROOT } from './lib/paths.mjs';
 
 const readJson = (f, d) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : d);
 const cell = (s) => String(s ?? '').replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ').trim();
@@ -141,7 +142,7 @@ function contentMd(tree, origin) {
 }
 
 // ---------- parity.spec.ts ----------
-function paritySpec({ screen, url, viewport, dpr, cfg, transitions, sel, ctrl, origin }) {
+function paritySpec({ screen, appDir, url, viewport, dpr, cfg, transitions, sel, ctrl, origin }) {
   const deny = new RegExp(cfg.denyPattern, 'i');
   const tests = [];
   for (const t of transitions) {
@@ -192,7 +193,7 @@ import fs from 'node:fs';
 const LEGACY_URL = ${JSON.stringify(url)};
 const TARGET = process.env.TARGET ?? 'legacy';
 const URL = process.env.URL ?? LEGACY_URL;
-const AUTH = ${JSON.stringify(cfg.auth?.storageState || '')};
+const AUTH = ${JSON.stringify(typeof cfg.auth?.storageState === 'string' ? cfg.auth.storageState : '')}; // a path only: a session held in memory is never written into a file
 const SEL: Record<string, string> = ${JSON.stringify(sel, null, 2)};
 
 test.use({ viewport: ${JSON.stringify(viewport)}, deviceScaleFactor: ${dpr}, storageState: TARGET === 'legacy' && AUTH && fs.existsSync(AUTH) ? AUTH : undefined });
@@ -213,7 +214,7 @@ const CARRIED: Set<string> | null = (() => {
     for (const m of t.matchAll(/data-testid=["']([^"']+)["']/g)) s.add(m[1]);
     if (/\\.[jt]s$/.test(e.name)) for (const m of t.matchAll(/["']([\\w-]+)["']/g)) s.add(m[1]);
   } };
-  try { walk(${JSON.stringify('outputs/' + screen + '/app')}); } catch { return null; }
+  try { walk(${JSON.stringify(appDir)}); } catch { return null; }
   return dynamic ? null : s;
 })();
 const isDisabled = (page: Page, key: string) => el(page, key).evaluate((e: any) => !!(e.disabled || e.classList.contains('aspNetDisabled') || e.getAttribute('aria-disabled') === 'true'));
@@ -617,7 +618,7 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
   }
   fs.writeFileSync(path.join(out, 'spec', 'selectors.json'), JSON.stringify(sel, null, 1));
   const live = T.filter((t) => !flakySet.has(t.id));
-  fs.writeFileSync(path.join(out, 'spec', 'parity.spec.ts'), paritySpec({ screen: path.basename(out), url, viewport, dpr, cfg, transitions: live, sel, ctrl, origin }));
+  fs.writeFileSync(path.join(out, 'spec', 'parity.spec.ts'), paritySpec({ screen: path.basename(out), appDir: path.relative(ROOT, path.join(out, 'app')).split(path.sep).join('/'), url, viewport, dpr, cfg, transitions: live, sel, ctrl, origin }));
   // verify compares against the tool's own reference when there is one: it is shot the way verify shoots the rebuild
   if (offsets || refMeta) fs.writeFileSync(path.join(out, 'manifest.json'), // css_viewport_width = reference width / dpr (what draw-ui's measure_reference.py maps pixels with); viewport = the browser window (what verify opens)
 JSON.stringify({ reference: refMeta ? refMeta.file : 'reference.png', source: refMeta ? 'tool' : 'user', dpr, css_viewport_width: refMeta?.css_width ?? viewport.width, css_viewport_height: viewport.height, viewport, url,
@@ -632,7 +633,7 @@ export async function selfcheck({ out, root }) {
   const report = path.join(out, 'spec', 'selfcheck.json');
   fs.rmSync(report, { force: true });
   const cli = path.join(root, 'node_modules', '@playwright', 'test', 'cli.js');
-  const r = spawnSync(process.execPath, [cli, 'test', path.relative(path.join(root, 'outputs'), spec).replaceAll('\\', '/'), '--reporter=json', '--retries=1'], {
+  const r = spawnSync(process.execPath, [cli, 'test', path.relative(root, spec).replaceAll('\\', '/'), '--reporter=json', '--retries=1'], {
     cwd: root, encoding: 'utf8', maxBuffer: 1e8, env: { ...process.env, TARGET: 'legacy', PLAYWRIGHT_JSON_OUTPUT_NAME: report },
   });
   const rep = readJson(report, null);

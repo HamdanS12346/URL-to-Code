@@ -11,6 +11,12 @@ and its React build lives in **`outputs/<screen>/app/`** (`Page.tsx`, `component
 Nothing screen-specific goes anywhere else: not `src/`, `public/`, `scripts/` or the repo root. The root `src/main.tsx` is a generic router that finds `outputs/*/app/Page.tsx`,
 so a new screen needs no edit outside its own folder. `scripts/` holds site-agnostic tools only; if a script names a site, it is wrong.
 
+**Packs** (`npm run ui`, see `docs/client-runbook.md`): one module of a logged-in portal at a time. A pack's screens live in `packs/<pack>/screens/<screen>/`
+and are addressed as `<pack>/<screen>` in every command (`npm run check -- file-transfer/home`). Wherever this file or a skill says `outputs/<screen>/`, read that folder instead.
+In a pack run, `scripts/ui.mjs` calls you (the writer) with one task per call and checks your output itself; the prompt names the task, the screen folder and the files you may write.
+Its code goes to a separate app folder (`--out`), not to `app/`.
+Never open, print or copy `.env` or anything under `packs/*/auth/`: they hold the portal password and the logged-in session.
+
 ## Phase 0 — Exploration plan (skill `explore-plan`, stage 3 of `npm run go`)
 
 `npm run go -- <screen>` stops after its survey and asks for a plan ("plan the exploration for <screen>").

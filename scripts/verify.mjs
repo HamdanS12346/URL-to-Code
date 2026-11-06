@@ -5,6 +5,7 @@
 // report.json has bad_pct per top-level section (the reference's bands) and, when motion.json exists, whether every
 // carousel / counter / animation of the original also moves in the rebuild, at about the same speed.
 // BASE=http://localhost:5174 if vite picked another port. URL=<full url> overrides the whole address.
+// WAIT_ROOT=1 with URL: the address is a React app (another repo): wait for #root to render, as for this repo.
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
@@ -15,11 +16,12 @@ import { sample, check } from './lib/motion.mjs';
 import { py } from './lib/py.mjs';
 import { reportPreflight } from './lib/keys.mjs';
 import { verifyBehavior, printBehavior } from './lib/verify-behavior.mjs';
+import { screenDir } from './lib/paths.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const readJson = (f, d) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : d);
 const screen = process.argv[2] ?? (console.error('usage: npm run verify -- <screen>'), process.exit(1));
-const dir = path.join(ROOT, 'outputs', screen);
+const dir = screenDir(screen);
 const manifestFile = path.join(dir, 'manifest.json');
 if (!fs.existsSync(manifestFile)) { console.error(`${manifestFile} not found. Run: npm run capture -- ${screen}`); process.exit(2); }
 const manifest = readJson(manifestFile, {});
@@ -53,7 +55,7 @@ if (!process.env.URL && !(await up())) { // no dev server running: start this re
 }
 await page.goto(process.env.URL ?? `${base}/#/${screen}`, { timeout: 120000 }); // a cold Vite takes a while to transform the page
 // the router loads the screen lazily: wait until it has rendered before warming up and shooting
-if (!process.env.URL) await page.waitForFunction(() => document.getElementById('root')?.firstElementChild, null, { timeout: 120000 }).catch(() => {});
+if (!process.env.URL || process.env.WAIT_ROOT) await page.waitForFunction(() => document.getElementById('root')?.firstElementChild, null, { timeout: 120000 }).catch(() => {});
 await page.evaluate(() => document.fonts.ready);
 
 let motion = null, bandsNow = null;
@@ -97,7 +99,7 @@ let behavior = null;
 if (process.env.BEHAVIOR !== '0') {
   try {
     behavior = await verifyBehavior({
-      browser, viewport, dpr, url: process.env.URL ?? `${base}/#/${screen}`, initScript: INPAGE, waitRoot: !process.env.URL,
+      browser, viewport, dpr, url: process.env.URL ?? `${base}/#/${screen}`, initScript: INPAGE, waitRoot: !process.env.URL || !!process.env.WAIT_ROOT,
       ref: readJson(path.join(dir, 'explore', 'survey', 'behave.json'), null), states: readJson(path.join(dir, 'explore', 'states.json'), null),
     });
   } catch (e) { console.error(`behavior check could not run: ${e.message.split(String.fromCharCode(10))[0]}`); }

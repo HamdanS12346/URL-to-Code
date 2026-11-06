@@ -17,7 +17,10 @@
     "check:plan": "node scripts/check-plan.mjs",
     "port": "node scripts/port.mjs",
     "dev": "vite",
-    "build": "tsc --noEmit && vite build"
+    "build": "tsc --noEmit && vite build",
+    "ui": "node scripts/ui.mjs",
+    "smoke:ui": "node test/ui-smoke.mjs",
+    "check:writer": "node scripts/check-writer.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",

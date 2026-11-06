@@ -24,6 +24,7 @@ import { survey, explore } from './explore.mjs';
 import { facts, selfcheck } from './facts.mjs';
 import { check } from './check-spec.mjs';
 import { loadPlan } from './check-plan.mjs';
+import { screenDir, relDir } from './lib/paths.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const STEPS = ['capture', 'fidelity', 'stitch', 'align', 'survey', 'plan', 'explore', 'facts', 'selfcheck', 'spec'];
@@ -42,19 +43,17 @@ const STAGE = {
 const IMG = /\.(png|jpe?g|webp|bmp)$/i;
 const readJson = (f, d) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : d);
 
-const argv = process.argv.slice(2);
-const flag = (n) => argv.includes(n);
-const opt = (n) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] : undefined; };
-const optVals = new Set(['--from', '--only', '--mode', '--skip'].map((n) => opt(n)).filter(Boolean));
-const skip = new Set((opt('--skip') || '').split(',').filter(Boolean));
-// steps that run only when asked: selfcheck is 5-8 min on a live site and marks live-data behaviors flaky; the spec is normally written by your coding agent
-const off = new Set();
-if (!flag('--selfcheck') && opt('--only') !== 'selfcheck' && opt('--from') !== 'selfcheck') off.add('selfcheck');
-if (!flag('--gemini') && opt('--only') !== 'spec' && opt('--from') !== 'spec') off.add('spec');
-let screens = argv.filter((a) => !a.startsWith('--') && !optVals.has(a));
-if (flag('--all')) screens = fs.readdirSync(path.join(ROOT, 'screenshots'), { withFileTypes: true }).filter((d) => d.isDirectory() && !d.name.startsWith('_')).map((d) => d.name);
-if (!screens.length) { console.log(fs.readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n').slice(1, 10).join('\n').replace(/^\/\/ ?/gm, '')); process.exit(1); }
-for (const o of ['--from', '--only']) if (opt(o) && !STEPS.includes(opt(o))) { console.error(`${o} must be one of: ${STEPS.join(', ')}`); process.exit(1); }
+// the command-line switches (scripts/ui.mjs passes its own argv)
+export function cli(argv) {
+  const flag = (n) => argv.includes(n);
+  const opt = (n) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] : undefined; };
+  const skip = new Set((opt('--skip') || '').split(',').filter(Boolean));
+  // steps that run only when asked: selfcheck is 5-8 min on a live site and marks live-data behaviors flaky; the spec is normally written by your coding agent
+  const off = new Set();
+  if (!flag('--selfcheck') && opt('--only') !== 'selfcheck' && opt('--from') !== 'selfcheck') off.add('selfcheck');
+  if (!flag('--gemini') && opt('--only') !== 'spec' && opt('--from') !== 'spec') off.add('spec');
+  return { argv, flag, opt, skip, off };
+}
 
 const base = readJson(path.join(ROOT, 'config.json'), {});
 const python = base.python || (process.platform === 'win32' ? 'python' : 'python3');
@@ -78,9 +77,6 @@ function screenConfig(name) {
   const shots = fs.readdirSync(dir).filter((f) => IMG.test(f) && fs.statSync(path.join(dir, f)).isFile());
   // url only (no screenshots of yours): base.urlOnly sets the viewport/dpr the tool shoots at
   const cfg = { ...base, ...(shots.length ? {} : base.urlOnly), ...own, explore: { ...base.explore, ...own.explore }, auth: { ...base.auth, ...own.auth } };
-  if (opt('--mode')) cfg.mode = opt('--mode');
-  if (flag('--headed')) cfg.headed = true;
-  if (!['readonly', 'safe', 'full'].includes(cfg.mode)) throw new Error(`mode must be readonly, safe or full (got ${cfg.mode})`);
   if (cfg.auth.storageState) cfg.auth.storageState = path.resolve(ROOT, cfg.auth.storageState);
   const srcFile = path.join(dir, 'url', 'source.txt');
   const sources = fs.existsSync(srcFile) ? fs.readFileSync(srcFile, 'utf8').split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !l.startsWith('#')) : [];
@@ -88,9 +84,16 @@ function screenConfig(name) {
   return { dir, url, cfg, sources, shots, finger };
 }
 
-async function runScreen(name, browser) {
-  const sc = screenConfig(name);
-  const out = path.join(ROOT, 'outputs', name);
+// One screen through stages 1-5. sc ({ url, cfg, shots, sources, finger, dir }) comes from screenshots/<name>/ unless given.
+// managed: the caller (scripts/ui.mjs) does stages 3 and 5 itself, so no "say this to your agent" hints.
+// Returns 'paused' when stage 3 has no usable plan yet, 'done' when managed and finished.
+export async function runScreen(name, browser, { argv = process.argv.slice(2), sc: given, managed = false } = {}) {
+  const { flag, opt, skip, off } = cli(argv);
+  const sc = given ?? screenConfig(name);
+  if (opt('--mode')) sc.cfg.mode = opt('--mode');
+  if (flag('--headed')) sc.cfg.headed = true;
+  if (!['readonly', 'safe', 'full'].includes(sc.cfg.mode)) throw new Error(`mode must be readonly, safe or full (got ${sc.cfg.mode})`);
+  const out = screenDir(name);
   fs.mkdirSync(out, { recursive: true });
   const logFile = path.join(out, 'run.log');
   const log = (m) => { console.log(m); fs.appendFileSync(logFile, m + '\n'); };
@@ -174,10 +177,10 @@ async function runScreen(name, browser) {
       if (pl.errors.length > 8) log(`   - … ${pl.errors.length - 8} more: npm run check:plan -- ${name}`);
       for (const w of run.warnings) log(`  ! ${w}`);
       fs.writeFileSync(runFile, JSON.stringify(run, null, 1));
-      log(`
+      if (!managed) log(`
    STOP HERE (stage 3 of 5). In your coding agent say:
        plan the exploration for ${name}
-   (skill explore-plan: reads outputs/${name}/explore/survey/candidates.md + map/*.jpg, writes explore/plan.json,
+   (skill explore-plan: reads ${relDir(name)}/explore/survey/candidates.md + map/*.jpg, writes explore/plan.json,
     ends with: npm run check:plan -- ${name}  printing ✓)
    Then run the same command again to continue with stages 4-5:  npm run go -- ${name}
    (no agent? npm run go -- ${name} --auto  runs the rule-based plan instead)`);
@@ -213,29 +216,38 @@ async function runScreen(name, browser) {
   const total = Object.values(run.steps).reduce((n, x) => n + (x.ms || 0), 0);
   log(`
 == ${name} finished (${(total / 60000).toFixed(1)} min of work)`);
+  if (managed) return 'done';
   // a spec older than this capture belongs to a previous capture: don't judge it, the agent must rewrite it
   const specFile = path.join(out, 'spec', 'UI_SPEC.md');
   const fresh = fs.existsSync(specFile) && fs.statSync(specFile).mtimeMs >= fs.statSync(path.join(out, 'facts.md')).mtimeMs;
   const gate = fresh ? check(name) : null;
-  if (gate?.pass) log(`   spec:   outputs/${name}/spec/UI_SPEC.md  +  tasks.md   (gate ✓: controls ${gate.coverage.controls}, behaviors ${gate.coverage.transitions}, ${gate.unknownMarkers} [UNKNOWN])
-   STOP HERE. Read the spec's "Open questions", then start coding with your agent: "build ${name} from outputs/${name}/spec/tasks.md" (skill draw-ui).`);
+  if (gate?.pass) log(`   spec:   ${relDir(name)}/spec/UI_SPEC.md  +  tasks.md   (gate ✓: controls ${gate.coverage.controls}, behaviors ${gate.coverage.transitions}, ${gate.unknownMarkers} [UNKNOWN])
+   STOP HERE. Read the spec's "Open questions", then start coding with your agent: "build ${name} from ${relDir(name)}/spec/tasks.md" (skill draw-ui).`);
   else if (gate) log(`   spec written but the gate ✗: npm run check -- ${name} lists what is missing (controls ${gate.coverage?.controls}, behaviors ${gate.coverage?.transitions}).
    Fix with your agent: "fix the failing spec check for ${name}" (skill ui-spec), re-run the check until ✓, THEN start coding.`);
   else log(`
 >> STAGE 5/5  write the spec: your coding agent does this
    STOP HERE. In your coding agent (one chat per screen) say:
        write the UI spec for ${name}
-   (skill ui-spec reads outputs/${name}/facts.md, sections/, content.md). It must end with: npm run check -- ${name}  printing ✓.
-   Then, in a new chat:  build ${name} from outputs/${name}/spec/tasks.md   (skill draw-ui)`);
+   (skill ui-spec reads ${relDir(name)}/facts.md, sections/, content.md). It must end with: npm run check -- ${name}  printing ✓.
+   Then, in a new chat:  build ${name} from ${relDir(name)}/spec/tasks.md   (skill draw-ui)`);
 }
 
-const browser = await launch({ ...base, headed: flag('--headed') });
-let failed = 0, paused = 0;
-try {
-  for (const s of screens) {
-    try { if (await runScreen(s, browser) === 'paused') paused++; }
-    catch (e) { failed++; console.error(`\n!! ${s}: ${e.message}`); fs.mkdirSync(path.join(ROOT, 'outputs', s), { recursive: true }); fs.appendFileSync(path.join(ROOT, 'outputs', s, 'run.log'), `ERROR ${e.stack}\n`); }
-  }
-} finally { await browser.close(); }
-console.log(`\n${screens.length - failed - paused}/${screens.length} screen(s) done${paused ? `, ${paused} waiting for the exploration plan (stage 3, see STOP HERE above)` : ''}.`);
-process.exit(failed ? 1 : 0);
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const { argv, flag, opt } = cli(process.argv.slice(2));
+  const optVals = new Set(['--from', '--only', '--mode', '--skip'].map((n) => opt(n)).filter(Boolean));
+  let screens = argv.filter((a) => !a.startsWith('--') && !optVals.has(a));
+  if (flag('--all')) screens = fs.readdirSync(path.join(ROOT, 'screenshots'), { withFileTypes: true }).filter((d) => d.isDirectory() && !d.name.startsWith('_')).map((d) => d.name);
+  if (!screens.length) { console.log(fs.readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n').slice(1, 10).join('\n').replace(/^\/\/ ?/gm, '')); process.exit(1); }
+  for (const o of ['--from', '--only']) if (opt(o) && !STEPS.includes(opt(o))) { console.error(`${o} must be one of: ${STEPS.join(', ')}`); process.exit(1); }
+  const browser = await launch({ ...base, headed: flag('--headed') });
+  let failed = 0, paused = 0;
+  try {
+    for (const s of screens) {
+      try { if (await runScreen(s, browser) === 'paused') paused++; }
+      catch (e) { failed++; console.error(`\n!! ${s}: ${e.message}`); fs.mkdirSync(screenDir(s), { recursive: true }); fs.appendFileSync(path.join(screenDir(s), 'run.log'), `ERROR ${e.stack}\n`); }
+    }
+  } finally { await browser.close(); }
+  console.log(`\n${screens.length - failed - paused}/${screens.length} screen(s) done${paused ? `, ${paused} waiting for the exploration plan (stage 3, see STOP HERE above)` : ''}.`);
+  process.exit(failed ? 1 : 0);
+}

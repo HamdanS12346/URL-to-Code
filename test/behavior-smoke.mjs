@@ -110,6 +110,8 @@ const read = (f) => fs.readFileSync(f, 'utf8');
 let failed;
 try {
   // ---- 1. the whole capture, rule-based plan ----
+  // --force keeps a still-valid plan.json, and step 5 below leaves a hand-written one without the FAQ: start from none
+  fs.rmSync(path.join(ex, 'plan.json'), { force: true });
   assert.equal((await node('run.mjs', ['--auto', '--force'])).code, 0, 'the run failed');
 
   // the shared header's CSS: cross-origin sheet -> @import -> second cross-origin sheet. Without it the header is unstyled and the page is far too tall

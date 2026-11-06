@@ -1,5 +1,10 @@
 // Phase 2, step 1: turn a captured screen into a running React page, mechanically and for any site.
 //   npm run port -- <screen> [--out <dir>] [--force]
+//   --scope <sel>   port only that element (a screen's content area, without the site's header/menu)
+//   --slot <sel>    port everything but put {children} where that element was (the shared shell around every screen)
+//   --name <Name>   component name (default: from the screen name)
+//   --assets-dir <dir> --asset-base </url/>   where the assets go and the URL they are served at (needed when --out is
+//                   outside this repo, e.g. public/assets/<screen> served at /assets/<screen>/ by the app's own Vite)
 // Everything lands in the screen's own folder, outputs/<screen>/app/ (the root app only routes to it):
 //   style.css              snapshot/used.css with asset URLs made local
 //   assets/                the captured assets, served by Vite at /outputs/<screen>/app/assets/
@@ -18,15 +23,18 @@ import { reportPreflight } from './lib/keys.mjs';
 import { inlineImports } from './lib/cssimport.mjs';
 import { timingPhrase } from './lib/timing.mjs';
 import { scrollEars, scrollDirectional, mediaEars } from './lib/behave.mjs';
+import { screenDir, relDir } from './lib/paths.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const args = process.argv.slice(2);
 const flag = (n) => args.includes(n);
 const opt = (n) => (args.includes(n) ? args[args.indexOf(n) + 1] : null);
-const screen = args.find((a, i) => !a.startsWith('--') && args[i - 1] !== '--out');
-if (!screen) { console.error('usage: npm run port -- <screen> [--out <dir>] [--force]'); process.exit(1); }
+const VALUED = new Set(['--out', '--scope', '--slot', '--name', '--assets-dir', '--asset-base']);
+const screen = args.find((a, i) => !a.startsWith('--') && !VALUED.has(args[i - 1]));
+if (!screen) { console.error('usage: npm run port -- <screen> [--out <dir>] [--force] [--scope <sel> | --slot <sel>] [--name <Name>] [--assets-dir <dir> --asset-base </url/>]'); process.exit(1); }
+const scope = opt('--scope'), slot = opt('--slot');
 
-const OUT = path.join(ROOT, 'outputs', screen);
+const OUT = screenDir(screen);
 const CAP = path.join(OUT, 'capture');
 const SNAP = path.join(OUT, 'snapshot');
 for (const f of [path.join(SNAP, 'rendered.html'), path.join(SNAP, 'used.css'), path.join(CAP, 'bands.json')]) {
@@ -35,15 +43,15 @@ for (const f of [path.join(SNAP, 'rendered.html'), path.join(SNAP, 'used.css'), 
 const readJson = (f, d) => { try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch { return d; } };
 
 const pascal = (s) => s.replace(/(^|[^a-zA-Z0-9]+)([a-zA-Z0-9])/g, (_, __, c) => c.toUpperCase()).replace(/[^a-zA-Z0-9]/g, '');
-const Screen = pascal(screen);
+const Screen = opt('--name') || pascal(screen.split('/').pop());
 const dest = opt('--out') ? path.resolve(opt('--out')) : path.join(OUT, 'app');
 if (fs.existsSync(dest) && fs.readdirSync(dest).length && !flag('--force')) {
   console.error(`${dest} already exists (hand edits would be lost). Re-run with --force to overwrite it.`);
   process.exit(3);
 }
 const rel = path.relative(ROOT, dest).replace(/\\/g, '/');
-if (rel.startsWith('..')) { console.error('--out must be inside this repo (Vite serves the assets from it)'); process.exit(1); }
-const assetBase = `/${rel}/assets/`;
+if (rel.startsWith('..') && !opt('--asset-base')) { console.error('--out outside this repo needs --assets-dir and --asset-base (this repo\'s Vite only serves its own folders)'); process.exit(1); }
+const assetBase = opt('--asset-base') || `/${rel}/assets/`;
 
 // ---------- assets + URL rewriting ----------
 const index = readJson(path.join(CAP, 'assets/index.json'), {});
@@ -57,7 +65,7 @@ for (const [url, a] of Object.entries(index)) {
   const b = decodeURIComponent(url.split(/[?#]/)[0].split('/').pop() || '');
   if (b) byBase.set(b, byBase.has(b) && byBase.get(b) !== f ? null : f);
 }
-const assetsTo = path.join(dest, 'assets');
+const assetsTo = opt('--assets-dir') ? path.resolve(opt('--assets-dir')) : path.join(dest, 'assets');
 fs.rmSync(assetsTo, { recursive: true, force: true });
 if (fs.existsSync(path.join(CAP, 'assets'))) {
   fs.cpSync(path.join(CAP, 'assets'), assetsTo, { recursive: true });
@@ -92,11 +100,11 @@ const bands = readJson(path.join(CAP, 'bands.json'), []);
 const controls = readJson(path.join(CAP, 'controls.json'), []);
 // hover-only targets (CSS :hover menus, cards) are not controls, but the spec and parity.spec.ts address them by key too
 const hoverKeys = (readJson(path.join(OUT, 'explore', 'states.json'), null)?.hoverTargets || []).filter((h) => h.key && h.sel);
-const browser = await chromium.launch();
+const browser = await chromium.launch({ channel: readJson(path.join(ROOT, 'config.json'), {}).browserChannel || undefined });
 const page = await browser.newPage();
 await page.route('**/*', (r) => (r.request().url().startsWith('file:') ? r.continue() : r.abort('aborted')));
 await page.goto('file:///' + path.join(SNAP, 'rendered.html').replace(/\\/g, '/'));
-const cut = await page.evaluate(({ bands, controls, hoverKeys }) => {
+const cut = await page.evaluate(({ bands, controls, hoverKeys, scope, slot }) => {
   document.querySelectorAll('script, noscript, style, link, base').forEach((e) => e.remove());
   // the spec and parity.spec.ts address controls by these keys
   let stamped = 0;
@@ -117,8 +125,19 @@ const cut = await page.evaluate(({ bands, controls, hoverKeys }) => {
     try { el = document.querySelector(b.sel); } catch { /* skip */ }
     if (el && el !== document.body && !els.includes(el)) els.push(el);
   }
-  const outer = els.filter((e) => !els.some((o) => o !== e && o.contains(e)));
+  let outer = els.filter((e) => !els.some((o) => o !== e && o.contains(e)));
   outer.sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1));
+  // --scope: only the content area; --slot: everything but the content area, which becomes {children}.
+  // Bands are cut by their positional selectors BEFORE the DOM is reshaped; a band around the slot stays in Page.tsx.
+  const q = (s) => { try { return s ? document.querySelector(s) : null; } catch { return null; } };
+  const root = q(scope), hole = q(slot);
+  if (scope && !root) return { error: `--scope ${scope} matches nothing in snapshot/rendered.html` };
+  if (slot && !hole) return { error: `--slot ${slot} matches nothing in snapshot/rendered.html` };
+  if (root) { outer = outer.filter((e) => root === e || root.contains(e)); document.body.replaceChildren(root); }
+  if (hole) {
+    outer = outer.filter((e) => !hole.contains(e) && !e.contains(hole));
+    const s = document.createElement('div'); s.setAttribute('data-slot', 'children'); hole.replaceWith(s);
+  }
   const parts = outer.map((e, i) => ({ i, tag: e.tagName.toLowerCase(), id: e.id, html: e.outerHTML }));
   outer.forEach((e, i) => { const s = document.createElement('div'); s.setAttribute('data-slot', String(i)); e.replaceWith(s); });
   return {
@@ -130,8 +149,9 @@ const cut = await page.evaluate(({ bands, controls, hoverKeys }) => {
     htmlAttrs: [...document.documentElement.attributes].filter((a) => !/^(class|id|style)$/.test(a.name)).map((a) => [a.name, a.value]),
     bodyAttrs: [...document.body.attributes].filter((a) => !/^(class|id|style)$/.test(a.name)).map((a) => [a.name, a.value]),
   };
-}, { bands, controls, hoverKeys });
+}, { bands, controls, hoverKeys, scope, slot });
 await browser.close();
+if (cut.error) { console.error(cut.error); process.exit(2); }
 
 // component names: the element id when it is a usable identifier, else its tag (+ number when repeated)
 const count = {};
@@ -144,12 +164,12 @@ for (const p of cut.parts) {
 const head = '// @ts-nocheck - mechanical port of the captured DOM (unknown legacy attributes); drop this line once you hand-edit the file\n';
 for (const p of cut.parts) {
   fs.writeFileSync(path.join(dest, 'components', `${p.name}.tsx`),
-    `${head}// Band ${p.i + 1} of ${screen}: ported from outputs/${screen}/snapshot/rendered.html (${p.tag}${p.id ? '#' + p.id : ''}).\n` +
+    `${head}// Band ${p.i + 1} of ${screen}: ported from ${relDir(screen)}/snapshot/rendered.html (${p.tag}${p.id ? '#' + p.id : ''}).\n` +
     `export default function ${p.name}() {\n  return (\n    ${pretty(toJsx(p.html, rewriteAttr))}\n  );\n}\n`);
 }
 
 let body = toJsx(cut.body, rewriteAttr);
-body = pretty(body.replace(/<div data-slot="(\d+)"><\/div>/g, (_, i) => `<${cut.parts[+i].name} />`));
+body = pretty(body.replace(/<div data-slot="(\d+)"><\/div>/g, (_, i) => `<${cut.parts[+i].name} />`).replace(/<div data-slot="children"><\/div>/, '{children}'));
 // The stylesheet is injected while the screen is mounted and removed after, so screens in one app do not leak
 // rules (`body`, `*`, `h1`...) into each other. Same for the title and the id/classes the original page keeps on
 // <body>/<html>, which its CSS may depend on.
@@ -162,7 +182,7 @@ fs.writeFileSync(path.join(dest, 'Page.tsx'),
   `${head}import { useLayoutEffect } from 'react';\nimport css from './style.css?inline';\n` +
   cut.parts.map((p) => `import ${p.name} from './components/${p.name}';\n`).join('') +
   `\n// ${screen}: static port of the capture. Behavior comes from spec/UI_SPEC.md + BEHAVIOR.md.\n` +
-  `export default function ${Screen}Page() {\n` +
+  `export default function ${Screen}Page(${slot ? '{ children }' : ''}) {\n` +
   `  useLayoutEffect(() => {\n    const style = document.createElement('style');\n    style.textContent = css;\n    document.head.append(style);\n` +
   `    const { body, documentElement: html } = document;\n    const prev = [document.title, body.id, body.className, html.className, body.getAttribute('style')];\n` +
   `    // the page's CSS picks its theme off these (data-color-mode, data-light-theme, ...), so its var()s need them\n` +
@@ -190,10 +210,10 @@ if (states?.transitions?.length || behave) {
     const nav = (t.events || []).filter((v) => v.type === 'navigation').map((v) => `navigates ${v.kind || ''} ${v.url || ''}`.trim());
     const anim = (t.timing || []).slice(0, 2).map(timingPhrase);
     const after = t.prefix?.length ? ` (after ${t.prefix.map(act).join(' → ')})` : '';
-    return `- **${t.id}**${after} ${act(t.action)} → ${fx.join('; ') || 'no visible change'}${[...nav, ...(reqs.length ? [`requests ${reqs.join(', ')}`] : []), ...(anim.length ? [`animation: ${anim.join('; ')}`] : [])].map((x) => ' · ' + x).join('')}${t.shot ? ` · picture outputs/${screen}/${t.shot}` : ''}`;
+    return `- **${t.id}**${after} ${act(t.action)} → ${fx.join('; ') || 'no visible change'}${[...nav, ...(reqs.length ? [`requests ${reqs.join(', ')}`] : []), ...(anim.length ? [`animation: ${anim.join('; ')}`] : [])].map((x) => ' · ' + x).join('')}${t.shot ? ` · picture ${relDir(screen)}/${t.shot}` : ''}`;
   });
   fs.writeFileSync(path.join(dest, 'BEHAVIOR.md'),
-    `# ${screen}: what each explored action did\n\nGenerated by \`npm run port\` from \`outputs/${screen}/explore/states.json\`; \`spec/UI_SPEC.md\` is the authority.\n` +
+    `# ${screen}: what each explored action did\n\nGenerated by \`npm run port\` from \`${relDir(screen)}/explore/states.json\`; \`spec/UI_SPEC.md\` is the authority.\n` +
     `Keys are the \`data-testid\`s in Page.tsx. A class swap (\`from\` → \`to\`) names rules that already exist in \`style.css\` only if the page had them at capture time; otherwise they are unknown and need a measured value from the picture.\n` +
     `"animation:" lines are measured frame by frame on the live page: build them with those durations and easings, not with an instant show/hide.\n\n${lines.join('\n')}\n` +
     // measured by scrolling / playing the live page: a port copies the markup, not the script that makes a header stick or a video play

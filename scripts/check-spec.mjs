@@ -6,13 +6,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { screenDir } from './lib/paths.mjs';
 
-const ROOT = fileURLToPath(new URL('..', import.meta.url));
 export const SECTIONS = ['Overview', 'Layout', 'Design tokens', 'Assets', 'Components', 'Fields & validation', 'State model', 'Behavior',
   'Navigation', 'Server interactions', 'Accessibility', 'Test ids', 'Open questions'];
 
 export function check(screen) {
-  const out = path.join(ROOT, 'outputs', screen);
+  const out = screenDir(screen);
   const factsFile = path.join(out, 'facts.json'), specFile = path.join(out, 'spec', 'UI_SPEC.md');
   if (!fs.existsSync(factsFile)) return { pass: false, error: `no facts.json: run npm run capture -- ${screen} first` };
   if (!fs.existsSync(specFile)) return { pass: false, error: `no spec/UI_SPEC.md yet: ask the agent to write it (skill ui-spec)` };
