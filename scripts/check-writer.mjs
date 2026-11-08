@@ -40,7 +40,21 @@ You are running unattended: nobody will answer questions. Do these four things i
 console.log(`writer: ${writer}\nworkdir: ${work}\nrunning (up to ${opt('--timeout') ?? 600}s)…`);
 const logFile = path.join(base, 'writer.log');
 const w = await runWriter({ cmd: writer, workdir: work, prompt, logFile, timeoutSec: +(opt('--timeout') ?? 600), echo: argv.includes('--verbose') });
-const read = (f) => { try { return fs.readFileSync(ans(f), 'utf8').trim(); } catch { return null; } };
+const read = (f) => {
+  try {
+    const b = fs.readFileSync(ans(f));
+    if (!b.length) return '';
+    // Windows PowerShell redirection/Out-File often produces UTF-16LE.
+    const s =
+      b[0] === 0xff && b[1] === 0xfe ? b.toString('utf16le') :
+      b[0] === 0xfe && b[1] === 0xff ? b.toString('utf16le') : // best-effort
+      b[0] === 0xef && b[1] === 0xbb && b[2] === 0xbf ? b.toString('utf8') :
+      b.toString('utf8');
+    return s.replace(/^﻿/, '').trim();
+  } catch {
+    return null;
+  }
+};
 
 const checks = [
   ['the writer starts and exits cleanly', w.code === 0 && !w.timedOut, `exit ${w.code}${w.timedOut ? ' (timed out)' : ''}. Wrong path to start_codex.ps1, a bare "-" at the end, or the model/base URL in the Codex .env (lookout.md: W1, W2)`],

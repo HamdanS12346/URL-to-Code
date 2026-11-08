@@ -1,6 +1,7 @@
 {
   "dpr": 1.5,
   "mode": "safe",
+  "browserChannel": "msedge",
   "scrollbars": true,
   "defaultViewport": {
     "width": 1366,

@@ -4,6 +4,9 @@ App folder: {{app}}
 
 You are running unattended: nobody will answer questions. Do the task, then stop.
 
+Write any files you create/modify as UTF-8 text (not UTF-16). If you use PowerShell commands to write files, use Set-Content/Out-File with -Encoding utf8.
+Do not use the `apply_patch` helper here; it is unreliable in this environment. Edit files using Python/Node/PowerShell file writes (UTF-8) instead.
+
 {{goal}}
 
 The app in this folder is React 19 + TypeScript + Vite, plain CSS, no UI library, hash routes (src/main.tsx, src/routes.ts).

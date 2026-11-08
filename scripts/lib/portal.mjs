@@ -166,7 +166,20 @@ export async function openMenu(page, sel = {}) {
   return found;
 }
 
-export const isLoggedIn = (page, sel = {}) => page.evaluate(LOGGED_IN, sel.loggedIn || null);
+export async function isLoggedIn(page, sel = {}) {
+  // Some portals navigate/redirect during login checks; treat context-destroy as "not logged in" and retry briefly.
+  for (let i = 0; i < 3; i++) {
+    try {
+      return await page.evaluate(LOGGED_IN, sel.loggedIn || null);
+    } catch (e) {
+      const msg = String(e.message || e);
+      if (!/Execution context was destroyed|Cannot find context with specified id|Target closed/i.test(msg)) throw e;
+      await page.waitForLoadState('domcontentloaded', { timeout: 20000 }).catch(() => {});
+      await page.waitForTimeout(250);
+    }
+  }
+  return false;
+}
 
 // One login. Returns the session (Playwright storage state) as an object: it is kept in memory and never written to disk,
 // where the writer (Codex, which can read the whole disk) could see it. Its own context: openPage records POST bodies.
@@ -179,17 +192,56 @@ export async function login(browser, { url, state, creds, sel = {}, viewport, lo
     await goto(page, url);
     if (await isLoggedIn(page, sel)) { log('  already logged in'); return await context.storageState(); }
     let form = await page.evaluate(MARK_LOGIN, sel);
+    let frame = null;
     if (!form && await openMenu(page, sel)) form = await page.evaluate(MARK_LOGIN, sel);
+    if (!form) {
+      const opened = await page.evaluate(() => {
+        try {
+          if (typeof getLogin === 'function') { getLogin(); return true; }
+        } catch {}
+        return false;
+      });
+      if (opened) {
+        await settle(page);
+        const end = Date.now() + 5000;
+        while (!form && Date.now() < end) {
+          form = await page.evaluate(MARK_LOGIN, sel);
+          if (form) break;
+          await page.waitForTimeout(250);
+        }
+      }
+    }
     if (!form) { // a "Log in" link/button that reveals the form
-      const link = page.locator('a,button,[role=button]').filter({ hasText: /^\s*(log ?in|sign ?in)\s*$/i }).first();
-      if (await link.isVisible().catch(() => false)) { await link.click().catch(() => {}); await settle(page); form = await page.evaluate(MARK_LOGIN, sel); }
+      const links = page.locator('a,button,[role=button]').filter({ hasText: /^\s*(log ?in|sign ?in)\s*$/i });
+      for (let i = 0, n = await links.count(); i < n && !form; i++) {
+        const link = links.nth(i);
+        if (await link.isVisible().catch(() => false)) {
+          await link.click().catch(() => {});
+          await settle(page);
+          const end = Date.now() + 5000;
+          while (!form && Date.now() < end) {
+            form = await page.evaluate(MARK_LOGIN, sel);
+            if (form) break;
+            await page.waitForTimeout(250);
+          }
+        }
+      }
+    }
+    // Some portals embed their login form in an iframe; page.evaluate can't see into frames.
+    if (!form) {
+      for (const f of page.frames()) {
+        if (f === page.mainFrame()) continue;
+        const m = await f.evaluate(MARK_LOGIN, sel).catch(() => null);
+        if (m) { form = m; frame = f; break; }
+      }
     }
     if (!form) throw new Error('no login form found (no visible password field, not even after opening the menu). Pin the fields in pack.json "selectors" (menuButton, username, password, submit) or use --manual-login');
     if (!form.user) throw new Error('found the password field but no username field before it: set pack.json "selectors.username"');
-    await page.fill('[data-pw-login=user]', creds.username);
-    await page.fill('[data-pw-login=pass]', creds.password);
-    if (form.submit) await page.click('[data-pw-login=submit]', { timeout: 5000 });
-    else await page.press('[data-pw-login=pass]', 'Enter');
+    const host = frame || page;
+    await host.fill('[data-pw-login=user]', creds.username);
+    await host.fill('[data-pw-login=pass]', creds.password);
+    if (form.submit) await host.click('[data-pw-login=submit]', { timeout: 5000 });
+    else await host.press('[data-pw-login=pass]', 'Enter');
     await page.waitForTimeout(1000);
     await settle(page, 1000);
     if (!(await isLoggedIn(page, sel))) await goto(page, url); // some portals only show the logged-in menu after a reload
