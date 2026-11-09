@@ -65,7 +65,7 @@ It uses the same writer command as `npm run ui`: `--writer "<command>"`, else `W
   If commands stay blocked, the tool still works: it runs every check itself after each attempt and sends Codex the report. Codex just cannot check its own work in between, so expect more attempts.
 
 - [ ] **W6. Codex can read files outside its folder** (✓ "it can read files outside {workdir}").
-  For code, Codex works in `$outRepo` but reads the specs, pictures and CSS from `final-playwright\packs\...`.
+  For code, Codex works in `packs\<pack>\app` but reads the specs, pictures and CSS from `final-playwright\packs\...`.
   Fix: if the sandbox blocks this, add `--add-dir C:\UI-specs\final-playwright` to the writer command (check `codex exec --help` on the machine for the exact flag),
   or, as a last resort and only if the client's rules allow it inside the AVD, `--dangerously-bypass-approvals-and-sandbox`.
 
@@ -79,7 +79,7 @@ It uses the same writer command as `npm run ui`: `--writer "<command>"`, else `W
 
 ## S. The portal (first real run)
 
-Run `npm run ui -- <pack> --out $outRepo` and watch the first two stages (login, discover). It stops and asks before the long part, so this is cheap.
+Run `npm run ui -- <pack>` and watch the first two stages (login, discover). It stops and asks before the long part, so this is cheap.
 
 - [ ] **S0. No secret is anywhere Codex can read.**
   Check: `Select-String -Path .env -Pattern '^PASSWORD='` finds nothing, and there is no `packs\<pack>\auth` folder.
@@ -130,19 +130,19 @@ Run `npm run ui -- <pack> --out $outRepo` and watch the first two stages (login,
   Fix: a `needs-review` row has the check's report. Re-run that screen with `--only <screen> --redo`, or allow more attempts (`--rounds 4`).
 
 - [ ] **R2. The app installs.**
-  Check: `$outRepo\node_modules` exists after the run.
-  Fix: if `npm install` failed there, the tool links final-playwright's node_modules instead (message: `using final-playwright's node_modules`). Run `npm install` in `$outRepo` once the registry works, before handing the app over.
+  Check: the app in `packs\<pack>\app` needs no `npm install`: it resolves its packages from final-playwright's node_modules (`npm run dev` there works).
+  Fix: to hand the app over on its own, copy the folder out and run `npm install` in the copy once the registry works.
 
 - [ ] **R3. The app's dev server starts.**
   Check: no `the app's dev server did not start`.
   Fix: port 5180 is taken: `"devPort": 5181` in pack.json.
 
 - [ ] **R4. The code matches the capture.**
-  Check: `$outRepo\UI_BUILD_REPORT.md`: status `done`, "pixels off" at most 5%, size delta near 0.
+  Check: `packs\<pack>\app\UI_BUILD_REPORT.md`: status `done`, "pixels off" at most 5%, size delta near 0.
   Fix: live data (dates, counts, names) differs on every load, so pixels can be off even when the page is right. Look at `packs\<pack>\screens\<screen>\verify\diff.png`; if only data differs, raise `"verify": { "maxBadPct": 10 }` in pack.json and re-run with `--from code`.
 
 - [ ] **R5. The menu in the app.**
-  Check: `npm run dev` in `$outRepo`, open http://localhost:5180/#/. The hamburger opens the menu, every module shows its flyout, items of your module open their screens, and all other items do nothing.
+  Check: `npm run dev` in `packs\<pack>\app`, open http://localhost:5180/#/. The hamburger opens the menu, every module shows its flyout, items of your module open their screens, and all other items do nothing.
   Fix: add a line describing what is wrong at the end of `prompts/code.md`, then `npm run ui -- <pack> --only home --from code`.
 
 ## Notes

@@ -33,7 +33,7 @@ async function listeners(page, sels) {
   return out;
 }
 
-export async function capture({ browser, cfg, url, out, viewport, dpr, log, userShots = 0 }) {
+export async function capture({ browser, cfg, url, out, viewport, dpr, log, userShots = 0, kit = null }) {
   const dir = path.join(out, 'capture');
   fs.rmSync(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 300 }); // OneDrive / an open editor can hold a file for a moment
   for (const d of ['assets', 'js', 'css']) fs.mkdirSync(path.join(dir, d), { recursive: true });
@@ -53,6 +53,11 @@ export async function capture({ browser, cfg, url, out, viewport, dpr, log, user
     // 1. warm up: scroll through so lazy images, reveal-on-scroll and counters have all run; then back to the top
     await warmUp(s.page, cfg.warmup);
     await s.settle();
+    // a site kit reads its widgets from the page's own framework and stamps them (before the freeze: menus still animate)
+    const kitRest = kit ? await kit.prepare({ page: s.page, cfg, log }) : null;
+    // popups that happen to be open at rest (a tooltip under the mouse) are not part of the page
+    await s.page.mouse.move(0, 0);
+    if (cfg.transient) await s.page.evaluate((sel) => { for (const e of document.querySelectorAll(sel)) if (e.getClientRects().length && !e.closest('[data-kit-menu]')) e.style.setProperty('display', 'none'); }, cfg.transient);
 
     // 2. motion, measured while things still move: library config + CSS animations, then speed/rhythm by sampling
     const mstatic = await s.page.evaluate(() => __pw.motionStatic());
@@ -154,7 +159,9 @@ export async function capture({ browser, cfg, url, out, viewport, dpr, log, user
     writeJson(path.join(dir, 'assets', 'index.json'), assets);
     fs.writeFileSync(path.join(dir, 'aria.yml'), aria);
 
-    const snap = await snapshot({ page: s.page, out, log });
+    const snap = await snapshot({ page: s.page, out, log, fullCss: !!cfg.fullCss });
+    // the kit's clicks come after every picture of the page at rest
+    if (kit) await kit.explore({ page: s.page, context: s.context, s, out, log, kit: kitRest });
     const entries = build(mstatic, movers, snap.keyframes);
     writeJson(path.join(out, 'motion.json'), { capturedAt: new Date().toISOString(), sampleSec: cfg.motion?.sampleSec ?? 10, freeze: fz, entries, transitions: mstatic.transitions, hints: mstatic.hints, running: mstatic.running });
     const kinds = Object.entries(entries.reduce((a, e) => ({ ...a, [e.kind]: (a[e.kind] || 0) + 1 }), {})).map(([k, n]) => `${n} ${k}`).join(', ') || 'none';

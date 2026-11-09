@@ -104,6 +104,40 @@ if (process.env.BEHAVIOR !== '0') {
     });
   } catch (e) { console.error(`behavior check could not run: ${e.message.split(String.fromCharCode(10))[0]}`); }
 }
+// a site kit's states (kit/states.json): the clicks the capture made on the live page (a dropdown open, a tooltip, Search,
+// each dialog), replayed on the rebuild by the same stamped selectors, each picture diffed against the live one
+const kitStates = readJson(path.join(dir, 'kit', 'states.json'), null);
+if (kitStates?.length && process.env.STATES !== '0') {
+  rep.states = [];
+  const sdir = path.join(outDir, 'states');
+  fs.rmSync(sdir, { recursive: true, force: true });
+  if (clockOn) await context.clock.resume().catch(() => {}); // the freeze paused time for the whole context: delays (a tooltip's) must run
+  for (const st of kitStates) {
+    const p = await context.newPage();
+    const r = { name: st.name, ok: false };
+    try {
+      await p.goto(process.env.URL ?? `${base}/#/${screen}`, { timeout: 120000 });
+      await p.waitForFunction(() => document.getElementById('root')?.firstElementChild, null, { timeout: 60000 }).catch(() => {});
+      await p.waitForTimeout(400);
+      await p.mouse.move(0, 0);
+      for (const s of st.steps) {
+        const loc = p.locator(s.sel).nth(s.nth ?? 0);
+        await loc.scrollIntoViewIfNeeded({ timeout: 5000 });
+        if (s.do === 'hover') await loc.hover({ timeout: 5000 }); else await loc.click({ timeout: 5000 });
+        await p.waitForTimeout(st.wait ?? 800);
+      }
+      if (st.name === 'search') await p.evaluate(() => scrollTo(0, 0));
+      const d = path.join(sdir, st.name);
+      fs.mkdirSync(d, { recursive: true });
+      await p.screenshot({ path: path.join(d, 'candidate.png'), animations: 'disabled', caret: 'hide', ...(st.clip ? { clip: st.clip } : {}) });
+      const res = py('diff.py', path.join(dir, 'kit', st.shot), path.join(d, 'candidate.png'), d);
+      Object.assign(r, { bad_pct: res.bad_pct, size_delta_px: res.size_delta_px, ok: res.bad_pct <= (+process.env.STATE_MAX_BAD_PCT || 15) });
+    } catch (e) { r.error = e.message.split('\n')[0]; }
+    await p.close();
+    rep.states.push(r);
+  }
+  console.log(`states: ${rep.states.filter((s) => s.ok).length}/${rep.states.length} match the live page${rep.states.filter((s) => !s.ok).map((s) => ` | ✗ ${s.name}: ${s.error ?? `${s.bad_pct}% off`}`).join('')}`);
+}
 await browser.close();
 if (diag) {
   (rep.clusters || []).forEach((c, i) => { c.css_box = c.box.map((v) => Math.round(v / dpr)); c.element = diag.elements[i]; });

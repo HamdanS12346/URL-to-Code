@@ -21,11 +21,11 @@ export function check(screen) {
   const md = fs.readFileSync(specFile, 'utf8').replace(/`[^`\n]*`/g, '``');
 
   // tags: [T07] [S01] [V01] [ctl:key] [val:id] [shot:2] [asset:path] [js:fn] [aspx:L10] [css:rule] [UNKNOWN] — several per bracket allowed
-  const cited = { T: new Set(), M: new Set(), S: new Set(), V: new Set(), ctl: new Set(), val: new Set(), shot: new Set(), asset: new Set() };
+  const cited = { T: new Set(), M: new Set(), S: new Set(), V: new Set(), ctl: new Set(), val: new Set(), shot: new Set(), asset: new Set(), kit: new Set() };
   const wild = [];
   let unknownTags = 0;
   for (const m of md.matchAll(/\[([^\]\n]{1,400})\](?!\()/g)) {
-    for (const tok of m[1].split(/[,;]\s*|\s+(?=(?:T\d+|M\d+|S\d+|V\d+|ctl:|val:|shot:|asset:)\b)/).map((s) => s.trim()).filter(Boolean)) {
+    for (const tok of m[1].split(/[,;]\s*|\s+(?=(?:T\d+|M\d+|S\d+|V\d+|ctl:|val:|shot:|asset:|kit:)\b)/).map((s) => s.trim()).filter(Boolean)) {
       let x;
       if ((x = tok.match(/^(T\d+)$/))) cited.T.add(x[1]);
       else if ((x = tok.match(/^(M\d+)$/))) cited.M.add(x[1]);
@@ -36,6 +36,7 @@ export function check(screen) {
       else if ((x = tok.match(/^val:(\S+)$/))) cited.val.add(x[1]);
       else if ((x = tok.match(/^shot:(\d+)/))) cited.shot.add(+x[1]);
       else if ((x = tok.match(/^asset:(\S+)$/))) cited.asset.add(x[1]);
+      else if ((x = tok.match(/^kit:(\S+)$/))) cited.kit.add(x[1]);
       else if (/^UNKNOWN\b/.test(tok)) unknownTags++;
     }
   }
@@ -48,6 +49,7 @@ export function check(screen) {
     motion: (facts.required.motion || []).filter((m) => !cited.M.has(m)),
     scroll: (facts.required.scroll || []).filter((m) => !cited.S.has(m)), // measured by scrolling the live page (explore/survey/behave.json)
     media: (facts.required.media || []).filter((m) => !cited.V.has(m)),
+    kit: (facts.required.kit || []).filter((k) => !cited.kit.has(k)), // a site kit's widgets and dialogs (kit/screen.json)
   };
   const hasMotion = Array.isArray(facts.required.motion); // captures made before motion.json existed have no Motion section to check
   const unknown = [
@@ -57,6 +59,7 @@ export function check(screen) {
     ...[...cited.S].filter((m) => !(facts.all.scroll || []).includes(m)).map((m) => `[${m}] is not a measured scroll behavior`),
     ...[...cited.V].filter((m) => !(facts.all.media || []).includes(m)).map((m) => `[${m}] is not a measured media entry`),
     ...[...cited.val].filter((v) => !facts.all.validators.includes(v)).map((v) => `[val:${v}] is not a captured validator`),
+    ...[...cited.kit].filter((k) => !(facts.all.kit || []).includes(k)).map((k) => `[kit:${k}] is not in kit/screen.json`),
     ...[...cited.shot].filter((n) => n < 1 || n > facts.all.shots).map((n) => `[shot:${n}] does not exist (${facts.all.shots} shots)`),
     ...[...cited.asset].filter((a) => !fs.existsSync(path.join(out, 'capture', a)) && !fs.existsSync(path.join(out, a))).map((a) => `[asset:${a}] file not found under capture/`),
     ...wild.filter((w) => ![...all].some((k) => k.startsWith(w))).map((w) => `[ctl:${w}*] matches nothing`),
@@ -67,7 +70,7 @@ export function check(screen) {
   const headings = [...md.matchAll(/^##\s+(?:\d+\.\s*)?(.+)$/gm)].map((m) => m[1].trim().toLowerCase());
   const sections = [...SECTIONS, ...(hasMotion ? ['Motion'] : [])].filter((s) => !headings.some((h) => h.startsWith(s.toLowerCase())));
   const tasks = fs.existsSync(path.join(out, 'spec', 'tasks.md'));
-  const pass = !missing.controls.length && !missing.transitions.length && !missing.validators.length && !missing.motion.length && !missing.scroll.length && !missing.media.length && !unknown.length && !untagged.length && !sections.length && tasks;
+  const pass = !missing.controls.length && !missing.transitions.length && !missing.validators.length && !missing.motion.length && !missing.scroll.length && !missing.media.length && !missing.kit.length && !unknown.length && !untagged.length && !sections.length && tasks;
   const res = {
     screen, pass, checkedAt: new Date().toISOString(),
     coverage: {
@@ -77,6 +80,7 @@ export function check(screen) {
       motion: hasMotion ? `${facts.required.motion.length - missing.motion.length}/${facts.required.motion.length}` : 'n/a',
       ...(facts.required.scroll?.length ? { scroll: `${facts.required.scroll.length - missing.scroll.length}/${facts.required.scroll.length}` } : {}),
       ...(facts.required.media?.length ? { media: `${facts.required.media.length - missing.media.length}/${facts.required.media.length}` } : {}),
+      ...(facts.required.kit?.length ? { kit: `${facts.required.kit.length - missing.kit.length}/${facts.required.kit.length}` } : {}),
     },
     missing, unknown, untagged, missingSections: sections, tasksFile: tasks, unknownMarkers: unknownTags,
     optional: { linksNotCited: (facts.optional?.links || []).filter((k) => !covered(k)), unexplainedNotCited: (facts.optional?.unexplained || []).filter((k) => !covered(k) && !md.includes(k)) },
@@ -100,6 +104,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.a
     list('missing motion', r.missing.motion);
     list('missing scroll behaviors (facts.md section 16)', r.missing.scroll);
     list('missing media (facts.md section 17)', r.missing.media);
+    list('missing kit widgets/dialogs (facts.md section 18)', r.missing.kit.map((k) => `kit:${k}`));
     for (const u of r.unknown) console.log(`  invented: ${u}`);
     for (const u of r.untagged.slice(0, 15)) console.log(`  no evidence tag: ${u}`);
     list('missing sections', r.missingSections);

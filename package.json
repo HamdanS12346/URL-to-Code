@@ -20,7 +20,8 @@
     "build": "tsc --noEmit && vite build",
     "ui": "node scripts/ui.mjs",
     "smoke:ui": "node test/ui-smoke.mjs",
-    "check:writer": "node scripts/check-writer.mjs"
+    "check:writer": "node scripts/check-writer.mjs",
+    "smoke:provider": "node test/provider-smoke.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",
@@ -37,5 +38,10 @@
   },
   "allowScripts": {
     "esbuild@0.25.12": true
+  },
+  "optionalDependencies": {
+    "kendo-ui-core": "^2026.3.1015",
+    "jquery": "^3.7.1",
+    "@progress/kendo-theme-default": "^14.9.0"
   }
 }

@@ -14,7 +14,8 @@ function App() {
   const path = hash.replace(/^#/, '').split('?')[0] || '/';
   const route = routes.find((r) => r.path === path) ?? routes[0];
   const Page = route.Page;
-  return <Shell><Page /></Shell>;
+  // bare: a page with its own header (a kit's home page); every other screen sits in the shared shell, which shows its title bar
+  return route.bare ? <Page /> : <Shell title={route.title} module={route.module}><Page /></Shell>;
 }
 
 createRoot(document.getElementById('root')!).render(<StrictMode><App /></StrictMode>);

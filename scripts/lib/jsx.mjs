@@ -121,13 +121,22 @@ export function toJsx(html, rw = (s) => s) {
     out.push('{' + JSON.stringify(t) + '}');
   };
   const re = /<(\/?)([a-zA-Z][a-zA-Z0-9-]*)((?:"[^"]*"|'[^']*'|[^>"'])*?)(\/?)>|<!--[\s\S]*?-->/g;
-  let last = 0, m;
+  let last = 0, m, select = -1;
   while ((m = re.exec(html))) {
     text(html.slice(last, m.index));
     last = m.index + m[0].length;
     if (m[0].startsWith('<!--')) continue;
-    const [, slash, tag, attrs, self] = m;
+    let [, slash, tag, attrs, self] = m;
     const low = tag.toLowerCase();
+    // React warns about `selected` on <option>: the choice moves to the <select>'s defaultValue
+    if (!slash && low === 'select') select = out.length;
+    const sel = !slash && low === 'option' && /(^|\s)selected(?=[\s=/]|$)/i.test(attrs);
+    if (sel) {
+      attrs = attrs.replace(/(^|\s)selected(\s*=\s*("[^"]*"|'[^']*'|[^\s>]+))?/i, '');
+      const v = /(?:^|\s)value\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i.exec(attrs);
+      const val = v ? decode(v[1] ?? v[2] ?? v[3]) : decode(html.slice(last, html.indexOf('</option', last) >>> 0).replace(/<[^>]*>/g, '')).trim();
+      if (select >= 0 && !/defaultValue=|multiple/.test(out[select])) out[select] = out[select].replace(/^<select/, `<select defaultValue=${JSON.stringify(val)}`);
+    }
     // the snapshot writes void SVG/HTML elements as <path ...></path>; the opening tag already
     // became self-closing JSX, so the stray closing tag is dropped
     if (slash) { if (VOID.has(low)) continue; if (low === 'svg') svgDepth--; out.push(`</${low}>`); continue; }

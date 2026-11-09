@@ -5,6 +5,10 @@
 //   --name <Name>   component name (default: from the screen name)
 //   --assets-dir <dir> --asset-base </url/>   where the assets go and the URL they are served at (needed when --out is
 //                   outside this repo, e.g. public/assets/<screen> served at /assets/<screen>/ by the app's own Vite)
+//   --kit-import <path>   a screen captured with a site kit (kit/screen.json): import path of the app's kit runtime as seen
+//                   from Page.tsx (e.g. ../../kit). Each stamped widget becomes <KitWidget id="kN" />, the page is wrapped in
+//                   <KitScreen>, every dialog the capture opened becomes dialogs/Dialog<Id>.tsx, full.css replaces used.css
+//   --services <path>     import path (from Page.tsx) of the screen's generated services module (mock data, real endpoint names)
 // Everything lands in the screen's own folder, outputs/<screen>/app/ (the root app only routes to it):
 //   style.css              snapshot/used.css with asset URLs made local
 //   assets/                the captured assets, served by Vite at /outputs/<screen>/app/assets/
@@ -29,7 +33,7 @@ const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const args = process.argv.slice(2);
 const flag = (n) => args.includes(n);
 const opt = (n) => (args.includes(n) ? args[args.indexOf(n) + 1] : null);
-const VALUED = new Set(['--out', '--scope', '--slot', '--name', '--assets-dir', '--asset-base']);
+const VALUED = new Set(['--out', '--scope', '--slot', '--name', '--assets-dir', '--asset-base', '--kit-import', '--services']);
 const screen = args.find((a, i) => !a.startsWith('--') && !VALUED.has(args[i - 1]));
 if (!screen) { console.error('usage: npm run port -- <screen> [--out <dir>] [--force] [--scope <sel> | --slot <sel>] [--name <Name>] [--assets-dir <dir> --asset-base </url/>]'); process.exit(1); }
 const scope = opt('--scope'), slot = opt('--slot');
@@ -92,7 +96,13 @@ const rewriteAttr = (v, attr) => {
 fs.mkdirSync(path.join(dest, 'components'), { recursive: true });
 // a capture made before snapshot.mjs resolved @import still has them in used.css (ignored by the browser mid-file): paste them in now
 const pageUrl = readJson(path.join(OUT, 'run.json'), {}).url || 'https://localhost/';
-const usedCss = inlineImports(fs.readFileSync(path.join(SNAP, 'used.css'), 'utf8'), pageUrl, index, OUT);
+const kitImport = opt('--kit-import');
+const kitScreen = kitImport ? readJson(path.join(OUT, 'kit', 'screen.json'), null) : null;
+if (kitImport && !kitScreen) { console.error(`--kit-import: ${OUT}/kit/screen.json not found (capture this screen with its kit first)`); process.exit(2); }
+// a component one folder down (components/, dialogs/) imports the kit one level further up
+const kitFrom = (depth) => (kitImport?.startsWith('.') && depth ? `../${kitImport}` : kitImport);
+const cssFile = kitScreen && fs.existsSync(path.join(SNAP, 'full.css')) ? 'full.css' : 'used.css';
+const usedCss = inlineImports(fs.readFileSync(path.join(SNAP, cssFile), 'utf8'), pageUrl, index, OUT);
 fs.writeFileSync(path.join(dest, 'style.css'), unsetFirst(localizeCss(usedCss)));
 
 // ---------- markup: cut the frozen DOM into bands ----------
@@ -104,7 +114,8 @@ const browser = await chromium.launch({ channel: readJson(path.join(ROOT, 'confi
 const page = await browser.newPage();
 await page.route('**/*', (r) => (r.request().url().startsWith('file:') ? r.continue() : r.abort('aborted')));
 await page.goto('file:///' + path.join(SNAP, 'rendered.html').replace(/\\/g, '/'));
-const cut = await page.evaluate(({ bands, controls, hoverKeys, scope, slot }) => {
+const kitArg = kitScreen ? { islands: Object.keys(kitScreen.widgets), shell: !!slot } : null;
+const cut = await page.evaluate(({ bands, controls, hoverKeys, scope, slot, kit }) => {
   document.querySelectorAll('script, noscript, style, link, base').forEach((e) => e.remove());
   // the spec and parity.spec.ts address controls by these keys
   let stamped = 0;
@@ -138,6 +149,17 @@ const cut = await page.evaluate(({ bands, controls, hoverKeys, scope, slot }) =>
     outer = outer.filter((e) => !hole.contains(e) && !e.contains(hole));
     const s = document.createElement('div'); s.setAttribute('data-slot', 'children'); hole.replaceWith(s);
   }
+  // site kit: every stamped widget becomes a placeholder for <KitWidget id="kN" />; on the shell, the title bar texts become props
+  if (kit) {
+    for (const el of [...document.querySelectorAll('[data-kit-drop]')]) { el.remove(); outer = outer.filter((o) => o.isConnected); } // the site's popup leftovers: the kit renders its own
+    for (const el of [...document.querySelectorAll('[data-kit]')]) {
+      const id = el.getAttribute('data-kit');
+      if (!kit.islands.includes(id) || !el.isConnected) continue;
+      const s = document.createElement('div'); s.setAttribute('data-slot-kit', id); el.replaceWith(s);
+      outer = outer.map((o) => (o === el ? s : o));
+    }
+    if (kit.shell) for (const [k, m] of [['title', '__KIT_TITLE__'], ['module', '__KIT_MODULE__']]) { const e = document.querySelector(`[data-kit-shell=${k}]`); if (e) e.textContent = m; }
+  }
   const parts = outer.map((e, i) => ({ i, tag: e.tagName.toLowerCase(), id: e.id, html: e.outerHTML }));
   outer.forEach((e, i) => { const s = document.createElement('div'); s.setAttribute('data-slot', String(i)); e.replaceWith(s); });
   return {
@@ -149,7 +171,23 @@ const cut = await page.evaluate(({ bands, controls, hoverKeys, scope, slot }) =>
     htmlAttrs: [...document.documentElement.attributes].filter((a) => !/^(class|id|style)$/.test(a.name)).map((a) => [a.name, a.value]),
     bodyAttrs: [...document.body.attributes].filter((a) => !/^(class|id|style)$/.test(a.name)).map((a) => [a.name, a.value]),
   };
-}, { bands, controls, hoverKeys, scope, slot });
+}, { bands, controls, hoverKeys, scope, slot, kit: kitArg });
+// the dialogs the kit opened: their content, with the same placeholders
+const dialogHtml = {};
+if (kitScreen) for (const id of Object.keys(kitScreen.dialogs || {})) {
+  const f = path.join(OUT, 'kit', 'dialogs', `${id}.html`);
+  if (!fs.existsSync(f)) continue;
+  dialogHtml[id] = await page.evaluate(({ html, islands }) => {
+    const box = document.createElement('div');
+    box.innerHTML = html;
+    box.querySelectorAll('script, noscript, style, link').forEach((e) => e.remove());
+    for (const el of [...box.querySelectorAll('[data-kit]')]) {
+      if (!islands.includes(el.getAttribute('data-kit')) || !el.isConnected) continue;
+      const s = document.createElement('div'); s.setAttribute('data-slot-kit', el.getAttribute('data-kit')); el.replaceWith(s);
+    }
+    return box.innerHTML;
+  }, { html: fs.readFileSync(f, 'utf8'), islands: Object.values(kitScreen.dialogs).flatMap((d) => Object.keys(d.widgets)) });
+}
 await browser.close();
 if (cut.error) { console.error(cut.error); process.exit(2); }
 
@@ -162,14 +200,36 @@ for (const p of cut.parts) {
 }
 
 const head = '// @ts-nocheck - mechanical port of the captured DOM (unknown legacy attributes); drop this line once you hand-edit the file\n';
+const islands = (jsx) => jsx.replace(/<div data-slot-kit="([\w-]+)"><\/div>/g, '<KitWidget id="$1" />');
+const kitShell = (jsx) => jsx.replace(/\{"__KIT_TITLE__"\}/g, '{title}').replace(/\{"__KIT_MODULE__"\}/g, '{module}');
+const usesKit = (jsx) => (kitImport && jsx.includes('<KitWidget') ? `import { KitWidget } from '${kitFrom(1)}';\n` : '');
+const withProps = new Set();
 for (const p of cut.parts) {
+  const jsx = kitShell(islands(pretty(toJsx(p.html, rewriteAttr))));
+  const props = /\{(title|module)\}/.test(jsx);
+  if (props) withProps.add(p.name);
   fs.writeFileSync(path.join(dest, 'components', `${p.name}.tsx`),
-    `${head}// Band ${p.i + 1} of ${screen}: ported from ${relDir(screen)}/snapshot/rendered.html (${p.tag}${p.id ? '#' + p.id : ''}).\n` +
-    `export default function ${p.name}() {\n  return (\n    ${pretty(toJsx(p.html, rewriteAttr))}\n  );\n}\n`);
+    `${head}${usesKit(jsx)}// Band ${p.i + 1} of ${screen}: ported from ${relDir(screen)}/snapshot/rendered.html (${p.tag}${p.id ? '#' + p.id : ''}).\n` +
+    `export default function ${p.name}(${props ? '{ title, module }: { title?: string; module?: string }' : ''}) {\n  return (\n    ${jsx}\n  );\n}\n`);
+}
+// the kit's dialogs: one component each, rendered by <KitScreen> when their opener is clicked
+const dialogNames = {};
+if (kitScreen) {
+  fs.rmSync(path.join(dest, 'dialogs'), { recursive: true, force: true });
+  for (const [id, html] of Object.entries(dialogHtml)) {
+    const nm = 'Dialog' + pascal(id);
+    dialogNames[id] = nm;
+    fs.mkdirSync(path.join(dest, 'dialogs'), { recursive: true });
+    const jsx = islands(pretty(toJsx(html, rewriteAttr)));
+    fs.writeFileSync(path.join(dest, 'dialogs', `${nm}.tsx`), `${head}${usesKit(jsx)}// Dialog ${id} "${kitScreen.dialogs[id].title}" of ${screen}: ported from ${relDir(screen)}/kit/dialogs/${id}.html.\n` +
+      `export default function ${nm}() {\n  return (\n    <>${jsx}</>\n  );\n}\n`);
+  }
+  fs.writeFileSync(path.join(dest, 'kit.json'), JSON.stringify(kitScreen)); // the kit runtime reads its widgets, grids, dialogs and the live popup templates from here
 }
 
 let body = toJsx(cut.body, rewriteAttr);
-body = pretty(body.replace(/<div data-slot="(\d+)"><\/div>/g, (_, i) => `<${cut.parts[+i].name} />`).replace(/<div data-slot="children"><\/div>/, '{children}'));
+body = kitShell(islands(pretty(body.replace(/<div data-slot="(\d+)"><\/div>/g, (_, i) => `<${cut.parts[+i].name}${withProps.has(cut.parts[+i].name) ? ' title={title} module={module}' : ''} />`).replace(/<div data-slot="children"><\/div>/, '{children}'))));
+if (kitScreen) body = `<KitScreen screen={kit as unknown as KitData} dialogs={{ ${Object.entries(dialogNames).map(([id, nm]) => `${id}: ${nm}`).join(', ')} }}${opt('--services') ? ' services={services}' : ''}${slot ? ' shell' : ''}>${body}</KitScreen>`;
 // The stylesheet is injected while the screen is mounted and removed after, so screens in one app do not leak
 // rules (`body`, `*`, `h1`...) into each other. Same for the title and the id/classes the original page keeps on
 // <body>/<html>, which its CSS may depend on.
@@ -179,10 +239,11 @@ const apply = [cut.title && `document.title = ${JSON.stringify(cut.title)};`,
   cut.htmlClass && `html.className = ${JSON.stringify(cut.htmlClass)};`,
   cut.bodyStyle && `body.setAttribute('style', ${JSON.stringify(cut.bodyStyle)});`].filter(Boolean);
 fs.writeFileSync(path.join(dest, 'Page.tsx'),
-  `${head}import { useLayoutEffect } from 'react';\nimport css from './style.css?inline';\n` +
+  `${head}import { useLayoutEffect${slot ? ', type ReactNode' : ''} } from 'react';\nimport css from './style.css?inline';\n` +
+  (kitScreen ? `import { KitScreen, KitWidget, type KitData } from '${kitFrom(0)}';\nimport kit from './kit.json';\n${opt('--services') ? `import * as services from '${opt('--services')}';\n` : ''}${Object.values(dialogNames).map((nm) => `import ${nm} from './dialogs/${nm}';\n`).join('')}` : '') +
   cut.parts.map((p) => `import ${p.name} from './components/${p.name}';\n`).join('') +
   `\n// ${screen}: static port of the capture. Behavior comes from spec/UI_SPEC.md + BEHAVIOR.md.\n` +
-  `export default function ${Screen}Page(${slot ? '{ children }' : ''}) {\n` +
+  `export default function ${Screen}Page(${slot ? `{ children${kitScreen ? ', title, module' : ''} }: { children?: ReactNode; title?: string; module?: string }` : ''}) {\n` +
   `  useLayoutEffect(() => {\n    const style = document.createElement('style');\n    style.textContent = css;\n    document.head.append(style);\n` +
   `    const { body, documentElement: html } = document;\n    const prev = [document.title, body.id, body.className, html.className, body.getAttribute('style')];\n` +
   `    // the page's CSS picks its theme off these (data-color-mode, data-light-theme, ...), so its var()s need them\n` +

@@ -86,11 +86,16 @@ PowerShell: `$env:TARGET="react"; $env:URL="http://localhost:5173/#/portfolio"; 
 ## A whole portal module (logged in, Codex)
 
 ```
-npm run ui -- file-transfer --out C:\path\to\new-app
+npm run ui
 ```
-Logs in (USERNAME in `.env`; it asks for the password and keeps it in memory only), asks for the home page and a menu item, finds the screens under it, then specs the home page,
-its header/menu and every screen, and writes the React 19 app to `--out`, with Codex as the writer. Everything else runs unattended.
-Full guide: [docs/client-runbook.md](docs/client-runbook.md). Before the first run on a new machine: [lookout.md](lookout.md) (checklist, with `npm run check:writer` for Codex). Self-test: `npm run smoke:ui`.
+Asks for a pack name (`ffxfer-v2`), the home page and a menu item. Logs in (USERNAME in `.env`; it asks for the password and keeps it in memory only),
+finds the screens under the menu item, specs the home page, its header/menu and every screen, and writes the React 19 app to `packs/<pack>/app/`,
+with Codex as the writer. Everything else runs unattended. A new pack name starts fresh; the same name continues.
+
+On the client's Provider portal (Kendo UI for jQuery) it uses the **Provider kit** (`kits/provider/`, guide `kits/provider/KIT.md`): the capture reads
+every widget from Kendo itself instead of exploring, and the app is built on the kit's runtime (dropdowns, pickers, grids, dialogs, tooltips, validation).
+Full guide: [docs/client-runbook.md](docs/client-runbook.md). Before the first run on a new machine: [lookout.md](lookout.md) (checklist, with `npm run check:writer` for Codex).
+Self-tests: `npm run smoke:ui` (generic portal), `npm run smoke:provider` (a Kendo portal like the client's, end to end, with the rebuild driven in a browser).
 
 ## Login pages
 

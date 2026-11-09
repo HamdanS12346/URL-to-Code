@@ -5,5 +5,6 @@ import react from '@vitejs/plugin-react';
 // hmr.overlay off: a compile error must show up as a wrong picture in final-playwright's verify, not paint over the page.
 export default defineConfig({
   plugins: [react()],
-  server: { port: Number(process.env.PORT) || 5180, strictPort: true, hmr: { overlay: false } },
+  // fs.strict off: an app made inside final-playwright (packs/<pack>/app) has no node_modules of its own and takes the repo's
+  server: { port: Number(process.env.PORT) || 5180, strictPort: true, hmr: { overlay: false }, fs: { strict: false } },
 });

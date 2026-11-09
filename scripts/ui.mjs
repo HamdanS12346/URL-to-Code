@@ -1,10 +1,13 @@
 #!/usr/bin/env node
-// npm run ui -- [<pack>] [--url <home url>] [--menu "<menu item>"] [--out <code folder>] [options]
+// npm run ui -- [<pack>] [--url <home url>] [--menu "<menu item>"] [options]
 // One command for one module of a logged-in portal. It asks for whatever is missing, then:
 //   login -> discover (read the menu: the module's screens + every other module) -> for the home page (+ the shared
 //   header/menu) and each screen: capture, plan (writer), explore, spec (writer) -> scaffold the React 19 app in --out ->
 //   port each screen into it -> code (writer), checked by tsc + verify after every attempt.
-// Everything the tool learns lives in packs/<pack>/; the code goes to --out (PowerShell: --out $outRepo).
+// Everything lives in packs/<pack>/, the code in packs/<pack>/app/ (--out <folder> puts it elsewhere). One pack per run of a
+// module: name a new pack (ffxfer-v2) to start fresh, the same name to continue. A site kit (kits/<kit>/, found by asking each
+// kit's detect() on the home page, or --kit <name|none>) replaces the plan/explore loop with a harvest of the page's own
+// widgets and builds the screens on the kit's runtime (src/kit).
 // Credentials: USERNAME= and PASSWORD= in .env next to package.json (or --env <file>). Writer (Codex):
 //   --writer "<command with {workdir}>", or WRITER= in .env; default ..\start_codex.ps1 (client layout), else codex on PATH.
 // Options:
@@ -13,7 +16,9 @@
 //   --no-build        stop after the specs        --yes  no questions     --headed   show the browser
 //   --manual-login    log in by hand in a browser window (MFA/SSO)        --verbose  stream the writer's output
 //   --rounds N        extra writer attempts after a failed check (2)      --timeout S  per writer call (3600)
-//   --link-modules    reuse this repo's node_modules in --out instead of npm install
+//   --link-modules    reuse this repo's node_modules in --out instead of npm install (an app inside this repo, the default
+//                     packs/<pack>/app, finds this repo's node_modules by itself: nothing to install)
+//   --kit <name|none> force a site kit, or none (default: detected on the home page and kept in pack.json)
 import crypto from 'node:crypto';
 import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -23,9 +28,10 @@ import { ROOT, packDir, screenDir } from './lib/paths.mjs';
 import { readEnv, ask, askSecret, login, manualLogin, sessionValid, readMenu, findScope } from './lib/portal.mjs';
 import { defaultWriter, fill, runWriter, tail } from './lib/writer.mjs';
 import { runScreen } from './run.mjs';
+import { detectKit, loadKit } from './lib/kit.mjs';
 
 const STAGES = ['login', 'discover', 'capture', 'plan', 'explore', 'spec', 'port', 'code'];
-const VALUED = new Set(['--url', '--menu', '--out', '--writer', '--from', '--only', '--rounds', '--timeout', '--env', '--mode']);
+const VALUED = new Set(['--url', '--menu', '--out', '--writer', '--from', '--only', '--rounds', '--timeout', '--env', '--mode', '--kit']);
 const argv = process.argv.slice(2);
 const flag = (n) => argv.includes(n);
 const opt = (n) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] : undefined; };
@@ -43,8 +49,15 @@ const interactive = !flag('--yes') && process.stdin.isTTY;
 const noBuild = flag('--no-build');
 
 // ---------- the pack: what to do, kept in packs/<pack>/pack.json ----------
-const name = slug(argv.find((a, i) => !a.startsWith('--') && !VALUED.has(argv[i - 1])) || (interactive ? await ask('Pack name (e.g. file-transfer)') : ''));
+let name = slug(argv.find((a, i) => !a.startsWith('--') && !VALUED.has(argv[i - 1])) || (interactive ? await ask('Pack name (e.g. ffxfer-v2): everything goes to packs\\<name>') : ''));
 if (!name) die('name the pack: npm run ui -- <pack>');
+// a name already used: continue that pack, or give this run its own (two packs of one module never touch each other)
+while (interactive && !from && !opt('--only') && fs.existsSync(path.join(packDir(name), 'pack.json'))) {
+  const old = readJson(path.join(packDir(name), 'pack.json'), {});
+  const a = await ask(`packs\\${name} already exists${old.menu ? ` ("${old.menu}")` : ''}. Continue it (y), or type a new pack name`, 'y');
+  if (/^y(es)?$/i.test(a.trim())) break;
+  if (slug(a)) name = slug(a);
+}
 const P = packDir(name);
 const packFile = path.join(P, 'pack.json');
 const pack = { selectors: {}, config: {}, ...readJson(packFile, {}), pack: name };
@@ -54,13 +67,12 @@ if (pack.screens?.length && ((opt('--url') && opt('--url') !== pack.url) || (opt
 if (opt('--url')) pack.url = opt('--url');
 if (opt('--menu')) pack.menu = opt('--menu');
 if (opt('--out')) pack.outRepo = path.resolve(opt('--out'));
-else if (!pack.outRepo && process.env.OUT_REPO) pack.outRepo = path.resolve(process.env.OUT_REPO);
+else if (!pack.outRepo) pack.outRepo = process.env.OUT_REPO ? path.resolve(process.env.OUT_REPO) : path.join(P, 'app');
+if (opt('--kit')) pack.kit = opt('--kit') === 'none' ? false : opt('--kit');
 if (!pack.url && interactive) pack.url = await ask('Home page URL');
 try { new URL(pack.url); } catch { die(`not a URL: ${pack.url ?? '(none)'}. Pass --url <home page>`); }
 if (!pack.menu && interactive) pack.menu = await ask('Menu item to rebuild (e.g. File Transfer Services)');
 if (!pack.menu) die('pass --menu "<menu item>"');
-if (!pack.outRepo && !noBuild && interactive) pack.outRepo = path.resolve(await ask('Folder for the generated code (outRepo)'));
-if (!pack.outRepo && !noBuild) die('pass --out <folder for the code> (PowerShell: --out $outRepo), or --no-build for specs only');
 savePack();
 
 const logFile = path.join(P, 'ui.log');
@@ -75,7 +87,7 @@ const credsFrom = process.env.UI_PASSWORD ? 'UI_PASSWORD' : env.PASSWORD ? '.env
 const writer = opt('--writer') || env.WRITER || pack.writer || defaultWriter();
 const rounds = +(opt('--rounds') ?? pack.rounds ?? 2);
 const timeoutSec = +(opt('--timeout') ?? pack.timeoutSec ?? 3600);
-log(`pack ${name}: ${pack.url}  menu "${pack.menu}"${pack.outRepo ? `  code -> ${pack.outRepo}` : ''}\nwriter: ${writer}`);
+log(`pack ${name}: ${pack.url}  menu "${pack.menu}"  code -> ${rel(pack.outRepo).startsWith('..') ? pack.outRepo : rel(pack.outRepo)}\nwriter: ${writer}`);
 
 // ---------- status: one entry per writer step, so a re-run picks up where it stopped ----------
 const statusFile = path.join(P, 'status.json');
@@ -101,6 +113,8 @@ const cfgFor = (scr) => { // without the session: it changes on every login and 
   // the home page carries the menu: follow every module it reveals, not a sample of look-alikes
   if (scr?.home) Object.assign(c.explore, { perTrigger: 40, perGroupActions: 40, followPerGroup: 40 }, pc.homeExplore);
   else if (scr?.scope) c.explore.scope = scr.scope;
+  // the site kit: which widgets are this screen's (its content area), and the title bar text to look for
+  if (pack.kit && scr) c.kit = { name: pack.kit, scope: scr.home ? null : scr.scope || null, module: scr.home ? null : pack.menu, menuButton: pack.menuButton || null };
   return c;
 };
 const cfg0 = cfgFor(null);
@@ -200,6 +214,20 @@ try {
     log(`  ${screens.length - 1} screen(s) under "${pack.menu}" + the home page. Menu: packs/${name}/menu.json, picture: menu.png`);
     if (interactive && !/^y/i.test(await ask(`Go on with these? (y / n = stop here, edit packs/${name}/pack.json, run again)`, 'y'))) process.exit(0);
   }
+  // ---------- the site kit: asked once, on the home page (pack.json "kit"; --kit overrides) ----------
+  if (pack.kit === undefined) {
+    const c = await browser.newContext({ viewport, storageState: session ?? undefined, ignoreHTTPSErrors: true });
+    try {
+      const pg = await c.newPage();
+      await pg.goto(pack.url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+      await pg.waitForLoadState('load', { timeout: 15000 }).catch(() => {});
+      pack.kit = (await detectKit(pg)) || false;
+    } catch (e) { log(`  ! kit detection failed: ${e.message.split('\n')[0]}`); pack.kit = false; }
+    finally { await c.close().catch(() => {}); }
+    savePack();
+  }
+  const kit = pack.kit ? await loadKit(pack.kit) : null;
+  log(kit ? `site kit: ${pack.kit} (kits/${pack.kit}): the harvest replaces plan + explore; screens are built on its runtime` : 'site kit: none (generic capture, plan and explore)');
   const screens = pack.screens.filter((s) => !opt('--only') || s.id === opt('--only'));
   if (!screens.length) die(`--only ${opt('--only')}: no such screen. Screens: ${pack.screens.map((s) => s.id).join(', ')}`);
   const menu = readJson(path.join(P, 'menu.json'), { modules: [] });
@@ -247,9 +275,9 @@ try {
       }
       await writeStep(`spec:${scr.id}`, {
         workdir: ROOT, expect: [specFile, path.join(dir, 'spec', 'tasks.md')],
-        prompt: fill('spec', { id, dir, root: ROOT, label: scr.label, url: scr.url, extra: scr.home
+        prompt: fill('spec', { id, dir, root: ROOT, label: scr.label, url: scr.url, extra: (scr.home
           ? `\nThis is the HOME page, and it also defines the shell every screen of the rebuilt app shares: the header and the site menu (opened by \`${pack.menuButton ?? '?'}\`).\nThe menu's full tree, read from the live site, is in ${dir}/menu.json. List every module and item from it in Navigation and Components and cite it as [asset:menu.json].\nThe hover/flyout look of the menu is in ${dir}/menu/*.png: one picture per module, taken with the menu open and that module hovered (the explorer records the menu opening, not the CSS hover flyouts). Look at every one and cite them as [asset:menu/<file>.png]. Items under "${pack.menu}" open the screens of this app; every other item is shown (and hovers/opens the same way) but goes nowhere.`
-          : `\nThis screen is shown inside the shared shell (header + site menu) that the home page's spec covers. The capture was scoped to its content area${scr.scope ? ` \`${scr.scope}\`` : ''}: specify that area; for the shell write one line under Layout: "Wrapped in the shared shell (see the home spec)."` }),
+          : `\nThis screen is shown inside the shared shell (header + site menu) that the home page's spec covers. The capture was scoped to its content area${scr.scope ? ` \`${scr.scope}\`` : ''}: specify that area; for the shell write one line under Layout: "Wrapped in the shared shell (see the home spec)."`) + (kit ? kit.prompt('spec', { dir }) : '') }),
         gate: async () => nodeRun('check-spec.mjs', [id]),
       });
     } catch (e) {
@@ -278,7 +306,8 @@ try {
       devDependencies: pick(me.devDependencies, ['@types/react', '@types/react-dom', '@vitejs/plugin-react', 'typescript', 'vite']) });
   }
   writeJson(marker, { pack: name, url: pack.url, menu: pack.menu, source: ROOT, at: new Date().toISOString() });
-  if (!fs.existsSync(path.join(out, 'node_modules'))) {
+  const inRepo = !path.relative(ROOT, out).startsWith('..');
+  if (!inRepo && !fs.existsSync(path.join(out, 'node_modules'))) {
     const link = () => { fs.symlinkSync(path.join(ROOT, 'node_modules'), path.join(out, 'node_modules'), 'junction'); log('   node_modules: linked to final-playwright\'s'); };
     if (flag('--link-modules')) link();
     else {
@@ -288,22 +317,69 @@ try {
     }
   }
 
+  // node_modules: the app's own, else this repo's (an app inside the repo resolves packages from here)
+  const bin = (p) => [path.join(out, 'node_modules', p), path.join(ROOT, 'node_modules', p)].find((f) => fs.existsSync(f));
+  // the kit runtime: copied fresh every run (fixed in kits/<kit>/app, never in the app)
+  if (kit) {
+    fs.rmSync(path.join(out, 'src', 'kit'), { recursive: true, force: true });
+    fs.cpSync(kit.appDir, path.join(out, 'src', 'kit'), { recursive: true });
+  }
+
   // ---------- port: the captured page as static React (the shell from the home page, the content of each screen) ----------
+  // with a kit, the shell comes from a module screen (its title bar is what every module screen shows; the home page has none)
+  // and the home page is its own complete page
   const ported = (scr) => fs.existsSync(path.join(out, 'src', 'screens', scr.id, 'Page.tsx'));
+  const shellFrom = kit ? pack.screens.find((s) => !s.home && s.scope && fs.existsSync(path.join(screenDir(`${name}/${s.id}`), 'kit', 'screen.json'))) : pack.screens.find((s) => s.home);
+  if (kit) fs.mkdirSync(path.join(out, 'src', 'services'), { recursive: true });
+  // src/services/<screen>.ts: the endpoints the live screen called (recorded by the capture), answered with mock data
+  // (synthetic rows, no client data) until the real backend is wired in. Written once: hand edits are kept.
+  const writeServices = (scr) => {
+    const f = path.join(out, 'src', 'services', `${scr.id}.ts`);
+    const k = readJson(path.join(screenDir(`${name}/${scr.id}`), 'kit', 'screen.json'), null);
+    if (fs.existsSync(f) || !k) return;
+    const ep = { search: k.requests?.search ?? null, ...Object.fromEntries(Object.entries(k.dialogs || {}).map(([id, d]) => [`open_${id}`, d.requests?.[0] ?? null])) };
+    fs.writeFileSync(f, `// Services of "${scr.label}". GENERATED once by final-playwright (packs/${name}); edit freely, it is not overwritten.
+` +
+      `// endpoints: what the live screen called (method, path, the form fields it sent). The functions answer with mock data
+// (synthetic rows shaped like the live grid, no client data) until they are wired to the real backend.
+` +
+      `import { mockPage, type KitData } from '../kit';
+import kit from '../screens/${scr.id}/kit.json';
+
+const data = kit as unknown as KitData;
+` +
+      `export const endpoints = ${JSON.stringify(ep, null, 2)} as const;
+
+` +
+      `export async function search(values: Record<string, string>) {
+  void values; // the real call: endpoints.search with these form values
+  const [id, after] = Object.entries(data.grids ?? {})[0] ?? [];
+  return id ? mockPage(data.widgets[id], after) : { total: 0, rows: [] };
+}
+
+` +
+      `export async function save(dialog: string, values: Record<string, string>) {
+  return { ok: true, dialog, values }; // the real call: the dialog's save endpoint (not recorded: the capture never clicks Save)
+}
+`);
+  };
   for (const scr of screens) {
     if (!fs.existsSync(path.join(screenDir(`${name}/${scr.id}`), 'snapshot', 'rendered.html'))) continue;
     if (ported(scr) && !forced('port')) continue;
     const id = `${name}/${scr.id}`;
     const port = (args) => { const r = nodeRun('port.mjs', [id, '--force', '--assets-dir', path.join(out, 'public', 'assets', scr.id), '--asset-base', `/assets/${scr.id}/`, ...args]); log(r.text.split('\n').map((l) => '   ' + l).join('\n')); if (!r.ok) throw new Error(`port ${id} failed`); };
     try {
-      if (scr.home && scr.scope) port(['--slot', scr.scope, '--name', 'Shell', '--out', path.join(out, 'src', 'shell')]);
-      port([...(scr.scope ? ['--scope', scr.scope] : []), '--name', scr.home ? 'Home' : pascal(scr.id), '--out', path.join(out, 'src', 'screens', scr.id)]);
+      const kitArgs = (depth) => (kit ? ['--kit-import', depth] : []);
+      if (scr === shellFrom && scr.scope) port(['--slot', scr.scope, '--name', 'Shell', '--out', path.join(out, 'src', 'shell'), ...kitArgs('../kit')]);
+      if (kit && !scr.home) writeServices(scr);
+      port([...(scr.scope && !(kit && scr.home) ? ['--scope', scr.scope] : []), '--name', scr.home ? 'Home' : pascal(scr.id), '--out', path.join(out, 'src', 'screens', scr.id),
+        ...kitArgs('../../kit'), ...(kit && !scr.home ? ['--services', `../../services/${scr.id}`] : [])]);
       mark(`port:${scr.id}`, 'done');
     } catch (e) { mark(`port:${scr.id}`, 'failed', { problems: [e.message] }); log(`   !! ${e.message}`); }
   }
-  if (!fs.existsSync(path.join(out, 'src', 'shell', 'Page.tsx'))) { // no separate content area on the home page: screens stand alone
+  if (!fs.existsSync(path.join(out, 'src', 'shell', 'Page.tsx'))) { // no separate content area: screens stand alone
     fs.mkdirSync(path.join(out, 'src', 'shell'), { recursive: true });
-    fs.writeFileSync(path.join(out, 'src', 'shell', 'Page.tsx'), "import type { ReactNode } from 'react';\n\n// No shell was ported (the home page's content area was not found): every screen renders on its own.\nexport default function Shell({ children }: { children?: ReactNode }) {\n  return <>{children}</>;\n}\n");
+    fs.writeFileSync(path.join(out, 'src', 'shell', 'Page.tsx'), "import type { ReactNode } from 'react';\n\n// No shell was ported (no content area was found): every screen renders on its own.\nexport default function Shell({ children }: { children?: ReactNode; title?: string; module?: string }) {\n  return <>{children}</>;\n}\n");
   }
   // routes.ts + menu.ts: data, regenerated every run
   const routeOf = (s) => (s.home ? '/' : `/${s.id}`);
@@ -312,8 +388,12 @@ try {
   fs.writeFileSync(path.join(out, 'src', 'routes.ts'),
     `// GENERATED by final-playwright (npm run ui -- ${name}) on every run: one route per captured screen. Do not edit.\nimport type { ComponentType } from 'react';\n` +
     built.map((s, i) => `import Screen${i} from './screens/${s.id}/Page';\n`).join('') +
-    `\nexport type Route = { path: string; screen: string; label: string; Page: ComponentType };\nexport const routes: Route[] = [\n` +
-    built.map((s, i) => `  { path: ${JSON.stringify(routeOf(s))}, screen: ${JSON.stringify(s.id)}, label: ${JSON.stringify(s.label)}, Page: Screen${i} },\n`).join('') + '];\n');
+    `\n// title/module: the title bar text the shell shows for this screen; bare: a page with its own header (no shared shell)\nexport type Route = { path: string; screen: string; label: string; url: string; title?: string; module?: string; bare?: boolean; Page: ComponentType };\nexport const routes: Route[] = [\n` +
+    built.map((s, i) => {
+      const sh = kit ? readJson(path.join(screenDir(`${name}/${s.id}`), 'kit', 'screen.json'), {})?.shell ?? {} : {};
+      return `  { path: ${JSON.stringify(routeOf(s))}, screen: ${JSON.stringify(s.id)}, label: ${JSON.stringify(s.label)}, url: ${JSON.stringify(s.url)}${sh.title ? `, title: ${JSON.stringify(sh.title)}` : ''}${sh.module ? `, module: ${JSON.stringify(sh.module)}` : ''}${kit && s.home ? ', bare: true' : ''}, Page: Screen${i} },\n`;
+    }).join('') + '];\n' +
+    `// the portal's links (side menu, buttons) that lead to a rebuilt screen go to its route\n(globalThis as { __kitRoutes?: { path: string; url: string }[] }).__kitRoutes = routes.map((r) => ({ path: r.path, url: r.url }));\n`);
   const withRoutes = (items, trail = []) => items.map((m) => {
     const t = [...trail, m.label], s = pack.screens.find((x) => x.trail?.join('\u0000') === t.join('\u0000'));
     return { label: m.label, ...(s && built.includes(s) ? { route: routeOf(s) } : {}), ...(m.children?.length ? { children: withRoutes(m.children, t) } : {}) };
@@ -334,22 +414,23 @@ try {
   const ours = () => fetch(devBase).then((r) => r.text(), () => '').then((t) => t.includes(`<title>${pack.menu}</title>`));
   if (await up() && !(await ours())) die(`another app is running on ${devBase}: stop it, or set "devPort" in packs/${name}/pack.json`);
   if (!(await up())) {
-    devServer = spawn(process.execPath, [path.join(out, 'node_modules', 'vite', 'bin', 'vite.js'), '--port', String(devPort), '--strictPort'], { cwd: out, stdio: 'ignore' });
+    devServer = spawn(process.execPath, [bin(path.join('vite', 'bin', 'vite.js')), '--port', String(devPort), '--strictPort'], { cwd: out, stdio: 'ignore' });
     for (let i = 0; i < 120 && !(await up()); i++) await new Promise((r) => setTimeout(r, 500));
     if (!(await up())) die(`the app's dev server did not start on ${devBase} (port taken? set "devPort" in pack.json)`);
   }
   const limits = { maxBadPct: 5, maxHeightDeltaPx: 4, behavior: true, ...pack.verify };
   const codeGate = (s) => async () => {
-    const tsc = spawnSync(process.execPath, [path.join(out, 'node_modules', 'typescript', 'bin', 'tsc'), '--noEmit', '-p', out], { cwd: out, encoding: 'utf8' });
+    const tsc = spawnSync(process.execPath, [bin(path.join('typescript', 'bin', 'tsc')), '--noEmit', '-p', out], { cwd: out, encoding: 'utf8' });
     if (tsc.status !== 0) return { ok: false, text: `npx tsc --noEmit fails:\n${`${tsc.stdout}${tsc.stderr}`.trim().split('\n').slice(0, 40).join('\n')}` };
     const id = `${name}/${s.id}`, vdir = path.join(screenDir(id), 'verify');
     fs.rmSync(path.join(vdir, 'report.json'), { force: true });
     const v = nodeRun('verify.mjs', [id], { URL: `${devBase}/#${routeOf(s)}`, WAIT_ROOT: '1' });
     const rep = readJson(path.join(vdir, 'report.json'), null);
     if (!v.ok || !rep) return { ok: false, text: `verify could not compare the page:\n${v.text.split('\n').slice(-25).join('\n')}` };
-    const lines = v.text.split('\n').filter((l) => /^(behavior:|motion:|sections|cluster|worst)|✗/.test(l.trim()));
-    const dh = rep.size_delta_px?.[1] ?? 0, behaviorBad = limits.behavior && lines.some((l) => l.includes('✗'));
-    const info = { verify: { bad_pct: rep.bad_pct, size_delta_px: rep.size_delta_px, worst_section: rep.worst_section?.label, behavior: lines.find((l) => l.startsWith('behavior:')) } };
+    const lines = v.text.split('\n').filter((l) => /^(behavior:|motion:|states:|sections|cluster|worst)|✗/.test(l.trim()));
+    // kit states (a dropdown open, a dialog...) are reported, not gated: they mostly measure the kit, which the writer must not edit
+    const dh = rep.size_delta_px?.[1] ?? 0, behaviorBad = limits.behavior && lines.some((l) => l.includes('✗') && !l.trim().startsWith('states:'));
+    const info = { verify: { bad_pct: rep.bad_pct, size_delta_px: rep.size_delta_px, worst_section: rep.worst_section?.label, behavior: lines.find((l) => l.startsWith('behavior:')), states: lines.find((l) => l.startsWith('states:'))?.split(' | ')[0] } };
     const ok = rep.bad_pct <= limits.maxBadPct && Math.abs(dh) <= limits.maxHeightDeltaPx * dpr && !behaviorBad;
     return { ok, info, text: `verify (the app at ${devBase}/#${routeOf(s)} against the captured reference): bad_pct ${rep.bad_pct}% (limit ${limits.maxBadPct}), size_delta_px ${JSON.stringify(rep.size_delta_px)} (height limit ±${limits.maxHeightDeltaPx * dpr}), worst section ${rep.worst_section?.label ?? '?'}\n${lines.join('\n')}\nPictures: ${vdir}${path.sep}candidate.png (the app), diff.png, report.json; the reference is ${screenDir(id)}${path.sep}reference.png` };
   };
@@ -361,18 +442,20 @@ try {
     log(`\n>> code ${s.id}`);
     await writeStep(key, {
       workdir: out, gate: codeGate(s),
-      prompt: fill('code', { id, dir: screenDir(id), app: out, root: ROOT, name: s.id, extra: '',
-        goal: s.home
+      prompt: fill('code', { id, dir: screenDir(id), app: out, root: ROOT, name: s.id, extra: kit ? kit.prompt('code', { dir: screenDir(id) }) : '',
+        goal: s.home && kit
+          ? `Build the home page in src/screens/home/ (route #/). It is a complete page with its own header (no shared shell). The header's side menu, tooltips and links already work through the kit (<KitScreen>).`
+          : s.home
           ? `Build the shared shell and the home page.\n- src/shell/Page.tsx (+ its components/ and BEHAVIOR.md): the header and the site menu every screen shares. The menu's full tree, read from the live site, is in src/menu.ts: render every module and item from it with the open/close, hover and flyout behavior the spec describes (pictures: explore/shots for the menu opening, menu/*.png in the screen folder for each module's hover flyout). Items with a \`route\` link to \`#<route>\`; every other item looks and behaves the same but goes nowhere (no navigation, no error). {children} is where each screen renders: keep it.\n- src/screens/home/: the home page's own content.`
           : `Build the screen "${s.label}" in src/screens/${s.id}/ (route #/${s.id}). It renders inside the shared shell (src/shell), which is already built: do not change the shell.`,
-        files: s.home ? '- Files you may edit or add: src/shell/**, src/screens/home/**, public/assets/home/**.' : `- Files you may edit or add: src/screens/${s.id}/**, public/assets/${s.id}/**.` }),
+        files: s.home ? '- Files you may edit or add: src/shell/**, src/screens/home/**, public/assets/home/**.' : `- Files you may edit or add: src/screens/${s.id}/**, public/assets/${s.id}/**${kit ? `, src/services/${s.id}.ts` : ''}.` }),
     });
   }
 
   // ---------- report ----------
   const rows = built.map((s) => {
     const c = status.items[`code:${s.id}`], v = c?.verify ?? {};
-    return `| ${s.label} | \`#${routeOf(s)}\` | ${c?.status ?? 'not built'} | ${v.bad_pct ?? '?'}% | ${v.size_delta_px ? v.size_delta_px.join(' × ') : '?'} | ${v.worst_section ?? ''} | ${v.behavior ?? ''} |`;
+    return `| ${s.label} | \`#${routeOf(s)}\` | ${c?.status ?? 'not built'} | ${v.bad_pct ?? '?'}% | ${v.size_delta_px ? v.size_delta_px.join(' × ') : '?'} | ${v.worst_section ?? ''} | ${[v.behavior, v.states].filter(Boolean).join('; ')} |`;
   });
   fs.writeFileSync(path.join(out, 'UI_BUILD_REPORT.md'),
     `# ${pack.menu}: React 19 rebuild\n\nGenerated by final-playwright (\`npm run ui -- ${name}\`) from ${pack.url}, ${new Date().toISOString().slice(0, 10)}.\n` +

@@ -23,7 +23,7 @@ if (kind === 'plan') {
 if (kind === 'spec') {
   const R = json(path.join(dir, 'facts.json')).required;
   const cites = [...R.controls.map((k) => `[ctl:${k}]`), ...R.transitions.map((t) => `[${t}]`), ...R.validators.map((v) => `[val:${v}]`),
-    ...[...(R.motion || []), ...(R.scroll || []), ...(R.media || [])].map((m) => `[${m}]`)];
+    ...[...(R.motion || []), ...(R.scroll || []), ...(R.media || [])].map((m) => `[${m}]`), ...(R.kit || []).map((k) => `[kit:${k}]`)];
   const sections = [...SECTIONS, ...(Array.isArray(R.motion) ? ['Motion'] : [])];
   const extra = fs.existsSync(path.join(dir, 'menu.json')) ? ' Menu tree [asset:menu.json].' : '';
   fs.mkdirSync(path.join(dir, 'spec'), { recursive: true });

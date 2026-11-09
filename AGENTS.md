@@ -10,11 +10,16 @@ Scripts capture the facts; you write the spec, and later the code. Two phases, o
 and its React build lives in **`outputs/<screen>/app/`** (`Page.tsx`, `components/`, `style.css`, `assets/`, `BEHAVIOR.md`).
 Nothing screen-specific goes anywhere else: not `src/`, `public/`, `scripts/` or the repo root. The root `src/main.tsx` is a generic router that finds `outputs/*/app/Page.tsx`,
 so a new screen needs no edit outside its own folder. `scripts/` holds site-agnostic tools only; if a script names a site, it is wrong.
+What the tool knows about one family of sites lives in a **site kit**, `kits/<kit>/` (`kit.mjs` hooks the scripts call, an in-page harvest,
+the React runtime copied into each app as `src/kit`, and `KIT.md`, the guide you read for it). The only kit today is `kits/provider/`
+(Kendo UI for jQuery portals: the client's Provider portal). A screen captured with a kit has `run.json` `"kit"` and a `kit/` folder.
 
 **Packs** (`npm run ui`, see `docs/client-runbook.md`): one module of a logged-in portal at a time. A pack's screens live in `packs/<pack>/screens/<screen>/`
 and are addressed as `<pack>/<screen>` in every command (`npm run check -- file-transfer/home`). Wherever this file or a skill says `outputs/<screen>/`, read that folder instead.
 In a pack run, `scripts/ui.mjs` calls you (the writer) with one task per call and checks your output itself; the prompt names the task, the screen folder and the files you may write.
-Its code goes to a separate app folder (`--out`), not to `app/`.
+Its code goes to the pack's app, `packs/<pack>/app/` (or `--out`), not to the screen's `app/`.
+With a kit (`pack.json` `"kit"`), there is no planning step, the spec cites every widget and dialog as `[kit:<id>]`, and the code
+step builds only what the kit cannot know: read `kits/<kit>/KIT.md` first, and never edit the app's `src/kit` (fix the kit in `kits/<kit>/app`).
 Never open, print or copy `.env` or anything under `packs/*/auth/`: they hold the portal password and the logged-in session.
 
 ## Phase 0 — Exploration plan (skill `explore-plan`, stage 3 of `npm run go`)

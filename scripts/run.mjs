@@ -25,6 +25,7 @@ import { facts, selfcheck } from './facts.mjs';
 import { check } from './check-spec.mjs';
 import { loadPlan } from './check-plan.mjs';
 import { screenDir, relDir } from './lib/paths.mjs';
+import { loadKit } from './lib/kit.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const STEPS = ['capture', 'fidelity', 'stitch', 'align', 'survey', 'plan', 'explore', 'facts', 'selfcheck', 'spec'];
@@ -90,6 +91,13 @@ function screenConfig(name) {
 export async function runScreen(name, browser, { argv = process.argv.slice(2), sc: given, managed = false } = {}) {
   const { flag, opt, skip, off } = cli(argv);
   const sc = given ?? screenConfig(name);
+  // a site kit (pack.json "kit"): its capture settings, and the steps its harvest replaces
+  const kit = await loadKit(sc.cfg.kit?.name);
+  if (kit) {
+    const k = kit.config;
+    sc.cfg = { ...sc.cfg, fullCss: k.fullCss, transient: k.transient, motion: { ...sc.cfg.motion, ...k.motion }, warmup: { ...sc.cfg.warmup, ...k.warmup } };
+    for (const st of k.skipSteps || []) off.add(st);
+  }
   if (opt('--mode')) sc.cfg.mode = opt('--mode');
   if (flag('--headed')) sc.cfg.headed = true;
   if (!['readonly', 'safe', 'full'].includes(sc.cfg.mode)) throw new Error(`mode must be readonly, safe or full (got ${sc.cfg.mode})`);
@@ -100,7 +108,7 @@ export async function runScreen(name, browser, { argv = process.argv.slice(2), s
   const runFile = path.join(out, 'run.json');
   const prev = readJson(runFile, { steps: {} });
   const same = prev.finger === sc.finger;
-  const run = { screen: name, url: sc.url, mode: sc.cfg.mode, sources: sc.sources, finger: sc.finger, steps: same ? prev.steps : {}, planHash: same ? prev.planHash : undefined, warnings: [] };
+  const run = { screen: name, url: sc.url, mode: sc.cfg.mode, kit: kit?.name, sources: sc.sources, finger: sc.finger, steps: same ? prev.steps : {}, planHash: same ? prev.planHash : undefined, warnings: [] };
   const dpr = sc.cfg.dpr;
   log(`\n== ${name}  ${sc.url}  (dpr ${dpr}, mode ${sc.cfg.mode})`);
 
@@ -135,7 +143,7 @@ export async function runScreen(name, browser, { argv = process.argv.slice(2), s
   run.viewport = viewport;
   run.dpr = dpr;
   log(`  viewport ${viewport.width}x${viewport.height} CSS px @ dpr ${dpr}`);
-  const ctx = { browser, cfg: sc.cfg, url: sc.url, out, viewport, dpr, log, userShots: sc.shots.length, auto: flag('--auto') };
+  const ctx = { browser, cfg: sc.cfg, url: sc.url, out, viewport, dpr, log, userShots: sc.shots.length, auto: flag('--auto'), kit };
 
   await step('capture', () => capture(ctx));
   await step('fidelity', async () => {
@@ -167,7 +175,7 @@ export async function runScreen(name, browser, { argv = process.argv.slice(2), s
   await step('survey', () => survey(ctx));
   // stage 3: your coding agent decides what to explore. No usable plan -> stop here; the next run continues from this point
   const only = opt('--only');
-  if (!skip.has('explore') && (!only || only === 'plan' || only === 'explore')) {
+  if (!skip.has('explore') && !off.has('plan') && (!only || only === 'plan' || only === 'explore')) {
     log(`
 >> ${STAGE.plan}`);
     const pl = loadPlan(out, { auto: flag('--auto') });

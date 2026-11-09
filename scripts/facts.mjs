@@ -261,7 +261,7 @@ ${tests.join('\n\n')}
 `;
 }
 
-export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = () => {} }) {
+export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, kit = null, log = () => {} }) {
   const cap = (f, d) => readJson(path.join(out, 'capture', f), d);
   const meta = cap('page.json', {}), tree = cap('dom.json', { body: null }), controls = cap('controls.json', []), wf = cap('webforms.json', {});
   const pseudo = cap('pseudo.json', { rules: [], byKey: {} }), frames = cap('frames.json', []), assets = cap('assets/index.json', {});
@@ -584,7 +584,7 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
     w('');
   }
 
-  fs.writeFileSync(path.join(out, 'facts.md'), L2.join('\n'));
+  fs.writeFileSync(path.join(out, 'facts.md'), L2.join('\n') + (kit ? kit.factsSection(out) : ''));
   fs.writeFileSync(path.join(out, 'content.md'), `# CONTENT — ${screen}\nPage text verbatim in document order. {key} = control/element id. <!-- box --> = styled container (CSS px).\n\n` + contentMd(tree, origin));
 
   // ---------- facts.json: what check-spec.mjs enforces ----------
@@ -596,6 +596,7 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
     motion: (motion?.entries || []).map((e) => e.id),
     ...(behave?.scroll ? { scroll: sb.map((b) => b.id) } : {}),
     ...(behave?.media ? { media: vids.map((v) => v.id) } : {}),
+    ...(kit?.required(out) ? { kit: kit.required(out) } : {}),
   };
   const effectKeys = T.flatMap((t) => [t.action.key, ...t.prefix.map((p) => p.key), ...Object.values(t.effects).flat().map((x) => x?.key)].filter(Boolean));
   const domKeys = [];
@@ -604,7 +605,7 @@ export function facts({ out, screen, url, viewport, dpr, cfg, run, flaky, log = 
   fs.writeFileSync(path.join(out, 'facts.json'), JSON.stringify({
     screen, url, required, optional: { links: controls.filter(plainLink).map((c) => c.key), unexplained: states.unexplained.map((u) => u.key) },
     all: { controls: controls.map((c) => c.key), elements: [...new Set([...controls.map((c) => c.key), ...states.unexplained.map((u) => u.key), ...effectKeys])],
-      transitions: T.map((t) => t.id), validators: (wf.validators || []).map((v) => v.key || v.id), shots: offsets?.shots.length || 0, motion: required.motion, scroll: required.scroll || [], media: required.media || [] },
+      transitions: T.map((t) => t.id), validators: (wf.validators || []).map((v) => v.key || v.id), shots: offsets?.shots.length || 0, motion: required.motion, scroll: required.scroll || [], media: required.media || [], kit: required.kit || [] },
     flaky: [...flakySet],
   }, null, 1));
 

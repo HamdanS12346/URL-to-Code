@@ -29,6 +29,9 @@ Never open the live site and never run the capture yourself.
 1. **Evidence on every requirement.** Each requirement / table row ends with a tag in brackets:
    `[T07]` behavior · `[M03]` motion entry · `[S01]` scroll behavior · `[V01]` video/media · `[ctl:key]` control/element · `[val:key]` validator · `[shot:N]` screenshot · `[asset:path]` file under `capture/` (or `sections/…`) · `[js:file#function]` · `[aspx:file:line]` · `[css:selector]` · `[UNKNOWN: question]`.
    Several in one bracket are fine: `[T04, ctl:chkShip, shot:1]`.
+   A screen captured with a site kit (`run.json` `"kit"`, a `kit/` folder) adds `[kit:k3]` (a widget or dialog in `kit/screen.json`,
+   facts.md section 18): the gate wants every one cited. Read the kit's guide (`kits/<kit>/KIT.md`) first; its widgets are built by
+   the kit, so specify what they show and hold (options, placeholder, format, validation messages), not how they work inside.
 2. **Never write a value you did not read.** Missing, cut off, or contradictory → `[UNKNOWN: …]` + an entry in Open questions.
 3. **Numbers come from the capture, looks from the screenshots.** Sizes/colors/fonts: copy the computed CSS values (CSS px, already divided by dpr). If the screenshots show something the capture doesn't (different data, logged-in state), describe the screenshot and record the disagreement in Open questions.
 4. **Text verbatim** from `content.md`: spelling, case, punctuation, trailing colons.

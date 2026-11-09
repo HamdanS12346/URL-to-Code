@@ -790,7 +790,8 @@
 
   // CSS the page really uses: every rule whose selector matches some element (state pseudo-classes and
   // pseudo-elements are stripped before matching, so :hover / ::before rules of existing elements are kept)
-  const usedCss = () => {
+  // all=true keeps every rule (a site whose widgets build their popups later needs the rules for markup that is not there yet)
+  const usedCss = (keepAll = false) => {
     const STRIP = /::?(before|after|first-line|first-letter|selection|marker|placeholder|backdrop|file-selector-button|-[\w-]+)(\([^)]*\))?/g;
     const STATE = /:(hover|focus-visible|focus-within|focus|active|visited|link|any-link|target|checked|disabled|enabled|placeholder-shown|invalid|valid|indeterminate|fullscreen|-[\w-]+)(?![\w-])/g;
     const cache = new Map();
@@ -799,6 +800,7 @@
     const bare = (s) => s.replace(STRIP, '').replace(STATE, '').replace(EMPTY, '').trim();
     const one = (s) => { s = bare(s); if (!s || /[>+~]$/.test(s)) s += '*'; try { return !!document.querySelector(s); } catch { return false; } };
     const match = (sel) => {
+      if (keepAll) return true;
       if (cache.has(sel)) return cache.get(sel);
       let r;
       try { r = !!document.querySelector(bare(sel) || '*'); } catch { r = sel.split(/,(?![^(]*\))/).some(one); }
