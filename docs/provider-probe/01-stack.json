@@ -1,0 +1,757 @@
+{
+ "screens": {
+  "home": {
+   "jquery": "3.7.1",
+   "kendo": "2026.1.415",
+   "kendoTheme": {
+    "stylesheetFiles": [],
+    "htmlClass": "k-webkit k-webkit157",
+    "bodyClass": "Home MyHome"
+   },
+   "bootstrap": null,
+   "scripts": [
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/vendor"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/app"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Kendo/Cultures/kendo.culture.en-US.min.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Kendo/Messages/kendo.messages.en-US.min.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.atAGlance.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.atAGlance.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.mainMenu.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.moduleContentPanels.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Notification/hp.ua3.core.notification.broadcastMsg.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Home/hp.ua3.core.security.myHome.js"
+    }
+   ],
+   "stylesheets": [
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/vendorcss"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/appcss"
+    },
+    {
+     "origin": "https://mapssharedstorage01.blob.core.windows.net",
+     "path": "/finaltest/TenantContent/Commercial/Styles/hp.ua3.core.tenantTheme.css"
+    }
+   ],
+   "fontsLoaded": [
+    {
+     "family": "Font Awesome 6 Brands",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Duotone",
+     "weight": "900",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "300",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "900",
+     "style": "normal",
+     "status": "loaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "100",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Brands",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Pro",
+     "weight": "900",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Pro",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Pro",
+     "weight": "300",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Duotone",
+     "weight": "900",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Poppins",
+     "weight": "normal",
+     "style": "normal",
+     "status": "loaded"
+    },
+    {
+     "family": "Poppins Bold",
+     "weight": "normal",
+     "style": "normal",
+     "status": "loaded"
+    }
+   ],
+   "computedFonts": {
+    "body": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "h1": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "h2": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "h3": null,
+    "label": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "input": "Arial",
+    "button": "Arial"
+   },
+   "serverHints": {
+    "requestVerificationTokenPresent": true,
+    "metaGeneratorTags": []
+   }
+  },
+  "cfg": {
+   "jquery": "3.7.1",
+   "kendo": "2026.1.415",
+   "kendoTheme": {
+    "stylesheetFiles": [],
+    "htmlClass": "k-webkit k-webkit157",
+    "bodyClass": "FileTransfer SearchSourceLocations"
+   },
+   "bootstrap": null,
+   "scripts": [
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/vendor"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/app"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Kendo/Cultures/kendo.culture.en-US.min.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Kendo/Messages/kendo.messages.en-US.min.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.atAGlance.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.atAGlance.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.mainMenu.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.moduleContentPanels.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Notification/hp.ua3.core.notification.broadcastMsg.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.modelEditor.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.multiPanelEditor.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/FileTransfer/hp.ua3.FileTransfer.searchSourceLocations.js"
+    }
+   ],
+   "stylesheets": [
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/vendorcss"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/appcss"
+    },
+    {
+     "origin": "https://mapssharedstorage01.blob.core.windows.net",
+     "path": "/finaltest/TenantContent/Commercial/Styles/hp.ua3.core.tenantTheme.css"
+    }
+   ],
+   "fontsLoaded": [
+    {
+     "family": "Font Awesome 6 Brands",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Duotone",
+     "weight": "900",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "300",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "900",
+     "style": "normal",
+     "status": "loaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "100",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Brands",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Pro",
+     "weight": "900",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Pro",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Pro",
+     "weight": "300",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Duotone",
+     "weight": "900",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Poppins",
+     "weight": "normal",
+     "style": "normal",
+     "status": "loaded"
+    },
+    {
+     "family": "Poppins Bold",
+     "weight": "normal",
+     "style": "normal",
+     "status": "loaded"
+    }
+   ],
+   "computedFonts": {
+    "body": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "h1": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "h2": null,
+    "h3": null,
+    "label": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "input": "Arial",
+    "button": "Arial"
+   },
+   "serverHints": {
+    "requestVerificationTokenPresent": true,
+    "metaGeneratorTags": []
+   }
+  },
+  "trk": {
+   "jquery": "3.7.1",
+   "kendo": "2026.1.415",
+   "kendoTheme": {
+    "stylesheetFiles": [],
+    "htmlClass": "k-webkit k-webkit157",
+    "bodyClass": "FileTransfer SearchFileTransferTracking"
+   },
+   "bootstrap": null,
+   "scripts": [
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/vendor"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/app"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Kendo/Cultures/kendo.culture.en-US.min.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Kendo/Messages/kendo.messages.en-US.min.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.atAGlance.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.atAGlance.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.mainMenu.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.moduleContentPanels.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Notification/hp.ua3.core.notification.broadcastMsg.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.modelEditor.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/FileTransferTracking/hp.ua3.FileTransfer.searchFileTransferTracking.js"
+    }
+   ],
+   "stylesheets": [
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/vendorcss"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/appcss"
+    },
+    {
+     "origin": "https://mapssharedstorage01.blob.core.windows.net",
+     "path": "/finaltest/TenantContent/Commercial/Styles/hp.ua3.core.tenantTheme.css"
+    }
+   ],
+   "fontsLoaded": [
+    {
+     "family": "Font Awesome 6 Brands",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Duotone",
+     "weight": "900",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "300",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "900",
+     "style": "normal",
+     "status": "loaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "100",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Brands",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Pro",
+     "weight": "900",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Pro",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Pro",
+     "weight": "300",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Duotone",
+     "weight": "900",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Poppins",
+     "weight": "normal",
+     "style": "normal",
+     "status": "loaded"
+    },
+    {
+     "family": "Poppins Bold",
+     "weight": "normal",
+     "style": "normal",
+     "status": "loaded"
+    }
+   ],
+   "computedFonts": {
+    "body": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "h1": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "h2": null,
+    "h3": null,
+    "label": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "input": "Arial",
+    "button": "Arial"
+   },
+   "serverHints": {
+    "requestVerificationTokenPresent": true,
+    "metaGeneratorTags": []
+   }
+  },
+  "ftp": {
+   "jquery": "3.7.1",
+   "kendo": "2026.1.415",
+   "kendoTheme": {
+    "stylesheetFiles": [],
+    "htmlClass": "k-webkit k-webkit157",
+    "bodyClass": "FileTransfer SearchFTPServerCredentials"
+   },
+   "bootstrap": null,
+   "scripts": [
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/vendor"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/app"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Kendo/Cultures/kendo.culture.en-US.min.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Kendo/Messages/kendo.messages.en-US.min.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.atAGlance.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.atAGlance.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.mainMenu.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.moduleContentPanels.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/Notification/hp.ua3.core.notification.broadcastMsg.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.modelEditor.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/hp.ua3.core.multiPanelEditor.js"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/Scripts/FileTransfer/hp.ua3.fileTransfer.searchFtpServerCredentials.js"
+    }
+   ],
+   "stylesheets": [
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/vendorcss"
+    },
+    {
+     "origin": "https://uximc.mms.tst.pgwcloud.net",
+     "path": "/bundles/appcss"
+    },
+    {
+     "origin": "https://mapssharedstorage01.blob.core.windows.net",
+     "path": "/finaltest/TenantContent/Commercial/Styles/hp.ua3.core.tenantTheme.css"
+    }
+   ],
+   "fontsLoaded": [
+    {
+     "family": "Font Awesome 6 Brands",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Duotone",
+     "weight": "900",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "300",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "900",
+     "style": "normal",
+     "status": "loaded"
+    },
+    {
+     "family": "Font Awesome 6 Pro",
+     "weight": "100",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Brands",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Pro",
+     "weight": "900",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Pro",
+     "weight": "400",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Pro",
+     "weight": "300",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Font Awesome 5 Duotone",
+     "weight": "900",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "FontAwesome",
+     "weight": "normal",
+     "style": "normal",
+     "status": "unloaded"
+    },
+    {
+     "family": "Poppins",
+     "weight": "normal",
+     "style": "normal",
+     "status": "loaded"
+    },
+    {
+     "family": "Poppins Bold",
+     "weight": "normal",
+     "style": "normal",
+     "status": "loaded"
+    }
+   ],
+   "computedFonts": {
+    "body": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "h1": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "h2": null,
+    "h3": null,
+    "label": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "input": "Arial",
+    "button": "Arial"
+   },
+   "serverHints": {
+    "requestVerificationTokenPresent": true,
+    "metaGeneratorTags": []
+   }
+  }
+ },
+ "note": "Live runtime stack fingerprint. Script/link paths omit query strings."
+}

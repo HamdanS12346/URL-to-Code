@@ -1,0 +1,227 @@
+{
+ "note": "Best-effort cross-module check. Uses captured menu.json hrefs to open two non-File-Transfer screens; does not click menu items.",
+ "targets": [
+  {
+   "module": "Administration",
+   "screen": "Broadcast Message",
+   "href": "/BroadcastMessage/BroadcastMessageSearch",
+   "url": "https://uximc.mms.tst.pgwcloud.net/BroadcastMessage/BroadcastMessageSearch",
+   "id": "m1"
+  },
+  {
+   "module": "Alert Notification",
+   "screen": "Event Configuration",
+   "href": "/Notifications/EventNotificationSearch",
+   "url": "https://uximc.mms.tst.pgwcloud.net/Notifications/EventNotificationSearch",
+   "id": "m2"
+  }
+ ],
+ "cfgShellHeaderOuterHTML": "<div id=\"pageHeader\" class=\"header headroom headroom--top headroom--bottom\" style=\"border-bottom: 0px;\">\n                <header id=\"pageBanner\" role=\"banner\">\n                    <div id=\"pageBannerLogo\" tabindex=\"0\">\n                                    <div>\n                                        <a href=\"/Home/MyHome/\"><img alt=\"Client Logo\" src=\"https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo.png?v=<redacted ip>\" title=\"Client Logo\" data-role=\"tooltip\"></a>\n                                    </div>\n\n                    </div>\n                    <div id=\"pageBannerTitle\">\n                                <div class=\"system-name\" tabindex=\"0\">Medicaid Management Solutions</div>\n\n                        <div class=\"app-title\" tabindex=\"0\"> Final Test</div>\n                    </div>\n                    <div class=\"mobile-nav\">\n                        <div id=\"pageBannerMenuMobile\">\n                            <nav aria-label=\"Hamburger Mobile Menu\">\n                                <div class=\"hamburger\">\n                                    <i class=\"fa-solid fa-bars clickable\" onclick=\"openMainMenu()\" onkeypress=\"openMainMenu()\" tabindex=\"0\" aria-label=\"Main Menu\" role=\"button\"></i>\n                                </div>\n                            </nav>\n                        </div>\n                    </div>\n                    <div class=\"desktop-nav\">\n                        \n\n\n\n\n\n<!-- script needs to go at top of page-->\n<script src=\"/Scripts/hp.ua3.core.atAGlance.js?v=30.0.0.2609\"></script>\n\n<div class=\"aag-menu-bar\">\n    <ul class=\"aag-menu k-reset k-header k-menu k-menu-horizontal\" data-role=\"menu\" aria-orientation=\"horizontal\" role=\"menubar\" tabindex=\"0\">\n\n                            <li id=\"AAGMenu.BroadcastMsg\" class=\"k-item k-menu-item k-first\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"javascript:getBroadcastMsg();\">Messages</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.ExternalLinks\" class=\"k-item k-menu-item\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"javascript:toggleVisibilityStyle('divExternalLinks');\">External Links</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.Favorites\" class=\"k-item k-menu-item\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"javascript:getFavorites();\">Favorites</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.ContactUs\" class=\"k-item k-menu-item\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"javascript:getContactUs();\">Contact Us</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.MyAccount\" class=\"k-item k-menu-item\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"/Home/MyAccount\">My Account</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.Logout\" class=\"k-item k-menu-item k-last\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"/Security/LogoutFromMenu\" onclick=\"return popupCloseWindow();\" onkeypress=\"return popupCloseWindow();\">Logout</a>\n\n                                        </div>\n\n                            </li>\n\n    </ul>\n</div>\n\n<script type=\"text/javascript\">\n    var contactUsUrlNewWindow = '/Notification/ContactUs';\n    var isExternalPortal = \"False\";\n    var activePortal = \"InternalPortal\";\n    var recaptchaSiteKey = \"6Ldpfk8UAAAAAGKJwZhq2CCLBhug3X7SsUpgQB3u\";\n    var isRecaptchaEnabled = \"false\";\n    isForMobile = \"False\" == \"True\";\n</script>\n                        <div id=\"pageBannerMenu\" class=\"display-block\" data-mainmenuitems=\"19\" data-drprtlmenuitems=\"0\" data-mbrprtlmenuitems=\"0\" data-mcoprtlmenuitems=\"0\" data-prvprtlmenuitems=\"0\">\n                            <nav aria-label=\"Hamburger Menu\">\n                                <div class=\"hamburger\">\n                                    <i class=\"fa-solid fa-bars clickable\" onclick=\"openMainMenu()\" onkeypress=\"openMainMenu()\" tabindex=\"0\" aria-label=\"Main Menu\" role=\"button\"></i>\n                                </div>\n                            </nav>\n                        </div>\n                    </div>\n                </header>\n                <script>\n                    $(document).ready(function () {\n                        // Resize <body> top padding based upon height of module content bar to allow proper content well alignment\n                        var bodypad = $(\"#pageHeader\").height();\n                        $(\"body\").css({ \"padding-top\": bodypad });\n                        $(\"#orientationPortrait\").css({ \"margin-top\": bodypad * -1 });\n                    });\n                </script>\n            </div>",
+ "screens": {
+  "m1": {
+   "url": "https://uximc.mms.tst.pgwcloud.net/BroadcastMessage/BroadcastMessageSearch",
+   "screenshot": "14-m1.png",
+   "headerOuterHTML": "<div id=\"pageHeader\" class=\"header headroom headroom--top headroom--bottom\" style=\"border-bottom: 0px;\">\n                <header id=\"pageBanner\" role=\"banner\">\n                    <div id=\"pageBannerLogo\" tabindex=\"0\">\n                                    <div>\n                                        <a href=\"/Home/MyHome/\"><img alt=\"Client Logo\" src=\"https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo.png?v=<redacted ip>\" title=\"Client Logo\" data-role=\"tooltip\"></a>\n                                    </div>\n\n                    </div>\n                    <div id=\"pageBannerTitle\">\n                                <div class=\"system-name\" tabindex=\"0\">Medicaid Management Solutions</div>\n\n                        <div class=\"app-title\" tabindex=\"0\"> Final Test</div>\n                    </div>\n                    <div class=\"mobile-nav\">\n                        <div id=\"pageBannerMenuMobile\">\n                            <nav aria-label=\"Hamburger Mobile Menu\">\n                                <div class=\"hamburger\">\n                                    <i class=\"fa-solid fa-bars clickable\" onclick=\"openMainMenu()\" onkeypress=\"openMainMenu()\" tabindex=\"0\" aria-label=\"Main Menu\" role=\"button\"></i>\n                                </div>\n                            </nav>\n                        </div>\n                    </div>\n                    <div class=\"desktop-nav\">\n                        \n\n\n\n\n\n<!-- script needs to go at top of page-->\n<script src=\"/Scripts/hp.ua3.core.atAGlance.js?v=30.0.0.2609\"></script>\n\n<div class=\"aag-menu-bar\">\n    <ul class=\"aag-menu k-reset k-header k-menu k-menu-horizontal\" data-role=\"menu\" aria-orientation=\"horizontal\" role=\"menubar\" tabindex=\"0\">\n\n                            <li id=\"AAGMenu.BroadcastMsg\" class=\"k-item k-menu-item k-first\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"javascript:getBroadcastMsg();\">Messages</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.ExternalLinks\" class=\"k-item k-menu-item\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"javascript:toggleVisibilityStyle('divExternalLinks');\">External Links</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.Favorites\" class=\"k-item k-menu-item\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"javascript:getFavorites();\">Favorites</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.ContactUs\" class=\"k-item k-menu-item\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"javascript:getContactUs();\">Contact Us</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.MyAccount\" class=\"k-item k-menu-item\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"/Home/MyAccount\">My Account</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.Logout\" class=\"k-item k-menu-item k-last\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"/Security/LogoutFromMenu\" onclick=\"return popupCloseWindow();\" onkeypress=\"return popupCloseWindow();\">Logout</a>\n\n                                        </div>\n\n                            </li>\n\n    </ul>\n</div>\n\n<script type=\"text/javascript\">\n    var contactUsUrlNewWindow = '/Notification/ContactUs';\n    var isExternalPortal = \"False\";\n    var activePortal = \"InternalPortal\";\n    var recaptchaSiteKey = \"6Ldpfk8UAAAAAGKJwZhq2CCLBhug3X7SsUpgQB3u\";\n    var isRecaptchaEnabled = \"false\";\n    isForMobile = \"False\" == \"True\";\n</script>\n                        <div id=\"pageBannerMenu\" class=\"display-block\" data-mainmenuitems=\"19\" data-drprtlmenuitems=\"0\" data-mbrprtlmenuitems=\"0\" data-mcoprtlmenuitems=\"0\" data-prvprtlmenuitems=\"0\">\n                            <nav aria-label=\"Hamburger Menu\">\n                                <div class=\"hamburger\">\n                                    <i class=\"fa-solid fa-bars clickable\" onclick=\"openMainMenu()\" onkeypress=\"openMainMenu()\" tabindex=\"0\" aria-label=\"Main Menu\" role=\"button\"></i>\n                                </div>\n                            </nav>\n                        </div>\n                    </div>\n                </header>\n                <script>\n                    $(document).ready(function () {\n                        // Resize <body> top padding based upon height of module content bar to allow proper content well alignment\n                        var bodypad = $(\"#pageHeader\").height();\n                        $(\"body\").css({ \"padding-top\": bodypad });\n                        $(\"#orientationPortrait\").css({ \"margin-top\": bodypad * -1 });\n                    });\n                </script>\n            </div>",
+   "headerDiff": null,
+   "stack": {
+    "jquery": "3.7.1",
+    "kendo": "2026.1.415",
+    "htmlClass": "k-webkit k-webkit157",
+    "bodyClass": "BroadcastMessage BroadcastMessageSearch",
+    "stylesheets": [
+     {
+      "origin": "https://uximc.mms.tst.pgwcloud.net",
+      "path": "/bundles/vendorcss"
+     },
+     {
+      "origin": "https://uximc.mms.tst.pgwcloud.net",
+      "path": "/bundles/appcss"
+     },
+     {
+      "origin": "https://mapssharedstorage01.blob.core.windows.net",
+      "path": "/finaltest/TenantContent/Commercial/Styles/hp.ua3.core.tenantTheme.css"
+     }
+    ]
+   },
+   "widgets": {
+    "dataRoleCount": 79,
+    "rolesTop": [
+     {
+      "role": "tooltip",
+      "count": 37
+     },
+     {
+      "role": "columnsorter",
+      "count": 9
+     },
+     {
+      "role": "popup",
+      "count": 9
+     },
+     {
+      "role": "menu",
+      "count": 5
+     },
+     {
+      "role": "dropdownlist",
+      "count": 5
+     },
+     {
+      "role": "staticlist",
+      "count": 5
+     },
+     {
+      "role": "datepicker",
+      "count": 2
+     },
+     {
+      "role": "validator",
+      "count": 1
+     },
+     {
+      "role": "button",
+      "count": 1
+     },
+     {
+      "role": "grid",
+      "count": 1
+     },
+     {
+      "role": "resizable",
+      "count": 1
+     },
+     {
+      "role": "selectable",
+      "count": 1
+     },
+     {
+      "role": "pager",
+      "count": 1
+     },
+     {
+      "role": "numerictextbox",
+      "count": 1
+     }
+    ]
+   },
+   "overlays": [],
+   "stylesheets": [
+    {
+     "href": "https://uximc.mms.tst.pgwcloud.net/bundles/vendorcss?v=j6BW90Be8k5YnVvyfnG_3sHGEYV-9Vo_N4YbGhJJTRs1"
+    },
+    {
+     "href": "https://uximc.mms.tst.pgwcloud.net/bundles/appcss?v=Mui5kyZU5_fFTxGoUfBPJfRJ_t0iuiBm2Tp8HPQKbWw1"
+    },
+    {
+     "href": "https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Styles/hp.ua3.core.tenantTheme.css?v=20.3.94.0"
+    }
+   ]
+  },
+  "m2": {
+   "url": "https://uximc.mms.tst.pgwcloud.net/Notifications/EventNotificationSearch",
+   "screenshot": "14-m2.png",
+   "headerOuterHTML": "<div id=\"pageHeader\" class=\"header headroom headroom--top headroom--bottom\" style=\"border-bottom: 0px;\">\n                <header id=\"pageBanner\" role=\"banner\">\n                    <div id=\"pageBannerLogo\" tabindex=\"0\">\n                                    <div>\n                                        <a href=\"/Home/MyHome/\"><img alt=\"Client Logo\" src=\"https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo.png?v=<redacted ip>\" title=\"Client Logo\" data-role=\"tooltip\"></a>\n                                    </div>\n\n                    </div>\n                    <div id=\"pageBannerTitle\">\n                                <div class=\"system-name\" tabindex=\"0\">Medicaid Management Solutions</div>\n\n                        <div class=\"app-title\" tabindex=\"0\"> Final Test</div>\n                    </div>\n                    <div class=\"mobile-nav\">\n                        <div id=\"pageBannerMenuMobile\">\n                            <nav aria-label=\"Hamburger Mobile Menu\">\n                                <div class=\"hamburger\">\n                                    <i class=\"fa-solid fa-bars clickable\" onclick=\"openMainMenu()\" onkeypress=\"openMainMenu()\" tabindex=\"0\" aria-label=\"Main Menu\" role=\"button\"></i>\n                                </div>\n                            </nav>\n                        </div>\n                    </div>\n                    <div class=\"desktop-nav\">\n                        \n\n\n\n\n\n<!-- script needs to go at top of page-->\n<script src=\"/Scripts/hp.ua3.core.atAGlance.js?v=30.0.0.2609\"></script>\n\n<div class=\"aag-menu-bar\">\n    <ul class=\"aag-menu k-reset k-header k-menu k-menu-horizontal\" data-role=\"menu\" aria-orientation=\"horizontal\" role=\"menubar\" tabindex=\"0\">\n\n                            <li id=\"AAGMenu.BroadcastMsg\" class=\"k-item k-menu-item k-first\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"javascript:getBroadcastMsg();\">Messages</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.ExternalLinks\" class=\"k-item k-menu-item\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"javascript:toggleVisibilityStyle('divExternalLinks');\">External Links</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.Favorites\" class=\"k-item k-menu-item\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"javascript:getFavorites();\">Favorites</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.ContactUs\" class=\"k-item k-menu-item\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"javascript:getContactUs();\">Contact Us</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.MyAccount\" class=\"k-item k-menu-item\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"/Home/MyAccount\">My Account</a>\n\n                                        </div>\n\n                            </li>\n                            <li id=\"AAGMenu.Logout\" class=\"k-item k-menu-item k-last\" role=\"menuitem\">\n                                        <div>\n                                                    <a class=\"k-link display-block\" href=\"/Security/LogoutFromMenu\" onclick=\"return popupCloseWindow();\" onkeypress=\"return popupCloseWindow();\">Logout</a>\n\n                                        </div>\n\n                            </li>\n\n    </ul>\n</div>\n\n<script type=\"text/javascript\">\n    var contactUsUrlNewWindow = '/Notification/ContactUs';\n    var isExternalPortal = \"False\";\n    var activePortal = \"InternalPortal\";\n    var recaptchaSiteKey = \"6Ldpfk8UAAAAAGKJwZhq2CCLBhug3X7SsUpgQB3u\";\n    var isRecaptchaEnabled = \"false\";\n    isForMobile = \"False\" == \"True\";\n</script>\n                        <div id=\"pageBannerMenu\" class=\"display-block\" data-mainmenuitems=\"19\" data-drprtlmenuitems=\"0\" data-mbrprtlmenuitems=\"0\" data-mcoprtlmenuitems=\"0\" data-prvprtlmenuitems=\"0\">\n                            <nav aria-label=\"Hamburger Menu\">\n                                <div class=\"hamburger\">\n                                    <i class=\"fa-solid fa-bars clickable\" onclick=\"openMainMenu()\" onkeypress=\"openMainMenu()\" tabindex=\"0\" aria-label=\"Main Menu\" role=\"button\"></i>\n                                </div>\n                            </nav>\n                        </div>\n                    </div>\n                </header>\n                <script>\n                    $(document).ready(function () {\n                        // Resize <body> top padding based upon height of module content bar to allow proper content well alignment\n                        var bodypad = $(\"#pageHeader\").height();\n                        $(\"body\").css({ \"padding-top\": bodypad });\n                        $(\"#orientationPortrait\").css({ \"margin-top\": bodypad * -1 });\n                    });\n                </script>\n            </div>",
+   "headerDiff": null,
+   "stack": {
+    "jquery": "3.7.1",
+    "kendo": "2026.1.415",
+    "htmlClass": "k-webkit k-webkit157",
+    "bodyClass": "Notifications EventNotificationSearch",
+    "stylesheets": [
+     {
+      "origin": "https://uximc.mms.tst.pgwcloud.net",
+      "path": "/bundles/vendorcss"
+     },
+     {
+      "origin": "https://uximc.mms.tst.pgwcloud.net",
+      "path": "/bundles/appcss"
+     },
+     {
+      "origin": "https://mapssharedstorage01.blob.core.windows.net",
+      "path": "/finaltest/TenantContent/Commercial/Styles/hp.ua3.core.tenantTheme.css"
+     }
+    ]
+   },
+   "widgets": {
+    "dataRoleCount": 60,
+    "rolesTop": [
+     {
+      "role": "tooltip",
+      "count": 33
+     },
+     {
+      "role": "columnsorter",
+      "count": 6
+     },
+     {
+      "role": "menu",
+      "count": 5
+     },
+     {
+      "role": "button",
+      "count": 2
+     },
+     {
+      "role": "textbox",
+      "count": 2
+     },
+     {
+      "role": "dropdownlist",
+      "count": 2
+     },
+     {
+      "role": "popup",
+      "count": 2
+     },
+     {
+      "role": "staticlist",
+      "count": 2
+     },
+     {
+      "role": "validator",
+      "count": 1
+     },
+     {
+      "role": "grid",
+      "count": 1
+     },
+     {
+      "role": "resizable",
+      "count": 1
+     },
+     {
+      "role": "selectable",
+      "count": 1
+     },
+     {
+      "role": "pager",
+      "count": 1
+     },
+     {
+      "role": "numerictextbox",
+      "count": 1
+     }
+    ]
+   },
+   "overlays": [],
+   "stylesheets": [
+    {
+     "href": "https://uximc.mms.tst.pgwcloud.net/bundles/vendorcss?v=j6BW90Be8k5YnVvyfnG_3sHGEYV-9Vo_N4YbGhJJTRs1"
+    },
+    {
+     "href": "https://uximc.mms.tst.pgwcloud.net/bundles/appcss?v=Mui5kyZU5_fFTxGoUfBPJfRJ_t0iuiBm2Tp8HPQKbWw1"
+    },
+    {
+     "href": "https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Styles/hp.ua3.core.tenantTheme.css?v=20.3.94.0"
+    }
+   ]
+  }
+ },
+ "answers": {
+  "shellMarkupIdenticalApartFromTitle": true,
+  "sameKendoVersion": true,
+  "widgetTypesSimilar": true,
+  "sameHelpIconsPattern": "[UNKNOWN: not probed specifically]",
+  "sameSearchResetCancelLayout": "[UNKNOWN: not probed specifically]"
+ }
+}

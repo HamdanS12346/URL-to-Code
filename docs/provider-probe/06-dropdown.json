@@ -1,0 +1,14 @@
+{
+ "note": "Dropdown probe (best-effort).",
+ "screens": {
+  "cfg": {
+   "error": "dropdown not found for label \"Owner Module\""
+  },
+  "trk": {
+   "error": "dropdown not found for label \"Owner Module\""
+  },
+  "ftp": {
+   "error": "dropdown not found for label \"Owner Module\""
+  }
+ }
+}

@@ -1,0 +1,359 @@
+{
+ "note": "Date/time picker probe (best-effort).",
+ "trk": {
+  "fromDate": {
+   "widgetSelector": "[data-pw-probe-dt=\"1\"]",
+   "calendar": {
+    "selector": "[data-pw-probe-cal=\"1\"]",
+    "outerHTML": "<div aria-hidden=\"true\" class=\"k-calendar-container k-popup\" data-role=\"popup\" id=\"FromDate_dateview\" style=\"font-size: 14px; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 400; line-height: 20px;\" data-pw-probe-cal=\"1\"><div id=\"0b81275b-c2b3-4c8c-88fe-99c0cc08ed96\" data-role=\"calendar\" class=\"k-calendar\"><div class=\"k-header k-hstack\">\n            <span tabindex=\"-1\" data-href=\"#\" data-action=\"prev\" role=\"button\" class=\"k-calendar-nav-prev k-button k-button-flat k-icon-button\" aria-label=\"Previous\" aria-disabled=\"false\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-left k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m160 256 192-128v256z\"></path></svg></span></span>\n            <span tabindex=\"-1\" data-href=\"#\" data-action=\"nav-up\" id=\"46ebad0a-90c1-4c10-a326-5201bf6c9ebf\" role=\"button\" class=\"k-calendar-nav-fast k-button k-button-flat k-flex\" aria-disabled=\"false\" title=\"Navigate to year view\"><span class=\"k-button-text\">November 2026</span></span>\n            <span tabindex=\"-1\" data-href=\"#\" data-action=\"next\" role=\"button\" class=\"k-calendar-nav-next k-button k-button-flat k-icon-button k-disabled\" aria-label=\"Next\" aria-disabled=\"true\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-right k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M352 256 160 384V128z\"></path></svg></span></span>\n        </div><div class=\"k-calendar-view k-align-items-start k-justify-content-center k-hstack k-calendar-monthview\"><table tabindex=\"0\" role=\"grid\" class=\"k-calendar-table\" cellspacing=\"0\" data-start=\"2026/10/1\" aria-labelledby=\"46ebad0a-90c1-4c10-a326-5201bf6c9ebf\" aria-activedescendant=\"fbeb3de4-ad70-4b80-a94c-196110e93a48\"><thead class=\"k-calendar-thead\"><tr role=\"row\" class=\"k-calendar-tr\"><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Sunday\">Su</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Monday\">Mo</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Tuesday\">Tu</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Wednesday\">We</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Thursday\">Th</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Friday\">Fr</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Saturday\">Sa</th></tr></thead><tbody class=\"k-calendar-tbody\"><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/1\" title=\"Sunday, November 1, 2026\">1</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/2\" title=\"Monday, November 2, 2026\">2</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/3\" title=\"Tuesday, November 3, 2026\">3</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/4\" title=\"Wednesday, November 4, 2026\">4</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/5\" title=\"Thursday, November 5, 2026\">5</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/6\" title=\"Friday, November 6, 2026\">6</span></td><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/7\" title=\"Saturday, November 7, 2026\">7</span></td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/8\" title=\"Sunday, November 8, 2026\">8</span></td><td class=\"k-calendar-td k-today k-focus\" role=\"gridcell\" aria-selected=\"true\" id=\"fbeb3de4-ad70-4b80-a94c-196110e93a48\" aria-label=\"Current focused date is Monday, November 9, 2026\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/9\" title=\"Monday, November 9, 2026\">9</span></td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td><td role=\"gridcell\">&nbsp;</td></tr></tbody></table></div><div class=\"k-calendar-footer\">\n                    <button tabindex=\"-1\" class=\"k-calendar-nav-today k-flex k-button k-button-flat k-button-primary\" role=\"link\" title=\"Monday, November 9, 2026\">\n                        <span class=\"k-button-text\">Monday, November 9, 2026</span>\n                    </button>\n                </div></div></div>",
+    "style": {
+     "selector": "[data-pw-probe-cal=\"1\"]",
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+     },
+     "style": {
+      "display": "flex",
+      "position": "static",
+      "box-sizing": "border-box",
+      "width": "auto",
+      "height": "auto",
+      "margin-top": "0px",
+      "margin-right": "0px",
+      "margin-bottom": "0px",
+      "margin-left": "0px",
+      "padding-top": "0px",
+      "padding-right": "0px",
+      "padding-bottom": "0px",
+      "padding-left": "0px",
+      "border-top": "1px solid rgba(0, 0, 0, 0.08)",
+      "border-right": "1px solid rgba(0, 0, 0, 0.08)",
+      "border-bottom": "1px solid rgba(0, 0, 0, 0.08)",
+      "border-left": "1px solid rgba(0, 0, 0, 0.08)",
+      "border-top-left-radius": "0px",
+      "border-top-right-radius": "0px",
+      "border-bottom-right-radius": "0px",
+      "border-bottom-left-radius": "0px",
+      "background-color": "rgb(255, 255, 255)",
+      "background-image": "none",
+      "color": "rgb(61, 61, 61)",
+      "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+      "font-size": "14px",
+      "font-weight": "400",
+      "font-style": "normal",
+      "line-height": "20px",
+      "letter-spacing": "normal",
+      "text-transform": "none",
+      "box-shadow": "rgba(0, 0, 0, 0.12) 0px 8px 10px 0px, rgba(0, 0, 0, 0.12) 0px 4px 16px 0px",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "all",
+      "animation": "none",
+      "z-index": "auto",
+      "overflow": "visible",
+      "cursor": "auto"
+     }
+    },
+    "sample": {
+     "selector": "[data-pw-probe-cal=\"1\"]",
+     "widgetAnimation": null,
+     "open": [
+      {
+       "t": 0,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 16,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 50,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 100,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 150,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 200,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 300,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 400,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 600,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      }
+     ],
+     "close": [
+      {
+       "t": 0,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 16,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 50,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 100,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 150,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 200,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 300,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 400,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      },
+      {
+       "t": 600,
+       "v": {
+        "rect": {
+         "x": 0,
+         "y": 0,
+         "width": 0,
+         "height": 0
+        },
+        "opacity": "1",
+        "transform": "none",
+        "height": "auto",
+        "overflow": "visible",
+        "clipPath": "none"
+       }
+      }
+     ]
+    },
+    "screenshot": "07-datetime-calendar.png"
+   }
+  }
+ }
+}
