@@ -412,7 +412,7 @@ async function q20(browser, cfg, pack, { viewport, dpr, username }) {
     }
     const url = node?.url || (href && !/^(#|javascript:)/i.test(href) ? href : null);
     if (!url) return;
-    leaves.push({ trail, href: href || null, url });
+    leaves.push({ trail, href: href || null, url: new URL(url, BASE).href });
   };
   for (const m of menu.modules || []) visit(m, [m.label]);
 
@@ -943,7 +943,9 @@ async function main() {
       headed: !headless,
     };
 
+    const only = (process.argv.find((a) => a.startsWith('--only=')) || '').slice(7).toLowerCase();
     const run = async (q, fn, errFile) => {
+      if (only && !q.toLowerCase().startsWith(only)) return;
       try {
         await fn();
         summary.push(row(q, 'ok'));
