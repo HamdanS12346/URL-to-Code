@@ -11,3 +11,6 @@ __pycache__/
 packs/*
 !packs/ffxfer-index-v1/
 !packs/ffxfer-index-v1/**
+!packs/fxfer-v3/
+!packs/fxfer-v3/**
+

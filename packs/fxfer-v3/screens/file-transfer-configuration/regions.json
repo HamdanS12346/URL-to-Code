@@ -1,0 +1,54 @@
+{
+ "reference": "reference.png",
+ "css_viewport_width": 1920,
+ "regions": [
+  {
+   "name": "band-01-file-transfer-configuration",
+   "box": [
+    0,
+    62,
+    1920,
+    77
+   ],
+   "selector": "#orientationLandscape > div:nth-of-type(2) > div:nth-of-type(3)"
+  },
+  {
+   "name": "band-02-pagebody",
+   "box": [
+    0,
+    139,
+    1920,
+    511
+   ],
+   "selector": "#pageBody"
+  },
+  {
+   "name": "band-03-disclaimer-the-website-is-prov",
+   "box": [
+    0,
+    650,
+    1920,
+    119
+   ],
+   "selector": "#orientationLandscape > div:nth-of-type(2) > footer"
+  },
+  {
+   "name": "img-logo-png-v-19-1-64-0",
+   "box": [
+    50,
+    2,
+    117,
+    57
+   ]
+  },
+  {
+   "name": "h1-file-transfer-configuration",
+   "box": [
+    212,
+    62,
+    199,
+    30
+   ]
+  }
+ ]
+}
