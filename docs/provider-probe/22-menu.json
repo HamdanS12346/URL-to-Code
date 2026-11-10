@@ -1,0 +1,267 @@
+{
+ "perPage": {
+  "home": {
+   "url": "https://uximc.mms.tst.pgwcloud.net/Home/MyHome/",
+   "timeline": [
+    {
+     "tag": "before",
+     "container": {
+      "className": "display-none",
+      "style": {
+       "display": "none",
+       "opacity": "1",
+       "transform": "none"
+      }
+     },
+     "backdropCount": 0,
+     "backdropOuterHTML": null,
+     "backdropStyle": null,
+     "activeElement": {
+      "tag": "body",
+      "id": null,
+      "className": "Home MyHome",
+      "text": "For the best user experience, please view in Landscape mode. Medicaid Management"
+     }
+    },
+    {
+     "tag": "t+50ms",
+     "container": {
+      "className": "display-flex",
+      "style": {
+       "display": "flex",
+       "opacity": "1",
+       "transform": "none"
+      }
+     },
+     "backdropCount": 1,
+     "backdropOuterHTML": "<div class=\"disabled-backdrop\"></div>",
+     "backdropStyle": {
+      "display": "block",
+      "opacity": "0.3",
+      "transform": "none"
+     },
+     "activeElement": {
+      "tag": "i",
+      "id": null,
+      "className": "fa-solid fa-bars clickable",
+      "text": null
+     }
+    },
+    {
+     "tag": "t+300ms",
+     "container": {
+      "className": "display-flex",
+      "style": {
+       "display": "flex",
+       "opacity": "1",
+       "transform": "none"
+      }
+     },
+     "backdropCount": 1,
+     "backdropOuterHTML": "<div class=\"disabled-backdrop\"></div>",
+     "backdropStyle": {
+      "display": "block",
+      "opacity": "0.3",
+      "transform": "none"
+     },
+     "activeElement": {
+      "tag": "i",
+      "id": null,
+      "className": "fa-solid fa-bars clickable",
+      "text": null
+     }
+    },
+    {
+     "tag": "t+900ms",
+     "container": {
+      "className": "display-flex",
+      "style": {
+       "display": "flex",
+       "opacity": "1",
+       "transform": "none"
+      }
+     },
+     "backdropCount": 1,
+     "backdropOuterHTML": "<div class=\"disabled-backdrop\"></div>",
+     "backdropStyle": {
+      "display": "block",
+      "opacity": "0.3",
+      "transform": "none"
+     },
+     "activeElement": {
+      "tag": "i",
+      "id": null,
+      "className": "fa-solid fa-bars clickable",
+      "text": null
+     }
+    }
+   ],
+   "kendoMenuOptions": {
+    "animation": {
+     "open": {
+      "duration": 200
+     },
+     "close": {
+      "duration": 100
+     }
+    },
+    "hoverDelay": 100,
+    "direction": "default",
+    "orientation": "vertical",
+    "openOnClick": false
+   },
+   "flyout": {
+    "at50": null,
+    "at300": {
+     "rect": {
+      "x": 1431.875,
+      "y": 270.66668701171875,
+      "width": 200.125,
+      "height": 109.32292175292969
+     },
+     "inlineStyle": "display: block; position: absolute; z-index: 10002; top: 180px; left: -200.135px;"
+    },
+    "screenshot": "22-menu-flyout-home.png"
+   },
+   "closedBy": {
+    "closeButtonStillOpen": false,
+    "escapeStillOpen": true,
+    "backdropClickStillOpen": true
+   }
+  },
+  "cfg": {
+   "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations",
+   "timeline": [
+    {
+     "tag": "before",
+     "container": {
+      "className": "display-none",
+      "style": {
+       "display": "none",
+       "opacity": "1",
+       "transform": "none"
+      }
+     },
+     "backdropCount": 0,
+     "backdropOuterHTML": null,
+     "backdropStyle": null,
+     "activeElement": {
+      "tag": "input",
+      "id": "ConfigId",
+      "className": "editor-control k-input-inner",
+      "text": null
+     }
+    },
+    {
+     "tag": "t+50ms",
+     "container": {
+      "className": "display-flex",
+      "style": {
+       "display": "flex",
+       "opacity": "1",
+       "transform": "none"
+      }
+     },
+     "backdropCount": 1,
+     "backdropOuterHTML": "<div class=\"disabled-backdrop\"></div>",
+     "backdropStyle": {
+      "display": "block",
+      "opacity": "0.3",
+      "transform": "none"
+     },
+     "activeElement": {
+      "tag": "i",
+      "id": null,
+      "className": "fa-solid fa-bars clickable",
+      "text": null
+     }
+    },
+    {
+     "tag": "t+300ms",
+     "container": {
+      "className": "display-flex",
+      "style": {
+       "display": "flex",
+       "opacity": "1",
+       "transform": "none"
+      }
+     },
+     "backdropCount": 1,
+     "backdropOuterHTML": "<div class=\"disabled-backdrop\"></div>",
+     "backdropStyle": {
+      "display": "block",
+      "opacity": "0.3",
+      "transform": "none"
+     },
+     "activeElement": {
+      "tag": "i",
+      "id": null,
+      "className": "fa-solid fa-bars clickable",
+      "text": null
+     }
+    },
+    {
+     "tag": "t+900ms",
+     "container": {
+      "className": "display-flex",
+      "style": {
+       "display": "flex",
+       "opacity": "1",
+       "transform": "none"
+      }
+     },
+     "backdropCount": 1,
+     "backdropOuterHTML": "<div class=\"disabled-backdrop\"></div>",
+     "backdropStyle": {
+      "display": "block",
+      "opacity": "0.3",
+      "transform": "none"
+     },
+     "activeElement": {
+      "tag": "i",
+      "id": null,
+      "className": "fa-solid fa-bars clickable",
+      "text": null
+     }
+    }
+   ],
+   "kendoMenuOptions": {
+    "animation": {
+     "open": {
+      "duration": 200
+     },
+     "close": {
+      "duration": 100
+     }
+    },
+    "hoverDelay": 100,
+    "direction": "default",
+    "orientation": "vertical",
+    "openOnClick": false
+   },
+   "flyout": {
+    "at50": null,
+    "at300": {
+     "rect": {
+      "x": 1431.875,
+      "y": 270.66668701171875,
+      "width": 200.125,
+      "height": 109.32292175292969
+     },
+     "inlineStyle": "overflow: hidden; display: block; position: absolute; z-index: 10002; top: 180px; left: -200.135px;"
+    },
+    "screenshot": "22-menu-flyout-cfg.png"
+   },
+   "closedBy": {
+    "closeButtonStillOpen": false,
+    "escapeStillOpen": true,
+    "backdropClickStillOpen": true
+   }
+  }
+ },
+ "video": "22-menu.webm",
+ "screenshots": [
+  "22-menu-flyout-home.png",
+  "22-menu-flyout-cfg.png"
+ ]
+}

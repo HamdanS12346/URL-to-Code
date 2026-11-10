@@ -1,0 +1,1286 @@
+{
+ "jsLinks": [],
+ "leavesCount": 160,
+ "leaves": [
+  {
+   "trail": [
+    "Administration",
+    "Broadcast Message"
+   ],
+   "href": "/BroadcastMessage/BroadcastMessageSearch",
+   "url": "/BroadcastMessage/BroadcastMessageSearch"
+  },
+  {
+   "trail": [
+    "Administration",
+    "FAQ's"
+   ],
+   "href": "/FAQMaintenance/FAQMaintenanceSearch",
+   "url": "/FAQMaintenance/FAQMaintenanceSearch"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Application Settings"
+   ],
+   "href": "/AppSetting/ManageAppSettings",
+   "url": "/AppSetting/ManageAppSettings"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage HTML Blocks"
+   ],
+   "href": "/Localization/ManageHtmlBlocks",
+   "url": "/Localization/ManageHtmlBlocks"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Help"
+   ],
+   "href": "/ManageHelpContent/HelpContentSearch",
+   "url": "/ManageHelpContent/HelpContentSearch"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Images"
+   ],
+   "href": "/Localization/ManageImages",
+   "url": "/Localization/ManageImages"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage IOC Settings"
+   ],
+   "href": "/AppSetting/ManageIocSettings",
+   "url": "/AppSetting/ManageIocSettings"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Labels"
+   ],
+   "href": "/Localization/ManageLabels",
+   "url": "/Localization/ManageLabels"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Menus"
+   ],
+   "href": "/Menu/ManageMenus",
+   "url": "/Menu/ManageMenus"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Menu Items"
+   ],
+   "href": "/Menu/ManageMenuItems",
+   "url": "/Menu/ManageMenuItems"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Messages"
+   ],
+   "href": "/Localization/ManageMessages",
+   "url": "/Localization/ManageMessages"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Security Functions"
+   ],
+   "href": "/Localization/ManageSecurityFunctions",
+   "url": "/Localization/ManageSecurityFunctions"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Security Rights"
+   ],
+   "href": "/Localization/ManageSecurityRights",
+   "url": "/Localization/ManageSecurityRights"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Security Roles"
+   ],
+   "href": "/Localization/ManageSecurityRoles",
+   "url": "/Localization/ManageSecurityRoles"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Services"
+   ],
+   "href": "/Service/ManageServices",
+   "url": "/Service/ManageServices"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Subscriptions"
+   ],
+   "href": "/EventSubscriptions/ManageSubscription",
+   "url": "/EventSubscriptions/ManageSubscription"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Module Events"
+   ],
+   "href": "/ModuleEvents/ManageModuleEvents",
+   "url": "/ModuleEvents/ManageModuleEvents"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage Users"
+   ],
+   "href": "/UserMaintenance/ManageUsers",
+   "url": "/UserMaintenance/ManageUsers"
+  },
+  {
+   "trail": [
+    "Administration",
+    "Manage User Invitations"
+   ],
+   "href": "/UserMaintenance/ManageUserInvitations",
+   "url": "/UserMaintenance/ManageUserInvitations"
+  },
+  {
+   "trail": [
+    "Alert Notification",
+    "Event Configuration"
+   ],
+   "href": "/Notifications/EventNotificationSearch",
+   "url": "/Notifications/EventNotificationSearch"
+  },
+  {
+   "trail": [
+    "Alert Notification",
+    "Subscriber Configuration"
+   ],
+   "href": "/Notifications/SubscriberSearch",
+   "url": "/Notifications/SubscriberSearch"
+  },
+  {
+   "trail": [
+    "Alert Notification",
+    "Event Subscription"
+   ],
+   "href": "/Notifications/SubscriptionDetails",
+   "url": "/Notifications/SubscriptionDetails"
+  },
+  {
+   "trail": [
+    "Alert Notification",
+    "Tracking"
+   ],
+   "href": "/Notifications/NotificationTracking",
+   "url": "/Notifications/NotificationTracking"
+  },
+  {
+   "trail": [
+    "Claims Management",
+    "Search Claims"
+   ],
+   "href": "/ClaimsManagement/SearchClaims",
+   "url": "/ClaimsManagement/SearchClaims"
+  },
+  {
+   "trail": [
+    "Claims Management",
+    "Pro DUR"
+   ],
+   "href": "/ProDUR/ProDURDashBoard",
+   "url": "/ProDUR/ProDURDashBoard"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "Dashboard"
+   ],
+   "href": "/DrugRebate/Dashboard",
+   "url": "/DrugRebate/Dashboard"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "Labeler"
+   ],
+   "href": "/DrugRebate/SearchLabelerInformation",
+   "url": "/DrugRebate/SearchLabelerInformation"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "NDC"
+   ],
+   "href": "/NationalDrugCode/SearchNationalDrugCode",
+   "url": "/NationalDrugCode/SearchNationalDrugCode"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "Claim Level Detail"
+   ],
+   "href": "/ClaimDetails/SearchClaims",
+   "url": "/ClaimDetails/SearchClaims"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "CCN List"
+   ],
+   "href": "/CashControlNumbers/SearchCashControlNumbers",
+   "url": "/CashControlNumbers/SearchCashControlNumbers"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "ROSI/PQAS List"
+   ],
+   "href": "/DrugRebate/SearchRosiPqas",
+   "url": "/DrugRebate/SearchRosiPqas"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "Disputes List"
+   ],
+   "href": "/Invoice/SearchNDCDisputes",
+   "url": "/Invoice/SearchNDCDisputes"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "Invoice Management"
+   ],
+   "href": "/Invoice/SearchInvoiceInquiry",
+   "url": "/Invoice/SearchInvoiceInquiry"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "NDC Invoice Inquiry"
+   ],
+   "href": "/NDCInvoice/SearchNDCInvoiceInquiry",
+   "url": "/NDCInvoice/SearchNDCInvoiceInquiry"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "CCN/NDC Association"
+   ],
+   "href": "/Invoice/SearchCCNAssociated",
+   "url": "/Invoice/SearchCCNAssociated"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "PPA Maintenance"
+   ],
+   "href": "/PPAMaintenance/SearchPPAMaintenance",
+   "url": "/PPAMaintenance/SearchPPAMaintenance"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "Incremental Adjustments"
+   ],
+   "href": "/IncrementalAdjustment/SearchIncrementalAdjustment",
+   "url": "/IncrementalAdjustment/SearchIncrementalAdjustment"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "Postmark Dates"
+   ],
+   "href": "/PostmarkDates/PostmarkDates",
+   "url": "/PostmarkDates/PostmarkDates"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "T-Bill Rates"
+   ],
+   "href": "/DrugRebate/SearchTreasuryBillRates",
+   "url": "/DrugRebate/SearchTreasuryBillRates"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "340b Providers"
+   ],
+   "href": "/DrugRebate/SearchProvider340b",
+   "url": "/DrugRebate/SearchProvider340b"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "Provider Recoupment"
+   ],
+   "href": "/ProviderRecoupment/SearchProviderRecoupment",
+   "url": "/ProviderRecoupment/SearchProviderRecoupment"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "Invoice Process Flags"
+   ],
+   "href": "/DrugRebate/InvoiceProcessFlags",
+   "url": "/DrugRebate/InvoiceProcessFlags"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "Fund Codes"
+   ],
+   "href": "/FundCodes/SearchFundCodes",
+   "url": "/FundCodes/SearchFundCodes"
+  },
+  {
+   "trail": [
+    "Drug Rebate",
+    "Web Information"
+   ],
+   "href": "/WebAdmin/WebAdmin",
+   "url": "/WebAdmin/WebAdmin"
+  },
+  {
+   "trail": [
+    "UI Examples",
+    "Page Elements / Widgets"
+   ],
+   "href": "/Employee/UIExamples",
+   "url": "/Employee/UIExamples"
+  },
+  {
+   "trail": [
+    "File Transfer Services",
+    "File Transfer Configuration"
+   ],
+   "href": "/FileTransfer/SearchSourceLocations",
+   "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations"
+  },
+  {
+   "trail": [
+    "File Transfer Services",
+    "File Transfer Tracking"
+   ],
+   "href": "/FileTransfer/SearchFileTransferTracking",
+   "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking"
+  },
+  {
+   "trail": [
+    "File Transfer Services",
+    "FTP Server Credentials"
+   ],
+   "href": "/FileTransfer/SearchFTPServerCredentials",
+   "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFTPServerCredentials"
+  },
+  {
+   "trail": [
+    "Integration",
+    "Event To File Query Builder"
+   ],
+   "href": "/EventToFileWizard/SearchEventToFileMetadata",
+   "url": "/EventToFileWizard/SearchEventToFileMetadata"
+  },
+  {
+   "trail": [
+    "Integration",
+    "File To Event Metadata"
+   ],
+   "href": "/EventsDistributor/SearchFileDefinition",
+   "url": "/EventsDistributor/SearchFileDefinition"
+  },
+  {
+   "trail": [
+    "Integration",
+    "File To Event Orchestration"
+   ],
+   "href": "/FileToEventOrchestration/SearchExternalOrchestration",
+   "url": "/FileToEventOrchestration/SearchExternalOrchestration"
+  },
+  {
+   "trail": [
+    "Integration",
+    "Event Status Tracking"
+   ],
+   "href": "/EventStatusTracking/SearchEventStatus",
+   "url": "/EventStatusTracking/SearchEventStatus"
+  },
+  {
+   "trail": [
+    "Integration",
+    "System Process Tracking"
+   ],
+   "href": "/SystemProcessTracking/SearchSystemProcessTracking",
+   "url": "/SystemProcessTracking/SearchSystemProcessTracking"
+  },
+  {
+   "trail": [
+    "Integration",
+    "Dashboard"
+   ],
+   "href": "/Integration/Dashboard",
+   "url": "/Integration/Dashboard"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "MCE"
+   ],
+   "href": "/ManagedCare/SearchMCE",
+   "url": "/ManagedCare/SearchMCE"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "Member"
+   ],
+   "href": "/ManagedCare/SearchMember",
+   "url": "/ManagedCare/SearchMember"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "Network"
+   ],
+   "href": "/Network/SearchNetwork",
+   "url": "/Network/SearchNetwork"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "Provider"
+   ],
+   "href": "/ManagedCare/SearchPCPProvider",
+   "url": "/ManagedCare/SearchPCPProvider"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "HIPAA Transactions"
+   ],
+   "href": "/ManagedCare/EDITxnSearch",
+   "url": "/ManagedCare/EDITxnSearch"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "Lock Out"
+   ],
+   "href": "/ManagedCare/SearchLockOutByPCPMCEMember",
+   "url": "/ManagedCare/SearchLockOutByPCPMCEMember"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "Screening Results"
+   ],
+   "href": "/ManagedCare/ScreeningResults",
+   "url": "/ManagedCare/ScreeningResults"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "Capitation"
+   ],
+   "href": "/ManagedCare/Capitation",
+   "url": "/ManagedCare/Capitation"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "Reports"
+   ],
+   "href": "/ManagedCare/ManagedCareReports",
+   "url": "/ManagedCare/ManagedCareReports"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "Reference Data"
+   ],
+   "href": "/ManagedCare/ReferenceData",
+   "url": "/ManagedCare/ReferenceData"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "Provider MCE Enrollment"
+   ],
+   "href": "/ManagedCare/SearchProviderMCEEnrollment",
+   "url": "/ManagedCare/SearchProviderMCEEnrollment"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "File Upload"
+   ],
+   "href": "/ManagedCare/SearchCapitationFileUpload",
+   "url": "/ManagedCare/SearchCapitationFileUpload"
+  },
+  {
+   "trail": [
+    "Managed Care",
+    "Mass Transfer"
+   ],
+   "href": "/ManagedCare/MassTransferSearch",
+   "url": "/ManagedCare/MassTransferSearch"
+  },
+  {
+   "trail": [
+    "Member Management",
+    "Member"
+   ],
+   "href": "/MemberManagement/SearchMember",
+   "url": "/MemberManagement/SearchMember"
+  },
+  {
+   "trail": [
+    "Member Management",
+    "Medicaid Case"
+   ],
+   "href": "/MedicaidCase/SearchMedicaidCase",
+   "url": "/MedicaidCase/SearchMedicaidCase"
+  },
+  {
+   "trail": [
+    "Member Management",
+    "Fulfillment Materials"
+   ],
+   "href": "/FulfillmentMaterials/FulfillmentMaterials",
+   "url": "/FulfillmentMaterials/FulfillmentMaterials"
+  },
+  {
+   "trail": [
+    "Member Management",
+    "Fraud Protection"
+   ],
+   "href": "/FraudProtection/SearchFraudProtection",
+   "url": "/FraudProtection/SearchFraudProtection"
+  },
+  {
+   "trail": [
+    "Member Management",
+    "Group"
+   ],
+   "href": "/Group/SearchGroup",
+   "url": "/Group/SearchGroup"
+  },
+  {
+   "trail": [
+    "Member Management",
+    "Broker/Sales/TPA"
+   ],
+   "href": "/BrokerSalesTPA/SearchBrokerSalesTPA",
+   "url": "/BrokerSalesTPA/SearchBrokerSalesTPA"
+  },
+  {
+   "trail": [
+    "Member Management",
+    "Person"
+   ],
+   "href": "/Person/SearchPerson",
+   "url": "/Person/SearchPerson"
+  },
+  {
+   "trail": [
+    "Plan Management",
+    "Reference Data"
+   ],
+   "href": "/PlanManagement/ReferenceData",
+   "url": "/PlanManagement/ReferenceData"
+  },
+  {
+   "trail": [
+    "Plan Management",
+    "Pharmacy Related Data"
+   ],
+   "href": "/PlanManagement/SearchPharmacyRelatedData",
+   "url": "/PlanManagement/SearchPharmacyRelatedData"
+  },
+  {
+   "trail": [
+    "Plan Management",
+    "Related Data"
+   ],
+   "href": "/PlanManagement/SearchRelatedInformation",
+   "url": "/PlanManagement/SearchRelatedInformation"
+  },
+  {
+   "trail": [
+    "Plan Management",
+    "Rate Setting"
+   ],
+   "href": "/PlanManagement/SearchRates",
+   "url": "/PlanManagement/SearchRates"
+  },
+  {
+   "trail": [
+    "Plan Management",
+    "File Upload"
+   ],
+   "href": "/PlanManagement/FileUpload",
+   "url": "/PlanManagement/FileUpload"
+  },
+  {
+   "trail": [
+    "Plan Management",
+    "Manage Cycles"
+   ],
+   "href": "/PlanManagement/SearchCycleSchedule",
+   "url": "/PlanManagement/SearchCycleSchedule"
+  },
+  {
+   "trail": [
+    "Program Integrity",
+    "Dashboard"
+   ],
+   "href": "/ProgramIntegrity/PIURDashboard",
+   "url": "/ProgramIntegrity/PIURDashboard"
+  },
+  {
+   "trail": [
+    "Program Integrity",
+    "Manage Configurations"
+   ],
+   "href": "/ProgramIntegrity/ManageConfigurations",
+   "url": "/ProgramIntegrity/ManageConfigurations"
+  },
+  {
+   "trail": [
+    "Program Integrity",
+    "Custom Peer Groups"
+   ],
+   "href": "/ProgramIntegrity/CustomPeerGroupSearch",
+   "url": "/ProgramIntegrity/CustomPeerGroupSearch"
+  },
+  {
+   "trail": [
+    "Program Integrity",
+    "Service Types"
+   ],
+   "href": "/ProgramIntegrity/ServiceTypeSearch",
+   "url": "/ProgramIntegrity/ServiceTypeSearch"
+  },
+  {
+   "trail": [
+    "Program Integrity",
+    "Study Request"
+   ],
+   "href": "/ProgramIntegrity/StudyRequestSearch",
+   "url": "/ProgramIntegrity/StudyRequestSearch"
+  },
+  {
+   "trail": [
+    "Program Integrity",
+    "Suppressed Entities"
+   ],
+   "href": "/ProgramIntegrity/SuppressEntitySearch",
+   "url": "/ProgramIntegrity/SuppressEntitySearch"
+  },
+  {
+   "trail": [
+    "Program Integrity",
+    "Study Analysis Catalog"
+   ],
+   "href": "/ProgramIntegrity/StudyAnalysisCatalog",
+   "url": "/ProgramIntegrity/StudyAnalysisCatalog"
+  },
+  {
+   "trail": [
+    "Program Integrity",
+    "Manage Assignment Permissions"
+   ],
+   "href": "/ProgramIntegrity/SearchAssignmentPermissions",
+   "url": "/ProgramIntegrity/SearchAssignmentPermissions"
+  },
+  {
+   "trail": [
+    "Program Integrity",
+    "Predictive Model Definition"
+   ],
+   "href": "/ProgramIntegrity/SearchPMDefinition",
+   "url": "/ProgramIntegrity/SearchPMDefinition"
+  },
+  {
+   "trail": [
+    "Program Integrity",
+    "Targeted Query Definition"
+   ],
+   "href": "/ProgramIntegrity/TargetedQueryDefinitionSearch",
+   "url": "/ProgramIntegrity/TargetedQueryDefinitionSearch"
+  },
+  {
+   "trail": [
+    "Program Integrity",
+    "Analysis Review"
+   ],
+   "href": "/ProgramIntegrity/AnalysisReviewHome",
+   "url": "/ProgramIntegrity/AnalysisReviewHome"
+  },
+  {
+   "trail": [
+    "Program Integrity",
+    "Case Request"
+   ],
+   "href": "/ProgramIntegrity/CaseRequestSearch",
+   "url": "/ProgramIntegrity/CaseRequestSearch"
+  },
+  {
+   "trail": [
+    "PI Case Tracking",
+    "Dashboard"
+   ],
+   "href": "/ProgramIntegrityCT/Dashboard",
+   "url": "/ProgramIntegrityCT/Dashboard"
+  },
+  {
+   "trail": [
+    "PI Case Tracking",
+    "Case"
+   ],
+   "href": "/ProgramIntegrityCT/SearchCase",
+   "url": "/ProgramIntegrityCT/SearchCase"
+  },
+  {
+   "trail": [
+    "PI Case Tracking",
+    "Intake"
+   ],
+   "href": "/ProgramIntegrityCT/SearchIntake",
+   "url": "/ProgramIntegrityCT/SearchIntake"
+  },
+  {
+   "trail": [
+    "PI Case Tracking",
+    "Review Types"
+   ],
+   "href": "/ProgramIntegrityCT/SearchReviewTypes",
+   "url": "/ProgramIntegrityCT/SearchReviewTypes"
+  },
+  {
+   "trail": [
+    "PI Case Tracking",
+    "SuperCase"
+   ],
+   "href": "/ProgramIntegrityCT/SearchSuperCase",
+   "url": "/ProgramIntegrityCT/SearchSuperCase"
+  },
+  {
+   "trail": [
+    "PI Case Tracking",
+    "Contact"
+   ],
+   "href": "/ProgramIntegrityCT/SearchContact",
+   "url": "/ProgramIntegrityCT/SearchContact"
+  },
+  {
+   "trail": [
+    "PI Case Tracking",
+    "User Information"
+   ],
+   "href": "/ProgramIntegrityCT/SearchUserInformation",
+   "url": "/ProgramIntegrityCT/SearchUserInformation"
+  },
+  {
+   "trail": [
+    "PI Case Tracking",
+    "Letter Template"
+   ],
+   "href": "/ProgramIntegrityCT/SearchLetterTemplate",
+   "url": "/ProgramIntegrityCT/SearchLetterTemplate"
+  },
+  {
+   "trail": [
+    "PI Case Tracking",
+    "Bulk Load"
+   ],
+   "href": "/ProgramIntegrityCT/SearchBulkLoad",
+   "url": "/ProgramIntegrityCT/SearchBulkLoad"
+  },
+  {
+   "trail": [
+    "Provider Enrollment",
+    "Dashboard"
+   ],
+   "href": "/ProviderEnrollment/Dashboard",
+   "url": "/ProviderEnrollment/Dashboard"
+  },
+  {
+   "trail": [
+    "Provider Enrollment",
+    "Search Enrollment Application"
+   ],
+   "href": "/ProviderEnrollment/SearchProviderApplication",
+   "url": "/ProviderEnrollment/SearchProviderApplication"
+  },
+  {
+   "trail": [
+    "Provider Enrollment",
+    "Search Enrollment Reports"
+   ],
+   "href": "/ProviderEnrollment/SearchEnrollmentReports",
+   "url": "/ProviderEnrollment/SearchEnrollmentReports"
+  },
+  {
+   "trail": [
+    "Provider Enrollment",
+    "Workflow Dashboard"
+   ],
+   "href": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/dashboard",
+   "url": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/dashboard"
+  },
+  {
+   "trail": [
+    "Provider Enrollment",
+    "Workflow Applications"
+   ],
+   "href": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/applications",
+   "url": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/applications"
+  },
+  {
+   "trail": [
+    "Provider Enrollment",
+    "Workflow Configuration"
+   ],
+   "href": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/configuration",
+   "url": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/configuration"
+  },
+  {
+   "trail": [
+    "Provider Enrollment",
+    "Workflow Tasks"
+   ],
+   "href": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/tasks",
+   "url": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/tasks"
+  },
+  {
+   "trail": [
+    "Provider Enrollment",
+    "New Enrollment Entry"
+   ],
+   "href": "/ProviderEnrollment/CreateSecureEnrollment",
+   "url": "/ProviderEnrollment/CreateSecureEnrollment"
+  },
+  {
+   "trail": [
+    "Provider Enrollment",
+    "Resume Enrollment Entry"
+   ],
+   "href": "/ProviderEnrollment/ResumeSecureEnrollment",
+   "url": "/ProviderEnrollment/ResumeSecureEnrollment"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "Providers"
+   ],
+   "href": "/ProviderManagement/SearchProvider",
+   "url": "/ProviderManagement/SearchProvider"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "Owners and Managing Employees"
+   ],
+   "href": "/ProviderManagement/SearchOwnerManagingEmployeeAssociation",
+   "url": "/ProviderManagement/SearchOwnerManagingEmployeeAssociation"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "IRS W-9 Tax IDs"
+   ],
+   "href": "/ProviderManagement/SearchIRSTaxId",
+   "url": "/ProviderManagement/SearchIRSTaxId"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "Provider Summary"
+   ],
+   "href": "/ProviderManagement/SearchProviderSummary",
+   "url": "/ProviderManagement/SearchProviderSummary"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "CLIA Numbers"
+   ],
+   "href": "/ProviderManagement/SearchCLIANumber",
+   "url": "/ProviderManagement/SearchCLIANumber"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "EFT Enrollments"
+   ],
+   "href": "/ProviderManagement/SearchBaseEFTEnrollments",
+   "url": "/ProviderManagement/SearchBaseEFTEnrollments"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "Workflow Items"
+   ],
+   "href": "/ProviderManagement/CompletedWorkItems",
+   "url": "/ProviderManagement/CompletedWorkItems"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "MCO Enrollment List"
+   ],
+   "href": "/ProviderManagement/SearchMCOProvider",
+   "url": "/ProviderManagement/SearchMCOProvider"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "Bulk Transactions Within Base ID"
+   ],
+   "href": "/ProviderManagement/SearchBulkTransaction",
+   "url": "/ProviderManagement/SearchBulkTransaction"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "NPPR Transactions"
+   ],
+   "href": "/ProviderManagement/SearchNPPR",
+   "url": "/ProviderManagement/SearchNPPR"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "PRN Transactions"
+   ],
+   "href": "/ProviderManagement/SearchPRN",
+   "url": "/ProviderManagement/SearchPRN"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "EP Workflow Transactions"
+   ],
+   "href": "/ProviderManagement/SearchEPTransaction",
+   "url": "/ProviderManagement/SearchEPTransaction"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "Base ID Termination Transactions"
+   ],
+   "href": "/ProviderManagement/SearchProviderBaseIDTermTransaction",
+   "url": "/ProviderManagement/SearchProviderBaseIDTermTransaction"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "Mass Change Transactions"
+   ],
+   "href": "/ProviderManagement/SearchMassChangeTransaction",
+   "url": "/ProviderManagement/SearchMassChangeTransaction"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "Change Of Ownership Transactions"
+   ],
+   "href": "/ProviderManagement/SearchChangeOfOwnershipTransactions",
+   "url": "/ProviderManagement/SearchChangeOfOwnershipTransactions"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "Provider Dashboard"
+   ],
+   "href": "/ProviderManagement/Dashboard",
+   "url": "/ProviderManagement/Dashboard"
+  },
+  {
+   "trail": [
+    "Provider Management",
+    "Managed Care Entities"
+   ],
+   "href": "/ProviderManagedCare/SearchManagedCareEntity",
+   "url": "/ProviderManagedCare/SearchManagedCareEntity"
+  },
+  {
+   "trail": [
+    "Screening/Credentialing",
+    "Dashboard"
+   ],
+   "href": "/Credentialing/Dashboard",
+   "url": "/Credentialing/Dashboard"
+  },
+  {
+   "trail": [
+    "Screening/Credentialing",
+    "Credentialing Application Review"
+   ],
+   "href": "http://https://apnmc.shared.tst.pgwcloud.net/suite/sites/credentialing-review",
+   "url": "http://https://apnmc.shared.tst.pgwcloud.net/suite/sites/credentialing-review"
+  },
+  {
+   "trail": [
+    "Screening/Credentialing",
+    "Search"
+   ],
+   "href": "/Credentialing/Search",
+   "url": "/Credentialing/Search"
+  },
+  {
+   "trail": [
+    "Screening/Credentialing",
+    "Search Audit History"
+   ],
+   "href": "/Credentialing/AuditSearch",
+   "url": "/Credentialing/AuditSearch"
+  },
+  {
+   "trail": [
+    "Screening/Credentialing",
+    "File Upload/Download/Search"
+   ],
+   "href": "/Credentialing/FileMgmtSearch",
+   "url": "/Credentialing/FileMgmtSearch"
+  },
+  {
+   "trail": [
+    "TPL Case Tracking",
+    "Case"
+   ],
+   "href": "/TPLCaseTracking/SearchCase",
+   "url": "/TPLCaseTracking/SearchCase"
+  },
+  {
+   "trail": [
+    "TPL Case Tracking",
+    "Contact"
+   ],
+   "href": "/TPLCaseTracking/SearchContact",
+   "url": "/TPLCaseTracking/SearchContact"
+  },
+  {
+   "trail": [
+    "TPL Case Tracking",
+    "Desktop Review Upload"
+   ],
+   "href": "/TPLCaseTracking/DesktopReviewUpload",
+   "url": "/TPLCaseTracking/DesktopReviewUpload"
+  },
+  {
+   "trail": [
+    "TPL Case Tracking",
+    "Search Desktop Review"
+   ],
+   "href": "/TPLCaseTracking/SearchDesktopReviewCase",
+   "url": "/TPLCaseTracking/SearchDesktopReviewCase"
+  },
+  {
+   "trail": [
+    "TPL Case Tracking",
+    "Worker Compensation Intake"
+   ],
+   "href": "/TPLCaseTracking/SearchWorkerCompensation",
+   "url": "/TPLCaseTracking/SearchWorkerCompensation"
+  },
+  {
+   "trail": [
+    "TPL Case Tracking",
+    "Manage Case Assignment Permissions"
+   ],
+   "href": "/TPLCaseTracking/SearchCaseAssignmentPermissions",
+   "url": "/TPLCaseTracking/SearchCaseAssignmentPermissions"
+  },
+  {
+   "trail": [
+    "TPL Policy",
+    "Carrier"
+   ],
+   "href": "/TPLPolicy/SearchCarrier",
+   "url": "/TPLPolicy/SearchCarrier"
+  },
+  {
+   "trail": [
+    "TPL Policy",
+    "Employer"
+   ],
+   "href": "/TPLPolicy/SearchEmployer",
+   "url": "/TPLPolicy/SearchEmployer"
+  },
+  {
+   "trail": [
+    "TPL Policy",
+    "Policyholder"
+   ],
+   "href": "/TPLPolicy/SearchPolicyholder",
+   "url": "/TPLPolicy/SearchPolicyholder"
+  },
+  {
+   "trail": [
+    "TPL Policy",
+    "Absent Parent"
+   ],
+   "href": "/TPLPolicy/SearchAbsentParent",
+   "url": "/TPLPolicy/SearchAbsentParent"
+  },
+  {
+   "trail": [
+    "TPL Policy",
+    "Policy"
+   ],
+   "href": "/TPLPolicy/SearchTPLPolicy",
+   "url": "/TPLPolicy/SearchTPLPolicy"
+  },
+  {
+   "trail": [
+    "TPL Policy",
+    "TPL Policy Intake"
+   ],
+   "href": "/TPLPolicy/SearchPolicyIntake",
+   "url": "/TPLPolicy/SearchPolicyIntake"
+  },
+  {
+   "trail": [
+    "TPL Policy",
+    "Mass Carrier Migration"
+   ],
+   "href": "/TPLPolicy/SearchCarrierMigration",
+   "url": "/TPLPolicy/SearchCarrierMigration"
+  },
+  {
+   "trail": [
+    "TPL Policy",
+    "Non-Covered Code"
+   ],
+   "href": "/TPLPolicy/SearchNonCoveredCode",
+   "url": "/TPLPolicy/SearchNonCoveredCode"
+  },
+  {
+   "trail": [
+    "TPL Policy",
+    "Member"
+   ],
+   "href": "/TPLPolicy/MemberSearch",
+   "url": "/TPLPolicy/MemberSearch"
+  },
+  {
+   "trail": [
+    "TPL Policy",
+    "Carrier Crosswalk Rule"
+   ],
+   "href": "/TPLPolicy/SearchCarrierCrossWalkRule",
+   "url": "/TPLPolicy/SearchCarrierCrossWalkRule"
+  },
+  {
+   "trail": [
+    "TPL Policy",
+    "TPL Policy Letters"
+   ],
+   "href": "/TPLPolicy/SearchPolicyLetter",
+   "url": "/TPLPolicy/SearchPolicyLetter"
+  },
+  {
+   "trail": [
+    "TPL Policy",
+    "Member Quick View"
+   ],
+   "href": "/TPLPolicy/MemberQuickView",
+   "url": "/TPLPolicy/MemberQuickView"
+  },
+  {
+   "trail": [
+    "TPL HIPP",
+    "Search HIPP"
+   ],
+   "href": "/TPLHIPP/SearchHIPP",
+   "url": "/TPLHIPP/SearchHIPP"
+  },
+  {
+   "trail": [
+    "TPL HIPP",
+    "Average Expenditure"
+   ],
+   "href": "/TPLHIPP/SearchAverageExpenditure",
+   "url": "/TPLHIPP/SearchAverageExpenditure"
+  },
+  {
+   "trail": [
+    "Task Management",
+    "Dashboard"
+   ],
+   "href": "/TaskManagement/Dashboard",
+   "url": "/TaskManagement/Dashboard"
+  },
+  {
+   "trail": [
+    "Task Management",
+    "Task Template"
+   ],
+   "href": "/TaskManagement/SearchTaskTemplate",
+   "url": "/TaskManagement/SearchTaskTemplate"
+  },
+  {
+   "trail": [
+    "Task Management",
+    "Task List"
+   ],
+   "href": "/TaskManagement/SearchTaskList",
+   "url": "/TaskManagement/SearchTaskList"
+  },
+  {
+   "trail": [
+    "Task Management",
+    "Link Configuration"
+   ],
+   "href": "/TaskManagement/SearchLinkConfiguration",
+   "url": "/TaskManagement/SearchLinkConfiguration"
+  },
+  {
+   "trail": [
+    "Task Management",
+    "Routing Configuration"
+   ],
+   "href": "/TaskManagement/SearchRoutingConfiguration",
+   "url": "/TaskManagement/SearchRoutingConfiguration"
+  },
+  {
+   "trail": [
+    "Task Management",
+    "Manage User Association"
+   ],
+   "href": "/TaskManagement/SearchUserAssociation",
+   "url": "/TaskManagement/SearchUserAssociation"
+  },
+  {
+   "trail": [
+    "Task Management",
+    "Manage User Schedule"
+   ],
+   "href": "/TaskManagement/SearchUserCapacity",
+   "url": "/TaskManagement/SearchUserCapacity"
+  },
+  {
+   "trail": [
+    "Task Management",
+    "Bulk Recall"
+   ],
+   "href": "/TaskManagement/SearchRecallTask",
+   "url": "/TaskManagement/SearchRecallTask"
+  }
+ ]
+}

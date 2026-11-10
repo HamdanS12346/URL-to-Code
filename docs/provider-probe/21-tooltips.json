@@ -1,0 +1,467 @@
+{
+ "pages": {
+  "cfg": {
+   "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations",
+   "tooltips": [
+    {
+     "triggerSelector": "#ConfigIdHelp",
+     "text": "Configuration ID",
+     "containerInline": "width: 113.5px; height: 24.3333px; display: block; opacity: 1;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 268.10418701171875,
+      "y": 279.51043701171875,
+      "width": 112.5,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 268.10418701171875,
+      "y": 289.51043701171875,
+      "width": 113.5,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#ConfigNameHelp",
+     "text": "Configuration Name",
+     "containerInline": "width: 136.844px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 1023.2083740234375,
+      "y": 285.51043701171875,
+      "width": 135.84375,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 1023.2083740234375,
+      "y": 295.51043701171875,
+      "width": 136.84375,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#OwnerNameHelp",
+     "text": "Owner Name",
+     "containerInline": "width: 94.8021px; height: 24.3333px; display: block; opacity: 1;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 1810.3125,
+      "y": 279.51043701171875,
+      "width": 93.80208587646484,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 1810.3125,
+      "y": 289.51043701171875,
+      "width": 94.80208587646484,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#col-md-4_editor-colOwnerModuleHelp",
+     "text": "Owner Module",
+     "containerInline": "width: 103.375px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 579.5521240234375,
+      "y": 382.01043701171875,
+      "width": 102.375,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 579.5521240234375,
+      "y": 392.01043701171875,
+      "width": 103.375,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#ProtocolHelp",
+     "text": "Protocol",
+     "containerInline": "width: 63.6979px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 1059.21875,
+      "y": 382.01043701171875,
+      "width": 62.69791793823242,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 1059.21875,
+      "y": 392.01043701171875,
+      "width": 63.6875,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#\\38 fd3382c-4b21-4f77-af96-cda09a66278f > a",
+     "text": "Protocol",
+     "containerInline": "width: 63.6979px; height: 24.3333px; display: block; opacity: 1;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 1059.21875,
+      "y": 376.01043701171875,
+      "width": 62.69791793823242,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 1059.21875,
+      "y": 386.01043701171875,
+      "width": 63.6875,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    }
+   ]
+  },
+  "trk": {
+   "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking",
+   "tooltips": [
+    {
+     "triggerSelector": "#FileIdHelp",
+     "text": "File ID",
+     "containerInline": "width: 52.7917px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 605.5521240234375,
+      "y": 217.5104217529297,
+      "width": 51.79166793823242,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 605.5521240234375,
+      "y": 227.5104217529297,
+      "width": 52.79166793823242,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#FileNameHelp",
+     "text": "File Name",
+     "containerInline": "width: 76.1354px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 1359.65625,
+      "y": 217.5104217529297,
+      "width": 75.13542175292969,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 1359.65625,
+      "y": 227.5104217529297,
+      "width": 76.125,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#FileStatusHelp",
+     "text": "File Status",
+     "containerInline": "width: 78.4792px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 592.5521240234375,
+      "y": 310.01043701171875,
+      "width": 77.47917175292969,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 592.5521240234375,
+      "y": 320.01043701171875,
+      "width": 78.47917175292969,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#DirectionHelp",
+     "text": "Direction",
+     "containerInline": "width: 67.5833px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 1057.21875,
+      "y": 310.01043701171875,
+      "width": 66.58333587646484,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 1057.21875,
+      "y": 320.01043701171875,
+      "width": 67.57292175292969,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#TransportTypeHelp",
+     "text": "Transport Type",
+     "containerInline": "width: 105.719px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 1651.104248046875,
+      "y": 310.01043701171875,
+      "width": 104.71875,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 1651.104248046875,
+      "y": 320.01043701171875,
+      "width": 105.71875,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#SourceLocationIdHelp",
+     "text": "Source Location",
+     "containerInline": "width: 113.521px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 727.7708740234375,
+      "y": 402.51043701171875,
+      "width": 112.52083587646484,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 727.7708740234375,
+      "y": 412.51043701171875,
+      "width": 113.52083587646484,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#TradingPartnerIdHelp",
+     "text": "Trading Partner ID",
+     "containerInline": "width: 126.979px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 1028.2083740234375,
+      "y": 402.51043701171875,
+      "width": 125.97917175292969,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 1028.2083740234375,
+      "y": 412.51043701171875,
+      "width": 126.96875,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#FromDateHelp",
+     "text": "From Date",
+     "containerInline": "width: 78.4583px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 286.10418701171875,
+      "y": 495.01043701171875,
+      "width": 77.45833587646484,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 286.10418701171875,
+      "y": 505.01043701171875,
+      "width": 78.44792175292969,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#ToDateHelp",
+     "text": "To Date",
+     "containerInline": "width: 60.5833px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 601.5416870117188,
+      "y": 495.01043701171875,
+      "width": 59.583335876464844,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 601.5416870117188,
+      "y": 505.01043701171875,
+      "width": 60.57291793823242,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#FromSizeHelp",
+     "text": "From Size (KB)",
+     "containerInline": "width: 108.01px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 883.9791870117188,
+      "y": 495.01043701171875,
+      "width": 107.01042175292969,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 883.9791870117188,
+      "y": 505.01043701171875,
+      "width": 108,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#ToSizeHelp",
+     "text": "To Size (KB)",
+     "containerInline": "width: 90.1354px; height: 24.3333px; display: block; opacity: 1; transition: 250ms ease-out;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 1199.416748046875,
+      "y": 495.01043701171875,
+      "width": 89.13542175292969,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 1199.416748046875,
+      "y": 505.01043701171875,
+      "width": 90.125,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    }
+   ]
+  },
+  "ftp": {
+   "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFTPServerCredentials",
+   "tooltips": [
+    {
+     "triggerSelector": "#FtpServerNameHelp",
+     "text": "Server Name",
+     "containerInline": "width: 94.8021px; height: 24.3333px; display: block; opacity: 1;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 278.10418701171875,
+      "y": 264.51043701171875,
+      "width": 93.80208587646484,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 278.10418701171875,
+      "y": 274.51043701171875,
+      "width": 94.80208587646484,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#\\30 8fed453-83ff-446c-b10d-e6492a960aa8 > span > a",
+     "text": "Server Name",
+     "containerInline": "width: 94.8021px; height: 24.3333px; display: block; opacity: 1;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 278.10418701171875,
+      "y": 264.51043701171875,
+      "width": 93.80208587646484,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 278.10418701171875,
+      "y": 274.51043701171875,
+      "width": 94.80208587646484,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#\\33 dda2671-e87d-427d-9006-38844f1c443b > span > a",
+     "text": "Server Name",
+     "containerInline": "width: 94.8021px; height: 24.3333px; display: block; opacity: 1;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 278.10418701171875,
+      "y": 264.51043701171875,
+      "width": 93.80208587646484,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 278.10418701171875,
+      "y": 274.51043701171875,
+      "width": 94.80208587646484,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#b63afa17-d386-4f69-b7c0-f0291c59a5da > span > a",
+     "text": "Server Name",
+     "containerInline": "width: 94.8021px; height: 24.3333px; display: block; opacity: 1;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 278.10418701171875,
+      "y": 264.51043701171875,
+      "width": 93.80208587646484,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 278.10418701171875,
+      "y": 274.51043701171875,
+      "width": 94.80208587646484,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    },
+    {
+     "triggerSelector": "#\\39 9ac14fc-f7e9-4c23-9025-bd12027019e1 > a",
+     "text": "Server Name",
+     "containerInline": "width: 94.8021px; height: 24.3333px; display: block; opacity: 1;",
+     "tooltipInline": null,
+     "rect": {
+      "x": 278.10418701171875,
+      "y": 264.51043701171875,
+      "width": 93.80208587646484,
+      "height": 24.33333396911621
+     },
+     "containerRect": {
+      "x": 278.10418701171875,
+      "y": 274.51043701171875,
+      "width": 94.80208587646484,
+      "height": 24.322917938232422
+     },
+     "lineHeight": "18px",
+     "lines": 1
+    }
+   ]
+  }
+ },
+ "screenshots": [
+  "21-tooltip-1.png",
+  "21-tooltip-2.png",
+  "21-tooltip-3.png",
+  "21-tooltip-4.png",
+  "21-tooltip-5.png",
+  "21-tooltip-6.png"
+ ]
+}

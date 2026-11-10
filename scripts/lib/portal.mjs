@@ -156,7 +156,20 @@ const settle = async (page, ms = 600) => {
   await page.waitForLoadState('networkidle', { timeout: 8000 }).catch(() => {});
   await page.waitForTimeout(ms);
 };
-const goto = async (page, url) => { await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 }); await settle(page); };
+const goto = async (page, url) => {
+  // Portals can be slow (SSO redirects, cold start). Be patient and retry once.
+  const timeout = 120000;
+  for (let i = 0; ; i++) {
+    try {
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout });
+      break;
+    } catch (e) {
+      const msg = String(e?.message || e);
+      if (i >= 1 || !/Timeout|ERR_|net::/i.test(msg)) throw e;
+    }
+  }
+  await settle(page);
+};
 
 export async function openMenu(page, sel = {}) {
   const found = await page.evaluate(FIND_MENU, sel.menuButton || null);
