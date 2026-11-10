@@ -101,7 +101,12 @@ async function sideMenu(page, sel, log) {
     });
     log(`  ! kit: the side menu's close icon did not close it: ${closed ? 'closed it by its own classes' : 'it stays open in the snapshot (the kit closes it at runtime)'}`);
   }
-  await btn.evaluate((e) => e.setAttribute('data-kit-action', 'menu')).catch(() => {});
+  // the button and its twins: the portal has a second hamburger (.mobile-nav) that a media query shows below 1280 CSS px,
+  // which is what a 1920 screen at 150% Windows scaling is
+  await btn.evaluate((e) => {
+    const twin = (t) => t === e || (e.className && t.className === e.className && t.getAttribute('aria-label') === e.getAttribute('aria-label'));
+    for (const t of document.querySelectorAll(e.tagName)) if (twin(t)) t.setAttribute('data-kit-action', 'menu');
+  }).catch(() => {});
   return { ...found, closed };
 }
 

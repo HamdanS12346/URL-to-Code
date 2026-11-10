@@ -245,6 +245,14 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
       const cls = /class="([^"]+)"/.exec(el.getAttribute('data-kit-menu-backdrop') ?? '')?.[1];
       if (cls) root.current!.querySelectorAll<HTMLElement>('.' + cls.trim().split(/\s+/).map((c) => CSS.escape(c)).join('.')).forEach((b) => { b.style.display = 'none'; });
     }
+    // the hamburger's twins open it too: the portal shows a second one (.mobile-nav) below 1280 CSS px (a 1920 screen at
+    // 150% scaling), and captures from before the kit stamped twins only carry the one the capture clicked
+    for (const b of root.current!.querySelectorAll<HTMLElement>('[data-kit-action=menu]')) {
+      if (!b.className) continue;
+      root.current!.querySelectorAll<HTMLElement>(b.tagName).forEach((t) => {
+        if (!t.hasAttribute('data-kit-action') && t.className === b.className && t.getAttribute('aria-label') === b.getAttribute('aria-label')) t.setAttribute('data-kit-action', 'menu');
+      });
+    }
     sideMenu(false);
     return () => { backdrop.current?.remove(); backdrop.current = null; };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps

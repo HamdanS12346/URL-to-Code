@@ -174,7 +174,7 @@ try {
   // the side menu: opens like the portal's (its classes + the backdrop), Escape and the backdrop leave it open, a module
   // flies out on hover, the close icon closes it, a menu item of this app routes there and closes it
   assert.equal(await p.locator('#mainMenuContainer').isVisible(), false, 'the menu starts closed');
-  await p.click('[data-kit-action=menu]');
+  await p.click('[data-kit-action=menu]:visible');
   await p.waitForTimeout(400);
   assert.ok(await p.locator('[data-kit-menu]').first().isVisible(), 'the hamburger opens the side menu');
   assert.match(await p.locator('#mainMenuContainer').getAttribute('class'), /display-flex/, 'by the portal\'s own class');
@@ -191,7 +191,7 @@ try {
   await p.waitForTimeout(300);
   assert.equal(await p.locator('#mainMenuContainer').isVisible(), false, 'the close icon closes it');
   assert.equal(await p.locator('.disabled-backdrop').count(), 0, 'and removes the backdrop');
-  await p.click('[data-kit-action=menu]');
+  await p.click('[data-kit-action=menu]:visible');
   await p.locator('[data-kit-menu] li', { hasText: 'File Transfer Services' }).first().hover();
   await p.waitForTimeout(700);
   await fly.first().locator('a', { hasText: 'File Transfer Tracking' }).click();
@@ -199,6 +199,14 @@ try {
   assert.equal(new URL(p.url()).hash, '#/file-transfer-tracking', 'a menu item of this app routes to its screen');
   assert.equal(await p.locator('#mainMenuContainer').isVisible(), false, 'and closes the menu');
   assert.equal(await p.locator('.disabled-backdrop').count(), 0);
+  // at 1280 CSS px (a 1920 screen at 150% scaling) the portal swaps in its mobile hamburger: that one opens the menu too
+  const vp = p.viewportSize();
+  await p.setViewportSize({ width: 1280, height: vp.height });
+  await p.click('.mobile-nav [data-kit-action=menu]');
+  await p.waitForTimeout(300);
+  assert.ok(await p.locator('#mainMenuContainer').isVisible(), 'the narrow-window hamburger opens the menu');
+  await p.click('[data-kit-action=menu-close]');
+  await p.setViewportSize(vp);
   // the tracking grid: a click selects the row, a double-click opens the view dialog (the portal's convention)
   await p.waitForSelector('[data-kit-action=search]', { timeout: 10000 });
   await p.click('[data-kit-action=search]');

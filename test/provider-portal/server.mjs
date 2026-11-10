@@ -23,7 +23,8 @@ body{margin:0;font:14px Arial,"Helvetica Neue",Helvetica,sans-serif;color:#333;b
 #pageBannerLogo{margin-left:50px;color:#fff;font:bold 28px Arial}
 #pageBannerTitle{margin-left:40px;text-align:center}.system-name{color:#2196f3;font:bold 20px Arial}.app-title{color:#fff;text-transform:uppercase}
 .aag-menu{margin-left:auto;display:flex;gap:30px;list-style:none;padding:0 40px 0 0}.aag-menu a{color:#fff;font-size:12px;text-decoration:none;text-transform:uppercase}
-#pageBannerMenu .hamburger{width:68px;height:62px;background:#2196f3;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.mobile-nav{display:none}@media (max-width:1280px){.desktop-nav{display:none}.mobile-nav{display:block}}
+.hamburger{width:68px;height:62px;background:#2196f3;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .fa-solid{display:inline-block;width:14px;height:14px;background:currentColor;vertical-align:middle}
 .fa-bars{width:30px;height:24px;color:#000}
 .display-none{display:none!important}.display-flex{display:flex!important}
@@ -68,7 +69,8 @@ const layout = (loggedIn, { title, module, body = '', bodyClass = '' }) => `<!do
 <div id="pageBannerLogo"><a href="/Home/MyHome/"><span title="Client Logo" data-role="tooltip" id="logo">gainwell</span></a></div>
 <div id="pageBannerTitle"><div class="system-name">Medicaid Management Solutions</div><div class="app-title">Final Test</div></div>
 ${loggedIn ? '<ul class="aag-menu"><li><a href="javascript:void(0)">Messages</a></li><li><a href="/Home/MyAccount">My Account</a></li><li><a href="/logout">Logout</a></li></ul>' : '<div style="margin-left:auto"></div>'}
-<div id="pageBannerMenu"><nav aria-label="Hamburger Menu"><div class="hamburger"><i class="fa-solid fa-bars clickable" onclick="openMainMenu()" tabindex="0" aria-label="Main Menu" role="button"></i></div></nav></div>
+<div class="mobile-nav"><div id="pageBannerMenuMobile"><nav aria-label="Hamburger Mobile Menu"><div class="hamburger"><i class="fa-solid fa-bars clickable" onclick="openMainMenu()" tabindex="0" aria-label="Main Menu" role="button"></i></div></nav></div></div>
+<div id="pageBannerMenu" class="desktop-nav"><nav aria-label="Hamburger Menu"><div class="hamburger"><i class="fa-solid fa-bars clickable" onclick="openMainMenu()" tabindex="0" aria-label="Main Menu" role="button"></i></div></nav></div>
 </header></div>
 <input class="editor-control" id="menuSearch" type="hidden">
 <div id="mainMenuContainer" class="display-none"><i id="mainMenuClose" class="fa-solid fa-xmark clickable" onclick="closeMainMenu()" role="button" aria-label="Close"></i>

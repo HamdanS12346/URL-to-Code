@@ -121,7 +121,7 @@ if (kitStates?.length && process.env.STATES !== '0') {
       await p.waitForTimeout(400);
       await p.mouse.move(0, 0);
       for (const s of st.steps) {
-        const loc = p.locator(s.sel).nth(s.nth ?? 0);
+        const loc = p.locator(`${s.sel} >> visible=true`).nth(s.nth ?? 0); // a twin hidden by a media query (a second hamburger) is never the one
         await loc.scrollIntoViewIfNeeded({ timeout: 5000 });
         if (s.do === 'hover') await loc.hover({ timeout: 5000 }); else if (s.do === 'dblclick') await loc.dblclick({ timeout: 5000 }); else await loc.click({ timeout: 5000 });
         await p.waitForTimeout(s.wait ?? st.wait ?? 800);
