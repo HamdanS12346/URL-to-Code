@@ -1,4 +1,4 @@
-node_modules/
+﻿node_modules/
 dist/
 outputs/
 auth/
@@ -6,4 +6,8 @@ auth/
 test-results/
 playwright-report/
 __pycache__/
-packs/
+
+# ignore packs by default, but keep the one we want to publish
+packs/*
+!packs/ffxfer-index-v1/
+!packs/ffxfer-index-v1/**

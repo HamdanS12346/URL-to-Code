@@ -1,0 +1,48 @@
+[
+ {
+  "name": "tooltip",
+  "steps": [
+   {
+    "do": "hover",
+    "sel": "[data-kit-tip]",
+    "nth": 0
+   }
+  ],
+  "wait": 750,
+  "clip": {
+   "x": 18,
+   "y": 36.25,
+   "width": 178.828125,
+   "height": 101
+  },
+  "shot": "states/tooltip.png"
+ },
+ {
+  "name": "search",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit-action=search]"
+   }
+  ],
+  "wait": 1200,
+  "full": true,
+  "shot": "states/search.png"
+ },
+ {
+  "name": "dialog-d1",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit-action=search]"
+   },
+   {
+    "do": "click",
+    "sel": "[data-kit-action=create]",
+    "nth": 0
+   }
+  ],
+  "wait": 1200,
+  "shot": "states/dialog-d1.png"
+ }
+]

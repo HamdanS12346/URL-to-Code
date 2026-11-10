@@ -1,0 +1,188 @@
+{
+ "capturedAt": "2026-11-09T19:29:55.532Z",
+ "sampleSec": 0,
+ "freeze": {
+  "swiper": 0,
+  "slick": 0,
+  "owl": 0,
+  "animations": 5,
+  "clock": "paused",
+  "stillMoving": 0
+ },
+ "entries": [],
+ "transitions": [
+  {
+   "property": "color, background-color, border-color, box-shadow",
+   "duration": "0.15s, 0.15s, 0.15s, 0.15s",
+   "easing": "cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1)",
+   "delay": "0s, 0s, 0s, 0s",
+   "count": 7,
+   "samples": [
+    "#pageBanner > div:nth-of-type(4) > div:nth-of-type(1) > ul > li:nth-of-type(1)",
+    "#AAGMenu\\.BroadcastMsg",
+    "#AAGMenu\\.ExternalLinks",
+    "#AAGMenu\\.Favorites"
+   ]
+  },
+  {
+   "property": "color, background-color, border-color, box-shadow, opacity",
+   "duration": "0.15s, 0.15s, 0.15s, 0.15s, 0.15s",
+   "easing": "cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1)",
+   "delay": "0s, 0s, 0s, 0s, 0s",
+   "count": 3,
+   "samples": [
+    "#extLinksCloseButton",
+    "#messagesCloseButton",
+    "#intPortalContactUsCloseButton"
+   ]
+  },
+  {
+   "property": "transform",
+   "duration": "0.2s",
+   "easing": "linear",
+   "delay": "0s",
+   "count": 1,
+   "samples": [
+    "#pageHeader"
+   ]
+  }
+ ],
+ "hints": [],
+ "running": [
+  {
+   "type": "CSSTransition",
+   "name": "border-bottom-color",
+   "sel": "#AAGMenu\\.MyAccount",
+   "state": "running",
+   "timing": {
+    "duration": 150,
+    "delay": 0,
+    "iterations": 1,
+    "direction": "normal",
+    "easing": "cubic-bezier(0, 0, 0.58, 1)"
+   },
+   "keyframes": [
+    {
+     "offset": "0",
+     "easing": "linear",
+     "composite": "auto",
+     "borderBottomColor": "rgba(0, 0, 0, 0)"
+    },
+    {
+     "offset": "1",
+     "easing": "linear",
+     "composite": "auto",
+     "borderBottomColor": "rgb(0, 0, 0)"
+    }
+   ]
+  },
+  {
+   "type": "CSSTransition",
+   "name": "border-left-color",
+   "sel": "#AAGMenu\\.MyAccount",
+   "state": "running",
+   "timing": {
+    "duration": 150,
+    "delay": 0,
+    "iterations": 1,
+    "direction": "normal",
+    "easing": "cubic-bezier(0, 0, 0.58, 1)"
+   },
+   "keyframes": [
+    {
+     "offset": "0",
+     "easing": "linear",
+     "composite": "auto",
+     "borderLeftColor": "rgba(0, 0, 0, 0)"
+    },
+    {
+     "offset": "1",
+     "easing": "linear",
+     "composite": "auto",
+     "borderLeftColor": "rgb(0, 0, 0)"
+    }
+   ]
+  },
+  {
+   "type": "CSSTransition",
+   "name": "border-right-color",
+   "sel": "#AAGMenu\\.MyAccount",
+   "state": "running",
+   "timing": {
+    "duration": 150,
+    "delay": 0,
+    "iterations": 1,
+    "direction": "normal",
+    "easing": "cubic-bezier(0, 0, 0.58, 1)"
+   },
+   "keyframes": [
+    {
+     "offset": "0",
+     "easing": "linear",
+     "composite": "auto",
+     "borderRightColor": "rgba(0, 0, 0, 0)"
+    },
+    {
+     "offset": "1",
+     "easing": "linear",
+     "composite": "auto",
+     "borderRightColor": "rgb(0, 0, 0)"
+    }
+   ]
+  },
+  {
+   "type": "CSSTransition",
+   "name": "border-top-color",
+   "sel": "#AAGMenu\\.MyAccount",
+   "state": "running",
+   "timing": {
+    "duration": 150,
+    "delay": 0,
+    "iterations": 1,
+    "direction": "normal",
+    "easing": "cubic-bezier(0, 0, 0.58, 1)"
+   },
+   "keyframes": [
+    {
+     "offset": "0",
+     "easing": "linear",
+     "composite": "auto",
+     "borderTopColor": "rgba(0, 0, 0, 0)"
+    },
+    {
+     "offset": "1",
+     "easing": "linear",
+     "composite": "auto",
+     "borderTopColor": "rgb(0, 0, 0)"
+    }
+   ]
+  },
+  {
+   "type": "CSSTransition",
+   "name": "color",
+   "sel": "#AAGMenu\\.MyAccount",
+   "state": "running",
+   "timing": {
+    "duration": 150,
+    "delay": 0,
+    "iterations": 1,
+    "direction": "normal",
+    "easing": "cubic-bezier(0, 0, 0.58, 1)"
+   },
+   "keyframes": [
+    {
+     "offset": "0",
+     "easing": "linear",
+     "composite": "auto",
+     "color": "rgb(43, 58, 68)"
+    },
+    {
+     "offset": "1",
+     "easing": "linear",
+     "composite": "auto",
+     "color": "rgb(102, 102, 102)"
+    }
+   ]
+  }
+ ]
+}

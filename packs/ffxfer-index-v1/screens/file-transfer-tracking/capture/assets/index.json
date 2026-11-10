@@ -1,0 +1,98 @@
+{
+ "https://uximc.mms.tst.pgwcloud.net/bundles/appcss?v=Mui5kyZU5_fFTxGoUfBPJfRJ_t0iuiBm2Tp8HPQKbWw1": {
+  "file": "assets/bundles/appcss__dc8bcbe2.css",
+  "type": "stylesheet",
+  "contentType": "text/css; charset=utf-8",
+  "bytes": 547350
+ },
+ "https://uximc.mms.tst.pgwcloud.net/bundles/vendorcss?v=j6BW90Be8k5YnVvyfnG_3sHGEYV-9Vo_N4YbGhJJTRs1": {
+  "file": "assets/bundles/vendorcss__75ac4b06.css",
+  "type": "stylesheet",
+  "contentType": "text/css; charset=utf-8",
+  "bytes": 1780334
+ },
+ "https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Styles/hp.ua3.core.tenantTheme.css?v=20.3.94.0": {
+  "file": "assets/_long/deb23c03e2505ea9.css",
+  "type": "stylesheet",
+  "contentType": "text/css",
+  "bytes": 3387
+ },
+ "https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo.png?v=19.1.64.0": {
+  "file": "assets/_ext/mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo__3659ec6d.png",
+  "type": "image",
+  "contentType": "image/png",
+  "bytes": 5170
+ },
+ "https://uximc.mms.tst.pgwcloud.net/bundles/app?v=ogpsy1VgIrNPhFOn7oz-lGPEpwGL2eUlLTvnjXblc5o1": {
+  "file": "js/bundles/app__9da9877b.js",
+  "type": "script",
+  "contentType": "text/javascript; charset=utf-8",
+  "bytes": 381863
+ },
+ "https://uximc.mms.tst.pgwcloud.net/Scripts/Kendo/Cultures/kendo.culture.en-US.min.js?v=30.0.0.2609": {
+  "file": "js/Scripts/Kendo/Cultures/kendo.culture.en-US.min__884a35a7.js",
+  "type": "script",
+  "contentType": "application/javascript",
+  "bytes": 1735
+ },
+ "https://uximc.mms.tst.pgwcloud.net/Scripts/Kendo/Messages/kendo.messages.en-US.min.js?v=30.0.0.2609": {
+  "file": "js/Scripts/Kendo/Messages/kendo.messages.en-US.min__884a35a7.js",
+  "type": "script",
+  "contentType": "application/javascript",
+  "bytes": 41100
+ },
+ "https://uximc.mms.tst.pgwcloud.net/bundles/vendor?v=Le7WPjDWTzs_1wycqK1MQSK8lSZN4zdqZX37AK7z34A1": {
+  "file": "js/bundles/vendor__f7304116.js",
+  "type": "script",
+  "contentType": "text/javascript; charset=utf-8",
+  "bytes": 7385538
+ },
+ "https://uximc.mms.tst.pgwcloud.net/Scripts/hp.ua3.core.atAGlance.js?v=30.0.0.2609": {
+  "file": "js/Scripts/hp.ua3.core.atAGlance__884a35a7.js",
+  "type": "script",
+  "contentType": "application/javascript",
+  "bytes": 21345
+ },
+ "https://uximc.mms.tst.pgwcloud.net/Scripts/hp.ua3.core.mainMenu.js?v=30.0.0.2609": {
+  "file": "js/Scripts/hp.ua3.core.mainMenu__884a35a7.js",
+  "type": "script",
+  "contentType": "application/javascript",
+  "bytes": 1590
+ },
+ "https://uximc.mms.tst.pgwcloud.net/fonts/Poppins.woff": {
+  "file": "assets/fonts/Poppins.woff",
+  "type": "font",
+  "contentType": "application/font-woff",
+  "bytes": 73640
+ },
+ "https://uximc.mms.tst.pgwcloud.net/webfonts/fa-solid-900.woff2": {
+  "file": "assets/webfonts/fa-solid-900.woff2",
+  "type": "font",
+  "contentType": "application/font-woff2",
+  "bytes": 158220
+ },
+ "https://uximc.mms.tst.pgwcloud.net/Scripts/hp.ua3.core.moduleContentPanels.js?v=30.0.0.2609": {
+  "file": "js/Scripts/hp.ua3.core.moduleContentPanels__884a35a7.js",
+  "type": "script",
+  "contentType": "application/javascript",
+  "bytes": 24851
+ },
+ "https://uximc.mms.tst.pgwcloud.net/fonts/Poppins-Bold.woff": {
+  "file": "assets/fonts/Poppins-Bold.woff",
+  "type": "font",
+  "contentType": "application/font-woff",
+  "bytes": 72588
+ },
+ "https://uximc.mms.tst.pgwcloud.net/Scripts/hp.ua3.core.modelEditor.js?v=30.0.0.2609": {
+  "file": "js/Scripts/hp.ua3.core.modelEditor__884a35a7.js",
+  "type": "script",
+  "contentType": "application/javascript",
+  "bytes": 29397
+ },
+ "https://uximc.mms.tst.pgwcloud.net/Scripts/FileTransferTracking/hp.ua3.FileTransfer.searchFileTransferTracking.js?v=30.0.0.2609": {
+  "file": "js/Scripts/FileTransferTracking/hp.ua3.FileTransfer.searchFileTransferTracking__884a35a7.js",
+  "type": "script",
+  "contentType": "application/javascript",
+  "bytes": 3987
+ }
+}

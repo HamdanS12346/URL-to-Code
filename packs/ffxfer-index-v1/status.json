@@ -1,0 +1,123 @@
+{
+ "items": {
+  "capture:home": {
+   "status": "done",
+   "at": "2026-11-09T19:29:55.748Z"
+  },
+  "spec:home": {
+   "status": "done",
+   "at": "2026-11-09T19:44:14.609Z",
+   "rounds": 1
+  },
+  "capture:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-09T19:45:14.171Z"
+  },
+  "spec:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-09T19:55:21.573Z",
+   "rounds": 1
+  },
+  "capture:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-09T19:55:57.004Z"
+  },
+  "spec:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-09T20:03:16.390Z",
+   "rounds": 1
+  },
+  "capture:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-09T20:03:48.008Z"
+  },
+  "spec:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-09T20:11:52.259Z",
+   "rounds": 1
+  },
+  "port:home": {
+   "status": "done",
+   "at": "2026-11-09T20:12:08.986Z"
+  },
+  "port:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-09T20:12:55.165Z"
+  },
+  "port:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-09T20:13:34.364Z"
+  },
+  "port:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-09T20:13:51.843Z"
+  },
+  "code:home": {
+   "status": "done",
+   "at": "2026-11-09T20:27:34.961Z",
+   "rounds": 2,
+   "verify": {
+    "bad_pct": 0.13,
+    "size_delta_px": [
+     0,
+     0
+    ],
+    "worst_section": "mcbrowborder",
+    "behavior": "behavior: nothing recorded to compare (stage 2 of the capture has no behave.json: npm run go -- <screen> --from survey) | console: 0 error(s), 0 React warning(s), 0 failed resource(s)",
+    "states": "states: 1/1 match the live page"
+   }
+  },
+  "code:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-09T21:05:18.709Z",
+   "rounds": 3,
+   "verify": {
+    "bad_pct": 0.87,
+    "size_delta_px": [
+     0,
+     0
+    ],
+    "worst_section": "pagebody",
+    "behavior": "behavior: nothing recorded to compare (stage 2 of the capture has no behave.json: npm run go -- <screen> --from survey) | console: 0 error(s), 0 React warning(s), 0 failed resource(s)",
+    "states": "states: 2/2 match the live page"
+   }
+  },
+  "code:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-09T21:30:02.423Z",
+   "rounds": 2,
+   "verify": {
+    "bad_pct": 0.12,
+    "size_delta_px": [
+     0,
+     0
+    ],
+    "worst_section": "file-transfer-tracking",
+    "behavior": "behavior: nothing recorded to compare (stage 2 of the capture has no behave.json: npm run go -- <screen> --from survey) | console: 0 error(s), 0 React warning(s), 0 failed resource(s)",
+    "states": "states: 3/3 match the live page"
+   }
+  },
+  "code:ftp-server-credentials": {
+   "status": "needs-review",
+   "at": "2026-11-09T22:04:08.966Z",
+   "rounds": 3,
+   "problems": [
+    "verify could not compare the page:",
+    "preflight: parity.spec.ts uses 0 keys, 0 carried by no data-testid in app/",
+    "node:internal/modules/run_main:107\r",
+    "    triggerUncaughtException(\r",
+    "    ^\r",
+    "\r",
+    "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:5180/#/ftp-server-credentials\r",
+    "Call log:\r",
+    "\u001b[2m  - navigating to \"http://localhost:5180/#/ftp-server-credentials\", waiting until \"load\"\u001b[22m\r",
+    "\r",
+    "    at C:\\UI-specs\\URL-to-Code\\scripts\\verify.mjs:56:12 {\r",
+    "  name: 'Error'\r",
+    "}\r",
+    "\r",
+    "Node.js v24.22.1"
+   ]
+  }
+ }
+}

@@ -1,0 +1,35 @@
+[
+ {
+  "sel": "#mainMenuContainer",
+  "tag": "div",
+  "id": "mainMenuContainer",
+  "cls": "display-flex",
+  "x": 1632,
+  "y": 0,
+  "w": 1920,
+  "h": 1080,
+  "label": "mainmenucontainer"
+ },
+ {
+  "sel": "#pageBody",
+  "tag": "div",
+  "id": "pageBody",
+  "cls": "row",
+  "x": 0,
+  "y": 138.5,
+  "w": 1920,
+  "h": 511,
+  "label": "pagebody"
+ },
+ {
+  "sel": "#orientationLandscape > div:nth-of-type(2) > footer",
+  "tag": "footer",
+  "id": "",
+  "cls": "",
+  "x": 0,
+  "y": 649.5,
+  "w": 1920,
+  "h": 118.5,
+  "label": "disclaimer-the-website-is-prov"
+ }
+]

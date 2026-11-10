@@ -1,0 +1,3 @@
+﻿- Cancel (`cancelButton`) navigates to `#/` (Home route) because spec marks destination as [UNKNOWN].
+- Search Criteria chevron (`button-collapse`) collapses/expands the panel body using the kit's standard collapse behavior (spec marks this as [UNKNOWN]).
+- From/To Size accept optional +/- and up to 2 decimal places (per kit-captured regex), despite open question about integer vs decimal input.

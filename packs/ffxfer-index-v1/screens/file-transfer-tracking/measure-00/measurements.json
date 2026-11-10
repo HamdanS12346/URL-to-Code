@@ -1,0 +1,146 @@
+{
+  "source": "C:\\UI-specs\\URL-to-Code\\packs\\ffxfer-index-v1\\screens\\file-transfer-tracking\\reference.png",
+  "source_sha256": "78926fa450f8f0a05372fe9b411d83c550bd6cb625def20a39bc2296ec1bbb5d",
+  "source_size": [
+    1920,
+    1080
+  ],
+  "css_mapping": {
+    "assumed_viewport_width": 1920,
+    "css_per_image_pixel": 1.0,
+    "meaning": "实现约定，不证明参考图原始 DPR 或 CSS 视口"
+  },
+  "regions": [
+    {
+      "name": "band-01-file-transfer-tracking",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        62,
+        1920,
+        77
+      ],
+      "normalized_box": [
+        0.0,
+        0.057407,
+        1.0,
+        0.071296
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        62.0,
+        1920.0,
+        77.0
+      ],
+      "selector": "#orientationLandscape > div:nth-of-type(2) > div:nth-of-type(3)",
+      "dom_comparable": true
+    },
+    {
+      "name": "band-02-pagebody",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        139,
+        1920,
+        628
+      ],
+      "normalized_box": [
+        0.0,
+        0.128704,
+        1.0,
+        0.581481
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        139.0,
+        1920.0,
+        628.0
+      ],
+      "selector": "#pageBody",
+      "dom_comparable": true
+    },
+    {
+      "name": "band-03-disclaimer-the-website-is-prov",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        767,
+        1920,
+        119
+      ],
+      "normalized_box": [
+        0.0,
+        0.710185,
+        1.0,
+        0.110185
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        767.0,
+        1920.0,
+        119.0
+      ],
+      "selector": "#orientationLandscape > div:nth-of-type(2) > footer",
+      "dom_comparable": true
+    },
+    {
+      "name": "img-logo-png-v-19-1-64-0",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        50,
+        2,
+        117,
+        57
+      ],
+      "normalized_box": [
+        0.026042,
+        0.001852,
+        0.060937,
+        0.052778
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        50.0,
+        2.0,
+        117.0,
+        57.0
+      ],
+      "dom_comparable": true
+    },
+    {
+      "name": "h1-file-transfer-tracking",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        212,
+        62,
+        166,
+        30
+      ],
+      "normalized_box": [
+        0.110417,
+        0.057407,
+        0.086458,
+        0.027778
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        212.0,
+        62.0,
+        166.0,
+        30.0
+      ],
+      "dom_comparable": true
+    }
+  ],
+  "groups": [],
+  "vertical_scans": [],
+  "input_manifest_sha256": "581c480c097804a8b00c02ce4c63356fca849c6c02da551f284ad2caf8158d0b"
+}

@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en" class="k-webkit k-webkit157" style="overflow: auto;"><head><base href="https://uximc.mms.tst.pgwcloud.net/Home/MyHome/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Gainwell Technologies Company">
+    <meta name="description" content="Hewlett Packard Enterprise UA3 Healthcare Portal">
+    <meta name="keywords" content="healthcare, portal">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Home</title>
+<link href="/bundles/vendorcss?v=j6BW90Be8k5YnVvyfnG_3sHGEYV-9Vo_N4YbGhJJTRs1" rel="stylesheet">
+<link href="/bundles/appcss?v=Mui5kyZU5_fFTxGoUfBPJfRJ_t0iuiBm2Tp8HPQKbWw1" rel="stylesheet">
+<link href="https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Styles/hp.ua3.core.tenantTheme.css?v=20.3.94.0" rel="stylesheet">
+
+
+
+
+
+
+</head>
+<body id="" class="Home MyHome" scroll="yes" style="padding-top: 62px;">
+    <div id="orientationPortrait" style="background-image: url(&quot;https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/mobilePortraitBackground.png?v=30.0.0.2609&quot;); margin-top: -62px;" data-kit-h="h1">
+        For the best user experience, please view in Landscape mode.
+    </div>
+    <div id="orientationLandscape">
+        <input name="__RequestVerificationToken" type="hidden" value="7DgokyClVsHEcCWTgZrpKtB0uU8ZzLz7mTmPGMWtMQe4nG_CJUEBP0gVLFqoIKcfVWoeL_BBQjXMNZI_9hNTzaRGI2vApHUcDEbHo9H4tqHpGcBBdsofhLqfqwnYz8SsRaSVlRAnWAcj_1R-z2kXBA2" style="">
+        <div id="pageLoadOverlay" class="page-load-overlay display-none"></div>
+
+        <div class="body-well">
+            <div id="pageHeader" class="header headroom headroom--top headroom--bottom">
+                <header id="pageBanner" role="banner">
+                    <div id="pageBannerLogo" tabindex="0">
+                                <div>
+                                    <a href="/Home/MyHome/"><img alt="Client Logo" src="https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo.png?v=19.1.64.0" title="Client Logo" data-role="tooltip" data-kit-tip="Client Logo" data-kit-tip-pos="top" data-kit-tip-after="250"></a>
+                                </div>
+
+                    </div>
+                    <div id="pageBannerTitle">
+                                <div class="system-name" tabindex="0">Medicaid Management Solutions</div>
+
+                        <div class="app-title" tabindex="0"> Final Test</div>
+                    </div>
+                    <div class="mobile-nav" data-kit-h="h2">
+                        <div id="pageBannerMenuMobile">
+                            <nav aria-label="Hamburger Mobile Menu">
+                                <div class="hamburger">
+                                    <i class="fa-solid fa-bars clickable" onclick="openMainMenu()" onkeypress="openMainMenu()" tabindex="0" aria-label="Main Menu" role="button"></i>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="desktop-nav">
+                        
+
+
+
+
+
+<!-- script needs to go at top of page-->
+
+
+<div class="aag-menu-bar">
+    <ul class="aag-menu k-reset k-header k-menu k-menu-horizontal" data-role="menu" aria-orientation="horizontal" role="menubar" tabindex="0">
+                <li class="k-item k-menu-item k-first" role="menuitem">
+                    <div>
+                        <a class="k-link display-block" href="javascript:getLanguage();" title="Languages" data-role="tooltip" data-kit-tip="Languages" data-kit-tip-pos="top" data-kit-tip-after="250">
+                            <i class="fa-solid fa-globe"></i> en
+                        </a>
+                    </div>
+                </li>
+
+                            <li id="AAGMenu.BroadcastMsg" class="k-item k-menu-item" role="menuitem">
+                                        <div>
+                                                    <a class="k-link display-block" href="javascript:getBroadcastMsg();">Messages</a>
+
+                                        </div>
+
+                            </li>
+                            <li id="AAGMenu.ExternalLinks" class="k-item k-menu-item" role="menuitem">
+                                        <div>
+                                                    <a class="k-link display-block" href="javascript:toggleVisibilityStyle('divExternalLinks');">External Links</a>
+
+                                        </div>
+
+                            </li>
+                            <li id="AAGMenu.Favorites" class="k-item k-menu-item" role="menuitem">
+                                        <div>
+                                                    <a class="k-link display-block" href="javascript:getFavorites();">Favorites</a>
+
+                                        </div>
+
+                            </li>
+                            <li id="AAGMenu.ContactUs" class="k-item k-menu-item" role="menuitem">
+                                        <div>
+                                                    <a class="k-link display-block" href="javascript:getContactUs();">Contact Us</a>
+
+                                        </div>
+
+                            </li>
+                            <li id="AAGMenu.MyAccount" class="k-item k-menu-item" role="menuitem">
+                                        <div>
+                                                    <a class="k-link display-block" href="/Home/MyAccount">My Account</a>
+
+                                        </div>
+
+                            </li>
+                            <li id="AAGMenu.Logout" class="k-item k-menu-item k-last" role="menuitem">
+                                        <div>
+                                                    <a class="k-link display-block" href="/Security/LogoutFromMenu" onclick="return popupCloseWindow();" onkeypress="return popupCloseWindow();">Logout</a>
+
+                                        </div>
+
+                            </li>
+
+    </ul>
+</div>
+
+
+                        <div id="pageBannerMenu" class="display-block" data-mainmenuitems="19" data-drprtlmenuitems="0" data-mbrprtlmenuitems="0" data-mcoprtlmenuitems="0" data-prvprtlmenuitems="0">
+                            <nav aria-label="Hamburger Menu">
+                                <div class="hamburger">
+                                    <i class="fa-solid fa-bars clickable" onclick="openMainMenu()" onkeypress="openMainMenu()" tabindex="0" aria-label="Main Menu" role="button" data-kit-action="menu"></i>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+                
+            </div>
+
+
+<div id="mainMenuContainer" class="display-none" style="max-height: 1080px;" data-kit-menu="flex" data-kit-h="h3">
+    <div id="mainMenuHeader">
+        <div id="mainMenuClose" class="clickable" tabindex="0" role="button" aria-label="Close" data-kit-action="menu-close">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div id="mainMenuUser">
+            <div id="mainMenuWelcome">
+                        <div id="mainMenuWelcomeDisplayName">
+                            <div id="mainMenuUserCopy"> 
+                                <span><span title="Welcome " data-role="tooltip" data-kit-tip="Welcome" data-kit-tip-pos="top" data-kit-tip-after="250">Welcome </span></span><br>
+                                <span class="font-weight-bold">user admin</span>
+                            </div>
+                            <div id="mainMenuUserIcon">
+                                <i class="fa-solid fa-circle-user"></i>
+                            </div>
+                        </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="mobile-aag">
+        <div class="content-subpanel-container collapsedPanel">
+            <div class="content-subpanel-hdr">
+                Quick Links
+            </div>
+            <div class="content-subpanel-hdr-tools">
+                
+            <div class="content-ordered-panel-hdr-tools"><div class="panel-icon clickable">
+                    <div id="mobileMenuIcon" class="fa-solid fa-angle-down subpanel-collapsed" title="Expand" tabindex="0"></div>
+                </div></div></div>
+            <div class="content-subpanel-bdy" style="display:none;">
+                
+
+
+
+
+
+<!-- script needs to go at top of page-->
+
+
+<div class="aag-menu-bar">
+    <ul class="aag-menu k-reset k-header k-menu k-menu-horizontal" data-role="menu" aria-orientation="horizontal" role="menubar" tabindex="0">
+                <li class="k-item k-menu-item k-first" role="menuitem">
+                    <div>
+                        <a class="k-link display-block" href="javascript:getLanguage();" title="Languages" data-role="tooltip" data-kit-tip="Languages" data-kit-tip-pos="top" data-kit-tip-after="250">
+                            <i class="fa-solid fa-globe"></i> en
+                        </a>
+                    </div>
+                </li>
+
+                            <li id="AAGMenu.BroadcastMsg_mbl" class="k-item k-menu-item" role="menuitem">
+                                        <div>
+                                                    <a class="k-link display-block" href="javascript:getBroadcastMsg();">Messages</a>
+
+                                        </div>
+
+                            </li>
+                            <li id="AAGMenu.ExternalLinks_mbl" class="k-item k-menu-item" role="menuitem">
+                                        <div>
+                                                    <a class="k-link display-block" href="javascript:toggleVisibilityStyle('divExternalLinks');">External Links</a>
+
+                                        </div>
+
+                            </li>
+                            <li id="AAGMenu.Favorites_mbl" class="k-item k-menu-item" role="menuitem">
+                                        <div>
+                                                    <a class="k-link display-block" href="javascript:getFavorites();">Favorites</a>
+
+                                        </div>
+
+                            </li>
+                            <li id="AAGMenu.ContactUs_mbl" class="k-item k-menu-item" role="menuitem">
+                                        <div>
+                                                    <a class="k-link display-block" href="javascript:getContactUs();">Contact Us</a>
+
+                                        </div>
+
+                            </li>
+                            <li id="AAGMenu.MyAccount_mbl" class="k-item k-menu-item" role="menuitem">
+                                        <div>
+                                                    <a class="k-link display-block" href="/Home/MyAccount">My Account</a>
+
+                                        </div>
+
+                            </li>
+                            <li id="AAGMenu.Logout_mbl" class="k-item k-menu-item k-last" role="menuitem">
+                                        <div>
+                                                    <a class="k-link display-block" href="/Security/LogoutFromMenu" onclick="return popupCloseWindow();" onkeypress="return popupCloseWindow();">Logout</a>
+
+                                        </div>
+
+                            </li>
+
+    </ul>
+</div>
+
+
+            </div>
+        </div>
+        </div>
+    <div id="mainMenuItemContainer">
+        <div class="k-menu-scroll-wrapper k-menu-scroll-wrapper-vertical" style="width: 100%;"><span class="k-button k-button-flat k-icon-button k-menu-scroll-button k-menu-scroll-button-prev k-disabled" unselectable="on" style="display: none;"><span class="k-icon k-svg-icon k-svg-i-caret-alt-up k-button-icon"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="m256 160 128 192H128z"></path></svg></span></span><ul id="mainMenu" data-role="menu" class="k-reset k-header k-menu k-menu-vertical" aria-orientation="vertical" tabindex="0" role="menubar">
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item k-first" role="menuitem" aria-controls="02f97f16-9b9c-4d80-bf8f-bf70d214a497">
+<span class="k-link k-menu-link" role="none"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i><span class="k-menu-link-text" role="none">&nbsp;Administration                                                    </span></span><div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="02f97f16-9b9c-4d80-bf8f-bf70d214a497">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/BroadcastMessage/BroadcastMessageSearch" class="k-link k-menu-link">&nbsp;Broadcast Message</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/FAQMaintenance/FAQMaintenanceSearch" class="k-link k-menu-link">&nbsp;FAQ's</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/AppSetting/ManageAppSettings" class="k-link k-menu-link">&nbsp;Manage Application Settings</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Localization/ManageHtmlBlocks" class="k-link k-menu-link">&nbsp;Manage HTML Blocks</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ManageHelpContent/HelpContentSearch" class="k-link k-menu-link">&nbsp;Manage Help</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Localization/ManageImages" class="k-link k-menu-link">&nbsp;Manage Images</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/AppSetting/ManageIocSettings" class="k-link k-menu-link">&nbsp;Manage IOC Settings</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Localization/ManageLabels" class="k-link k-menu-link">&nbsp;Manage Labels</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Menu/ManageMenus" class="k-link k-menu-link">&nbsp;Manage Menus</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Menu/ManageMenuItems" class="k-link k-menu-link">&nbsp;Manage Menu Items</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Localization/ManageMessages" class="k-link k-menu-link">&nbsp;Manage Messages</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Localization/ManageSecurityFunctions" class="k-link k-menu-link">&nbsp;Manage Security Functions</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Localization/ManageSecurityRights" class="k-link k-menu-link">&nbsp;Manage Security Rights</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Localization/ManageSecurityRoles" class="k-link k-menu-link">&nbsp;Manage Security Roles</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Service/ManageServices" class="k-link k-menu-link">&nbsp;Manage Services</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/EventSubscriptions/ManageSubscription" class="k-link k-menu-link">&nbsp;Manage Subscriptions</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ModuleEvents/ManageModuleEvents" class="k-link k-menu-link">&nbsp;Manage Module Events</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/UserMaintenance/ManageUsers" class="k-link k-menu-link">&nbsp;Manage Users</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/UserMaintenance/ManageUserInvitations" class="k-link k-menu-link">&nbsp;Manage User Invitations</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="9620f8b0-6edc-491c-9389-ab259a97d6fb">
+<span class="k-link k-menu-link" role="none"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i><span class="k-menu-link-text" role="none">&nbsp;Alert Notification                                                    </span></span><div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="9620f8b0-6edc-491c-9389-ab259a97d6fb">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/Notifications/EventNotificationSearch" class="k-link k-menu-link">&nbsp;Event Configuration</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Notifications/SubscriberSearch" class="k-link k-menu-link">&nbsp;Subscriber Configuration</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Notifications/SubscriptionDetails" class="k-link k-menu-link">&nbsp;Event Subscription</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/Notifications/NotificationTracking" class="k-link k-menu-link">&nbsp;Tracking</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="1e5124b9-0d0a-4a6a-9f55-266da55c6f35">
+                                                    <a href="/ClaimsManagement/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;Claims Management</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="1e5124b9-0d0a-4a6a-9f55-266da55c6f35">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/ClaimsManagement/SearchClaims" class="k-link k-menu-link">&nbsp;Search Claims</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/ProDUR/ProDURDashBoard" class="k-link k-menu-link">&nbsp;Pro DUR</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="38c66c4e-e24e-452b-af19-3bbdd108ee6e">
+                                                    <a href="/DrugRebate/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;Drug Rebate</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="38c66c4e-e24e-452b-af19-3bbdd108ee6e">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/DrugRebate/Dashboard" class="k-link k-menu-link">&nbsp;Dashboard</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/DrugRebate/SearchLabelerInformation" class="k-link k-menu-link">&nbsp;Labeler</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/NationalDrugCode/SearchNationalDrugCode" class="k-link k-menu-link">&nbsp;NDC</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ClaimDetails/SearchClaims" class="k-link k-menu-link">&nbsp;Claim Level Detail</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/CashControlNumbers/SearchCashControlNumbers" class="k-link k-menu-link">&nbsp;CCN List</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/DrugRebate/SearchRosiPqas" class="k-link k-menu-link">&nbsp;ROSI/PQAS List</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Invoice/SearchNDCDisputes" class="k-link k-menu-link">&nbsp;Disputes List</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Invoice/SearchInvoiceInquiry" class="k-link k-menu-link">&nbsp;Invoice Management</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/NDCInvoice/SearchNDCInvoiceInquiry" class="k-link k-menu-link">&nbsp;NDC Invoice Inquiry</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Invoice/SearchCCNAssociated" class="k-link k-menu-link">&nbsp;CCN/NDC Association</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/PPAMaintenance/SearchPPAMaintenance" class="k-link k-menu-link">&nbsp;PPA Maintenance</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/IncrementalAdjustment/SearchIncrementalAdjustment" class="k-link k-menu-link">&nbsp;Incremental Adjustments</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/PostmarkDates/PostmarkDates" class="k-link k-menu-link">&nbsp;Postmark Dates</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/DrugRebate/SearchTreasuryBillRates" class="k-link k-menu-link">&nbsp;T-Bill Rates</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/DrugRebate/SearchProvider340b" class="k-link k-menu-link">&nbsp;340b Providers</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderRecoupment/SearchProviderRecoupment" class="k-link k-menu-link">&nbsp;Provider Recoupment</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/DrugRebate/InvoiceProcessFlags" class="k-link k-menu-link">&nbsp;Invoice Process Flags</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/FundCodes/SearchFundCodes" class="k-link k-menu-link">&nbsp;Fund Codes</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/WebAdmin/WebAdmin" class="k-link k-menu-link">&nbsp;Web Information</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="ba2e8edd-4dbe-4d45-a576-58b27c2a66cf">
+                                                    <a href="/Employee/UIExamples" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;UI Examples</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="ba2e8edd-4dbe-4d45-a576-58b27c2a66cf">
+                                                                <li class="k-item k-menu-item k-first k-last" role="menuitem">
+                                                                            <a href="/Employee/UIExamples" class="k-link k-menu-link">&nbsp;Page Elements / Widgets</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="25c4432d-b603-43e4-b10d-b635a4ac10ce">
+<span class="k-link k-menu-link" role="none"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i><span class="k-menu-link-text" role="none">&nbsp;File Transfer Services                                                    </span></span><div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="25c4432d-b603-43e4-b10d-b635a4ac10ce">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/FileTransfer/SearchSourceLocations" class="k-link k-menu-link">&nbsp;File Transfer Configuration</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/FileTransfer/SearchFileTransferTracking" class="k-link k-menu-link">&nbsp;File Transfer Tracking</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/FileTransfer/SearchFTPServerCredentials" class="k-link k-menu-link">&nbsp;FTP Server Credentials</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="ff934b4a-999f-45f0-aed2-ec687d5035b0">
+                                                    <a href="/Integration/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;Integration</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="ff934b4a-999f-45f0-aed2-ec687d5035b0">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/EventToFileWizard/SearchEventToFileMetadata" class="k-link k-menu-link">&nbsp;Event To File Query Builder</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/EventsDistributor/SearchFileDefinition" class="k-link k-menu-link">&nbsp;File To Event Metadata</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/FileToEventOrchestration/SearchExternalOrchestration" class="k-link k-menu-link">&nbsp;File To Event Orchestration</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/EventStatusTracking/SearchEventStatus" class="k-link k-menu-link">&nbsp;Event Status Tracking</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/SystemProcessTracking/SearchSystemProcessTracking" class="k-link k-menu-link">&nbsp;System Process Tracking</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/Integration/Dashboard" class="k-link k-menu-link">&nbsp;Dashboard</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="36707341-5433-4835-bcf1-59614f079480">
+                                                    <a href="/ManagedCare/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;Managed Care</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="36707341-5433-4835-bcf1-59614f079480">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/ManagedCare/SearchMCE" class="k-link k-menu-link">&nbsp;MCE</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ManagedCare/SearchMember" class="k-link k-menu-link">&nbsp;Member</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Network/SearchNetwork" class="k-link k-menu-link">&nbsp;Network</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ManagedCare/SearchPCPProvider" class="k-link k-menu-link">&nbsp;Provider</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ManagedCare/EDITxnSearch" class="k-link k-menu-link">&nbsp;HIPAA Transactions</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ManagedCare/SearchLockOutByPCPMCEMember" class="k-link k-menu-link">&nbsp;Lock Out</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ManagedCare/ScreeningResults" class="k-link k-menu-link">&nbsp;Screening Results</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ManagedCare/Capitation" class="k-link k-menu-link">&nbsp;Capitation</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ManagedCare/ManagedCareReports" class="k-link k-menu-link">&nbsp;Reports</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ManagedCare/ReferenceData" class="k-link k-menu-link">&nbsp;Reference Data</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ManagedCare/SearchProviderMCEEnrollment" class="k-link k-menu-link">&nbsp;Provider MCE Enrollment</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ManagedCare/SearchCapitationFileUpload" class="k-link k-menu-link">&nbsp;File Upload</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/ManagedCare/MassTransferSearch" class="k-link k-menu-link">&nbsp;Mass Transfer</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="a9f04a23-d6ec-4c5b-b5e9-b812ed3913b0">
+                                                    <a href="/MemberManagement/MemberLanding" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;Member Management</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="a9f04a23-d6ec-4c5b-b5e9-b812ed3913b0">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/MemberManagement/SearchMember" class="k-link k-menu-link">&nbsp;Member</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/MedicaidCase/SearchMedicaidCase" class="k-link k-menu-link">&nbsp;Medicaid Case</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/FulfillmentMaterials/FulfillmentMaterials" class="k-link k-menu-link">&nbsp;Fulfillment Materials</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/FraudProtection/SearchFraudProtection" class="k-link k-menu-link">&nbsp;Fraud Protection</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Group/SearchGroup" class="k-link k-menu-link">&nbsp;Group</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/BrokerSalesTPA/SearchBrokerSalesTPA" class="k-link k-menu-link">&nbsp;Broker/Sales/TPA</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/Person/SearchPerson" class="k-link k-menu-link">&nbsp;Person</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="bf6ae922-4bb7-4ca1-ab13-0551194f103a">
+                                                    <a href="/PlanManagement/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;Plan Management</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="bf6ae922-4bb7-4ca1-ab13-0551194f103a">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/PlanManagement/ReferenceData" class="k-link k-menu-link">&nbsp;Reference Data</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/PlanManagement/SearchPharmacyRelatedData" class="k-link k-menu-link">&nbsp;Pharmacy Related Data</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/PlanManagement/SearchRelatedInformation" class="k-link k-menu-link">&nbsp;Related Data</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/PlanManagement/SearchRates" class="k-link k-menu-link">&nbsp;Rate Setting</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/PlanManagement/FileUpload" class="k-link k-menu-link">&nbsp;File Upload</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/PlanManagement/SearchCycleSchedule" class="k-link k-menu-link">&nbsp;Manage Cycles</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="c7e777de-81d7-4e61-bfc9-1c143c5f3f03">
+<span class="k-link k-menu-link" role="none"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i><span class="k-menu-link-text" role="none">&nbsp;Program Integrity                                                    </span></span><div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="c7e777de-81d7-4e61-bfc9-1c143c5f3f03">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/ProgramIntegrity/PIURDashboard" class="k-link k-menu-link">&nbsp;Dashboard</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrity/ManageConfigurations" class="k-link k-menu-link">&nbsp;Manage Configurations</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrity/CustomPeerGroupSearch" class="k-link k-menu-link">&nbsp;Custom Peer Groups</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrity/ServiceTypeSearch" class="k-link k-menu-link">&nbsp;Service Types</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrity/StudyRequestSearch" class="k-link k-menu-link">&nbsp;Study Request</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrity/SuppressEntitySearch" class="k-link k-menu-link">&nbsp;Suppressed Entities</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrity/StudyAnalysisCatalog" class="k-link k-menu-link">&nbsp;Study Analysis Catalog</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrity/SearchAssignmentPermissions" class="k-link k-menu-link">&nbsp;Manage Assignment Permissions</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrity/SearchPMDefinition" class="k-link k-menu-link">&nbsp;Predictive Model Definition</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrity/TargetedQueryDefinitionSearch" class="k-link k-menu-link">&nbsp;Targeted Query Definition</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrity/AnalysisReviewHome" class="k-link k-menu-link">&nbsp;Analysis Review</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/ProgramIntegrity/CaseRequestSearch" class="k-link k-menu-link">&nbsp;Case Request</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="84c9f144-3a2c-4545-8bf4-b3647df45fab">
+                                                    <a href="/ProgramIntegrityCT/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;PI Case Tracking</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="84c9f144-3a2c-4545-8bf4-b3647df45fab">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/ProgramIntegrityCT/Dashboard" class="k-link k-menu-link">&nbsp;Dashboard</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrityCT/SearchCase" class="k-link k-menu-link">&nbsp;Case</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrityCT/SearchIntake" class="k-link k-menu-link">&nbsp;Intake</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrityCT/SearchReviewTypes" class="k-link k-menu-link">&nbsp;Review Types</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrityCT/SearchSuperCase" class="k-link k-menu-link">&nbsp;SuperCase</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrityCT/SearchContact" class="k-link k-menu-link">&nbsp;Contact</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrityCT/SearchUserInformation" class="k-link k-menu-link">&nbsp;User Information</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProgramIntegrityCT/SearchLetterTemplate" class="k-link k-menu-link">&nbsp;Letter Template</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/ProgramIntegrityCT/SearchBulkLoad" class="k-link k-menu-link">&nbsp;Bulk Load</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="081c5691-c7a0-4d86-9176-c61b24ba5740">
+                                                    <a href="/ProviderEnrollment/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;Provider Enrollment</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="081c5691-c7a0-4d86-9176-c61b24ba5740">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/ProviderEnrollment/Dashboard" class="k-link k-menu-link">&nbsp;Dashboard</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderEnrollment/SearchProviderApplication" class="k-link k-menu-link">&nbsp;Search Enrollment Application</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderEnrollment/SearchEnrollmentReports" class="k-link k-menu-link">&nbsp;Search Enrollment Reports</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/dashboard" class="k-link k-menu-link">&nbsp;Workflow Dashboard</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/applications" class="k-link k-menu-link">&nbsp;Workflow Applications</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/configuration" class="k-link k-menu-link">&nbsp;Workflow Configuration</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/tasks" class="k-link k-menu-link">&nbsp;Workflow Tasks</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderEnrollment/CreateSecureEnrollment" class="k-link k-menu-link">&nbsp;New Enrollment Entry</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/ProviderEnrollment/ResumeSecureEnrollment" class="k-link k-menu-link">&nbsp;Resume Enrollment Entry</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="98282a16-fe68-493e-b16a-009d94a16da1">
+                                                    <a href="/ProviderManagement/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;Provider Management</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="98282a16-fe68-493e-b16a-009d94a16da1">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchProvider" class="k-link k-menu-link">&nbsp;Providers</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchOwnerManagingEmployeeAssociation" class="k-link k-menu-link">&nbsp;Owners and Managing Employees</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchIRSTaxId" class="k-link k-menu-link">&nbsp;IRS W-9 Tax IDs</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchProviderSummary" class="k-link k-menu-link">&nbsp;Provider Summary</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchCLIANumber" class="k-link k-menu-link">&nbsp;CLIA Numbers</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchBaseEFTEnrollments" class="k-link k-menu-link">&nbsp;EFT Enrollments</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/CompletedWorkItems" class="k-link k-menu-link">&nbsp;Workflow Items</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchMCOProvider" class="k-link k-menu-link">&nbsp;MCO Enrollment List</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchBulkTransaction" class="k-link k-menu-link">&nbsp;Bulk Transactions Within Base ID</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchNPPR" class="k-link k-menu-link">&nbsp;NPPR Transactions</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchPRN" class="k-link k-menu-link">&nbsp;PRN Transactions</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchEPTransaction" class="k-link k-menu-link">&nbsp;EP Workflow Transactions</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchProviderBaseIDTermTransaction" class="k-link k-menu-link">&nbsp;Base ID Termination Transactions</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchMassChangeTransaction" class="k-link k-menu-link">&nbsp;Mass Change Transactions</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/SearchChangeOfOwnershipTransactions" class="k-link k-menu-link">&nbsp;Change Of Ownership Transactions</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/ProviderManagement/Dashboard" class="k-link k-menu-link">&nbsp;Provider Dashboard</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/ProviderManagedCare/SearchManagedCareEntity" class="k-link k-menu-link">&nbsp;Managed Care Entities</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="9bf57bc0-187a-48fa-b0c3-f046da52b1b9">
+                                                    <a href="/Credentialing/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;Screening/Credentialing</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="9bf57bc0-187a-48fa-b0c3-f046da52b1b9">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/Credentialing/Dashboard" class="k-link k-menu-link">&nbsp;Dashboard</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="http://https://apnmc.shared.tst.pgwcloud.net/suite/sites/credentialing-review" class="k-link k-menu-link">&nbsp;Credentialing Application Review</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Credentialing/Search" class="k-link k-menu-link">&nbsp;Search</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/Credentialing/AuditSearch" class="k-link k-menu-link">&nbsp;Search Audit History</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/Credentialing/FileMgmtSearch" class="k-link k-menu-link">&nbsp;File Upload/Download/Search</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="64b1cfb1-8a5b-4605-9726-38cd0421b7bd">
+                                                    <a href="/TPLCaseTracking/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;TPL Case Tracking</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="64b1cfb1-8a5b-4605-9726-38cd0421b7bd">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/TPLCaseTracking/SearchCase" class="k-link k-menu-link">&nbsp;Case</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLCaseTracking/SearchContact" class="k-link k-menu-link">&nbsp;Contact</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLCaseTracking/DesktopReviewUpload" class="k-link k-menu-link">&nbsp;Desktop Review Upload</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLCaseTracking/SearchDesktopReviewCase" class="k-link k-menu-link">&nbsp;Search Desktop Review           </a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLCaseTracking/SearchWorkerCompensation" class="k-link k-menu-link">&nbsp;Worker Compensation Intake</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/TPLCaseTracking/SearchCaseAssignmentPermissions" class="k-link k-menu-link">&nbsp;Manage Case Assignment Permissions</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="b0cb4d3b-472e-401c-9411-9033939304b2">
+                                                    <a href="/TPLPolicy/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;TPL Policy</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="b0cb4d3b-472e-401c-9411-9033939304b2">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/TPLPolicy/SearchCarrier" class="k-link k-menu-link">&nbsp;Carrier</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLPolicy/SearchEmployer" class="k-link k-menu-link">&nbsp;Employer</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLPolicy/SearchPolicyholder" class="k-link k-menu-link">&nbsp;Policyholder</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLPolicy/SearchAbsentParent" class="k-link k-menu-link">&nbsp;Absent Parent</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLPolicy/SearchTPLPolicy" class="k-link k-menu-link">&nbsp;Policy </a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLPolicy/SearchPolicyIntake" class="k-link k-menu-link">&nbsp;TPL Policy Intake</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLPolicy/SearchCarrierMigration" class="k-link k-menu-link">&nbsp;Mass Carrier Migration</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLPolicy/SearchNonCoveredCode" class="k-link k-menu-link">&nbsp;Non-Covered Code</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLPolicy/MemberSearch" class="k-link k-menu-link">&nbsp;Member</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLPolicy/SearchCarrierCrossWalkRule" class="k-link k-menu-link">&nbsp;Carrier Crosswalk Rule</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TPLPolicy/SearchPolicyLetter" class="k-link k-menu-link">&nbsp;TPL Policy Letters</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/TPLPolicy/MemberQuickView" class="k-link k-menu-link">&nbsp;Member Quick View</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item" role="menuitem" aria-controls="1935402a-7c72-43e0-bd95-a2b226041585">
+                                                    <a href="/TPLHIPP/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;TPL HIPP</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="1935402a-7c72-43e0-bd95-a2b226041585">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/TPLHIPP/SearchHIPP" class="k-link k-menu-link">&nbsp;Search HIPP</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/TPLHIPP/SearchAverageExpenditure" class="k-link k-menu-link">&nbsp;Average Expenditure</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+                                        <li aria-haspopup="true" aria-expanded="false" class="k-item k-menu-item k-last" role="menuitem" aria-controls="6ba2add0-3ed4-4fb0-8900-788438ebdf90">
+                                                    <a href="/TaskManagement/Dashboard" class="k-link k-menu-link"><i class="k-menu-expand-arrow-icon k-icon fa-solid fa-chevron-left fa-lg"></i>&nbsp;Task Management</a>
+                                                    <div class="k-menu-popup k-popup" aria-hidden="false" style="display: none;"><ul class="child-menu k-menu-group" role="menu" id="6ba2add0-3ed4-4fb0-8900-788438ebdf90">
+                                                                <li class="k-item k-menu-item k-first" role="menuitem">
+                                                                            <a href="/TaskManagement/Dashboard" class="k-link k-menu-link">&nbsp;Dashboard</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TaskManagement/SearchTaskTemplate" class="k-link k-menu-link">&nbsp;Task Template</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TaskManagement/SearchTaskList" class="k-link k-menu-link">&nbsp;Task List</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TaskManagement/SearchLinkConfiguration" class="k-link k-menu-link">&nbsp;Link Configuration</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TaskManagement/SearchRoutingConfiguration" class="k-link k-menu-link">&nbsp;Routing Configuration</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TaskManagement/SearchUserAssociation" class="k-link k-menu-link">&nbsp;Manage User Association</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item" role="menuitem">
+                                                                            <a href="/TaskManagement/SearchUserCapacity" class="k-link k-menu-link">&nbsp;Manage User Schedule</a>
+
+                                                                </li>
+                                                                <li class="k-item k-menu-item k-last" role="menuitem">
+                                                                            <a href="/TaskManagement/SearchRecallTask" class="k-link k-menu-link">&nbsp;Bulk Recall</a>
+
+                                                                </li>
+
+                                                    </ul></div>
+
+                                        </li>
+
+        </ul><span class="k-button k-button-flat k-icon-button k-menu-scroll-button k-menu-scroll-button-next k-disabled" unselectable="on" style="display: none;"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></span></div>
+    </div>
+</div>
+
+
+            <div class="menu" role="navigation">
+
+
+<div id="activeModuleMenuNav" class="float-left">
+    <!-- Hard coded styles needed to prevent screen flicker, set to visible in common js document load function -->
+    <div class="k-menu-scroll-wrapper" style="width: 164px;"><span class="k-button k-button-flat k-icon-button k-menu-scroll-button k-menu-scroll-button-prev k-disabled" unselectable="on" style="display: none;" data-kit-h="h4"><span class="k-icon k-svg-icon k-svg-i-caret-alt-left k-button-icon"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="m160 256 192-128v256z"></path></svg></span></span><ul id="activeModuleMenu" style="display: none;" data-role="menu" class="k-reset k-header k-menu k-menu-horizontal" aria-orientation="horizontal" tabindex="-1" role="menubar"></ul><span class="k-button k-button-flat k-icon-button k-menu-scroll-button k-menu-scroll-button-next k-disabled" unselectable="on" style="display: none;" data-kit-h="h5"><span class="k-icon k-svg-icon k-svg-i-caret-alt-right k-button-icon"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M352 256 160 384V128z"></path></svg></span></span></div>
+</div>
+
+                <h1 id="activeScreen" class="float-left" style="display:none;">
+                    My Home
+                </h1>
+            </div>
+            <div id="mcbRowBorder" class="row menu-row mcb-row-flex">
+                <div id="mcbContentBar" class="col-auto col-md-5" style="margin-top: 0px;">
+                    
+<div>
+    <ul id="mcbMenu" data-role="menu" class="k-reset k-header k-menu k-menu-horizontal" aria-orientation="horizontal" role="menubar" tabindex="0" style="display: none;" data-kit-h="h6">
+                            <li id="MCBMenu.Notes" class="display-none k-item k-menu-item k-first" role="menuitem">
+                                            <a id="Notes" href="javascript:getNotes();" role="button" class="k-link k-menu-link">Notes</a>
+
+                            </li>
+                            <li id="MCBMenu.Mail" class="display-none k-item k-menu-item" role="menuitem">
+                                            <a id="Mail" href="javascript:getMail();" role="button" class="k-link k-menu-link">Mail</a>
+
+                            </li>
+                            <li id="MCBMenu.Audit" class="display-none k-item k-menu-item" role="menuitem">
+                                            <a id="Audit" href="javascript:getAudit();" role="button" class="k-link k-menu-link">Audit</a>
+
+                            </li>
+                            <li id="MCBMenu.SetPanelTabs" class="display-none k-item k-menu-item" role="menuitem">
+                                            <a href="javascript:toggleVisibility('divSetPanelTabs');" role="button" class="k-link k-menu-link">Set Panel Tabs</a>
+
+                            </li>
+                            <li id="MCBMenu.MITASteps" class="display-none k-item k-menu-item" role="menuitem">
+                                            <a href="javascript:toggleVisibility('divMitaSteps');" role="button" class="k-link k-menu-link">MITA Steps</a>
+
+                            </li>
+                            <li id="MCBMenu.ReportsLetters" class="display-none k-item k-menu-item" role="menuitem">
+                                            <a href="javascript:toggleVisibility('divReportsLetters');" role="button" class="k-link k-menu-link">Reports &amp; Letters</a>
+
+                            </li>
+                            <li id="MCBMenu.RelatedPages" class="display-none k-item k-menu-item" role="menuitem">
+                                            <a href="javascript:toggleVisibility('divRelatedPages');" role="button" class="k-link k-menu-link">Related Pages</a>
+
+                            </li>
+                            <li id="MCBMenu.ViewData" class="display-none k-item k-menu-item" role="menuitem">
+                                            <a href="javascript:toggleVisibility('divViewData');" role="button" class="k-link k-menu-link">View Data</a>
+
+                            </li>
+                            <li id="MCBMenu.Reports" class="display-none k-item k-menu-item" role="menuitem">
+                                            <a id="Reports" href="javascript:getReports();" role="button" class="k-link k-menu-link">Reports</a>
+
+                            </li>
+                            <li id="MCBMenu.PrintPreview" class="display-none k-item k-menu-item" role="menuitem">
+                                            <a id="PrintPreview" href="javascript:getPrintPreview();" role="button" class="k-link k-menu-link">Print Preview</a>
+
+                            </li>
+                            <li id="MCBMenu.PageHelp" class="display-none k-item k-menu-item" role="menuitem">
+                                            <a id="Help" href="javascript:displayPageLevelHelp();" role="button" class="k-link k-menu-link"><i class="fa-solid fa-question-circle"></i>&nbsp;Help</a>
+
+                            </li>
+                            <li id="MCBMenu.ReturnToProvider" class="display-none k-item k-menu-item k-last" role="menuitem">
+                                            <a id="RTP" href="javascript:getReturnToProvider();" role="button" class="k-link k-menu-link">RTP</a>
+
+                            </li>
+
+    </ul>
+</div>
+
+
+                </div>
+                        <div id="mcbHelpIcon" class="help-icon-container">
+                            <span class="fa-stack fa-lg clickable" onclick="displayPageLevelHelp()" role="button" onkeypress="displayPageLevelHelp()" tabindex="0" aria-label="Help" title="Help" data-role="tooltip" data-kit-tip="Help" data-kit-tip-pos="top" data-kit-tip-after="250">
+                                <i class="fa-solid fa-book-open help-icon-stack-top"></i>
+                                <i class="fa-solid fa-circle help-icon-stack-bottom"></i>
+                            </span>
+                        </div>
+
+            </div>
+            <div class="row">
+                
+
+
+<div id="mcbPanels">
+    <div id="pnlAudit" class="mcb-panel display-none" data-kit-h="h7">
+        <div class="mcb-panel-container">
+            <div class="accessory-panel-hdr mcb-panel-hdr">
+                <span id="auditTitle">Audit</span>
+            </div>
+            <div class="mcb-panel-hdr-tools">
+                
+                
+                
+            <div class="content-ordered-panel-hdr-tools"><div id="auditHelp" class="panel-icon clickable" title="Help">
+                    <span class="fa-stack fa-lg help-icon-stack-container">
+                        <i class="fa-solid fa-circle fa-stack-1x help-icon-stack-bkgrnd"></i>
+                        <i class="fa-solid fa-circle fa-stack-2x help-icon-stack-bottom"></i>
+                        <i class="fa-solid fa-circle-question fa-stack-1x help-icon-stack-top" tabindex="0" title="Help" role="button"></i>
+                    </span>
+                </div><div class="panel-icon">
+                    <a id="ShowAuditMCBPanel" style="display: none;" title="Expand" data-role="tooltip" data-kit-tip="Expand" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="PlusSquareAudit" tabindex="0" class="fa-solid fa-square-plus accessory-panel-hdr-expand-n-collapse"></i></a>
+                    <a id="HideAuditMCBPanel" title="Collapse" data-role="tooltip" data-kit-tip="Collapse" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="MinusSquareAudit" tabindex="0" class="fa-solid fa-square-minus accessory-panel-hdr-expand-n-collapse"></i></a>
+                </div><div id="auditClose" class="panel-icon clickable">
+                    <i class="fa-solid fa-circle-xmark accessory-panel-hdr-close" title="Close" tabindex="0" role="button"></i>
+                </div></div></div>
+            <div id="divAuditMCBPanel" class="mcb-panel-body">
+                <div class="accessory-panel-detach">
+                    <a class="common-page-link" onclick="openPopupInNewWindow($(this), auditUrl, panelAuditName); return false;" tabindex="0">
+                        <span>Open in separate window</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+                <div id="pnlAuditBody" class="audit-panel-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pnlMail" class="mcb-panel display-none" data-kit-h="h8">
+        <div class="mcb-panel-container">
+            <div class="accessory-panel-hdr mcb-panel-hdr">
+                <span id="mailTitle">Mail</span>
+            </div>
+            <div class="mcb-panel-hdr-tools">
+                
+                
+                
+            <div class="content-ordered-panel-hdr-tools"><div id="mailHelp" class="panel-icon-help clickable" title="Help">
+                    <span class="fa-stack fa-lg help-icon-stack-container" tabindex="0">
+                        <i class="fa-solid fa-circle fa-stack-1x help-icon-stack-bkgrnd"></i>
+                        <i class="fa-solid fa-circle fa-stack-2x help-icon-stack-bottom"></i>
+                        <i class="fa-solid fa-circle-question fa-stack-1x help-icon-stack-top" tabindex="0"></i>
+                    </span>
+                </div><div class="panel-icon">
+                    <a id="ShowMailMCBPanel" style="display: none;" title="Expand" data-role="tooltip" data-kit-tip="Expand" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="PlusSquareMail" tabindex="0" class="fa-solid fa-square-plus accessory-panel-hdr-expand-n-collapse"></i></a>
+                    <a id="HideMailMCBPanel" title="Collapse" data-role="tooltip" data-kit-tip="Collapse" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="MinusSquareMail" tabindex="0" class="fa-solid fa-square-minus accessory-panel-hdr-expand-n-collapse"></i></a>
+                </div><div id="mailClose" class="panel-icon clickable">
+                    <i class="fa-solid fa-circle-xmark accessory-panel-hdr-close" title="Close" tabindex="0"></i>
+                </div></div></div>
+            <div id="divMailMCBPanel" class="mcb-panel-body">
+                <div class="accessory-panel-detach">
+                    <a class="common-page-link" onclick="openPopupInNewWindow($(this), mailUrl, panelMailName); return false;">
+                        <span>Open in separate window</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+                <div id="pnlMailBody" class="mail-panel-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pnlNotes" class="mcb-panel display-none" data-kit-h="h9">
+        <div class="mcb-panel-container">
+            <div class="accessory-panel-hdr mcb-panel-hdr">
+                <span id="notesTitle">Notes</span>
+            </div>
+            <div class="mcb-panel-hdr-tools">
+                
+                
+                
+            <div class="content-ordered-panel-hdr-tools"><div id="notesHelp" class="panel-icon-help clickable" title="Help">
+                    <span class="fa-stack fa-lg help-icon-stack-container" tabindex="0">
+                        <i class="fa-solid fa-circle fa-stack-1x help-icon-stack-bkgrnd"></i>
+                        <i class="fa-solid fa-circle fa-stack-2x help-icon-stack-bottom"></i>
+                        <i class="fa-solid fa-circle-question fa-stack-1x help-icon-stack-top" tabindex="0"></i>
+                    </span>
+                </div><div class="panel-icon">
+                    <a id="ShowNotesMCBPanel" style="display: none;" title="Expand" data-role="tooltip" data-kit-tip="Expand" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="PlusSquareNotes" tabindex="0" class="fa-solid fa-square-plus accessory-panel-hdr-expand-n-collapse"></i></a>
+                    <a id="HideNotesMCBPanel" title="Collapse" data-role="tooltip" data-kit-tip="Collapse" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="MinusSquareNotes" tabindex="0" class="fa-solid fa-square-minus accessory-panel-hdr-expand-n-collapse"></i></a>
+                </div><div id="notesClose" class="panel-icon clickable">
+                    <i class="fa-solid fa-circle-xmark accessory-panel-hdr-close" title="Close" tabindex="0"></i>
+                </div></div></div>
+            <div id="divNotesMCBPanel" class="mcb-panel-body">
+                <div class="accessory-panel-detach">
+                    <a class="common-page-link" onclick="openPopupInNewWindow($(this), notesUrl, panelNotesName); return false;">
+                        <span>Open in separate window</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+                <div id="pnlNotesBody" class="notes-panel-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pnlPrintPreview" class="mcb-panel display-none" data-kit-h="h10">
+        <div class="mcb-panel-container">
+            <div class="accessory-panel-hdr mcb-panel-hdr">
+                <span id="printPreviewTitle">Print Preview</span>
+            </div>
+            <div class="mcb-panel-hdr-tools">
+                
+                
+                
+            <div class="content-ordered-panel-hdr-tools"><div id="printPreviewHelp" class="panel-icon-help clickable" title="Help">
+                    <span class="fa-stack fa-lg help-icon-stack-container" tabindex="0">
+                        <i class="fa-solid fa-circle fa-stack-1x help-icon-stack-bkgrnd"></i>
+                        <i class="fa-solid fa-circle fa-stack-2x help-icon-stack-bottom"></i>
+                        <i class="fa-solid fa-circle-question fa-stack-1x help-icon-stack-top" tabindex="0"></i>
+                    </span>
+                </div><div class="panel-icon">
+                    <a id="ShowPrintPreviewMCBPanel" style="display: none;" title="Expand" data-role="tooltip" data-kit-tip="Expand" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="PlusSquarePrintPreview" tabindex="0" class="fa-solid fa-square-plus accessory-panel-hdr-expand-n-collapse"></i></a>
+                    <a id="HidePrintPreviewMCBPanel" title="Collapse" data-role="tooltip" data-kit-tip="Collapse" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="MinusSquarePrintPreview" tabindex="0" class="fa-solid fa-square-minus accessory-panel-hdr-expand-n-collapse"></i></a>
+                </div><div id="printPreviewClose" class="panel-icon clickable">
+                    <i class="fa-solid fa-circle-xmark accessory-panel-hdr-close" title="Close" tabindex="0"></i>
+                </div></div></div>
+            <div id="divPrintPreviewMCBPanel" class="mcb-panel-body">
+                <div class="accessory-panel-detach">
+                    <a class="common-page-link" onclick="openPopupInNewWindow($(this), printPreviewUrl, panelPrintPreviewName); return false;">
+                        <span>Open in separate window</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+                <div id="pnlPrintPreviewBody" class="print-preview-panel-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pnlReports" class="mcb-panel display-none" data-kit-h="h11">
+        <div class="mcb-panel-container">
+            <div class="accessory-panel-hdr mcb-panel-hdr">
+                <span id="reportsTitle">Reports</span>
+            </div>
+            <div class="mcb-panel-hdr-tools">
+                
+                
+                
+            <div class="content-ordered-panel-hdr-tools"><div id="reportsHelp" class="panel-icon clickable" title="Help">
+                    <span class="fa-stack fa-lg help-icon-stack-container">
+                        <i class="fa-solid fa-circle fa-stack-1x help-icon-stack-bkgrnd"></i>
+                        <i class="fa-solid fa-circle fa-stack-2x help-icon-stack-bottom"></i>
+                        <i class="fa-solid fa-circle-question fa-stack-1x help-icon-stack-top" tabindex="0"></i>
+                    </span>
+                </div><div class="panel-icon">
+                    <a id="ShowReportsMCBPanel" style="display: none;" title="Expand" data-role="tooltip" data-kit-tip="Expand" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="PlusSquareReports" tabindex="0" class="fa-solid fa-square-plus accessory-panel-hdr-expand-n-collapse"></i></a>
+                    <a id="HideReportsMCBPanel" title="Collapse" data-role="tooltip" data-kit-tip="Collapse" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="MinusSquareReports" tabindex="0" class="fa-solid fa-square-minus accessory-panel-hdr-expand-n-collapse"></i></a>
+                </div><div id="reportsClose" class="panel-icon clickable">
+                    <i class="fa-solid fa-circle-xmark accessory-panel-hdr-close" title="Close" tabindex="0"></i>
+                </div></div></div>
+            <div id="divReportsMCBPanel" class="mcb-panel-body">
+                <div class="accessory-panel-detach">
+                    <a class="common-page-link" onclick="openPopupInNewWindow($(this), reportsUrl, panelReportsName); return false;">
+                        <span>Open in separate window</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+                <div id="pnlReportsBody" class="reports-panel-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pnlReturnToProvider" class="mcb-panel display-none" data-kit-h="h12">
+        <div class="mcb-panel-container">
+            <div class="accessory-panel-hdr mcb-panel-hdr">
+                <span id="returnToProviderTitle">RTP</span>
+            </div>
+            <div class="mcb-panel-hdr-tools">
+                
+                
+            <div class="content-ordered-panel-hdr-tools"><div class="panel-icon clickable">
+                    <div class="fa-solid fa-square-minus accessory-panel-hdr-expand-n-collapse" tabindex="0"></div>
+                </div><div class="panel-icon clickable">
+                    <i class="fa-solid fa-circle-xmark accessory-panel-hdr-close" onclick="closeMCBPanel(this);" title="Close" tabindex="0"></i>
+                </div></div></div>
+            <div class="mcb-panel-body">
+                <div class="accessory-panel-detach">
+                    <a class="common-page-link" onclick="openPopupInNewWindow($(this), rtpUrl, panelRPTName); return false;">
+                        <span>Open in separate window</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+                <div id="pnlReturnToProviderBody" class="panel-body"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+            </div>
+            <div class="row">
+                
+
+
+
+
+
+<div id="divExternalLinks" class="aag-panel aag-panel-external-links">
+    <div class="aag-panel-container">
+        <div class="accessory-panel-hdr">
+            <div class="display-flex">
+                <span class="ellipsis-nowrap">
+                    External Links
+                </span>
+                <a id="ExternalLinksClose" onclick="toggleVisibilityStyle('divExternalLinks');" onkeypress="toggleVisibilityStyle('divExternalLinks');" title="Close" tabindex="0" data-role="tooltip" data-kit-tip="Close" data-kit-tip-pos="top" data-kit-tip-after="250"><i class="fa-solid fa-xmark accessory-panel-hdr-close"></i></a>
+            </div>
+        </div>
+        <div class="aag-panel-body">
+            <div id="divExternalLinksBody" tabindex="0">
+                <div>
+                    <ul>
+                                                <li id="AAGMenu.ExternalLinks.RM8" class="external-link">
+                                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                                            <a class="common-page-link" tabindex="0" href="javascript:popupCenteredWindow('https://ssrsmc.mms.tst.pgwcloud.net/reports/browse/','');">Records Management (RM8)</a>
+
+                                                </li>
+                                                <li id="AAGMenu.ExternalLinks.CMS" class="external-link">
+                                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                                            <a class="common-page-link" tabindex="0" href="javascript:popupCenteredWindow('https://www.cms.gov/','');">CMS</a>
+
+                                                </li>
+                                                <li id="AAGMenu.ExternalLinks.HPE" class="external-link">
+                                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                                            <a class="common-page-link" tabindex="0" href="javascript:popupCenteredWindow('https://www.gainwelltechnologies.com/','');">Gainwell</a>
+
+                                                </li>
+                                                <li id="AAGMenu.ExternalLinks.Medicaid" class="external-link">
+                                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                                            <a class="common-page-link" tabindex="0" href="javascript:popupCenteredWindow('https://www.medicaid.gov/','');">Medicaid</a>
+
+                                                </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div id="divExtLinksCloseButton" class="row">
+                <span class="float-right clickable">
+                    <label id="extLinksCloseButtonLabel" for="extLinksCloseButton" class="display-none">Close</label><input id="extLinksCloseButton" type="button" onclick="extLinksClose()" tabindex="0" class="k-button primary-button" value="Close" aria-labelledby="extLinksCloseButtonLabel" data-kit-action="close" style="">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divCoreBroadcastMsg" class="aag-panel">
+    <div class="aag-panel-container">
+        <div class="accessory-panel-hdr">
+            <div class="display-flex">
+                <span class="ellipsis-nowrap">
+                    MESSAGES
+                </span>
+                <a id="ShowCoreBroadcastMsgBody" onclick="ExpandHelpItem('divCoreBroadcastMsgFullBody', 'ShowCoreBroadcastMsgBody', 'HideCoreBroadcastMsgBody');" onkeypress="ExpandHelpItem('divCoreBroadcastMsgFullBody', 'ShowCoreBroadcastMsgBody', 'HideCoreBroadcastMsgBody');" style="display: none;" title="Expand" tabindex="0" data-role="tooltip" data-kit-tip="Expand" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="PlusSquareBroadcastMsg" class="fa-solid fa-square-plus accessory-panel-hdr-expand-n-collapse"></i></a>
+                <a id="HideCoreBroadcastMsgBody" onclick="CollapseHelpItem('divCoreBroadcastMsgFullBody', 'ShowCoreBroadcastMsgBody', 'HideCoreBroadcastMsgBody');" onkeypress="CollapseHelpItem('divCoreBroadcastMsgFullBody', 'ShowCoreBroadcastMsgBody', 'HideCoreBroadcastMsgBody');" title="Collapse" tabindex="0" data-role="tooltip" data-kit-tip="Collapse" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="MinusSquareBroadcastMsg" class="fa-solid fa-square-minus accessory-panel-hdr-expand-n-collapse"></i></a>
+                <a id="CloseBroadcastMsgPanel" title="Close" tabindex="0" data-role="tooltip" data-kit-tip="Close" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="CloseBtn" class="fa-solid fa-xmark accessory-panel-hdr-close"></i></a>
+            </div>
+        </div>
+        <div id="divCoreBroadcastMsgFullBody" class="aag-panel-body">
+            <div id="divCoreBroadcastMsgBody">
+
+
+<div class="clear-n-pad">
+    <div id="internalPortalMessagesInstructions" class="display-none" style="display: block;">
+        <p class="instructional-text">Click Current Messages to view current broadcast messages, or click Acknowledged Messages to view previously acknowledged broadcast messages.</p>
+    </div>
+    <div id="providerPortalMessagesInstructions" class="display-none" data-kit-h="h13">
+        <p class="instructional-text">Click Current Messages to view current broadcast messages, or click Acknowledged Messages to view previously acknowledged broadcast messages.</p>
+    </div>
+    <div id="memberPortalMessagesInstructions" class="display-none" data-kit-h="h14">
+        <p class="instructional-text">Click Current Messages to view current broadcast messages, or click Acknowledged Messages to view previously acknowledged broadcast messages.</p>
+    </div>
+    <div id="managedCarePortalMessagesInstructions" class="display-none" data-kit-h="h15">
+        <p class="instructional-text">Click Current Messages to view current broadcast messages, or click Acknowledged Messages to view previously acknowledged broadcast messages.</p>
+    </div>
+    <div id="drugRebatePortalMessagesInstructions" class="display-none" data-kit-h="h16">
+        <p class="instructional-text">Click Current Messages to view current broadcast messages, or click Acknowledged Messages to view previously acknowledged broadcast messages.</p>
+    </div>
+</div>
+<div id="InstructionsAcknowledgeBroadcastMsg">
+    <p class="instructional-text">
+        To continue, please indicate receipt of important messages by selecting each “Read” checkbox.
+    </p>
+    <div class="clear-n-pad"></div>
+</div>
+<div id="BroadcastMsgModuleTabs" class="row broadcast-msg-tabstrip">
+    <div class="row">
+        <div id="broadcastCurrentMsgTab" class="float-left broadcast-current-msg-label">
+            <button type="button" id="curMsgButton" class="tabstrip-button broadcast-msg-primary-tab">
+                <span class="tabstrip-button-icon"></span>Current Messages
+            </button>
+            <div class="tabstrip-button-caret-container">
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="broadcastAcknowledgedMsgTab" class="float-left broadcast-acknowledged-msg-label">
+            <button type="button" id="acknowledgedMsgButton" class="tabstrip-button broadcast-msg-inactive-tab">
+                <span class="tabstrip-button-icon"></span>Acknowledged Messages
+            </button>
+            <div class="tabstrip-button-caret-container">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="BroadcastContentPanel" class="row broadcast-msg-panel">
+    <div class="panel-body">
+        <div class="broadcast-msg-list" role="alert">
+            <div class="align-right"></div>
+                    <div id="NoBroadcastMessage" class="help-search-no-results">
+                        You have no messages
+                    </div>
+
+        </div>
+    </div>
+</div>
+<div class="row"></div>
+
+</div>
+            <div id="divMessagesCloseButton" class="row">
+                <span class="float-right clickable">
+                    <label id="messagesCloseButtonLabel" for="messagesCloseButton" class="display-none">Close</label><input id="messagesCloseButton" type="button" onclick="messagesClose()" tabindex="0" class="k-button primary-button" value="Close" aria-labelledby="messagesCloseButtonLabel" data-kit-action="close" style="">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divFavorites" class="aag-panel">
+    <div class="aag-panel-container">
+        <div class="accessory-panel-hdr">
+            <div class="display-flex">
+                <span class="ellipsis-nowrap">
+                    @NE TOUCH FAVORITES
+                </span>
+                <a id="ShowFavoritesBody" onclick="ExpandHelpItem('divFavoritesBody', 'ShowFavoritesBody', 'HideFavoritesBody');" onkeypress="ExpandHelpItem('divFavoritesBody', 'ShowFavoritesBody', 'HideFavoritesBody');" style="display: none;" title="Expand" tabindex="0" data-role="tooltip" data-kit-tip="Expand" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="PlusSquareFavorites" class="fa-solid fa-square-plus accessory-panel-hdr-expand-n-collapse"></i></a>
+                <a id="HideFavoritesBody" onclick="CollapseHelpItem('divFavoritesBody', 'ShowFavoritesBody', 'HideFavoritesBody');" onkeypress="CollapseHelpItem('divFavoritesBody', 'ShowFavoritesBody', 'HideFavoritesBody');" title="Collapse" tabindex="0" data-role="tooltip" data-kit-tip="Collapse" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="MinusSquareFavorites" class="fa-solid fa-square-minus accessory-panel-hdr-expand-n-collapse"></i></a>
+                <a id="FavoritesClose" onclick="toggleVisibilityStyle('divFavorites');" onkeypress="toggleVisibilityStyle('divFavorites');" title="Close" tabindex="0" data-role="tooltip" data-kit-tip="Close" data-kit-tip-pos="top" data-kit-tip-after="250"><i class="fa-solid fa-xmark accessory-panel-hdr-close"></i></a>
+            </div>
+        </div>
+        <div class="aag-panel-body">
+            <div id="divFavoritesBody" class="inner-panel-body"></div>
+        </div>
+    </div>
+</div>
+<div id="divCoreContactUs" class="aag-panel">
+    <div class="aag-panel-container">
+        <div class="accessory-panel-hdr">
+            <div class="display-flex">
+                <span class="ellipsis-nowrap">
+                    Contact Us
+                </span>
+                <a id="ShowCoreContactUsBody" onclick="ExpandHelpItem('divCoreContactUsFullBody', 'ShowCoreContactUsBody', 'HideCoreContactUsBody');" onkeypress="ExpandHelpItem('divCoreContactUsFullBody', 'ShowCoreContactUsBody', 'HideCoreContactUsBody');" style="display: none;" title="Expand" tabindex="0" data-role="tooltip" data-kit-tip="Expand" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="PlusSquareCoreContactUs" class="fa-solid fa-square-plus accessory-panel-hdr-expand-n-collapse"></i></a>
+                <a id="HideCoreContactUsBody" onclick="CollapseHelpItem('divCoreContactUsFullBody', 'ShowCoreContactUsBody', 'HideCoreContactUsBody');" onkeypress="CollapseHelpItem('divCoreContactUsFullBody', 'ShowCoreContactUsBody', 'HideCoreContactUsBody');" title="Collapse" tabindex="0" data-role="tooltip" data-kit-tip="Collapse" data-kit-tip-pos="top" data-kit-tip-after="250"><i id="MinusSquareCoreContactUs" class="fa-solid fa-square-minus accessory-panel-hdr-expand-n-collapse"></i></a>
+                <a id="IntContactUsClose" onclick="toggleVisibilityStyle('divCoreContactUs');setPanelHeight('divCoreContactUs');" onkeypress="toggleVisibilityStyle('divCoreContactUs');setPanelHeight('divCoreContactUs');" title="Close" tabindex="0" data-role="tooltip" data-kit-tip="Close" data-kit-tip-pos="top" data-kit-tip-after="250"><i class="fa-solid fa-xmark accessory-panel-hdr-close"></i></a>
+            </div>
+        </div>
+        <div id="divCoreContactUsFullBody" class="aag-panel-body  contact-us-container">
+            <div id="divCoreContactUsBody" class="scroll-vert-only contactus-height inner-panel-body"></div>
+            <div id="divIntPortalContactUsCloseButton" class="row">
+                <span class="float-right clickable">
+                    <label id="intPortalContactUsCloseButtonLabel" for="intPortalContactUsCloseButton" class="display-none">Close</label><input id="intPortalContactUsCloseButton" type="button" onclick="intPortalContactUsClose()" tabindex="0" class="k-button primary-button" value="Close" aria-labelledby="intPortalContactUsCloseButtonLabel" data-kit-action="close" style="">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--need visibility set due to the use of the "right" style, which causes the border to display. -->
+<div id="divLogin" class="aag-panel-login" style="visibility: hidden;"></div>
+
+
+            </div>
+                    <div id="pageBody" class="row content">
+                        <main role="main">
+                            
+    <div class="gm-container" style="display: none;"></div>
+
+
+                            
+<form action="/Home/MyHome" class="k-content" id="mainForm" method="post"><!-- fake fields are a workaround for chrome autofill getting the wrong fields --><input style="display: none;" type="text" name="fakeusernameremembered" value=""><input style="display: none;" type="password" name="fakepasswordremembered"><!-- ------------------------------------------------------------------------- --><input name="__RequestVerificationToken" type="hidden" value="mSmabWdrZgBzdxMKCUuJej0GSLO6WLq728iJAArIKQBQLnIgNe8qrqArhvAw8ofEYP7d8LKlOli8x9OwmFdiyf5IXrd0sbldOPdUFUDDGqVvqVNWBbVur7JPy6Wcd7YVY2k2z5evSXP6oJ7kRCIGkA2" style="">
+
+<div class="container">
+    <div class="editor-validation-summary validation-summary" style="display: none;" data-kit-h="h17">
+        <i class="msg-inline-icon fa-solid fa-ban"></i>
+        <div class="msg-inline-close panel-icon clickable" role="alert" data-hide="alert" aria-label="close" tabindex="0">
+            <span class="fa-solid fa-xmark" title="Close" data-role="tooltip" data-kit-tip="Close" data-kit-tip-pos="top" data-kit-tip-after="250"></span>
+        </div>
+        Resolve the following form field errors and try again. 
+        <ul class="validation-errors"></ul>
+    </div>
+</div>    <div id="container" class="row">
+        <div id="myhomeDshbrdContainer" class="row">        <table style="width: 100%; height: 100%;">            <tbody><tr class="row">                <td class="myHome_img" role="img" aria-label="Stethoscope and tablet laying on medical office desk"></td>                <td class="myHome_copy">                                        <div>                            <h2>Medicaid Management Solutions    </h2>                            <p>Charting a New Direction for Better Healthcare Outcomes    </p>                        </div>                </td>            </tr>        </tbody></table>    </div>
+    </div>
+
+<label id="Metadata_ModifiedDateLabel" for="Metadata_ModifiedDate" class="display-none">Metadata_ModifiedDate</label><input id="Metadata_ModifiedDate" name="Metadata.ModifiedDate" type="hidden" value="" aria-labelledby="Metadata_ModifiedDateLabel" style="">
+<label id="Metadata_ModifiedIdLabel" for="Metadata_ModifiedId" class="display-none">Metadata_ModifiedId</label><input id="Metadata_ModifiedId" name="Metadata.ModifiedId" type="hidden" value="" aria-labelledby="Metadata_ModifiedIdLabel" style="">
+<label id="Metadata_ModifiedTimestampLabel" for="Metadata_ModifiedTimestamp" class="display-none">Metadata_ModifiedTimestamp</label><input id="Metadata_ModifiedTimestamp" name="Metadata.ModifiedTimestamp" type="hidden" value="" aria-labelledby="Metadata_ModifiedTimestampLabel" style=""><label id="Editor_EntityNameLabel" for="Editor_EntityName" class="display-none">Editor_EntityName</label><input id="Editor_EntityName" name="Editor.EntityName" type="hidden" value="Panel layout" aria-labelledby="Editor_EntityNameLabel" style=""><label id="Editor_ModeLabel" for="Editor_Mode" class="display-none">Editor_Mode</label><input id="Editor_Mode" name="Editor.Mode" type="hidden" value="Update" aria-labelledby="Editor_ModeLabel" style=""><label id="Editor_SaveActionTextLabel" for="Editor_SaveActionText" class="display-none">Editor_SaveActionText</label><input id="Editor_SaveActionText" name="Editor.SaveActionText" type="hidden" value="Save" aria-labelledby="Editor_SaveActionTextLabel" style=""><label id="Editor_SavedMessageLabel" for="Editor_SavedMessage" class="display-none">Editor_SavedMessage</label><input id="Editor_SavedMessage" name="Editor.SavedMessage" type="hidden" value="Panel layout was successfully saved." aria-labelledby="Editor_SavedMessageLabel" style=""></form>
+
+                        </main>
+                    </div>
+                <footer role="contentinfo">
+                    
+
+<div id="policyPanel" class="extprtl-dshbrd-content-well-panel" data-kit-h="h18">
+    <div class="row extprtl-dshbrd-content-well-panel-container">
+        <div class="extprtl-dshbrd-content-well-panel-hdr">
+            
+            <a onclick="hideExternalPortalPolicyPanel()" onkeypress="if (event.keyCode === 32) { hideExternalPortalPolicyPanel(); }"><div class="fa-solid fa-circle-xmark extprtl-dshbrd-content-well-panel-hdr-close" aria-role="button" aria-label="Close" tabindex="0"></div></a>
+        </div>
+        <div class="extprtl-dshbrd-content-well-panel-bdy k-content align-left">
+            <!-- Disclaimer -->
+            <a name="sectionDisclaimer"></a>
+            <div class="extprtl-subhead-container">
+                <div class="extprtl-subhead-title">DISCLAIMER</div>
+                <div class="row">
+                    <p class="paragraph-text">
+                        <span></span></p><p><span style="font-family:'Times New Roman'; font-size:14px;">The website is provided as a convenience to providers, members and stakeholders of Kansas Medical Assistance Program. Despite our best intentions to maintain complete and accurate information, discrepancies may sometimes occur and materials on the site may not be consistent or up-to-date with current program guidelines. If in doubt, please contact Customer Service.</span></p>
+                    <p></p>
+                </div>
+            </div>
+            <div class="row">
+                <span class="extprtl-back-to-top-lbl"><a href="#sectionDisclaimer">Back to Top<i class="fa-solid fa-circle-chevron-up fa-lg back-to-top-icon"></i></a></span>
+            </div>
+
+            <!-- Website Requirements -->
+            <a name="sectionWebsiteRequirements"></a>
+            <div class="extprtl-subhead-container">
+                <div class="extprtl-subhead-title">WEBSITE REQUIREMENTS</div>
+                <div class="row">
+                    <p class="paragraph-text">
+                        <span></span></p><p><b style="font-family:'Arial'; align:left; font-size:14px;">PRIVACY AND SECURITY</b></p><p><span style="font-family:'Arial'; font-size:14px;"> When logging in to the application for the first time, you may be asked if you are using a personal or a public computer.  Please use caution while answering this question as the privacy and security required to protect healthcare data could be impacted by your selection.</span></p><br><p><b style="font-family:'Arial'; font-size:14px;">BROWSER SUPPORT AND TESTING</b></p><p><span style="font-family:'Arial'; font-size:14px;">The Gainwell Technologies Medicaid Management Solutions and Healthcare Portals support browsers meeting the World Wide Web Consortium (W3C) Hypertext Markup Language (HTML) 5 specification.  Support is based solely on HTML 5 compatibility regardless of other factors, such as browser market share.<br><br>Gainwell develops code to conform to the HTML 5 standard and compatibility is confirmed through rigorous testing.  The Gainwell testing team conducts verification of product developed pages against Microsoft Edge, Google Chrome, and Safari.  In the event a defect is identified, by Gainwell or a client, it will be evaluated and managed via the product defect management process.<br><br>The browser support of various commercial off-the-shelf (COTS) tools, such as workflow, business rules engine, or file transfer systems is based on the browser capabilities defined by the specific software vendor.<br><br>The latest version of HTML is HTML5, specifically the HTML Living Standard maintained by the Web Hypertext Application Technology Working Group (WHATWG). Unlike previous versions, the HTML Living Standard is continuously updated to incorporate new features and improvements.  HTML itself does not have a traditional support lifecycle like software products. Instead, its features and standards are continuously maintained and updated by the WHATWG. This means that as long as browsers and web technologies evolve, HTML will be updated to support new capabilities and ensure compatibility.  Modern web browsers (e.g., Chrome, Firefox, Safari, Edge) consistently update to support the latest HTML standards.</span></p><br><p><b style="font-family:'Arial'; font-size:14px;"> ACCESSIBILITY AND AMERICANS WITH DISABILITIES ACT (ADA) COMPLIANCE</b></p><p><span style="font-family:'Arial'; font-size:14px;">Gainwell is committed to making its electronic and information technologies accessible to people with disabilities. We strive to meet or exceed the requirements of Section 508 of the Rehabilitation Act (29 U.S.C. 794d), as amended in 1998 as well as the Web Content Accessibilities Guidelines (WCAG) Version 2.2. <br><br>Section 508 is a federal law that requires agencies to provide people with disabilities equal access to electronic information and data comparable to those who do not have disabilities, unless doing so would impose an undue burden on the agency. The Section 508 standards are the technical requirements and criteria used to determine whether the agency is meeting the requirements of this law. <br><br>The Web Content Accessibility Guidelines (WCAG) are part of a series of web accessibility guidelines published by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C), the main international standards organization for the Internet. They are a set of recommendations for making Web content more accessible, primarily for people with disabilities—but also for all user agents, including highly limited devices, such as mobile phones. WCAG 2.0, was published in December 2008 and became an ISO standard, ISO/IEC 40500:2012 in October 2012. WCAG 2.2 became a W3C Recommendation in October 2023.</span></p><br><p><b style="font-family:'Arial'; font-size:14px;">SCREEN RESOLUTION</b></p><p><span style="font-family:'Arial'; font-size:14px;">It is recommended that screen resolution should be a minimum of 1024 x 768. </span></p><br><p><b style="font-family:'Arial'; font-size:14px;">DOCUMENT VIEWING AND DATA EXPORTS</b></p><p><span style="font-family:'Arial'; font-size:14px;">Some features within the product produce information in either pdf or xls format.  For viewing of this information, Adobe Acrobat and/or a Microsoft Office viewer may be required.</span></p>
+                    <p></p>
+                </div>
+            </div>
+            <div class="row">
+                <span class="extprtl-back-to-top-lbl"><a href="#sectionDisclaimer">Back to Top<i class="fa-solid fa-circle-chevron-up fa-lg back-to-top-icon"></i></a></span>
+            </div>
+
+            <!-- Privacy Policy -->
+            <a name="sectionPrivacyPolicy"></a>
+            <div class="extprtl-subhead-container">
+                <div class="extprtl-subhead-title">PRIVACY POLICY</div>
+                <div class="row">
+                    <p class="paragraph-text">
+                        <span></span></p><p><b style="font-family:'Arial'; font-size:14px;">Enterprise Online Privacy Statement</b></p><br><p><b style="font-family:'Arial'; font-size:14px;">PRIVACY AND DATA PROTECTION AT PORTAL WEBSITES</b></p><p><span style="font-family:'Arial'; font-size:14px;">This policy has been updated to protect personal data in accordance with requirements set forth in the General Data Protection Regulation (GDPR), which took effect on May 25, 2018. At Gainwell Technologies, our commitment to privacy goes beyond the minimum legal and regulatory requirements. We strive for best-in-class data protection and privacy management, which requires a sound data privacy governance structure and an effective data privacy compliance and best practices program to ensure we meets ever-changing and increasingly-complex regulatory standards and all contractually agreed privacy obligations. Gainwell Technologies' website Global Privacy and Data Protection Office has strategic and operational responsibility for this program, which is adequately resourced and appropriately organized to ensure the policies and compliance processes, technology and physical controls and security we rely upon to govern the collection, use, storage and transfer of personal data all over the world meets statutory and regulatory requirements. Therefore, Gainwell Technologies' website approach is to coordinate the contribution of several corporate disciplines - including ethics and compliance, legal, human resources, and information and physical security - to achieve our "best in class" data protection and privacy management objectives.</span></p>
+                    <p></p>
+                </div>
+            </div>
+            <div class="row">
+                <span class="extprtl-back-to-top-lbl"><a href="#sectionDisclaimer">Back to Top<i class="fa-solid fa-circle-chevron-up fa-lg back-to-top-icon"></i></a></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                    <div class="subfooter">
+                        <span class="subfooter-lbl"> <a class="subfooter-link" tabindex="0" onclick="openModalOverlay('SiteDisclaimerOverlay', '/Home/SiteDisclaimer/', 'panelForm-col-3', null, null);" onkeypress="if (event.keyCode == 13) { openModalOverlay('SiteDisclaimerOverlay', '/Home/SiteDisclaimer/', 'panelForm-col-3', null, null) };">Disclaimer</a></span>
+                        <span class="subfooter-lbl subfooter-lbl-separator"><a class="subfooter-link" tabindex="0" onclick="openModalOverlay('SiteRequirementsOverlay', '/Home/SiteRequirements/', 'panelForm-col-4', null, null);" onkeypress="if (event.keyCode == 13) { openModalOverlay('SiteRequirementsOverlay', '/Home/SiteRequirements/', 'panelForm-col-4', null, null) };">Website Requirements</a></span>
+                        <span class="subfooter-lbl subfooter-lbl-right-separator"><a class="subfooter-link" tabindex="0" onclick="openModalOverlay('SitePrivacyOverlay', '/Home/SitePrivacy/', 'panelForm-col-4', null, null);" onkeypress="if (event.keyCode == 13) { openModalOverlay('SitePrivacyOverlay', '/Home/SitePrivacy/', 'panelForm-col-4', null, null) };">Privacy Policy</a></span>
+                        <span class="subfooter-lbl"> <a class="subfooter-link" tabindex="0" onclick="openModalOverlay('SiteCookieOverlay', '/Home/SiteCookie/', 'panelForm-col-3', null, null);" onkeypress="if (event.keyCode == 13) { openModalOverlay('SiteCookieOverlay', '/Home/SiteCookie/', 'panelForm-col-3', null, null) };">Cookie Policy</a></span>
+                    </div>
+                    
+
+<div id="pageFooter">
+    <div id="tenantFooter">
+        
+    </div>
+    <div id="baseFooter" class="row">
+        <div id="footerCopyright">
+            <span title="">© 2026 Gainwell Technologies. All rights reserved.</span>
+        </div>
+        <div id="footerBuild">
+                    <strong>Server:</strong> 10.199.153.38                    <strong>Build Date:</strong> 10/30/2026 3:28:37 AM                    <strong>v30.0.0.2609</strong>
+
+        </div>
+    </div>
+</div>
+                </footer>
+
+
+        </div>
+
+        <div id="loadingDialog" class="wait-dialog" role="alert" aria-busy="true" aria-live="assertive" style="display: none;" data-kit-h="h19">
+            <span class="wait-dialog-lbl">Processing ...</span>
+        </div>
+
+
+        <a href="#" class="back-to-top" tabindex="-1" title="Back to Top" data-role="tooltip" data-kit-tip="Back to Top" data-kit-tip-pos="top" data-kit-tip-after="250">
+            <span class="fa-stack fa-lg clickable">
+                <i class="fa-solid fa-circle fa-stack-1x btt-icon-stack-bkgnd"></i>
+                <i class="fa-solid fa-circle fa-stack-1x btt-icon-stack-bottom"></i>
+                <i class="fa-solid fa-circle-chevron-up fa-stack-1x btt-icon-stack-top"></i>
+            </span>
+        </a>
+
+</div></body></html>

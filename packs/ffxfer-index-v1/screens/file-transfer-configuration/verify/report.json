@@ -1,0 +1,233 @@
+{
+  "size_delta_px": [
+    0,
+    0
+  ],
+  "bad_pct": 0.87,
+  "mean_abs": 1.53,
+  "worst_band": {
+    "y": 360,
+    "bad_pct": 1.37
+  },
+  "bands": [
+    {
+      "y": 0,
+      "bad_pct": 1.06
+    },
+    {
+      "y": 180,
+      "bad_pct": 1.11
+    },
+    {
+      "y": 360,
+      "bad_pct": 1.37
+    },
+    {
+      "y": 540,
+      "bad_pct": 1.33
+    },
+    {
+      "y": 720,
+      "bad_pct": 0.35
+    },
+    {
+      "y": 900,
+      "bad_pct": 0
+    }
+  ],
+  "clusters": [
+    {
+      "box": [
+        1656,
+        96,
+        192,
+        672
+      ],
+      "bad_px": 16431,
+      "css_box": [
+        1656,
+        96,
+        192,
+        672
+      ],
+      "element": {
+        "el": "li.k-item.k-menu-item[data-testid=button-plan-management]",
+        "text": "Plan Management Reference Data Pharmacy ",
+        "box": [
+          1632,
+          415,
+          288,
+          36
+        ]
+      }
+    },
+    {
+      "box": [
+        216,
+        0,
+        288,
+        48
+      ],
+      "bad_px": 758,
+      "css_box": [
+        216,
+        0,
+        288,
+        48
+      ],
+      "element": {
+        "el": "div.system-name[data-testid=button]",
+        "text": "Medicaid Management Solutions",
+        "box": [
+          202,
+          12,
+          320,
+          18
+        ]
+      }
+    },
+    {
+      "box": [
+        1200,
+        24,
+        216,
+        24
+      ],
+      "bad_px": 424,
+      "css_box": [
+        1200,
+        24,
+        216,
+        24
+      ],
+      "element": {
+        "el": "a.k-link.display-block[data-testid=link-external-links]",
+        "text": "External Links",
+        "box": [
+          1307,
+          21,
+          121,
+          19
+        ]
+      }
+    },
+    {
+      "box": [
+        1536,
+        24,
+        96,
+        24
+      ],
+      "bad_px": 209,
+      "css_box": [
+        1536,
+        24,
+        96,
+        24
+      ],
+      "element": {
+        "el": "a.k-link.display-block[data-testid=link-contact-us]",
+        "text": "Contact Us",
+        "box": [
+          1534,
+          21,
+          97,
+          19
+        ]
+      }
+    },
+    {
+      "box": [
+        1440,
+        24,
+        72,
+        24
+      ],
+      "bad_px": 186,
+      "css_box": [
+        1440,
+        24,
+        72,
+        24
+      ],
+      "element": {
+        "el": "a.k-link.display-block[data-testid=link-favorites]",
+        "text": "Favorites",
+        "box": [
+          1438,
+          21,
+          86,
+          19
+        ]
+      }
+    }
+  ],
+  "worst_crop": "worst.png",
+  "sections": [
+    {
+      "n": 1,
+      "label": "mainmenucontainer",
+      "y": 0,
+      "h": 1080,
+      "bad_pct": 0.87
+    },
+    {
+      "n": 2,
+      "label": "pagebody",
+      "y": 138.5,
+      "h": 511,
+      "bad_pct": 1.35
+    },
+    {
+      "n": 3,
+      "label": "disclaimer-the-website-is-prov",
+      "y": 649.5,
+      "h": 118.5,
+      "bad_pct": 1.03
+    }
+  ],
+  "worst_section": {
+    "n": 2,
+    "label": "pagebody",
+    "y": 138.5,
+    "h": 511,
+    "bad_pct": 1.35
+  },
+  "verdict": "close",
+  "states": [
+    {
+      "name": "dropdown",
+      "ok": true,
+      "bad_pct": 1.19,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "search",
+      "ok": true,
+      "bad_pct": 13.57,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    }
+  ],
+  "bands_note": "the rebuild has 0 top-level bands, the original 3: section heights not compared",
+  "motion": [
+    {
+      "id": "M01",
+      "kind": "css-animation",
+      "ok": true,
+      "detail": "animation autoFillEnd"
+    }
+  ],
+  "behavior": {
+    "console": {
+      "errors": [],
+      "reactWarnings": [],
+      "failedResources": 0
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "size_delta_px": [
+    0,
+    0
+  ],
+  "bad_pct": 0.13,
+  "mean_abs": 0.1,
+  "worst_band": {
+    "y": 0,
+    "bad_pct": 0.75
+  },
+  "bands": [
+    {
+      "y": 0,
+      "bad_pct": 0.75
+    },
+    {
+      "y": 180,
+      "bad_pct": 0
+    },
+    {
+      "y": 360,
+      "bad_pct": 0
+    },
+    {
+      "y": 540,
+      "bad_pct": 0
+    },
+    {
+      "y": 720,
+      "bad_pct": 0
+    },
+    {
+      "y": 900,
+      "bad_pct": 0
+    }
+  ],
+  "clusters": [
+    {
+      "box": [
+        192,
+        0,
+        312,
+        48
+      ],
+      "bad_px": 1065,
+      "css_box": [
+        192,
+        0,
+        312,
+        48
+      ],
+      "element": {
+        "el": "div.system-name[data-testid=button]",
+        "text": "Medicaid Management Solutions",
+        "box": [
+          202,
+          12,
+          320,
+          18
+        ]
+      }
+    },
+    {
+      "box": [
+        1152,
+        24,
+        264,
+        24
+      ],
+      "bad_px": 656,
+      "css_box": [
+        1152,
+        24,
+        264,
+        24
+      ],
+      "element": {
+        "el": "a.k-link.display-block[data-testid=link-messages]",
+        "text": "Messages",
+        "box": [
+          1209,
+          21,
+          87,
+          19
+        ]
+      }
+    },
+    {
+      "box": [
+        1536,
+        24,
+        192,
+        24
+      ],
+      "bad_px": 529,
+      "css_box": [
+        1536,
+        24,
+        192,
+        24
+      ],
+      "element": {
+        "el": "li#AAGMenu.MyAccount.k-item.k-menu-item[data-testid=AAGMenu.MyAccount]",
+        "text": "My Account",
+        "box": [
+          1631,
+          21,
+          110,
+          19
+        ]
+      }
+    },
+    {
+      "box": [
+        1440,
+        24,
+        72,
+        24
+      ],
+      "bad_px": 213,
+      "css_box": [
+        1440,
+        24,
+        72,
+        24
+      ],
+      "element": {
+        "el": "a.k-link.display-block[data-testid=link-favorites]",
+        "text": "Favorites",
+        "box": [
+          1438,
+          21,
+          86,
+          19
+        ]
+      }
+    },
+    {
+      "box": [
+        1752,
+        24,
+        72,
+        24
+      ],
+      "bad_px": 92,
+      "css_box": [
+        1752,
+        24,
+        72,
+        24
+      ],
+      "element": {
+        "el": "a.k-link.display-block[data-testid=link-logout]",
+        "text": "Logout",
+        "box": [
+          1751,
+          21,
+          71,
+          19
+        ]
+      }
+    }
+  ],
+  "worst_crop": "worst.png",
+  "sections": [
+    {
+      "n": 1,
+      "label": "mcbrowborder",
+      "y": 62,
+      "h": 570.55,
+      "bad_pct": 0
+    },
+    {
+      "n": 2,
+      "label": "disclaimer-the-website-is-prov",
+      "y": 632.55,
+      "h": 118.5,
+      "bad_pct": 0
+    }
+  ],
+  "worst_section": {
+    "n": 1,
+    "label": "mcbrowborder",
+    "y": 62,
+    "h": 570.55,
+    "bad_pct": 0
+  },
+  "verdict": "close",
+  "states": [
+    {
+      "name": "tooltip",
+      "ok": true,
+      "bad_pct": 2.66,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    }
+  ],
+  "bands_note": "the rebuild has 0 top-level bands, the original 2: section heights not compared",
+  "behavior": {
+    "console": {
+      "errors": [],
+      "reactWarnings": [],
+      "failedResources": 0
+    }
+  }
+}

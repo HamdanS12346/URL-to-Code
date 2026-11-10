@@ -1,0 +1,388 @@
+{
+ "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking",
+ "title": "File Transfer Tracking",
+ "lang": "en",
+ "charset": "UTF-8",
+ "doctype": "<!DOCTYPE html>",
+ "compatMode": "CSS1Compat",
+ "viewport": [
+  1920,
+  1080
+ ],
+ "dpr": 1,
+ "doc": [
+  1920,
+  1080
+ ],
+ "meta": {
+  "description": "Hewlett Packard Enterprise UA3 Healthcare Portal",
+  "viewport": "width=device-width, initial-scale=1.0",
+  "favicon": null
+ },
+ "framework": {
+  "webforms": false,
+  "aspnetAjax": false,
+  "mvcUnobtrusive": true,
+  "react": false,
+  "vue": false,
+  "angular": false,
+  "jquery": "3.7.1",
+  "bootstrap": false
+ },
+ "headings": [
+  {
+   "level": 1,
+   "text": "File Transfer Tracking"
+  }
+ ],
+ "tokens": {
+  "text": [
+   {
+    "v": "rgb(61, 61, 61)",
+    "w": 5468
+   },
+   {
+    "v": "rgb(43, 58, 68)",
+    "w": 3706
+   },
+   {
+    "v": "rgb(255, 255, 255)",
+    "w": 2872
+   },
+   {
+    "v": "rgb(0, 0, 0)",
+    "w": 500
+   },
+   {
+    "v": "rgb(0, 98, 255)",
+    "w": 138
+   },
+   {
+    "v": "rgb(87, 87, 87)",
+    "w": 113
+   },
+   {
+    "v": "rgb(48, 179, 254)",
+    "w": 29
+   },
+   {
+    "v": "rgb(203, 26, 198)",
+    "w": 18
+   },
+   {
+    "v": "rgb(90, 105, 120)",
+    "w": 17
+   },
+   {
+    "v": "rgb(51, 51, 51)",
+    "w": 14
+   },
+   {
+    "v": "rgb(0, 238, 174)",
+    "w": 12
+   }
+  ],
+  "bg": [
+   {
+    "v": "rgb(255, 255, 255)",
+    "w": 2494
+   },
+   {
+    "v": "rgb(43, 58, 68)",
+    "w": 279
+   },
+   {
+    "v": "rgb(250, 250, 250)",
+    "w": 89
+   },
+   {
+    "v": "rgb(0, 238, 174)",
+    "w": 61
+   },
+   {
+    "v": "rgb(48, 179, 254)",
+    "w": 4
+   },
+   {
+    "v": "rgb(38, 143, 203)",
+    "w": 4
+   }
+  ],
+  "fonts": [
+   {
+    "v": "Arial",
+    "w": 5036
+   },
+   {
+    "v": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+    "w": 3792
+   },
+   {
+    "v": "Arial, sans-serif",
+    "w": 3443
+   },
+   {
+    "v": "\"Times New Roman\"",
+    "w": 367
+   },
+   {
+    "v": "Arial, FontAwesome, sans-serif",
+    "w": 89
+   },
+   {
+    "v": "\"Poppins Bold\", Arial, Helvetica, sans-serif",
+    "w": 66
+   },
+   {
+    "v": "Poppins, Arial, Helvetica, sans-serif",
+    "w": 50
+   },
+   {
+    "v": "Poppins, sans-serif",
+    "w": 44
+   }
+  ],
+  "sizes": [
+   {
+    "v": "14px / 400 / lh 14px",
+    "w": 5225
+   },
+   {
+    "v": "16px / 400 / lh 25px",
+    "w": 3318
+   },
+   {
+    "v": "14px / 700 / lh 20px",
+    "w": 2872
+   },
+   {
+    "v": "14px / 700 / lh 14px",
+    "w": 244
+   },
+   {
+    "v": "16px / 700 / lh 22.8571px",
+    "w": 156
+   },
+   {
+    "v": "16px / 400 / lh 21px",
+    "w": 138
+   },
+   {
+    "v": "16px / 700 / lh 18px",
+    "w": 125
+   },
+   {
+    "v": "14px / 400 / lh 20px",
+    "w": 112
+   },
+   {
+    "v": "16px / 400 / lh 21.44px",
+    "w": 104
+   },
+   {
+    "v": "12px / 400 / lh 17.1429px",
+    "w": 102
+   },
+   {
+    "v": "12px / 400 / lh 32px",
+    "w": 83
+   },
+   {
+    "v": "16px / 400 / lh 40px",
+    "w": 70
+   },
+   {
+    "v": "22px / 400 / lh 22px",
+    "w": 44
+   },
+   {
+    "v": "22px / 400 / lh 45px",
+    "w": 37
+   },
+   {
+    "v": "12px / 400 / lh 12px",
+    "w": 33
+   },
+   {
+    "v": "12px / 700 / lh 32px",
+    "w": 30
+   },
+   {
+    "v": "18px / 700 / lh 18px",
+    "w": 29
+   },
+   {
+    "v": "24px / 900 / lh 24px",
+    "w": 29
+   },
+   {
+    "v": "13px / 400 / lh 13px",
+    "w": 25
+   },
+   {
+    "v": "13px / 400 / lh 20px",
+    "w": 22
+   },
+   {
+    "v": "14px / 700 / lh 18px",
+    "w": 22
+   },
+   {
+    "v": "16px / 700 / lh 25px",
+    "w": 18
+   },
+   {
+    "v": "12px / 700 / lh 17.1429px",
+    "w": 12
+   },
+   {
+    "v": "20px / 600 / lh 20px",
+    "w": 11
+   }
+  ],
+  "borders": [
+   {
+    "v": "1px solid rgba(0, 0, 0, 0)",
+    "w": 156
+   },
+   {
+    "v": "1px solid rgb(90, 105, 120)",
+    "w": 18
+   },
+   {
+    "v": "1px solid rgb(255, 255, 255)",
+    "w": 12
+   },
+   {
+    "v": "1px solid rgb(206, 212, 218)",
+    "w": 9
+   },
+   {
+    "v": "1px solid rgb(222, 226, 230)",
+    "w": 4
+   },
+   {
+    "v": "1px solid rgb(0, 98, 255)",
+    "w": 3
+   },
+   {
+    "v": "1px solid rgb(67, 119, 137)",
+    "w": 3
+   },
+   {
+    "v": "1px solid rgb(38, 143, 203)",
+    "w": 1
+   },
+   {
+    "v": "1px solid rgb(0, 0, 0)",
+    "w": 1
+   }
+  ],
+  "radii": [
+   {
+    "v": "2.5px",
+    "w": 159
+   },
+   {
+    "v": "5px",
+    "w": 19
+   },
+   {
+    "v": "4px",
+    "w": 15
+   },
+   {
+    "v": "10px 10px 0px 0px",
+    "w": 8
+   },
+   {
+    "v": "9px",
+    "w": 6
+   },
+   {
+    "v": "0px 0px 9px 9px",
+    "w": 6
+   },
+   {
+    "v": "10px",
+    "w": 3
+   },
+   {
+    "v": "5px 5px 0px 0px",
+    "w": 2
+   }
+  ]
+ },
+ "fonts": [
+  {
+   "family": "Font Awesome 6 Pro",
+   "weight": "900",
+   "style": "normal"
+  },
+  {
+   "family": "Poppins",
+   "weight": "normal",
+   "style": "normal"
+  },
+  {
+   "family": "Poppins Bold",
+   "weight": "normal",
+   "style": "normal"
+  }
+ ],
+ "body": {
+  "color": "rgb(51, 51, 51)",
+  "backgroundColor": "rgb(255, 255, 255)",
+  "backgroundImage": "none",
+  "borderTop": "0px none rgb(51, 51, 51)",
+  "borderRight": "0px none rgb(51, 51, 51)",
+  "borderBottom": "0px none rgb(51, 51, 51)",
+  "borderLeft": "0px none rgb(51, 51, 51)",
+  "borderRadius": "0px",
+  "fontFamily": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+  "fontSize": "14px",
+  "fontWeight": "400",
+  "fontStyle": "normal",
+  "lineHeight": "14px",
+  "letterSpacing": "normal",
+  "textAlign": "start",
+  "textDecorationLine": "none",
+  "textTransform": "none",
+  "padding": "62px 0px 0px",
+  "margin": "0px",
+  "width": "1920px",
+  "height": "885px",
+  "boxShadow": "none",
+  "opacity": "1",
+  "cursor": "auto",
+  "outline": "rgb(51, 51, 51) none 3px",
+  "outlineOffset": "0px"
+ },
+ "html": {
+  "bg": "rgba(0, 0, 0, 0)",
+  "fontSize": "10px"
+ },
+ "inlineScripts": 24,
+ "inlineStyles": 0,
+ "scripts": [
+  "https://uximc.mms.tst.pgwcloud.net/bundles/vendor?v=Le7WPjDWTzs_1wycqK1MQSK8lSZN4zdqZX37AK7z34A1",
+  "https://uximc.mms.tst.pgwcloud.net/bundles/app?v=ogpsy1VgIrNPhFOn7oz-lGPEpwGL2eUlLTvnjXblc5o1",
+  "https://uximc.mms.tst.pgwcloud.net/Scripts/Kendo/Cultures/kendo.culture.en-US.min.js?v=30.0.0.2609",
+  "https://uximc.mms.tst.pgwcloud.net/Scripts/Kendo/Messages/kendo.messages.en-US.min.js?v=30.0.0.2609",
+  "https://uximc.mms.tst.pgwcloud.net/Scripts/hp.ua3.core.atAGlance.js?v=30.0.0.2609",
+  "https://uximc.mms.tst.pgwcloud.net/Scripts/hp.ua3.core.atAGlance.js?v=30.0.0.2609",
+  "https://uximc.mms.tst.pgwcloud.net/Scripts/hp.ua3.core.mainMenu.js?v=30.0.0.2609",
+  "https://uximc.mms.tst.pgwcloud.net/Scripts/hp.ua3.core.moduleContentPanels.js?v=30.0.0.2609",
+  "https://uximc.mms.tst.pgwcloud.net/Scripts/Notification/hp.ua3.core.notification.broadcastMsg.js?v=30.0.0.2609",
+  "https://uximc.mms.tst.pgwcloud.net/Scripts/hp.ua3.core.modelEditor.js?v=30.0.0.2609",
+  "https://uximc.mms.tst.pgwcloud.net/Scripts/FileTransferTracking/hp.ua3.FileTransfer.searchFileTransferTracking.js?v=30.0.0.2609"
+ ],
+ "stylesheets": [
+  "https://uximc.mms.tst.pgwcloud.net/bundles/vendorcss?v=j6BW90Be8k5YnVvyfnG_3sHGEYV-9Vo_N4YbGhJJTRs1",
+  "https://uximc.mms.tst.pgwcloud.net/bundles/appcss?v=Mui5kyZU5_fFTxGoUfBPJfRJ_t0iuiBm2Tp8HPQKbWw1",
+  "https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Styles/hp.ua3.core.tenantTheme.css?v=20.3.94.0"
+ ],
+ "capturedAt": "2026-11-09T19:55:46.766Z",
+ "status": 200,
+ "loadEvents": []
+}
