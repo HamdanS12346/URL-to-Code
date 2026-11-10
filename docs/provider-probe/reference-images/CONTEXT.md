@@ -29,7 +29,9 @@ Hard constraint from the user: whatever fix is made must hold **uniformly across
 ## Known gaps / next ideas
 - Grid filter menu, pager page-size dropdown, cascading dropdown behavior and the help (book) icon are not reproduced yet (see `kits/provider/KIT.md`).
 - Backend endpoints: only calls triggered by the capture's safe clicks are recorded. Possible extension: read Kendo `dataSource.options.transport` URLs and form `action`s, record JSON body keys, scan saved screen JS for Save endpoints.
-- Spec generation is slow; a `--parallel N` option was proposed, not built.
+- Spec generation was slow: `--parallel N` (default 3) now runs spec writers as captures finish, and kit screens' code steps side by side.
+- Probe 2 (docs/provider-probe/PROBE-2-ANSWERS.md, 20-census*): the side menu's live mechanism, tooltip widths, the File Transfer
+  Configuration Create New window, and a widget census of the menu pages (89 read, one shared shell on 84).
 - Not yet run against the real client portal; real Kendo Grid/Window/DateTimePicker are the likeliest to differ from the offline stand-ins.
 
 ## The images in this folder

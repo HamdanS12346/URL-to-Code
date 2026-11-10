@@ -37,6 +37,7 @@ export function reportPreflight(outDir, outFile) {
   const p = preflight(outDir);
   if (!p) return null;
   if (outFile) fs.writeFileSync(outFile, JSON.stringify(p, null, 2));
+  if (!p.used) return p; // no parity keys (a site-kit screen): nothing to report, and "0 keys" only misleads the writer
   const head = p.missing.slice(0, 8).join(', ') + (p.missing.length > 8 ? ` (+${p.missing.length - 8})` : '');
   console.log(`preflight: parity.spec.ts uses ${p.used} keys, ${p.missing.length} carried by no data-testid in app/${p.missing.length ? ': ' + head : ''}${p.dynamic ? ' [app builds some data-testids dynamically: list may over-report]' : ''}`);
   return p;

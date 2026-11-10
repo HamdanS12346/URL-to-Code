@@ -74,6 +74,19 @@ const run = j(path.join(S('file-transfer-configuration'), 'run.json'));
 assert.ok(!run.steps.explore && !run.steps.survey, 'the kit skips survey/plan/explore');
 const trk = j(path.join(S('file-transfer-tracking'), 'kit', 'screen.json'));
 assert.ok(Object.values(trk.widgets).some((w) => w.kind === 'datetime'), 'date-time pickers harvested');
+// the side menu, as the client's script opens it (probe 2, Q22): a class swap + a backdrop appended to <body>
+assert.equal(cfg.menu?.root, 'div#mainMenuContainer', `the menu root is the panel with the links, not a field that appeared with it: ${JSON.stringify(cfg.menu)}`);
+assert.deepEqual([cfg.menu.add, cfg.menu.remove], [['display-flex'], ['display-none']], 'the classes the menu swaps');
+assert.match(cfg.menu.backdrop ?? '', /disabled-backdrop/, 'the backdrop the menu appends');
+assert.equal(cfg.menu.closed, true, 'the capture closed the menu again with its own close icon');
+assert.ok(!html.includes('class="disabled-backdrop"'), 'no backdrop frozen into the snapshot');
+// the portal's row convention: setKendoGridDataBoundEvents(e, msg, click, dblclick) -> a double-click opens the view dialog
+assert.equal(trk.plan?.rowDouble, 'onDisplayTrackingView', `the row's double-click handler read from the script: ${JSON.stringify(trk.plan)}`);
+assert.equal(trk.row?.via, 'dblclick', `the row opened by double-click: ${JSON.stringify(trk.row)}`);
+assert.equal(trk.dialogs[trk.row.dialog]?.title, 'View File Transfer Tracking', 'the view dialog harvested');
+assert.deepEqual(trk.missing, [], 'every dialog the script opens was harvested');
+const cfgStates = j(path.join(S('file-transfer-configuration'), 'kit', 'states.json')).map((s) => s.name);
+for (const n of ['menu-open', 'menu-flyout', 'menu-close']) assert.ok(cfgStates.includes(n), `verify replays ${n}: ${cfgStates}`);
 assert.ok(fs.readFileSync(path.join(S('file-transfer-configuration'), 'facts.md'), 'utf8').includes('Provider kit harvest'), 'facts.md carries the harvest');
 const st = j(path.join(P, 'status.json')).items;
 for (const s of pack.screens) assert.equal(st[`spec:${s.id}`]?.status, 'done', `spec:${s.id}: ${JSON.stringify(st[`spec:${s.id}`])}`);
@@ -92,6 +105,9 @@ const tsc = spawnSync(process.execPath, [path.join(ROOT, 'node_modules', 'typesc
 assert.equal(tsc.status, 0, `tsc fails:\n${tsc.stdout}${tsc.stderr}`);
 const vrep = j(path.join(S('file-transfer-configuration'), 'verify', 'report.json'));
 assert.ok(vrep.states?.length >= 3, `kit states replayed by verify: ${JSON.stringify(vrep.states)}`);
+for (const s of vrep.states.filter((x) => x.name.startsWith('menu-'))) assert.ok(s.ok, `verify: ${s.name} on the rebuild: ${s.error ?? `${s.bad_pct}% off`}`);
+assert.ok(fs.existsSync(path.join(APP, 'docs', 'ui-specs', 'file-transfer-tracking', 'TODO.md')), 'a checklist for the code writer');
+assert.match(read('docs/ui-specs/file-transfer-tracking/TODO.md'), /double-click opens dialog/, 'the checklist says what the kit does for the row');
 
 // ---- behavior of the rebuild, in a browser ----
 const vite = spawn(process.execPath, [path.join(ROOT, 'node_modules', 'vite', 'bin', 'vite.js'), '--port', '5182', '--strictPort'], { cwd: APP, stdio: 'ignore' });
@@ -128,6 +144,8 @@ try {
   await p.hover('[data-kit-tip="Owner Module"]');
   await p.waitForTimeout(900);
   assert.equal((await p.locator('.k-tooltip .k-tooltip-content').first().textContent()).trim(), 'Owner Module', 'tooltip text');
+  const tipLines = await p.locator('.k-tooltip .k-tooltip-content').first().evaluate((e) => Math.round(e.getBoundingClientRect().height / (parseFloat(getComputedStyle(e).lineHeight) || 18)));
+  assert.equal(tipLines, 1, 'a two-word tooltip stays on one line');
   await p.mouse.move(5, 600);
   await p.waitForTimeout(500);
   // Search: results panel, 10 rows, pager, sort
@@ -153,10 +171,45 @@ try {
   await p.locator('.k-window [data-kit-action=cancel]').click();
   await p.waitForTimeout(700);
   assert.equal(await p.locator('.k-window').count(), 0, 'Cancel closes the dialog');
-  // the side menu
+  // the side menu: opens like the portal's (its classes + the backdrop), Escape and the backdrop leave it open, a module
+  // flies out on hover, the close icon closes it, a menu item of this app routes there and closes it
+  assert.equal(await p.locator('#mainMenuContainer').isVisible(), false, 'the menu starts closed');
   await p.click('[data-kit-action=menu]');
   await p.waitForTimeout(400);
   assert.ok(await p.locator('[data-kit-menu]').first().isVisible(), 'the hamburger opens the side menu');
+  assert.match(await p.locator('#mainMenuContainer').getAttribute('class'), /display-flex/, 'by the portal\'s own class');
+  assert.equal(await p.locator('body > .disabled-backdrop').count(), 1, 'with the backdrop on <body>');
+  await p.keyboard.press('Escape');
+  await p.mouse.click(200, 500);
+  await p.waitForTimeout(300);
+  assert.ok(await p.locator('[data-kit-menu]').first().isVisible(), 'Escape and a click on the backdrop do not close it (as on the live portal)');
+  await p.locator('[data-kit-menu] li', { hasText: 'File Transfer Services' }).first().hover();
+  await p.waitForTimeout(700);
+  const fly = p.locator('[data-kit-menu] li > .k-menu-popup, [data-kit-menu] li > .k-animation-container').filter({ hasText: 'File Transfer Tracking' });
+  assert.ok(await fly.first().isVisible(), 'the module flies out on hover');
+  await p.click('[data-kit-action=menu-close]');
+  await p.waitForTimeout(300);
+  assert.equal(await p.locator('#mainMenuContainer').isVisible(), false, 'the close icon closes it');
+  assert.equal(await p.locator('.disabled-backdrop').count(), 0, 'and removes the backdrop');
+  await p.click('[data-kit-action=menu]');
+  await p.locator('[data-kit-menu] li', { hasText: 'File Transfer Services' }).first().hover();
+  await p.waitForTimeout(700);
+  await fly.first().locator('a', { hasText: 'File Transfer Tracking' }).click();
+  await p.waitForTimeout(800);
+  assert.equal(new URL(p.url()).hash, '#/file-transfer-tracking', 'a menu item of this app routes to its screen');
+  assert.equal(await p.locator('#mainMenuContainer').isVisible(), false, 'and closes the menu');
+  assert.equal(await p.locator('.disabled-backdrop').count(), 0);
+  // the tracking grid: a click selects the row, a double-click opens the view dialog (the portal's convention)
+  await p.waitForSelector('[data-kit-action=search]', { timeout: 10000 });
+  await p.click('[data-kit-action=search]');
+  await p.waitForSelector('tr[data-kit-row]', { timeout: 3000 });
+  await p.locator('tr[data-kit-row="1"] td').first().click();
+  await p.waitForTimeout(300);
+  assert.match(await p.locator('tr[data-kit-row="1"]').getAttribute('class') ?? '', /k-selected/, 'a click selects the row');
+  assert.equal(await p.locator('.k-window').count(), 0, 'a click alone opens nothing');
+  await p.locator('tr[data-kit-row="1"] td').first().dblclick();
+  await p.waitForSelector('.k-window [data-kit-dialog-content]', { timeout: 3000 });
+  assert.equal((await p.locator('.k-window .k-window-title').first().textContent()).trim(), 'View File Transfer Tracking', 'a double-click opens the view dialog');
   assert.deepEqual(errors, [], `no errors in the rebuild:\n${errors.join('\n')}`);
 } finally {
   await browser.close();

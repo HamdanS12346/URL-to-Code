@@ -26,9 +26,10 @@ body{margin:0;font:14px Arial,"Helvetica Neue",Helvetica,sans-serif;color:#333;b
 #pageBannerMenu .hamburger{width:68px;height:62px;background:#2196f3;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .fa-solid{display:inline-block;width:14px;height:14px;background:currentColor;vertical-align:middle}
 .fa-bars{width:30px;height:24px;color:#000}
-#menuOverlay{position:fixed;inset:0;background:rgba(61,61,61,.5);z-index:1001}
-#mainMenuPanel{position:fixed;top:0;right:0;width:288px;height:100%;background:#fff;z-index:1002;padding-top:60px;box-sizing:border-box}
-#mainMenuPanel .fa-xmark{position:absolute;left:16px;top:20px;color:#2b3a44}
+.display-none{display:none!important}.display-flex{display:flex!important}
+.disabled-backdrop{position:fixed;inset:0;background:#000;opacity:.3;z-index:1001}
+#mainMenuContainer{position:fixed;top:0;right:0;width:288px;height:100%;background:#fff;z-index:1002;padding-top:60px;box-sizing:border-box;flex-direction:column}
+#mainMenuContainer .fa-xmark{position:absolute;left:16px;top:20px;color:#2b3a44}
 #mainMenu{border:0;width:100%}#mainMenu .k-menu-link{font-weight:bold;color:#1e2a33}
 #moduleContentBar{display:flex;height:32px;align-items:center;background:#00f0b0}
 .module-name{background:#2b3a44;color:#fff;height:32px;line-height:32px;padding:0 6px 0 36px;text-transform:uppercase}
@@ -69,19 +70,32 @@ const layout = (loggedIn, { title, module, body = '', bodyClass = '' }) => `<!do
 ${loggedIn ? '<ul class="aag-menu"><li><a href="javascript:void(0)">Messages</a></li><li><a href="/Home/MyAccount">My Account</a></li><li><a href="/logout">Logout</a></li></ul>' : '<div style="margin-left:auto"></div>'}
 <div id="pageBannerMenu"><nav aria-label="Hamburger Menu"><div class="hamburger"><i class="fa-solid fa-bars clickable" onclick="openMainMenu()" tabindex="0" aria-label="Main Menu" role="button"></i></div></nav></div>
 </header></div>
-<div id="menuOverlay" style="display:none" onclick="closeMainMenu()"></div>
-<div id="mainMenuPanel" style="display:none"><i class="fa-solid fa-xmark clickable" onclick="closeMainMenu()" role="button" aria-label="Close"></i>
-${loggedIn ? `<ul id="mainMenu">${MODULES.map(([m, items]) => `<li>&nbsp;${m}<ul>${items.map(([l, h]) => `<li><a href="${h}">&nbsp;${l}</a></li>`).join('')}</ul></li>`).join('')}</ul>`
+<input class="editor-control" id="menuSearch" type="hidden">
+<div id="mainMenuContainer" class="display-none"><i id="mainMenuClose" class="fa-solid fa-xmark clickable" onclick="closeMainMenu()" role="button" aria-label="Close"></i>
+${loggedIn ? `<ul id="mainMenu">${MODULES.map(([m, items]) => `<li>&nbsp;${m}<ul class="child-menu">${items.map(([l, h]) => `<li><a href="${h}">&nbsp;${l}</a></li>`).join('')}</ul></li>`).join('')}</ul>`
     : '<form class="login" method="post" action="/login" style="padding:24px"><label>User name <input name="user" type="text"></label><br><label>Password <input name="pass" type="password"></label><br><button type="submit">Log In</button></form>'}
 </div>
 ${module ? `<div id="moduleContentBar"><div class="module-name">${module}</div><h1>${title}</h1></div>` : ''}
 <div id="mainContent">${body}</div>
 <div id="pageFooter"><div id="baseFooter"><span>© 2026 Test Portal. All rights reserved.</span></div></div>
 <script>
-function openMainMenu(){ $('#menuOverlay,#mainMenuPanel').fadeIn(200); }
-function closeMainMenu(){ $('#menuOverlay,#mainMenuPanel').fadeOut(200); }
+// the client's hp.ua3.core.mainMenu.js (probe 2, Q22): a class swap and a backdrop appended to <body>, no fade;
+// only the close icon closes it (Escape and a click on the backdrop do not). The hidden input that turns into a text
+// field while the menu is open is the stray element that once fooled the capture into thinking it was part of the menu.
+function openMainMenu(){ $('#mainMenuContainer').removeClass('display-none').addClass('display-flex'); $('#menuSearch').attr('type', 'text'); $('body').append("<div class='disabled-backdrop'></div>"); }
+function closeMainMenu(){ $('#mainMenuContainer').removeClass('display-flex').addClass('display-none'); $('#menuSearch').attr('type', 'hidden'); $('.disabled-backdrop').remove(); }
+$(document).on('click', '#mainMenu .child-menu a', closeMainMenu);
+// the portal's core helpers (hp.ua3.core.*): a dialog is a Kendo window on the element id = the panel id, its content by AJAX
+var trackingViewUrl = '/FileTransfer/TrackingView';
+var PANEL_TITLES = { FileTransferTrackingViewPopup: 'View File Transfer Tracking' };
+function openModalOverlay(panelId, url, cssClass){
+  var el = $('#' + panelId); if (!el.length) el = $('<div id="' + panelId + '"></div>').appendTo('body');
+  var w = el.data('kendoWindow') || el.kendoWindow({ title: PANEL_TITLES[panelId] || panelId, width: '75%', modal: true }).data('kendoWindow');
+  w.refresh({ url: url }).then(function(){ w.center().open(); });
+}
+function setKendoGridDataBoundEvents(e, msg, onClick, onDblClick){ /* the client's version binds the row clicks here */ }
 $(function(){
-  $('#mainMenu').kendoMenu({ orientation: 'vertical', direction: 'left' });
+  $('#mainMenu').kendoMenu({ orientation: 'vertical', direction: 'left', hoverDelay: 100, animation: { open: { duration: 200 }, close: { duration: 100 } } });
   $('[data-role=tooltip]').each(function(){ $(this).kendoTooltip({ position: 'top', showAfter: 400 }); });
 });
 </script></body></html>`;
@@ -126,10 +140,20 @@ const PAGES = {
   $('#FileStatus').kendoDropDownList({ optionLabel: 'select a value...', dataSource: ['Complete','Failed','Pending'] });
   $('#FromDate').kendoDateTimePicker({ max: new Date() }); $('#ToDate').kendoDateTimePicker({});
   $('#grid').kendoGrid({ autoBind: false, columns: [{ field: 'FileId', title: 'File ID' }, { field: 'FileName', title: 'File Name' }, { field: 'Status', title: 'File Status' }, { field: 'Created', title: 'Create Date' }],
-    dataSource: { pageSize: 10, transport: { read: { url: '/FileTransfer/GetTracking', type: 'POST', dataType: 'json' } }, schema: { data: 'Data', total: 'Total' } } });
+    dataBound: trackingDataBound, dataSource: { pageSize: 10, transport: { read: { url: '/FileTransfer/GetTracking', type: 'POST', dataType: 'json' } }, schema: { data: 'Data', total: 'Total' } } });
   $('#btnSearch').on('click', () => { $('#divResults').show(); $('#grid').data('kendoGrid').dataSource.read(); });
+  $('#grid').on('dblclick', 'tbody tr', onDisplayTrackingView); // what setKendoGridDataBoundEvents wires on the client's grids
   ${collapse}
-});</script>`,
+});
+// the portal's grid convention (probe 2, Q20: 62 of 89 pages): a click selects a row, a double-click opens it
+function trackingDataBound(e) {
+  setKendoGridDataBoundEvents(e, null, null, onDisplayTrackingView);
+}
+
+function onDisplayTrackingView() {
+    openModalOverlay("FileTransferTrackingViewPopup", trackingViewUrl, 'panelForm-col-6');
+}
+</script>`,
   }),
 };
 const POPUP = `<div class="editor-req-field-row">Required Fields ( <span class="editor-req-field fa-solid fa-asterisk"></span>)</div>
@@ -168,6 +192,7 @@ export function startProviderPortal(port, { password, cookie }) {
     if (u.pathname === '/FileTransfer/GetTracking') return send(200, 'application/json', JSON.stringify(rows(14, (i) => ({ FileId: `f${1000 + i}`, FileName: `\\\\share\\file${i}.txt`, Status: 'Complete', Created: '5/25/2021 7:37 AM' }))));
     if (u.pathname === '/FileTransfer/EditPopup') return send(200, 'text/html', POPUP);
     if (u.pathname === '/FileTransfer/DestinationPopup') return send(200, 'text/html', DEST);
+    if (u.pathname === '/FileTransfer/TrackingView') return send(200, 'text/html', `${field('ViewFileName', 'File Name', text('ViewFileName', 'FileName', 'readonly'))}<div class="buttons"><span class="spacer"></span><button class="btn" type="button" id="btnCancelView" onclick="$(this).closest('.k-window').find('[data-role=window]').data('kendoWindow').close()">Cancel</button></div>`);
     const p = PAGES[u.pathname];
     send(p ? 200 : 404, 'text/html', layout(authed, p ? p() : { title: 'Not part of this test', body: '<h2>Not part of this test</h2>' }));
   }).listen(port);

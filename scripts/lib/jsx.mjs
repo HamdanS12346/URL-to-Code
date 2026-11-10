@@ -72,6 +72,8 @@ function jsxAttrs(tag, raw, inSvg, rw) {
     if (/^on[a-z]+$/.test(low)) continue; // inline handlers: the page's scripts are not ported
     // a misspelt `classname` is not an attribute any browser reads; React warns about it and the page's own class is kept
     if (low === 'classname') continue;
+    // `aria-role` is not ARIA (the page meant `role`): React warns "Invalid aria prop"
+    if (low === 'aria-role') continue;
     // attributes the browser ignores: `size` on an <svg> (width/height already carry it), width/height="auto"
     if (low === 'size' && inSvg) continue;
     if ((low === 'width' || low === 'height') && val === 'auto') continue;

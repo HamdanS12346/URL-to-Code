@@ -132,7 +132,7 @@ export function printBehavior(res, log = console.log) {
   const line = (name, list) => (list ? `${name} ${list.filter((x) => x.ok).length}/${list.length} match` : null);
   const parts = [line('scroll', res.scroll), line('media', res.media), line('timing', res.timing)].filter(Boolean);
   const c = res.console;
-  log(`behavior: ${parts.join(' | ') || 'nothing recorded to compare (stage 2 of the capture has no behave.json: npm run go -- <screen> --from survey)'} | console: ${c.errors.length} error(s), ${c.reactWarnings.length} React warning(s), ${c.failedResources} failed resource(s)`);
+  log(`behavior: ${parts.join(' | ') || 'no scroll/media/timing probes recorded for this screen (nothing to compare)'} | console: ${c.errors.length} error(s), ${c.reactWarnings.length} React warning(s), ${c.failedResources} failed resource(s)`);
   for (const [name, list] of [['scroll', res.scroll], ['media', res.media], ['timing', res.timing]]) for (const x of (list || []).filter((y) => !y.ok)) log(`  ${name} ✗ ${x.detail}`);
   for (const e of [...new Set([...c.reactWarnings, ...c.errors])].slice(0, 6)) log(`  console ✗ ${e}`);
 }

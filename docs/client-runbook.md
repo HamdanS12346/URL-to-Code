@@ -104,6 +104,15 @@ On the home page the tool recognises the portal (Kendo UI for jQuery) and uses i
 When a check fails, Codex gets the check's report and tries again (`--rounds`, default 2 more tries). If it still fails, the step is marked
 `needs-review` in `packs/<pack>/STATUS.md` with the last report, and the run moves on. A plan Codex cannot get right is replaced by the rule-based plan.
 
+Speed: up to 3 Codex calls run at once (`--parallel N`, or `"parallel"` in `pack.json`). Each spec starts as soon as its capture is done
+(captures stay one at a time), and with the kit the screens' code steps run side by side. Two more things no longer cost Codex attempts:
+- **Dev server down:** the app's dev server is restarted when it dies (log: `packs/<pack>/logs/devserver.log`), and a check that could not run is not charged to Codex.
+- **Kit or shell problem:** if Codex finds a problem in the kit or the shell, it writes `src/screens/<screen>/BLOCKED.md`, and the step is marked `blocked`.
+
+With the kit, a **kit preflight** replays the kit's own behavior on the app before any Codex call (the side menu opens, flies out and
+closes, a tooltip, Search, the dialogs). A failure there is listed as `preflight:kit` in STATUS.md: it is a kit or capture problem, not
+Codex's. Each screen also gets a checklist for Codex, `docs/ui-specs/<screen>/TODO.md` in the app.
+
 ### Results
 
 - `packs/<pack>/`: `pack.json` (URL, menu, kit, screens, content areas, selectors), `menu.json` + `menu.png` (the menu as read), `screens/<screen>/` (capture, kit harvest, facts, spec), `logs/` (every Codex call: command, prompt, output), `STATUS.md`, `ui.log`

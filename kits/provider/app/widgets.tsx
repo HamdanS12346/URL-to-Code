@@ -401,11 +401,22 @@ function Grid({ id, def }: { id: string; def: WidgetDef }) {
       if (pb && !pb.classList.contains('k-disabled')) { e.preventDefault(); page = Math.min(pages(), Math.max(1, +pb.getAttribute('data-page')!)); draw(); return; }
       if (t.closest('.k-pager-refresh')) { e.preventDefault(); draw(); return; }
       const row = t.closest('tr[data-kit-row]');
-      if (row && ctx.data.row?.dialog) { e.preventDefault(); ctx.openDialog(ctx.data.row.dialog); }
+      if (!row) return;
+      if (ctx.data.row?.via === 'dblclick') { // the portal's grids: a click selects the row, a double-click opens it
+        w.querySelectorAll('tr.k-selected').forEach((r) => { r.classList.remove('k-selected'); r.setAttribute('aria-selected', 'false'); });
+        row.classList.add('k-selected');
+        row.setAttribute('aria-selected', 'true');
+      } else if (ctx.data.row?.dialog) { e.preventDefault(); ctx.openDialog(ctx.data.row.dialog); }
+    };
+    const onDbl = (e: MouseEvent) => {
+      if (ctx.data.row?.via !== 'dblclick' || !ctx.data.row.dialog || !(e.target as Element).closest('tr[data-kit-row]')) return;
+      e.preventDefault();
+      ctx.openDialog(ctx.data.row.dialog);
     };
     w.addEventListener('click', onClick);
+    w.addEventListener('dblclick', onDbl);
     const off = ctx.bus.on('search', onSearch);
-    return () => { w.removeEventListener('click', onClick); off(); };
+    return () => { w.removeEventListener('click', onClick); w.removeEventListener('dblclick', onDbl); off(); };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return el;
 }

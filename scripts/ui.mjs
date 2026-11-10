@@ -19,6 +19,8 @@
 //   --link-modules    reuse this repo's node_modules in --out instead of npm install (an app inside this repo, the default
 //                     packs/<pack>/app, finds this repo's node_modules by itself: nothing to install)
 //   --kit <name|none> force a site kit, or none (default: detected on the home page and kept in pack.json)
+//   --parallel N      writer calls at once (3; pack.json "parallel"): each spec starts as soon as its capture is done (the
+//                     captures stay one at a time, one browser); with a kit the screens' code steps run side by side too
 import crypto from 'node:crypto';
 import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -31,7 +33,7 @@ import { runScreen } from './run.mjs';
 import { detectKit, loadKit } from './lib/kit.mjs';
 
 const STAGES = ['login', 'discover', 'capture', 'plan', 'explore', 'spec', 'port', 'code'];
-const VALUED = new Set(['--url', '--menu', '--out', '--writer', '--from', '--only', '--rounds', '--timeout', '--env', '--mode', '--kit']);
+const VALUED = new Set(['--url', '--menu', '--out', '--writer', '--from', '--only', '--rounds', '--timeout', '--env', '--mode', '--kit', '--parallel']);
 const argv = process.argv.slice(2);
 const flag = (n) => argv.includes(n);
 const opt = (n) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] : undefined; };
@@ -87,6 +89,19 @@ const credsFrom = process.env.UI_PASSWORD ? 'UI_PASSWORD' : env.PASSWORD ? '.env
 const writer = opt('--writer') || env.WRITER || pack.writer || defaultWriter();
 const rounds = +(opt('--rounds') ?? pack.rounds ?? 2);
 const timeoutSec = +(opt('--timeout') ?? pack.timeoutSec ?? 3600);
+const parallel = Math.max(1, Math.floor(+(opt('--parallel') ?? pack.parallel ?? 3)) || 1);
+// at most n tasks at once, the rest wait their turn (writer calls: each is a Codex session)
+const limiter = (n) => {
+  let active = 0;
+  const queue = [];
+  const next = () => {
+    if (active >= n || !queue.length) return;
+    active++;
+    const [fn, res, rej] = queue.shift();
+    Promise.resolve().then(fn).then(res, rej).finally(() => { active--; next(); });
+  };
+  return (fn) => new Promise((res, rej) => { queue.push([fn, res, rej]); next(); });
+};
 log(`pack ${name}: ${pack.url}  menu "${pack.menu}"  code -> ${rel(pack.outRepo).startsWith('..') ? pack.outRepo : rel(pack.outRepo)}\nwriter: ${writer}`);
 
 // ---------- status: one entry per writer step, so a re-run picks up where it stopped ----------
@@ -123,10 +138,23 @@ const nodeRun = (script, args, extraEnv = {}) => {
   const r = spawnSync(process.execPath, [path.join(ROOT, 'scripts', script), ...args], { cwd: ROOT, encoding: 'utf8', maxBuffer: 1e8, env: { ...process.env, ...extraEnv } });
   return { ok: r.status === 0, text: `${r.stdout || ''}${r.stderr || ''}`.trim() };
 };
+// the same without blocking: checks run while other writers work (a blocked event loop stalls their output pipes)
+const runAsync = (file, args, { cwd = ROOT, env: extraEnv = {} } = {}) => new Promise((resolve) => {
+  const p = spawn(process.execPath, [file, ...args], { cwd, env: { ...process.env, ...extraEnv } });
+  let text = '';
+  p.stdout.on('data', (d) => { text += d; });
+  p.stderr.on('data', (d) => { text += d; });
+  p.on('error', (e) => resolve({ ok: false, text: e.message }));
+  p.on('close', (code) => resolve({ ok: code === 0, text: text.trim() }));
+});
+const nodeRunAsync = (script, args, extraEnv = {}) => runAsync(path.join(ROOT, 'scripts', script), args, { env: extraEnv });
 
 // ---------- one writer step: prompt, check that it wrote something, gate, repeat with the gate's report ----------
-async function writeStep(key, { prompt, workdir, expect = [], gate }) {
+// blocked: a file the writer writes when the problem is not its own (the shell, the kit): the step stops there, reported.
+// A gate that answers { infra: true } (the dev server is down) is not the writer's fault: no attempt is spent on it.
+async function writeStep(key, { prompt, workdir, expect = [], gate, blocked }) {
   let report = '';
+  if (blocked) fs.rmSync(blocked, { force: true });
   for (let round = 1; round <= rounds + 1; round++) {
     const t0 = Date.now() - 1000;
     const lf = path.join(P, 'logs', `${key.replace(/[^a-z0-9-]+/gi, '-')}-${round}.log`);
@@ -134,6 +162,12 @@ async function writeStep(key, { prompt, workdir, expect = [], gate }) {
     const w = await runWriter({ cmd: writer, workdir, prompt: round === 1 ? prompt : prompt + fill('repair', { round, report }), logFile: lf, timeoutSec, echo: flag('--verbose') });
     log(`   writer finished: exit ${w.code}${w.timedOut ? ' (TIMED OUT)' : ''}, ${(w.ms / 60000).toFixed(1)} min`);
     const said = w.code === 0 ? '' : `\nThe writer exited with code ${w.code}${w.timedOut ? ' (timed out)' : ''}. Last lines of its output:\n${tail(lf)}`;
+    if (blocked && fs.existsSync(blocked)) {
+      const why = fs.readFileSync(blocked, 'utf8').trim();
+      mark(key, 'blocked', { rounds: round, problems: [`the writer reports a problem outside its files (${rel(blocked)}):`, ...why.split('\n').filter(Boolean).slice(0, 30)] });
+      log(`   ! ${key}: the writer stopped on a problem it may not fix (kit/shell): ${why.split('\n')[0].slice(0, 200)} (${rel(blocked)})`);
+      return false;
+    }
     // a writer that fails without a word (bad switch, wrong base URL) leaves the files untouched: say so instead of judging old files
     const missing = expect.filter((f) => !fs.existsSync(f) || (round === 1 && fs.statSync(f).mtimeMs < t0));
     if (missing.length) {
@@ -143,6 +177,11 @@ async function writeStep(key, { prompt, workdir, expect = [], gate }) {
     }
     const g = await gate();
     if (g.ok) { mark(key, 'done', { rounds: round, ...g.info }); log(`   ✓ ${key}`); return true; }
+    if (g.infra) {
+      mark(key, 'needs-review', { rounds: round, problems: [`not checked: ${g.text.split('\n')[0]}`, 'the writer was not charged for it: re-run this step once the cause is fixed'] });
+      log(`   ! ${key}: could not be checked (${g.text.split('\n')[0]}): marked needs-review without spending more attempts`);
+      return false;
+    }
     report = g.text + said;
     log(`   ✗ check: ${g.text.split('\n').filter(Boolean).slice(0, 3).join(' | ').slice(0, 300)}`);
   }
@@ -233,6 +272,9 @@ try {
   const menu = readJson(path.join(P, 'menu.json'), { modules: [] });
 
   // ---------- per screen: capture, plan, explore, spec ----------
+  // the captures run one after another (one browser, one session); each screen's spec writer starts as soon as its capture
+  // is done, up to --parallel at once, while the next capture runs
+  const specLimit = limiter(parallel), specs = [];
   for (const scr of screens) {
     const id = `${name}/${scr.id}`, dir = screenDir(id);
     log(`\n>> ${scr.id}: ${scr.label}  ${scr.url}`);
@@ -273,19 +315,21 @@ try {
         fs.copyFileSync(path.join(P, 'menu.json'), path.join(dir, 'menu.json'));
         if (fs.existsSync(path.join(P, 'menu'))) fs.cpSync(path.join(P, 'menu'), path.join(dir, 'menu'), { recursive: true });
       }
-      await writeStep(`spec:${scr.id}`, {
-        workdir: ROOT, expect: [specFile, path.join(dir, 'spec', 'tasks.md')],
-        prompt: fill('spec', { id, dir, root: ROOT, label: scr.label, url: scr.url, extra: (scr.home
-          ? `\nThis is the HOME page, and it also defines the shell every screen of the rebuilt app shares: the header and the site menu (opened by \`${pack.menuButton ?? '?'}\`).\nThe menu's full tree, read from the live site, is in ${dir}/menu.json. List every module and item from it in Navigation and Components and cite it as [asset:menu.json].\nThe hover/flyout look of the menu is in ${dir}/menu/*.png: one picture per module, taken with the menu open and that module hovered (the explorer records the menu opening, not the CSS hover flyouts). Look at every one and cite them as [asset:menu/<file>.png]. Items under "${pack.menu}" open the screens of this app; every other item is shown (and hovers/opens the same way) but goes nowhere.`
-          : `\nThis screen is shown inside the shared shell (header + site menu) that the home page's spec covers. The capture was scoped to its content area${scr.scope ? ` \`${scr.scope}\`` : ''}: specify that area; for the shell write one line under Layout: "Wrapped in the shared shell (see the home spec)."`) + (kit ? kit.prompt('spec', { dir }) : '') }),
-        gate: async () => nodeRun('check-spec.mjs', [id]),
-      });
+      const specPrompt = fill('spec', { id, dir, root: ROOT, label: scr.label, url: scr.url, extra: (scr.home
+        ? `\nThis is the HOME page, and it also defines the shell every screen of the rebuilt app shares: the header and the site menu (opened by \`${pack.menuButton ?? '?'}\`).\nThe menu's full tree, read from the live site, is in ${dir}/menu.json. List every module and item from it in Navigation and Components and cite it as [asset:menu.json].\nThe hover/flyout look of the menu is in ${dir}/menu/*.png: one picture per module, taken with the menu open and that module hovered (the explorer records the menu opening, not the CSS hover flyouts). Look at every one and cite them as [asset:menu/<file>.png]. Items under "${pack.menu}" open the screens of this app; every other item is shown (and hovers/opens the same way) but goes nowhere.`
+        : `\nThis screen is shown inside the shared shell (header + site menu) that the home page's spec covers. The capture was scoped to its content area${scr.scope ? ` \`${scr.scope}\`` : ''}: specify that area; for the shell write one line under Layout: "Wrapped in the shared shell (see the home spec)."`) + (kit ? kit.prompt('spec', { dir }) : '') });
+      log(`   spec: queued (${parallel} writer(s) at once)`);
+      specs.push(specLimit(() => writeStep(`spec:${scr.id}`, {
+        workdir: ROOT, expect: [specFile, path.join(dir, 'spec', 'tasks.md')], prompt: specPrompt,
+        gate: async () => nodeRunAsync('check-spec.mjs', [id]),
+      })).catch((e) => { mark(`spec:${scr.id}`, 'failed', { problems: [e.message.split('\n')[0]] }); log(`   !! spec ${scr.id}: ${e.message.split('\n')[0]}`); }));
     } catch (e) {
       mark(`capture:${scr.id}`, 'failed', { problems: [e.message.split('\n')[0]] });
       log(`   !! ${scr.id}: ${e.message.split('\n')[0]} (details: ${rel(path.join(dir, 'run.log'))})`);
     }
   }
   await browser.close().catch(() => {});
+  if (specs.length) { log(`\n>> waiting for ${specs.length} spec writer(s)`); await Promise.all(specs); }
 
   if (noBuild) { log(`\n== specs done (--no-build). Status: packs/${name}/STATUS.md`); process.exit(0); }
 
@@ -329,7 +373,12 @@ try {
   // with a kit, the shell comes from a module screen (its title bar is what every module screen shows; the home page has none)
   // and the home page is its own complete page
   const ported = (scr) => fs.existsSync(path.join(out, 'src', 'screens', scr.id, 'Page.tsx'));
-  const shellFrom = kit ? pack.screens.find((s) => !s.home && s.scope && fs.existsSync(path.join(screenDir(`${name}/${s.id}`), 'kit', 'screen.json'))) : pack.screens.find((s) => s.home);
+  // with a kit: a module screen whose capture closed the side menu again (one that froze it open would give every screen
+  // an open menu); the kit closes the menu at runtime anyway, this only picks the cleanest source
+  const kitOf = (s) => readJson(path.join(screenDir(`${name}/${s.id}`), 'kit', 'screen.json'), null);
+  const shellCands = kit ? pack.screens.filter((s) => !s.home && s.scope && kitOf(s)) : [];
+  const shellFrom = kit ? shellCands.find((s) => kitOf(s).menu?.closed !== false) ?? shellCands[0] : pack.screens.find((s) => s.home);
+  if (kit && shellFrom) log(`   shell (header + side menu) ported from ${shellFrom.id}${kitOf(shellFrom).menu ? (kitOf(shellFrom).menu.closed === false ? ' (its menu stayed open in the capture: the kit closes it at runtime)' : '') : ' (no side menu was found on it)'}`);
   if (kit) fs.mkdirSync(path.join(out, 'src', 'services'), { recursive: true });
   // src/services/<screen>.ts: the endpoints the live screen called (recorded by the capture), answered with mock data
   // (synthetic rows, no client data) until the real backend is wired in. Written once: hand edits are kept.
@@ -405,6 +454,8 @@ const data = kit as unknown as KitData;
     const d = path.join(out, 'docs', 'ui-specs', s.id);
     fs.mkdirSync(d, { recursive: true });
     for (const f of ['UI_SPEC.md', 'tasks.md']) { const src = path.join(screenDir(`${name}/${s.id}`), 'spec', f); if (fs.existsSync(src)) fs.copyFileSync(src, path.join(d, f)); }
+    const todo = kit?.todo?.(screenDir(`${name}/${s.id}`), { route: routeOf(s) }); // the code writer's checklist
+    if (todo) fs.writeFileSync(path.join(d, 'TODO.md'), todo);
   }
 
   // ---------- code: the writer adds the behavior, checked by tsc + verify against the capture ----------
@@ -413,18 +464,49 @@ const data = kit as unknown as KitData;
   // something already answers on the port: only reuse it if it is this app (a leftover dev server of an earlier run)
   const ours = () => fetch(devBase).then((r) => r.text(), () => '').then((t) => t.includes(`<title>${pack.menu}</title>`));
   if (await up() && !(await ours())) die(`another app is running on ${devBase}: stop it, or set "devPort" in packs/${name}/pack.json`);
-  if (!(await up())) {
-    devServer = spawn(process.execPath, [bin(path.join('vite', 'bin', 'vite.js')), '--port', String(devPort), '--strictPort'], { cwd: out, stdio: 'ignore' });
+  // the dev server: its output goes to logs/devserver.log, and it is started again whenever it is found dead (a check
+  // against a dead server once cost a screen all its attempts: ERR_CONNECTION_REFUSED is not the writer's fault)
+  const devLog = path.join(P, 'logs', 'devserver.log');
+  fs.mkdirSync(path.dirname(devLog), { recursive: true });
+  const startDev = async () => {
+    devServer?.kill();
+    const fd = fs.openSync(devLog, 'a');
+    fs.writeSync(fd, `\n==== ${new Date().toISOString()} vite --port ${devPort}\n`);
+    devServer = spawn(process.execPath, [bin(path.join('vite', 'bin', 'vite.js')), '--port', String(devPort), '--strictPort'], { cwd: out, stdio: ['ignore', fd, fd] });
+    fs.closeSync(fd);
     for (let i = 0; i < 120 && !(await up()); i++) await new Promise((r) => setTimeout(r, 500));
-    if (!(await up())) die(`the app's dev server did not start on ${devBase} (port taken? set "devPort" in pack.json)`);
-  }
+    return up();
+  };
+  let restarting = null;
+  const ensureDev = async () => {
+    if (await up()) return true;
+    restarting ||= (log(`   ! the dev server on ${devBase} is down: starting it again (log: ${rel(devLog)})`), startDev().finally(() => { restarting = null; }));
+    return restarting;
+  };
+  if (!(await up()) && !(await startDev())) die(`the app's dev server did not start on ${devBase} (port taken? set "devPort" in pack.json; log: ${rel(devLog)})`);
   const limits = { maxBadPct: 5, maxHeightDeltaPx: 4, behavior: true, ...pack.verify };
+  const tscBin = bin(path.join('typescript', 'bin', 'tsc'));
+  // the screen's own files: with a kit each screen is built on its own, so another screen's errors (or a writer still at work
+  // next to it) are not this screen's failure
+  const ownFile = (s) => (f) => { const p = f.replace(/\\/g, '/'); return p.startsWith(`src/screens/${s.id}/`) || p === `src/services/${s.id}.ts`; };
+  const verifyCmd = (s) => { const id = `${name}/${s.id}`, u = `${devBase}/#${routeOf(s)}`; return `the visual + behavior check, run from ${ROOT}: PowerShell \`$env:URL="${u}"; $env:WAIT_ROOT="1"; node scripts/verify.mjs ${id}\` (bash: \`URL="${u}" WAIT_ROOT=1 node scripts/verify.mjs ${id}\`); read ${path.join(screenDir(id), 'verify', 'report.json')}`; };
   const codeGate = (s) => async () => {
-    const tsc = spawnSync(process.execPath, [bin(path.join('typescript', 'bin', 'tsc')), '--noEmit', '-p', out], { cwd: out, encoding: 'utf8' });
-    if (tsc.status !== 0) return { ok: false, text: `npx tsc --noEmit fails:\n${`${tsc.stdout}${tsc.stderr}`.trim().split('\n').slice(0, 40).join('\n')}` };
+    const tsc = await runAsync(tscBin, ['--noEmit', '-p', out], { cwd: out });
+    if (!tsc.ok) {
+      const errs = tsc.text.split('\n').filter((l) => /error TS\d+/.test(l));
+      const mine = kit ? errs.filter((l) => ownFile(s)(l.split('(')[0].trim())) : errs;
+      if (mine.length || !errs.length) return { ok: false, text: `npx tsc --noEmit fails${kit ? ' in your files' : ''}:\n${(mine.length ? mine : tsc.text.split('\n')).slice(0, 40).join('\n')}` };
+      log(`   (tsc: ${errs.length} error(s) in other files, not ${s.id}'s: ${errs[0].slice(0, 160)})`);
+    }
+    if (!(await ensureDev())) return { ok: false, infra: true, text: `the app's dev server on ${devBase} is down and did not start again (see ${rel(devLog)})` };
     const id = `${name}/${s.id}`, vdir = path.join(screenDir(id), 'verify');
     fs.rmSync(path.join(vdir, 'report.json'), { force: true });
-    const v = nodeRun('verify.mjs', [id], { URL: `${devBase}/#${routeOf(s)}`, WAIT_ROOT: '1' });
+    let v = await nodeRunAsync('verify.mjs', [id], { URL: `${devBase}/#${routeOf(s)}`, WAIT_ROOT: '1' });
+    if (!v.ok && /ERR_CONNECTION_REFUSED|ECONNREFUSED/.test(v.text)) { // the server died during the check: once more on a fresh one
+      if (!(await ensureDev())) return { ok: false, infra: true, text: `the app's dev server on ${devBase} died during the check (see ${rel(devLog)})` };
+      v = await nodeRunAsync('verify.mjs', [id], { URL: `${devBase}/#${routeOf(s)}`, WAIT_ROOT: '1' });
+      if (!v.ok && /ERR_CONNECTION_REFUSED|ECONNREFUSED/.test(v.text)) return { ok: false, infra: true, text: `the app's dev server on ${devBase} keeps dying (see ${rel(devLog)})` };
+    }
     const rep = readJson(path.join(vdir, 'report.json'), null);
     if (!v.ok || !rep) return { ok: false, text: `verify could not compare the page:\n${v.text.split('\n').slice(-25).join('\n')}` };
     const lines = v.text.split('\n').filter((l) => /^(behavior:|motion:|states:|sections|cluster|worst)|✗/.test(l.trim()));
@@ -435,22 +517,39 @@ const data = kit as unknown as KitData;
     return { ok, info, text: `verify (the app at ${devBase}/#${routeOf(s)} against the captured reference): bad_pct ${rep.bad_pct}% (limit ${limits.maxBadPct}), size_delta_px ${JSON.stringify(rep.size_delta_px)} (height limit ±${limits.maxHeightDeltaPx * dpr}), worst section ${rep.worst_section?.label ?? '?'}\n${lines.join('\n')}\nPictures: ${vdir}${path.sep}candidate.png (the app), diff.png, report.json; the reference is ${screenDir(id)}${path.sep}reference.png` };
   };
   const order = [...screens.filter((s) => s.home), ...screens.filter((s) => !s.home)].filter((s) => built.includes(s));
-  for (const s of order) {
-    const key = `code:${s.id}`;
-    if (isDone(key) && !forced('code') && !flag('--redo')) { log(`   ${key}: done`); continue; }
-    const id = `${name}/${s.id}`;
-    log(`\n>> code ${s.id}`);
-    await writeStep(key, {
-      workdir: out, gate: codeGate(s),
-      prompt: fill('code', { id, dir: screenDir(id), app: out, root: ROOT, name: s.id, extra: kit ? kit.prompt('code', { dir: screenDir(id) }) : '',
-        goal: s.home && kit
-          ? `Build the home page in src/screens/home/ (route #/). It is a complete page with its own header (no shared shell). The header's side menu, tooltips and links already work through the kit (<KitScreen>).`
-          : s.home
-          ? `Build the shared shell and the home page.\n- src/shell/Page.tsx (+ its components/ and BEHAVIOR.md): the header and the site menu every screen shares. The menu's full tree, read from the live site, is in src/menu.ts: render every module and item from it with the open/close, hover and flyout behavior the spec describes (pictures: explore/shots for the menu opening, menu/*.png in the screen folder for each module's hover flyout). Items with a \`route\` link to \`#<route>\`; every other item looks and behaves the same but goes nowhere (no navigation, no error). {children} is where each screen renders: keep it.\n- src/screens/home/: the home page's own content.`
-          : `Build the screen "${s.label}" in src/screens/${s.id}/ (route #/${s.id}). It renders inside the shared shell (src/shell), which is already built: do not change the shell.`,
-        files: s.home ? '- Files you may edit or add: src/shell/**, src/screens/home/**, public/assets/home/**.' : `- Files you may edit or add: src/screens/${s.id}/**, public/assets/${s.id}/**${kit ? `, src/services/${s.id}.ts` : ''}.` }),
-    });
+  // the kit's own behavior on the freshly ported app, before any writer touches it: the side menu (opens, flies out, closes),
+  // a tooltip, the dialogs. A failure here is a kit or capture problem (reported, never handed to a writer)
+  const pre = kit && !isDone('preflight:kit') || (kit && forced('port')) ? order.find((s) => s === shellFrom) ?? order.find((s) => !s.home) : null;
+  if (pre) {
+    log(`\n>> kit preflight on ${pre.id} (the port as it is, before any writer)`);
+    const v = await nodeRunAsync('verify.mjs', [`${name}/${pre.id}`], { URL: `${devBase}/#${routeOf(pre)}`, WAIT_ROOT: '1', BEHAVIOR: '0' });
+    const st = v.text.split('\n').find((l) => l.startsWith('states:'));
+    log(`   ${st ?? `no kit states replayed${v.ok ? '' : `: ${v.text.split('\n').slice(-3).join(' | ')}`}`}`);
+    const bad = (st ?? '').split(' | ').slice(1).map((x) => x.replace(/^✗\s*/, '').trim()).filter(Boolean);
+    mark('preflight:kit', st && !bad.length ? 'done' : 'needs-review', { screen: pre.id, ...(bad.length || !st ? { problems: ['the kit on the raw port (fix it in kits/<kit>, not in the app):', ...(bad.length ? bad : [v.text.split('\n').slice(-5).join(' | ')])] } : {}) });
   }
+  const codeLimit = limiter(kit ? parallel : 1); // without a kit the home step builds the shell every other screen needs
+  const codeOf = (s) => {
+    const key = `code:${s.id}`;
+    if (isDone(key) && !forced('code') && !flag('--redo')) { log(`   ${key}: done`); return null; }
+    const id = `${name}/${s.id}`;
+    const blocked = path.join(out, 'src', 'screens', s.id, 'BLOCKED.md');
+    log(`\n>> code ${s.id}${kit && parallel > 1 ? ` (queued, ${parallel} at once)` : ''}`);
+    const goal = s.home && kit
+      ? `Build the home page in src/screens/home/ (route #/). It is a complete page with its own header (no shared shell). The header's side menu, tooltips and links already work through the kit (<KitScreen>).`
+      : s.home
+      ? `Build the shared shell and the home page.\n- src/shell/Page.tsx (+ its components/ and BEHAVIOR.md): the header and the site menu every screen shares. The menu's full tree, read from the live site, is in src/menu.ts: render every module and item from it with the open/close, hover and flyout behavior the spec describes (pictures: explore/shots for the menu opening, menu/*.png in the screen folder for each module's hover flyout). Items with a \`route\` link to \`#<route>\`; every other item looks and behaves the same but goes nowhere (no navigation, no error). {children} is where each screen renders: keep it.\n- src/screens/home/: the home page's own content.`
+      : `Build the screen "${s.label}" in src/screens/${s.id}/ (route #/${s.id}). It renders inside the shared shell (src/shell), which is already built: do not change the shell.`;
+    const files = s.home ? (kit ? '- Files you may edit or add: src/screens/home/**, public/assets/home/**.' : '- Files you may edit or add: src/shell/**, src/screens/home/**, public/assets/home/**.')
+      : `- Files you may edit or add: src/screens/${s.id}/**, public/assets/${s.id}/**${kit ? `, src/services/${s.id}.ts` : ''}.`;
+    const prompt = kit
+      ? fill('code-kit', { id, dir: screenDir(id), app: out, root: ROOT, name: s.id, goal, files, guide: kit.guide, blocked, verify: verifyCmd(s),
+        todo: path.join(out, 'docs', 'ui-specs', s.id, 'TODO.md'), extra: kit.prompt('code', { dir: screenDir(id) }) })
+      : fill('code', { id, dir: screenDir(id), app: out, root: ROOT, name: s.id, extra: '', goal, files });
+    return codeLimit(() => writeStep(key, { workdir: out, gate: codeGate(s), prompt, blocked: kit ? blocked : undefined }))
+      .catch((e) => { mark(key, 'failed', { problems: [e.message.split('\n')[0]] }); log(`   !! code ${s.id}: ${e.message.split('\n')[0]}`); });
+  };
+  await Promise.all(order.map(codeOf).filter(Boolean));
 
   // ---------- report ----------
   const rows = built.map((s) => {

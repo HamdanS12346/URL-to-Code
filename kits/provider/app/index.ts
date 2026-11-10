@@ -2,4 +2,5 @@
 export { KitScreen } from './KitScreen';
 export { KitWidget, formatDate } from './widgets';
 export { mockPage, rowsFor } from './data';
-export type { KitData, WidgetDef, DialogDef, GridAfter, Services } from './core';
+export { useKit } from './core';
+export type { KitData, WidgetDef, DialogDef, GridAfter, Services, Ctx } from './core';

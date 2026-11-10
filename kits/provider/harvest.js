@@ -77,6 +77,23 @@
     return null;
   };
   const ISLAND = new Set(['dropdown', 'numeric', 'date', 'datetime', 'time', 'grid']);
+  // data-role values the kit handles (islands, tooltips) or that are parts of them (a grid's sorter/pager/filter, a
+  // dropdown's list, the side menu, a window); anything else is a widget the kit does not rebuild yet (the census of every
+  // menu page found autocomplete, maskedtextbox, multiselect, listbox, listview, tabstrip): it is ported as static markup
+  // and reported, so the spec can flag it instead of the screen silently losing behavior
+  const KNOWN = new Set(['dropdownlist', 'combobox', 'numerictextbox', 'datepicker', 'datetimepicker', 'timepicker', 'dateinput', 'grid', 'tooltip',
+    'columnsorter', 'pager', 'resizable', 'selectable', 'staticlist', 'list', 'popup', 'validator', 'menu', 'contextmenu', 'window', 'textbox', 'button',
+    'checkbox', 'radiobutton', 'filtermenu', 'filtermulticheck', 'filtercell', 'columnmenu', 'draggable', 'droptarget', 'reorderable', 'loader']);
+  const unknownRoles = (root) => {
+    const out = {};
+    for (const el of root.querySelectorAll('[data-role]')) {
+      const r = el.getAttribute('data-role').toLowerCase();
+      if (KNOWN.has(r) || el.closest('[data-kit-skip], [data-kit-menu]')) continue;
+      (out[r] ||= { count: 0, ids: [] }).count++;
+      if (el.id && out[r].ids.length < 5) out[r].ids.push(el.id);
+    }
+    return out;
+  };
 
   // everything Kendo built inside root: widgets (stamped), tooltips
   const scan = (root, defs) => {
@@ -113,7 +130,7 @@
     .map((i) => ({ name: i.name || i.id, id: i.id || null, type: i.type || i.tagName.toLowerCase(), role: i.getAttribute('data-role') || null, label: labelOf(i), required: required(i),
       maxLength: i.maxLength > 0 ? i.maxLength : null, validation: dataVal(i), validationParams: valParams(i), value: i.type === 'checkbox' || i.type === 'radio' ? i.checked : i.value,
       widget: i.closest('[data-kit]')?.getAttribute('data-kit') || null, disabled: i.disabled, readOnly: i.readOnly }));
-  const ACTIONS = [['search', /^search$/i], ['reset', /^(reset|clear)$/i], ['cancel', /^cancel$/i], ['create', /^(create new|add new)$/i], ['save', /^(save|submit|update)$/i], ['close', /^(close|×|x)$/i]];
+  const ACTIONS = [['search', /^search$/i], ['reset', /^(reset|clear)$/i], ['cancel', /^cancel$/i], ['create', /^(create new|add new|upload new|create [a-z]+( [a-z]+)?)$/i], ['save', /^(save|submit|update)$/i], ['close', /^(close|×|x)$/i]];
   const actions = (root) => {
     const out = [];
     for (const b of root.querySelectorAll('button, input[type=button], input[type=submit], input[type=reset], a.k-button, a.btn, .k-window-titlebar-action')) {
@@ -174,7 +191,7 @@
       return {
         shell: { title: title ? clean(title.textContent) : null, module: mod ? clean(mod.textContent) : null, headerStyle: header?.getAttribute('style') || null,
           headerHeight: header ? Math.round(header.getBoundingClientRect().height) : null },
-        widgets: defs, fields: fields(root), actions: actions(root), hidden: hiddenAtRest(root), autofocus: focus ? (focus.id || focus.name || focus.tagName) : null,
+        widgets: defs, fields: fields(root), actions: actions(root), hidden: hiddenAtRest(root), unknown: unknownRoles(root), autofocus: focus ? (focus.id || focus.name || focus.tagName) : null,
         kendo: window.kendo?.version || null, jquery: $?.fn?.jquery || null,
       };
     },
@@ -246,7 +263,7 @@
         titlebarHtml: tb?.outerHTML || null, contentClass: content.className, contentId: content.id || null, contentStyle: content.getAttribute('style'), contentHtml: content.innerHTML,
         overlay: ov ? { className: ov.className, style: ov.getAttribute('style'), background: cs.backgroundColor, opacity: cs.opacity } : null,
         options: w ? plain({ modal: w.options.modal, width: w.options.width, height: w.options.height, actions: w.options.actions, draggable: w.options.draggable, resizable: w.options.resizable, animation: w.options.animation, position: w.options.position }) : null,
-        widgets: defs, fields: fields(content), actions: acts, hidden, rect: win.getBoundingClientRect().toJSON() };
+        widgets: defs, fields: fields(content), actions: acts, hidden, unknown: unknownRoles(content), rect: win.getBoundingClientRect().toJSON() };
     },
     closeDialog() {
       const win = [...document.querySelectorAll('.k-window')].filter(shown).pop();

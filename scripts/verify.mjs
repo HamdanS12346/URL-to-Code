@@ -123,15 +123,26 @@ if (kitStates?.length && process.env.STATES !== '0') {
       for (const s of st.steps) {
         const loc = p.locator(s.sel).nth(s.nth ?? 0);
         await loc.scrollIntoViewIfNeeded({ timeout: 5000 });
-        if (s.do === 'hover') await loc.hover({ timeout: 5000 }); else await loc.click({ timeout: 5000 });
-        await p.waitForTimeout(st.wait ?? 800);
+        if (s.do === 'hover') await loc.hover({ timeout: 5000 }); else if (s.do === 'dblclick') await loc.dblclick({ timeout: 5000 }); else await loc.click({ timeout: 5000 });
+        await p.waitForTimeout(s.wait ?? st.wait ?? 800);
       }
       if (st.name === 'search') await p.evaluate(() => scrollTo(0, 0));
-      const d = path.join(sdir, st.name);
-      fs.mkdirSync(d, { recursive: true });
-      await p.screenshot({ path: path.join(d, 'candidate.png'), animations: 'disabled', caret: 'hide', ...(st.clip ? { clip: st.clip } : {}) });
-      const res = py('diff.py', path.join(dir, 'kit', st.shot), path.join(d, 'candidate.png'), d);
-      Object.assign(r, { bad_pct: res.bad_pct, size_delta_px: res.size_delta_px, ok: res.bad_pct <= (+process.env.STATE_MAX_BAD_PCT || 15) });
+      // what must be true after the steps (the side menu open, its fly-out shown, closed again), checked in the DOM
+      const failed = [];
+      for (const e of st.expect ?? []) {
+        const seen = await p.locator(e.sel).evaluateAll((els) => els.filter((x) => x.getClientRects().length && getComputedStyle(x).visibility !== 'hidden')
+          .map((x) => { const t = x.querySelector('.k-tooltip-content') ?? x; const lh = parseFloat(getComputedStyle(t).lineHeight) || 18; return Math.round(t.getBoundingClientRect().height / lh); }));
+        if ((e.visible ?? true) !== seen.length > 0) failed.push(`${e.sel} ${e.visible === false ? 'still shown' : 'not shown'}${e.why ? ` (${e.why})` : ''}`);
+        else if (e.lines && seen.length && seen[0] > e.lines) failed.push(`${e.sel} wraps onto ${seen[0]} lines, the live one has ${e.lines}`);
+      }
+      if (failed.length) r.error = failed.join('; ');
+      if (!st.shot) { r.ok = !failed.length; } else {
+        const d = path.join(sdir, st.name);
+        fs.mkdirSync(d, { recursive: true });
+        await p.screenshot({ path: path.join(d, 'candidate.png'), animations: 'disabled', caret: 'hide', ...(st.clip ? { clip: st.clip } : {}) });
+        const res = py('diff.py', path.join(dir, 'kit', st.shot), path.join(d, 'candidate.png'), d);
+        Object.assign(r, { bad_pct: res.bad_pct, size_delta_px: res.size_delta_px, ok: !failed.length && res.bad_pct <= (+process.env.STATE_MAX_BAD_PCT || 15) });
+      }
     } catch (e) { r.error = e.message.split('\n')[0]; }
     await p.close();
     rep.states.push(r);

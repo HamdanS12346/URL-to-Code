@@ -1,7 +1,7 @@
 // Provider kit runtime, shared by every screen of the app (copied to src/kit by `npm run ui`; do not edit it in the app:
 // fix it in final-playwright/kits/provider/app so every screen and every pack gets the fix).
 // core: the types of kit.json (written by the capture's harvest), a tiny event bus, and the DOM helpers the widgets share.
-import { createContext, createElement, useMemo, type ReactElement } from 'react';
+import { createContext, createElement, useContext, useMemo, type ReactElement } from 'react';
 
 export type Item = { text: string; value: string };
 export type WidgetDef = {
@@ -22,7 +22,11 @@ export type KitData = {
   shell?: { title: string | null; module: string | null };
   widgets: Record<string, WidgetDef>; grids: Record<string, GridAfter>; dialogs: Record<string, DialogDef>;
   search: { reveals: string[]; requests: { method: string; url: string; params: string[] }[] } | null;
-  row: { dialog: string | null; navigates: string | null } | null;
+  row: { dialog: string | null; navigates: string | null; via?: 'link' | 'row' | 'dblclick' } | null;
+  // what the screen's own script can open (openModalOverlay panels, the row's double-click handler), and which of those
+  // the capture did not manage to harvest
+  plan?: { dialogs: { panel: string; opener: string | null; via: string | null }[]; rowDouble: string | null; rowSingle: string | null; rowOpens: string | null };
+  missing?: { panel: string; opener: string | null; via: string | null }[];
   calibration: { defaults?: { popup?: { open?: Anim; close?: Anim }; tooltip?: { showAfter?: number; hideAfter?: number; animation?: { open?: Anim; close?: Anim } } | null; window?: { open?: Anim; close?: Anim } | null; menu?: { open?: Anim; close?: Anim } | null; tooltipGap?: number } | null;
     dropdownPopup?: string | null; calendarPopup?: string | null; tooltip?: string | null };
 };
@@ -35,6 +39,8 @@ export class Bus extends EventTarget {
 }
 export type Ctx = { data: KitData; defs: Record<string, WidgetDef>; bus: Bus; openDialog: (id: string) => void };
 export const KitContext = createContext<Ctx | null>(null);
+// for a screen's own code, inside <KitScreen>: the kit's data, its bus (search / reset / change) and openDialog(id)
+export const useKit = () => useContext(KitContext);
 
 // ---------- captured markup -> React element (the island's own tag and attributes; its children stay HTML) ----------
 const ATTR: Record<string, string> = { class: 'className', for: 'htmlFor', tabindex: 'tabIndex', readonly: 'readOnly', maxlength: 'maxLength', colspan: 'colSpan', rowspan: 'rowSpan', autocomplete: 'autoComplete', inputmode: 'inputMode', cellspacing: 'cellSpacing' };
