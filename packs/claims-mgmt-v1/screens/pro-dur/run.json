@@ -1,0 +1,38 @@
+{
+ "screen": "claims-mgmt-v1/pro-dur",
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProDUR/ProDURDashBoard",
+ "mode": "safe",
+ "kit": "provider",
+ "sources": [],
+ "finger": "90ace1cf40e38a9a0865c01c0c4fe30b",
+ "steps": {
+  "capture": {
+   "ok": true,
+   "at": "2026-11-10T20:07:44.247Z",
+   "ms": 30484
+  },
+  "stitch": {
+   "ok": true,
+   "at": "2026-11-10T20:07:44.356Z",
+   "ms": 38
+  },
+  "align": {
+   "ok": true,
+   "at": "2026-11-10T20:07:44.532Z",
+   "ms": 53
+  },
+  "facts": {
+   "ok": true,
+   "at": "2026-11-10T20:07:45.062Z",
+   "ms": 494
+  }
+ },
+ "warnings": [
+  "no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)"
+ ],
+ "viewport": {
+  "width": 1920,
+  "height": 1080
+ },
+ "dpr": 1
+}

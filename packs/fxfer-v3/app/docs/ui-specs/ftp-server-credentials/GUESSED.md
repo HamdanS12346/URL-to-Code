@@ -1,1 +1,0 @@
-- Page Cancel (ctl:cancelButton) treated as Reset + hide Search Results (UI_SPEC.md marks Cancel as [UNKNOWN]).

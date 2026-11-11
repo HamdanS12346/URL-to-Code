@@ -1,0 +1,24 @@
+[
+ {
+  "sel": "#orientationLandscape > div:nth-of-type(2) > div:nth-of-type(3)",
+  "tag": "div",
+  "id": "",
+  "cls": "menu",
+  "x": 0,
+  "y": 62,
+  "w": 1905,
+  "h": 948,
+  "label": "search-claims"
+ },
+ {
+  "sel": "#orientationLandscape > div:nth-of-type(2) > footer",
+  "tag": "footer",
+  "id": "",
+  "cls": "",
+  "x": 0,
+  "y": 1010,
+  "w": 1905,
+  "h": 118.5,
+  "label": "disclaimer-the-website-is-prov"
+ }
+]

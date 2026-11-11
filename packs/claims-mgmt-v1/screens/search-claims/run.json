@@ -1,0 +1,38 @@
+{
+ "screen": "claims-mgmt-v1/search-claims",
+ "url": "https://uximc.mms.tst.pgwcloud.net/ClaimsManagement/SearchClaims",
+ "mode": "safe",
+ "kit": "provider",
+ "sources": [],
+ "finger": "a7ba5eb8fa5535d0384fcd3bc4c2651a",
+ "steps": {
+  "capture": {
+   "ok": true,
+   "at": "2026-11-10T20:07:04.927Z",
+   "ms": 33683
+  },
+  "stitch": {
+   "ok": true,
+   "at": "2026-11-10T20:07:04.933Z",
+   "ms": 2
+  },
+  "align": {
+   "ok": true,
+   "at": "2026-11-10T20:07:04.938Z",
+   "ms": 1
+  },
+  "facts": {
+   "ok": true,
+   "at": "2026-11-10T20:07:05.925Z",
+   "ms": 983
+  }
+ },
+ "warnings": [
+  "no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)"
+ ],
+ "viewport": {
+  "width": 1920,
+  "height": 1080
+ },
+ "dpr": 1
+}

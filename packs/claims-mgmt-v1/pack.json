@@ -1,0 +1,39 @@
+{
+ "selectors": {},
+ "config": {},
+ "pack": "claims-mgmt-v1",
+ "url": "https://uximc.mms.tst.pgwcloud.net/Home/MyHome/",
+ "menu": "Claims Management",
+ "outRepo": "C:\\UI-specs\\URL-to-Code\\packs\\claims-mgmt-v1\\app",
+ "menuButton": "#pageBannerMenu > nav > div > i",
+ "screens": [
+  {
+   "id": "home",
+   "label": "Home",
+   "url": "https://uximc.mms.tst.pgwcloud.net/Home/MyHome/",
+   "home": true,
+   "scope": "#pageBody > main"
+  },
+  {
+   "id": "search-claims",
+   "label": "Search Claims",
+   "url": "https://uximc.mms.tst.pgwcloud.net/ClaimsManagement/SearchClaims",
+   "trail": [
+    "Claims Management",
+    "Search Claims"
+   ],
+   "scope": "#pageBody > main"
+  },
+  {
+   "id": "pro-dur",
+   "label": "Pro DUR",
+   "url": "https://uximc.mms.tst.pgwcloud.net/ProDUR/ProDURDashBoard",
+   "trail": [
+    "Claims Management",
+    "Pro DUR"
+   ],
+   "scope": "#pageBody > main"
+  }
+ ],
+ "kit": "provider"
+}

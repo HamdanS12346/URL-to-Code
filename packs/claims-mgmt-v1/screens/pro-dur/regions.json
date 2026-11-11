@@ -1,0 +1,144 @@
+{
+ "reference": "reference.png",
+ "css_viewport_width": 1905,
+ "regions": [
+  {
+   "name": "band-01-pro-dur",
+   "box": [
+    0,
+    62,
+    1905,
+    77
+   ],
+   "selector": "#orientationLandscape > div:nth-of-type(2) > div:nth-of-type(3)"
+  },
+  {
+   "name": "band-02-produrdashboard",
+   "box": [
+    0,
+    139,
+    1905,
+    350
+   ],
+   "selector": "#ProDURdashBoard"
+  },
+  {
+   "name": "band-03-disclaimer-the-website-is-prov",
+   "box": [
+    0,
+    1482,
+    1905,
+    118
+   ],
+   "selector": "#orientationLandscape > div:nth-of-type(2) > footer"
+  },
+  {
+   "name": "img-logo-png-v-19-1-64-0",
+   "box": [
+    50,
+    2,
+    116,
+    56
+   ]
+  },
+  {
+   "name": "h1-pro-dur",
+   "box": [
+    203,
+    62,
+    78,
+    30
+   ]
+  },
+  {
+   "name": "row1-item1",
+   "box": [
+    484,
+    433,
+    312,
+    101
+   ],
+   "group": "row1"
+  },
+  {
+   "name": "row1-item2",
+   "box": [
+    796,
+    433,
+    312,
+    117
+   ],
+   "group": "row1"
+  },
+  {
+   "name": "row1-item3",
+   "box": [
+    1109,
+    433,
+    312,
+    88
+   ],
+   "group": "row1"
+  },
+  {
+   "name": "row1-item4",
+   "box": [
+    1421,
+    433,
+    312,
+    149
+   ],
+   "group": "row1"
+  },
+  {
+   "name": "row2-item1",
+   "box": [
+    327,
+    582,
+    312,
+    101
+   ],
+   "group": "row2"
+  },
+  {
+   "name": "row2-item2",
+   "box": [
+    640,
+    582,
+    312,
+    101
+   ],
+   "group": "row2"
+  },
+  {
+   "name": "row2-item3",
+   "box": [
+    952,
+    582,
+    312,
+    165
+   ],
+   "group": "row2"
+  },
+  {
+   "name": "row2-item4",
+   "box": [
+    1265,
+    582,
+    312,
+    309
+   ],
+   "group": "row2"
+  },
+  {
+   "name": "row2-item5",
+   "box": [
+    1577,
+    582,
+    312,
+    213
+   ],
+   "group": "row2"
+  }
+ ]
+}

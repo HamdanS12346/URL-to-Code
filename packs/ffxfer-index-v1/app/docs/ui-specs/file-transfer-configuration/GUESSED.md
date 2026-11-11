@@ -1,3 +1,0 @@
-﻿- Cancel button (`cancelButton`) is a no-op in the rebuild (legacy outcome is [UNKNOWN]).
-- Create New opens a kit modal shell (`FileTransferConfigurationEditPopup`) with empty body because the dialog contents are [UNKNOWN] in the spec.
-- Grid data remains synthetic/empty (backend read contract is [UNKNOWN]).

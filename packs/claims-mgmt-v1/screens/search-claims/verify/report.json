@@ -1,0 +1,256 @@
+{
+  "size_delta_px": [
+    0,
+    0
+  ],
+  "bad_pct": 0.2,
+  "mean_abs": 0.18,
+  "worst_band": {
+    "y": 0,
+    "bad_pct": 0.71
+  },
+  "bands": [
+    {
+      "y": 0,
+      "bad_pct": 0.71
+    },
+    {
+      "y": 188,
+      "bad_pct": 0
+    },
+    {
+      "y": 376,
+      "bad_pct": 0.2
+    },
+    {
+      "y": 564,
+      "bad_pct": 0.19
+    },
+    {
+      "y": 752,
+      "bad_pct": 0.13
+    },
+    {
+      "y": 940,
+      "bad_pct": 0
+    },
+    {
+      "y": 1128,
+      "bad_pct": 0
+    }
+  ],
+  "clusters": [
+    {
+      "box": [
+        216,
+        0,
+        288,
+        48
+      ],
+      "bad_px": 1093,
+      "css_box": [
+        216,
+        0,
+        288,
+        48
+      ],
+      "element": {
+        "el": "div.system-name[data-testid=button]",
+        "text": "Medicaid Management Solutions",
+        "box": [
+          201,
+          12,
+          320,
+          18
+        ]
+      }
+    },
+    {
+      "box": [
+        1296,
+        24,
+        312,
+        24
+      ],
+      "bad_px": 809,
+      "css_box": [
+        1296,
+        24,
+        312,
+        24
+      ],
+      "element": {
+        "el": "a.k-link.display-block[data-testid=link-favorites]",
+        "text": "Favorites",
+        "box": [
+          1423,
+          21,
+          86,
+          19
+        ]
+      }
+    },
+    {
+      "box": [
+        1512,
+        504,
+        120,
+        72
+      ],
+      "bad_px": 329,
+      "css_box": [
+        1512,
+        504,
+        120,
+        72
+      ],
+      "element": {
+        "el": "span.k-input-value-text",
+        "text": "select a value...",
+        "box": [
+          1556,
+          539,
+          203,
+          40
+        ]
+      }
+    },
+    {
+      "box": [
+        1488,
+        720,
+        48,
+        120
+      ],
+      "bad_px": 288,
+      "css_box": [
+        1488,
+        720,
+        48,
+        120
+      ],
+      "element": {
+        "el": "span.float-right.clickable",
+        "text": "Close",
+        "box": [
+          1502,
+          757,
+          106,
+          38
+        ]
+      }
+    },
+    {
+      "box": [
+        1632,
+        24,
+        96,
+        24
+      ],
+      "bad_px": 279,
+      "css_box": [
+        1632,
+        24,
+        96,
+        24
+      ],
+      "element": {
+        "el": "a.k-link.display-block[data-testid=link-my-account]",
+        "text": "My Account",
+        "box": [
+          1626,
+          21,
+          100,
+          19
+        ]
+      }
+    }
+  ],
+  "worst_crop": "worst.png",
+  "sections": [
+    {
+      "n": 1,
+      "label": "search-claims",
+      "y": 62,
+      "h": 948,
+      "bad_pct": 0.1
+    },
+    {
+      "n": 2,
+      "label": "disclaimer-the-website-is-prov",
+      "y": 1010,
+      "h": 118.5,
+      "bad_pct": 0
+    }
+  ],
+  "worst_section": {
+    "n": 1,
+    "label": "search-claims",
+    "y": 62,
+    "h": 948,
+    "bad_pct": 0.1
+  },
+  "verdict": "close",
+  "states": [
+    {
+      "name": "dropdown",
+      "ok": true,
+      "bad_pct": 4.54,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "tooltip",
+      "ok": true,
+      "bad_pct": 2.73,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "search",
+      "ok": true,
+      "bad_pct": 10.71,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-open",
+      "ok": true,
+      "bad_pct": 0.93,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-flyout",
+      "ok": true
+    },
+    {
+      "name": "menu-close",
+      "ok": true
+    }
+  ],
+  "bands_note": "the rebuild has 0 top-level bands, the original 2: section heights not compared",
+  "motion": [
+    {
+      "id": "M01",
+      "kind": "css-animation",
+      "ok": true,
+      "detail": "animation autoFillEnd"
+    }
+  ],
+  "behavior": {
+    "console": {
+      "errors": [],
+      "reactWarnings": [],
+      "failedResources": 0
+    }
+  }
+}

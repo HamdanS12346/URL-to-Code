@@ -1,0 +1,2 @@
+
+    var viewOverusePrecautionUrl = '/ProDUR/ProDUROverusePrecaution/';

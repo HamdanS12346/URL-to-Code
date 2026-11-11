@@ -1,0 +1,16 @@
+{
+ "docHeight": 1129,
+ "fullHeight": 1129,
+ "viewportHeight": 1080,
+ "clientWidth": 1905,
+ "shots": [
+  {
+   "file": "s00.png",
+   "y": 0
+  },
+  {
+   "file": "s01.png",
+   "y": 49
+  }
+ ]
+}

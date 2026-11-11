@@ -1,0 +1,64 @@
+{
+  "size_delta_px": [
+    0,
+    0
+  ],
+  "bad_pct": 4.54,
+  "mean_abs": 5.14,
+  "worst_band": {
+    "y": 160,
+    "bad_pct": 16.81
+  },
+  "bands": [
+    {
+      "y": 0,
+      "bad_pct": 6.98
+    },
+    {
+      "y": 32,
+      "bad_pct": 3.71
+    },
+    {
+      "y": 64,
+      "bad_pct": 0.0
+    },
+    {
+      "y": 96,
+      "bad_pct": 0.0
+    },
+    {
+      "y": 128,
+      "bad_pct": 0.0
+    },
+    {
+      "y": 160,
+      "bad_pct": 16.81
+    },
+    {
+      "y": 192,
+      "bad_pct": 0.0
+    }
+  ],
+  "clusters": [
+    {
+      "box": [
+        0,
+        168,
+        264,
+        24
+      ],
+      "bad_px": 1474
+    },
+    {
+      "box": [
+        0,
+        0,
+        274,
+        48
+      ],
+      "bad_px": 937
+    }
+  ],
+  "worst_crop": "worst.png",
+  "verdict": "close"
+}

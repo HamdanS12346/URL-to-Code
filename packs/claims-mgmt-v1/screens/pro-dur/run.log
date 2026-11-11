@@ -1,0 +1,39 @@
+
+== claims-mgmt-v1/pro-dur  https://uximc.mms.tst.pgwcloud.net/ProDUR/ProDURDashBoard  (dpr 1, mode safe)
+  viewport 1920x1080 CSS px @ dpr 1
+
+>> STAGE 1/5  capture the page: assets, DOM, styles, motion, reference pictures
+  kit (provider): Kendo 2026.1.415, 0 widgets (none), 2 fields, 0 actions, 1 hidden parts, side menu div#mainMenuContainer (181 links, opens by class display-flex + div.disabled-backdrop)
+  frozen: clock paused; reset to slide 0: 0 swiper, 0 slick, 0 owl; 0 animations parked; 0 candidates still moving
+  reference.png 1905x1600 from 2 shots; 3 section crops in sections/ (4 bands merged to 3)
+  regions.json: 14 regions (2 repeated rows) measured by draw-ui -> measure-00/
+  snapshot/full.css: 2182 KB (18100 rules, all kept)
+  snapshot/: rendered.html 189 KB, used.css 110 KB (495/18100 rules), 0 keyframes
+  kit: the screen's script opens languageOverlay; a row double-click calls gridRowDoubleClickCallBack
+  kit: 0 dialog(s) ; 4 state check(s)
+  motion.json: 0 entries (none); 4 transition groups
+  captured: 534 controls, 0 validators, 15 assets, 0 frames [jquery, CSS1Compat]
+   done in 30.5s
+
+>> STAGE 1/5  stitch your own screenshots
+   done in 0.0s
+
+>> STAGE 1/5  compare your screenshots with the live page
+   done in 0.1s
+
+>> STAGE 4/5  collect everything into facts.md
+  facts.md: 534 controls, 0 behaviors (0 flaky), 1 assets in use; parity.spec.ts: 0 candidate tests
+   done in 0.5s
+  ! no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)
+
+== claims-mgmt-v1/pro-dur finished (0.5 min of work)
+
+== claims-mgmt-v1/pro-dur  https://uximc.mms.tst.pgwcloud.net/ProDUR/ProDURDashBoard  (dpr 1, mode safe)
+  viewport 1920x1080 CSS px @ dpr 1
+- STAGE 1/5  capture the page: assets, DOM, styles, motion, reference pictures: up to date (cached)
+- STAGE 1/5  stitch your own screenshots: up to date (cached)
+- STAGE 1/5  compare your screenshots with the live page: up to date (cached)
+- STAGE 4/5  collect everything into facts.md: up to date (cached)
+  ! no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)
+
+== claims-mgmt-v1/pro-dur finished (0.5 min of work)

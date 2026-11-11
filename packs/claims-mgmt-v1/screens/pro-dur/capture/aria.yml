@@ -1,0 +1,72 @@
+- banner:
+  - link "Client Logo":
+    - /url: /Home/MyHome/
+    - img "Client Logo"
+  - text: Medicaid Management Solutions Final Test
+  - menubar:
+    - menuitem "Messages":
+      - link "Messages":
+        - /url: javascript:getBroadcastMsg();
+    - menuitem "External Links":
+      - link "External Links":
+        - /url: javascript:toggleVisibilityStyle('divExternalLinks');
+    - menuitem "Favorites":
+      - link "Favorites":
+        - /url: javascript:getFavorites();
+    - menuitem "Contact Us":
+      - link "Contact Us":
+        - /url: javascript:getContactUs();
+    - menuitem "My Account":
+      - link "My Account":
+        - /url: /Home/MyAccount
+    - menuitem "Logout":
+      - link "Logout":
+        - /url: /Security/LogoutFromMenu
+  - navigation "Hamburger Menu":
+    - button "Main Menu": 
+- navigation:
+  - menubar:
+    - menuitem "Claims Management ":
+      - link "Claims Management ":
+        - /url: /ClaimsManagement/Dashboard
+  - heading "Pro DUR" [level=1]
+- button "Help":  
+- main:
+  - text: 
+  - link "Actions":
+    - /url: /ProDUR/ProDURDashBoard
+  - paragraph: Alert Disposition
+  - heading "Create New | Search" [level=5]:
+    - link "Create New":
+      - /url: /ProDUR/ProDURDashBoard
+    - text: "|"
+    - link "Search":
+      - /url: /ProDUR/ProDURDashBoard
+  - paragraph: Common Alert Criteria
+  - heading "Create New | Search" [level=5]:
+    - link "Create New":
+      - /url: /ProDUR/ProDURDashBoard
+    - text: "|"
+    - link "Search":
+      - /url: /ProDUR/ProDURDashBoard
+  - paragraph: Allergy Diagnosis Enquiry
+  - heading "Create New | Search" [level=5]:
+    - link "Create New":
+      - /url: /ProDUR/ProDURDashBoard
+    - text: "|"
+    - link "Search":
+      - /url: /ProDUR/ProDURDashBoard
+  - text: 
+  - link "Bookmarks":
+    - /url: /ProDUR/ProDURDashBoard
+  - text: 
+  - link "Glossary":
+    - /url: /ProDUR/ProDURDashBoard
+  - text: ADI American Drug Interaction Inverse Code from FDB AGCSP Allergy Group Code Specific API Active Pharmaceutical Ingredient BC Buccal (in mouth, not swallowed) DT Dental ER ER – Refill to Soon FDB First DataBank FDBDX First Data Base Diagnosis FF Perfusion GCN Generic Control Number GM Gram GSN Generic Sequence Number GTC Generic Therapeutic Class HD High Dose, Above Maximum Dose HDose High Dose, Refill Too Early HIC Hierarchical Ingredient Code HIC3 Hierarchical Ingredient Code 1st 3 ingredients HIC4 Hierarchical Ingredient Code 1st 4 ingredients HICL Hierarchical Ingredient Code List ICN Internal Control Number ID (as pertains to beneficiary, patient, member) Identification ID (as pertains to route of drug administration) Intradermal IH Inhalation IJ Injection IM Intramuscular IP Intraperitoneal IR Irrigation IV Intravenous MG Milligram ML Millimeter MM Mucus Membrane NCPDP National Council for Prescription Drug Programs NDC National Drug Code NDDF National Data File Plus NPI National Prescriber Identifier NS Nasal OP Ophthalmic OT Otic PA Prior Authorization PBM Pharmacy Benefit Management PDL Preferred Drug List PG Pregnancy Alert PO Oral POS Point of Sale ProDUR Prospective Drug Utilization Review RC Rectal Rx Prescription SL Sublingual STC Specific Therapeutic Class TD (as pertains to drug alert) Therapeutic Duplication TD (as pertains to route of medication administration) Transdermal TP Topical UN Unit UR Urethral VG Vaginal Allergy Diag Audit Alert Disposition Create New Bene FDBDX Profile Common Alert Criteria Create New Audit Contra FDBDX Audit GCN Sequence NDC TC List Drug Allergy Audit Drug-Drug Interactions Audit Drug Pregnancy Alert Audit TC List NDC Geriatric Dosing Age Alerts Audit GCN Sequence Number TC List NDC High Dose Alert Audit GCN Sequence NDC TC List Inferred FDBDX Audit TC List NDC Ingredient Duplication Audit Low Dose Alert Audit GCN Sequence NDC TC List Max Duration of Therapy Audit Min Duration of Therapy Audit Overuse Precaution Audit GCN Sequence NDC TC List Pediatric Dosing Age Alerts Audit GCN Sequence Number TC List NDC Suspended Claim Alerts Therapeutic Duplication Audit Underuse Precaution Audit GCN Sequence NDC TC List
+- contentinfo:
+  - text: Disclaimer Website Requirements Privacy Policy Cookie Policy © 2026 Gainwell Technologies. All rights reserved.
+  - strong: "Server:"
+  - text: 10.199.153.9
+  - strong: "Build Date:"
+  - text: 10/30/2026 3:28:36 AM
+  - strong: v30.0.0.2609

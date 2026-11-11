@@ -1,0 +1,32 @@
+{
+ "isWebForms": false,
+ "validators": [],
+ "summaries": [],
+ "updatePanels": null,
+ "components": [],
+ "grids": {},
+ "hiddenFields": [
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  }
+ ],
+ "defaultButtons": [],
+ "forms": [
+  {
+   "index": 0,
+   "key": "form-resolve-the-following-fo",
+   "action": "/ProDUR/ProDURDashBoard",
+   "method": "POST",
+   "enctype": "application/x-www-form-urlencoded",
+   "fields": [
+    "text",
+    "text-2"
+   ]
+  }
+ ]
+}

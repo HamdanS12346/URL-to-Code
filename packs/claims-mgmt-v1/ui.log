@@ -1,0 +1,126 @@
+
+==== 2026-11-10T20:03:32.206Z  npm run ui -- claims-mgmt-v1 --yes --url https://uximc.mms.tst.pgwcloud.net/Home/MyHome/ --menu Claims Management
+pack claims-mgmt-v1: https://uximc.mms.tst.pgwcloud.net/Home/MyHome/  menu "Claims Management"  code -> packs/claims-mgmt-v1/app
+writer: powershell -NoProfile -ExecutionPolicy Bypass -File C:\UI-specs\start_codex.ps1 exec -c web_search=disabled --skip-git-repo-check -C {workdir}
+>> login
+  ! the password comes from .env, which the writer (Codex) can read. Safer: remove PASSWORD from .env and type it when asked
+  logged in
+>> discover: reading the menu
+  menu: 19 modules (Administration, Alert Notification, Claims Management, Drug Rebate, UI Examples, File Transfer Services, Integration, Managed Care, Member Management, Plan Management, Program Integrity, PI Case Tracking, Provider Enrollment, Provider Management, Screening/Credentialing, TPL Case Tracking, TPL Policy, TPL HIPP, Task Management)
+  reading Administration…
+  reading Alert Notification…
+  reading Claims Management…
+  reading Drug Rebate…
+  reading UI Examples…
+  reading File Transfer Services…
+  reading Integration…
+  reading Managed Care…
+  reading Member Management…
+  reading Plan Management…
+  reading Program Integrity…
+  reading PI Case Tracking…
+  reading Provider Enrollment…
+  reading Provider Management…
+  reading Screening/Credentialing…
+  reading TPL Case Tracking…
+  reading TPL Policy…
+  reading TPL HIPP…
+  reading Task Management…
+  Claims Management: 2 item(s)
+  content area of each screen (what the shared header/menu wraps):
+   home                             https://uximc.mms.tst.pgwcloud.net/Home/MyHome/
+                                    content: #pageBody > main (1920x526 px)
+   search-claims                    https://uximc.mms.tst.pgwcloud.net/ClaimsManagement/SearchClaims
+                                    content: #pageBody > main (1905x904 px)
+   pro-dur                          https://uximc.mms.tst.pgwcloud.net/ProDUR/ProDURDashBoard
+                                    content: #pageBody > main (1905x1343 px)
+  2 screen(s) under "Claims Management" + the home page. Menu: packs/claims-mgmt-v1/menu.json, picture: menu.png
+site kit: provider (kits/provider): the harvest replaces plan + explore; screens are built on its runtime
+
+>> home: Home  https://uximc.mms.tst.pgwcloud.net/Home/MyHome/
+   spec: queued (3 writer(s) at once)
+
+>> search-claims: Search Claims  https://uximc.mms.tst.pgwcloud.net/ClaimsManagement/SearchClaims
+   writer: spec:home, attempt 1 (log: packs/claims-mgmt-v1/logs/spec-home-1.log)
+   spec: queued (3 writer(s) at once)
+
+>> pro-dur: Pro DUR  https://uximc.mms.tst.pgwcloud.net/ProDUR/ProDURDashBoard
+   writer: spec:search-claims, attempt 1 (log: packs/claims-mgmt-v1/logs/spec-search-claims-1.log)
+   spec: queued (3 writer(s) at once)
+   writer: spec:pro-dur, attempt 1 (log: packs/claims-mgmt-v1/logs/spec-pro-dur-1.log)
+
+>> waiting for 3 spec writer(s)
+   writer finished: exit 0, 8.8 min
+   ✓ spec:pro-dur
+   writer finished: exit 0, 10.4 min
+   ✓ spec:home
+   writer finished: exit 0, 23.3 min
+   ✓ spec:search-claims
+
+>> app: C:\UI-specs\URL-to-Code\packs\claims-mgmt-v1\app
+   shell (header + side menu) ported from search-claims
+   claims-mgmt-v1/home -> packs/claims-mgmt-v1/app/src/screens/home: 2 band components, 521/521 data-testid keys stamped, 32 assets
+      McbRowBorder       div#mcbRowBorder
+      Footer             footer
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+46)
+   next: npm run verify -- claims-mgmt-v1/home   (starts its own dev server)
+   claims-mgmt-v1/search-claims -> packs/claims-mgmt-v1/app/src/shell: 2 band components, 873/873 data-testid keys stamped, 36 assets
+      Div                div
+      Footer             footer
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+47)
+   next: npm run verify -- claims-mgmt-v1/search-claims   (starts its own dev server)
+   claims-mgmt-v1/search-claims -> packs/claims-mgmt-v1/app/src/screens/search-claims: 0 band components, 873/873 data-testid keys stamped, 36 assets
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+47)
+   next: npm run verify -- claims-mgmt-v1/search-claims   (starts its own dev server)
+   claims-mgmt-v1/pro-dur -> packs/claims-mgmt-v1/app/src/screens/pro-dur: 1 band components, 534/534 data-testid keys stamped, 30 assets
+      ProDURdashBoard    div#ProDURdashBoard
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+47)
+   next: npm run verify -- claims-mgmt-v1/pro-dur   (starts its own dev server)
+
+==== 2026-11-10T22:54:15.435Z  npm run ui -- claims-mgmt-v1
+pack claims-mgmt-v1: https://uximc.mms.tst.pgwcloud.net/Home/MyHome/  menu "Claims Management"  code -> packs/claims-mgmt-v1/app
+writer: powershell -NoProfile -ExecutionPolicy Bypass -File C:\UI-specs\start_codex.ps1 exec -c web_search=disabled --skip-git-repo-check -C {workdir}
+>> login
+  ! the password comes from .env, which the writer (Codex) can read. Safer: remove PASSWORD from .env and type it when asked
+  logged in
+site kit: provider (kits/provider): the harvest replaces plan + explore; screens are built on its runtime
+
+>> home: Home  https://uximc.mms.tst.pgwcloud.net/Home/MyHome/
+   spec: up to date
+
+>> search-claims: Search Claims  https://uximc.mms.tst.pgwcloud.net/ClaimsManagement/SearchClaims
+   spec: up to date
+
+>> pro-dur: Pro DUR  https://uximc.mms.tst.pgwcloud.net/ProDUR/ProDURDashBoard
+   spec: up to date
+
+>> app: C:\UI-specs\URL-to-Code\packs\claims-mgmt-v1\app
+   shell (header + side menu) ported from search-claims
+
+>> kit preflight on search-claims (the port as it is, before any writer)
+   states: 6/6 match the live page
+
+>> code home (queued, 3 at once)
+
+>> code search-claims (queued, 3 at once)
+
+>> code pro-dur (queued, 3 at once)
+   writer: code:home, attempt 1 (log: packs/claims-mgmt-v1/logs/code-home-1.log)
+   writer: code:search-claims, attempt 1 (log: packs/claims-mgmt-v1/logs/code-search-claims-1.log)
+   writer: code:pro-dur, attempt 1 (log: packs/claims-mgmt-v1/logs/code-pro-dur-1.log)
+   writer finished: exit 0, 10.1 min
+   ! code:pro-dur: the writer stopped on a problem it may not fix (kit/shell): # BLOCKED: claims-mgmt-v1/pro-dur (packs/claims-mgmt-v1/app/src/screens/pro-dur/BLOCKED.md)
+   writer finished: exit 0, 11.4 min
+   (tsc: 10 error(s) in other files, not home's: src/screens/search-claims/components/SearchClaimsBehavior.tsx(148,11): error TS2339: Property 'bus' does not exist on type 'Ctx | null'.)
+   ! the dev server on http://localhost:5180 is down: starting it again (log: packs/claims-mgmt-v1/logs/devserver.log)
+   ✗ check: verify (the app at http://localhost:5180/#/ against the captured reference): bad_pct 0.13% (limit 5), size_delta_px [0,0] (height limit ±4), worst section mcbrowborder | states: 4/4 match the live page | cluster 1: css box 192,0,312,48 bad_px 1065 under div.system-name[data-testid=button] "Medicaid 
+   writer: code:home, attempt 2 (log: packs/claims-mgmt-v1/logs/code-home-2.log)
+   writer finished: exit 0, 15.8 min
+   ✓ code:search-claims
+   writer finished: exit 0, 8.4 min
+   ✓ code:home
+
+== done. 3 screen(s) in C:\UI-specs\URL-to-Code\packs\claims-mgmt-v1\app
+   report: C:\UI-specs\URL-to-Code\packs\claims-mgmt-v1\app\UI_BUILD_REPORT.md
+   status: packs/claims-mgmt-v1/STATUS.md
+   ! code:pro-dur: blocked - the writer reports a problem outside its files (packs/claims-mgmt-v1/app/src/screens/pro-dur/BLOCKED.md):

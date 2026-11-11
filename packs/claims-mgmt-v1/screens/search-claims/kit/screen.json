@@ -1,0 +1,2469 @@
+{
+ "shell": {
+  "title": "Search Claims",
+  "module": null,
+  "headerStyle": "border-bottom: 0px;",
+  "headerHeight": 62
+ },
+ "widgets": {
+  "k1": {
+   "role": "dropdownlist",
+   "id": "ClaimIdentifiersList",
+   "name": "ClaimIdentifiersList",
+   "label": "ClaimIdentifiersList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Search for claims by ICN, TCN, or MCO ICN.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"ClaimIdentifiersList_listbox\" aria-busy=\"false\" aria-describedby=\"a3f55aa1-1b25-4f94-b842-281d89d2cbb3\" style=\"\" aria-labelledby=\"ClaimIdentifiersLabel ClaimIdentifiersHelpDesc\" data-kit=\"k1\"><span id=\"a3f55aa1-1b25-4f94-b842-281d89d2cbb3\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"ClaimIdentifiersListLabel\" for=\"ClaimIdentifiersList\" class=\"display-none\">ClaimIdentifiersList</label><input class=\"editor-control\" id=\"ClaimIdentifiersList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"ClaimsManagement.DataList.ClaimIdentifiers\" listviewdisplayformat=\"Name\" name=\"ClaimIdentifiersList\" not-data-val-required=\"Search By is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ClaimsManagement.UX.Data.ClaimsSearchCriteriaModel-/ClaimsManagement/SearchClaims-Desktop-ClaimIdentifiers\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"ClaimIdentifiersListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "ICN",
+     "value": "ICN"
+    },
+    {
+     "text": "MCO ICN",
+     "value": "MCOICN"
+    },
+    {
+     "text": "TCN",
+     "value": "TCN"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k2": {
+   "role": "dropdownlist",
+   "id": "DateTypeList",
+   "name": "DateTypeList",
+   "label": "DateTypeList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Search for claims by date of service (DOS), date received, or date paid.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"DateTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"87f9f9cf-63cd-4e1d-8598-d7e1a24acf83\" style=\"\" aria-labelledby=\"DateTypeLabel DateTypeHelpDesc\" data-kit=\"k2\"><span id=\"87f9f9cf-63cd-4e1d-8598-d7e1a24acf83\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">Service Date</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"DateTypeListLabel\" for=\"DateTypeList\" class=\"display-none\">DateTypeList</label><input class=\"editor-control\" height=\"0\" id=\"DateTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"ClaimsManagement.DataList.DateTypes\" listviewdisplayformat=\"Name\" name=\"DateTypeList\" not-data-val-required=\"Choose Date Type is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ClaimsManagement.UX.Data.ClaimsSearchCriteriaModel-/ClaimsManagement/SearchClaims-Desktop-DateType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"DateTypeListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": null,
+   "items": [
+    {
+     "text": "Service Date",
+     "value": "DOS"
+    },
+    {
+     "text": "Paid Date",
+     "value": "DP"
+    },
+    {
+     "text": "Receipt Date",
+     "value": "DR"
+    }
+   ],
+   "value": "DOS",
+   "text": "Service Date",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k3": {
+   "role": "datepicker",
+   "id": "FromDate",
+   "name": "FromDate",
+   "label": "Date From",
+   "required": true,
+   "validation": {
+    "date": "Date From must represent a valid date in the format 'MM/DD/YYYY'.",
+    "required": "Date From is a required field."
+   },
+   "validationParams": {
+    "minmax-date": "Date From must be within 01/01/1900 and 12/31/9999."
+   },
+   "enabled": true,
+   "help": "Date From is a required field.",
+   "animation": {},
+   "html": "<span class=\"k-datepicker k-input editor-control k-input-inner\" data-kit=\"k3\" style=\"\"><input class=\"editor-control k-input-inner\" data-val=\"true\" data-val-date=\"Date From must represent a valid date in the format 'MM/DD/YYYY'.\" data-val-minmax-date=\"Date From must be within 01/01/1900 and 12/31/9999.\" data-val-required=\"Date From is a required field.\" height=\"0\" id=\"FromDate\" ignoredirtydata=\"False\" name=\"FromDate\" onblur=\"kendoMaskedDatePickerValidate(id);\" onkeydown=\"ClearKendoMaskedDateError(event,id);\" type=\"text\" value=\"11/10/2024\" data-role=\"datepicker\" inputmode=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"grid\" aria-controls=\"FromDate_dateview\" autocomplete=\"off\" aria-disabled=\"false\" aria-readonly=\"false\" style=\"\" aria-labelledby=\"FromDateLabel FromDateHelpDesc\"><button aria-label=\"select\" tabindex=\"0\" class=\"k-input-button k-button k-icon-button\" type=\"button\" role=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-calendar k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 416H288V288h128zm64-352v384c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h64V0h64v32h128V0h64v32h64c17.6 0 32 14.4 32 32m-32 128H64v255.9l.1.1 383.9-.1zm0-127.9q-.15-.15 0 0l-64-.1v32h-64V64H192v32h-64V64H64.1l-.1.1V160h384z\"></path></svg></span></button></span>",
+   "kind": "date",
+   "value": "2024-11-09T18:30:00.000Z",
+   "format": "MM/dd/yyyy",
+   "timeFormat": null,
+   "interval": 30,
+   "min": "1899-12-31T18:38:50.000Z",
+   "max": "9999-12-30T18:30:00.000Z",
+   "placeholder": ""
+  },
+  "k4": {
+   "role": "datepicker",
+   "id": "ToDate",
+   "name": "ToDate",
+   "label": "Date To",
+   "required": true,
+   "validation": {
+    "date": "Date To must represent a valid date in the format 'MM/DD/YYYY'.",
+    "required": "Date To is a required field."
+   },
+   "validationParams": {
+    "minmax-date": "Date To must be within 01/01/1900 and 12/31/9999."
+   },
+   "enabled": true,
+   "help": "Date To is a required field.",
+   "animation": {},
+   "html": "<span class=\"k-datepicker k-input editor-control k-input-inner\" data-kit=\"k4\" style=\"\"><input class=\"editor-control k-input-inner\" data-val=\"true\" data-val-date=\"Date To must represent a valid date in the format 'MM/DD/YYYY'.\" data-val-minmax-date=\"Date To must be within 01/01/1900 and 12/31/9999.\" data-val-required=\"Date To is a required field.\" height=\"0\" id=\"ToDate\" ignoredirtydata=\"False\" name=\"ToDate\" onblur=\"kendoMaskedDatePickerValidate(id);\" onkeydown=\"ClearKendoMaskedDateError(event,id);\" type=\"text\" value=\"11/10/2026\" data-role=\"datepicker\" inputmode=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"grid\" aria-controls=\"ToDate_dateview\" autocomplete=\"off\" aria-disabled=\"false\" aria-readonly=\"false\" style=\"\" aria-labelledby=\"ToDateLabel ToDateHelpDesc\"><button aria-label=\"select\" tabindex=\"0\" class=\"k-input-button k-button k-icon-button\" type=\"button\" role=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-calendar k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 416H288V288h128zm64-352v384c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h64V0h64v32h128V0h64v32h64c17.6 0 32 14.4 32 32m-32 128H64v255.9l.1.1 383.9-.1zm0-127.9q-.15-.15 0 0l-64-.1v32h-64V64H192v32h-64V64H64.1l-.1.1V160h384z\"></path></svg></span></button></span>",
+   "kind": "date",
+   "value": "2026-11-09T18:30:00.000Z",
+   "format": "MM/dd/yyyy",
+   "timeFormat": null,
+   "interval": 30,
+   "min": "1899-12-31T18:38:50.000Z",
+   "max": "9999-12-30T18:30:00.000Z",
+   "placeholder": ""
+  },
+  "k5": {
+   "role": "dropdownlist",
+   "id": "MemberByList",
+   "name": "MemberByList",
+   "label": "MemberByList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Search for claims by Member ID, Member Name or Patient Account Number",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"MemberByList_listbox\" aria-busy=\"false\" aria-describedby=\"e08af021-329c-4bd9-84a4-107f53861bb3\" style=\"\" aria-labelledby=\"MemberByLabel MemberByHelpDesc\" data-kit=\"k5\"><span id=\"e08af021-329c-4bd9-84a4-107f53861bb3\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"MemberByListLabel\" for=\"MemberByList\" class=\"display-none\">MemberByList</label><input class=\"editor-control\" height=\"0\" id=\"MemberByList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"ClaimsManagement.DataList.ChooseMemberBy\" listviewdisplayformat=\"Name\" name=\"MemberByList\" not-data-val-required=\"Choose Member By is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ClaimsManagement.UX.Data.ClaimsSearchCriteriaModel-/ClaimsManagement/SearchClaims-Desktop-MemberBy\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"MemberByListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "ID",
+     "value": "MI"
+    },
+    {
+     "text": "Name",
+     "value": "MN"
+    },
+    {
+     "text": "Patient Acct",
+     "value": "PAN"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k6": {
+   "role": "dropdownlist",
+   "id": "ProviderRoleList",
+   "name": "ProviderRoleList",
+   "label": "ProviderRoleList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Search for claims by billing provider, performing provider, or referring provider",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"ProviderRoleList_listbox\" aria-busy=\"false\" aria-describedby=\"0c9e3412-a5e5-4fe0-823b-5f1fbff83d3e\" style=\"\" aria-labelledby=\"ProviderRoleLabel ProviderRoleHelpDesc\" data-kit=\"k6\"><span id=\"0c9e3412-a5e5-4fe0-823b-5f1fbff83d3e\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"ProviderRoleListLabel\" for=\"ProviderRoleList\" class=\"display-none\">ProviderRoleList</label><input class=\"editor-control\" height=\"0\" id=\"ProviderRoleList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"ClaimsManagement.DataList.ChooseProviderRole\" listviewdisplayformat=\"Name\" name=\"ProviderRoleList\" not-data-val-required=\"Choose Provider Role is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ClaimsManagement.UX.Data.ClaimsSearchCriteriaModel-/ClaimsManagement/SearchClaims-Desktop-ProviderRole\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"ProviderRoleListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Billing",
+     "value": "BL"
+    },
+    {
+     "text": "Performing",
+     "value": "PF"
+    },
+    {
+     "text": "Referring",
+     "value": "RF"
+    },
+    {
+     "text": "Attending",
+     "value": "AT"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k7": {
+   "role": "dropdownlist",
+   "id": "ProviderByList",
+   "name": "ProviderByList",
+   "label": "ProviderByList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Search for claims by National Provider Number (NPI), Provider Location ID, Provider Name, Provider Tax ID, or Provider Taxonomy",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"ProviderByList_listbox\" aria-busy=\"false\" aria-describedby=\"bed165ca-1d94-46fc-8020-ce8ec597f33a\" style=\"\" aria-labelledby=\"ProviderByLabel ProviderByHelpDesc\" data-kit=\"k7\"><span id=\"bed165ca-1d94-46fc-8020-ce8ec597f33a\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">NPI</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"ProviderByListLabel\" for=\"ProviderByList\" class=\"display-none\">ProviderByList</label><input class=\"editor-control\" height=\"0\" id=\"ProviderByList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"ClaimsManagement.DataList.ChooseProviderBy\" listviewdisplayformat=\"Name\" name=\"ProviderByList\" not-data-val-required=\"Choose Provider By is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ClaimsManagement.UX.Data.ClaimsSearchCriteriaModel-/ClaimsManagement/SearchClaims-Desktop-ProviderBy\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"ProviderByListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": null,
+   "items": [
+    {
+     "text": "NPI",
+     "value": "NP"
+    },
+    {
+     "text": "Provider ID",
+     "value": "PI"
+    },
+    {
+     "text": "Name",
+     "value": "PN"
+    },
+    {
+     "text": "Tax ID",
+     "value": "PT"
+    },
+    {
+     "text": "Taxonomy",
+     "value": "PX"
+    }
+   ],
+   "value": "NP",
+   "text": "NPI",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k8": {
+   "role": "dropdownlist",
+   "id": "ClaimTypeList",
+   "name": "ClaimTypeList",
+   "label": "ClaimTypeList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Indicates the type of claim. i.e. Medical, Inpatient, Outpatient, Pharmacy, Dental",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"ClaimTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"ddc1c06f-b075-460b-b31f-565e67bbdf69\" style=\"\" aria-labelledby=\"ClaimTypeLabel ClaimTypeHelpDesc\" data-kit=\"k8\"><span id=\"ddc1c06f-b075-460b-b31f-565e67bbdf69\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"ClaimTypeListLabel\" for=\"ClaimTypeList\" class=\"display-none\">ClaimTypeList</label><input class=\"editor-control\" height=\"0\" id=\"ClaimTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.ClaimTypes\" listviewdisplayformat=\"Name\" name=\"ClaimTypeList\" not-data-val-required=\"Claim Type is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ClaimsManagement.UX.Data.ClaimsSearchCriteriaModel-/ClaimsManagement/SearchClaims-Desktop-ClaimType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"ClaimTypeListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Inpatient",
+     "value": "I"
+    },
+    {
+     "text": "Inpatient Crossover",
+     "value": "A"
+    },
+    {
+     "text": "Medical",
+     "value": "M"
+    },
+    {
+     "text": "Medical Crossover",
+     "value": "B"
+    },
+    {
+     "text": "Medical",
+     "value": "ME"
+    },
+    {
+     "text": "Outpatient",
+     "value": "OP"
+    },
+    {
+     "text": "Dental",
+     "value": "DE"
+    },
+    {
+     "text": "Pharmacy",
+     "value": "PH"
+    },
+    {
+     "text": "Inpatient",
+     "value": "IP"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k9": {
+   "role": "dropdownlist",
+   "id": "ClaimSubTypeList",
+   "name": "ClaimSubTypeList",
+   "label": "ClaimSubTypeList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Indicates additional qualifications of types of claims within the initial claim type i.e. DME, Home Health are valid subtypes for a medical claim type",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"ClaimSubTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"31fb2414-08e2-4e87-9f1e-156b4b14042c\" style=\"\" aria-labelledby=\"ClaimSubTypeLabel ClaimSubTypeHelpDesc\" data-kit=\"k9\"><span id=\"31fb2414-08e2-4e87-9f1e-156b4b14042c\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"ClaimSubTypeListLabel\" for=\"ClaimSubTypeList\" class=\"display-none\">ClaimSubTypeList</label><input class=\"editor-control\" height=\"0\" id=\"ClaimSubTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"ClaimsManagement.DataList.ClaimSubType\" listviewdisplayformat=\"Name\" name=\"ClaimSubTypeList\" not-data-val-required=\"Sub Type is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ClaimsManagement.UX.Data.ClaimsSearchCriteriaModel-/ClaimsManagement/SearchClaims-Desktop-ClaimSubType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"ClaimSubTypeListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Finance",
+     "value": "FIN"
+    },
+    {
+     "text": "Home Health",
+     "value": "HH"
+    },
+    {
+     "text": "Compound",
+     "value": "COMP"
+    },
+    {
+     "text": "Skilled Nursing Facility",
+     "value": "SNF"
+    },
+    {
+     "text": "Durable Medical Equipment",
+     "value": "DME"
+    },
+    {
+     "text": "Orthodontia",
+     "value": "ORTHO"
+    },
+    {
+     "text": "Hospice Care ",
+     "value": "HSPC"
+    },
+    {
+     "text": "Cross Over",
+     "value": "CO"
+    },
+    {
+     "text": "Diet\\Nutrition",
+     "value": "DIET"
+    },
+    {
+     "text": "Laboratory",
+     "value": "LAB"
+    },
+    {
+     "text": "Non Medical",
+     "value": "NM"
+    },
+    {
+     "text": "Pediatric",
+     "value": "PEDI"
+    },
+    {
+     "text": "Rehabilitation",
+     "value": "REHAB"
+    },
+    {
+     "text": "Speech/Hearing",
+     "value": "SPCH"
+    },
+    {
+     "text": "Speciality - RN",
+     "value": "SPEC"
+    },
+    {
+     "text": "Supplier",
+     "value": "SUPP"
+    },
+    {
+     "text": "Surgery",
+     "value": "SURG"
+    },
+    {
+     "text": "Technicians",
+     "value": "TECH"
+    },
+    {
+     "text": "Transportation",
+     "value": "TRANS"
+    },
+    {
+     "text": "Vision",
+     "value": "VISI"
+    },
+    {
+     "text": "Disabilities",
+     "value": "DISAB"
+    },
+    {
+     "text": "Psychiatric",
+     "value": "PSYCH"
+    },
+    {
+     "text": "Respite",
+     "value": "RESP"
+    },
+    {
+     "text": "Substance Abuse Disorder Rehabilitation Facility",
+     "value": "SUBAB"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k10": {
+   "role": "dropdownlist",
+   "id": "ClaimStatusList",
+   "name": "ClaimStatusList",
+   "label": "ClaimStatusList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Identifies the status of the claim with the system i.e. Paid, Denied, Suspended, Voided, Adjusted.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"ClaimStatusList_listbox\" aria-busy=\"false\" aria-describedby=\"dad63933-59c6-47b7-b053-57c5725d6520\" style=\"\" aria-labelledby=\"ClaimStatusLabel ClaimStatusHelpDesc\" data-kit=\"k10\"><span id=\"dad63933-59c6-47b7-b053-57c5725d6520\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"ClaimStatusListLabel\" for=\"ClaimStatusList\" class=\"display-none\">ClaimStatusList</label><input class=\"editor-control\" height=\"0\" id=\"ClaimStatusList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"ClaimsManagement.DataList.ClaimStatus\" listviewdisplayformat=\"Name\" name=\"ClaimStatusList\" not-data-val-required=\"Status is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ClaimsManagement.UX.Data.ClaimsSearchCriteriaModel-/ClaimsManagement/SearchClaims-Desktop-ClaimStatus\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"ClaimStatusListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Denied",
+     "value": "01"
+    },
+    {
+     "text": "Paid",
+     "value": "02"
+    },
+    {
+     "text": "Suspended",
+     "value": "11"
+    },
+    {
+     "text": "Adjusted",
+     "value": "91"
+    },
+    {
+     "text": "Voided",
+     "value": "00"
+    },
+    {
+     "text": "In Process",
+     "value": "95"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k11": {
+   "role": "dropdownlist",
+   "id": "ClaimSourceCodeList",
+   "name": "ClaimSourceCodeList",
+   "label": "ClaimSourceCodeList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Indicates the origin of the claim. i.e. HIPAA transaction, manual entry, batch entry.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"ClaimSourceCodeList_listbox\" aria-busy=\"false\" aria-describedby=\"25209063-b445-4808-a76e-f03cc238bdd9\" style=\"\" aria-labelledby=\"ClaimSourceCodeLabel ClaimSourceCodeHelpDesc\" data-kit=\"k11\"><span id=\"25209063-b445-4808-a76e-f03cc238bdd9\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"ClaimSourceCodeListLabel\" for=\"ClaimSourceCodeList\" class=\"display-none\">ClaimSourceCodeList</label><input class=\"editor-control\" height=\"0\" id=\"ClaimSourceCodeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"ClaimsManagement.DataList.ClaimSourceCode\" listviewdisplayformat=\"Name\" name=\"ClaimSourceCodeList\" not-data-val-required=\"Claim Source Code is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ClaimsManagement.UX.Data.ClaimsSearchCriteriaModel-/ClaimsManagement/SearchClaims-Desktop-ClaimSourceCode\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"ClaimSourceCodeListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "HIPAA Transaction",
+     "value": "HT"
+    },
+    {
+     "text": "Manual Entry",
+     "value": "ME"
+    },
+    {
+     "text": "Test",
+     "value": "AB"
+    },
+    {
+     "text": "Testing",
+     "value": "tyuiop679"
+    },
+    {
+     "text": "Test",
+     "value": "1234"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k12": {
+   "role": "dropdownlist",
+   "id": "PayToList",
+   "name": "PayToList",
+   "label": "PayToList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Indicates who is paid when the claim is resolved. i.e. Member, Provider, Provider Group, Practice Location",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"PayToList_listbox\" aria-busy=\"false\" aria-describedby=\"3dac6dd5-8630-42df-a7c9-992fff238ffd\" style=\"\" aria-labelledby=\"PayToLabel PayToHelpDesc\" data-kit=\"k12\"><span id=\"3dac6dd5-8630-42df-a7c9-992fff238ffd\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"PayToListLabel\" for=\"PayToList\" class=\"display-none\">PayToList</label><input class=\"editor-control\" height=\"0\" id=\"PayToList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.PayTo\" listviewdisplayformat=\"Name\" name=\"PayToList\" not-data-val-required=\"Pay To is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ClaimsManagement.UX.Data.ClaimsSearchCriteriaModel-/ClaimsManagement/SearchClaims-Desktop-PayTo\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"PayToListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Alternate Payee",
+     "value": "A"
+    },
+    {
+     "text": "Member",
+     "value": "M"
+    },
+    {
+     "text": "Provider",
+     "value": "P"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k13": {
+   "role": "dropdownlist",
+   "id": "ServiceTypeList",
+   "name": "ServiceTypeList",
+   "label": "ServiceTypeList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "The type of service associated with the major or primary procedure code for this claim.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"ServiceTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"b53bb94e-37d2-4f68-928d-5f7997be6db3\" style=\"\" aria-labelledby=\"ServiceTypeLabel ServiceTypeHelpDesc\" data-kit=\"k13\"><span id=\"b53bb94e-37d2-4f68-928d-5f7997be6db3\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"ServiceTypeListLabel\" for=\"ServiceTypeList\" class=\"display-none\">ServiceTypeList</label><input class=\"editor-control\" height=\"0\" id=\"ServiceTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.ServiceType\" listviewdisplayformat=\"Name\" name=\"ServiceTypeList\" not-data-val-required=\"Svc Type is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ClaimsManagement.UX.Data.ClaimsSearchCriteriaModel-/ClaimsManagement/SearchClaims-Desktop-ServiceType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"ServiceTypeListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Surgery",
+     "value": "01"
+    },
+    {
+     "text": "Medical",
+     "value": "02"
+    },
+    {
+     "text": "Laboratory",
+     "value": "06"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k14": {
+   "role": "numerictextbox",
+   "id": "TotalBilledRangeFrom",
+   "name": "TotalBilledRangeFrom",
+   "label": "Range From",
+   "required": false,
+   "validation": {
+    "number": "Range From is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Range From is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Range From has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "enabled": true,
+   "help": null,
+   "html": "<span class=\"k-numerictextbox k-input editor-control\" style=\"\" data-kit=\"k14\"><input type=\"text\" data-validate=\"false\" title=\"$0.00\" tabindex=\"0\" class=\"editor-control k-input-inner\" role=\"spinbutton\" autocomplete=\"off\" aria-valuenow=\"0\" aria-disabled=\"false\" aria-labelledby=\"TotalBilledRangeFromLabel\" style=\"\"><input class=\"editor-control k-input-inner\" data-val=\"true\" data-val-length-max=\"Range From has a maximum length of 15 characters.\" data-val-number=\"Range From is restricted to numeric values with at most 2 decimal places.\" data-val-regex=\"Range From is restricted to numeric values with at most 2 decimal places.\" data-val-regex-pattern=\"^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$\" height=\"0\" id=\"TotalBilledRangeFrom\" ignoredirtydata=\"False\" maxlength=\"15\" name=\"TotalBilledRangeFrom\" not-data-val-required=\"Range From is a required field.\" onfocus=\"var ci_TotalBilledRangeFrom=$(this); setTimeout(function(){ci_TotalBilledRangeFrom.select();});\" type=\"text\" value=\"0\" data-role=\"numerictextbox\" role=\"spinbutton\" inputmode=\"text\" aria-valuenow=\"0\" aria-disabled=\"false\" style=\"display: none;\"><span class=\"k-icon k-svg-icon k-svg-i-exclamation-circle k-input-validation-icon k-hidden\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224 128h64v160h-64zm0 256h64v-64h-64zm256-128c0 123.7-100.3 224-224 224S32 379.7 32 256 132.3 32 256 32s224 100.3 224 224m-32 0c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192\"></path></svg></span><span class=\"k-input-spinner k-spin-button\" style=\"display: none;\"><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-increase k-button k-icon-button\" aria-label=\"Increase value\" title=\"Increase value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-up k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m256 160 128 192H128z\"></path></svg></span></button><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-decrease k-button k-icon-button\" aria-label=\"Decrease value\" title=\"Decrease value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button></span></span>",
+   "kind": "numeric",
+   "value": 0,
+   "format": "c",
+   "decimals": 2,
+   "min": null,
+   "max": null,
+   "step": 1,
+   "spinners": false,
+   "placeholder": ""
+  },
+  "k15": {
+   "role": "numerictextbox",
+   "id": "TotalBilledRangeTo",
+   "name": "TotalBilledRangeTo",
+   "label": "Range To",
+   "required": false,
+   "validation": {
+    "number": "Range To is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Range To is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Range To has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "enabled": true,
+   "help": null,
+   "html": "<span class=\"k-numerictextbox k-input editor-control\" style=\"\" data-kit=\"k15\"><input type=\"text\" data-validate=\"false\" title=\"$0.00\" tabindex=\"0\" class=\"editor-control k-input-inner\" role=\"spinbutton\" autocomplete=\"off\" aria-valuenow=\"0\" aria-disabled=\"false\" aria-labelledby=\"TotalBilledRangeToLabel\" style=\"\"><input class=\"editor-control k-input-inner\" data-val=\"true\" data-val-length-max=\"Range To has a maximum length of 15 characters.\" data-val-number=\"Range To is restricted to numeric values with at most 2 decimal places.\" data-val-regex=\"Range To is restricted to numeric values with at most 2 decimal places.\" data-val-regex-pattern=\"^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$\" height=\"0\" id=\"TotalBilledRangeTo\" ignoredirtydata=\"False\" maxlength=\"15\" name=\"TotalBilledRangeTo\" not-data-val-required=\"Range To is a required field.\" onfocus=\"var ci_TotalBilledRangeTo=$(this); setTimeout(function(){ci_TotalBilledRangeTo.select();});\" type=\"text\" value=\"0\" data-role=\"numerictextbox\" role=\"spinbutton\" inputmode=\"text\" aria-valuenow=\"0\" aria-disabled=\"false\" style=\"display: none;\"><span class=\"k-icon k-svg-icon k-svg-i-exclamation-circle k-input-validation-icon k-hidden\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224 128h64v160h-64zm0 256h64v-64h-64zm256-128c0 123.7-100.3 224-224 224S32 379.7 32 256 132.3 32 256 32s224 100.3 224 224m-32 0c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192\"></path></svg></span><span class=\"k-input-spinner k-spin-button\" style=\"display: none;\"><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-increase k-button k-icon-button\" aria-label=\"Increase value\" title=\"Increase value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-up k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m256 160 128 192H128z\"></path></svg></span></button><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-decrease k-button k-icon-button\" aria-label=\"Decrease value\" title=\"Decrease value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button></span></span>",
+   "kind": "numeric",
+   "value": 0,
+   "format": "c",
+   "decimals": 2,
+   "min": null,
+   "max": null,
+   "step": 1,
+   "spinners": false,
+   "placeholder": ""
+  },
+  "k16": {
+   "role": "dropdownlist",
+   "id": "DiagnosisTypeList",
+   "name": "DiagnosisTypeList",
+   "label": "DiagnosisTypeList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": null,
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"DiagnosisTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"b6b458ba-67cb-4405-ad38-86c282e41b60\" style=\"\" aria-labelledby=\"DiagnosisTypeLabel\" data-kit=\"k16\"><span id=\"b6b458ba-67cb-4405-ad38-86c282e41b60\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">ICD-10-CM</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"DiagnosisTypeListLabel\" for=\"DiagnosisTypeList\" class=\"display-none\">DiagnosisTypeList</label><input class=\"editor-control\" height=\"0\" id=\"DiagnosisTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.DiagnosisType\" listviewdisplayformat=\"Name\" name=\"DiagnosisTypeList\" not-data-val-required=\"Choose DX Type is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ClaimsManagement.UX.Data.ClaimsSearchCriteriaModel-/ClaimsManagement/SearchClaims-Desktop-DiagnosisType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"DiagnosisTypeListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": null,
+   "items": [
+    {
+     "text": "ICD-9-CM",
+     "value": "01"
+    },
+    {
+     "text": "ICD-10-CM",
+     "value": "02"
+    }
+   ],
+   "value": "02",
+   "text": "ICD-10-CM",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k17": {
+   "role": "grid",
+   "id": "ClaimsResultsGrid",
+   "name": null,
+   "label": null,
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": null,
+   "html": "<div class=\"k-grid editor-grid\" id=\"ClaimsResultsGrid\" data-role=\"grid\" style=\"\" data-kit=\"k17\"><div aria-controls=\"f49e4b3c-05d4-4f61-a851-8cc697f7caad\" aria-label=\"grid toolbar\" class=\"k-toolbar k-grid-toolbar k-toolbar-resizable\" role=\"toolbar\">\n    \n\n                        </div><div class=\"k-grid-header\" style=\"padding-right: 15px;\"><div class=\"k-grid-header-wrap k-auto-scrollable\" data-role=\"resizable\"><table role=\"grid\" class=\"k-grid-header-table k-table\"><colgroup><col><col><col><col><col><col><col><col><col><col><col><col></colgroup><thead class=\"k-table-thead\" role=\"rowgroup\"><tr class=\"k-table-row\" role=\"row\"><th aria-haspopup=\"menu\" aria-sort=\"ascending\" class=\"k-table-th k-header k-filterable\" data-dir=\"asc\" data-field=\"ICN\" data-index=\"0\" data-resizable=\"true\" data-title=\"ICN\" id=\"42e99044-fbed-4f61-9ae2-2347e33d996f\" role=\"columnheader\" scope=\"col\" title=\"Internal Claim Number assigned by Claims Management \" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">ICN</span></span><a aria-hidden=\"true\" aria-label=\"ICN filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"ICN filter column settings\" tabindex=\"-1\" data-role=\"tooltip\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"MemberId\" data-index=\"1\" data-resizable=\"true\" data-title=\"Member ID\" id=\"00558588-8cca-451f-a7b9-28983d074c71\" role=\"columnheader\" scope=\"col\" title=\"This is the Unique ID from the Member's HealthCare Card\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Member ID</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"BillingNPI\" data-index=\"2\" data-resizable=\"true\" data-title=\"Billing Prov NPI\" id=\"a6044a10-319f-43aa-ab16-c479f1961928\" role=\"columnheader\" scope=\"col\" title=\"This is the NPI number assigned by the government for the billing provider.\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Billing Prov NPI</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"ClaimType.FormattedText\" data-index=\"3\" data-resizable=\"true\" data-title=\"Claim Type\" id=\"17ef4f1b-8f0c-46b5-9908-a8cbd042c94f\" role=\"columnheader\" scope=\"col\" title=\"Indicates the type of claim. i.e. Medical, Inpatient, Outpatient, Pharmacy, Dental\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Claim Type</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"ClaimSubType.FormattedText\" data-index=\"4\" data-resizable=\"true\" data-title=\"Claim SubType\" id=\"d106c6c8-a7e5-45e8-a3b9-4f5742b56ab6\" role=\"columnheader\" scope=\"col\" title=\"Indicates additional qualifications of types of claims within the initial claim type i.e. DME, Home Health are valid subtypes for a medical claim type\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Claim SubType</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"ClaimStatus.FormattedText\" data-index=\"5\" data-resizable=\"true\" data-title=\"Claim Status\" id=\"bb98cd1e-252c-4a5b-a7e6-2e3753531fc2\" role=\"columnheader\" scope=\"col\" title=\"Identifies the status of the claim with the system i.e. Paid, Denied, Suspended, Voided, Adjusted.\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Claim Status</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"CoveredFrom\" data-index=\"6\" data-resizable=\"true\" data-title=\"Covered From\" id=\"8fcfe4e9-11c2-4439-8d42-9bec82bba56e\" role=\"columnheader\" scope=\"col\" title=\"Earliest Beginning date of service (DOS) for all service lines on the claim\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Covered From</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"CoveredTo\" data-index=\"7\" data-resizable=\"true\" data-title=\"Covered To\" id=\"b7ef7a06-f89b-402a-aeb8-228f10250d72\" role=\"columnheader\" scope=\"col\" title=\"Latest Ending date of service (DOS) for all service lines on the claim\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Covered To</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"TotalBilledAmount\" data-index=\"8\" data-resizable=\"true\" data-title=\"Total Billed\" id=\"5d5bc6e1-b329-4d3c-84f2-3a7fdb6f6976\" role=\"columnheader\" scope=\"col\" title=\"Total of all line charges on the claim.\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Total Billed</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"TotalPaidAmount\" data-index=\"9\" data-resizable=\"true\" data-title=\"Total Paid\" id=\"9ba1c176-4a85-4cd2-8515-967dccff62e7\" role=\"columnheader\" scope=\"col\" title=\"Amount calculated based on benefit rules , pricing rules and fee schedule amounts\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Total Paid</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"AuthorizationNumber\" data-index=\"10\" data-resizable=\"true\" data-title=\"Authorization Number\" id=\"846f6082-0cc8-4fb3-aa44-9f459883d166\" role=\"columnheader\" scope=\"col\" title=\"Identifies the authorization number that provides approval for the services on the associated claim.\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Authorization Number</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header k-filterable\" data-field=\"PaidDate\" data-index=\"11\" data-resizable=\"true\" data-title=\"Paid Date\" id=\"ca12b71c-2e11-47be-aea4-9ad2a944b186\" role=\"columnheader\" scope=\"col\" title=\"Date the claim was paid\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Paid Date</span></span><a aria-hidden=\"true\" aria-label=\"Paid Date filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Paid Date filter column settings\" tabindex=\"-1\" data-role=\"tooltip\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header k-hidden\" data-field=\"ClaimsId\" data-index=\"12\" data-resizable=\"true\" data-title=\"Claims id\" id=\"ee21e128-ae85-4e3e-ac4e-a236d665d975\" role=\"columnheader\" scope=\"col\" data-role=\"columnsorter\" style=\"display: none;\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Claims id</span></span></span></th></tr></thead></table></div></div><div class=\"k-grid-container\"><div class=\"k-grid-content k-auto-scrollable\" style=\"height: 200px;\"><table id=\"f49e4b3c-05d4-4f61-a851-8cc697f7caad\" role=\"grid\" tabindex=\"0\" class=\"k-grid-table k-table k-selectable\" data-role=\"selectable\"><colgroup><col><col><col><col><col><col><col><col><col><col><col><col></colgroup><tbody class=\"k-table-tbody\" id=\"be2ac351-b7d8-48b5-9aed-c0ce1738e028\" role=\"rowgroup\"></tbody></table></div></div><div aria-controls=\"f49e4b3c-05d4-4f61-a851-8cc697f7caad\" class=\"k-pager k-grid-pager k-pager-responsive\" data-role=\"pager\" role=\"application\" aria-roledescription=\"pager\" aria-keyshortcuts=\"Enter ArrowRight ArrowLeft\" id=\"ddef018a-9e65-414a-8614-ef8c028fb0e8\" aria-label=\"Page navigation, page 0 of 0\" tabindex=\"0\"><div class=\"grid-toolbar-secondary\">\n        <button class=\"k-button btn-spacer-left\" id=\"excelButton\" title=\"Export to Excel\" type=\"button\" data-role=\"button\" role=\"button\" aria-disabled=\"false\" tabindex=\"0\"><span class=\"k-sprite fa-solid fa-file-excel fa-lg editor_icon k-button-icon\" style=\"overflow: visible;\"></span><span class=\"k-button-text\" style=\"overflow: visible;\">Export to Excel</span></button><script>\n\tkendo.syncReady(function(){jQuery(\"#excelButton\").kendoButton({\"click\":claimsGridOnExportExcel,\"spriteCssClass\":\"fa-solid fa-file-excel fa-lg editor_icon\"});});\n</script>\n        <button class=\"k-button btn-spacer-left\" id=\"pdfButton\" title=\"Export to PDF\" type=\"button\" data-role=\"button\" role=\"button\" aria-disabled=\"false\" tabindex=\"0\"><span class=\"k-sprite fa-solid fa-file-pdf fa-lg editor_icon k-button-icon\" style=\"overflow: visible;\"></span><span class=\"k-button-text\" style=\"overflow: visible;\">Export to PDF</span></button><script>\n\tkendo.syncReady(function(){jQuery(\"#pdfButton\").kendoButton({\"click\":claimsGridOnExportPDF,\"spriteCssClass\":\"fa-solid fa-file-pdf fa-lg editor_icon\"});});\n</script>\n    </div><div class=\"k-pager-numbers-wrap\"><button aria-label=\"Go to the first page\" class=\"k-button k-pager-nav k-button-flat k-icon-button k-disabled k-pager-first\" data-page=\"1\" title=\"Go to the first page\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-to-left k-button-icon\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M352 384 160 256l192-128zM128 128v256h32V128z\"></path></svg></span></button><button aria-label=\"Go to the previous page\" class=\"k-button k-pager-nav k-button-flat k-icon-button k-disabled\" data-page=\"0\" title=\"Go to the previous page\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-left k-button-icon\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"m160 256 192-128v256z\"></path></svg></span></button><div class=\"k-pager-numbers\"><button role=\"button\" aria-current=\"page\" tabindex=\"-1\" aria-label=\"Page 0\" class=\"k-button undefined k-button-flat k-button-primary k-selected\"><span class=\"k-button-text\">0</span></button></div><button aria-label=\"Go to the next page\" class=\"k-button k-pager-nav k-button-flat k-icon-button k-disabled\" data-page=\"2\" title=\"Go to the next page\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-right k-button-icon\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M352 256 160 384V128z\"></path></svg></span></button><button aria-label=\"Go to the last page\" class=\"k-button k-pager-nav k-button-flat k-icon-button k-disabled k-pager-last\" data-page=\"1\" title=\"Go to the last page\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-to-right k-button-icon\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"m128 128 192 128-192 128zm224 256V128h-32v256z\"></path></svg></span></button><span class=\"k-pager-input\" style=\"display: none;\"><span>Page</span><span class=\"k-numerictextbox k-input\" style=\"\"><input type=\"text\" data-validate=\"false\" title=\"\" tabindex=\"0\" class=\"k-input-inner\" role=\"spinbutton\" aria-valuemin=\"1\" autocomplete=\"off\" aria-disabled=\"false\" aria-label=\"Page\" style=\"\"><input aria-label=\"Page\" data-role=\"numerictextbox\" role=\"spinbutton\" style=\"display: none;\" class=\"k-input-inner\" inputmode=\"text\" type=\"text\" aria-valuemin=\"1\" aria-disabled=\"false\"><span class=\"k-icon k-svg-icon k-svg-i-exclamation-circle k-input-validation-icon k-hidden\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224 128h64v160h-64zm0 256h64v-64h-64zm256-128c0 123.7-100.3 224-224 224S32 379.7 32 256 132.3 32 256 32s224 100.3 224 224m-32 0c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192\"></path></svg></span></span><span>of 0</span></span></div><a aria-label=\"Refresh\" class=\"k-pager-refresh k-button k-button-flat k-icon-button\" href=\"/api/ClaimsManagement/SearchClaims/\" title=\"Refresh\" data-role=\"tooltip\"><span class=\"k-icon k-svg-icon k-svg-i-arrow-rotate-cw k-button-icon\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M480 288c0 123.7-100.3 224-224 224S32 411.7 32 288 132.3 64 256 64V0l160 96-160 96v-64c-88.2 0-160 71.8-160 160s71.8 160 160 160 160-71.8 160-160c0-29.1-7.8-56.4-21.5-80l55.5-32c19.1 32.9 30 71.2 30 112\"></path></svg></span></a><span class=\"k-pager-info\">No items to display</span><span class=\"k-pager-sizes\"><span title=\"\" class=\"k-picker k-dropdownlist\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-label=\"Page sizes drop down\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"e1c7f776-41c3-4e0f-9431-8a5890741387_listbox\" aria-busy=\"false\" aria-describedby=\"6658dc92-f999-4046-8e88-6170892f32ae\" style=\"\"><span id=\"6658dc92-f999-4046-8e88-6170892f32ae\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">10</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><select aria-label=\"Page sizes drop down\" data-role=\"dropdownlist\" style=\"display: none;\"><option value=\"5\">5</option><option value=\"10\" selected=\"selected\">10</option><option value=\"20\">20</option></select></span><span>items per page</span></span></div></div>",
+   "kind": "grid",
+   "columns": [
+    {
+     "field": "ICN",
+     "title": "ICN",
+     "width": null,
+     "hidden": false,
+     "sortable": true,
+     "filterable": true,
+     "command": false,
+     "format": null
+    },
+    {
+     "field": "MemberId",
+     "title": "Member ID",
+     "width": null,
+     "hidden": false,
+     "sortable": true,
+     "filterable": false,
+     "command": false,
+     "format": null
+    },
+    {
+     "field": "BillingNPI",
+     "title": "Billing Prov NPI",
+     "width": null,
+     "hidden": false,
+     "sortable": true,
+     "filterable": false,
+     "command": false,
+     "format": null
+    },
+    {
+     "field": "ClaimType.FormattedText",
+     "title": "Claim Type",
+     "width": null,
+     "hidden": false,
+     "sortable": true,
+     "filterable": false,
+     "command": false,
+     "format": null
+    },
+    {
+     "field": "ClaimSubType.FormattedText",
+     "title": "Claim SubType",
+     "width": null,
+     "hidden": false,
+     "sortable": true,
+     "filterable": false,
+     "command": false,
+     "format": null
+    },
+    {
+     "field": "ClaimStatus.FormattedText",
+     "title": "Claim Status",
+     "width": null,
+     "hidden": false,
+     "sortable": true,
+     "filterable": false,
+     "command": false,
+     "format": null
+    },
+    {
+     "field": "CoveredFrom",
+     "title": "Covered From",
+     "width": null,
+     "hidden": false,
+     "sortable": true,
+     "filterable": false,
+     "command": false,
+     "format": "{0:MM/dd/yyyy}"
+    },
+    {
+     "field": "CoveredTo",
+     "title": "Covered To",
+     "width": null,
+     "hidden": false,
+     "sortable": true,
+     "filterable": false,
+     "command": false,
+     "format": "{0:MM/dd/yyyy}"
+    },
+    {
+     "field": "TotalBilledAmount",
+     "title": "Total Billed",
+     "width": null,
+     "hidden": false,
+     "sortable": true,
+     "filterable": false,
+     "command": false,
+     "format": "{0:C}"
+    },
+    {
+     "field": "TotalPaidAmount",
+     "title": "Total Paid",
+     "width": null,
+     "hidden": false,
+     "sortable": true,
+     "filterable": false,
+     "command": false,
+     "format": "{0:C}"
+    },
+    {
+     "field": "AuthorizationNumber",
+     "title": "Authorization Number",
+     "width": null,
+     "hidden": false,
+     "sortable": true,
+     "filterable": false,
+     "command": false,
+     "format": null
+    },
+    {
+     "field": "PaidDate",
+     "title": "Paid Date",
+     "width": null,
+     "hidden": false,
+     "sortable": true,
+     "filterable": true,
+     "command": false,
+     "format": "{0:MM/dd/yyyy}"
+    },
+    {
+     "field": "ClaimsId",
+     "title": "Claims id",
+     "width": null,
+     "hidden": true,
+     "sortable": true,
+     "filterable": false,
+     "command": false,
+     "format": null
+    }
+   ],
+   "sortable": {
+    "mode": "single"
+   },
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     },
+     "date": {
+      "eq": "Equal To",
+      "gte": "Is After Or Equal To",
+      "lte": "Is Before Or Equal To"
+     }
+    }
+   },
+   "pageable": {
+    "autoBind": false,
+    "refresh": true,
+    "pageSizes": [
+     5,
+     10,
+     20
+    ],
+    "buttonCount": 3
+   },
+   "pageSize": 10,
+   "autoBind": false
+  },
+  "k18": {
+   "role": "datepicker",
+   "id": "View_MemberDOB",
+   "name": "MemberDOB",
+   "label": "DOB",
+   "required": false,
+   "validation": {
+    "date": "DOB must represent a valid date in the format 'MM/DD/YYYY'."
+   },
+   "validationParams": {
+    "minmax-date": "DOB must be within 01/01/1900 and 12/31/9999."
+   },
+   "enabled": true,
+   "help": "Member's date of birth.",
+   "animation": {},
+   "html": "<span class=\"k-datepicker k-input editor-control readonly-bkgrnd-color k-input-inner readonly-widget\" style=\"padding: 0\" data-kit=\"k18\"><input readonly=\"readonly\" class=\"editor-control k-input-inner readonly-widget\" data-val=\"true\" data-val-date=\"DOB must represent a valid date in the format 'MM/DD/YYYY'.\" data-val-minmax-date=\"DOB must be within 01/01/1900 and 12/31/9999.\" height=\"0\" id=\"View_MemberDOB\" ignoredirtydata=\"False\" name=\"MemberDOB\" not-data-val-required=\"DOB is a required field.\" onblur=\"kendoMaskedDatePickerValidate(id);\" onkeydown=\"ClearKendoMaskedDateError(event,id);\" type=\"text\" value=\"01/01/0001\" data-role=\"datepicker\" inputmode=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"grid\" aria-controls=\"View_MemberDOB_dateview\" autocomplete=\"off\" aria-disabled=\"false\" aria-readonly=\"true\" style=\"\" aria-labelledby=\"View_MemberDOBLabel View_MemberDOBHelpDesc\"><button aria-label=\"select\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button display-none-priority readonly-bkgrnd-color\" type=\"button\" role=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-calendar k-button-icon readonly-cursor display-none-priority\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 416H288V288h128zm64-352v384c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h64V0h64v32h128V0h64v32h64c17.6 0 32 14.4 32 32m-32 128H64v255.9l.1.1 383.9-.1zm0-127.9q-.15-.15 0 0l-64-.1v32h-64V64H192v32h-64V64H64.1l-.1.1V160h384z\"></path></svg></span></button></span>",
+   "kind": "date",
+   "value": null,
+   "format": "MM/dd/yyyy",
+   "timeFormat": null,
+   "interval": 30,
+   "min": "1899-12-31T18:38:50.000Z",
+   "max": "9999-12-30T18:30:00.000Z",
+   "placeholder": ""
+  },
+  "k19": {
+   "role": "numerictextbox",
+   "id": "View_TotalAllowedAmount",
+   "name": "TotalAllowedAmount",
+   "label": "Total Allowed",
+   "required": false,
+   "validation": {
+    "number": "Total Allowed is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Total Allowed is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Total Allowed has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "enabled": true,
+   "help": "Amount calculated based on pricing fee schedule and business rules",
+   "html": "<span class=\"k-numerictextbox k-input editor-control readonly-widget\" style=\"\" data-kit=\"k19\"><input type=\"text\" data-validate=\"false\" title=\"$0.00\" tabindex=\"0\" class=\"editor-control k-input-inner readonly-widget\" role=\"spinbutton\" autocomplete=\"off\" aria-valuenow=\"0\" readonly=\"readonly\" aria-disabled=\"false\" aria-labelledby=\"View_TotalAllowedAmountLabel View_TotalAllowedAmountHelpDesc\" style=\"\"><input readonly=\"readonly\" class=\"editor-control k-input-inner\" data-val=\"true\" data-val-length-max=\"Total Allowed has a maximum length of 15 characters.\" data-val-number=\"Total Allowed is restricted to numeric values with at most 2 decimal places.\" data-val-regex=\"Total Allowed is restricted to numeric values with at most 2 decimal places.\" data-val-regex-pattern=\"^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$\" height=\"0\" id=\"View_TotalAllowedAmount\" ignoredirtydata=\"False\" maxlength=\"15\" name=\"TotalAllowedAmount\" not-data-val-required=\"Total Allowed is a required field.\" onfocus=\"var ci_TotalAllowedAmount=$(this); setTimeout(function(){ci_TotalAllowedAmount.select();});\" type=\"text\" value=\"0\" data-role=\"numerictextbox\" role=\"spinbutton\" inputmode=\"text\" aria-valuenow=\"0\" aria-disabled=\"false\" style=\"display: none;\" aria-labelledby=\"View_TotalAllowedAmountLabel\"><span class=\"k-icon k-svg-icon k-svg-i-exclamation-circle k-input-validation-icon k-hidden\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224 128h64v160h-64zm0 256h64v-64h-64zm256-128c0 123.7-100.3 224-224 224S32 379.7 32 256 132.3 32 256 32s224 100.3 224 224m-32 0c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192\"></path></svg></span><span class=\"k-input-spinner k-spin-button\" style=\"display: none;\"><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-increase k-button k-icon-button\" aria-label=\"Increase value\" title=\"Increase value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-up k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m256 160 128 192H128z\"></path></svg></span></button><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-decrease k-button k-icon-button\" aria-label=\"Decrease value\" title=\"Decrease value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button></span></span>",
+   "kind": "numeric",
+   "value": 0,
+   "format": "c",
+   "decimals": 2,
+   "min": null,
+   "max": null,
+   "step": 1,
+   "spinners": false,
+   "placeholder": ""
+  },
+  "k20": {
+   "role": "numerictextbox",
+   "id": "View_TotalCopayAmount",
+   "name": "TotalCopayAmount",
+   "label": "Total Copay",
+   "required": false,
+   "validation": {
+    "number": "Total Copay is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Total Copay is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Total Copay has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "enabled": true,
+   "help": "Amount of money the member pays for services rendered, usually when you receive the service.",
+   "html": "<span class=\"k-numerictextbox k-input editor-control readonly-widget\" style=\"\" data-kit=\"k20\"><input type=\"text\" data-validate=\"false\" title=\"$0.00\" tabindex=\"0\" class=\"editor-control k-input-inner readonly-widget\" role=\"spinbutton\" autocomplete=\"off\" aria-valuenow=\"0\" readonly=\"readonly\" aria-disabled=\"false\" aria-labelledby=\"View_TotalCopayAmountLabel View_TotalCopayAmountHelpDesc\" style=\"\"><input readonly=\"readonly\" class=\"editor-control k-input-inner\" data-val=\"true\" data-val-length-max=\"Total Copay has a maximum length of 15 characters.\" data-val-number=\"Total Copay is restricted to numeric values with at most 2 decimal places.\" data-val-regex=\"Total Copay is restricted to numeric values with at most 2 decimal places.\" data-val-regex-pattern=\"^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$\" height=\"0\" id=\"View_TotalCopayAmount\" ignoredirtydata=\"False\" maxlength=\"15\" name=\"TotalCopayAmount\" not-data-val-required=\"Total Copay is a required field.\" onfocus=\"var ci_TotalCopayAmount=$(this); setTimeout(function(){ci_TotalCopayAmount.select();});\" type=\"text\" value=\"0\" data-role=\"numerictextbox\" role=\"spinbutton\" inputmode=\"text\" aria-valuenow=\"0\" aria-disabled=\"false\" style=\"display: none;\" aria-labelledby=\"View_TotalCopayAmountLabel\"><span class=\"k-icon k-svg-icon k-svg-i-exclamation-circle k-input-validation-icon k-hidden\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224 128h64v160h-64zm0 256h64v-64h-64zm256-128c0 123.7-100.3 224-224 224S32 379.7 32 256 132.3 32 256 32s224 100.3 224 224m-32 0c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192\"></path></svg></span><span class=\"k-input-spinner k-spin-button\" style=\"display: none;\"><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-increase k-button k-icon-button\" aria-label=\"Increase value\" title=\"Increase value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-up k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m256 160 128 192H128z\"></path></svg></span></button><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-decrease k-button k-icon-button\" aria-label=\"Decrease value\" title=\"Decrease value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button></span></span>",
+   "kind": "numeric",
+   "value": 0,
+   "format": "c",
+   "decimals": 2,
+   "min": null,
+   "max": null,
+   "step": 1,
+   "spinners": false,
+   "placeholder": ""
+  },
+  "k21": {
+   "role": "numerictextbox",
+   "id": "View_TotalCoinsuranceAmount",
+   "name": "TotalCoinsuranceAmount",
+   "label": "Total Coinsurance",
+   "required": false,
+   "validation": {
+    "number": "Total Coinsurance is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Total Coinsurance is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Total Coinsurance has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "enabled": true,
+   "help": "The amount based on a percentage of the Provider's charge that is the member's responsibility.",
+   "html": "<span class=\"k-numerictextbox k-input editor-control readonly-widget\" style=\"\" data-kit=\"k21\"><input type=\"text\" data-validate=\"false\" title=\"$0.00\" tabindex=\"0\" class=\"editor-control k-input-inner readonly-widget\" role=\"spinbutton\" autocomplete=\"off\" aria-valuenow=\"0\" readonly=\"readonly\" aria-disabled=\"false\" aria-labelledby=\"View_TotalCoinsuranceAmountLabel View_TotalCoinsuranceAmountHelpDesc\" style=\"\"><input readonly=\"readonly\" class=\"editor-control k-input-inner\" data-val=\"true\" data-val-length-max=\"Total Coinsurance has a maximum length of 15 characters.\" data-val-number=\"Total Coinsurance is restricted to numeric values with at most 2 decimal places.\" data-val-regex=\"Total Coinsurance is restricted to numeric values with at most 2 decimal places.\" data-val-regex-pattern=\"^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$\" height=\"0\" id=\"View_TotalCoinsuranceAmount\" ignoredirtydata=\"False\" maxlength=\"15\" name=\"TotalCoinsuranceAmount\" not-data-val-required=\"Total Coinsurance is a required field.\" onfocus=\"var ci_TotalCoinsuranceAmount=$(this); setTimeout(function(){ci_TotalCoinsuranceAmount.select();});\" type=\"text\" value=\"0\" data-role=\"numerictextbox\" role=\"spinbutton\" inputmode=\"text\" aria-valuenow=\"0\" aria-disabled=\"false\" style=\"display: none;\" aria-labelledby=\"View_TotalCoinsuranceAmountLabel\"><span class=\"k-icon k-svg-icon k-svg-i-exclamation-circle k-input-validation-icon k-hidden\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224 128h64v160h-64zm0 256h64v-64h-64zm256-128c0 123.7-100.3 224-224 224S32 379.7 32 256 132.3 32 256 32s224 100.3 224 224m-32 0c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192\"></path></svg></span><span class=\"k-input-spinner k-spin-button\" style=\"display: none;\"><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-increase k-button k-icon-button\" aria-label=\"Increase value\" title=\"Increase value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-up k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m256 160 128 192H128z\"></path></svg></span></button><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-decrease k-button k-icon-button\" aria-label=\"Decrease value\" title=\"Decrease value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button></span></span>",
+   "kind": "numeric",
+   "value": 0,
+   "format": "c",
+   "decimals": 2,
+   "min": null,
+   "max": null,
+   "step": 1,
+   "spinners": false,
+   "placeholder": ""
+  },
+  "k22": {
+   "role": "numerictextbox",
+   "id": "View_TotalDeductibleAmount",
+   "name": "TotalDeductibleAmount",
+   "label": "Total Deductible",
+   "required": false,
+   "validation": {
+    "number": "Total Deductible is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Total Deductible is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Total Deductible has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "enabled": true,
+   "help": "Amount of money the member is responsible for paying for services rendered.",
+   "html": "<span class=\"k-numerictextbox k-input editor-control readonly-widget\" style=\"\" data-kit=\"k22\"><input type=\"text\" data-validate=\"false\" title=\"$0.00\" tabindex=\"0\" class=\"editor-control k-input-inner readonly-widget\" role=\"spinbutton\" autocomplete=\"off\" aria-valuenow=\"0\" readonly=\"readonly\" aria-disabled=\"false\" aria-labelledby=\"View_TotalDeductibleAmountLabel View_TotalDeductibleAmountHelpDesc\" style=\"\"><input readonly=\"readonly\" class=\"editor-control k-input-inner\" data-val=\"true\" data-val-length-max=\"Total Deductible has a maximum length of 15 characters.\" data-val-number=\"Total Deductible is restricted to numeric values with at most 2 decimal places.\" data-val-regex=\"Total Deductible is restricted to numeric values with at most 2 decimal places.\" data-val-regex-pattern=\"^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$\" height=\"0\" id=\"View_TotalDeductibleAmount\" ignoredirtydata=\"False\" maxlength=\"15\" name=\"TotalDeductibleAmount\" not-data-val-required=\"Total Deductible is a required field.\" onfocus=\"var ci_TotalDeductibleAmount=$(this); setTimeout(function(){ci_TotalDeductibleAmount.select();});\" type=\"text\" value=\"0\" data-role=\"numerictextbox\" role=\"spinbutton\" inputmode=\"text\" aria-valuenow=\"0\" aria-disabled=\"false\" style=\"display: none;\" aria-labelledby=\"View_TotalDeductibleAmountLabel\"><span class=\"k-icon k-svg-icon k-svg-i-exclamation-circle k-input-validation-icon k-hidden\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224 128h64v160h-64zm0 256h64v-64h-64zm256-128c0 123.7-100.3 224-224 224S32 379.7 32 256 132.3 32 256 32s224 100.3 224 224m-32 0c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192\"></path></svg></span><span class=\"k-input-spinner k-spin-button\" style=\"display: none;\"><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-increase k-button k-icon-button\" aria-label=\"Increase value\" title=\"Increase value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-up k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m256 160 128 192H128z\"></path></svg></span></button><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-decrease k-button k-icon-button\" aria-label=\"Decrease value\" title=\"Decrease value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button></span></span>",
+   "kind": "numeric",
+   "value": 0,
+   "format": "c",
+   "decimals": 2,
+   "min": null,
+   "max": null,
+   "step": 1,
+   "spinners": false,
+   "placeholder": ""
+  },
+  "k23": {
+   "role": "numerictextbox",
+   "id": "View_TotalSpenddownAmount",
+   "name": "TotalSpenddownAmount",
+   "label": "Total Spenddown",
+   "required": false,
+   "validation": {
+    "number": "Total Spenddown is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Total Spenddown is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Total Spenddown has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "enabled": true,
+   "help": "Amount of money the member is responsible for paying for services rendered.",
+   "html": "<span class=\"k-numerictextbox k-input editor-control readonly-widget\" style=\"\" data-kit=\"k23\"><input type=\"text\" data-validate=\"false\" title=\"$0.00\" tabindex=\"0\" class=\"editor-control k-input-inner readonly-widget\" role=\"spinbutton\" autocomplete=\"off\" aria-valuenow=\"0\" readonly=\"readonly\" aria-disabled=\"false\" aria-labelledby=\"View_TotalSpenddownAmountLabel View_TotalSpenddownAmountHelpDesc\" style=\"\"><input readonly=\"readonly\" class=\"editor-control k-input-inner\" data-val=\"true\" data-val-length-max=\"Total Spenddown has a maximum length of 15 characters.\" data-val-number=\"Total Spenddown is restricted to numeric values with at most 2 decimal places.\" data-val-regex=\"Total Spenddown is restricted to numeric values with at most 2 decimal places.\" data-val-regex-pattern=\"^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$\" height=\"0\" id=\"View_TotalSpenddownAmount\" ignoredirtydata=\"False\" maxlength=\"15\" name=\"TotalSpenddownAmount\" not-data-val-required=\"Total Spenddown is a required field.\" onfocus=\"var ci_TotalSpenddownAmount=$(this); setTimeout(function(){ci_TotalSpenddownAmount.select();});\" type=\"text\" value=\"0\" data-role=\"numerictextbox\" role=\"spinbutton\" inputmode=\"text\" aria-valuenow=\"0\" aria-disabled=\"false\" style=\"display: none;\" aria-labelledby=\"View_TotalSpenddownAmountLabel\"><span class=\"k-icon k-svg-icon k-svg-i-exclamation-circle k-input-validation-icon k-hidden\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224 128h64v160h-64zm0 256h64v-64h-64zm256-128c0 123.7-100.3 224-224 224S32 379.7 32 256 132.3 32 256 32s224 100.3 224 224m-32 0c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192\"></path></svg></span><span class=\"k-input-spinner k-spin-button\" style=\"display: none;\"><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-increase k-button k-icon-button\" aria-label=\"Increase value\" title=\"Increase value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-up k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m256 160 128 192H128z\"></path></svg></span></button><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-decrease k-button k-icon-button\" aria-label=\"Decrease value\" title=\"Decrease value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button></span></span>",
+   "kind": "numeric",
+   "value": 0,
+   "format": "c",
+   "decimals": 2,
+   "min": null,
+   "max": null,
+   "step": 1,
+   "spinners": false,
+   "placeholder": ""
+  }
+ },
+ "fields": [
+  {
+   "name": "fakeusernameremembered",
+   "id": null,
+   "type": "text",
+   "role": null,
+   "label": "",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "fakepasswordremembered",
+   "id": null,
+   "type": "password",
+   "role": null,
+   "label": "",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ClaimIdentifiersList",
+   "id": "ClaimIdentifiersList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "ClaimIdentifiersList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": "k1",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ICN",
+   "id": "SearchICN",
+   "type": "text",
+   "role": "textbox",
+   "label": "ICN",
+   "required": false,
+   "maxLength": 15,
+   "validation": {
+    "regex": "ICN contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "ICN has a maximum length of 15 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "TCN",
+   "id": "TCN",
+   "type": "text",
+   "role": "textbox",
+   "label": "TCN",
+   "required": false,
+   "maxLength": 15,
+   "validation": {
+    "regex": "TCN contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "TCN has a maximum length of 15 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "MCOICN",
+   "id": "MCOICN",
+   "type": "text",
+   "role": "textbox",
+   "label": "MCO ICN",
+   "required": false,
+   "maxLength": 15,
+   "validation": {
+    "regex": "MCO ICN contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "MCO ICN has a maximum length of 15 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "DateTypeList",
+   "id": "DateTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "DateTypeList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "DOS",
+   "widget": "k2",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "FromDate",
+   "id": "FromDate",
+   "type": "text",
+   "role": "datepicker",
+   "label": "Date From",
+   "required": true,
+   "maxLength": null,
+   "validation": {
+    "date": "Date From must represent a valid date in the format 'MM/DD/YYYY'.",
+    "required": "Date From is a required field."
+   },
+   "validationParams": {
+    "minmax-date": "Date From must be within 01/01/1900 and 12/31/9999."
+   },
+   "value": "11/10/2024",
+   "widget": "k3",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ToDate",
+   "id": "ToDate",
+   "type": "text",
+   "role": "datepicker",
+   "label": "Date To",
+   "required": true,
+   "maxLength": null,
+   "validation": {
+    "date": "Date To must represent a valid date in the format 'MM/DD/YYYY'.",
+    "required": "Date To is a required field."
+   },
+   "validationParams": {
+    "minmax-date": "Date To must be within 01/01/1900 and 12/31/9999."
+   },
+   "value": "11/10/2026",
+   "widget": "k4",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "MemberByList",
+   "id": "MemberByList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "MemberByList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": "k5",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "MemberID",
+   "id": "MemberID",
+   "type": "text",
+   "role": "textbox",
+   "label": "Member ID",
+   "required": false,
+   "maxLength": null,
+   "validation": {
+    "regex": "Member ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "MemberName",
+   "id": "MemberName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Member Name",
+   "required": false,
+   "maxLength": null,
+   "validation": {
+    "regex": "Member Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "PatientAccountNumber",
+   "id": "PatientAccountNumber",
+   "type": "text",
+   "role": "textbox",
+   "label": "Patient Acct",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Patient Acct contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Patient Acct has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ProviderRoleList",
+   "id": "ProviderRoleList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "ProviderRoleList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": "k6",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ProviderByList",
+   "id": "ProviderByList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "ProviderByList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "NP",
+   "widget": "k7",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "NPI",
+   "id": "NPI",
+   "type": "text",
+   "role": "textbox",
+   "label": "NPI",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "NPI contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "NPI has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ProviderName",
+   "id": "ProviderName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Provider Name",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Provider Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Provider Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ProviderTaxonomy",
+   "id": "ProviderTaxonomy",
+   "type": "text",
+   "role": "textbox",
+   "label": "Provider Taxonomy",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Provider Taxonomy contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Provider Taxonomy has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ProviderTaxID",
+   "id": "ProviderTaxID",
+   "type": "text",
+   "role": "textbox",
+   "label": "Provider Tax ID",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Provider Tax ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Provider Tax ID has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ProviderID",
+   "id": "ProviderID",
+   "type": "text",
+   "role": "textbox",
+   "label": "Provider ID",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Provider ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Provider ID has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ProviderLocationID",
+   "id": "ProviderLocationID",
+   "type": "text",
+   "role": "textbox",
+   "label": "Svc Location ID",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Svc Location ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Svc Location ID has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ClaimTypeList",
+   "id": "ClaimTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "ClaimTypeList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": "k8",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ClaimSubTypeList",
+   "id": "ClaimSubTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "ClaimSubTypeList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": "k9",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ClaimStatusList",
+   "id": "ClaimStatusList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "ClaimStatusList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": "k10",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ClaimSourceCodeList",
+   "id": "ClaimSourceCodeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "ClaimSourceCodeList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": "k11",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "PayToList",
+   "id": "PayToList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "PayToList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": "k12",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ServiceTypeList",
+   "id": "ServiceTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "ServiceTypeList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": "k13",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Modifiers1",
+   "id": "Modifiers1",
+   "type": "text",
+   "role": "textbox",
+   "label": "Mod1",
+   "required": false,
+   "maxLength": 50,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Mod1 has a maximum length of 50 characters."
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Modifiers2",
+   "id": "Modifiers2",
+   "type": "text",
+   "role": "textbox",
+   "label": "Mod2",
+   "required": false,
+   "maxLength": 50,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Mod2 has a maximum length of 50 characters."
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Modifiers3",
+   "id": "Modifiers3",
+   "type": "text",
+   "role": "textbox",
+   "label": "Mod3",
+   "required": false,
+   "maxLength": 50,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Mod3 has a maximum length of 50 characters."
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Modifiers4",
+   "id": "Modifiers4",
+   "type": "text",
+   "role": "textbox",
+   "label": "Mod4",
+   "required": false,
+   "maxLength": 50,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Mod4 has a maximum length of 50 characters."
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ExceptionErrorCode",
+   "id": "ExceptionErrorCode",
+   "type": "text",
+   "role": "textbox",
+   "label": "Exp Error Code",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Exp Error Code contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Exp Error Code has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "AuthorizationNumber",
+   "id": "AuthorizationNumber",
+   "type": "text",
+   "role": "textbox",
+   "label": "Prior Auth",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Prior Auth contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Prior Auth has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "OperatorIdentifier",
+   "id": "OperatorIdentifier",
+   "type": "text",
+   "role": "textbox",
+   "label": "Operator ID",
+   "required": false,
+   "maxLength": 200,
+   "validation": {
+    "regex": "Operator ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Operator ID has a maximum length of 200 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "RANumber",
+   "id": "RANumber",
+   "type": "text",
+   "role": "textbox",
+   "label": "RA Number",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "RA Number contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "RA Number has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "TotalBilledRangeFrom",
+   "id": "TotalBilledRangeFrom",
+   "type": "text",
+   "role": "numerictextbox",
+   "label": "Range From",
+   "required": false,
+   "maxLength": 15,
+   "validation": {
+    "number": "Range From is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Range From is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Range From has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "value": "0",
+   "widget": "k14",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "TotalBilledRangeTo",
+   "id": "TotalBilledRangeTo",
+   "type": "text",
+   "role": "numerictextbox",
+   "label": "Range To",
+   "required": false,
+   "maxLength": 15,
+   "validation": {
+    "number": "Range To is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Range To is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Range To has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "value": "0",
+   "widget": "k15",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ProcCodeFrom",
+   "id": "ProcCodeFrom",
+   "type": "text",
+   "role": "textbox",
+   "label": "From",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "From is restricted to alphanumeric characters only [A-Z], [a-z], [0-9]."
+   },
+   "validationParams": {
+    "length-max": "From has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z0-9]|[^\\x00-\\x7F])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ProcCodeTo",
+   "id": "ProcCodeTo",
+   "type": "text",
+   "role": "textbox",
+   "label": "To",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "To is restricted to alphanumeric characters only [A-Z], [a-z], [0-9]."
+   },
+   "validationParams": {
+    "length-max": "To has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z0-9]|[^\\x00-\\x7F])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ToothNumberFrom",
+   "id": "ToothNumberFrom",
+   "type": "text",
+   "role": "textbox",
+   "label": "From",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "From is restricted to alphanumeric characters only [A-Z], [a-z], [0-9]."
+   },
+   "validationParams": {
+    "length-max": "From has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z0-9]|[^\\x00-\\x7F])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ToothNumberTo",
+   "id": "ToothNumberTo",
+   "type": "text",
+   "role": "textbox",
+   "label": "To",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "To is restricted to alphanumeric characters only [A-Z], [a-z], [0-9]."
+   },
+   "validationParams": {
+    "length-max": "To has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z0-9]|[^\\x00-\\x7F])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "DiagnosisTypeList",
+   "id": "DiagnosisTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "DiagnosisTypeList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "02",
+   "widget": "k16",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "PrimaryDiagnosisCodeICD09",
+   "id": "PrimaryDiagnosisCodeICD09",
+   "type": "text",
+   "role": "textbox",
+   "label": "Code",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Code contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Code has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "PrimaryDiagnosisCodeICD10",
+   "id": "PrimaryDiagnosisCodeICD10",
+   "type": "text",
+   "role": "textbox",
+   "label": "Code",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Code contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Code has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "prevButton",
+   "id": "prevButton",
+   "type": "button",
+   "role": null,
+   "label": "Prev",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Prev",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "resetButton",
+   "id": "resetButton",
+   "type": "button",
+   "role": null,
+   "label": "Reset",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Reset",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt1Button",
+   "id": "alt1Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt1",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt1",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt4Button",
+   "id": "alt4Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt4",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt4",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt5Button",
+   "id": "alt5Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt5",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt5",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt6Button",
+   "id": "alt6Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt6",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt6",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt7Button",
+   "id": "alt7Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt7",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt7",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt8Button",
+   "id": "alt8Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt8",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt8",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "printButton",
+   "id": "printButton",
+   "type": "button",
+   "role": null,
+   "label": "Print",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Print",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt2Button",
+   "id": "alt2Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt2",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt2",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt3Button",
+   "id": "alt3Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt3",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt3",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "cancelButton",
+   "id": "cancelButton",
+   "type": "button",
+   "role": null,
+   "label": "Cancel",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Cancel",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "nextButton",
+   "id": "nextButton",
+   "type": "button",
+   "role": null,
+   "label": "Search",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Search",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "MemberName",
+   "id": "View_MemberName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Member Name",
+   "required": false,
+   "maxLength": 125,
+   "validation": {
+    "regex": "Member Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Member Name has a maximum length of 125 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "MemberDOB",
+   "id": "View_MemberDOB",
+   "type": "text",
+   "role": "datepicker",
+   "label": "DOB",
+   "required": false,
+   "maxLength": null,
+   "validation": {
+    "date": "DOB must represent a valid date in the format 'MM/DD/YYYY'."
+   },
+   "validationParams": {
+    "minmax-date": "DOB must be within 01/01/1900 and 12/31/9999."
+   },
+   "value": "01/01/0001",
+   "widget": "k18",
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "MemberGenderCode.ID",
+   "id": "View_MemberGenderCode_ID",
+   "type": "text",
+   "role": "textbox",
+   "label": "View_MemberGenderCode_ID",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "BillingProviderName",
+   "id": "View_BillingProviderName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Billing Prov Name",
+   "required": false,
+   "maxLength": 125,
+   "validation": {
+    "regex": "Billing Prov Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Billing Prov Name has a maximum length of 125 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "BillingProviderTaxId",
+   "id": "View_BillingProviderTaxId",
+   "type": "text",
+   "role": "textbox",
+   "label": "Billing Prov Tax ID",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Billing Prov Tax ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Billing Prov Tax ID has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "TotalAllowedAmount",
+   "id": "View_TotalAllowedAmount",
+   "type": "text",
+   "role": "numerictextbox",
+   "label": "Total Allowed",
+   "required": false,
+   "maxLength": 15,
+   "validation": {
+    "number": "Total Allowed is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Total Allowed is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Total Allowed has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "value": "0",
+   "widget": "k19",
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "TotalCopayAmount",
+   "id": "View_TotalCopayAmount",
+   "type": "text",
+   "role": "numerictextbox",
+   "label": "Total Copay",
+   "required": false,
+   "maxLength": 15,
+   "validation": {
+    "number": "Total Copay is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Total Copay is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Total Copay has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "value": "0",
+   "widget": "k20",
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "TotalCoinsuranceAmount",
+   "id": "View_TotalCoinsuranceAmount",
+   "type": "text",
+   "role": "numerictextbox",
+   "label": "Total Coinsurance",
+   "required": false,
+   "maxLength": 15,
+   "validation": {
+    "number": "Total Coinsurance is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Total Coinsurance is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Total Coinsurance has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "value": "0",
+   "widget": "k21",
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "TotalDeductibleAmount",
+   "id": "View_TotalDeductibleAmount",
+   "type": "text",
+   "role": "numerictextbox",
+   "label": "Total Deductible",
+   "required": false,
+   "maxLength": 15,
+   "validation": {
+    "number": "Total Deductible is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Total Deductible is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Total Deductible has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "value": "0",
+   "widget": "k22",
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "TotalSpenddownAmount",
+   "id": "View_TotalSpenddownAmount",
+   "type": "text",
+   "role": "numerictextbox",
+   "label": "Total Spenddown",
+   "required": false,
+   "maxLength": 15,
+   "validation": {
+    "number": "Total Spenddown is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Total Spenddown is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Total Spenddown has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "value": "0",
+   "widget": "k23",
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "PrimaryDiagnosis.Qualifier.ID",
+   "id": "PrimaryDiagnosis_Qualifier_ID",
+   "type": "text",
+   "role": "textbox",
+   "label": "PrimaryDiagnosis_Qualifier_ID",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "PrimaryDiagnosis.Code",
+   "id": "PrimaryDiagnosis_Code",
+   "type": "text",
+   "role": "textbox",
+   "label": "Code",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Code contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Code has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "ExceptionErrorCode.ID",
+   "id": "View_ExceptionErrorCode_ID",
+   "type": "text",
+   "role": "textbox",
+   "label": "View_ExceptionErrorCode_ID",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Department",
+   "id": "View_Department",
+   "type": "text",
+   "role": "textbox",
+   "label": "Department",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Department contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Department has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Location",
+   "id": "View_Location",
+   "type": "text",
+   "role": "textbox",
+   "label": "Location",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Location contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Location has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "EmergencyIndicator",
+   "id": "EmergencyIndicator",
+   "type": "checkbox",
+   "role": "checkbox",
+   "label": "Emergency",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  }
+ ],
+ "actions": [
+  {
+   "action": "reset",
+   "text": "Reset",
+   "id": "resetButton"
+  },
+  {
+   "action": "cancel",
+   "text": "Cancel",
+   "id": "cancelButton"
+  },
+  {
+   "action": "search",
+   "text": "Search",
+   "id": "nextButton"
+  }
+ ],
+ "hidden": [
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "h7",
+  "h8",
+  "h9",
+  "h10",
+  "h11",
+  "h12",
+  "h13",
+  "h14",
+  "h15",
+  "h16",
+  "h17",
+  "h18",
+  "h19",
+  "h20",
+  "h21",
+  "h22",
+  "h23",
+  "h24",
+  "h25",
+  "h26",
+  "h27",
+  "h28",
+  "h29",
+  "h30",
+  "h31",
+  "h32",
+  "h33",
+  "h34",
+  "h35",
+  "h36",
+  "h37",
+  "h38",
+  "h39",
+  "h40",
+  "h41",
+  "h42",
+  "h43",
+  "h44"
+ ],
+ "unknown": {},
+ "autofocus": null,
+ "kendo": "2026.1.415",
+ "jquery": "3.7.1",
+ "menu": {
+  "root": "div#mainMenuContainer",
+  "add": [
+   "display-flex"
+  ],
+  "remove": [
+   "display-none"
+  ],
+  "backdrop": "div.disabled-backdrop",
+  "close": true,
+  "links": 181,
+  "closed": true
+ },
+ "calibration": {
+  "defaults": {
+   "popup": {
+    "open": {
+     "effects": "slideIn:down",
+     "transition": true,
+     "duration": 200
+    },
+    "close": {
+     "duration": 100,
+     "hide": true
+    }
+   },
+   "tooltip": {
+    "prefix": "",
+    "name": "Tooltip",
+    "filter": "",
+    "offset": 0,
+    "showAfter": 100,
+    "hideAfter": 100,
+    "callout": true,
+    "position": "bottom",
+    "showOn": "mouseenter",
+    "animation": {
+     "open": {
+      "effects": "fade:in",
+      "duration": 0
+     },
+     "close": {
+      "duration": 40,
+      "hide": true
+     }
+    },
+    "autoHide": true,
+    "width": null,
+    "height": null
+   },
+   "window": {
+    "open": {
+     "effects": {},
+     "duration": 350
+    },
+    "close": {
+     "effects": {},
+     "duration": 350,
+     "hide": true
+    }
+   },
+   "menu": {
+    "open": {
+     "duration": 200
+    },
+    "close": {
+     "duration": 100
+    }
+   }
+  },
+  "dropdownPopup": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"height: auto; display: block; position: absolute; top: 297.5px; z-index: 10002; left: 56px;\"><div class=\"k-child-animation-container\" style=\"height: auto; width: 258.812px; display: block; transform: translateY(0px);\"><div class=\"k-list-container k-popup k-dropdownlist-popup\" data-role=\"popup\" aria-hidden=\"false\" data-kit-drop=\"\" style=\"font-size: 16px; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 400; line-height: 40px; width: 258.828px; min-width: 258.828px; white-space: normal; height: 138.344px;\"><div class=\"k-list\" id=\"ClaimIdentifiersList-list\" data-role=\"staticlist\" role=\"listbox\" style=\"height: auto;\"><div role=\"option\" class=\"k-list-optionlabel k-selected k-focus\" id=\"24ca9f46-c314-4f1e-9e04-ccaefd501ca0\">select a value...</div><div class=\"k-list-group-sticky-header\" style=\"display: none;\"></div><div class=\"k-list-content k-list-scroller\" unselectable=\"on\"><ul unselectable=\"on\" tabindex=\"-1\" aria-hidden=\"false\" id=\"ClaimIdentifiersList_listbox\" role=\"listbox\" aria-live=\"off\" class=\"k-list-ul\"><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"0\"><span class=\"k-list-item-text\">ICN</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"1\"><span class=\"k-list-item-text\">MCO ICN</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"2\"><span class=\"k-list-item-text\">TCN</span></li></ul></div><div class=\"k-no-data\" aria-live=\"polite\" style=\"display: none;\">No Data Found</div></div></div></div></div>",
+  "calendarPopup": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"display: block; position: absolute; top: 401px; z-index: 10002; left: 365.828px;\"><div class=\"k-child-animation-container\" style=\"width: 345.297px; height: 366px; display: block; transform: translateY(0px);\"><div aria-hidden=\"false\" class=\"k-calendar-container k-popup\" data-role=\"popup\" id=\"FromDate_dateview\" data-kit-drop=\"\" style=\"font-size: 14px; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 400; line-height: 14px;\"><div id=\"72b790ae-8c28-4222-9bcb-e1f2ebe91862\" data-role=\"calendar\" class=\"k-calendar\"><div class=\"k-header k-hstack\">\n            <span tabindex=\"-1\" data-href=\"#\" data-action=\"prev\" role=\"button\" class=\"k-calendar-nav-prev k-button k-button-flat k-icon-button\" aria-label=\"Previous\" aria-disabled=\"false\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-left k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m160 256 192-128v256z\"></path></svg></span></span>\n            <span tabindex=\"-1\" data-href=\"#\" data-action=\"nav-up\" id=\"86f55ade-bb71-45c4-b7f4-d7e5d2627a8a\" role=\"button\" class=\"k-calendar-nav-fast k-button k-button-flat k-flex\" aria-disabled=\"false\" title=\"Navigate to year view\"><span class=\"k-button-text\">November 2024</span></span>\n            <span tabindex=\"-1\" data-href=\"#\" data-action=\"next\" role=\"button\" class=\"k-calendar-nav-next k-button k-button-flat k-icon-button\" aria-label=\"Next\" aria-disabled=\"false\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-right k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M352 256 160 384V128z\"></path></svg></span></span>\n        </div><div class=\"k-calendar-view k-align-items-start k-justify-content-center k-hstack k-calendar-monthview\"><table tabindex=\"0\" role=\"grid\" class=\"k-calendar-table\" cellspacing=\"0\" data-start=\"2024/9/27\" aria-labelledby=\"86f55ade-bb71-45c4-b7f4-d7e5d2627a8a\" aria-activedescendant=\"ca0eac1f-b8b1-46a8-94cf-859af89b0a3f\"><thead class=\"k-calendar-thead\"><tr role=\"row\" class=\"k-calendar-tr\"><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Sunday\">Su</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Monday\">Mo</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Tuesday\">Tu</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Wednesday\">We</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Thursday\">Th</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Friday\">Fr</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Saturday\">Sa</th></tr></thead><tbody class=\"k-calendar-tbody\"><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-other-month k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/9/27\" title=\"Sunday, October 27, 2024\">27</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/9/28\" title=\"Monday, October 28, 2024\">28</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/9/29\" title=\"Tuesday, October 29, 2024\">29</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/9/30\" title=\"Wednesday, October 30, 2024\">30</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/9/31\" title=\"Thursday, October 31, 2024\">31</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/1\" title=\"Friday, November 1, 2024\">1</span></td><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/2\" title=\"Saturday, November 2, 2024\">2</span></td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/3\" title=\"Sunday, November 3, 2024\">3</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/4\" title=\"Monday, November 4, 2024\">4</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/5\" title=\"Tuesday, November 5, 2024\">5</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/6\" title=\"Wednesday, November 6, 2024\">6</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/7\" title=\"Thursday, November 7, 2024\">7</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/8\" title=\"Friday, November 8, 2024\">8</span></td><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/9\" title=\"Saturday, November 9, 2024\">9</span></td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-weekend k-selected k-focus\" role=\"gridcell\" aria-selected=\"true\" id=\"ca0eac1f-b8b1-46a8-94cf-859af89b0a3f\" aria-label=\"Current focused date is Sunday, November 10, 2024\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/10\" title=\"Sunday, November 10, 2024\">10</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/11\" title=\"Monday, November 11, 2024\">11</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/12\" title=\"Tuesday, November 12, 2024\">12</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/13\" title=\"Wednesday, November 13, 2024\">13</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/14\" title=\"Thursday, November 14, 2024\">14</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/15\" title=\"Friday, November 15, 2024\">15</span></td><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/16\" title=\"Saturday, November 16, 2024\">16</span></td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/17\" title=\"Sunday, November 17, 2024\">17</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/18\" title=\"Monday, November 18, 2024\">18</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/19\" title=\"Tuesday, November 19, 2024\">19</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/20\" title=\"Wednesday, November 20, 2024\">20</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/21\" title=\"Thursday, November 21, 2024\">21</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/22\" title=\"Friday, November 22, 2024\">22</span></td><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/23\" title=\"Saturday, November 23, 2024\">23</span></td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/24\" title=\"Sunday, November 24, 2024\">24</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/25\" title=\"Monday, November 25, 2024\">25</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/26\" title=\"Tuesday, November 26, 2024\">26</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/27\" title=\"Wednesday, November 27, 2024\">27</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/28\" title=\"Thursday, November 28, 2024\">28</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/29\" title=\"Friday, November 29, 2024\">29</span></td><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/10/30\" title=\"Saturday, November 30, 2024\">30</span></td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-other-month k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/11/1\" title=\"Sunday, December 1, 2024\">1</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/11/2\" title=\"Monday, December 2, 2024\">2</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/11/3\" title=\"Tuesday, December 3, 2024\">3</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/11/4\" title=\"Wednesday, December 4, 2024\">4</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/11/5\" title=\"Thursday, December 5, 2024\">5</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/11/6\" title=\"Friday, December 6, 2024\">6</span></td><td class=\"k-calendar-td k-other-month k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2024/11/7\" title=\"Saturday, December 7, 2024\">7</span></td></tr></tbody></table></div><div class=\"k-calendar-footer\">\n                    <button tabindex=\"-1\" class=\"k-calendar-nav-today k-flex k-button k-button-flat k-button-primary\" role=\"link\" title=\"Wednesday, November 11, 2026\">\n                        <span class=\"k-button-text\">Wednesday, November 11, 2026</span>\n                    </button>\n                </div></div></div></div></div>",
+  "tooltip": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"display: block; position: absolute; top: 58.1719px; z-index: 10002; left: 66px; margin-top: 6px;\"><div class=\"k-child-animation-container\" style=\"width: 83.8281px; height: 25px; display: block; opacity: 1;\"><div role=\"tooltip\" class=\"k-tooltip k-popup\" data-role=\"popup\" style=\"\" id=\"d7478b11-9e5e-45ba-98a8-63be1b8c2209_tb_active\"><div class=\"k-tooltip-content\">Client Logo</div><div class=\"k-callout k-callout-n\" style=\"left: 42.086px;\"></div></div></div></div>"
+ },
+ "grids": {
+  "k17": {
+   "total": 0,
+   "pageSize": 10,
+   "fields": {},
+   "rowTemplate": null,
+   "altRowTemplate": null,
+   "html": "<div class=\"k-grid editor-grid\" id=\"ClaimsResultsGrid\" data-role=\"grid\" style=\"\" data-kit=\"k17\"><div aria-controls=\"f49e4b3c-05d4-4f61-a851-8cc697f7caad\" aria-label=\"grid toolbar\" class=\"k-toolbar k-grid-toolbar k-toolbar-resizable\" role=\"toolbar\">\n    \n\n                        </div><div class=\"k-grid-header\" style=\"padding-right: 15px;\"><div class=\"k-grid-header-wrap k-auto-scrollable\" data-role=\"resizable\"><table role=\"grid\" class=\"k-grid-header-table k-table\"><colgroup><col><col><col><col><col><col><col><col><col><col><col><col></colgroup><thead class=\"k-table-thead\" role=\"rowgroup\"><tr class=\"k-table-row\" role=\"row\"><th aria-haspopup=\"menu\" aria-sort=\"ascending\" class=\"k-table-th k-header k-filterable\" data-dir=\"asc\" data-field=\"ICN\" data-index=\"0\" data-resizable=\"true\" data-title=\"ICN\" id=\"42e99044-fbed-4f61-9ae2-2347e33d996f\" role=\"columnheader\" scope=\"col\" title=\"Internal Claim Number assigned by Claims Management \" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">ICN</span></span><a aria-hidden=\"true\" aria-label=\"ICN filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"ICN filter column settings\" tabindex=\"-1\" data-role=\"tooltip\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"MemberId\" data-index=\"1\" data-resizable=\"true\" data-title=\"Member ID\" id=\"00558588-8cca-451f-a7b9-28983d074c71\" role=\"columnheader\" scope=\"col\" title=\"This is the Unique ID from the Member's HealthCare Card\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Member ID</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"BillingNPI\" data-index=\"2\" data-resizable=\"true\" data-title=\"Billing Prov NPI\" id=\"a6044a10-319f-43aa-ab16-c479f1961928\" role=\"columnheader\" scope=\"col\" title=\"This is the NPI number assigned by the government for the billing provider.\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Billing Prov NPI</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"ClaimType.FormattedText\" data-index=\"3\" data-resizable=\"true\" data-title=\"Claim Type\" id=\"17ef4f1b-8f0c-46b5-9908-a8cbd042c94f\" role=\"columnheader\" scope=\"col\" title=\"Indicates the type of claim. i.e. Medical, Inpatient, Outpatient, Pharmacy, Dental\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Claim Type</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"ClaimSubType.FormattedText\" data-index=\"4\" data-resizable=\"true\" data-title=\"Claim SubType\" id=\"d106c6c8-a7e5-45e8-a3b9-4f5742b56ab6\" role=\"columnheader\" scope=\"col\" title=\"Indicates additional qualifications of types of claims within the initial claim type i.e. DME, Home Health are valid subtypes for a medical claim type\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Claim SubType</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"ClaimStatus.FormattedText\" data-index=\"5\" data-resizable=\"true\" data-title=\"Claim Status\" id=\"bb98cd1e-252c-4a5b-a7e6-2e3753531fc2\" role=\"columnheader\" scope=\"col\" title=\"Identifies the status of the claim with the system i.e. Paid, Denied, Suspended, Voided, Adjusted.\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Claim Status</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"CoveredFrom\" data-index=\"6\" data-resizable=\"true\" data-title=\"Covered From\" id=\"8fcfe4e9-11c2-4439-8d42-9bec82bba56e\" role=\"columnheader\" scope=\"col\" title=\"Earliest Beginning date of service (DOS) for all service lines on the claim\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Covered From</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"CoveredTo\" data-index=\"7\" data-resizable=\"true\" data-title=\"Covered To\" id=\"b7ef7a06-f89b-402a-aeb8-228f10250d72\" role=\"columnheader\" scope=\"col\" title=\"Latest Ending date of service (DOS) for all service lines on the claim\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Covered To</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"TotalBilledAmount\" data-index=\"8\" data-resizable=\"true\" data-title=\"Total Billed\" id=\"5d5bc6e1-b329-4d3c-84f2-3a7fdb6f6976\" role=\"columnheader\" scope=\"col\" title=\"Total of all line charges on the claim.\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Total Billed</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"TotalPaidAmount\" data-index=\"9\" data-resizable=\"true\" data-title=\"Total Paid\" id=\"9ba1c176-4a85-4cd2-8515-967dccff62e7\" role=\"columnheader\" scope=\"col\" title=\"Amount calculated based on benefit rules , pricing rules and fee schedule amounts\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Total Paid</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header\" data-field=\"AuthorizationNumber\" data-index=\"10\" data-resizable=\"true\" data-title=\"Authorization Number\" id=\"846f6082-0cc8-4fb3-aa44-9f459883d166\" role=\"columnheader\" scope=\"col\" title=\"Identifies the authorization number that provides approval for the services on the associated claim.\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Authorization Number</span></span></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header k-filterable\" data-field=\"PaidDate\" data-index=\"11\" data-resizable=\"true\" data-title=\"Paid Date\" id=\"ca12b71c-2e11-47be-aea4-9ad2a944b186\" role=\"columnheader\" scope=\"col\" title=\"Date the claim was paid\" data-role=\"columnsorter\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Paid Date</span></span><a aria-hidden=\"true\" aria-label=\"Paid Date filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Paid Date filter column settings\" tabindex=\"-1\" data-role=\"tooltip\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a></span></th><th aria-haspopup=\"menu\" aria-sort=\"none\" class=\"k-table-th k-header k-hidden\" data-field=\"ClaimsId\" data-index=\"12\" data-resizable=\"true\" data-title=\"Claims id\" id=\"ee21e128-ae85-4e3e-ac4e-a236d665d975\" role=\"columnheader\" scope=\"col\" data-role=\"columnsorter\" style=\"display: none;\"><span class=\"k-cell-inner\"><span class=\"k-link\"><span class=\"k-column-title\">Claims id</span></span></span></th></tr></thead></table></div></div><div class=\"k-grid-container\"><div class=\"k-grid-content k-auto-scrollable\" style=\"height: 200px;\"><table id=\"f49e4b3c-05d4-4f61-a851-8cc697f7caad\" role=\"grid\" tabindex=\"0\" class=\"k-grid-table k-table k-selectable\" data-role=\"selectable\"><colgroup><col><col><col><col><col><col><col><col><col><col><col><col></colgroup><tbody class=\"k-table-tbody\" id=\"be2ac351-b7d8-48b5-9aed-c0ce1738e028\" role=\"rowgroup\"></tbody></table></div></div><div aria-controls=\"f49e4b3c-05d4-4f61-a851-8cc697f7caad\" class=\"k-pager k-grid-pager k-pager-responsive\" data-role=\"pager\" role=\"application\" aria-roledescription=\"pager\" aria-keyshortcuts=\"Enter ArrowRight ArrowLeft\" id=\"ddef018a-9e65-414a-8614-ef8c028fb0e8\" aria-label=\"Page navigation, page 0 of 0\" tabindex=\"0\"><div class=\"grid-toolbar-secondary\">\n        <button class=\"k-button btn-spacer-left\" id=\"excelButton\" title=\"Export to Excel\" type=\"button\" data-role=\"button\" role=\"button\" aria-disabled=\"false\" tabindex=\"0\"><span class=\"k-sprite fa-solid fa-file-excel fa-lg editor_icon k-button-icon\" style=\"overflow: visible;\"></span><span class=\"k-button-text\" style=\"overflow: visible;\">Export to Excel</span></button><script>\n\tkendo.syncReady(function(){jQuery(\"#excelButton\").kendoButton({\"click\":claimsGridOnExportExcel,\"spriteCssClass\":\"fa-solid fa-file-excel fa-lg editor_icon\"});});\n</script>\n        <button class=\"k-button btn-spacer-left\" id=\"pdfButton\" title=\"Export to PDF\" type=\"button\" data-role=\"button\" role=\"button\" aria-disabled=\"false\" tabindex=\"0\"><span class=\"k-sprite fa-solid fa-file-pdf fa-lg editor_icon k-button-icon\" style=\"overflow: visible;\"></span><span class=\"k-button-text\" style=\"overflow: visible;\">Export to PDF</span></button><script>\n\tkendo.syncReady(function(){jQuery(\"#pdfButton\").kendoButton({\"click\":claimsGridOnExportPDF,\"spriteCssClass\":\"fa-solid fa-file-pdf fa-lg editor_icon\"});});\n</script>\n    </div><div class=\"k-pager-numbers-wrap\"><button aria-label=\"Go to the first page\" class=\"k-button k-pager-nav k-button-flat k-icon-button k-disabled k-pager-first\" data-page=\"1\" title=\"Go to the first page\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-to-left k-button-icon\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M352 384 160 256l192-128zM128 128v256h32V128z\"></path></svg></span></button><button aria-label=\"Go to the previous page\" class=\"k-button k-pager-nav k-button-flat k-icon-button k-disabled\" data-page=\"0\" title=\"Go to the previous page\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-left k-button-icon\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"m160 256 192-128v256z\"></path></svg></span></button><div class=\"k-pager-numbers\"><button role=\"button\" aria-current=\"page\" tabindex=\"-1\" aria-label=\"Page 0\" class=\"k-button undefined k-button-flat k-button-primary k-selected\"><span class=\"k-button-text\">0</span></button></div><button aria-label=\"Go to the next page\" class=\"k-button k-pager-nav k-button-flat k-icon-button k-disabled\" data-page=\"2\" title=\"Go to the next page\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-right k-button-icon\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M352 256 160 384V128z\"></path></svg></span></button><button aria-label=\"Go to the last page\" class=\"k-button k-pager-nav k-button-flat k-icon-button k-disabled k-pager-last\" data-page=\"1\" title=\"Go to the last page\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-to-right k-button-icon\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"m128 128 192 128-192 128zm224 256V128h-32v256z\"></path></svg></span></button><span class=\"k-pager-input\" style=\"display: none;\"><span>Page</span><span class=\"k-numerictextbox k-input k-valid\" style=\"\"><input type=\"text\" data-validate=\"false\" title=\"\" tabindex=\"0\" class=\"k-input-inner\" role=\"spinbutton\" aria-valuemin=\"1\" autocomplete=\"off\" aria-disabled=\"false\" aria-label=\"Page\" style=\"\" value=\"\"><input aria-label=\"Page\" data-role=\"numerictextbox\" role=\"spinbutton\" style=\"display: none;\" class=\"k-input-inner\" inputmode=\"text\" type=\"text\" aria-valuemin=\"1\" aria-disabled=\"false\" value=\"\"><span class=\"k-icon k-svg-icon k-svg-i-exclamation-circle k-input-validation-icon k-hidden\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224 128h64v160h-64zm0 256h64v-64h-64zm256-128c0 123.7-100.3 224-224 224S32 379.7 32 256 132.3 32 256 32s224 100.3 224 224m-32 0c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192\"></path></svg></span></span><span>of 0</span></span></div><a aria-label=\"Refresh\" class=\"k-pager-refresh k-button k-button-flat k-icon-button\" href=\"/api/ClaimsManagement/SearchClaims/\" title=\"Refresh\" data-role=\"tooltip\" data-kit-tip=\"Refresh\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"><span class=\"k-icon k-svg-icon k-svg-i-arrow-rotate-cw k-button-icon\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M480 288c0 123.7-100.3 224-224 224S32 411.7 32 288 132.3 64 256 64V0l160 96-160 96v-64c-88.2 0-160 71.8-160 160s71.8 160 160 160 160-71.8 160-160c0-29.1-7.8-56.4-21.5-80l55.5-32c19.1 32.9 30 71.2 30 112\"></path></svg></span></a><span class=\"k-pager-info\">No items to display</span><span class=\"k-pager-sizes\"><span title=\"\" class=\"k-picker k-dropdownlist k-valid\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-label=\"Page sizes drop down\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"e1c7f776-41c3-4e0f-9431-8a5890741387_listbox\" aria-busy=\"false\" aria-describedby=\"6658dc92-f999-4046-8e88-6170892f32ae\" style=\"\"><span id=\"6658dc92-f999-4046-8e88-6170892f32ae\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">10</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><select aria-label=\"Page sizes drop down\" data-role=\"dropdownlist\" style=\"display: none;\"><option value=\"5\">5</option><option value=\"10\" selected=\"selected\">10</option><option value=\"20\">20</option></select></span><span>items per page</span></span></div></div>",
+   "rowCount": 0
+  }
+ },
+ "dialogs": {},
+ "search": {
+  "reveals": [],
+  "requests": []
+ },
+ "row": null,
+ "requests": {
+  "search": null
+ },
+ "plan": {
+  "dialogs": [
+   {
+    "panel": "languageOverlay",
+    "opener": null,
+    "via": null
+   }
+  ],
+  "rowDouble": "gridRowDoubleClickCallBack",
+  "rowSingle": "gridRowSingleClickCallBack",
+  "rowOpens": null
+ },
+ "missing": []
+}

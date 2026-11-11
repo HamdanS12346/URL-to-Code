@@ -1,0 +1,100 @@
+{
+ "items": {
+  "capture:home": {
+   "status": "done",
+   "at": "2026-11-10T22:54:37.698Z"
+  },
+  "capture:search-claims": {
+   "status": "done",
+   "at": "2026-11-10T22:54:44.537Z"
+  },
+  "capture:pro-dur": {
+   "status": "done",
+   "at": "2026-11-10T22:54:50.081Z"
+  },
+  "spec:pro-dur": {
+   "status": "done",
+   "at": "2026-11-10T20:16:30.938Z",
+   "rounds": 1
+  },
+  "spec:home": {
+   "status": "done",
+   "at": "2026-11-10T20:16:49.033Z",
+   "rounds": 1
+  },
+  "spec:search-claims": {
+   "status": "done",
+   "at": "2026-11-10T20:30:21.623Z",
+   "rounds": 1
+  },
+  "port:home": {
+   "status": "done",
+   "at": "2026-11-10T20:30:36.338Z"
+  },
+  "port:search-claims": {
+   "status": "done",
+   "at": "2026-11-10T20:31:06.718Z"
+  },
+  "port:pro-dur": {
+   "status": "done",
+   "at": "2026-11-10T20:31:30.434Z"
+  },
+  "preflight:kit": {
+   "status": "done",
+   "at": "2026-11-10T22:55:45.819Z",
+   "screen": "search-claims"
+  },
+  "code:pro-dur": {
+   "status": "blocked",
+   "at": "2026-11-10T23:05:53.667Z",
+   "rounds": 1,
+   "problems": [
+    "the writer reports a problem outside its files (packs/claims-mgmt-v1/app/src/screens/pro-dur/BLOCKED.md):",
+    "# BLOCKED: claims-mgmt-v1/pro-dur",
+    "## Why blocked",
+    "The visual verifier reports major diffs in shell-owned UI (footer / tooltip state), and fixing it would require changing `src/shell/**` or the kit.",
+    "Per pack rules, I did not work around shell/kit behavior from within the screen.",
+    "## Evidence",
+    "- Verify command used:",
+    "  - `$env:URL=\"http://localhost:5180/#/pro-dur\"; $env:WAIT_ROOT=\"1\"; node scripts/verify.mjs claims-mgmt-v1/pro-dur`",
+    "- `packs/claims-mgmt-v1/screens/pro-dur/verify/report.json`:",
+    "  - `size_delta_px`: `[0, -125]`",
+    "  - `bad_pct`: `9.92`",
+    "  - `worst_section`: `disclaimer-the-website-is-prov` `bad_pct: 100`",
+    "  - `states`: `tooltip` mismatch (`bad_pct: 17.48`), `menu-open/menu-flyout/menu-close` OK",
+    "## Notes",
+    "- After that run, `http://localhost:5180` became unreachable (`net::ERR_CONNECTION_REFUSED`), so I could not re-run verify."
+   ]
+  },
+  "code:search-claims": {
+   "status": "done",
+   "at": "2026-11-10T23:12:24.631Z",
+   "rounds": 1,
+   "verify": {
+    "bad_pct": 0.2,
+    "size_delta_px": [
+     0,
+     0
+    ],
+    "worst_section": "search-claims",
+    "behavior": "behavior: no scroll/media/timing probes recorded for this screen (nothing to compare) | console: 0 error(s), 0 React warning(s), 0 failed resource(s)",
+    "states": "states: 6/6 match the live page"
+   }
+  },
+  "code:home": {
+   "status": "done",
+   "at": "2026-11-10T23:16:45.119Z",
+   "rounds": 2,
+   "verify": {
+    "bad_pct": 0.13,
+    "size_delta_px": [
+     0,
+     0
+    ],
+    "worst_section": "mcbrowborder",
+    "behavior": "behavior: no scroll/media/timing probes recorded for this screen (nothing to compare) | console: 0 error(s), 0 React warning(s), 0 failed resource(s)",
+    "states": "states: 4/4 match the live page"
+   }
+  }
+ }
+}

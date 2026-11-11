@@ -1,0 +1,12 @@
+
+==== 2026-11-10T23:07:11.677Z vite --port 5180
+
+  [32m[1mVITE[22m v7.1.5[39m  [2mready in [0m[1m1683[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5180[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m4:38:18 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/screens/search-claims/components/SearchClaimsBehavior.tsx[22m
+[2m4:40:20 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/screens/home/Page.tsx[22m
+[2m4:42:46 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/screens/home/Page.tsx[22m
+[2m4:42:46 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/screens/home/Page.tsx[22m
+[2m4:43:37 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/screens/home/Page.tsx[22m

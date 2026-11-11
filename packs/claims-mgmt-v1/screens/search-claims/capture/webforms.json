@@ -1,0 +1,767 @@
+{
+ "isWebForms": false,
+ "validators": [],
+ "summaries": [],
+ "updatePanels": null,
+ "components": [],
+ "grids": {},
+ "hiddenFields": [
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "ClaimIdentifiers.ID",
+   "id": "ClaimIdentifiers_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimIdentifiers.Name",
+   "id": "ClaimIdentifiers_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimIdentifiers.DisplayFormat",
+   "id": "ClaimIdentifiers_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "ClaimIdentifiers.Name",
+   "id": "ClaimIdentifiers_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "DateType.ID",
+   "id": "DateType_ID",
+   "size": 3,
+   "value": "DOS"
+  },
+  {
+   "name": "DateType.Name",
+   "id": "DateType_Name",
+   "size": 12,
+   "value": "Service Date"
+  },
+  {
+   "name": "DateType.DisplayFormat",
+   "id": "DateType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "DateType.Name",
+   "id": "DateType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "MemberBy.ID",
+   "id": "MemberBy_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "MemberBy.Name",
+   "id": "MemberBy_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "MemberBy.DisplayFormat",
+   "id": "MemberBy_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "MemberBy.Name",
+   "id": "MemberBy_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ProviderRole.ID",
+   "id": "ProviderRole_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ProviderRole.Name",
+   "id": "ProviderRole_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ProviderRole.DisplayFormat",
+   "id": "ProviderRole_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "ProviderRole.Name",
+   "id": "ProviderRole_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ProviderBy.ID",
+   "id": "ProviderBy_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ProviderBy.Name",
+   "id": "ProviderBy_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ProviderBy.DisplayFormat",
+   "id": "ProviderBy_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "ProviderBy.Name",
+   "id": "ProviderBy_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimType.ID",
+   "id": "ClaimType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimType.Name",
+   "id": "ClaimType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimType.DisplayFormat",
+   "id": "ClaimType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "ClaimSubType.ID",
+   "id": "ClaimSubType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimSubType.Name",
+   "id": "ClaimSubType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimSubType.DisplayFormat",
+   "id": "ClaimSubType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "ClaimStatus.ID",
+   "id": "ClaimStatus_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimStatus.Name",
+   "id": "ClaimStatus_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimStatus.DisplayFormat",
+   "id": "ClaimStatus_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "ClaimSourceCode.ID",
+   "id": "ClaimSourceCode_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimSourceCode.Name",
+   "id": "ClaimSourceCode_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimSourceCode.DisplayFormat",
+   "id": "ClaimSourceCode_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "PayTo.ID",
+   "id": "PayTo_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "PayTo.Name",
+   "id": "PayTo_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "PayTo.DisplayFormat",
+   "id": "PayTo_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "ServiceType.ID",
+   "id": "ServiceType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ServiceType.Name",
+   "id": "ServiceType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ServiceType.DisplayFormat",
+   "id": "ServiceType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "ClaimType.Name",
+   "id": "ClaimType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimSubType.Name",
+   "id": "ClaimSubType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimStatus.Name",
+   "id": "ClaimStatus_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ClaimSourceCode.Name",
+   "id": "ClaimSourceCode_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "PayTo.Name",
+   "id": "PayTo_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ServiceType.Name",
+   "id": "ServiceType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "DiagnosisType.ID",
+   "id": "DiagnosisType_ID",
+   "size": 2,
+   "value": "02"
+  },
+  {
+   "name": "DiagnosisType.Name",
+   "id": "DiagnosisType_Name",
+   "size": 9,
+   "value": "ICD-10-CM"
+  },
+  {
+   "name": "DiagnosisType.DisplayFormat",
+   "id": "DiagnosisType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "DiagnosisType.Name",
+   "id": "DiagnosisType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt1ActionText",
+   "id": "Editor_Alt1ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt1ActionUrl",
+   "id": "Editor_Alt1ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt2ActionText",
+   "id": "Editor_Alt2ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt2ActionUrl",
+   "id": "Editor_Alt2ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt3ActionText",
+   "id": "Editor_Alt3ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt3ActionUrl",
+   "id": "Editor_Alt3ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt4ActionText",
+   "id": "Editor_Alt4ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt4ActionUrl",
+   "id": "Editor_Alt4ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt5ActionText",
+   "id": "Editor_Alt5ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt5ActionUrl",
+   "id": "Editor_Alt5ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt6ActionText",
+   "id": "Editor_Alt6ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt6ActionUrl",
+   "id": "Editor_Alt6ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt7ActionText",
+   "id": "Editor_Alt7ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt7ActionUrl",
+   "id": "Editor_Alt7ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt8ActionText",
+   "id": "Editor_Alt8ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt8ActionUrl",
+   "id": "Editor_Alt8ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.CancelActionText",
+   "id": "Editor_CancelActionText",
+   "size": 6,
+   "value": "Cancel"
+  },
+  {
+   "name": "Editor.CancelActionUrl",
+   "id": "Editor_CancelActionUrl",
+   "size": 13,
+   "value": "/Home/MyHome/"
+  },
+  {
+   "name": "Editor.ConfirmDeleteMessage",
+   "id": "Editor_ConfirmDeleteMessage",
+   "size": 37,
+   "value": "Are you sure you want to delete the ?"
+  },
+  {
+   "name": "Editor.DeleteActionText",
+   "id": "Editor_DeleteActionText",
+   "size": 6,
+   "value": "Delete"
+  },
+  {
+   "name": "Editor.DeletedMessage",
+   "id": "Editor_DeletedMessage",
+   "size": 26,
+   "value": " was successfully deleted."
+  },
+  {
+   "name": "Editor.Direction",
+   "id": "Editor_Direction",
+   "size": 4,
+   "value": "Next"
+  },
+  {
+   "name": "Editor.DirtyDataMessage",
+   "id": "Editor_DirtyDataMessage",
+   "size": 111,
+   "value": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?"
+  },
+  {
+   "name": "Editor.EntityName",
+   "id": "Editor_EntityName",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.IsAlt1Enabled",
+   "id": "Editor_IsAlt1Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt2Enabled",
+   "id": "Editor_IsAlt2Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt3Enabled",
+   "id": "Editor_IsAlt3Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt4Enabled",
+   "id": "Editor_IsAlt4Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt5Enabled",
+   "id": "Editor_IsAlt5Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt6Enabled",
+   "id": "Editor_IsAlt6Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt7Enabled",
+   "id": "Editor_IsAlt7Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt8Enabled",
+   "id": "Editor_IsAlt8Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsCancelEnabled",
+   "id": "Editor_IsCancelEnabled",
+   "size": 4,
+   "value": "True"
+  },
+  {
+   "name": "Editor.IsDirtyDataEnabled",
+   "id": "Editor_IsDirtyDataEnabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsPrintEnabled",
+   "id": "Editor_IsPrintEnabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsProcessDirty",
+   "id": "Editor_IsProcessDirty",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsResetEnabled",
+   "id": "Editor_IsResetEnabled",
+   "size": 4,
+   "value": "True"
+  },
+  {
+   "name": "Editor.Mode",
+   "id": "Editor_Mode",
+   "size": 6,
+   "value": "Create"
+  },
+  {
+   "name": "Editor.NextActionText",
+   "id": "Editor_NextActionText",
+   "size": 4,
+   "value": "Next"
+  },
+  {
+   "name": "Editor.PrevActionText",
+   "id": "Editor_PrevActionText",
+   "size": 4,
+   "value": "Prev"
+  },
+  {
+   "name": "Editor.PrintActionText",
+   "id": "Editor_PrintActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.PrintActionUrl",
+   "id": "Editor_PrintActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.ResetActionText",
+   "id": "Editor_ResetActionText",
+   "size": 5,
+   "value": "Reset"
+  },
+  {
+   "name": "Editor.SaveActionText",
+   "id": "Editor_SaveActionText",
+   "size": 6,
+   "value": "Search"
+  },
+  {
+   "name": "Editor.SavedMessage",
+   "id": "Editor_SavedMessage",
+   "size": 24,
+   "value": " was successfully saved."
+  },
+  {
+   "name": "Editor.ShowSummaryError",
+   "id": "Editor_ShowSummaryError",
+   "size": 4,
+   "value": "True"
+  },
+  {
+   "name": "Editor.Step",
+   "id": "Editor_Step",
+   "size": 1,
+   "value": "1"
+  },
+  {
+   "name": "Editor.StepCount",
+   "id": "Editor_StepCount",
+   "size": 1,
+   "value": "1"
+  },
+  {
+   "name": "Editor.TitleFormatText",
+   "id": "Editor_TitleFormatText",
+   "size": 25,
+   "value": "{0} {1} - Step {2} of {3}"
+  },
+  {
+   "name": "",
+   "id": "View_MemberGenderCode_desc",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "PrimaryDiagnosis.CodeDescr",
+   "id": "PrimaryDiagnosis_CodeDescr",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "",
+   "id": "PrimaryDiagnosis_Qualifier_desc",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "",
+   "id": "View_ExceptionErrorCode_desc",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EmergencyIndicator",
+   "size": 5,
+   "value": "false"
+  }
+ ],
+ "defaultButtons": [],
+ "forms": [
+  {
+   "index": 0,
+   "id": "ClaimsSearchForm",
+   "key": "ClaimsSearchForm",
+   "action": "/ClaimsManagement/SearchClaims",
+   "method": "POST",
+   "enctype": "application/x-www-form-urlencoded",
+   "fields": [
+    "text",
+    "text-2",
+    "fieldset-search-criteria",
+    "button-select",
+    "ClaimIdentifiersList",
+    "SearchICN",
+    "TCN",
+    "MCOICN",
+    "button-select-2",
+    "DateTypeList",
+    "FromDate",
+    "button-select-3",
+    "ToDate",
+    "button-select-4",
+    "button-select-5",
+    "MemberByList",
+    "MemberID",
+    "MemberName",
+    "PatientAccountNumber",
+    "button-select-6",
+    "ProviderRoleList",
+    "button-select-7",
+    "ProviderByList",
+    "NPI",
+    "ProviderName",
+    "ProviderTaxonomy",
+    "ProviderTaxID",
+    "ProviderID",
+    "ProviderLocationID",
+    "fieldset",
+    "button-select-8",
+    "ClaimTypeList",
+    "button-select-9",
+    "ClaimSubTypeList",
+    "button-select-10",
+    "ClaimStatusList",
+    "button-select-11",
+    "ClaimSourceCodeList",
+    "button-select-12",
+    "PayToList",
+    "button-select-13",
+    "ServiceTypeList",
+    "Modifiers1",
+    "Modifiers2",
+    "Modifiers3",
+    "Modifiers4",
+    "ExceptionErrorCode",
+    "AuthorizationNumber",
+    "OperatorIdentifier",
+    "RANumber",
+    "text-range-from",
+    "TotalBilledRangeFrom",
+    "button-increase-value",
+    "button-decrease-value",
+    "text-range-to",
+    "TotalBilledRangeTo",
+    "button-increase-value-2",
+    "button-decrease-value-2",
+    "ProcCodeFrom",
+    "ProcCodeTo",
+    "ToothNumberFrom",
+    "ToothNumberTo",
+    "button-select-14",
+    "DiagnosisTypeList",
+    "PrimaryDiagnosisCodeICD09",
+    "PrimaryDiagnosisCodeICD10",
+    "prevButton",
+    "resetButton",
+    "alt1Button",
+    "alt4Button",
+    "alt5Button",
+    "alt6Button",
+    "alt7Button",
+    "alt8Button",
+    "printButton",
+    "alt2Button",
+    "alt3Button",
+    "cancelButton",
+    "nextButton",
+    "excelButton",
+    "pdfButton",
+    "button-go-to-the-first-page",
+    "button-go-to-the-previous-page",
+    "button-page-0",
+    "button-go-to-the-next-page",
+    "button-go-to-the-last-page",
+    "text-page",
+    "text-page-2",
+    "button-select-15",
+    "select-page-sizes-drop-down",
+    "nextClaimButton",
+    "prevClaimButton",
+    "fieldset-2",
+    "View_MemberName",
+    "View_MemberDOB",
+    "button-select-16",
+    "View_MemberGenderCode_ID",
+    "View_BillingProviderName",
+    "View_BillingProviderTaxId",
+    "text-total-allowed-amount-calculated-",
+    "View_TotalAllowedAmount",
+    "button-increase-value-3",
+    "button-decrease-value-3",
+    "text-total-copay-amount-of-money-the-",
+    "View_TotalCopayAmount",
+    "button-increase-value-4",
+    "button-decrease-value-4",
+    "text-total-coinsurance-the-amount-bas",
+    "View_TotalCoinsuranceAmount",
+    "button-increase-value-5",
+    "button-decrease-value-5",
+    "text-total-deductible-amount-of-money",
+    "View_TotalDeductibleAmount",
+    "button-increase-value-6",
+    "button-decrease-value-6",
+    "text-total-spenddown-amount-of-money-",
+    "View_TotalSpenddownAmount",
+    "button-increase-value-7",
+    "button-decrease-value-7",
+    "PrimaryDiagnosis_Qualifier_ID",
+    "PrimaryDiagnosis_Code",
+    "View_ExceptionErrorCode_ID",
+    "View_Department",
+    "View_Location",
+    "EmergencyIndicator"
+   ]
+  }
+ ]
+}

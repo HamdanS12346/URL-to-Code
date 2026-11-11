@@ -1,0 +1,423 @@
+{
+  "source": "C:\\UI-specs\\URL-to-Code\\packs\\claims-mgmt-v1\\screens\\pro-dur\\reference.png",
+  "source_sha256": "d4df8800c99d5af3142356947fa7fecce927beb37657c72980b86ae1740b88fb",
+  "source_size": [
+    1905,
+    1600
+  ],
+  "css_mapping": {
+    "assumed_viewport_width": 1905,
+    "css_per_image_pixel": 1.0,
+    "meaning": "实现约定，不证明参考图原始 DPR 或 CSS 视口"
+  },
+  "regions": [
+    {
+      "name": "band-01-pro-dur",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        62,
+        1905,
+        77
+      ],
+      "normalized_box": [
+        0.0,
+        0.03875,
+        1.0,
+        0.048125
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        62.0,
+        1905.0,
+        77.0
+      ],
+      "selector": "#orientationLandscape > div:nth-of-type(2) > div:nth-of-type(3)",
+      "dom_comparable": true
+    },
+    {
+      "name": "band-02-produrdashboard",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        139,
+        1905,
+        350
+      ],
+      "normalized_box": [
+        0.0,
+        0.086875,
+        1.0,
+        0.21875
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        139.0,
+        1905.0,
+        350.0
+      ],
+      "selector": "#ProDURdashBoard",
+      "dom_comparable": true
+    },
+    {
+      "name": "band-03-disclaimer-the-website-is-prov",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        1482,
+        1905,
+        118
+      ],
+      "normalized_box": [
+        0.0,
+        0.92625,
+        1.0,
+        0.07375
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        1482.0,
+        1905.0,
+        118.0
+      ],
+      "selector": "#orientationLandscape > div:nth-of-type(2) > footer",
+      "dom_comparable": true
+    },
+    {
+      "name": "img-logo-png-v-19-1-64-0",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        50,
+        2,
+        116,
+        56
+      ],
+      "normalized_box": [
+        0.026247,
+        0.00125,
+        0.060892,
+        0.035
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        50.0,
+        2.0,
+        116.0,
+        56.0
+      ],
+      "dom_comparable": true
+    },
+    {
+      "name": "h1-pro-dur",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        203,
+        62,
+        78,
+        30
+      ],
+      "normalized_box": [
+        0.106562,
+        0.03875,
+        0.040945,
+        0.01875
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        203.0,
+        62.0,
+        78.0,
+        30.0
+      ],
+      "dom_comparable": true
+    },
+    {
+      "name": "row1-item1",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        484,
+        433,
+        312,
+        101
+      ],
+      "normalized_box": [
+        0.254068,
+        0.270625,
+        0.16378,
+        0.063125
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        484.0,
+        433.0,
+        312.0,
+        101.0
+      ],
+      "dom_comparable": true,
+      "group": "row1"
+    },
+    {
+      "name": "row1-item2",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        796,
+        433,
+        312,
+        117
+      ],
+      "normalized_box": [
+        0.417848,
+        0.270625,
+        0.16378,
+        0.073125
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        796.0,
+        433.0,
+        312.0,
+        117.0
+      ],
+      "dom_comparable": true,
+      "group": "row1"
+    },
+    {
+      "name": "row1-item3",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        1109,
+        433,
+        312,
+        88
+      ],
+      "normalized_box": [
+        0.582152,
+        0.270625,
+        0.16378,
+        0.055
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        1109.0,
+        433.0,
+        312.0,
+        88.0
+      ],
+      "dom_comparable": true,
+      "group": "row1"
+    },
+    {
+      "name": "row1-item4",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        1421,
+        433,
+        312,
+        149
+      ],
+      "normalized_box": [
+        0.745932,
+        0.270625,
+        0.16378,
+        0.093125
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        1421.0,
+        433.0,
+        312.0,
+        149.0
+      ],
+      "dom_comparable": true,
+      "group": "row1"
+    },
+    {
+      "name": "row2-item1",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        327,
+        582,
+        312,
+        101
+      ],
+      "normalized_box": [
+        0.171654,
+        0.36375,
+        0.16378,
+        0.063125
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        327.0,
+        582.0,
+        312.0,
+        101.0
+      ],
+      "dom_comparable": true,
+      "group": "row2"
+    },
+    {
+      "name": "row2-item2",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        640,
+        582,
+        312,
+        101
+      ],
+      "normalized_box": [
+        0.335958,
+        0.36375,
+        0.16378,
+        0.063125
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        640.0,
+        582.0,
+        312.0,
+        101.0
+      ],
+      "dom_comparable": true,
+      "group": "row2"
+    },
+    {
+      "name": "row2-item3",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        952,
+        582,
+        312,
+        165
+      ],
+      "normalized_box": [
+        0.499738,
+        0.36375,
+        0.16378,
+        0.103125
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        952.0,
+        582.0,
+        312.0,
+        165.0
+      ],
+      "dom_comparable": true,
+      "group": "row2"
+    },
+    {
+      "name": "row2-item4",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        1265,
+        582,
+        312,
+        309
+      ],
+      "normalized_box": [
+        0.664042,
+        0.36375,
+        0.16378,
+        0.193125
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        1265.0,
+        582.0,
+        312.0,
+        309.0
+      ],
+      "dom_comparable": true,
+      "group": "row2"
+    },
+    {
+      "name": "row2-item5",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        1577,
+        582,
+        312,
+        213
+      ],
+      "normalized_box": [
+        0.827822,
+        0.36375,
+        0.16378,
+        0.133125
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        1577.0,
+        582.0,
+        312.0,
+        213.0
+      ],
+      "dom_comparable": true,
+      "group": "row2"
+    }
+  ],
+  "groups": [
+    {
+      "name": "row1",
+      "members": [
+        "row1-item1",
+        "row1-item2",
+        "row1-item3",
+        "row1-item4"
+      ],
+      "x_gaps": [
+        0,
+        1,
+        0
+      ],
+      "median_width": 312.0,
+      "median_height": 109.0,
+      "median_gap": 0,
+      "y_spread": 0,
+      "width_spread": 0,
+      "meaning": "横向重复结构的描述统计，不自动把不等宽设计改成等宽"
+    },
+    {
+      "name": "row2",
+      "members": [
+        "row2-item1",
+        "row2-item2",
+        "row2-item3",
+        "row2-item4",
+        "row2-item5"
+      ],
+      "x_gaps": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "median_width": 312,
+      "median_height": 165,
+      "median_gap": 0.5,
+      "y_spread": 0,
+      "width_spread": 0,
+      "meaning": "横向重复结构的描述统计，不自动把不等宽设计改成等宽"
+    }
+  ],
+  "vertical_scans": [],
+  "input_manifest_sha256": "6b240c4cdfe68f37307dabd4424fda50278496afbb18dd731c3b28941c94db65"
+}

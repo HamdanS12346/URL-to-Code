@@ -1,0 +1,166 @@
+- banner:
+  - link "Client Logo":
+    - /url: /Home/MyHome/
+    - img "Client Logo"
+  - text: Medicaid Management Solutions Final Test
+  - menubar:
+    - menuitem "Messages":
+      - link "Messages":
+        - /url: javascript:getBroadcastMsg();
+    - menuitem "External Links":
+      - link "External Links":
+        - /url: javascript:toggleVisibilityStyle('divExternalLinks');
+    - menuitem "Favorites":
+      - link "Favorites":
+        - /url: javascript:getFavorites();
+    - menuitem "Contact Us":
+      - link "Contact Us":
+        - /url: javascript:getContactUs();
+    - menuitem "My Account":
+      - link "My Account":
+        - /url: /Home/MyAccount
+    - menuitem "Logout":
+      - link "Logout":
+        - /url: /Security/LogoutFromMenu
+  - navigation "Hamburger Menu":
+    - button "Main Menu": 
+- navigation:
+  - menubar:
+    - menuitem "Claims Management ":
+      - link "Claims Management ":
+        - /url: /ClaimsManagement/Dashboard
+  - heading "Search Claims" [level=1]
+- main:
+  - group:
+    - text: "* Search Criteria  Required Fields ( * ) Search By"
+    - img "HELP": 
+    - combobox "Search By Search for claims by ICN, TCN, or MCO ICN.":
+      - text: select a value...
+      - button "select":
+        - img
+    - text: Choose Date Type
+    - img "HELP": 
+    - combobox "Choose Date Type Search for claims by date of service (DOS), date received, or date paid.":
+      - text: Service Date
+      - button "select":
+        - img
+    - text: "* Date From"
+    - img "HELP": 
+    - combobox "Date From Beginning date range for date of service (DOS), date received, or date paid.": 11/10/2024
+    - button "select":
+      - img
+    - text: "* Date To"
+    - img "HELP": 
+    - combobox "Date To Ending date range for date of service (DOS), date received, or date paid.": 11/10/2026
+    - button "select":
+      - img
+    - text: Choose Member By
+    - img "HELP": 
+    - combobox "Choose Member By Search for claims by Member ID, Member Name or Patient Account Number":
+      - text: select a value...
+      - button "select":
+        - img
+    - text: Choose Provider Role
+    - img "HELP": 
+    - combobox "Choose Provider Role Search for claims by billing provider, performing provider, or referring provider":
+      - text: select a value...
+      - button "select":
+        - img
+    - group:
+      - text: Advanced  Claim Type
+      - img "HELP": 
+      - combobox "Claim Type Indicates the type of claim. i.e. Medical, Inpatient, Outpatient, Pharmacy, Dental":
+        - text: select a value...
+        - button "select":
+          - img
+      - text: Sub Type
+      - img "HELP": 
+      - combobox "Sub Type Indicates additional qualifications of types of claims within the initial claim type i.e. DME, Home Health are valid subtypes for a medical claim type":
+        - text: select a value...
+        - button "select":
+          - img
+      - text: Status
+      - img "HELP": 
+      - combobox "Status Identifies the status of the claim with the system i.e. Paid, Denied, Suspended, Voided, Adjusted.":
+        - text: select a value...
+        - button "select":
+          - img
+      - text: Claim Source Code
+      - img "HELP": 
+      - combobox "Claim Source Code Indicates the origin of the claim. i.e. HIPAA transaction, manual entry, batch entry.":
+        - text: select a value...
+        - button "select":
+          - img
+      - text: Pay To
+      - img "HELP": 
+      - combobox "Pay To Indicates who is paid when the claim is resolved. i.e. Member, Provider, Provider Group, Practice Location":
+        - text: select a value...
+        - button "select":
+          - img
+      - text: Svc Type
+      - img "HELP": 
+      - combobox "Svc Type The type of service associated with the major or primary procedure code for this claim.":
+        - text: select a value...
+        - button "select":
+          - img
+      - text: Mod1
+      - img "HELP": 
+      - combobox "Mod1 Code used to provide additional information about the procedure. May affect payment."
+      - text: Mod2
+      - img "HELP": 
+      - combobox "Mod2 Code used to provide additional information about the procedure. May affect payment."
+      - text: Mod3
+      - img "HELP": 
+      - combobox "Mod3 Code used to provide additional information about the procedure. May affect payment."
+      - text: Mod4
+      - img "HELP": 
+      - combobox "Mod4 Code used to provide additional information about the procedure. May affect payment."
+      - text: Exp Error Code
+      - img "HELP": 
+      - combobox "Exp Error Code Code used to identify the failed edit or audit."
+      - text: Prior Auth
+      - img "HELP": 
+      - textbox "Prior Auth Identifies the prior authorization (prior auth) number that provides approval for the services on the associated claim."
+      - text: Operator ID
+      - img "HELP": 
+      - textbox "Operator ID Identifies the last person that updated the claim."
+      - text: RA Number
+      - img "HELP": 
+      - textbox "RA Number Check number associated with the paid claim."
+      - text: Total Billed
+      - img "HELP": 
+      - text: Range From
+      - spinbutton "Range From": $0.00
+      - text: Range To
+      - spinbutton "Range To": $0.00
+      - text: Proc Code
+      - img "HELP": 
+      - text: From
+      - textbox "From"
+      - text: To
+      - textbox "To"
+      - text: Tooth No
+      - img "HELP": 
+      - text: From
+      - combobox "From"
+      - text: To
+      - combobox "To"
+      - text: Prim DX Code
+      - img "HELP": 
+      - text: Choose DX Type
+      - combobox "Choose DX Type":
+        - text: ICD-10-CM
+        - button "select":
+          - img
+      - text: Code
+      - combobox "Code"
+    - button "Reset"
+    - button "Cancel"
+    - button "Search"
+- contentinfo:
+  - text: Disclaimer Website Requirements Privacy Policy Cookie Policy © 2026 Gainwell Technologies. All rights reserved.
+  - strong: "Server:"
+  - text: 10.199.153.38
+  - strong: "Build Date:"
+  - text: 10/30/2026 3:28:37 AM
+  - strong: v30.0.0.2609

@@ -1,0 +1,55 @@
+{
+  "size_delta_px": [
+    0,
+    0
+  ],
+  "bad_pct": 2.73,
+  "mean_abs": 2.96,
+  "worst_band": {
+    "y": 16,
+    "bad_pct": 9.34
+  },
+  "bands": [
+    {
+      "y": 0,
+      "bad_pct": 0.0
+    },
+    {
+      "y": 16,
+      "bad_pct": 9.34
+    },
+    {
+      "y": 32,
+      "bad_pct": 7.87
+    },
+    {
+      "y": 48,
+      "bad_pct": 0.0
+    },
+    {
+      "y": 64,
+      "bad_pct": 0.0
+    },
+    {
+      "y": 80,
+      "bad_pct": 0.0
+    },
+    {
+      "y": 96,
+      "bad_pct": 0.0
+    }
+  ],
+  "clusters": [
+    {
+      "box": [
+        48,
+        0,
+        96,
+        48
+      ],
+      "bad_px": 490
+    }
+  ],
+  "worst_crop": "worst.png",
+  "verdict": "close"
+}

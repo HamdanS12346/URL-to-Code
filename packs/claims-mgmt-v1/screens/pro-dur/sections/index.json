@@ -1,0 +1,47 @@
+[
+ {
+  "n": 1,
+  "sel": "#orientationLandscape > div:nth-of-type(2) > div:nth-of-type(3)",
+  "tag": "div",
+  "id": "",
+  "cls": "menu",
+  "x": 0,
+  "y": 62,
+  "w": 1905,
+  "h": 76.5,
+  "label": "pro-dur",
+  "files": [
+   "01-pro-dur.png"
+  ]
+ },
+ {
+  "n": 2,
+  "sel": "#ProDURdashBoard",
+  "tag": "div",
+  "id": "ProDURdashBoard",
+  "cls": "col-md-12",
+  "x": 0,
+  "y": 138.5,
+  "w": 1905,
+  "h": 350,
+  "label": "produrdashboard",
+  "files": [
+   "02-produrdashboard.png"
+  ]
+ },
+ {
+  "n": 3,
+  "sel": "#orientationLandscape > div:nth-of-type(2) > footer",
+  "tag": "footer",
+  "id": "",
+  "cls": "",
+  "x": 0,
+  "y": 1481.5,
+  "w": 1905,
+  "h": 118.5,
+  "label": "disclaimer-the-website-is-prov",
+  "files": [
+   "03-disclaimer-the-website-is-prov.png"
+  ]
+ }
+]

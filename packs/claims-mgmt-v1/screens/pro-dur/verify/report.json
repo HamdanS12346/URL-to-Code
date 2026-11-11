@@ -1,0 +1,237 @@
+{
+  "size_delta_px": [
+    0,
+    -125
+  ],
+  "bad_pct": 9.92,
+  "mean_abs": 19.65,
+  "worst_band": {
+    "y": 1225,
+    "bad_pct": 33.27
+  },
+  "bands": [
+    {
+      "y": 0,
+      "bad_pct": 8.23
+    },
+    {
+      "y": 245,
+      "bad_pct": 4.56
+    },
+    {
+      "y": 490,
+      "bad_pct": 5.69
+    },
+    {
+      "y": 735,
+      "bad_pct": 4.63
+    },
+    {
+      "y": 980,
+      "bad_pct": 3.35
+    },
+    {
+      "y": 1225,
+      "bad_pct": 33.27
+    },
+    {
+      "y": 1470,
+      "bad_pct": 0
+    }
+  ],
+  "clusters": [
+    {
+      "box": [
+        0,
+        1152,
+        1905,
+        312
+      ],
+      "bad_px": 160950,
+      "css_box": [
+        0,
+        1152,
+        1905,
+        312
+      ],
+      "element": {
+        "el": "div#UnderusePrecautionPanel.col-md-2",
+        "text": "Underuse Precaution Audit GCN Sequence N",
+        "box": [
+          640,
+          1156,
+          313,
+          200
+        ]
+      }
+    },
+    {
+      "box": [
+        0,
+        96,
+        1896,
+        1056
+      ],
+      "bad_px": 115279,
+      "css_box": [
+        0,
+        96,
+        1896,
+        1056
+      ],
+      "element": {
+        "el": "div.broadcast-msg-list",
+        "text": "You have no messages",
+        "box": [
+          385,
+          338,
+          1211,
+          378
+        ]
+      }
+    },
+    {
+      "box": [
+        1584,
+        504,
+        288,
+        744
+      ],
+      "bad_px": 15657,
+      "css_box": [
+        1584,
+        504,
+        288,
+        744
+      ],
+      "element": {
+        "el": "div#DrugAgePediatricContent.panelborder",
+        "text": "Dosing Age Alerts Audit GCN Sequence Num",
+        "box": [
+          1601,
+          869,
+          267,
+          279
+        ]
+      }
+    },
+    {
+      "box": [
+        336,
+        864,
+        288,
+        360
+      ],
+      "bad_px": 6606,
+      "css_box": [
+        336,
+        864,
+        288,
+        360
+      ],
+      "element": {
+        "el": "div.produr-centered-content",
+        "text": "Audit GCN Sequence NDC TC List",
+        "box": [
+          366,
+          884,
+          116,
+          168
+        ]
+      }
+    },
+    {
+      "box": [
+        24,
+        504,
+        288,
+        264
+      ],
+      "bad_px": 5083,
+      "css_box": [
+        24,
+        504,
+        288,
+        264
+      ],
+      "element": {
+        "el": "div.produr-centered-content",
+        "text": "Audit GCN Sequence NDC TC List",
+        "box": [
+          53,
+          532,
+          116,
+          168
+        ]
+      }
+    }
+  ],
+  "worst_crop": "worst.png",
+  "sections": [
+    {
+      "n": 1,
+      "label": "pro-dur",
+      "y": 62,
+      "h": 76.5,
+      "bad_pct": 8.51
+    },
+    {
+      "n": 2,
+      "label": "produrdashboard",
+      "y": 138.5,
+      "h": 350,
+      "bad_pct": 6.73
+    },
+    {
+      "n": 3,
+      "label": "disclaimer-the-website-is-prov",
+      "y": 1481.5,
+      "h": 118.5,
+      "bad_pct": 100
+    }
+  ],
+  "worst_section": {
+    "n": 3,
+    "label": "disclaimer-the-website-is-prov",
+    "y": 1481.5,
+    "h": 118.5,
+    "bad_pct": 100
+  },
+  "verdict": "SIZE MISMATCH - fix layout/DPR first",
+  "states": [
+    {
+      "name": "tooltip",
+      "ok": false,
+      "bad_pct": 17.48,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-open",
+      "ok": true,
+      "bad_pct": 5.47,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-flyout",
+      "ok": true
+    },
+    {
+      "name": "menu-close",
+      "ok": true
+    }
+  ],
+  "bands_note": "the rebuild has 0 top-level bands, the original 3: section heights not compared",
+  "behavior": {
+    "console": {
+      "errors": [],
+      "reactWarnings": [],
+      "failedResources": 0
+    }
+  }
+}

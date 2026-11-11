@@ -1,0 +1,124 @@
+[
+ {
+  "name": "dropdown",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit=\"k1\"]"
+   }
+  ],
+  "wait": 600,
+  "clip": {
+   "x": 48,
+   "y": 249.5,
+   "width": 274.828125,
+   "height": 194.34375
+  },
+  "shot": "states/dropdown.png"
+ },
+ {
+  "name": "tooltip",
+  "steps": [
+   {
+    "do": "hover",
+    "sel": "[data-kit-tip]",
+    "nth": 0
+   }
+  ],
+  "wait": 750,
+  "clip": {
+   "x": 18,
+   "y": 36.171875,
+   "width": 178.828125,
+   "height": 101
+  },
+  "shot": "states/tooltip.png",
+  "expect": [
+   {
+    "sel": ".k-tooltip",
+    "lines": 1,
+    "why": "the live tooltip"
+   }
+  ]
+ },
+ {
+  "name": "search",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit-action=search]"
+   }
+  ],
+  "wait": 1200,
+  "full": true,
+  "shot": "states/search.png"
+ },
+ {
+  "name": "menu-open",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit-action=menu]"
+   }
+  ],
+  "wait": 800,
+  "shot": "states/menu-open.png",
+  "expect": [
+   {
+    "sel": "[data-kit-menu]",
+    "why": "the hamburger opens the side menu"
+   },
+   {
+    "sel": "[data-kit-menu-backdrop-live]",
+    "why": "with the backdrop the page appends"
+   }
+  ]
+ },
+ {
+  "name": "menu-flyout",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit-action=menu]"
+   },
+   {
+    "do": "hover",
+    "sel": "[data-kit-menu] li:has(> .k-menu-popup), [data-kit-menu] li:has(> .k-animation-container)",
+    "wait": 900
+   }
+  ],
+  "wait": 900,
+  "expect": [
+   {
+    "sel": "[data-kit-menu] li > .k-menu-popup, [data-kit-menu] li > .k-animation-container",
+    "why": "a module flies out on hover"
+   }
+  ]
+ },
+ {
+  "name": "menu-close",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit-action=menu]"
+   },
+   {
+    "do": "click",
+    "sel": "[data-kit-action=menu-close]"
+   }
+  ],
+  "wait": 600,
+  "expect": [
+   {
+    "sel": "[data-kit-menu]",
+    "visible": false,
+    "why": "its close icon closes it"
+   },
+   {
+    "sel": "[data-kit-menu-backdrop-live]",
+    "visible": false,
+    "why": "and removes the backdrop"
+   }
+  ]
+ }
+]
