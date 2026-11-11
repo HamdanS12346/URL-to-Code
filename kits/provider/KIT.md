@@ -104,6 +104,17 @@ flies out to the left after Kendo's hover delay (100 ms) with its menu animation
 menu link close it: Escape and a click on the backdrop do not. The capture records all of this on the menu root
 (`data-kit-menu-add/-remove/-backdrop/-hover/-open-ms/-close-ms`) and the kit replays it; a link to a rebuilt screen routes there.
 
+A module's submenu is a box **beside** the module list, not inside it: Kendo lifts the popup out of the `<ul>` (which clips what
+is inside) into a `.k-animation-container` on the menu's scroll wrapper, `left: -width; top: <the item's top>` for the vertical
+side menu, under the item for the horizontal **module tab** (`#activeModuleMenu`, "CLAIMS MANAGEMENT ∨" under the header). The
+kit does the same for both (`[data-kit-flyout]`), with each menu's own timings (stamped on the `<ul>`). Only a link to a screen of
+this app navigates (and closes the menu); every other item is shown and leads nowhere, so the whole menu can be browsed. **Quick
+Links** (`#mobileMenuIcon`) is a collapsible shell panel: the capture stamps it (`collapse`) and the kit toggles its angle icon,
+`subpanel-collapsed`, title and body like the portal's `expandPanel`. The **page help book** (`.help-icon-container`) belongs to
+the page, not the shell: each screen's `screen.json` `help` is its markup or null, and the screen shows or hides it.
+`kit/states` check all of it on the rebuild (`menu-open`, `menu-flyout`, `tab-flyout`, `menu-close`): the fly-out must be on top and
+outside the list, and look like the live one. Captures from before this have no `menu-flyout`/`tab-flyout`/`help`: capture again.
+
 ## Dialogs and grid rows
 
 The capture reads the screen's own script for `openModalOverlay("<panel>", …)` (each dialog, and the button that opens it) and

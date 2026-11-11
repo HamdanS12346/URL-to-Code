@@ -27,6 +27,9 @@ export type KitData = {
   // the capture did not manage to harvest
   plan?: { dialogs: { panel: string; opener: string | null; via: string | null }[]; rowDouble: string | null; rowSingle: string | null; rowOpens: string | null };
   missing?: { panel: string; opener: string | null; via: string | null }[];
+  // the page-level help icon (the book, .help-icon-container) as the live page had it, or null when it had none; the icon
+  // belongs to the page, not the shared shell, so each screen shows or hides it (undefined: a capture from before this)
+  help?: string | null;
   calibration: { defaults?: { popup?: { open?: Anim; close?: Anim }; tooltip?: { showAfter?: number; hideAfter?: number; animation?: { open?: Anim; close?: Anim } } | null; window?: { open?: Anim; close?: Anim } | null; menu?: { open?: Anim; close?: Anim } | null; tooltipGap?: number } | null;
     dropdownPopup?: string | null; calendarPopup?: string | null; tooltip?: string | null };
 };

@@ -31,7 +31,8 @@ body{margin:0;font:14px Arial,"Helvetica Neue",Helvetica,sans-serif;color:#333;b
 .disabled-backdrop{position:fixed;inset:0;background:#000;opacity:.3;z-index:1001}
 #mainMenuContainer{position:fixed;top:0;right:0;width:288px;height:100%;background:#fff;z-index:1002;padding-top:60px;box-sizing:border-box;flex-direction:column}
 #mainMenuContainer .fa-xmark{position:absolute;left:16px;top:20px;color:#2b3a44}
-#mainMenu{border:0;width:100%}#mainMenu .k-menu-link{font-weight:bold;color:#1e2a33}
+#mainMenuItemContainer{display:flex;height:82vh}.menu .k-menu{background:#2b3a44;border:0;line-height:32px}.menu .k-menu-link{color:#fff;text-transform:uppercase;padding:0 12px}.menu .k-menu-group{background:#2b3a44}.menu .k-menu-group a{color:#fff;padding:8px 14px;display:block}
+#mainMenu{border:0;width:100%}#mainMenu .k-menu-link,.child-menu .k-menu-link{font-weight:bold;color:#1e2a33}
 #moduleContentBar{display:flex;height:32px;align-items:center;background:#00f0b0}
 .module-name{background:#2b3a44;color:#fff;height:32px;line-height:32px;padding:0 6px 0 36px;text-transform:uppercase}
 #moduleContentBar h1{margin:0 0 0 10px;font:italic bold 14px Arial}
@@ -61,7 +62,7 @@ const MODULES = [
 const field = (id, label, input, help = label, req = false) => `<div class="editor-col" id="${id}_parent"><div class="editor-label">${req ? `<span class="clickable editor-req-field fa-solid fa-asterisk" title="${label} is a required field." data-role="tooltip"></span>` : ''}<label for="${id}" id="${id}Label">${label}</label><span class="clickable editor-icon fa-solid fa-circle-question" id="${id}Help" role="img" title="${help}" data-role="tooltip"></span></div><div class="editor-field">${input}</div></div>`;
 const text = (id, name, extra = '') => `<span class="k-input k-textbox"><input class="k-input-inner" id="${id}" name="${name}" ${extra}></span>`;
 
-const layout = (loggedIn, { title, module, body = '', bodyClass = '' }) => `<!doctype html><html lang="en-US"><head><meta charset="utf-8"><title>${title || 'Home'}</title>
+const layout = (loggedIn, { title, module, body = '', bodyClass = '', help = false }) => `<!doctype html><html lang="en-US"><head><meta charset="utf-8"><title>${title || 'Home'}</title>
 <link rel="stylesheet" href="/css/kendo.css"><style>${CSS}</style>
 <script src="/js/jquery.min.js"></script><script src="/js/kendo.ui.core.min.js"></script><script src="/js/pro.js"></script></head>
 <body class="${bodyClass}">
@@ -74,10 +75,11 @@ ${loggedIn ? '<ul class="aag-menu"><li><a href="javascript:void(0)">Messages</a>
 </header></div>
 <input class="editor-control" id="menuSearch" type="hidden">
 <div id="mainMenuContainer" class="display-none"><i id="mainMenuClose" class="fa-solid fa-xmark clickable" onclick="closeMainMenu()" role="button" aria-label="Close"></i>
-${loggedIn ? `<ul id="mainMenu">${MODULES.map(([m, items]) => `<li>&nbsp;${m}<ul class="child-menu">${items.map(([l, h]) => `<li><a href="${h}">&nbsp;${l}</a></li>`).join('')}</ul></li>`).join('')}</ul>`
+${loggedIn ? `<div class="mobile-aag"><div class="content-subpanel-container collapsedPanel"><div class="content-subpanel-hdr">Quick Links</div><div class="content-subpanel-hdr-tools"><div class="content-ordered-panel-hdr-tools"><div class="panel-icon clickable"><div id="mobileMenuIcon" class="fa-solid fa-angle-down subpanel-collapsed" title="Expand" tabindex="0"></div></div></div></div><div class="content-subpanel-bdy" style="display:none"><ul class="aag-menu-quick"><li><a href="javascript:void(0)">Messages</a></li><li><a href="/Home/MyAccount">My Account</a></li></ul></div></div></div><div id="mainMenuItemContainer"><ul id="mainMenu">${MODULES.map(([m, items]) => `<li>&nbsp;${m}<ul class="child-menu">${items.map(([l, h]) => `<li><a href="${h}">&nbsp;${l}</a></li>`).join('')}</ul></li>`).join('')}</ul></div>`
     : '<form class="login" method="post" action="/login" style="padding:24px"><label>User name <input name="user" type="text"></label><br><label>Password <input name="pass" type="password"></label><br><button type="submit">Log In</button></form>'}
 </div>
-${module ? `<div id="moduleContentBar"><div class="module-name">${module}</div><h1>${title}</h1></div>` : ''}
+${module ? `<div id="moduleContentBar"><div class="module-name">${module}</div><div class="menu" role="navigation"><ul id="activeModuleMenu"><li><a href="/Dashboard">${module} <i class="fa-solid fa-chevron-down"></i></a><ul class="k-menu-group">${(MODULES.find(([m]) => m === module)?.[1] || []).map(([l, h]) => `<li><a href="${h}">${l}</a></li>`).join('')}</ul></li></ul></div><h1>${title}</h1></div>` : ''}
+<div id="mcbRowBorder">${help ? '<div id="mcbHelpIcon" class="help-icon-container"><span class="fa-stack clickable" onclick="displayPageLevelHelp()" role="button" tabindex="0" aria-label="Help" title="Help" data-role="tooltip"><i class="fa-solid fa-book-open help-icon-stack-top"></i></span></div>' : ''}</div>
 <div id="mainContent">${body}</div>
 <div id="pageFooter"><div id="baseFooter"><span>© 2026 Test Portal. All rights reserved.</span></div></div>
 <script>
@@ -98,6 +100,7 @@ function openModalOverlay(panelId, url, cssClass){
 function setKendoGridDataBoundEvents(e, msg, onClick, onDblClick){ /* the client's version binds the row clicks here */ }
 $(function(){
   $('#mainMenu').kendoMenu({ orientation: 'vertical', direction: 'left', hoverDelay: 100, animation: { open: { duration: 200 }, close: { duration: 100 } } });
+  $('#activeModuleMenu').kendoMenu({ openOnClick: false });
   $('[data-role=tooltip]').each(function(){ $(this).kendoTooltip({ position: 'top', showAfter: 400 }); });
 });
 </script></body></html>`;
@@ -135,7 +138,7 @@ const PAGES = {
 });</script>`,
   }),
   '/FileTransfer/SearchFileTransferTracking': () => ({
-    title: 'File Transfer Tracking', module: 'File Transfer Services', bodyClass: 'FileTransfer SearchFileTransferTracking',
+    title: 'File Transfer Tracking', module: 'File Transfer Services', help: true, bodyClass: 'FileTransfer SearchFileTransferTracking',
     body: searchCriteria(`<div class="editor-row">${field('FileId', 'File ID', text('FileId', 'FileId'))}${field('FileStatus', 'File Status', '<input id="FileStatus" name="FileStatus">')}</div>
 <div class="editor-row">${field('FromDate', 'From Date', '<input id="FromDate" name="FromDate">')}${field('ToDate', 'To Date', '<input id="ToDate" name="ToDate">')}</div>`) + results() +
       `<script>$(function(){

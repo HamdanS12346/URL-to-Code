@@ -130,10 +130,18 @@ if (kitStates?.length && process.env.STATES !== '0') {
       // what must be true after the steps (the side menu open, its fly-out shown, closed again), checked in the DOM
       const failed = [];
       for (const e of st.expect ?? []) {
-        const seen = await p.locator(e.sel).evaluateAll((els) => els.filter((x) => x.getClientRects().length && getComputedStyle(x).visibility !== 'hidden')
-          .map((x) => { const t = x.querySelector('.k-tooltip-content') ?? x; const lh = parseFloat(getComputedStyle(t).lineHeight) || 18; return Math.round(t.getBoundingClientRect().height / lh); }));
+        // per matched, shown element: its text lines, whether it is what the pointer would hit at its centre (an element
+        // clipped by an ancestor's overflow still has a box but is not on top), and whether its box overlaps `outside`'s
+        const seen = await p.locator(e.sel).evaluateAll((els, outside) => els.filter((x) => x.getClientRects().length && getComputedStyle(x).visibility !== 'hidden')
+          .map((x) => {
+            const t = x.querySelector('.k-tooltip-content') ?? x, lh = parseFloat(getComputedStyle(t).lineHeight) || 18, r = x.getBoundingClientRect();
+            const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2), o = outside && document.querySelector(outside)?.getBoundingClientRect();
+            return { lines: Math.round(t.getBoundingClientRect().height / lh), top: !!hit && x.contains(hit), overlaps: !!o && Math.min(r.right, o.right) - Math.max(r.left, o.left) > 1 && Math.min(r.bottom, o.bottom) - Math.max(r.top, o.top) > 1 };
+          }), e.outside ?? null);
         if ((e.visible ?? true) !== seen.length > 0) failed.push(`${e.sel} ${e.visible === false ? 'still shown' : 'not shown'}${e.why ? ` (${e.why})` : ''}`);
-        else if (e.lines && seen.length && seen[0] > e.lines) failed.push(`${e.sel} wraps onto ${seen[0]} lines, the live one has ${e.lines}`);
+        else if (e.lines && seen.length && seen[0].lines > e.lines) failed.push(`${e.sel} wraps onto ${seen[0].lines} lines, the live one has ${e.lines}`);
+        else if (e.top && seen.length && !seen.some((x) => x.top)) failed.push(`${e.sel} is shown but covered or clipped: not on top${e.why ? ` (${e.why})` : ''}`);
+        else if (e.outside && seen.some((x) => x.overlaps)) failed.push(`${e.sel} opens inside ${e.outside}, which clips it; the live one opens beside it${e.why ? ` (${e.why})` : ''}`);
       }
       if (failed.length) r.error = failed.join('; ');
       if (!st.shot) { r.ok = !failed.length; } else {

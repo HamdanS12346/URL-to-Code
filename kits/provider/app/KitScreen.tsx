@@ -132,27 +132,64 @@ function menuClasses(el: HTMLElement): [string[], string[]] {
   return [[], []];
 }
 const menuMs = (menu: Element | null, which: 'hover' | 'open-ms' | 'close-ms', dflt: number) => { const v = menu?.getAttribute(`data-kit-menu-${which}`); return v != null && v !== '' && !isNaN(+v) ? +v : dflt; };
-const flyout = (li: Element) => li.querySelector<HTMLElement>(':scope > .k-menu-popup, :scope > .k-animation-container');
-// a module's fly-out opens after Kendo's hover delay and slides out of the menu; it closes with the close animation
-function showFlyout(menu: Element, li: Element) {
-  for (const sib of li.parentElement?.children ?? []) if (sib !== li) { sib.classList.remove('k-hover'); const p = flyout(sib); if (p) hideFlyout(menu, p); }
-  li.classList.add('k-hover');
-  const pop = flyout(li);
-  if (!pop || pop.style.display === 'block') return;
-  (li as HTMLElement).style.position = 'relative';
-  Object.assign(pop.style, { display: 'block', position: 'absolute', right: '100%', top: '0', zIndex: '10002' });
-  pop.animate([{ transform: 'translateX(100%)', opacity: 0 }, { transform: 'translateX(0)', opacity: 1 }], { duration: menuMs(menu, 'open-ms', DEFAULTS.menuMs), easing: 'ease-out' });
+// A Kendo menu (the side menu's module list, the module tab under the header) opens a submenu the way Kendo does: it lifts
+// the item's popup out of the <ul> into a `.k-animation-container` on the menu's scroll wrapper (the ul clips what is inside
+// it), beside the item: to the left of a vertical menu (left: -width, top: the item's top), under a horizontal one. The
+// portal's CSS styles that container, so the clone gets the same classes. Timings: the menu's own (data-kit-menu-*), else Kendo's.
+const MENU = 'ul[data-role=menu]';
+type Fly = { li: Element; box: HTMLElement };
+const flys = new WeakMap<Element, Fly>();
+const flyMs = (ul: Element, which: 'hover' | 'open-ms' | 'close-ms', dflt: number) =>
+  menuMs(ul.hasAttribute(`data-kit-menu-${which}`) ? ul : ul.closest(`[data-kit-menu-${which}]`), which, dflt);
+const hostOf = (ul: Element) => (ul.closest('.k-menu-scroll-wrapper') ?? ul.parentElement) as HTMLElement;
+const isHorizontal = (ul: Element) => ul.getAttribute('aria-orientation') === 'horizontal' || ul.classList.contains('k-menu-horizontal');
+const slideFrom = (ul: Element) => (isHorizontal(ul) ? 'translateY(-100%)' : 'translateX(100%)');
+function hideFly(ul: Element, now = false) {
+  const f = flys.get(ul);
+  if (!f) return;
+  flys.delete(ul);
+  f.li.classList.remove('k-hover', 'k-focus');
+  f.li.setAttribute('aria-expanded', 'false');
+  const ms = now ? 0 : flyMs(ul, 'close-ms', 100), done = () => f.box.remove();
+  if (!ms) return done();
+  f.box.classList.remove('k-animation-container-shown');
+  f.box.firstElementChild!.animate([{ transform: 'translate(0, 0)' }, { transform: slideFrom(ul) }], { duration: ms, easing: 'ease-in', fill: 'forwards' }).finished.then(done, done);
 }
-function hideFlyout(menu: Element, p: HTMLElement, now = false) {
-  if (p.style.display !== 'block') return;
-  const ms = now ? 0 : menuMs(menu, 'close-ms', 100);
-  if (!ms) { p.style.display = 'none'; return; }
-  p.animate([{ transform: 'translateX(0)', opacity: 1 }, { transform: 'translateX(100%)', opacity: 0 }], { duration: ms, easing: 'ease-in' }).finished.then(() => { p.style.display = 'none'; }, () => {});
+// opens `li`'s popup (and closes the one that was open); an item without a popup only closes the open one
+function showFly(ul: Element, li: Element) {
+  const cur = flys.get(ul);
+  if (cur?.li === li) return;
+  const pop = li.querySelector<HTMLElement>(':scope > .k-menu-popup, :scope > .k-animation-container .k-menu-popup');
+  hideFly(ul, !!pop);
+  if (!pop) return;
+  li.classList.add('k-hover', 'k-focus'); // the portal's CSS highlights the open item through these
+  li.setAttribute('aria-expanded', 'true');
+  const host = hostOf(ul);
+  if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
+  const box = document.createElement('div');
+  box.className = 'k-animation-container';
+  box.setAttribute('role', 'region');
+  box.setAttribute('data-kit-flyout', '');
+  const child = document.createElement('div');
+  child.className = 'k-child-animation-container';
+  const clone = pop.cloneNode(true) as HTMLElement;
+  clone.style.removeProperty('display');
+  clone.setAttribute('aria-hidden', 'false');
+  child.append(clone);
+  box.append(child);
+  Object.assign(box.style, { display: 'block', position: 'absolute', zIndex: '10002', visibility: 'hidden' });
+  host.append(box);
+  const w = clone.offsetWidth, h = clone.offsetHeight;
+  Object.assign(child.style, { display: 'block', width: `${w}px`, height: `${h}px` });
+  const hr = host.getBoundingClientRect(), lr = li.getBoundingClientRect();
+  if (isHorizontal(ul)) Object.assign(box.style, { top: `${lr.bottom - hr.top}px`, left: `${lr.left - hr.left}px` });
+  else Object.assign(box.style, { top: `${lr.top - hr.top}px`, left: `${-w}px` });
+  box.style.removeProperty('visibility');
+  flys.set(ul, { li, box });
+  child.animate([{ transform: slideFrom(ul) }, { transform: 'translate(0, 0)' }], { duration: flyMs(ul, 'open-ms', DEFAULTS.menuMs), easing: 'ease-out' })
+    .finished.then(() => box.classList.add('k-animation-container-shown'), () => {});
 }
-function closeFlyouts(menu: Element, now = false) {
-  menu.querySelectorAll('li.k-hover').forEach((li) => li.classList.remove('k-hover'));
-  menu.querySelectorAll<HTMLElement>('.k-menu-popup, li > .k-animation-container').forEach((p) => hideFlyout(menu, p, now));
-}
+const closeFlys = (root: ParentNode, now = false) => root.querySelectorAll(MENU).forEach((ul) => hideFly(ul, now));
 
 // ---------- a dialog: the portal's Kendo window chrome around the ported content ----------
 function Window({ id, def, Body, depth, closing, onClosed }: { id: string; def: DialogDef; Body?: ComponentType; depth: number; closing: boolean; onClosed: () => void }) {
@@ -221,6 +258,33 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
     return () => removeEventListener('scroll', onScroll);
   }, [shell]);
 
+  // the page-level help icon (the book): it sits in the title row, which the shared shell owns, but the live page decides per
+  // screen whether it has one. This screen's capture says so: show it when the live page had it (the shell, ported from
+  // another screen, may not carry it), hide the shell's when the live page had none. No-op on a capture without `help`.
+  useLayoutEffect(() => {
+    if (shell || screen.help === undefined) return;
+    const row = document.getElementById('mcbRowBorder');
+    if (!row) return;
+    const cur = row.querySelector<HTMLElement>('.help-icon-container');
+    if (!screen.help) {
+      if (!cur) return;
+      const was = cur.style.display;
+      cur.style.display = 'none';
+      return () => { cur.style.display = was; };
+    }
+    if (cur) return;
+    const el = parseHtml(screen.help) as HTMLElement | null;
+    if (!el) return;
+    el.querySelectorAll('[onclick], [onkeypress]').forEach((e) => { e.removeAttribute('onclick'); e.removeAttribute('onkeypress'); }); // the portal's page-help window is not rebuilt
+    el.querySelectorAll('[title]').forEach((e) => {
+      if (!e.hasAttribute('data-kit-tip') && e.matches('[data-role=tooltip]')) e.setAttribute('data-kit-tip', e.getAttribute('title')!);
+      if (!e.hasAttribute('aria-label')) e.setAttribute('aria-label', e.getAttribute('title')!);
+      e.removeAttribute('title');
+    });
+    row.append(el);
+    return () => el.remove();
+  }, [screen, shell]);
+
   // the side menu, as the page's own script does it: swap the classes the capture saw change on its root (the portal's
   // display-none / display-flex, which are !important, so an inline display can never show it) and append the backdrop
   // it adds to <body>. No fade: the live menu has none. Its close icon, a link in it, or the hamburger close it again.
@@ -230,7 +294,7 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
       const [add, rm] = menuClasses(el);
       if (add.length || rm.length) { el.classList.remove(...(show ? rm : add)); el.classList.add(...(show ? add : rm)); el.style.removeProperty('display'); }
       else el.style.display = show ? el.getAttribute('data-kit-menu') || 'block' : 'none';
-      if (!show) closeFlyouts(el, true);
+      if (!show) closeFlys(el, true);
       const bd = el.getAttribute('data-kit-menu-backdrop');
       if (show && bd && !backdrop.current) {
         const b = parseHtml(bd) as HTMLElement | null;
@@ -271,8 +335,14 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
       let p = '';
       try { p = new URL(a.getAttribute('href') ?? '', location.origin).pathname.toLowerCase(); } catch { /* javascript: links */ }
       const hit = p ? routes.find((r) => { try { return !!r.url && new URL(r.url).pathname.toLowerCase() === p; } catch { return false; } }) : undefined;
-      if (hit || a.closest('[data-kit-menu]')) sideMenu(false); // a menu item closes the menu, like the portal's .child-menu click
-      if (hit) location.hash = `#${hit.path}`;
+      // an item of a rebuilt screen routes there and closes the menu, like the portal's .child-menu click; every other item of
+      // the menu is shown but leads nowhere (the other modules are not rebuilt here), and the menu stays open
+      if (hit) {
+        const fly = a.closest('[data-kit-flyout]'), inMenu = !!a.closest('[data-kit-menu]'); // before the fly-out (and the link with it) is removed
+        if (fly) closeFlys(fly.parentElement!, true);
+        if (inMenu) sideMenu(false);
+        location.hash = `#${hit.path}`;
+      }
       return;
     }
     const kind = act.getAttribute('data-kit-action');
@@ -303,11 +373,26 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
       case 'save': if (dlg && validate(scope)) Promise.resolve(services?.save?.(dlg, values(scope))).finally(() => closeDialog(dlg)); break;
       case 'cancel': case 'close': if (dlg) closeDialog(dlg); break;
       case 'collapse': {
-        const body = (act.closest('[class*=hdr], [class*=header], [class*=heading]') ?? act.parentElement)?.nextElementSibling as HTMLElement | null;
+        // the body: the panel container's own (the portal's .content-subpanel-container > .content-subpanel-bdy, whose header
+        // tools hold the icon one level down), else the element that follows the header
+        const box = act.closest<HTMLElement>('[class*=panel-container]');
+        const body = (box?.querySelector(':scope > [data-kit-collapse]') ?? (act.closest('[class*=hdr], [class*=header], [class*=heading]') ?? act.parentElement)?.nextElementSibling) as HTMLElement | null;
         if (!body?.matches('[data-kit-collapse]')) break;
         const opening = !shown(body);
-        const icon = act.matches('[class*=chevron]') ? act : act.querySelector('[class*=chevron]');
-        if (icon) for (const c of [...icon.classList]) if (/chevron-(up|down)$/.test(c)) icon.classList.replace(c, c.replace(/(up|down)$/, (m) => (m === 'up' ? 'down' : 'up')));
+        const icon = act.matches('[class*=chevron], [class*=angle]') ? act : act.querySelector('[class*=chevron], [class*=angle]');
+        if (icon) {
+          // what the portal's expandPanel / collapsePanel do to the icon: chevron / angle up <-> down, its *-collapsed class,
+          // its Expand / Collapse title, and the container's collapsedPanel class
+          for (const c of [...icon.classList]) if (/(chevron|angle)-(up|down)$/.test(c)) icon.classList.replace(c, c.replace(/(up|down)$/, (m) => (m === 'up' ? 'down' : 'up')));
+          const flag = (el: HTMLElement | Element, re: RegExp) => {
+            if (opening) { const c = [...el.classList].find((x) => re.test(x)); if (c) { el.classList.remove(c); (el as HTMLElement).dataset.kitWas = c; } } else { const c = (el as HTMLElement).dataset.kitWas; if (c) el.classList.add(c); }
+          };
+          flag(icon, /^(subpanel|subsec|panel)-collapsed$/);
+          if (box) flag(box, /^collapsedPanel$/);
+          const t = icon.getAttribute('title');
+          if (t === 'Expand' || t === 'Collapse') icon.setAttribute('title', t === 'Expand' ? 'Collapse' : 'Expand');
+        }
+        if (act.id === 'mobileMenuIcon') document.getElementById('mainMenuItemContainer')?.style.setProperty('height', '20vh'); // the portal's own handler does this on every click
         if (opening) { reveal(body); const h = body.scrollHeight; body.animate([{ height: '0px', overflow: 'hidden' }, { height: `${h}px`, overflow: 'hidden' }], { duration: DEFAULTS.collapseMs }); }
         else { const h = body.offsetHeight; body.animate([{ height: `${h}px`, overflow: 'hidden' }, { height: '0px', overflow: 'hidden' }], { duration: DEFAULTS.collapseMs }).finished.then(() => { body.style.display = 'none'; }, () => {}); }
         break;
@@ -323,21 +408,28 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
       clearTimeout(tipTimer);
       tipTimer = window.setTimeout(() => showTip(screen, target), +(target.getAttribute('data-kit-tip-after') ?? DEFAULTS.tooltipShow));
     }
-    const li = t.closest('[data-kit-menu] li');
-    if (li && !li.classList.contains('k-hover')) { // a module of the side menu flies out to the left, after Kendo's hover delay
-      const menu = li.closest('[data-kit-menu]')!;
+    // an item of a Kendo menu opens its submenu after the menu's hover delay; the pointer inside an open submenu keeps it open
+    const sub = t.closest('[data-kit-flyout]'), li = t.closest(`${MENU} > li`);
+    if (sub) {
       clearTimeout(menuTimer.current);
-      menuTimer.current = window.setTimeout(() => showFlyout(menu, li), menuMs(menu, 'hover', 100));
+      sub.querySelectorAll('li.k-hover').forEach((x) => x.classList.remove('k-hover', 'k-focus'));
+      t.closest('li')?.classList.add('k-hover', 'k-focus');
+    } else if (li && !li.classList.contains('k-hover')) {
+      const ul = li.parentElement!;
+      clearTimeout(menuTimer.current);
+      menuTimer.current = window.setTimeout(() => showFly(ul, li), flyMs(ul, 'hover', 100));
     } else if (li) clearTimeout(menuTimer.current);
   };
   const onOut = (e: SyntheticEvent) => {
     const t = e.target as Element, to = (e.nativeEvent as MouseEvent).relatedTarget as Element | null;
     const target = t.closest('[data-kit-tip]');
     if (target && !(to && target.contains(to))) { clearTimeout(tipTimer); tipTimer = window.setTimeout(() => hideTip(false, screen), screen.calibration?.defaults?.tooltip?.hideAfter ?? DEFAULTS.tooltipHide); }
-    const menu = t.closest('[data-kit-menu]');
-    if (menu && !(to && menu.contains(to))) {
+    // leaving a menu (its list or its open submenu) for somewhere outside both closes the submenu after the hover delay
+    const scope = t.closest(`${MENU}, [data-kit-flyout]`);
+    const host = scope && (scope.matches(MENU) ? hostOf(scope) : scope.parentElement);
+    if (host && !(to && host.contains(to))) {
       clearTimeout(menuTimer.current);
-      menuTimer.current = window.setTimeout(() => closeFlyouts(menu), menuMs(menu, 'hover', 100));
+      menuTimer.current = window.setTimeout(() => closeFlys(host), flyMs(host.querySelector(MENU) ?? host, 'hover', 100));
     }
   };
   const focusWrap = (e: SyntheticEvent, on: boolean) => { (e.target as Element).closest?.('.k-input, .k-picker, .k-textbox, .k-numerictextbox, .k-dropdownlist')?.classList.toggle('k-focus', on); };

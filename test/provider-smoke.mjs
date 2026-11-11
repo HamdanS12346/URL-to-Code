@@ -86,7 +86,10 @@ assert.equal(trk.row?.via, 'dblclick', `the row opened by double-click: ${JSON.s
 assert.equal(trk.dialogs[trk.row.dialog]?.title, 'View File Transfer Tracking', 'the view dialog harvested');
 assert.deepEqual(trk.missing, [], 'every dialog the script opens was harvested');
 const cfgStates = j(path.join(S('file-transfer-configuration'), 'kit', 'states.json')).map((s) => s.name);
-for (const n of ['menu-open', 'menu-flyout', 'menu-close']) assert.ok(cfgStates.includes(n), `verify replays ${n}: ${cfgStates}`);
+for (const n of ['menu-open', 'menu-flyout', 'menu-close', 'tab-flyout']) assert.ok(cfgStates.includes(n), `verify replays ${n}: ${cfgStates}`);
+// the page-level help book: the tracking page has it, the others (and so the shell, ported from the first) do not
+assert.ok(j(path.join(S('file-transfer-tracking'), 'kit', 'screen.json')).help?.includes('help-icon-container'), 'the tracking capture records its help book');
+assert.equal(j(path.join(S('file-transfer-configuration'), 'kit', 'screen.json')).help, null, 'the configuration capture records that it has none');
 assert.ok(fs.readFileSync(path.join(S('file-transfer-configuration'), 'facts.md'), 'utf8').includes('Provider kit harvest'), 'facts.md carries the harvest');
 const st = j(path.join(P, 'status.json')).items;
 for (const s of pack.screens) assert.equal(st[`spec:${s.id}`]?.status, 'done', `spec:${s.id}: ${JSON.stringify(st[`spec:${s.id}`])}`);
@@ -185,8 +188,34 @@ try {
   assert.ok(await p.locator('[data-kit-menu]').first().isVisible(), 'Escape and a click on the backdrop do not close it (as on the live portal)');
   await p.locator('[data-kit-menu] li', { hasText: 'File Transfer Services' }).first().hover();
   await p.waitForTimeout(700);
-  const fly = p.locator('[data-kit-menu] li > .k-menu-popup, [data-kit-menu] li > .k-animation-container').filter({ hasText: 'File Transfer Tracking' });
+  const fly = p.locator('[data-kit-flyout]').filter({ hasText: 'File Transfer Tracking' });
   assert.ok(await fly.first().isVisible(), 'the module flies out on hover');
+  // beside the module list (Kendo lifts the popup out of the <ul>, which clips what is inside it), and on top of the page
+  const [fb, mb] = [await fly.first().boundingBox(), await p.locator('#mainMenu').boundingBox()];
+  assert.ok(fb.x + fb.width <= mb.x + 1, `the fly-out opens to the left of the module list (${JSON.stringify(fb)} vs ${JSON.stringify(mb)})`);
+  assert.ok(await fly.first().evaluate((el) => { const r = el.getBoundingClientRect(); return el.contains(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2)); }), 'and it is on top, not clipped');
+  // an item of a module that is not rebuilt here is shown but leads nowhere; the menu stays open
+  await p.locator('[data-kit-menu] li', { hasText: 'Claims Management' }).first().hover();
+  await p.waitForTimeout(700);
+  await p.locator('[data-kit-flyout] a', { hasText: 'Search Claims' }).click();
+  await p.waitForTimeout(300);
+  assert.equal(new URL(p.url()).hash, '#/file-transfer-configuration', 'an item of a module that is not rebuilt leads nowhere');
+  assert.ok(await p.locator('#mainMenuContainer').isVisible(), 'and the menu stays open');
+  // Quick Links: its angle icon opens the accordion (icon, class, title as the portal does) and closes it again
+  const bdy = p.locator('#mainMenuContainer .content-subpanel-bdy'), qi = p.locator('#mobileMenuIcon');
+  assert.equal(await bdy.isVisible(), false, 'Quick Links starts collapsed');
+  await qi.click();
+  await p.waitForTimeout(700);
+  assert.ok(await bdy.isVisible(), 'the Quick Links icon opens its accordion');
+  assert.match(await qi.getAttribute('class'), /fa-angle-up/);
+  assert.doesNotMatch(await qi.getAttribute('class'), /subpanel-collapsed/);
+  assert.equal(await qi.getAttribute('title'), 'Collapse');
+  await qi.click();
+  await p.waitForTimeout(700);
+  assert.equal(await bdy.isVisible(), false, 'and a second click closes it');
+  assert.match(await qi.getAttribute('class'), /fa-angle-down.*subpanel-collapsed|subpanel-collapsed.*fa-angle-down/);
+  assert.equal(await qi.getAttribute('title'), 'Expand');
+  assert.equal(await p.locator('#mcbRowBorder .help-icon-container').count(), 0, 'no help book on a page whose live twin has none');
   await p.click('[data-kit-action=menu-close]');
   await p.waitForTimeout(300);
   assert.equal(await p.locator('#mainMenuContainer').isVisible(), false, 'the close icon closes it');
@@ -207,6 +236,26 @@ try {
   assert.ok(await p.locator('#mainMenuContainer').isVisible(), 'the narrow-window hamburger opens the menu');
   await p.click('[data-kit-action=menu-close]');
   await p.setViewportSize(vp);
+  // the page-level help book comes with the screen: the tracking page has it
+  assert.equal(await p.locator('#mcbRowBorder .help-icon-container').count(), 1, "the tracking page shows its help book, which the shell (ported from another screen) does not carry");
+  assert.equal(await p.locator('#mcbRowBorder .help-icon-container [data-kit-tip]').count(), 1, 'with the portal\'s tooltip');
+  // the module tab under the header: hovering it opens the module's screens under it; its items route
+  const tab = p.locator('#activeModuleMenu > li').first();
+  await tab.hover();
+  await p.waitForTimeout(700);
+  const band = p.locator('[data-kit-flyout]').filter({ hasText: 'File Transfer Configuration' });
+  assert.ok(await band.first().isVisible(), 'the module tab opens its screens on hover');
+  const [bb, tb] = [await band.first().boundingBox(), await tab.boundingBox()];
+  assert.ok(bb.y >= tb.y + tb.height - 2, 'under the tab');
+  await band.first().locator('a', { hasText: 'File Transfer Configuration' }).click();
+  await p.waitForTimeout(800);
+  assert.equal(new URL(p.url()).hash, '#/file-transfer-configuration', 'a module-tab item of this app routes to its screen');
+  assert.equal(await p.locator('#mcbRowBorder .help-icon-container').count(), 0, 'and the help book goes with the tracking page');
+  await p.locator('#activeModuleMenu > li').first().hover();
+  await p.waitForTimeout(700);
+  await p.locator('[data-kit-flyout] a', { hasText: 'File Transfer Tracking' }).click();
+  await p.waitForTimeout(800);
+  assert.equal(new URL(p.url()).hash, '#/file-transfer-tracking');
   // the tracking grid: a click selects the row, a double-click opens the view dialog (the portal's convention)
   await p.waitForSelector('[data-kit-action=search]', { timeout: 10000 });
   await p.click('[data-kit-action=search]');

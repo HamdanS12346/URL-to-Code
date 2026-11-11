@@ -37,7 +37,7 @@ const readJson = (f) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8'
 // it appends, Kendo's menu timings), close it with its own close icon, and stamp all of it on the DOM so the port
 // carries it and the kit replays it. The menu root is the newly shown element with the most links (a field that
 // happens to appear at the same time is not the menu). Never re-click the opener to close: that opens it again.
-async function sideMenu(page, sel, log) {
+async function sideMenu(page, sel, log, module) {
   const btn = page.locator(sel).first();
   if (!(await btn.isVisible().catch(() => false))) return null;
   await page.evaluate(() => {
@@ -83,6 +83,8 @@ async function sideMenu(page, sel, log) {
   if (!found) { log('  ! kit: the side menu button showed no menu'); return null; }
   await page.mouse.move(0, 0);
   found.shot = await page.screenshot({ animations: 'disabled', caret: 'hide' }).catch(() => null); // the live menu, open: verify compares the rebuild's
+  const fly = await demoFlyout(page, 'side', module).catch(() => null); // a module hovered: where its submenu opens, and a picture of it
+  if (fly) Object.assign(found, { flyShot: fly.shot, flyClip: fly.clip, flyRect: fly.rect });
   const hidden = () => page.evaluate(() => { const r = document.querySelector('[data-kit-menu]'); return !r || !r.getClientRects().length || getComputedStyle(r).visibility === 'hidden'; });
   for (const how of ['[data-kit-action=menu-close]', 'Escape']) {
     if (await hidden()) break;
@@ -110,14 +112,86 @@ async function sideMenu(page, sel, log) {
   return { ...found, closed };
 }
 
+// The shell's own parts, which the content harvest never sees (it works inside the screen's scope):
+//  - every Kendo menu with submenus (the side menu's module list, the module tab): its hover delay and open/close animation
+//    from the live widget, stamped on the <ul> (data-kit-menu-hover/-open-ms/-close-ms) for the runtime to replay;
+//  - the shell's collapsible panels (Quick Links in the side menu: an angle icon in a *-panel-hdr-tools, its body a sibling
+//    *-panel-bdy of the header inside the same *-panel-container), stamped like the content's (collapse / data-kit-collapse).
+async function shellParts(page, scope) {
+  return page.evaluate((scope) => {
+    const out = { menus: 0, panels: 0 };
+    const inScope = scope ? document.querySelector(scope) : null;
+    for (const ul of document.querySelectorAll('ul[data-role=menu]')) {
+      if (!ul.querySelector(':scope > li > .k-menu-popup, :scope > li > .k-animation-container')) continue;
+      out.menus++;
+      try {
+        const m = window.jQuery(ul).data('kendoMenu'), a = m?.options?.animation || {};
+        if (!m) continue;
+        ul.setAttribute('data-kit-menu-hover', String(m.options.hoverDelay ?? 100));
+        if (a.open?.duration != null) ul.setAttribute('data-kit-menu-open-ms', String(a.open.duration));
+        if (a.close?.duration != null) ul.setAttribute('data-kit-menu-close-ms', String(a.close.duration));
+      } catch {}
+    }
+    for (const ic of document.querySelectorAll('[class*=panel-hdr-tools] .fa-angle-up, [class*=panel-hdr-tools] .fa-angle-down')) {
+      if (ic.hasAttribute('data-kit-action') || inScope?.contains(ic)) continue;
+      const box = ic.closest('[class*=panel-container]'), body = box?.querySelector(':scope > [class*=panel-bdy]');
+      if (!body) continue;
+      ic.setAttribute('data-kit-action', 'collapse');
+      body.setAttribute('data-kit-collapse', body.getClientRects().length ? 'open' : 'closed');
+      out.panels++;
+    }
+    return out;
+  }, scope || null).catch(() => ({ menus: 0, panels: 0 }));
+}
+
+// Hover one module of a menu on the live page and record what Kendo does: which item (stamped data-kit-flyout-demo so the
+// rebuild's check hovers the same one), where its submenu lands (the box Kendo lifts out of the <ul>) and a picture of that
+// area. `which`: "side" (the hamburger's module list, vertical) or "bar" (the module tab under the header, horizontal).
+async function demoFlyout(page, which, module) {
+  const ok = await page.evaluate(({ which, module }) => {
+    const vis = (el) => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden';
+    const sub = ':scope > .k-menu-popup, :scope > .k-animation-container';
+    const ul = [...document.querySelectorAll('ul[data-role=menu]')].find((u) => vis(u) && u.querySelector(':scope > li > .k-menu-popup, :scope > li > .k-animation-container') && (which === 'side') === !!u.closest('[data-kit-menu]'));
+    if (!ul) return false;
+    const lis = [...ul.children].filter((li) => li.tagName === 'LI' && li.querySelector(sub) && vis(li));
+    const li = lis.find((l) => module && l.textContent.replace(/\s+/g, ' ').trim().toLowerCase().startsWith(module.toLowerCase())) || lis[0];
+    if (!li) return false;
+    li.setAttribute('data-kit-flyout-demo', which);
+    return true;
+  }, { which, module: module || null });
+  if (!ok) return null;
+  await page.locator(`[data-kit-flyout-demo="${which}"]`).first().hover({ timeout: 3000 }).catch(() => {});
+  await page.waitForTimeout(900);
+  const rect = await page.evaluate(() => {
+    const vis = (el) => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden';
+    const b = [...document.querySelectorAll('.k-animation-container')].find((c) => vis(c) && c.querySelector('.k-menu-popup'));
+    const r = b?.getBoundingClientRect();
+    return r && { x: r.x, y: r.y, width: r.width, height: r.height };
+  });
+  let out = null;
+  if (rect && rect.width > 0) {
+    const clip = { x: Math.max(0, Math.floor(rect.x - 12)), y: Math.max(0, Math.floor(rect.y - 12)), width: Math.ceil(rect.width + 24), height: Math.ceil(rect.height + 24) };
+    const shot = await page.screenshot({ animations: 'disabled', caret: 'hide', clip }).catch(() => null);
+    if (shot) out = { clip, rect, shot };
+  }
+  await page.mouse.move(0, 0);
+  await page.waitForTimeout(500);
+  return out;
+}
+
 export async function prepare({ page, cfg, log }) {
   await inject(page);
   const k = cfg.kit || {};
-  const menu = k.menuButton ? await sideMenu(page, k.menuButton, log).catch((e) => (log(`  ! kit: side menu: ${e.message.split('\n')[0]}`), null)) : null;
+  const shellInfo = await shellParts(page, k.scope);
+  const menu = k.menuButton ? await sideMenu(page, k.menuButton, log, k.module).catch((e) => (log(`  ! kit: side menu: ${e.message.split('\n')[0]}`), null)) : null;
+  const bar = await demoFlyout(page, 'bar', k.module).catch(() => null); // the module tab under the header (the home page has none)
   const rest = await page.evaluate((a) => window.__kit.rest(a), { scope: k.scope || null, module: k.module || null });
   const defaults = await page.evaluate(() => window.__kit.defaults());
-  log(`  kit (provider): Kendo ${rest.kendo}, ${Object.keys(rest.widgets).length} widgets (${Object.values(rest.widgets).map((w) => w.kind).join(', ') || 'none'}), ${rest.fields.length} fields, ${rest.actions.length} actions, ${rest.hidden.length} hidden parts${Object.keys(rest.unknown || {}).length ? `, widgets the kit does not rebuild yet: ${Object.entries(rest.unknown).map(([r, x]) => `${r} x${x.count}`).join(', ')}` : ''}${menu ? `, side menu ${menu.root} (${menu.links} links${menu.add.length ? `, opens by class ${menu.add.join(' ')}` : ''}${menu.backdrop ? ` + ${menu.backdrop}` : ''}${menu.closed ? '' : ', NOT closed'})` : ''}`);
-  return { ...rest, defaults, menu };
+  // the page-level help icon (the book) sits in the title row above the content scope, so the shell does not carry it;
+  // taken after the harvest, which stamped its tooltip (data-kit-tip)
+  const help = await page.evaluate(() => document.querySelector('.help-icon-container')?.outerHTML ?? null).catch(() => null);
+  log(`  kit (provider): Kendo ${rest.kendo}, ${Object.keys(rest.widgets).length} widgets (${Object.values(rest.widgets).map((w) => w.kind).join(', ') || 'none'}), ${rest.fields.length} fields, ${rest.actions.length} actions, ${rest.hidden.length} hidden parts${Object.keys(rest.unknown || {}).length ? `, widgets the kit does not rebuild yet: ${Object.entries(rest.unknown).map(([r, x]) => `${r} x${x.count}`).join(', ')}` : ''}${menu ? `, side menu ${menu.root} (${menu.links} links${menu.add.length ? `, opens by class ${menu.add.join(' ')}` : ''}${menu.backdrop ? ` + ${menu.backdrop}` : ''}${menu.closed ? '' : ', NOT closed'}${menu.flyShot ? ', fly-out recorded' : ', NO fly-out found'})` : ''}${bar ? ', module tab fly-out recorded' : ''}, ${shellInfo.menus} menu(s) with submenus, ${shellInfo.panels} shell panel(s) that collapse`);
+  return { ...rest, defaults, menu, bar, help };
 }
 
 // what the screen's own script says it can open, read from its source (the portal's conventions, seen on every module):
@@ -162,8 +236,8 @@ export async function explore({ page, context, s, out, log, kit }) {
   fs.rmSync(dir, { recursive: true, force: true });
   for (const d of ['states', 'dialogs']) fs.mkdirSync(path.join(dir, d), { recursive: true });
   await context.clock.resume().catch(() => {}); // the freeze paused time: Kendo's animations and the page's timers must run again
-  const { defaults, menu: menuFound, ...rest } = kit;
-  const { shot: menuShot, ...menu } = menuFound || {};
+  const { defaults, menu: menuFound, bar: barFound, ...rest } = kit;
+  const { shot: menuShot, flyShot, ...menu } = menuFound || {};
   const screen = { ...rest, menu: menuFound ? menu : null, calibration: { defaults }, grids: {}, dialogs: {}, search: null, row: null, requests: {} };
   const states = [];
   const shot = async (nm, clip) => {
@@ -368,11 +442,21 @@ export async function explore({ page, context, s, out, log, kit }) {
     if (menuShot) fs.writeFileSync(path.join(dir, 'states', 'menu-open.png'), menuShot);
     states.push({ name: 'menu-open', steps: [open], wait: 800, ...(menuShot ? { shot: 'states/menu-open.png' } : {}),
       expect: [{ sel: '[data-kit-menu]', why: 'the hamburger opens the side menu' }, ...(bd ? [{ sel: '[data-kit-menu-backdrop-live]', why: 'with the backdrop the page appends' }] : [])] });
-    const mod = '[data-kit-menu] li:has(> .k-menu-popup), [data-kit-menu] li:has(> .k-animation-container)';
-    if (await page.locator(mod).count().catch(() => 0)) states.push({ name: 'menu-flyout', steps: [open, { do: 'hover', sel: mod, wait: 900 }], wait: 900,
-      expect: [{ sel: '[data-kit-menu] li > .k-menu-popup, [data-kit-menu] li > .k-animation-container', why: 'a module flies out on hover' }] });
+    // a module hovered: its submenu is a box beside the menu (Kendo lifts it out of the <ul>, which clips what is inside), on top
+    // of the page, and looks like the live one in the area it lands
+    if (flyShot) {
+      fs.writeFileSync(path.join(dir, 'states', 'menu-flyout.png'), flyShot);
+      states.push({ name: 'menu-flyout', steps: [open, { do: 'hover', sel: '[data-kit-flyout-demo="side"]', wait: 900 }], wait: 900, clip: menu.flyClip, shot: 'states/menu-flyout.png',
+        expect: [{ sel: '[data-kit-flyout]', top: true, outside: '[data-kit-menu] ul[data-role=menu]', why: 'a module flies out to the left of the menu, over the page' }] });
+    } else log('  ! kit: no module of the side menu opened a submenu on hover: the fly-out is not checked');
     if (menu.close) states.push({ name: 'menu-close', steps: [open, { do: 'click', sel: '[data-kit-action=menu-close]' }], wait: 600,
       expect: [{ sel: '[data-kit-menu]', visible: false, why: 'its close icon closes it' }, ...(bd ? [{ sel: '[data-kit-menu-backdrop-live]', visible: false, why: 'and removes the backdrop' }] : [])] });
+  }
+  // the module tab under the header (CLAIMS MANAGEMENT v): hovering it opens a band with the module's screens
+  if (barFound) {
+    fs.writeFileSync(path.join(dir, 'states', 'tab-flyout.png'), barFound.shot);
+    states.push({ name: 'tab-flyout', steps: [{ do: 'hover', sel: '[data-kit-flyout-demo="bar"]', wait: 900 }], wait: 900, clip: barFound.clip, shot: 'states/tab-flyout.png',
+      expect: [{ sel: '[data-kit-flyout]', top: true, outside: 'ul:has(> [data-kit-flyout-demo="bar"])', why: 'the module tab opens its screens under it' }] });
   }
   log(`  kit: ${Object.keys(screen.dialogs).length} dialog(s) ${Object.values(screen.dialogs).map((d) => `"${d.title}"`).join(', ')}; ${states.length} state check(s)`);
   writeJson(path.join(dir, 'screen.json'), screen);
