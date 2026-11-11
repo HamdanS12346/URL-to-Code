@@ -16,7 +16,6 @@ packs/*
 !packs/fxfer-v4/
 !packs/fxfer-v4/**
 
-# keep these packs ignored even if other packs are later unignored
-packs/fxfer-v3/
-packs/fxfer-v3/**
+!packs/fxfer-v3/
+!packs/fxfer-v3/**
 

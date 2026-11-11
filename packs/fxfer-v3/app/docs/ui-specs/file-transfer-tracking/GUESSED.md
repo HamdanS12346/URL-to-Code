@@ -1,0 +1,3 @@
+﻿- Cancel button navigates to Home (`#/`) based on hidden `Editor.CancelActionUrl=/Home/MyHome/`.
+- Empty Search (no criteria) shows page-level message `At least one search criteria is required.` and keeps Search Results hidden.
+- Reset hides Search Results panel and focuses/selects `FileId` (matches `resetSearchFileTransfer()` in capture JS).
