@@ -1,0 +1,124 @@
+
+==== 2026-11-11T07:46:56.280Z  npm run ui -- fxfer-v4 --yes --url https://uximc.mms.tst.pgwcloud.net/Home/MyHome/ --menu File Transfer Services
+pack fxfer-v4: https://uximc.mms.tst.pgwcloud.net/Home/MyHome/  menu "File Transfer Services"  code -> packs/fxfer-v4/app
+writer: powershell -NoProfile -ExecutionPolicy Bypass -File C:\UI-specs\start_codex.ps1 exec -c web_search=disabled --skip-git-repo-check -C {workdir}
+>> login
+  ! the password comes from .env, which the writer (Codex) can read. Safer: remove PASSWORD from .env and type it when asked
+  logged in
+>> discover: reading the menu
+  menu: 19 modules (Administration, Alert Notification, Claims Management, Drug Rebate, UI Examples, File Transfer Services, Integration, Managed Care, Member Management, Plan Management, Program Integrity, PI Case Tracking, Provider Enrollment, Provider Management, Screening/Credentialing, TPL Case Tracking, TPL Policy, TPL HIPP, Task Management)
+  reading Administration…
+  reading Alert Notification…
+  reading Claims Management…
+  reading Drug Rebate…
+  reading UI Examples…
+  reading File Transfer Services…
+  reading Integration…
+  reading Managed Care…
+  reading Member Management…
+  reading Plan Management…
+  reading Program Integrity…
+  reading PI Case Tracking…
+  reading Provider Enrollment…
+  reading Provider Management…
+  reading Screening/Credentialing…
+  reading TPL Case Tracking…
+  reading TPL Policy…
+  reading TPL HIPP…
+  reading Task Management…
+  File Transfer Services: 3 item(s)
+  content area of each screen (what the shared header/menu wraps):
+   home                             https://uximc.mms.tst.pgwcloud.net/Home/MyHome/
+                                    content: #pageBody > main (1920x526 px)
+   file-transfer-configuration      https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations
+                                    content: #pageBody > main (1920x511 px)
+   file-transfer-tracking           https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking
+                                    content: #pageBody > main (1920x628 px)
+   ftp-server-credentials           https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFTPServerCredentials
+                                    content: #pageBody > main (1920x400 px)
+  3 screen(s) under "File Transfer Services" + the home page. Menu: packs/fxfer-v4/menu.json, picture: menu.png
+site kit: provider (kits/provider): the harvest replaces plan + explore; screens are built on its runtime
+
+>> home: Home  https://uximc.mms.tst.pgwcloud.net/Home/MyHome/
+   spec: queued (3 writer(s) at once)
+
+>> file-transfer-configuration: File Transfer Configuration  https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations
+   writer: spec:home, attempt 1 (log: packs/fxfer-v4/logs/spec-home-1.log)
+   spec: queued (3 writer(s) at once)
+
+>> file-transfer-tracking: File Transfer Tracking  https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking
+   writer: spec:file-transfer-configuration, attempt 1 (log: packs/fxfer-v4/logs/spec-file-transfer-configuration-1.log)
+   spec: queued (3 writer(s) at once)
+
+>> ftp-server-credentials: FTP Server Credentials  https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFTPServerCredentials
+   writer: spec:file-transfer-tracking, attempt 1 (log: packs/fxfer-v4/logs/spec-file-transfer-tracking-1.log)
+   spec: queued (3 writer(s) at once)
+
+>> waiting for 4 spec writer(s)
+   writer finished: exit 0, 9.2 min
+   ✓ spec:home
+   writer: spec:ftp-server-credentials, attempt 1 (log: packs/fxfer-v4/logs/spec-ftp-server-credentials-1.log)
+   writer finished: exit 0, 10.2 min
+   ✓ spec:file-transfer-tracking
+   writer finished: exit 0, 11.7 min
+   ✓ spec:file-transfer-configuration
+   writer finished: exit 0, 7.2 min
+   ✓ spec:ftp-server-credentials
+
+>> app: C:\UI-specs\URL-to-Code\packs\fxfer-v4\app
+   shell (header + side menu) ported from file-transfer-configuration
+   fxfer-v4/home -> packs/fxfer-v4/app/src/screens/home: 2 band components, 521/521 data-testid keys stamped, 32 assets
+      McbRowBorder       div#mcbRowBorder
+      Footer             footer
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+46)
+   next: npm run verify -- fxfer-v4/home   (starts its own dev server)
+   fxfer-v4/file-transfer-configuration -> packs/fxfer-v4/app/src/shell: 2 band components, 630/630 data-testid keys stamped, 34 assets
+      Div                div
+      Footer             footer
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+47)
+   next: npm run verify -- fxfer-v4/file-transfer-configuration   (starts its own dev server)
+   fxfer-v4/file-transfer-configuration -> packs/fxfer-v4/app/src/screens/file-transfer-configuration: 0 band components, 630/630 data-testid keys stamped, 34 assets
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+47)
+   next: npm run verify -- fxfer-v4/file-transfer-configuration   (starts its own dev server)
+   fxfer-v4/file-transfer-tracking -> packs/fxfer-v4/app/src/screens/file-transfer-tracking: 0 band components, 781/781 data-testid keys stamped, 32 assets
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+47)
+   next: npm run verify -- fxfer-v4/file-transfer-tracking   (starts its own dev server)
+   fxfer-v4/ftp-server-credentials -> packs/fxfer-v4/app/src/screens/ftp-server-credentials: 0 band components, 578/578 data-testid keys stamped, 34 assets
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+47)
+   next: npm run verify -- fxfer-v4/ftp-server-credentials   (starts its own dev server)
+
+>> kit preflight on file-transfer-configuration (the port as it is, before any writer)
+   states: 6/9 match the live page | ✗ row-d2: 16.48% off | ✗ menu-flyout: [data-kit-flyout] not shown (a module flies out to the left of the menu, over the page) | ✗ tab-flyout: [data-kit-flyout] not shown (the module tab opens its screens under it)
+
+>> code home (queued, 3 at once)
+
+>> code file-transfer-configuration (queued, 3 at once)
+
+>> code file-transfer-tracking (queued, 3 at once)
+
+>> code ftp-server-credentials (queued, 3 at once)
+   writer: code:home, attempt 1 (log: packs/fxfer-v4/logs/code-home-1.log)
+   writer: code:file-transfer-configuration, attempt 1 (log: packs/fxfer-v4/logs/code-file-transfer-configuration-1.log)
+   writer: code:file-transfer-tracking, attempt 1 (log: packs/fxfer-v4/logs/code-file-transfer-tracking-1.log)
+   writer finished: exit 0, 6.9 min
+   ! code:file-transfer-tracking: the writer stopped on a problem it may not fix (kit/shell): # BLOCKED — file-transfer-tracking (packs/fxfer-v4/app/src/screens/file-transfer-tracking/BLOCKED.md)
+   writer: code:ftp-server-credentials, attempt 1 (log: packs/fxfer-v4/logs/code-ftp-server-credentials-1.log)
+   writer finished: exit 0, 7.8 min
+   ! code:file-transfer-configuration: the writer stopped on a problem it may not fix (kit/shell): # BLOCKED — fxfer-v4/file-transfer-configuration (packs/fxfer-v4/app/src/screens/file-transfer-configuration/BLOCKED.md)
+   writer finished: exit 0, 15.6 min
+   ! the dev server on http://localhost:5180 is down: starting it again (log: packs/fxfer-v4/logs/devserver.log)
+   ✗ check: verify (the app at http://localhost:5180/#/ against the captured reference): bad_pct 0.13% (limit 5), size_delta_px [0,0] (height limit ±4), worst section mcbrowborder | states: 3/4 match the live page | ✗ menu-flyout: [data-kit-flyout] not shown (a module flies out to the left of the menu, over the
+   writer: code:home, attempt 2 (log: packs/fxfer-v4/logs/code-home-2.log)
+   writer finished: exit 0, 10.9 min
+   ! code:ftp-server-credentials: the writer stopped on a problem it may not fix (kit/shell): # BLOCKED — fxfer-v4/ftp-server-credentials (packs/fxfer-v4/app/src/screens/ftp-server-credentials/BLOCKED.md)
+   writer finished: exit 0, 11.3 min
+   ! code:home: the writer stopped on a problem it may not fix (kit/shell): # BLOCKED — fxfer-v4/home (packs/fxfer-v4/app/src/screens/home/BLOCKED.md)
+
+== done. 4 screen(s) in C:\UI-specs\URL-to-Code\packs\fxfer-v4\app
+   report: C:\UI-specs\URL-to-Code\packs\fxfer-v4\app\UI_BUILD_REPORT.md
+   status: packs/fxfer-v4/STATUS.md
+   ! preflight:kit: needs-review - the kit on the raw port (fix it in kits/<kit>, not in the app):
+   ! code:file-transfer-tracking: blocked - the writer reports a problem outside its files (packs/fxfer-v4/app/src/screens/file-transfer-tracking/BLOCKED.md):
+   ! code:file-transfer-configuration: blocked - the writer reports a problem outside its files (packs/fxfer-v4/app/src/screens/file-transfer-configuration/BLOCKED.md):
+   ! code:ftp-server-credentials: blocked - the writer reports a problem outside its files (packs/fxfer-v4/app/src/screens/ftp-server-credentials/BLOCKED.md):
+   ! code:home: blocked - the writer reports a problem outside its files (packs/fxfer-v4/app/src/screens/home/BLOCKED.md):

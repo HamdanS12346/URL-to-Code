@@ -1,0 +1,839 @@
+ <div id="FileTransferConfigurationViewOverlay_content" class="loading"> <div id="FileTransferConfigurationViewOverlay_body">
+
+
+
+<script>
+    var closeButtonLabel = "Close";
+    var destinationConfigurationViewUrl = '/FileTransfer/DestinationConfigurationView/';
+    var editButtonLabel = "Edit";
+    var fileTransferConfigurationViewTitle = "View File Transfer Configuration";
+</script>
+<script src="/Scripts/FileTransfer/hp.ua3.fileTransfer.fileTransferConfigurationView.js?v=30.0.0.2609"></script>
+
+<form action="/FileTransfer/FileTransferConfigurationView" id="FileTransferConfigurationViewForm" method="post" name="FileTransferConfigurationViewForm" data-role="validator" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="NOcIHa6Ofp8BWe1nW55onpxwVU403C1ufS75paw8a4xaHNsLoeLoj67NLuS7YHi2sy0QcKvNBw-wyV0cN7sKGf28BMBSSwiUgAtzNIFO2AFB2OUOHbBf-fWKFddm8QIKmMxo0uh800I-0MIHT5xXkA2">
+
+<div class="container">
+    <div class="editor-validation-summary validation-summary">
+        <i class="msg-inline-icon fa-solid fa-ban"></i>
+        <div class="msg-inline-close panel-icon clickable" role="alert" data-hide="alert" aria-label="close" tabindex="0">
+            <span class="fa-solid fa-xmark" title="Close" data-role="tooltip" data-kit-tip="Close" data-kit-tip-pos="top" data-kit-tip-after="250"></span>
+        </div>
+        Resolve the following form field errors and try again. 
+        <ul class="validation-errors"></ul>
+    </div>
+</div>    <div class="">
+        <div class="">
+            <div class="panel-body-modal">
+                <div class="editor-section">
+                    <fieldset>
+                        <div id="divFileTransferConfigurationView">
+                            <div class="content-panel-container">
+                                <div class="content-panel-hdr">
+                                    Source Configuration
+                                </div>
+                                <div class="content-panel-bdy panel-body col-md-12 assoc-box editor-section row">
+                                    <div class="col-md-3 editor-col" id="eft_ConfigName_parent" data-template="Text"><div class="editor-label"><label for="eft_ConfigName" id="eft_ConfigNameLabel" readonly="readonly" class="readonly-label" title="Configuration Name">Configuration Name</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_ConfigNameHelp" role="img" title="Configuration Name" data-role="tooltip" data-kit-tip="Configuration Name" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget readonly-widget-focus" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" data-val="true" data-val-length-max="Configuration Name has a maximum length of 50 characters." data-val-regex="Configuration Name is restricted to alphanumeric characters only [A-Z], [a-z], [0-9]." data-val-regex-pattern="^([A-Za-z0-9]|[^\x00-\x7F])*$" data-val-required="Configuration Name is a required field." height="0" id="eft_ConfigName" ignoredirtydata="False" maxlength="50" name="ConfigName" value="Test" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" style="width: 100%;" aria-labelledby="eft_ConfigNameLabel eft_ConfigNameHelpDesc"></span><script>
+	(typeof KendoLicensing === 'object' && KendoLicensing.setScriptKey('141j041f611f063e0837023e133i0i490g310c3a18445h425d38573a5j3a58385a345a4b61145f0k4j024b02240e2213203f5h16253f5g4026092606211a213e25022g034e041k13220k1c1325166016220k573j604a5j4a593j09213f2d5k105e263k2g5c1742053h204f3j175c2i3g064k2g0f53254i3h145c1i3c1k552e321b5e044f2d57175d225i3f2a552j612f4926482d542g0f4h30531h1a2740234j0d56490f4f20312537101g5a2i55210i3512335a1f5c0c362c610h345d103j07551c39025c255e2j3b0g391521591g3j2h5e2a600i5e305k0d5503365c0k345h0f3722342h5c0f4g41163g1j15400g3i1h511k4f3j27034122611j5g0g4b2c613g02562k0e43033i2f5e0e3040163g1f11460e4b562b440h4h205502512645500h4b165j3e02422b054b0849551c4i2d4a0i3i164k094a0g5j19572k3j014207551c3902521g4e2d043c0c451b542k0e2g4f2a4d11460e48265k2g5a07390c3f1f500027470k31155d2e561d123e1b5046123k116114394i1c4e264f3f125i3b02381c12355e0h5g1b401i4h0f3d043j155a2i0450481144285j39213705290b4i0i370b4d2537195813204i19583a5j183522015a2b35063257072c332e320b4f3f5e005f013a61181g520853253d20321f601758171j335734244i275h0j1f5a0k4a531g0h382j3k164a2d32082h451e4304410j581f3f5e320k2f4i431b5g1c47033j51450a591441003822455b1f53480a2k5i151e45004b2d4b1j504a2848104808532f431c4106571c3527355j0i1b42550f47305i3d2e4d2851075k2a4h25124j2j552g42153h124b004d101c590g5a1a562215345a21321161085j0b490a57335824454d2052025d003j0d2h4g0j4h1059045k0g5g0f340h1g352j0e3a2f3422513j2a4i2k0f2c480b53191i103e075830562h320e395i1256264f1i361e4j064e0e5f0k5h0d4820572f460k3106401e5024440j3b5h1g312a5920452g511a3j2d6124125i1k183926435c1j5c'));window._wrappersMetadata = Object.freeze({"name":"@progress/kendo-ui","productCode":"KENDOUIMVC","productName":"Telerik UI for ASP.NET MVC","version":"2026.1.415","licensingDocsUrl":"https://www.telerik.com/aspnet-mvc/documentation/installation/activating-your-license/setting-up-your-license"});kendo.syncReady(function(){jQuery("#eft_ConfigName").kendoTextBox({"value":"Test"});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("ConfigName");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="eft_ConfigName_validationMessage" data-for="eft_ConfigName"></span><span id="eft_ConfigNameHelpDesc" hidden="hidden">Configuration Name</span></div></div>
+                                    <div class="col-md-3 editor-col" id="eft_Description_parent" data-template="Text"><div class="editor-label"><label for="eft_Description" id="eft_DescriptionLabel" readonly="readonly" class="readonly-label" title="Description">Description</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_DescriptionHelp" role="img" title="Description" data-role="tooltip" data-kit-tip="Description" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" data-val-length-max="Description has a maximum length of 200 characters." height="0" id="eft_Description" ignoredirtydata="False" maxlength="200" name="Description" not-data-val-required="Description is a required field." data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" style="width: 100%;" aria-labelledby="eft_DescriptionLabel eft_DescriptionHelpDesc"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_Description").kendoTextBox({});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("Description");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="eft_Description_validationMessage" data-for="eft_Description"></span><span id="eft_DescriptionHelpDesc" hidden="hidden">Description</span></div></div>
+                                    <div class="col-md-3 editor-col" id="eft_ProtocolTypeList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="eft_ProtocolType" id="eft_ProtocolTypeLabel" readonly="readonly" class="readonly-label" title="Protocol">Protocol</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_ProtocolTypeHelp" role="img" title="Protocol" data-role="tooltip" data-kit-tip="Protocol" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><label id="ProtocolTypeListTextLabel" for="ProtocolTypeListText" class="display-none">ProtocolTypeListText</label><input readonly="readonly" class="k-textbox editor-control" id="ProtocolTypeListText" name="ProtocolTypeListText" value="FTP" aria-labelledby="eft_ProtocolTypeLabel"><div style="display: none;">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="eft_ProtocolTypeList_listbox" aria-busy="false" aria-describedby="7a02d9d0-0ec3-4625-971a-72e425630d95" aria-labelledby="eft_ProtocolTypeLabel eft_ProtocolTypeHelpDesc" data-kit="k19" style=""><span id="7a02d9d0-0ec3-4625-971a-72e425630d95" unselectable="on" class="k-input-inner readonly-widget"><span class="k-input-value-text">FTP</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="eft_ProtocolTypeListLabel" for="eft_ProtocolTypeList" class="display-none">eft_ProtocolTypeList</label><input readonly="readonly" isclonedisplayfor="true" class="editor-control" data-val="true" data-val-required="Protocol is a required field." height="0" id="eft_ProtocolTypeList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.ProtocolType" listviewdisplayformat="Name" name="ProtocolTypeList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-ProtocolType" type="text" value="1" data-role="dropdownlist" aria-labelledby="eft_ProtocolTypeListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_ProtocolTypeList").kendoDropDownList({"change":function(e) {
+        var sel = $('#eft_ProtocolTypeList').val();
+        if (sel != '') {
+            $('#eft_ProtocolType_ID').val(sel);
+            var txt = $('#eft_ProtocolTypeList').data('kendoDropDownList').text();
+            $('#eft_ProtocolType_Name').val(txt);
+        } else {
+            $('#eft_ProtocolType_ID').val('');
+            $('#eft_ProtocolType_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#eft_ProtocolTypeList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[{"ID":"1","Name":"FTP","DisplayFormat":0,"FormattedText":"FTP","DefaultCode":null}],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="eft_ProtocolType_IDLabel" for="eft_ProtocolType_ID" class="display-none">eft_ProtocolType_ID</label><input readonly="readonly" id="eft_ProtocolType_ID" name="ProtocolType.ID" type="hidden" value="1" aria-labelledby="eft_ProtocolType_IDLabel">
+<label id="eft_ProtocolType_NameLabel" for="eft_ProtocolType_Name" class="display-none">eft_ProtocolType_Name</label><input readonly="readonly" id="eft_ProtocolType_Name" name="ProtocolType.Name" type="hidden" value="FTP" aria-labelledby="eft_ProtocolType_NameLabel">
+<label id="eft_ProtocolType_DisplayFormatLabel" for="eft_ProtocolType_DisplayFormat" class="display-none">eft_ProtocolType_DisplayFormat</label><input readonly="readonly" id="eft_ProtocolType_DisplayFormat" name="ProtocolType.DisplayFormat" type="hidden" value="Name" aria-labelledby="eft_ProtocolType_DisplayFormatLabel"></div><span class="k-invalid-msg" id="eft_ProtocolTypeList_validationMessage" data-for="eft_ProtocolTypeList"></span><span id="eft_ProtocolTypeHelpDesc" hidden="hidden">Protocol</span></div></div>
+<div class="col-md-3 editor-col" id="eft_FTPServerName_parent" data-template="Text"><div class="editor-label"><label for="eft_FTPServerName" id="eft_FTPServerNameLabel" readonly="readonly" class="readonly-label" title="Server">Server</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_FTPServerNameHelp" role="img" title="Server" data-role="tooltip" data-kit-tip="Server" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" data-val="true" data-val-required="Server is a required field." height="0" id="eft_FTPServerName" ignoredirtydata="False" name="FTPServerName" value="SFTP TEST" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" style="width: 100%;" aria-labelledby="eft_FTPServerNameLabel eft_FTPServerNameHelpDesc"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_FTPServerName").kendoTextBox({"value":"SFTP TEST"});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("FTPServerName");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="eft_FTPServerName_validationMessage" data-for="eft_FTPServerName"></span><span id="eft_FTPServerNameHelpDesc" hidden="hidden">Server</span></div></div>                                    <div class="clear-both"></div>
+                                    <div class="col-md-3 editor-col" id="eft_SourceAddress_parent" data-template="Text"><div class="editor-label"><label for="eft_SourceAddress" id="eft_SourceAddressLabel" readonly="readonly" class="readonly-label" title="Source Address">Source Address</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_SourceAddressHelp" role="img" title="Source Address" data-role="tooltip" data-kit-tip="Source Address" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" data-val="true" data-val-length-max="Source Address has a maximum length of 248 characters." data-val-required="Source Address is a required field." height="0" id="eft_SourceAddress" ignoredirtydata="False" maxlength="248" name="SourceAddress" value="/test" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" style="width: 100%;" aria-labelledby="eft_SourceAddressLabel eft_SourceAddressHelpDesc"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_SourceAddress").kendoTextBox({"value":"/test"});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("SourceAddress");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="eft_SourceAddress_validationMessage" data-for="eft_SourceAddress"></span><span id="eft_SourceAddressHelpDesc" hidden="hidden">Source Address</span></div></div>
+                                    <div class="col-md-3 editor-col" id="eft_SourceFileMask_parent" data-template="Text"><div class="editor-label"><label for="eft_SourceFileMask" id="eft_SourceFileMaskLabel" readonly="readonly" class="readonly-label" title="Source File Mask">Source File Mask</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_SourceFileMaskHelp" role="img" title="Source File Mask" data-role="tooltip" data-kit-tip="Source File Mask" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" data-val="true" data-val-length-max="Source File Mask has a maximum length of 50 characters." data-val-required="Source File Mask is a required field." height="0" id="eft_SourceFileMask" ignoredirtydata="False" maxlength="50" name="SourceFileMask" value="wer" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" style="width: 100%;" aria-labelledby="eft_SourceFileMaskLabel eft_SourceFileMaskHelpDesc"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_SourceFileMask").kendoTextBox({"value":"wer"});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("SourceFileMask");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="eft_SourceFileMask_validationMessage" data-for="eft_SourceFileMask"></span><span id="eft_SourceFileMaskHelpDesc" hidden="hidden">Source File Mask</span></div></div>
+                                    <div class="col-md-3 editor-col" id="eft_FileDirectionList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="eft_FileDirection" id="eft_FileDirectionLabel" readonly="readonly" class="readonly-label" title="File Direction">File Direction</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_FileDirectionHelp" role="img" title="File Direction" data-role="tooltip" data-kit-tip="File Direction" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><label id="FileDirectionListTextLabel" for="FileDirectionListText" class="display-none">FileDirectionListText</label><input readonly="readonly" class="k-textbox editor-control" id="FileDirectionListText" name="FileDirectionListText" value="" aria-labelledby="eft_FileDirectionLabel"><div style="display: none;">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="eft_FileDirectionList_listbox" aria-busy="false" aria-describedby="a428bfa4-c4cb-46d0-9185-7f4ee46b34ee" aria-labelledby="eft_FileDirectionLabel eft_FileDirectionHelpDesc" data-kit="k20" style=""><span id="a428bfa4-c4cb-46d0-9185-7f4ee46b34ee" unselectable="on" class="k-input-inner display-none"><span class="k-input-value-text">select a value...</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="eft_FileDirectionListLabel" for="eft_FileDirectionList" class="display-none">eft_FileDirectionList</label><input readonly="readonly" isclonedisplayfor="true" class="editor-control" height="0" id="eft_FileDirectionList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.FileDirection" listviewdisplayformat="Name" name="FileDirectionList" not-data-val-required="File Direction is a required field." propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-FileDirection" type="text" data-role="dropdownlist" aria-labelledby="eft_FileDirectionListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_FileDirectionList").kendoDropDownList({"change":function(e) {
+        var sel = $('#eft_FileDirectionList').val();
+        if (sel != '') {
+            $('#eft_FileDirection_ID').val(sel);
+            var txt = $('#eft_FileDirectionList').data('kendoDropDownList').text();
+            $('#eft_FileDirection_Name').val(txt);
+        } else {
+            $('#eft_FileDirection_ID').val('');
+            $('#eft_FileDirection_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#eft_FileDirectionList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="eft_FileDirection_IDLabel" for="eft_FileDirection_ID" class="display-none">eft_FileDirection_ID</label><input readonly="readonly" id="eft_FileDirection_ID" name="FileDirection.ID" type="hidden" value="" aria-labelledby="eft_FileDirection_IDLabel">
+<label id="eft_FileDirection_NameLabel" for="eft_FileDirection_Name" class="display-none">eft_FileDirection_Name</label><input readonly="readonly" id="eft_FileDirection_Name" name="FileDirection.Name" type="hidden" value="" aria-labelledby="eft_FileDirection_NameLabel">
+<label id="eft_FileDirection_DisplayFormatLabel" for="eft_FileDirection_DisplayFormat" class="display-none">eft_FileDirection_DisplayFormat</label><input readonly="readonly" id="eft_FileDirection_DisplayFormat" name="FileDirection.DisplayFormat" type="hidden" value="Name" aria-labelledby="eft_FileDirection_DisplayFormatLabel"></div><span class="k-invalid-msg" id="eft_FileDirectionList_validationMessage" data-for="eft_FileDirectionList"></span><span id="eft_FileDirectionHelpDesc" hidden="hidden">File Direction</span></div></div>
+                                    <div class="col-md-3 editor-col" id="eft_TradingPartner_parent" data-template="Text"><div class="editor-label"><label for="eft_TradingPartner" id="eft_TradingPartnerLabel" readonly="readonly" class="readonly-label" title="Trading Partner">Trading Partner</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_TradingPartnerHelp" role="img" title="Trading Partner" data-role="tooltip" data-kit-tip="Trading Partner" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" data-val-length-max="Trading Partner has a maximum length of 10 characters." data-val-regex="Trading Partner is restricted to alphanumeric characters only [A-Z], [a-z], [0-9]." data-val-regex-pattern="^([A-Za-z0-9]|[^\x00-\x7F])*$" height="0" id="eft_TradingPartner" ignoredirtydata="False" maxlength="10" name="TradingPartner" not-data-val-required="Trading Partner is a required field." data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" style="width: 100%;" aria-labelledby="eft_TradingPartnerLabel eft_TradingPartnerHelpDesc"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_TradingPartner").kendoTextBox({});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("TradingPartner");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="eft_TradingPartner_validationMessage" data-for="eft_TradingPartner"></span><span id="eft_TradingPartnerHelpDesc" hidden="hidden">Trading Partner</span></div></div>
+                                    <div class="clear-both"></div>
+                                    <div class="col-md-3 editor-col" id="eft_OwnerName_parent" data-template="Text"><div class="editor-label"><label for="eft_OwnerName" id="eft_OwnerNameLabel" readonly="readonly" class="readonly-label" title="Owner Name">Owner Name</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_OwnerNameHelp" role="img" title="Owner Name" data-role="tooltip" data-kit-tip="Owner Name" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" data-val="true" data-val-length-max="Owner Name has a maximum length of 50 characters." data-val-required="Owner Name is a required field." height="0" id="eft_OwnerName" ignoredirtydata="False" maxlength="50" name="OwnerName" value="yashwanth" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" style="width: 100%;" aria-labelledby="eft_OwnerNameLabel eft_OwnerNameHelpDesc"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_OwnerName").kendoTextBox({"value":"yashwanth"});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("OwnerName");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="eft_OwnerName_validationMessage" data-for="eft_OwnerName"></span><span id="eft_OwnerNameHelpDesc" hidden="hidden">Owner Name</span></div></div>
+                                    <div class="col-md-3 editor-col" id="eft_OwnerPhoneNumber_parent" data-template="PhoneNumberUS"><div class="editor-label"><label for="eft_OwnerPhoneNumber" id="eft_OwnerPhoneNumberLabel" readonly="readonly" class="readonly-label" title="Owner Phone">Owner Phone</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_OwnerPhoneNumberHelp" role="img" title="Owner Phone" data-role="tooltip" data-kit-tip="Owner Phone" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><span class="k-input k-maskedtextbox editor-control readonly-widget" aria-labelledby="eft_OwnerPhoneNumberLabel" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget k-widget" data-val="true" data-val-length-max="Owner Phone has a maximum length of 20 characters." data-val-regex="Enter Valid Phone Number." data-val-regex-pattern="^(?!(^\(?(0{3})\)?( |-|\.)?0{3}( |-|\.)?0{4}$))(^\(?(\d{3,3})\)?( |-|\.)?\d{3,3}( |-|\.)?\d{4,4}$)" data-val-required="Owner Phone is a required field." height="0" id="eft_OwnerPhoneNumber" ignoredirtydata="False" name="OwnerPhoneNumber" value="1233333333" data-role="maskedtextbox" autocomplete="off" inputmode="text" aria-placeholder="000-000-0000" style="width: 100%;" aria-labelledby="eft_OwnerPhoneNumberLabel eft_OwnerPhoneNumberHelpDesc"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_OwnerPhoneNumber").kendoMaskedTextBox({"mask":"000-000-0000","rules":{}});});
+</script><span class="k-invalid-msg" id="eft_OwnerPhoneNumber_validationMessage" data-for="eft_OwnerPhoneNumber"></span><span id="eft_OwnerPhoneNumberHelpDesc" hidden="hidden">Owner Phone</span></div></div>
+                                    <div class="col-md-3 editor-col" id="eft_OwnerSubsystemList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="eft_OwnerSubsystem" id="eft_OwnerSubsystemLabel" readonly="readonly" class="readonly-label" title="Owner Module">Owner Module</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_OwnerSubsystemHelp" role="img" title="Owner Module" data-role="tooltip" data-kit-tip="Owner Module" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><label id="OwnerSubsystemListTextLabel" for="OwnerSubsystemListText" class="display-none">OwnerSubsystemListText</label><input readonly="readonly" class="k-textbox editor-control" id="OwnerSubsystemListText" name="OwnerSubsystemListText" value="Administration" aria-labelledby="eft_OwnerSubsystemLabel"><div style="display: none;">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="eft_OwnerSubsystemList_listbox" aria-busy="false" aria-describedby="8b23d22f-680c-49b5-8478-f1017f0b7822" aria-labelledby="eft_OwnerSubsystemLabel eft_OwnerSubsystemHelpDesc" data-kit="k21" style=""><span id="8b23d22f-680c-49b5-8478-f1017f0b7822" unselectable="on" class="k-input-inner readonly-widget"><span class="k-input-value-text">Administration</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="eft_OwnerSubsystemListLabel" for="eft_OwnerSubsystemList" class="display-none">eft_OwnerSubsystemList</label><input readonly="readonly" isclonedisplayfor="true" class="editor-control" data-val="true" data-val-required="Owner Module is a required field." height="0" id="eft_OwnerSubsystemList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.OwnerModule" listviewdisplayformat="Name" name="OwnerSubsystemList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-OwnerSubsystem" type="text" value="0B34481F-F69C-3AB6-E053-C9157ACEFF03" data-role="dropdownlist" aria-labelledby="eft_OwnerSubsystemListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_OwnerSubsystemList").kendoDropDownList({"change":function(e) {
+        var sel = $('#eft_OwnerSubsystemList').val();
+        if (sel != '') {
+            $('#eft_OwnerSubsystem_ID').val(sel);
+            var txt = $('#eft_OwnerSubsystemList').data('kendoDropDownList').text();
+            $('#eft_OwnerSubsystem_Name').val(txt);
+        } else {
+            $('#eft_OwnerSubsystem_ID').val('');
+            $('#eft_OwnerSubsystem_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#eft_OwnerSubsystemList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[{"ID":"0B34481F-F69C-3AB6-E053-C9157ACEFF03","Name":"Administration","DisplayFormat":0,"FormattedText":"Administration","DefaultCode":null}],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="eft_OwnerSubsystem_IDLabel" for="eft_OwnerSubsystem_ID" class="display-none">eft_OwnerSubsystem_ID</label><input readonly="readonly" id="eft_OwnerSubsystem_ID" name="OwnerSubsystem.ID" type="hidden" value="0B34481F-F69C-3AB6-E053-C9157ACEFF03" aria-labelledby="eft_OwnerSubsystem_IDLabel">
+<label id="eft_OwnerSubsystem_NameLabel" for="eft_OwnerSubsystem_Name" class="display-none">eft_OwnerSubsystem_Name</label><input readonly="readonly" id="eft_OwnerSubsystem_Name" name="OwnerSubsystem.Name" type="hidden" value="Administration" aria-labelledby="eft_OwnerSubsystem_NameLabel">
+<label id="eft_OwnerSubsystem_DisplayFormatLabel" for="eft_OwnerSubsystem_DisplayFormat" class="display-none">eft_OwnerSubsystem_DisplayFormat</label><input readonly="readonly" id="eft_OwnerSubsystem_DisplayFormat" name="OwnerSubsystem.DisplayFormat" type="hidden" value="Name" aria-labelledby="eft_OwnerSubsystem_DisplayFormatLabel"></div><span class="k-invalid-msg" id="eft_OwnerSubsystemList_validationMessage" data-for="eft_OwnerSubsystemList"></span><span id="eft_OwnerSubsystemHelpDesc" hidden="hidden">Owner Module</span></div></div>
+                                    <div class="col-md-3 editor-col" id="eft_OwnerEmail_parent" data-template="Text"><div class="editor-label"><label for="eft_OwnerEmail" id="eft_OwnerEmailLabel" readonly="readonly" class="readonly-label" title="Owner Email">Owner Email</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_OwnerEmailHelp" role="img" title="Owner Email" data-role="tooltip" data-kit-tip="Owner Email" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" data-email-msg="Owner Email is not a valid email address. Enter email with 'name@domain' format." data-val="true" data-val-length-max="Owner Email has a maximum length of 150 characters." data-val-regex="Owner Email is not a valid email address. Enter email with 'name@domain' format." data-val-regex-pattern="^[a-zA-Z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@([a-zA-Z0-9]+[\w-]+\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$" data-val-required="Owner Email is a required field." height="0" id="eft_OwnerEmail" ignoredirtydata="False" maxlength="150" name="OwnerEmail" value="yashwanth.goduguchintha@dxc.com" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" style="width: 100%;" aria-labelledby="eft_OwnerEmailLabel eft_OwnerEmailHelpDesc"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_OwnerEmail").kendoTextBox({"value":"yashwanth.goduguchintha@dxc.com"});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("OwnerEmail");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="eft_OwnerEmail_validationMessage" data-for="eft_OwnerEmail"></span><span id="eft_OwnerEmailHelpDesc" hidden="hidden">Owner Email</span></div></div>
+                                    <div class="clear-both"></div>
+                                    <div class="col-md-12 assoc-box editor-section row">
+                                        <div class="col-md-12 assoc-box editor-section row">
+                                            <div class="col-md-4 editor-col list-horizontal editor-clear" id="eft_RunSchedule_parent" data-template="RadioButtonList"><div class="editor-label"><label for="eft_RunSchedule" id="eft_RunScheduleLabel" readonly="readonly" class="readonly-label" title="Run Schedule">Run Schedule</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_RunScheduleHelp" role="img" title="Run Schedule" data-role="tooltip" data-kit-tip="Run Schedule" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+    <div class="assoc-box-radio-btn-list-horz readonly-widget" tabindex="0">
+<span class="list-item display-none-priority"><input readonly="readonly" class="k-radio" id="eft_RunSchedule_ID1" name="RunSchedule.ID" type="radio" value="1" checked="checked" ignoredirtydata="False" aria-describedby="eft_RunScheduleHelpDesc"><label class="k-radio-label" for="eft_RunSchedule_ID1">Run Weekly</label></span><span class="list-item display-none-priority"><input readonly="readonly" class="k-radio" id="eft_RunSchedule_ID2" name="RunSchedule.ID" type="radio" value="2" ignoredirtydata="False" aria-describedby="eft_RunScheduleHelpDesc"><label class="k-radio-label" for="eft_RunSchedule_ID2">Run Monthly</label></span>
+    <label class="readonly-k-radio-label">Run Weekly</label></div>
+<span class="k-invalid-msg" id="eft_RunSchedule_validationMessage" data-for="eft_RunSchedule"></span><span id="eft_RunScheduleHelpDesc" hidden="hidden">Run Schedule</span></div></div>
+                                            <div id="RunType_Weekly">
+                                                <div class="clear-both"></div>
+                                                <div class="col-md-3 editor-col" id="eft_RunOnSunday_parent"><div class="editor-label"><label readonly="readonly">Sunday</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" height="0" id="eft_RunOnSunday" ignoredirtydata="False" name="RunOnSunday" not-data-val-required="Sunday is a required field." type="checkbox" value="true" style="" aria-describedby="eft_RunOnSundayHelpDesc"></span><label for="eft_RunOnSunday" class="k-checkbox-label k-disabled display-none-priority" style="">Sunday</label><input class="readonly-k-checkbox-label" aria-label="Sunday" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="RunOnSunday" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#eft_RunOnSunday").kendoCheckBox({"checked":false,"label":"Sunday"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_RunOnSundayHelp" role="img" title="Run Sunday" data-role="tooltip" data-kit-tip="Run Sunday" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="eft_RunOnSunday_validationMessage" data-for="eft_RunOnSunday"></span><span id="eft_RunOnSundayHelpDesc" hidden="hidden">Run Sunday</span></div></div>
+                                                <div class="col-md-3 editor-col" id="eft_RunOnMonday_parent"><div class="editor-label"><label readonly="readonly">Monday</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" height="0" id="eft_RunOnMonday" ignoredirtydata="False" name="RunOnMonday" not-data-val-required="Monday is a required field." type="checkbox" value="true" style="" aria-describedby="eft_RunOnMondayHelpDesc"></span><label for="eft_RunOnMonday" class="k-checkbox-label k-disabled display-none-priority" style="">Monday</label><input class="readonly-k-checkbox-label" aria-label="Monday" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="RunOnMonday" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#eft_RunOnMonday").kendoCheckBox({"checked":false,"label":"Monday"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_RunOnMondayHelp" role="img" title="Run Monday" data-role="tooltip" data-kit-tip="Run Monday" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="eft_RunOnMonday_validationMessage" data-for="eft_RunOnMonday"></span><span id="eft_RunOnMondayHelpDesc" hidden="hidden">Run Monday</span></div></div>
+                                                <div class="col-md-3 editor-col" id="eft_RunOnTuesday_parent"><div class="editor-label"><label readonly="readonly">Tuesday</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" height="0" id="eft_RunOnTuesday" ignoredirtydata="False" name="RunOnTuesday" not-data-val-required="Tuesday is a required field." type="checkbox" value="true" style="" aria-describedby="eft_RunOnTuesdayHelpDesc"></span><label for="eft_RunOnTuesday" class="k-checkbox-label k-disabled display-none-priority" style="">Tuesday</label><input class="readonly-k-checkbox-label" aria-label="Tuesday" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="RunOnTuesday" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#eft_RunOnTuesday").kendoCheckBox({"checked":false,"label":"Tuesday"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_RunOnTuesdayHelp" role="img" title="Run Tuesday" data-role="tooltip" data-kit-tip="Run Tuesday" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="eft_RunOnTuesday_validationMessage" data-for="eft_RunOnTuesday"></span><span id="eft_RunOnTuesdayHelpDesc" hidden="hidden">Run Tuesday</span></div></div>
+                                                <div class="col-md-3 editor-col" id="eft_RunOnWednesday_parent"><div class="editor-label"><label readonly="readonly">Wednesday</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" height="0" id="eft_RunOnWednesday" ignoredirtydata="False" name="RunOnWednesday" not-data-val-required="Wednesday is a required field." type="checkbox" value="true" style="" aria-describedby="eft_RunOnWednesdayHelpDesc"></span><label for="eft_RunOnWednesday" class="k-checkbox-label k-disabled display-none-priority" style="">Wednesday</label><input class="readonly-k-checkbox-label" aria-label="Wednesday" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="RunOnWednesday" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#eft_RunOnWednesday").kendoCheckBox({"checked":false,"label":"Wednesday"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_RunOnWednesdayHelp" role="img" title="Run Wednesday" data-role="tooltip" data-kit-tip="Run Wednesday" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="eft_RunOnWednesday_validationMessage" data-for="eft_RunOnWednesday"></span><span id="eft_RunOnWednesdayHelpDesc" hidden="hidden">Run Wednesday</span></div></div>
+                                                <div class="col-md-3 editor-col" id="eft_RunOnThursday_parent"><div class="editor-label"><label readonly="readonly">Thursday</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" height="0" id="eft_RunOnThursday" ignoredirtydata="False" name="RunOnThursday" not-data-val-required="Thursday is a required field." type="checkbox" value="true" style="" aria-describedby="eft_RunOnThursdayHelpDesc"></span><label for="eft_RunOnThursday" class="k-checkbox-label k-disabled display-none-priority" style="">Thursday</label><input class="readonly-k-checkbox-label" aria-label="Thursday" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="RunOnThursday" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#eft_RunOnThursday").kendoCheckBox({"checked":false,"label":"Thursday"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_RunOnThursdayHelp" role="img" title="Run Thursday" data-role="tooltip" data-kit-tip="Run Thursday" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="eft_RunOnThursday_validationMessage" data-for="eft_RunOnThursday"></span><span id="eft_RunOnThursdayHelpDesc" hidden="hidden">Run Thursday</span></div></div>
+                                                <div class="col-md-3 editor-col" id="eft_RunOnFriday_parent"><div class="editor-label"><label readonly="readonly">Friday</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" height="0" id="eft_RunOnFriday" ignoredirtydata="False" name="RunOnFriday" not-data-val-required="Friday is a required field." type="checkbox" value="true" style="" aria-describedby="eft_RunOnFridayHelpDesc"></span><label for="eft_RunOnFriday" class="k-checkbox-label k-disabled display-none-priority" style="">Friday</label><input class="readonly-k-checkbox-label" aria-label="Friday" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="RunOnFriday" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#eft_RunOnFriday").kendoCheckBox({"checked":false,"label":"Friday"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_RunOnFridayHelp" role="img" title="Run Friday" data-role="tooltip" data-kit-tip="Run Friday" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="eft_RunOnFriday_validationMessage" data-for="eft_RunOnFriday"></span><span id="eft_RunOnFridayHelpDesc" hidden="hidden">Run Friday</span></div></div>
+                                                <div class="col-md-3 editor-col" id="eft_RunOnSaturday_parent"><div class="editor-label"><label readonly="readonly">Saturday</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" height="0" id="eft_RunOnSaturday" ignoredirtydata="False" name="RunOnSaturday" not-data-val-required="Saturday is a required field." type="checkbox" value="true" style="" aria-describedby="eft_RunOnSaturdayHelpDesc"></span><label for="eft_RunOnSaturday" class="k-checkbox-label k-disabled display-none-priority" style="">Saturday</label><input class="readonly-k-checkbox-label" aria-label="Saturday" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="RunOnSaturday" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#eft_RunOnSaturday").kendoCheckBox({"checked":false,"label":"Saturday"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_RunOnSaturdayHelp" role="img" title="Run Saturday" data-role="tooltip" data-kit-tip="Run Saturday" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="eft_RunOnSaturday_validationMessage" data-for="eft_RunOnSaturday"></span><span id="eft_RunOnSaturdayHelpDesc" hidden="hidden">Run Saturday</span></div></div>
+                                            </div>
+                                            <div class="clear-both"></div>
+                                            <div id="RunType_Monthly">
+                                                <div class="col-md-3 editor-col" id="eft_RunOnFirstDay_parent"><div class="editor-label"><label readonly="readonly">Run On First Day Month</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" height="0" id="eft_RunOnFirstDay" ignoredirtydata="False" name="RunOnFirstDay" not-data-val-required="Run On First Day Month is a required field." type="checkbox" value="true" style="" aria-describedby="eft_RunOnFirstDayHelpDesc"></span><label for="eft_RunOnFirstDay" class="k-checkbox-label k-disabled display-none-priority" style="">Run On First Day Month</label><input class="readonly-k-checkbox-label" aria-label="Run On First Day Month" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="RunOnFirstDay" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#eft_RunOnFirstDay").kendoCheckBox({"checked":false,"label":"Run On First Day Month"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_RunOnFirstDayHelp" role="img" title="Run On First Day Month" data-role="tooltip" data-kit-tip="Run On First Day Month" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="eft_RunOnFirstDay_validationMessage" data-for="eft_RunOnFirstDay"></span><span id="eft_RunOnFirstDayHelpDesc" hidden="hidden">Run On First Day Month</span></div></div>
+                                                <div class="col-md-3 editor-col" id="eft_RunOnLastDay_parent"><div class="editor-label"><label readonly="readonly">Run On Last Day Month</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" height="0" id="eft_RunOnLastDay" ignoredirtydata="False" name="RunOnLastDay" not-data-val-required="Run On Last Day Month is a required field." type="checkbox" value="true" style="" aria-describedby="eft_RunOnLastDayHelpDesc"></span><label for="eft_RunOnLastDay" class="k-checkbox-label k-disabled display-none-priority" style="">Run On Last Day Month</label><input class="readonly-k-checkbox-label" aria-label="Run On Last Day Month" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="RunOnLastDay" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#eft_RunOnLastDay").kendoCheckBox({"checked":false,"label":"Run On Last Day Month"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_RunOnLastDayHelp" role="img" title="Run On Last Day Month" data-role="tooltip" data-kit-tip="Run On Last Day Month" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="eft_RunOnLastDay_validationMessage" data-for="eft_RunOnLastDay"></span><span id="eft_RunOnLastDayHelpDesc" hidden="hidden">Run On Last Day Month</span></div></div>
+                                                <div class="col-md-3 editor-col" id="eft_RunOnThisDayList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="eft_RunOnThisDay" id="eft_RunOnThisDayLabel" readonly="readonly" class="readonly-label" title="Run On This Day Month">Run On This Day Month</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_RunOnThisDayHelp" role="img" title="Run On This Day Month" data-role="tooltip" data-kit-tip="Run On This Day Month" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><label id="RunOnThisDayListTextLabel" for="RunOnThisDayListText" class="display-none">RunOnThisDayListText</label><input readonly="readonly" class="k-textbox editor-control" id="RunOnThisDayListText" name="RunOnThisDayListText" value="" aria-labelledby="eft_RunOnThisDayLabel"><div style="display: none;">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="eft_RunOnThisDayList_listbox" aria-busy="false" aria-describedby="4cfdb652-c373-4752-8107-4d4b42d5902a" aria-labelledby="eft_RunOnThisDayLabel eft_RunOnThisDayHelpDesc" data-kit="k22" style=""><span id="4cfdb652-c373-4752-8107-4d4b42d5902a" unselectable="on" class="k-input-inner readonly-widget"><span class="k-input-value-text">null</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="eft_RunOnThisDayListLabel" for="eft_RunOnThisDayList" class="display-none">eft_RunOnThisDayList</label><input readonly="readonly" isclonedisplayfor="true" class="editor-control" height="0" id="eft_RunOnThisDayList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.DayOfMonth" listviewdisplayformat="Name" name="RunOnThisDayList" not-data-val-required="Run On This Day Month is a required field." propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-RunOnThisDay" type="text" value="0" data-role="dropdownlist" aria-labelledby="eft_RunOnThisDayListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_RunOnThisDayList").kendoDropDownList({"change":function(e) {
+        var sel = $('#eft_RunOnThisDayList').val();
+        if (sel != '') {
+            $('#eft_RunOnThisDay_ID').val(sel);
+            var txt = $('#eft_RunOnThisDayList').data('kendoDropDownList').text();
+            $('#eft_RunOnThisDay_Name').val(txt);
+        } else {
+            $('#eft_RunOnThisDay_ID').val('');
+            $('#eft_RunOnThisDay_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#eft_RunOnThisDayList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[{"ID":"0","Name":null,"DisplayFormat":0,"FormattedText":null,"DefaultCode":null}],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="eft_RunOnThisDay_IDLabel" for="eft_RunOnThisDay_ID" class="display-none">eft_RunOnThisDay_ID</label><input readonly="readonly" id="eft_RunOnThisDay_ID" name="RunOnThisDay.ID" type="hidden" value="0" aria-labelledby="eft_RunOnThisDay_IDLabel">
+<label id="eft_RunOnThisDay_NameLabel" for="eft_RunOnThisDay_Name" class="display-none">eft_RunOnThisDay_Name</label><input readonly="readonly" id="eft_RunOnThisDay_Name" name="RunOnThisDay.Name" type="hidden" value="" aria-labelledby="eft_RunOnThisDay_NameLabel">
+<label id="eft_RunOnThisDay_DisplayFormatLabel" for="eft_RunOnThisDay_DisplayFormat" class="display-none">eft_RunOnThisDay_DisplayFormat</label><input readonly="readonly" id="eft_RunOnThisDay_DisplayFormat" name="RunOnThisDay.DisplayFormat" type="hidden" value="Name" aria-labelledby="eft_RunOnThisDay_DisplayFormatLabel"></div><span class="k-invalid-msg" id="eft_RunOnThisDayList_validationMessage" data-for="eft_RunOnThisDayList"></span><span id="eft_RunOnThisDayHelpDesc" hidden="hidden">Run On This Day Month</span></div></div>
+                                            </div>
+                                        </div>
+                                        <div class="clear-both rowpad"></div>
+                                        <div class="col-md-3 editor-col" id="eft_TimeWindowStartList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="eft_TimeWindowStart" id="eft_TimeWindowStartLabel" readonly="readonly" class="readonly-label" title="Time Window Start">Time Window Start</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_TimeWindowStartHelp" role="img" title="Time Window Start" data-role="tooltip" data-kit-tip="Time Window Start" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><label id="TimeWindowStartListTextLabel" for="TimeWindowStartListText" class="display-none">TimeWindowStartListText</label><input readonly="readonly" class="k-textbox editor-control" id="TimeWindowStartListText" name="TimeWindowStartListText" value="0000" aria-labelledby="eft_TimeWindowStartLabel"><div style="display: none;">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="eft_TimeWindowStartList_listbox" aria-busy="false" aria-describedby="9fc433c5-d019-44cd-90f3-f0fdd4e83354" aria-labelledby="eft_TimeWindowStartLabel eft_TimeWindowStartHelpDesc" data-kit="k23" style=""><span id="9fc433c5-d019-44cd-90f3-f0fdd4e83354" unselectable="on" class="k-input-inner readonly-widget"><span class="k-input-value-text">0000</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="eft_TimeWindowStartListLabel" for="eft_TimeWindowStartList" class="display-none">eft_TimeWindowStartList</label><input readonly="readonly" isclonedisplayfor="true" class="editor-control" data-val="true" data-val-required="Time Window Start is a required field." height="0" id="eft_TimeWindowStartList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.TimeWindow" listviewdisplayformat="Name" name="TimeWindowStartList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-TimeWindowStart" type="text" value="0000" data-role="dropdownlist" aria-labelledby="eft_TimeWindowStartListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_TimeWindowStartList").kendoDropDownList({"change":function(e) {
+        var sel = $('#eft_TimeWindowStartList').val();
+        if (sel != '') {
+            $('#eft_TimeWindowStart_ID').val(sel);
+            var txt = $('#eft_TimeWindowStartList').data('kendoDropDownList').text();
+            $('#eft_TimeWindowStart_Name').val(txt);
+        } else {
+            $('#eft_TimeWindowStart_ID').val('');
+            $('#eft_TimeWindowStart_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#eft_TimeWindowStartList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[{"ID":"0000","Name":"0000","DisplayFormat":0,"FormattedText":"0000","DefaultCode":null}],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="eft_TimeWindowStart_IDLabel" for="eft_TimeWindowStart_ID" class="display-none">eft_TimeWindowStart_ID</label><input readonly="readonly" id="eft_TimeWindowStart_ID" name="TimeWindowStart.ID" type="hidden" value="0000" aria-labelledby="eft_TimeWindowStart_IDLabel">
+<label id="eft_TimeWindowStart_NameLabel" for="eft_TimeWindowStart_Name" class="display-none">eft_TimeWindowStart_Name</label><input readonly="readonly" id="eft_TimeWindowStart_Name" name="TimeWindowStart.Name" type="hidden" value="0000" aria-labelledby="eft_TimeWindowStart_NameLabel">
+<label id="eft_TimeWindowStart_DisplayFormatLabel" for="eft_TimeWindowStart_DisplayFormat" class="display-none">eft_TimeWindowStart_DisplayFormat</label><input readonly="readonly" id="eft_TimeWindowStart_DisplayFormat" name="TimeWindowStart.DisplayFormat" type="hidden" value="Name" aria-labelledby="eft_TimeWindowStart_DisplayFormatLabel"></div><span class="k-invalid-msg" id="eft_TimeWindowStartList_validationMessage" data-for="eft_TimeWindowStartList"></span><span id="eft_TimeWindowStartHelpDesc" hidden="hidden">Time Window Start</span></div></div>
+                                        <div class="col-md-3 editor-col" id="eft_TimeWindowEndList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="eft_TimeWindowEnd" id="eft_TimeWindowEndLabel" readonly="readonly" class="readonly-label" title="Time Window End">Time Window End</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_TimeWindowEndHelp" role="img" title="Time Window End" data-role="tooltip" data-kit-tip="Time Window End" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><label id="TimeWindowEndListTextLabel" for="TimeWindowEndListText" class="display-none">TimeWindowEndListText</label><input readonly="readonly" class="k-textbox editor-control" id="TimeWindowEndListText" name="TimeWindowEndListText" value="0030" aria-labelledby="eft_TimeWindowEndLabel"><div style="display: none;">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="eft_TimeWindowEndList_listbox" aria-busy="false" aria-describedby="bd9dbc67-901b-4c61-aaa8-abfa0fc91812" aria-labelledby="eft_TimeWindowEndLabel eft_TimeWindowEndHelpDesc" data-kit="k24" style=""><span id="bd9dbc67-901b-4c61-aaa8-abfa0fc91812" unselectable="on" class="k-input-inner readonly-widget"><span class="k-input-value-text">0030</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="eft_TimeWindowEndListLabel" for="eft_TimeWindowEndList" class="display-none">eft_TimeWindowEndList</label><input readonly="readonly" isclonedisplayfor="true" class="editor-control" data-val="true" data-val-required="Time Window End is a required field." height="0" id="eft_TimeWindowEndList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.TimeWindow" listviewdisplayformat="Name" name="TimeWindowEndList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-TimeWindowEnd" type="text" value="0030" data-role="dropdownlist" aria-labelledby="eft_TimeWindowEndListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_TimeWindowEndList").kendoDropDownList({"change":function(e) {
+        var sel = $('#eft_TimeWindowEndList').val();
+        if (sel != '') {
+            $('#eft_TimeWindowEnd_ID').val(sel);
+            var txt = $('#eft_TimeWindowEndList').data('kendoDropDownList').text();
+            $('#eft_TimeWindowEnd_Name').val(txt);
+        } else {
+            $('#eft_TimeWindowEnd_ID').val('');
+            $('#eft_TimeWindowEnd_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#eft_TimeWindowEndList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[{"ID":"0030","Name":"0030","DisplayFormat":0,"FormattedText":"0030","DefaultCode":null}],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="eft_TimeWindowEnd_IDLabel" for="eft_TimeWindowEnd_ID" class="display-none">eft_TimeWindowEnd_ID</label><input readonly="readonly" id="eft_TimeWindowEnd_ID" name="TimeWindowEnd.ID" type="hidden" value="0030" aria-labelledby="eft_TimeWindowEnd_IDLabel">
+<label id="eft_TimeWindowEnd_NameLabel" for="eft_TimeWindowEnd_Name" class="display-none">eft_TimeWindowEnd_Name</label><input readonly="readonly" id="eft_TimeWindowEnd_Name" name="TimeWindowEnd.Name" type="hidden" value="0030" aria-labelledby="eft_TimeWindowEnd_NameLabel">
+<label id="eft_TimeWindowEnd_DisplayFormatLabel" for="eft_TimeWindowEnd_DisplayFormat" class="display-none">eft_TimeWindowEnd_DisplayFormat</label><input readonly="readonly" id="eft_TimeWindowEnd_DisplayFormat" name="TimeWindowEnd.DisplayFormat" type="hidden" value="Name" aria-labelledby="eft_TimeWindowEnd_DisplayFormatLabel"></div><span class="k-invalid-msg" id="eft_TimeWindowEndList_validationMessage" data-for="eft_TimeWindowEndList"></span><span id="eft_TimeWindowEndHelpDesc" hidden="hidden">Time Window End</span></div></div>
+                                        <div class="col-md-3 editor-col" id="eft_SendNotification_parent"><div class="editor-label"><label readonly="readonly">Send Notification</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" height="0" id="eft_SendNotification" ignoredirtydata="False" name="SendNotification" not-data-val-required="Send Notification is a required field." type="checkbox" value="true" style="" aria-describedby="eft_SendNotificationHelpDesc"></span><label for="eft_SendNotification" class="k-checkbox-label k-disabled display-none-priority" style="">Send Notification</label><input class="readonly-k-checkbox-label" aria-label="Send Notification" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="SendNotification" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#eft_SendNotification").kendoCheckBox({"checked":false,"label":"Send Notification"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_SendNotificationHelp" role="img" title="Send Notification" data-role="tooltip" data-kit-tip="Send Notification" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="eft_SendNotification_validationMessage" data-for="eft_SendNotification"></span><span id="eft_SendNotificationHelpDesc" hidden="hidden">Send Notification</span></div></div>
+                                        <div class="col-md-2 editor-col" id="eft_Suspended_parent"><div class="editor-label"><label readonly="readonly">Suspend</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" height="0" id="eft_Suspended" ignoredirtydata="False" name="Suspended" not-data-val-required="Suspend is a required field." type="checkbox" value="true" style="" aria-describedby="eft_SuspendedHelpDesc"></span><label for="eft_Suspended" class="k-checkbox-label k-disabled display-none-priority" style="">Suspend</label><input class="readonly-k-checkbox-label" aria-label="Suspend" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="Suspended" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#eft_Suspended").kendoCheckBox({"checked":false,"label":"Suspend"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_SuspendedHelp" role="img" title="Suspend" data-role="tooltip" data-kit-tip="Suspend" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="eft_Suspended_validationMessage" data-for="eft_Suspended"></span><span id="eft_SuspendedHelpDesc" hidden="hidden">Suspend</span></div></div>
+                                        <div class="col-md-1 editor-col" id="eft_Status_parent" data-template="Text"><div class="editor-label"><label for="eft_Status" id="eft_StatusLabel" readonly="readonly" class="readonly-label" title="Status">Status</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="eft_StatusHelp" role="img" title="Status" data-role="tooltip" data-kit-tip="Status" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" height="0" id="eft_Status" ignoredirtydata="False" name="Status" not-data-val-required="Status is a required field." value="Active" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" style="width: 100%;" aria-labelledby="eft_StatusLabel eft_StatusHelpDesc"></span><script>
+	kendo.syncReady(function(){jQuery("#eft_Status").kendoTextBox({"value":"Active"});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("Status");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="eft_Status_validationMessage" data-for="eft_Status"></span><span id="eft_StatusHelpDesc" hidden="hidden">Status</span></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-panel-container">
+                                <div class="content-panel-hdr">
+                                    Destination Configuration
+                                </div>
+                                <div class="content-panel-bdy">
+                                    <div class="k-grid editor-grid" id="FileTransferDestinationGrid" data-role="grid" style="" data-kit="k25"><div aria-controls="5dddece4-de78-4019-b59a-4f7338cc9d0b" aria-label="grid toolbar" class="k-toolbar k-grid-toolbar k-toolbar-resizable" role="toolbar">
+                                                <div class="grid-toolbar-primary align-right">
+<span class="k-checkbox-wrap"><input data-role="checkbox" id="DestinationShowInactiveCheckBox" ignoredirtydata="true" name="DestinationShowInactiveCheckBox" title="Show Inactives" type="checkbox" value="true" class="k-checkbox" style=""></span><input name="DestinationShowInactiveCheckBox" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#DestinationShowInactiveCheckBox").kendoCheckBox({"label":"Show Inactives"});});
+</script>
+                                                </div>
+                                            </div><div class="k-grid-header" style="padding-right: 15px;"><div class="k-grid-header-wrap k-auto-scrollable" data-role="resizable"><table role="grid" class="k-grid-header-table k-table"><colgroup><col><col><col><col style="width: 75px;"></colgroup><thead class="k-table-thead" role="rowgroup" id="a643923f-e9ef-45b2-a62a-4f2d83770e78"><tr class="k-table-row" role="row"><th class="k-table-th k-header" data-field="DestinationAddress" data-index="0" data-resizable="true" data-title="Destination Address" id="e1e754ea-037f-4e0c-98cd-ed9ad043980c" role="columnheader" scope="col" aria-colindex="1"><span class="k-cell-inner"><span class="k-link"><span class="k-column-title">Destination Address</span></span></span></th><th class="k-table-th k-header" data-field="DestinationProtocol.Name" data-index="1" data-resizable="true" data-title="Destination Protocol" id="66faa187-13cb-4cc1-bc98-afd4e7841b95" role="columnheader" scope="col" aria-colindex="2"><span class="k-cell-inner"><span class="k-link"><span class="k-column-title">Destination Protocol</span></span></span></th><th class="k-table-th k-header" data-field="ContactName" data-index="2" data-resizable="true" data-title="Contact Name" id="89f35b9b-4846-46e5-9f92-9915b63a13f1" role="columnheader" scope="col" aria-colindex="3"><span class="k-cell-inner"><span class="k-link"><span class="k-column-title">Contact Name</span></span></span></th><th class="k-table-th k-header" data-field="Status" data-index="3" data-resizable="true" data-title="Status" id="088ff57b-5d39-4c26-84b3-e816bf2204e2" role="columnheader" scope="col" aria-colindex="4"><span class="k-cell-inner"><span class="k-link"><span class="k-column-title">Status</span></span></span></th><th class="k-table-th k-header k-hidden" data-field="Active" data-index="4" data-resizable="true" data-title="Active" id="ddbad9e9-28de-439f-96f4-0d1ae340a9c4" role="columnheader" scope="col" aria-colindex="5" style="display: none;"><span class="k-cell-inner"><span class="k-link"><span class="k-column-title">Active</span></span></span></th></tr></thead></table></div></div><div class="k-grid-container"><div class="k-grid-content k-auto-scrollable" style="height: 200px;"><table id="5dddece4-de78-4019-b59a-4f7338cc9d0b" role="grid" tabindex="0" class="k-grid-table k-table k-selectable" data-role="selectable" aria-colcount="5" aria-owns="a643923f-e9ef-45b2-a62a-4f2d83770e78 08932008-ca30-482a-8614-68a094b2491d "><colgroup><col><col><col><col style="width: 75px;"></colgroup><tbody class="k-table-tbody" id="08932008-ca30-482a-8614-68a094b2491d" role="rowgroup"><tr class="k-table-row k-master-row" data-uid="f1676d32-bb9f-4cd1-a408-987c85272e1f" role="row"><td class="k-table-td" role="gridcell" aria-colindex="1">https://dxccommercial.test.mapshc.com</td><td class="k-table-td" role="gridcell" aria-colindex="2">FTP</td><td class="k-table-td" role="gridcell" aria-colindex="3"></td><td class="k-table-td" role="gridcell" aria-colindex="4">Active</td><td class="k-table-td" role="gridcell" aria-colindex="5" style="display: none;">true</td></tr><tr class="k-table-row k-table-alt-row k-master-row" data-uid="948c950b-188f-4087-a087-fb389c291213" role="row"><td class="k-table-td" role="gridcell" aria-colindex="1">/Test</td><td class="k-table-td" role="gridcell" aria-colindex="2">SFTP</td><td class="k-table-td" role="gridcell" aria-colindex="3"></td><td class="k-table-td" role="gridcell" aria-colindex="4">Active</td><td class="k-table-td" role="gridcell" aria-colindex="5" style="display: none;">true</td></tr></tbody></table></div></div><div aria-controls="5dddece4-de78-4019-b59a-4f7338cc9d0b" class="k-pager k-grid-pager k-pager-responsive" data-role="pager" aria-label="Page navigation, page 1 of 1" role="application" aria-roledescription="pager" aria-keyshortcuts="Enter ArrowRight ArrowLeft" id="fda60247-eb02-4a04-8d84-7160b7cb2c81" tabindex="0"><div class="k-pager-numbers-wrap"><button aria-label="Go to the first page" class="k-button k-pager-nav k-button-flat k-icon-button k-disabled k-pager-first" data-page="1" title="Go to the first page" tabindex="-1" aria-disabled="true"><span class="k-icon k-svg-icon k-svg-i-caret-alt-to-left k-button-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg?v=30.0.0.2609"><path d="M352 384 160 256l192-128zM128 128v256h32V128z"></path></svg></span></button><button aria-label="Go to the previous page" class="k-button k-pager-nav k-button-flat k-icon-button k-disabled" data-page="1" title="Go to the previous page" tabindex="-1" aria-disabled="true"><span class="k-icon k-svg-icon k-svg-i-caret-alt-left k-button-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg?v=30.0.0.2609"><path d="m160 256 192-128v256z"></path></svg></span></button><div class="k-pager-numbers"><button role="button" aria-current="page" tabindex="0" aria-label="Page 1" class="k-button  k-button-flat k-button-primary k-selected"><span class="k-button-text">1</span></button></div><button aria-label="Go to the next page" class="k-button k-pager-nav k-button-flat k-icon-button k-disabled" data-page="1" title="Go to the next page" tabindex="-1" aria-disabled="true"><span class="k-icon k-svg-icon k-svg-i-caret-alt-right k-button-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg?v=30.0.0.2609"><path d="M352 256 160 384V128z"></path></svg></span></button><button aria-label="Go to the last page" class="k-button k-pager-nav k-button-flat k-icon-button k-disabled k-pager-last" data-page="1" title="Go to the last page" tabindex="-1" aria-disabled="true"><span class="k-icon k-svg-icon k-svg-i-caret-alt-to-right k-button-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg?v=30.0.0.2609"><path d="m128 128 192 128-192 128zm224 256V128h-32v256z"></path></svg></span></button><span class="k-pager-input" style="display: none;"><span><span>Page</span></span><span class="k-numerictextbox k-input" style=""><input type="text" data-validate="false" title="1" tabindex="0" class="k-input-inner" role="spinbutton" aria-valuemin="1" autocomplete="off" aria-disabled="false" aria-label="Page" aria-valuenow="1" style=""><input aria-label="Page" data-role="numerictextbox" role="spinbutton" class="k-input-inner" inputmode="text" type="text" aria-valuemin="1" aria-disabled="false" aria-valuenow="1" style="display: none;"><span class="k-icon k-svg-icon k-svg-i-exclamation-circle k-input-validation-icon k-hidden"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M224 128h64v160h-64zm0 256h64v-64h-64zm256-128c0 123.7-100.3 224-224 224S32 379.7 32 256 132.3 32 256 32s224 100.3 224 224m-32 0c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192"></path></svg></span></span><span><span>of 1</span></span></span></div><a aria-label="Refresh" class="k-pager-refresh k-button k-button-flat k-icon-button" href="/FileTransfer/FileTransferConfigurationView?subdomain=uximc&amp;ftsSourceLocationId=aab80b60-a4ec-4713-8e70-c2208c327cd1&amp;isPanel=1" title="Refresh" data-role="tooltip" data-kit-tip="Refresh" data-kit-tip-pos="top" data-kit-tip-after="250"><span class="k-icon k-svg-icon k-svg-i-arrow-rotate-cw k-button-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg?v=30.0.0.2609"><path d="M480 288c0 123.7-100.3 224-224 224S32 411.7 32 288 132.3 64 256 64V0l160 96-160 96v-64c-88.2 0-160 71.8-160 160s71.8 160 160 160 160-71.8 160-160c0-29.1-7.8-56.4-21.5-80l55.5-32c19.1 32.9 30 71.2 30 112"></path></svg></span></a><span class="k-pager-info">1 - 2 of 2 items</span><span class="k-pager-sizes"><span title="" class="k-picker k-dropdownlist" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-label="Page sizes drop down" aria-disabled="false" aria-readonly="false" aria-controls="ce6412bd-edbc-4b82-bd0f-f71d196e92f2_listbox" aria-busy="false" aria-describedby="54451e7f-19b3-40de-af3f-e82824c86e38" style=""><span id="54451e7f-19b3-40de-af3f-e82824c86e38" unselectable="on" class="k-input-inner"><span class="k-input-value-text">10</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><select aria-label="Page sizes drop down" data-role="dropdownlist" style="display: none;"><option value="5">5</option><option value="10" selected="selected">10</option><option value="20">20</option></select></span><span>items per page</span></span></div></div><script>
+	kendo.syncReady(function(){jQuery("#FileTransferDestinationGrid").kendoGrid({"change":fileTransferDestinationGridOnRowSelected,"columns":[{"title":"Destination Address","headerAttributes":{"data-field":"DestinationAddress","data-title":"Destination Address"},"field":"DestinationAddress","encoded":true},{"title":"Destination Protocol","headerAttributes":{"data-field":"DestinationProtocol.Name","data-title":"Destination Protocol"},"field":"DestinationProtocol.Name","encoded":true},{"title":"Contact Name","headerAttributes":{"data-field":"ContactName","data-title":"Contact Name"},"field":"ContactName","encoded":true},{"title":"Status","headerAttributes":{"data-field":"Status","data-title":"Status"},"width":"75px","field":"Status","sortable":false,"encoded":true},{"title":"Active","headerAttributes":{"data-field":"Active","data-title":"Active"},"hidden":true,"field":"Active","encoded":true}],"pageable":{"refresh":true,"pageSizes":[5,10,20],"buttonCount":3},"selectable":{"mode":"single, row"},"resizable":{"columns":true},"scrollable":{"height":"200px"},"toolbar":{},"dataSource":{"type":(function(){if(kendo.data.transports['aspnetmvc-ajax']){return 'aspnetmvc-ajax';} else{throw new Error('The kendo.aspnetmvc.min.js script is not included.');}})(),"transport":{"read":{"url":""},"prefix":""},"pageSize":10,"page":1,"groupPaging":false,"total":2,"filter":[{"logic":"and","filters":[{"field":"Active","operator":"eq","value":true}]}],"error":onWebApiError,"schema":{"data":"Data","total":"Total","errors":"Errors","model":{"fields":{"Active":{"type":"boolean"},"ContactName":{"type":"string"},"ContactEmail":{"type":"string"},"ContactPhone":{"type":"string"},"CompressAtDestination":{"type":"boolean"},"DestinationAddress":{"type":"string"},"DestinationId":{"type":"string"},"DestinationIsArchive":{"type":"boolean"},"DestinationLineNumber":{"type":"number"},"DestinationProtocol":{"type":"object"},"FTPServer":{"type":"object"},"DestinationType":{"type":"object"},"IsAddedUpdated":{"type":"boolean"},"OverwriteAtDestination":{"type":"boolean"},"RenameAtDestination":{"type":"boolean"},"RenamePattern":{"type":"object"},"Status":{"type":"string"},"ContractName":{"type":"object"},"FTEMetadataId":{"type":"string","defaultValue":null},"ImportJobName":{"type":"string"},"Editor":{"type":"object"},"Metadata":{"type":"object"}}}},"data":{"Data":[{"Active":true,"ContactName":"","ContactEmail":"","ContactPhone":"","CompressAtDestination":false,"DestinationAddress":"https://dxccommercial.test.mapshc.com","DestinationId":"c1237e51-ccf5-4b3e-a2e1-a189b92c26f2","DestinationIsArchive":false,"DestinationLineNumber":1,"DestinationProtocol":{"ID":"1","Name":"FTP","DisplayFormat":0,"FormattedText":"FTP","DefaultCode":null},"FTPServer":{"ID":"680c7460-8189-4255-93e7-2b6424fdb650","Name":"SFTP TEST","DisplayFormat":0,"FormattedText":"SFTP TEST","DefaultCode":null},"DestinationType":{"ID":null,"Name":null,"DisplayFormat":0,"FormattedText":null,"DefaultCode":null},"IsAddedUpdated":false,"OverwriteAtDestination":false,"RenameAtDestination":false,"RenamePattern":{"ID":"","Name":null,"DisplayFormat":0,"FormattedText":null,"DefaultCode":null},"Status":"Active","ContractName":{"ID":null,"Name":null,"DisplayFormat":0,"FormattedText":null,"DefaultCode":null},"FTEMetadataId":null,"ImportJobName":"","Metadata":{"IsActive":true,"ModifiedDate":null,"ModifiedId":null,"ModifiedTimestamp":null}},{"Active":true,"ContactName":"","ContactEmail":"","ContactPhone":"","CompressAtDestination":false,"DestinationAddress":"/Test","DestinationId":"7311ba73-f769-4166-a0bd-8ad82b164b7f","DestinationIsArchive":false,"DestinationLineNumber":2,"DestinationProtocol":{"ID":"2","Name":"SFTP","DisplayFormat":0,"FormattedText":"SFTP","DefaultCode":null},"FTPServer":{"ID":"680c7460-8189-4255-93e7-2b6424fdb650","Name":"SFTP TEST","DisplayFormat":0,"FormattedText":"SFTP TEST","DefaultCode":null},"DestinationType":{"ID":null,"Name":null,"DisplayFormat":0,"FormattedText":null,"DefaultCode":null},"IsAddedUpdated":false,"OverwriteAtDestination":false,"RenameAtDestination":false,"RenamePattern":{"ID":"","Name":null,"DisplayFormat":0,"FormattedText":null,"DefaultCode":null},"Status":"Active","ContractName":{"ID":null,"Name":null,"DisplayFormat":0,"FormattedText":null,"DefaultCode":null},"FTEMetadataId":null,"ImportJobName":"","Metadata":{"IsActive":true,"ModifiedDate":null,"ModifiedId":null,"ModifiedTimestamp":null}}],"Total":2,"AggregateResults":null}},"navigatable":true});});
+</script>
+                                </div>
+                            </div>
+                            <div id="FileTransferConfigurationViewButtons"><div id="FileTransferConfigurationViewFormButtonRow" class="editor-button-row"><input id="editFileTransferConfigurationButton" type="button" value="Edit" class="cancel k-button btn-spacer-right" onclick="onEditFileTransferConfigurationClick()"><span class="editor-button-nav"><input id="closeFileTransferConfigurationButton" type="button" value="Close" class="cancel k-button btn-spacer-left" onclick="closeFileTransferConfigurationModalDialog()" data-kit-action="close"></span></div></div>
+                        </div>
+                        <div id="divDestinationConfigurationView" style="display: none;">
+                            
+
+
+<input name="__RequestVerificationToken" type="hidden" value="cOjXRoGCFg6BP3LSALpP5fVlqcCkmvL9ROUGAixMZnbQ7yjOBZhEQajAJA2GM59fwArg4POJIG6KWVsxad1vpu5nWDn75mylhVvwkuCwzNHCVTfFqYGTrgjyFTh2BSEsXbp14tlYMmzmbraydI-cIw2">    <div id="DestinationConfigurationViewStatus"></div>
+    <div class="editor-section">
+        <fieldset>
+            <div class="row">
+                <div class="col-md-3 editor-col" id="viewDestinationProtocolList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="viewDestinationProtocol" id="viewDestinationProtocolLabel" readonly="readonly" class="readonly-label" title="Destination Protocol">Destination Protocol</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="viewDestinationProtocolHelp" role="img" title="Destination Protocol" data-role="tooltip" data-kit-tip="Destination Protocol" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><label id="DestinationProtocolListTextLabel" for="DestinationProtocolListText" class="display-none">DestinationProtocolListText</label><input readonly="readonly" class="k-textbox editor-control" id="DestinationProtocolListText" name="DestinationProtocolListText" value="" aria-labelledby="viewDestinationProtocolLabel"><div style="display: none;">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="viewDestinationProtocolList_listbox" aria-busy="false" aria-describedby="4efcef40-3f2d-42be-8c13-8bb187fd23b6" aria-labelledby="viewDestinationProtocolLabel viewDestinationProtocolHelpDesc" data-kit="k26" style=""><span id="4efcef40-3f2d-42be-8c13-8bb187fd23b6" unselectable="on" class="k-input-inner display-none"><span class="k-input-value-text">select a value...</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="viewDestinationProtocolListLabel" for="viewDestinationProtocolList" class="display-none">viewDestinationProtocolList</label><input readonly="readonly" isclonedisplayfor="true" class="editor-control" data-val="true" data-val-required="Destination Protocol is a required field." id="viewDestinationProtocolList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.ProtocolType" listviewdisplayformat="Name" name="DestinationProtocolList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.DestinationConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-DestinationProtocol" type="text" data-role="dropdownlist" aria-labelledby="viewDestinationProtocolListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#viewDestinationProtocolList").kendoDropDownList({"change":function(e) {
+        var sel = $('#viewDestinationProtocolList').val();
+        if (sel != '') {
+            $('#viewDestinationProtocol_ID').val(sel);
+            var txt = $('#viewDestinationProtocolList').data('kendoDropDownList').text();
+            $('#viewDestinationProtocol_Name').val(txt);
+        } else {
+            $('#viewDestinationProtocol_ID').val('');
+            $('#viewDestinationProtocol_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#viewDestinationProtocolList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="viewDestinationProtocol_IDLabel" for="viewDestinationProtocol_ID" class="display-none">viewDestinationProtocol_ID</label><input readonly="readonly" id="viewDestinationProtocol_ID" name="DestinationProtocol.ID" type="hidden" value="" aria-labelledby="viewDestinationProtocol_IDLabel">
+<label id="viewDestinationProtocol_NameLabel" for="viewDestinationProtocol_Name" class="display-none">viewDestinationProtocol_Name</label><input readonly="readonly" id="viewDestinationProtocol_Name" name="DestinationProtocol.Name" type="hidden" value="" aria-labelledby="viewDestinationProtocol_NameLabel">
+<label id="viewDestinationProtocol_DisplayFormatLabel" for="viewDestinationProtocol_DisplayFormat" class="display-none">viewDestinationProtocol_DisplayFormat</label><input readonly="readonly" id="viewDestinationProtocol_DisplayFormat" name="DestinationProtocol.DisplayFormat" type="hidden" value="Name" aria-labelledby="viewDestinationProtocol_DisplayFormatLabel"></div><span class="k-invalid-msg" id="viewDestinationProtocolList_validationMessage" data-for="viewDestinationProtocolList"></span><span id="viewDestinationProtocolHelpDesc" hidden="hidden">Destination Protocol</span></div></div>
+                <div class="editor-field" id="viewdivFTPId">
+                    <div class="col-md-3 editor-col" id="viewFTPServerList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="viewFTPServer" id="viewFTPServerLabel" readonly="readonly" class="readonly-label" title="Server">Server</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="viewFTPServerHelp" role="img" title="Server" data-role="tooltip" data-kit-tip="Server" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><label id="FTPServerListTextLabel" for="FTPServerListText" class="display-none">FTPServerListText</label><input readonly="readonly" class="k-textbox editor-control" id="FTPServerListText" name="FTPServerListText" value="" aria-labelledby="viewFTPServerLabel"><div style="display: none;">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="viewFTPServerList_listbox" aria-labelledby="viewFTPServerLabel viewFTPServerHelpDesc" data-kit="k27" style=""><span id="1ade774f-274f-4087-9934-8871562cfdd3" unselectable="on" class="k-input-inner display-none"><span class="k-input-value-text">select a value...</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="viewFTPServerListLabel" for="viewFTPServerList" class="display-none">viewFTPServerList</label><input readonly="readonly" isclonedisplayfor="true" class="editor-control" data-val="true" data-val-required="Server is a required field." id="viewFTPServerList" ignoredirtydata="False" listviewdatalistcontentid="" listviewdisplayformat="Name" name="FTPServerList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.DestinationConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-FTPServer" type="text" data-role="dropdownlist" aria-labelledby="viewFTPServerListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#viewFTPServerList").kendoDropDownList({"change":function(e) {
+        var sel = $('#viewFTPServerList').val();
+        if (sel != '') {
+            $('#viewFTPServer_ID').val(sel);
+            var txt = $('#viewFTPServerList').data('kendoDropDownList').text();
+            $('#viewFTPServer_Name').val(txt);
+        } else {
+            $('#viewFTPServer_ID').val('');
+            $('#viewFTPServer_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#viewFTPServerList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":{"transport":{"read":{"url":"/api/Localization/GetDataList/","data":function() { return kendo.ui.DropDownList.requestData(jQuery("#viewFTPServerList") , ""); }},"prefix":""},"serverFiltering":true,"filter":[],"schema":{"errors":"Errors"}},"dataTextField":"FormattedText","autoBind":false,"dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="viewFTPServer_IDLabel" for="viewFTPServer_ID" class="display-none">viewFTPServer_ID</label><input readonly="readonly" id="viewFTPServer_ID" name="FTPServer.ID" type="hidden" value="" aria-labelledby="viewFTPServer_IDLabel">
+<label id="viewFTPServer_NameLabel" for="viewFTPServer_Name" class="display-none">viewFTPServer_Name</label><input readonly="readonly" id="viewFTPServer_Name" name="FTPServer.Name" type="hidden" value="" aria-labelledby="viewFTPServer_NameLabel">
+<label id="viewFTPServer_DisplayFormatLabel" for="viewFTPServer_DisplayFormat" class="display-none">viewFTPServer_DisplayFormat</label><input readonly="readonly" id="viewFTPServer_DisplayFormat" name="FTPServer.DisplayFormat" type="hidden" value="Name" aria-labelledby="viewFTPServer_DisplayFormatLabel"></div><span class="k-invalid-msg" id="viewFTPServerList_validationMessage" data-for="viewFTPServerList"></span><span id="viewFTPServerHelpDesc" hidden="hidden">Server</span></div></div>
+                </div>
+
+                <div class="col-md-3 editor-col" id="viewDestinationTypeList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="viewDestinationType" id="viewDestinationTypeLabel" readonly="readonly" class="readonly-label" title="Destination Type">Destination Type</label></div><div class="editor-field"><label id="DestinationTypeListTextLabel" for="DestinationTypeListText" class="display-none">DestinationTypeListText</label><input readonly="readonly" class="k-textbox editor-control" id="DestinationTypeListText" name="DestinationTypeListText" value="" aria-labelledby="viewDestinationTypeLabel"><div style="display: none;">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="viewDestinationTypeList_listbox" aria-busy="false" aria-describedby="44f582f2-ebc2-4951-9fdb-34ea93a89b54" aria-labelledby="viewDestinationTypeLabel" data-kit="k28" style=""><span id="44f582f2-ebc2-4951-9fdb-34ea93a89b54" unselectable="on" class="k-input-inner display-none"><span class="k-input-value-text">select a value...</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="viewDestinationTypeListLabel" for="viewDestinationTypeList" class="display-none">viewDestinationTypeList</label><input readonly="readonly" isclonedisplayfor="true" class="editor-control" data-val="true" data-val-required="Destination Type is a required field." id="viewDestinationTypeList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.DestinationType" listviewdisplayformat="Name" name="DestinationTypeList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.DestinationConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-DestinationType" type="text" data-role="dropdownlist" aria-labelledby="viewDestinationTypeListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#viewDestinationTypeList").kendoDropDownList({"change":function(e) {
+        var sel = $('#viewDestinationTypeList').val();
+        if (sel != '') {
+            $('#viewDestinationType_ID').val(sel);
+            var txt = $('#viewDestinationTypeList').data('kendoDropDownList').text();
+            $('#viewDestinationType_Name').val(txt);
+        } else {
+            $('#viewDestinationType_ID').val('');
+            $('#viewDestinationType_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#viewDestinationTypeList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="viewDestinationType_IDLabel" for="viewDestinationType_ID" class="display-none">viewDestinationType_ID</label><input readonly="readonly" id="viewDestinationType_ID" name="DestinationType.ID" type="hidden" value="" aria-labelledby="viewDestinationType_IDLabel">
+<label id="viewDestinationType_NameLabel" for="viewDestinationType_Name" class="display-none">viewDestinationType_Name</label><input readonly="readonly" id="viewDestinationType_Name" name="DestinationType.Name" type="hidden" value="" aria-labelledby="viewDestinationType_NameLabel">
+<label id="viewDestinationType_DisplayFormatLabel" for="viewDestinationType_DisplayFormat" class="display-none">viewDestinationType_DisplayFormat</label><input readonly="readonly" id="viewDestinationType_DisplayFormat" name="DestinationType.DisplayFormat" type="hidden" value="Name" aria-labelledby="viewDestinationType_DisplayFormatLabel"></div><span class="k-invalid-msg" id="viewDestinationTypeList_validationMessage" data-for="viewDestinationTypeList"></span></div></div>
+
+                <div class="editor-field" id="viewdivDestinationAddress">
+                    <div class="col-md-3 editor-col" id="viewDestinationAddress_parent" data-template="Text"><div class="editor-label"><label for="viewDestinationAddress" id="viewDestinationAddressLabel" readonly="readonly" class="readonly-label" title="Destination Address">Destination Address</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="viewDestinationAddressHelp" role="img" title="Destination Address" data-role="tooltip" data-kit-tip="Destination Address" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" data-val="true" data-val-length-max="Destination Address has a maximum length of 248 characters." data-val-required="Destination Address is a required field." id="viewDestinationAddress" ignoredirtydata="False" maxlength="248" name="DestinationAddress" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" aria-labelledby="viewDestinationAddressLabel viewDestinationAddressHelpDesc" style="width: 100%;"></span><script>
+	kendo.syncReady(function(){jQuery("#viewDestinationAddress").kendoTextBox({});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("DestinationAddress");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="viewDestinationAddress_validationMessage" data-for="viewDestinationAddress"></span><span id="viewDestinationAddressHelpDesc" hidden="hidden">Destination Address</span></div></div>
+                </div>
+
+                <div class="editor-field" id="viewdivContractName">
+                    <div class="col-md-3 editor-col" id="viewContractNameList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="viewContractName" id="viewContractNameLabel" readonly="readonly" class="readonly-label" title="FTE Module Contract">FTE Module Contract</label></div><div class="editor-field"><label id="ContractNameListTextLabel" for="ContractNameListText" class="display-none">ContractNameListText</label><input readonly="readonly" class="k-textbox editor-control" id="ContractNameListText" name="ContractNameListText" value="" aria-labelledby="viewContractNameLabel"><div style="display: none;">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="viewContractNameList_listbox" aria-busy="false" aria-describedby="3d3951e6-2958-4ec9-9bf2-aa7590d3839f" aria-labelledby="viewContractNameLabel" data-kit="k29" style=""><span id="3d3951e6-2958-4ec9-9bf2-aa7590d3839f" unselectable="on" class="k-input-inner display-none"><span class="k-input-value-text">select a value...</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="viewContractNameListLabel" for="viewContractNameList" class="display-none">viewContractNameList</label><input readonly="readonly" isclonedisplayfor="true" class="editor-control" data-val="true" data-val-required="FTE Module Contract is a required field." id="viewContractNameList" ignoredirtydata="False" listviewdatalistcontentid="Integration.DataList.HPPContractAssemblies" listviewdisplayformat="Name" name="ContractNameList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.DestinationConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-ContractName" type="text" data-role="dropdownlist" aria-labelledby="viewContractNameListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#viewContractNameList").kendoDropDownList({"change":function(e) {
+        var sel = $('#viewContractNameList').val();
+        if (sel != '') {
+            $('#viewContractName_ID').val(sel);
+            var txt = $('#viewContractNameList').data('kendoDropDownList').text();
+            $('#viewContractName_Name').val(txt);
+        } else {
+            $('#viewContractName_ID').val('');
+            $('#viewContractName_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#viewContractNameList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="viewContractName_IDLabel" for="viewContractName_ID" class="display-none">viewContractName_ID</label><input readonly="readonly" id="viewContractName_ID" name="ContractName.ID" type="hidden" value="" aria-labelledby="viewContractName_IDLabel">
+<label id="viewContractName_NameLabel" for="viewContractName_Name" class="display-none">viewContractName_Name</label><input readonly="readonly" id="viewContractName_Name" name="ContractName.Name" type="hidden" value="" aria-labelledby="viewContractName_NameLabel">
+<label id="viewContractName_DisplayFormatLabel" for="viewContractName_DisplayFormat" class="display-none">viewContractName_DisplayFormat</label><input readonly="readonly" id="viewContractName_DisplayFormat" name="ContractName.DisplayFormat" type="hidden" value="Name" aria-labelledby="viewContractName_DisplayFormatLabel"></div><span class="k-invalid-msg" id="viewContractNameList_validationMessage" data-for="viewContractNameList"></span></div></div>
+                </div>
+
+                <div class="editor-field" id="viewdivFTEMetadataId">
+                    <div class="col-md-3 editor-col" id="viewImportJobName_parent" data-template="Text"><div class="editor-label"><label for="viewImportJobName" id="viewImportJobNameLabel" readonly="readonly" class="readonly-label" title="FTE Metadata">FTE Metadata</label></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" data-val="true" data-val-length-max="FTE Metadata has a maximum length of 248 characters." data-val-required="FTE Metadata is a required field." id="viewImportJobName" ignoredirtydata="False" maxlength="248" name="ImportJobName" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" aria-labelledby="viewImportJobNameLabel" style="width: 100%;"></span><script>
+	kendo.syncReady(function(){jQuery("#viewImportJobName").kendoTextBox({});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("ImportJobName");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="viewImportJobName_validationMessage" data-for="viewImportJobName"></span></div></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 editor-col" id="viewContactName_parent" data-template="Text"><div class="editor-label"><label for="viewContactName" id="viewContactNameLabel" readonly="readonly" class="readonly-label" title="Contact Name">Contact Name</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="viewContactNameHelp" role="img" title="Contact Name" data-role="tooltip" data-kit-tip="Contact Name" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" data-val-length-max="Contact Name has a maximum length of 50 characters." data-val-regex="Contact Name contains invalid characters. The characters ; * ^ : ~ &lt; &gt; % are not allowed." data-val-regex-pattern="^([^;*^:~&lt;&gt;%])*$" id="viewContactName" ignoredirtydata="False" maxlength="50" name="ContactName" not-data-val-required="Contact Name is a required field." data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" aria-labelledby="viewContactNameLabel viewContactNameHelpDesc" style="width: 100%;"></span><script>
+	kendo.syncReady(function(){jQuery("#viewContactName").kendoTextBox({});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("ContactName");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="viewContactName_validationMessage" data-for="viewContactName"></span><span id="viewContactNameHelpDesc" hidden="hidden">Contact Name</span></div></div>
+                <div class="col-md-3 editor-col" id="viewContactPhone_parent" data-template="PhoneNumberUS"><div class="editor-label"><label for="viewContactPhone" id="viewContactPhoneLabel" readonly="readonly" class="readonly-label" title="Contact Phone">Contact Phone</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="viewContactPhoneHelp" role="img" title="Contact Phone" data-role="tooltip" data-kit-tip="Contact Phone" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><span class="k-input k-maskedtextbox editor-control readonly-widget" aria-labelledby="viewContactPhoneLabel" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget k-widget" data-val-length-max="Contact Phone has a maximum length of 50 characters." data-val-regex="Enter Valid Phone Number." data-val-regex-pattern="^(?!(^\(?(0{3})\)?( |-|\.)?0{3}( |-|\.)?0{4}$))(^\(?(\d{3,3})\)?( |-|\.)?\d{3,3}( |-|\.)?\d{4,4}$)" id="viewContactPhone" ignoredirtydata="False" name="ContactPhone" not-data-val-required="Contact Phone is a required field." data-role="maskedtextbox" autocomplete="off" inputmode="text" aria-placeholder="000-000-0000" aria-labelledby="viewContactPhoneLabel viewContactPhoneHelpDesc" style="width: 100%;"></span><script>
+	kendo.syncReady(function(){jQuery("#viewContactPhone").kendoMaskedTextBox({"mask":"000-000-0000","rules":{}});});
+</script><span class="k-invalid-msg" id="viewContactPhone_validationMessage" data-for="viewContactPhone"></span><span id="viewContactPhoneHelpDesc" hidden="hidden">Contact Phone</span></div></div>
+                <div class="col-md-3 editor-col" id="viewContactEmail_parent" data-template=""><div class="editor-label"><label for="viewContactEmail" id="viewContactEmailLabel" readonly="readonly" class="readonly-label" title="Contact Email">Contact Email</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="viewContactEmailHelp" role="img" title="Contact Email" data-role="tooltip" data-kit-tip="Contact Email" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input readonly="readonly" class="editor-control k-input-inner readonly-widget" data-email-msg="Contact Email is not a valid email address. Enter email with 'name@domain' format." data-val-length-max="Contact Email has a maximum length of 50 characters." data-val-regex="Contact Email is not a valid email address. Enter email with 'name@domain' format." data-val-regex-pattern="^[a-zA-Z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@([a-zA-Z0-9]+[\w-]+\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$" id="viewContactEmail" ignoredirtydata="False" maxlength="50" name="ContactEmail" not-data-val-required="Contact Email is a required field." type="text" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" aria-labelledby="viewContactEmailLabel viewContactEmailHelpDesc" style="width: 100%;"></span><script>
+	kendo.syncReady(function(){jQuery("#viewContactEmail").kendoTextBox({});});
+</script><span class="k-invalid-msg" id="viewContactEmail_validationMessage" data-for="viewContactEmail"></span><span id="viewContactEmailHelpDesc" hidden="hidden">Contact Email</span></div></div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-3 editor-col" id="viewOverwriteAtDestination_parent"><div class="editor-label"><label readonly="readonly">Overwrite At Destination</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" id="viewOverwriteAtDestination" ignoredirtydata="False" name="OverwriteAtDestination" not-data-val-required="Overwrite At Destination is a required field." type="checkbox" value="true" aria-describedby="viewOverwriteAtDestinationHelpDesc" style=""></span><label for="viewOverwriteAtDestination" class="k-checkbox-label k-disabled display-none-priority" style="">Overwrite At Destination</label><input class="readonly-k-checkbox-label" aria-label="Overwrite At Destination" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="OverwriteAtDestination" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#viewOverwriteAtDestination").kendoCheckBox({"checked":false,"label":"Overwrite At Destination"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="viewOverwriteAtDestinationHelp" role="img" title="Overwrite At Destination" data-role="tooltip" data-kit-tip="Overwrite At Destination" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="viewOverwriteAtDestination_validationMessage" data-for="viewOverwriteAtDestination"></span><span id="viewOverwriteAtDestinationHelpDesc" hidden="hidden">Overwrite At Destination</span></div></div>
+                <div class="col-md-3 editor-col" id="viewCompressAtDestination_parent"><div class="editor-label"><label readonly="readonly">Compress At Destination</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" id="viewCompressAtDestination" ignoredirtydata="False" name="CompressAtDestination" not-data-val-required="Compress At Destination is a required field." type="checkbox" value="true" aria-describedby="viewCompressAtDestinationHelpDesc" style=""></span><label for="viewCompressAtDestination" class="k-checkbox-label k-disabled display-none-priority" style="">Compress At Destination</label><input class="readonly-k-checkbox-label" aria-label="Compress At Destination" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="CompressAtDestination" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#viewCompressAtDestination").kendoCheckBox({"checked":false,"label":"Compress At Destination"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="viewCompressAtDestinationHelp" role="img" title="Compress At Destination" data-role="tooltip" data-kit-tip="Compress At Destination" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="viewCompressAtDestination_validationMessage" data-for="viewCompressAtDestination"></span><span id="viewCompressAtDestinationHelpDesc" hidden="hidden">Compress At Destination</span></div></div>
+                <div class="col-md-3 editor-col" id="viewDestinationIsArchive_parent"><div class="editor-label"><label readonly="readonly">Destination Is Archive</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" id="viewDestinationIsArchive" ignoredirtydata="False" name="DestinationIsArchive" not-data-val-required="Destination Is Archive is a required field." type="checkbox" value="true" aria-describedby="viewDestinationIsArchiveHelpDesc" style=""></span><label for="viewDestinationIsArchive" class="k-checkbox-label k-disabled display-none-priority" style="">Destination Is Archive</label><input class="readonly-k-checkbox-label" aria-label="Destination Is Archive" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="DestinationIsArchive" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#viewDestinationIsArchive").kendoCheckBox({"checked":false,"label":"Destination Is Archive"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="viewDestinationIsArchiveHelp" role="img" title="Destination Is Archive" data-role="tooltip" data-kit-tip="Destination Is Archive" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="viewDestinationIsArchive_validationMessage" data-for="viewDestinationIsArchive"></span><span id="viewDestinationIsArchiveHelpDesc" hidden="hidden">Destination Is Archive</span></div></div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3 editor-col" id="viewRenameAtDestination_parent"><div class="editor-label"><label readonly="readonly">Rename At Destination</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" id="viewRenameAtDestination" ignoredirtydata="False" name="RenameAtDestination" not-data-val-required="Rename At Destination is a required field." type="checkbox" value="true" aria-describedby="viewRenameAtDestinationHelpDesc" style=""></span><label for="viewRenameAtDestination" class="k-checkbox-label k-disabled display-none-priority" style="">Rename At Destination</label><input class="readonly-k-checkbox-label" aria-label="Rename At Destination" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="RenameAtDestination" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#viewRenameAtDestination").kendoCheckBox({"checked":false,"label":"Rename At Destination"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="viewRenameAtDestinationHelp" role="img" title="Rename At Destination" data-role="tooltip" data-kit-tip="Rename At Destination" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="viewRenameAtDestination_validationMessage" data-for="viewRenameAtDestination"></span><span id="viewRenameAtDestinationHelpDesc" hidden="hidden">Rename At Destination</span></div></div>
+                <div id="divDestinationRenamePatternId">
+                    <div class="col-md-3 editor-col" id="viewRenamePatternList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="viewRenamePattern" id="viewRenamePatternLabel" readonly="readonly" class="readonly-label" title="Rename Pattern">Rename Pattern</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="viewRenamePatternHelp" role="img" title="Rename Pattern" data-role="tooltip" data-kit-tip="Rename Pattern" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><label id="RenamePatternListTextLabel" for="RenamePatternListText" class="display-none">RenamePatternListText</label><input readonly="readonly" class="k-textbox editor-control" id="RenamePatternListText" name="RenamePatternListText" value="" aria-labelledby="viewRenamePatternLabel"><div style="display: none;">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="viewRenamePatternList_listbox" aria-busy="false" aria-describedby="60fbb9f5-be16-4bf7-992d-6dc86604aade" aria-labelledby="viewRenamePatternLabel viewRenamePatternHelpDesc" data-kit="k30" style=""><span id="60fbb9f5-be16-4bf7-992d-6dc86604aade" unselectable="on" class="k-input-inner display-none"><span class="k-input-value-text">select a value...</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="viewRenamePatternListLabel" for="viewRenamePatternList" class="display-none">viewRenamePatternList</label><input readonly="readonly" isclonedisplayfor="true" class="editor-control" data-val="true" data-val-length-max="Rename Pattern has a maximum length of 50 characters." data-val-required="Rename Pattern is a required field." id="viewRenamePatternList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.RenamePattern" listviewdisplayformat="Name" maxlength="50" name="RenamePatternList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.DestinationConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-RenamePattern" type="text" data-role="dropdownlist" aria-labelledby="viewRenamePatternListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#viewRenamePatternList").kendoDropDownList({"change":function(e) {
+        var sel = $('#viewRenamePatternList').val();
+        if (sel != '') {
+            $('#viewRenamePattern_ID').val(sel);
+            var txt = $('#viewRenamePatternList').data('kendoDropDownList').text();
+            $('#viewRenamePattern_Name').val(txt);
+        } else {
+            $('#viewRenamePattern_ID').val('');
+            $('#viewRenamePattern_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#viewRenamePatternList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="viewRenamePattern_IDLabel" for="viewRenamePattern_ID" class="display-none">viewRenamePattern_ID</label><input readonly="readonly" id="viewRenamePattern_ID" name="RenamePattern.ID" type="hidden" value="" aria-labelledby="viewRenamePattern_IDLabel">
+<label id="viewRenamePattern_NameLabel" for="viewRenamePattern_Name" class="display-none">viewRenamePattern_Name</label><input readonly="readonly" id="viewRenamePattern_Name" name="RenamePattern.Name" type="hidden" value="" aria-labelledby="viewRenamePattern_NameLabel">
+<label id="viewRenamePattern_DisplayFormatLabel" for="viewRenamePattern_DisplayFormat" class="display-none">viewRenamePattern_DisplayFormat</label><input readonly="readonly" id="viewRenamePattern_DisplayFormat" name="RenamePattern.DisplayFormat" type="hidden" value="Name" aria-labelledby="viewRenamePattern_DisplayFormatLabel"></div><span class="k-invalid-msg" id="viewRenamePatternList_validationMessage" data-for="viewRenamePatternList"></span><span id="viewRenamePatternHelpDesc" hidden="hidden">Rename Pattern</span></div></div>
+                </div>
+                <div class="col-md-3 editor-col" id="viewActive_parent"><div class="editor-label"><label readonly="readonly">Active</label></div><div class="editor-field assoc-box-checkbox readonly-widget" tabindex="0"><span class="k-checkbox-wrap"><input readonly="readonly" disabled="disabled" class="editor-control k-checkbox k-disabled display-none-priority" data-role="checkbox" id="viewActive" ignoredirtydata="False" name="Active" not-data-val-required="Active is a required field." type="checkbox" value="true" aria-describedby="viewActiveHelpDesc" style=""></span><label for="viewActive" class="k-checkbox-label k-disabled display-none-priority" style="">Active</label><input class="readonly-k-checkbox-label" aria-label="Active" value="No" readonly="readonly"><input readonly="readonly" disabled="disabled" name="Active" type="hidden" value="false"><script>
+	kendo.syncReady(function(){jQuery("#viewActive").kendoCheckBox({"checked":false,"label":"Active"});});
+</script><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="viewActiveHelp" role="img" title="Active" data-role="tooltip" data-kit-tip="Active" data-kit-tip-pos="top" data-kit-tip-after="250"></span><span class="k-invalid-msg" id="viewActive_validationMessage" data-for="viewActive"></span><span id="viewActiveHelpDesc" hidden="hidden">Active</span></div></div>
+            </div>
+            <div class="clear-n-pad">
+            </div>
+            <div id="DestinationConfigurationViewButtons"><div id="DestinationConfigurationViewFormButtonRow" class="editor-button-row"><span class="editor-button-nav"><input id="closeDestinationConfigurationButton" type="button" value="Close" class="cancel k-button btn-spacer-left primary-button" onclick="cancelDestinationView()" data-kit-action="close"></span></div></div>
+            <div class="rowpad"></div>
+        </fieldset>
+    </div>
+
+<script>
+    var lblCloseEvent = "Close";
+</script>
+<script src="/Scripts/FileTransfer/hp.ua3.fileTransfer.destinationConfigurationView.js?v=30.0.0.2609"></script>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div></form>
+</div> </div>

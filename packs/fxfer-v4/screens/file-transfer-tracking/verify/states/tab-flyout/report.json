@@ -1,0 +1,51 @@
+{
+  "size_delta_px": [
+    0,
+    0
+  ],
+  "bad_pct": 98.1,
+  "mean_abs": 194.95,
+  "worst_band": {
+    "y": 116,
+    "bad_pct": 99.98
+  },
+  "bands": [
+    {
+      "y": 0,
+      "bad_pct": 99.6
+    },
+    {
+      "y": 58,
+      "bad_pct": 99.11
+    },
+    {
+      "y": 116,
+      "bad_pct": 99.98
+    },
+    {
+      "y": 174,
+      "bad_pct": 99.69
+    },
+    {
+      "y": 232,
+      "bad_pct": 99.31
+    },
+    {
+      "y": 290,
+      "bad_pct": 90.91
+    }
+  ],
+  "clusters": [
+    {
+      "box": [
+        0,
+        0,
+        1920,
+        348
+      ],
+      "bad_px": 655459
+    }
+  ],
+  "worst_crop": "worst.png",
+  "verdict": "differs"
+}

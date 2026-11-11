@@ -1,0 +1,31 @@
+
+== fxfer-v4/file-transfer-configuration  https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations  (dpr 1, mode safe)
+  viewport 1920x1080 CSS px @ dpr 1
+
+>> STAGE 1/5  capture the page: assets, DOM, styles, motion, reference pictures
+  kit (provider): Kendo 2026.1.415, 4 widgets (numeric, dropdown, dropdown, grid), 21 fields, 4 actions, 7 hidden parts, side menu div#mainMenuContainer (181 links, opens by class display-flex + div.disabled-backdrop, fly-out recorded), module tab fly-out recorded, 2 menu(s) with submenus, 1 shell panel(s) that collapse
+  frozen: clock paused; reset to slide 0: 0 swiper, 0 slick, 0 owl; 0 animations parked; 0 candidates still moving
+  reference.png 1920x1080 from 1 shots; 3 section crops in sections/ (4 bands merged to 3)
+  regions.json: 5 regions (0 repeated rows) measured by draw-ui -> measure-00/
+  snapshot/full.css: 2182 KB (18100 rules, all kept)
+  snapshot/: rendered.html 176 KB, used.css 187 KB (983/18100 rules), 4 keyframes
+  kit: the screen's script opens FileTransferConfigurationEditPopup (#FileTransferGridAddButton), languageOverlay, FileTransferConfigurationViewOverlay; a row double-click calls gridRowDoubleClickCallBack
+  kit: Search -> 1 grid(s), 97 rows, 10 shown, revealed 1 part(s), 1 request(s)
+  kit: first row (dblclick) -> dialog d2 "View File Transfer Configuration"
+  kit: 2 dialog(s) "Add File Transfer Configuration", "View File Transfer Configuration"; 9 state check(s)
+  motion.json: 1 entries (1 css-animation); 3 transition groups
+  captured: 630 controls, 0 validators, 17 assets, 0 frames [mvcUnobtrusive, jquery, CSS1Compat]
+   done in 59.4s
+
+>> STAGE 1/5  stitch your own screenshots
+   done in 0.0s
+
+>> STAGE 1/5  compare your screenshots with the live page
+   done in 0.0s
+
+>> STAGE 4/5  collect everything into facts.md
+  facts.md: 630 controls, 0 behaviors (0 flaky), 3 assets in use; parity.spec.ts: 0 candidate tests
+   done in 0.6s
+  ! no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)
+
+== fxfer-v4/file-transfer-configuration finished (1.0 min of work)

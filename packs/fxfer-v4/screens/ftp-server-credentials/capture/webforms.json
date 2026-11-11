@@ -1,0 +1,364 @@
+{
+ "isWebForms": false,
+ "validators": [],
+ "summaries": [],
+ "updatePanels": null,
+ "components": [],
+ "grids": {},
+ "hiddenFields": [
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "IsValid",
+   "id": "IsValid",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt1ActionText",
+   "id": "Editor_Alt1ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt1ActionUrl",
+   "id": "Editor_Alt1ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt2ActionText",
+   "id": "Editor_Alt2ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt2ActionUrl",
+   "id": "Editor_Alt2ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt3ActionText",
+   "id": "Editor_Alt3ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt3ActionUrl",
+   "id": "Editor_Alt3ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt4ActionText",
+   "id": "Editor_Alt4ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt4ActionUrl",
+   "id": "Editor_Alt4ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt5ActionText",
+   "id": "Editor_Alt5ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt5ActionUrl",
+   "id": "Editor_Alt5ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt6ActionText",
+   "id": "Editor_Alt6ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt6ActionUrl",
+   "id": "Editor_Alt6ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt7ActionText",
+   "id": "Editor_Alt7ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt7ActionUrl",
+   "id": "Editor_Alt7ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt8ActionText",
+   "id": "Editor_Alt8ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt8ActionUrl",
+   "id": "Editor_Alt8ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.CancelActionText",
+   "id": "Editor_CancelActionText",
+   "size": 6,
+   "value": "Cancel"
+  },
+  {
+   "name": "Editor.CancelActionUrl",
+   "id": "Editor_CancelActionUrl",
+   "size": 13,
+   "value": "/Home/MyHome/"
+  },
+  {
+   "name": "Editor.ConfirmDeleteMessage",
+   "id": "Editor_ConfirmDeleteMessage",
+   "size": 37,
+   "value": "Are you sure you want to delete the ?"
+  },
+  {
+   "name": "Editor.DeleteActionText",
+   "id": "Editor_DeleteActionText",
+   "size": 6,
+   "value": "Delete"
+  },
+  {
+   "name": "Editor.DeletedMessage",
+   "id": "Editor_DeletedMessage",
+   "size": 26,
+   "value": " was successfully deleted."
+  },
+  {
+   "name": "Editor.Direction",
+   "id": "Editor_Direction",
+   "size": 4,
+   "value": "Next"
+  },
+  {
+   "name": "Editor.DirtyDataMessage",
+   "id": "Editor_DirtyDataMessage",
+   "size": 111,
+   "value": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?"
+  },
+  {
+   "name": "Editor.EntityName",
+   "id": "Editor_EntityName",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.IsAlt1Enabled",
+   "id": "Editor_IsAlt1Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt2Enabled",
+   "id": "Editor_IsAlt2Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt3Enabled",
+   "id": "Editor_IsAlt3Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt4Enabled",
+   "id": "Editor_IsAlt4Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt5Enabled",
+   "id": "Editor_IsAlt5Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt6Enabled",
+   "id": "Editor_IsAlt6Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt7Enabled",
+   "id": "Editor_IsAlt7Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt8Enabled",
+   "id": "Editor_IsAlt8Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsCancelEnabled",
+   "id": "Editor_IsCancelEnabled",
+   "size": 4,
+   "value": "True"
+  },
+  {
+   "name": "Editor.IsDirtyDataEnabled",
+   "id": "Editor_IsDirtyDataEnabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsPrintEnabled",
+   "id": "Editor_IsPrintEnabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsProcessDirty",
+   "id": "Editor_IsProcessDirty",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsResetEnabled",
+   "id": "Editor_IsResetEnabled",
+   "size": 4,
+   "value": "True"
+  },
+  {
+   "name": "Editor.Mode",
+   "id": "Editor_Mode",
+   "size": 6,
+   "value": "Create"
+  },
+  {
+   "name": "Editor.NextActionText",
+   "id": "Editor_NextActionText",
+   "size": 4,
+   "value": "Next"
+  },
+  {
+   "name": "Editor.PrevActionText",
+   "id": "Editor_PrevActionText",
+   "size": 4,
+   "value": "Prev"
+  },
+  {
+   "name": "Editor.PrintActionText",
+   "id": "Editor_PrintActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.PrintActionUrl",
+   "id": "Editor_PrintActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.ResetActionText",
+   "id": "Editor_ResetActionText",
+   "size": 5,
+   "value": "Reset"
+  },
+  {
+   "name": "Editor.SaveActionText",
+   "id": "Editor_SaveActionText",
+   "size": 6,
+   "value": "Search"
+  },
+  {
+   "name": "Editor.SavedMessage",
+   "id": "Editor_SavedMessage",
+   "size": 24,
+   "value": " was successfully saved."
+  },
+  {
+   "name": "Editor.ShowSummaryError",
+   "id": "Editor_ShowSummaryError",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.Step",
+   "id": "Editor_Step",
+   "size": 1,
+   "value": "1"
+  },
+  {
+   "name": "Editor.StepCount",
+   "id": "Editor_StepCount",
+   "size": 1,
+   "value": "1"
+  },
+  {
+   "name": "Editor.TitleFormatText",
+   "id": "Editor_TitleFormatText",
+   "size": 25,
+   "value": "{0} {1} - Step {2} of {3}"
+  },
+  {
+   "name": "showInvalidFTPServerCredentialsCheckBox",
+   "size": 5,
+   "value": "false"
+  }
+ ],
+ "defaultButtons": [],
+ "forms": [
+  {
+   "index": 0,
+   "id": "SearchFTPServerCredentialsId",
+   "key": "SearchFTPServerCredentialsId",
+   "action": "/FileTransfer/SearchFTPServerCredentials",
+   "method": "POST",
+   "enctype": "application/x-www-form-urlencoded",
+   "fields": [
+    "text",
+    "text-2",
+    "fieldset-create-new-typeof-kendolicensing",
+    "ftpServerCredentialAddButton",
+    "FtpServerName",
+    "prevButton",
+    "resetButton",
+    "alt1Button",
+    "alt4Button",
+    "alt5Button",
+    "alt6Button",
+    "alt7Button",
+    "alt8Button",
+    "printButton",
+    "alt2Button",
+    "alt3Button",
+    "cancelButton",
+    "nextButton",
+    "showInvalidFTPServerCredentialsCheckBox",
+    "button-go-to-the-first-page",
+    "button-go-to-the-previous-page",
+    "button-page-0",
+    "button-go-to-the-next-page",
+    "button-go-to-the-last-page",
+    "text-page",
+    "text-page-2",
+    "button-select",
+    "select-page-sizes-drop-down"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,275 @@
+{
+  "size_delta_px": [
+    0,
+    0
+  ],
+  "bad_pct": 0.2,
+  "mean_abs": 0.23,
+  "worst_band": {
+    "y": 0,
+    "bad_pct": 0.73
+  },
+  "bands": [
+    {
+      "y": 0,
+      "bad_pct": 0.73
+    },
+    {
+      "y": 180,
+      "bad_pct": 0
+    },
+    {
+      "y": 360,
+      "bad_pct": 0
+    },
+    {
+      "y": 540,
+      "bad_pct": 0.47
+    },
+    {
+      "y": 720,
+      "bad_pct": 0
+    },
+    {
+      "y": 900,
+      "bad_pct": 0
+    }
+  ],
+  "clusters": [
+    {
+      "box": [
+        192,
+        0,
+        312,
+        48
+      ],
+      "bad_px": 1065,
+      "css_box": [
+        192,
+        0,
+        312,
+        48
+      ],
+      "element": {
+        "el": "div.system-name[data-testid=button]",
+        "text": "Medicaid Management Solutions",
+        "box": [
+          202,
+          12,
+          320,
+          18
+        ]
+      }
+    },
+    {
+      "box": [
+        360,
+        552,
+        168,
+        48
+      ],
+      "bad_px": 815,
+      "css_box": [
+        360,
+        552,
+        168,
+        48
+      ],
+      "element": {
+        "el": "input#ToDate.editor-control.k-input-inner",
+        "text": "",
+        "box": [
+          348,
+          559,
+          188,
+          30
+        ]
+      }
+    },
+    {
+      "box": [
+        48,
+        552,
+        168,
+        48
+      ],
+      "bad_px": 799,
+      "css_box": [
+        48,
+        552,
+        168,
+        48
+      ],
+      "element": {
+        "el": "input#FromDate.editor-control.k-input-inner",
+        "text": "",
+        "box": [
+          42,
+          559,
+          188,
+          30
+        ]
+      }
+    },
+    {
+      "box": [
+        1200,
+        24,
+        216,
+        24
+      ],
+      "bad_px": 556,
+      "css_box": [
+        1200,
+        24,
+        216,
+        24
+      ],
+      "element": {
+        "el": "a.k-link.display-block[data-testid=link-external-links]",
+        "text": "External Links",
+        "box": [
+          1307,
+          21,
+          121,
+          19
+        ]
+      }
+    },
+    {
+      "box": [
+        1536,
+        24,
+        192,
+        24
+      ],
+      "bad_px": 529,
+      "css_box": [
+        1536,
+        24,
+        192,
+        24
+      ],
+      "element": {
+        "el": "li#AAGMenu.MyAccount.k-item.k-menu-item[data-testid=AAGMenu.MyAccount]",
+        "text": "My Account",
+        "box": [
+          1631,
+          21,
+          110,
+          19
+        ]
+      }
+    }
+  ],
+  "worst_crop": "worst.png",
+  "sections": [
+    {
+      "n": 1,
+      "label": "file-transfer-tracking",
+      "y": 62,
+      "h": 76.5,
+      "bad_pct": 0
+    },
+    {
+      "n": 2,
+      "label": "pagebody",
+      "y": 138.5,
+      "h": 628,
+      "bad_pct": 0.13
+    },
+    {
+      "n": 3,
+      "label": "disclaimer-the-website-is-prov",
+      "y": 766.5,
+      "h": 118.5,
+      "bad_pct": 0
+    }
+  ],
+  "worst_section": {
+    "n": 2,
+    "label": "pagebody",
+    "y": 138.5,
+    "h": 628,
+    "bad_pct": 0.13
+  },
+  "verdict": "close",
+  "states": [
+    {
+      "name": "dropdown",
+      "ok": true,
+      "bad_pct": 4.59,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "tooltip",
+      "ok": true,
+      "bad_pct": 2.85,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "search",
+      "ok": true,
+      "bad_pct": 0.25,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-open",
+      "ok": true,
+      "bad_pct": 0.95,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-flyout",
+      "ok": false,
+      "error": "[data-kit-flyout] not shown (a module flies out to the left of the menu, over the page)",
+      "bad_pct": 72.06,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-close",
+      "ok": true
+    },
+    {
+      "name": "tab-flyout",
+      "ok": false,
+      "error": "[data-kit-flyout] not shown (the module tab opens its screens under it)",
+      "bad_pct": 98.1,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    }
+  ],
+  "bands_note": "the rebuild has 0 top-level bands, the original 3: section heights not compared",
+  "motion": [
+    {
+      "id": "M01",
+      "kind": "css-animation",
+      "ok": true,
+      "detail": "animation autoFillEnd"
+    }
+  ],
+  "behavior": {
+    "console": {
+      "errors": [],
+      "reactWarnings": [],
+      "failedResources": 0
+    }
+  }
+}

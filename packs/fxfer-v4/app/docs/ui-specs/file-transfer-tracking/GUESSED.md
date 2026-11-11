@@ -1,0 +1,1 @@
+﻿Cancel navigates to `#/` (Home).

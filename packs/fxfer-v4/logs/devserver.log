@@ -1,0 +1,65 @@
+
+==== 2026-11-11T08:06:54.917Z vite --port 5180
+
+  [32m[1mVITE[22m v7.1.5[39m  [2mready in [0m[1m1904[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5180[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m1:42:51 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/screens/file-transfer-tracking/Page.tsx[22m
+[2m1:43:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/screens/file-transfer-configuration/Page.tsx[22m
+[2m1:43:25 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/screens/file-transfer-configuration/Page.tsx[22m
+[2m1:47:04 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/screens/home/Page.tsx[22m
+[2m1:47:47 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/screens/home/Page.tsx[22m
+node:internal/fs/watchers:323
+    const error = new UVException({
+                  ^
+
+Error: EBUSY: resource busy or locked, watch 'C:\UI-specs\URL-to-Code\packs\fxfer-v4\app\tmp-edit-ftp-server-credentials.cjs'
+    at FSWatcher.<computed> (node:internal/fs/watchers:323:19)
+    at Object.watch (node:fs:2608:36)
+    at createFsWatchInstance (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:16662:16)
+    at setFsWatchListener (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:16704:14)
+    at NodeFsHandler$1._watchWithNodeFs (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:16824:20)
+    at NodeFsHandler$1._handleFile (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:16868:24)
+    at NodeFsHandler$1._addToNodeFs (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:17042:26)
+Emitted 'error' event on FSWatcher instance at:
+    at FSWatcher._handleError (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:17850:148)
+    at NodeFsHandler$1._addToNodeFs (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:17047:18) {
+  errno: -4082,
+  syscall: 'watch',
+  code: 'EBUSY',
+  path: 'C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\app\\tmp-edit-ftp-server-credentials.cjs',
+  filename: 'C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\app\\tmp-edit-ftp-server-credentials.cjs'
+}
+
+Node.js v24.22.1
+
+==== 2026-11-11T08:23:46.084Z vite --port 5180
+
+  [32m[1mVITE[22m v7.1.5[39m  [2mready in [0m[1m4182[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5180[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+node:internal/fs/watchers:323
+    const error = new UVException({
+                  ^
+
+Error: EBUSY: resource busy or locked, watch 'C:\UI-specs\URL-to-Code\packs\fxfer-v4\app\src\screens\ftp-server-credentials\BLOCKED.md'
+    at FSWatcher.<computed> (node:internal/fs/watchers:323:19)
+    at Object.watch (node:fs:2608:36)
+    at createFsWatchInstance (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:16662:16)
+    at setFsWatchListener (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:16704:14)
+    at NodeFsHandler$1._watchWithNodeFs (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:16824:20)
+    at NodeFsHandler$1._handleFile (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:16868:24)
+    at NodeFsHandler$1._addToNodeFs (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:17042:26)
+Emitted 'error' event on FSWatcher instance at:
+    at FSWatcher._handleError (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:17850:148)
+    at NodeFsHandler$1._addToNodeFs (file:///C:/UI-specs/URL-to-Code/node_modules/vite/dist/node/chunks/dep-M_KD0XSK.js:17047:18) {
+  errno: -4082,
+  syscall: 'watch',
+  code: 'EBUSY',
+  path: 'C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\app\\src\\screens\\ftp-server-credentials\\BLOCKED.md',
+  filename: 'C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\app\\src\\screens\\ftp-server-credentials\\BLOCKED.md'
+}
+
+Node.js v24.22.1

@@ -1,0 +1,173 @@
+[
+ {
+  "name": "tooltip",
+  "steps": [
+   {
+    "do": "hover",
+    "sel": "[data-kit-tip]",
+    "nth": 0
+   }
+  ],
+  "wait": 750,
+  "clip": {
+   "x": 18,
+   "y": 36.25,
+   "width": 178.828125,
+   "height": 101
+  },
+  "shot": "states/tooltip.png",
+  "expect": [
+   {
+    "sel": ".k-tooltip",
+    "lines": 1,
+    "why": "the live tooltip"
+   }
+  ]
+ },
+ {
+  "name": "search",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit-action=search]"
+   }
+  ],
+  "wait": 1200,
+  "full": true,
+  "shot": "states/search.png"
+ },
+ {
+  "name": "dialog-d1",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit-action=search]"
+   },
+   {
+    "do": "click",
+    "sel": "[data-kit-action=create]",
+    "nth": 0
+   }
+  ],
+  "wait": 1200,
+  "shot": "states/dialog-d1.png"
+ },
+ {
+  "name": "row-d2",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit-action=search]"
+   },
+   {
+    "do": "dblclick",
+    "sel": "[data-kit-row=\"0\"]"
+   }
+  ],
+  "wait": 1200,
+  "shot": "states/dialog-d2.png"
+ },
+ {
+  "name": "menu-open",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit-action=menu]"
+   }
+  ],
+  "wait": 800,
+  "shot": "states/menu-open.png",
+  "expect": [
+   {
+    "sel": "[data-kit-menu]",
+    "why": "the hamburger opens the side menu"
+   },
+   {
+    "sel": "[data-kit-menu-backdrop-live]",
+    "why": "with the backdrop the page appends"
+   }
+  ]
+ },
+ {
+  "name": "menu-flyout",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit-action=menu]"
+   },
+   {
+    "do": "hover",
+    "sel": "[data-kit-flyout-demo=\"side\"]",
+    "wait": 900
+   }
+  ],
+  "wait": 900,
+  "clip": {
+   "x": 1419,
+   "y": 259,
+   "width": 225,
+   "height": 134
+  },
+  "shot": "states/menu-flyout.png",
+  "expect": [
+   {
+    "sel": "[data-kit-flyout]",
+    "top": true,
+    "outside": "[data-kit-menu] ul[data-role=menu]",
+    "why": "a module flies out to the left of the menu, over the page"
+   }
+  ]
+ },
+ {
+  "name": "menu-close",
+  "steps": [
+   {
+    "do": "click",
+    "sel": "[data-kit-action=menu]"
+   },
+   {
+    "do": "click",
+    "sel": "[data-kit-action=menu-close]"
+   }
+  ],
+  "wait": 600,
+  "expect": [
+   {
+    "sel": "[data-kit-menu]",
+    "visible": false,
+    "why": "its close icon closes it"
+   },
+   {
+    "sel": "[data-kit-menu-backdrop-live]",
+    "visible": false,
+    "why": "and removes the backdrop"
+   }
+  ]
+ },
+ {
+  "name": "tab-flyout",
+  "steps": [
+   {
+    "do": "hover",
+    "sel": "[data-kit-flyout-demo=\"bar\"]",
+    "wait": 900
+   }
+  ],
+  "wait": 900,
+  "clip": {
+   "x": 0,
+   "y": 82,
+   "width": 1944,
+   "height": 348
+  },
+  "shot": "states/tab-flyout.png",
+  "expect": [
+   {
+    "sel": "[data-kit-flyout]",
+    "top": true,
+    "outside": "ul:has(> [data-kit-flyout-demo=\"bar\"])",
+    "why": "the module tab opens its screens under it"
+   }
+  ]
+ }
+]

@@ -1,0 +1,76 @@
+{
+ "capturedAt": "2026-11-11T07:52:28.294Z",
+ "sampleSec": 0,
+ "freeze": {
+  "swiper": 0,
+  "slick": 0,
+  "owl": 0,
+  "animations": 0,
+  "clock": "paused",
+  "stillMoving": 0
+ },
+ "entries": [
+  {
+   "id": "M01",
+   "kind": "css-animation",
+   "name": "autoFillEnd",
+   "duration": "0s",
+   "delay": "0s",
+   "iterations": "1",
+   "easing": "ease",
+   "fill": "none",
+   "direction": "normal",
+   "count": 1,
+   "samples": [
+    "#FtpServerName_parent > div:nth-of-type(2) > span:nth-of-type(1)"
+   ],
+   "box": [
+    41,
+    328,
+    291.33,
+    40
+   ],
+   "keyframes": "@keyframes autoFillEnd { \n}"
+  }
+ ],
+ "transitions": [
+  {
+   "property": "color, background-color, border-color, box-shadow, opacity",
+   "duration": "0.15s, 0.15s, 0.15s, 0.15s, 0.15s",
+   "easing": "cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1)",
+   "delay": "0s, 0s, 0s, 0s, 0s",
+   "count": 8,
+   "samples": [
+    "#extLinksCloseButton",
+    "#messagesCloseButton",
+    "#intPortalContactUsCloseButton",
+    "#ftpServerCredentialAddButton"
+   ]
+  },
+  {
+   "property": "color, background-color, border-color, box-shadow",
+   "duration": "0.15s, 0.15s, 0.15s, 0.15s",
+   "easing": "cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1)",
+   "delay": "0s, 0s, 0s, 0s",
+   "count": 7,
+   "samples": [
+    "#AAGMenu\\.BroadcastMsg",
+    "#AAGMenu\\.ExternalLinks",
+    "#AAGMenu\\.Favorites",
+    "#AAGMenu\\.ContactUs"
+   ]
+  },
+  {
+   "property": "transform",
+   "duration": "0.2s",
+   "easing": "linear",
+   "delay": "0s",
+   "count": 1,
+   "samples": [
+    "#pageHeader"
+   ]
+  }
+ ],
+ "hints": [],
+ "running": []
+}

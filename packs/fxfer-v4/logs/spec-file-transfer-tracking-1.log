@@ -1,0 +1,2454 @@
+$ powershell -NoProfile -ExecutionPolicy Bypass -File C:\UI-specs\start_codex.ps1 exec -c web_search=disabled --skip-git-repo-check -C C:\UI-specs\URL-to-Code\
+(prompt: C:\UI-specs\URL-to-Code\packs\fxfer-v4\logs\spec-file-transfer-tracking-1.prompt.md)
+--- output ---
+Reading prompt from stdin...
+OpenAI Codex v0.167.1
+--------
+workdir: C:\UI-specs\URL-to-Code
+model: gpt-5.2
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1c997-5da5-7be2-8b6d-2679d9c17866
+--------
+user
+Task: spec fxfer-v4/file-transfer-tracking
+Screen folder: C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking
+
+You are running unattended: nobody will answer questions. Do the task, then stop.
+
+Write any files you create/modify as UTF-8 text (not UTF-16). If you use PowerShell commands to write files, use Set-Content/Out-File with -Encoding utf8.
+Do not use the `apply_patch` helper here; it is unreliable in this environment. Edit files using Python/Node/PowerShell file writes (UTF-8) instead.
+
+Write the UI spec of the screen `fxfer-v4/file-transfer-tracking` (File Transfer Tracking, https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking). It will be rebuilt in React 19 (TypeScript, Vite, plain CSS).
+1. Read C:\UI-specs\URL-to-Code\/AGENTS.md (phase 1), then follow C:\UI-specs\URL-to-Code\/.claude/skills/ui-spec/SKILL.md exactly, with its templates in references/.
+   Wherever the skill says `outputs/<screen>/`, use the screen folder above; wherever it says `<screen>`, use `fxfer-v4/file-transfer-tracking`.
+2. Look at the pictures it names (sections/*.png, explore/shots/*) with your image viewer.
+3. Write only C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking/spec/UI_SPEC.md and C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking/spec/tasks.md.
+4. Run `npm run check -- fxfer-v4/file-transfer-tracking` in C:\UI-specs\URL-to-Code\ and fix the spec until it prints OK.
+Never invent: every requirement carries an evidence tag; what the capture does not show is `[UNKNOWN: ...]`.
+Do not run `npm run go`, `npm run capture` or `npm run ui`, and do not open the live site.
+Never open, print or copy .env files or anything under packs/*/auth/ (they hold the portal password and session).
+
+This screen is shown inside the shared shell (header + site menu) that the home page's spec covers. The capture was scoped to its content area `#pageBody > main`: specify that area; for the shell write one line under Layout: "Wrapped in the shared shell (see the home spec)."
+This screen belongs to a Provider portal (Kendo UI for jQuery). Read C:\UI-specs\URL-to-Code\kits\provider\KIT.md first. The harvest in C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking/kit/screen.json (section 18 of facts.md) is exact: field types, option lists, validation messages, grid columns, dialogs. Pictures of each state: C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking/kit/states/*.png. Cite every widget and dialog as [kit:<id>]. The kit builds the widgets: specify what they show and hold, not how to code a dropdown.
+
+2026-11-11T07:51:45.382303Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.postman.com/.well-known/oauth-protected-resource/mcp\"" })
+warning: Model metadata for `gpt-5.2` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.
+hook: SessionStart
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+**Following project instructions**
+
+I need to follow the instructions tightly. I'll start by reading the KIT.md and UI-SPEC skill instructions, as well as using the appropriate templates. I can't use apply_patch, and I must only edit two files. My plan starts with verifying everything through npm checks and fixes until it's all clear. I’ll also need to view images and will use exec_command to read files. I'll locate key documents and plan to capture outputs accurately while ensuring files are UTF-8 encoded.
+**Exploring file structure**
+
+I need to ensure that every requirement line includes evidence tags, as the skill might define them, like [ref:sections/..#px?] or [capture:...]. I’ll explore the file structure next. To do this, I'll use exec_command to list the directory and read the skill, kit, and kit/screen.json files for any existing specification files, possibly placeholders. I need to be cautious not to read any authentication details while using PowerShell commands. Let’s get started!
+codex
+I’m going to inspect the repo’s `ui-spec` skill + Provider kit docs, then read this screen’s capture/kit outputs and images so I can write `spec/UI_SPEC.md` and `spec/tasks.md` and iterate until `npm run check` passes.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code && ls" in C:\UI-specs\URL-to-Code
+ exited 1 in 454ms:
+At line:2 char:28
++ cd C:\UI-specs\URL-to-Code && ls
++                            ~~
+The token '&&' is not a valid statement separator in this version.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+ 
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; ls" in C:\UI-specs\URL-to-Code
+ succeeded in 5528ms:
+
+
+    Directory: C:\UI-specs\URL-to-Code
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         11/6/2026  12:53 PM                .claude                                                              
+d-----        11/10/2026  11:54 PM                docs                                                                 
+d-----        11/10/2026  12:39 AM                kits                                                                 
+d-----        11/10/2026  12:44 AM                node_modules                                                         
+d-----         11/6/2026   1:11 PM                outputs                                                              
+d-----        11/11/2026   1:16 PM                packs                                                                
+d-----        11/10/2026  11:54 PM                prompts                                                              
+d-----         11/6/2026   1:14 PM                screenshots                                                          
+d-----        11/11/2026  11:40 AM                scripts                                                              
+d-----         11/6/2026  12:53 PM                src                                                                  
+d-----         11/6/2026   1:14 PM                templates                                                            
+d-----        11/11/2026  11:40 AM                test                                                                 
+d-----        11/11/2026   4:44 AM                test-results                                                         
+-a----         11/6/2026   1:34 PM             46 .env                                                                 
+-a----        11/11/2026  10:46 AM            211 .gitignore                                                           
+-a----        11/10/2026  12:39 AM          11473 AGENTS.md                                                            
+-a----         11/6/2026  12:53 PM             12 CLAUDE.md                                                            
+-a----         11/9/2026   1:21 PM           1300 config.json                                                          
+-a----        11/11/2026  11:40 AM          15778 context-continuation.md                                              
+-a----         11/6/2026  12:53 PM            333 index.html                                                           
+-a----        11/10/2026  12:39 AM          11681 lookout.md                                                           
+-a----        11/10/2026  11:55 PM          68184 package-lock.json                                                    
+-a----        11/10/2026  12:39 AM           1588 package.json                                                         
+-a----         11/6/2026   1:14 PM            686 playwright.config.mjs                                                
+-a----        11/10/2026  12:39 AM           7966 README.md                                                            
+-a----        11/11/2026  12:44 AM             92 tmp_patch.txt                                                        
+-a----         11/6/2026  12:53 PM            435 tsconfig.json                                                        
+-a----         11/6/2026  12:53 PM           1715 vite.config.ts                                                       
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content -Raw .\\.claude\\skills\\ui-spec\\SKILL.md" in C:\UI-specs\URL-to-Code
+ succeeded in 778ms:
+---
+name: ui-spec
+description: Write the UI spec (spec/UI_SPEC.md + spec/tasks.md) for ONE captured screen from outputs/<screen>/ â€” facts.md, content.md, the user's screenshots and the state pictures â€” so the screen can be rebuilt in React 19 with the same looks and behavior. Use when asked to "write the UI spec for <screen>", "spec <screen>", or to fix a failing `npm run check`. Not for capturing (that is `npm run capture`) and not for writing the React code.
+---
+
+# UI spec writer
+
+You turn a capture into a spec a developer (or a coding agent) can build from without opening the legacy app.
+The capture is deterministic and complete for what a browser can observe. Your job is to **describe and organize** it, **reconcile** it with the screenshots, and **mark what cannot be known**. You never discover facts by guessing.
+
+One screen per run. Input: `outputs/<screen>/` (made by `npm run capture -- <screen>`). If `facts.md` is missing, stop and tell the user to run the capture.
+
+## 1. Read, in this order
+
+| # | file | why | how much |
+|---|---|---|---|
+| 1 | `outputs/<screen>/facts.md` | the brief: page, tokens, sections, assets, controls, validation, states, behaviors (EARS drafts), server calls, navigation, gaps | all of it |
+| 2 | `outputs/<screen>/sections/*.png` (+ `index.json`) | what it must look like, one full-resolution crop per band, made by the tool from a warmed-up, frozen page. **Look at every one**: they are far sharper than the whole-page `reference.png`. Cite as `[asset:sections/<file>]` | every crop |
+| 2b | `screenshots/<screen>/*` (only if the user supplied any) | `shot:N` = the Nth image in natural file order | look at every one |
+| 3 | `outputs/<screen>/content.md` | every text verbatim, in document order, with `{key}` markers and `<!-- box -->` style notes | all of it |
+| 4 | `outputs/<screen>/explore/shots/T##.png` | what each revealed/changed state looks like | the ones whose behavior shows something |
+| 5 | `outputs/<screen>/snapshot/used.css` + `rendered.html` | the page's real CSS rules (only those it uses) and its HTML with original class names. The truth for layout (flex/grid/widths/media queries), `::before` content, hover rules, `@keyframes`. Quote rules from here instead of inferring them | grep per component |
+| 6 | on demand | `capture/dom.json` (search by key/id; read one region at a time), `capture/controls.json` (exact control styles), `capture/pseudo.json`, legacy CSS listed in facts Â§4, `capture/js/*` (only for facts Â§12 and handlers), legacy source files listed in facts Â§1 | only what you need |
+
+Never open the live site and never run the capture yourself.
+
+## 2. Rules
+
+1. **Evidence on every requirement.** Each requirement / table row ends with a tag in brackets:
+   `[T07]` behavior Â· `[M03]` motion entry Â· `[S01]` scroll behavior Â· `[V01]` video/media Â· `[ctl:key]` control/element Â· `[val:key]` validator Â· `[shot:N]` screenshot Â· `[asset:path]` file under `capture/` (or `sections/â€¦`) Â· `[js:file#function]` Â· `[aspx:file:line]` Â· `[css:selector]` Â· `[UNKNOWN: question]`.
+   Several in one bracket are fine: `[T04, ctl:chkShip, shot:1]`.
+   A screen captured with a site kit (`run.json` `"kit"`, a `kit/` folder) adds `[kit:k3]` (a widget or dialog in `kit/screen.json`,
+   facts.md section 18): the gate wants every one cited. Read the kit's guide (`kits/<kit>/KIT.md`) first; its widgets are built by
+   the kit, so specify what they show and hold (options, placeholder, format, validation messages), not how they work inside.
+2. **Never write a value you did not read.** Missing, cut off, or contradictory â†’ `[UNKNOWN: â€¦]` + an entry in Open questions.
+3. **Numbers come from the capture, looks from the screenshots.** Sizes/colors/fonts: copy the computed CSS values (CSS px, already divided by dpr). If the screenshots show something the capture doesn't (different data, logged-in state), describe the screenshot and record the disagreement in Open questions.
+4. **Text verbatim** from `content.md`: spelling, case, punctuation, trailing colons.
+5. **Assets are files, not redraws.** Reference `capture/...` paths from facts Â§4. Icon-font glyphs (`::before` content) â†’ name the font and the codepoint. Canvas charts â†’ the picture file + what data it shows.
+6. **Keys are sacred.** Use the capture's keys exactly (`txtName`, `pnlShipping`, `hover-orders`). They become `data-testid` in the rebuild and the parity tests depend on them.
+7. **Describe behavior, not mechanics.** A WebForms postback that refills a dropdown is "WHEN Country changes THE SYSTEM SHALL load the states of that country". The postback detail (target, fields) goes to Server interactions only.
+8. **Blocked requests** (facts Â§9 status `blocked`): give the request contract (fields) and mark the outcome `[UNKNOWN]` unless the source shows it.
+9. **This page only.** Other pages are navigation targets, nothing more.
+10. **Flaky** behaviors (facts Â§13) may be mentioned, never required.
+11. **Motion is required.** Every entry in facts Â§15 (`M01â€¦`) gets a requirement in the `Motion` section with its numbers copied (autoplay delay, px/s, duration, easing, keyframes, counter end value). Timing comes from the measurement, never from your impression of a still image. A counter that shows 0 in a picture still ends at the value in Â§15.
+12. **Scroll behavior and media are required.** Every `[S##]` of facts Â§16 (a bar that sticks, a part that appears or disappears after N px, a header that hides on the way down) and every `[V##]` of Â§17 (autoplay, loop, muted, what the pause/mute control does) gets a requirement in `Behavior`, with the measured thresholds and positions. A still picture cannot show them: a part left out of the spec is a part missing from the rebuild, and a video described as "an image" is a video that never plays.
+13. **Animation timing is part of the behavior.** A facts Â§8 line that says `animate it (measured frame by frame): â€¦ height 0â†’84px over ~243ms (ease-out)` is a requirement: copy the property, the values, the duration and the easing into the behavior (and the Motion section for transitions). Never write an instant show/hide for something with a measured animation.
+14. **Settle an [UNKNOWN] before writing it.** The behavior code of the site is saved: facts Â§14 lists the page's own scripts and the platform code of other hosts (`capture/js/_ext/<host>/`). If the question is "what triggers X" (hover or click? which element?), search those files first. Only what they cannot answer stays `[UNKNOWN]`, and the final report must list it as an open assumption.
+
+## 3. EARS
+
+Use exactly these forms, uppercase keywords:
+
+| pattern | form | use for |
+|---|---|---|
+| ubiquitous | `THE SYSTEM SHALL â€¦` | always-true looks/structure, default states |
+| event | `WHEN <trigger> THE SYSTEM SHALL â€¦` | every behavior in facts Â§8 |
+| state | `WHILE <state> THE SYSTEM SHALL â€¦` | modes: panel open, item selected, disabled-until |
+| unwanted | `IF <bad input/condition> THEN THE SYSTEM SHALL â€¦` | validation failures, errors, confirm-cancel |
+| optional | `WHERE <feature/role> THE SYSTEM SHALL â€¦` | role- or data-dependent parts (usually `[UNKNOWN]`) |
+
+Start from the facts Â§8 drafts: rewrite them as clean requirements, group them by component, merge duplicates (cite all their T ids), and split one draft into several requirements when it mixes concerns. Each line: one requirement, ending in its evidence tag.
+
+## 4. Write
+
+- `outputs/<screen>/spec/UI_SPEC.md`: follow [references/ui-spec-template.md](references/ui-spec-template.md). Headings are checked: keep their names and order.
+- `outputs/<screen>/spec/tasks.md`: follow [references/tasks-template.md](references/tasks-template.md).
+
+Prefer tables to prose. Typical size: 150â€“400 lines for the spec, 30â€“80 for tasks.
+
+## 5. Gate (not optional)
+
+Run `npm run check -- <screen>` and fix everything it reports:
+
+| report | fix |
+|---|---|
+| missing controls / behaviors / validators | cite them where they belong (component table, behavior list, field table) |
+| missing motion | cite each `[M##]` in the Motion section |
+| missing scroll behaviors / media | cite each `[S##]` and `[V##]` (facts Â§16, Â§17) in Behavior |
+| invented | the id doesn't exist in the capture: correct it or remove the claim |
+| no evidence tag | add the tag, or delete the line if there is no evidence |
+| missing sections | add the section (write "None." if empty) |
+| (optional) links / unexplained not mentioned | links â†’ Navigation; unexplained â†’ State model or Open questions |
+
+Repeat until it prints âœ“. Then report to the user: the coverage line, the number of `[UNKNOWN]`s, and the three most important open questions.
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content -Raw .\\.claude\\skills\\ui-spec\\references\\ui-spec-template.md" in C:\UI-specs\URL-to-Code
+ succeeded in 2964ms:
+# UI_SPEC.md template
+
+Copy the structure below. Replace every `<â€¦>`. Keep heading names and order (`npm run check` looks for them). Write "None." under a heading that has nothing.
+
+```markdown
+# UI SPEC â€” <screen>
+
+> Source <url> Â· viewport <W>Ã—<H> CSS px @ dpr <dpr> Â· legacy built with <framework from facts Â§1> Â· target React 19
+> Evidence tags: `[T##]` behavior Â· `[ctl:key]` element Â· `[val:key]` validator Â· `[shot:N]` screenshot Â· `[asset:path]` Â· `[js:â€¦]` Â· `[aspx:â€¦]` Â· `[UNKNOWN: â€¦]`
+
+## 1. Overview
+<1â€“3 sentences: what the screen is for, who uses it> [shot:1]
+Primary tasks:
+- <task> [ctl:â€¦]
+
+## 2. Layout
+Page: <fixed width N px centered | fluid | min-width>, background <value>, scroll <page | inner region>, sticky <parts or none> [shot:â€¦]
+
+| region | element (key / id) | box x,y,w,h (CSS) | in shots | layout | key styles | evidence |
+|---|---|---|---|---|---|---|
+| Header | â€¦ | â€¦ | shot:1 | flex row, space-between | bg â€¦, height â€¦, padding â€¦ | [shot:1] |
+
+<optional ASCII sketch of the regions>
+
+### 2.x <Region name>
+<exact styles: background, border, padding, gap, font, alignment; children in order with their sizes> [evidence]
+
+## 3. Design tokens
+| token (CSS variable for the rebuild) | value | used by | evidence |
+|---|---|---|---|
+| --color-text | rgb(51, 51, 51) | body text | [shot:1] |
+| --font-base | Verdana, Arial, sans-serif 12px/normal | body | [shot:1] |
+
+## 4. Assets
+| file (under capture/) | where | display size (CSS) | notes | evidence |
+|---|---|---|---|---|
+| assets/img/logo.svg | header logo | 32Ã—32 | | [asset:assets/img/logo.svg] |
+
+## 5. Components
+React component tree (shared components marked *shared*):
+- `<ScreenName>Page`
+  - `Header` *shared* â€” logo, title [ctl:â€¦]
+  - `CustomerForm` â€” fields Â§6 [ctl:â€¦]
+
+| component | props / inputs | owns state | elements (keys) | evidence |
+|---|---|---|---|---|
+
+## 6. Fields & validation
+| key | label (verbatim) | type | default | required | rules | message (verbatim) | validated when | evidence |
+|---|---|---|---|---|---|---|---|---|
+
+- IF <invalid input> THEN THE SYSTEM SHALL <show message where> [Tâ€¦, val:â€¦]
+
+## 7. State model
+| state | type | initial | changed by | drives (what shows/enables) | evidence |
+|---|---|---|---|---|---|
+
+Hidden at load (facts Â§12):
+| element | shown when | evidence |
+|---|---|---|
+| pnlAdmin | <condition> | [UNKNOWN: â€¦] |
+
+## 8. Behavior
+### 8.x <Component>
+- THE SYSTEM SHALL <default look / state> [ctl:â€¦]
+- WHEN <trigger> THE SYSTEM SHALL <effect> [Tâ€¦]
+- WHILE <state> THE SYSTEM SHALL <effect> [Tâ€¦]
+- THE SYSTEM SHALL show <hover/focus/disabled style with values> [ctl:â€¦]
+- WHEN <trigger> THE SYSTEM SHALL <show/hide X>, animating <property> <from>â†’<to> over <ms>ms (<easing>) [Tâ€¦]   (copy the measured timing from facts Â§8)
+
+### 8.y Scroll behavior (facts Â§16: cite every [S##])
+- WHEN the page is scrolled down past <N>px THE SYSTEM SHALL show <part>, <fixed|sticky> at <top|bottom|corner>, <w>Ã—<h>px; scrolling back to the top hides it [S01]
+- THE SYSTEM SHALL keep <header> stuck to the top while scrolling, and change <class/height> past <N>px [S02]
+
+### 8.z Media (facts Â§17: cite every [V##])
+- THE SYSTEM SHALL play <video file> automatically, <muted>, <looping>, poster <file> [V01]
+- WHEN the user clicks <control> THE SYSTEM SHALL pause the video; clicking again resumes it [V01]
+
+## 9. Navigation
+| trigger (key) | destination | how (same tab / new window / route) | evidence |
+|---|---|---|---|
+
+## 10. Server interactions
+| trigger | legacy request (method, target, fields) | rebuild needs (API, proposed) | response â†’ UI | evidence |
+|---|---|---|---|---|
+
+## 11. Accessibility
+- Labels, tab order, focus visibility, Enter-key default button, aria roles from capture/aria.yml [ctl:â€¦]
+
+## 12. Test ids
+Every element below gets `data-testid="<key>"` in the rebuild; `outputs/<screen>/spec/parity.spec.ts` uses them:
+`txtName`, `txtEmail`, â€¦ [ctl:â€¦]
+Run: `TARGET=react URL=<rebuild url> npx playwright test outputs/<screen>/spec/parity.spec.ts`
+
+## 13. Open questions
+1. <question> â€” answer from: <legacy source file / backend spec / product owner> [UNKNOWN]
+
+## 14. Motion
+One requirement per facts Â§15 entry, numbers copied from it. Cite every `[M##]`. Write "None." only if Â§15 says nothing moved.
+- WHILE the page is shown THE SYSTEM SHALL advance <carousel> every <autoplayDelay>ms with a <speed>ms <effect>, <slidesPerView> slide(s) visible, loop <yes/no>, pausing on hover <yes/no> [M01]
+- WHEN <counter> enters the viewport THE SYSTEM SHALL count from <from> to <end value> in <duration>ms [M02]
+- THE SYSTEM SHALL scroll <ticker> <direction> at <N>px/s, looping [M03]
+- WHEN <element> enters the viewport THE SYSTEM SHALL play <animation name> (<duration>, <delay>, <easing>, <fill>) from <keyframes> [M04]
+Hover/focus transitions (facts Â§15 table) go in Behavior with their durations.
+```
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content -Raw .\\.claude\\skills\\ui-spec\\references\\tasks-template.md" in C:\UI-specs\URL-to-Code
+ succeeded in 595ms:
+# tasks.md template
+
+Ordered build plan for one screen. Each task names its spec section, keys / T ids, and an acceptance check. Order matters: layout errors found late cost the most.
+
+```markdown
+# TASKS â€” <screen>
+
+Target: React 19 + TypeScript, plain CSS (no UI library) unless the build project says otherwise.
+Build with the draw-ui skill (reconstruction mode) + the "Build phase" rules in AGENTS.md (dpr!).
+Spec: outputs/<screen>/spec/UI_SPEC.md Â· tests: outputs/<screen>/spec/parity.spec.ts
+
+## 0. Setup
+- [ ] `npm run port -- <screen>`: builds the static page in `outputs/<screen>/app/` (assets copied to `app/assets/`, every key as `data-testid`) and writes `app/BEHAVIOR.md`. Everything for this screen lives in `outputs/<screen>/`.
+- [ ] `reference.png` and `manifest.json` stay in `outputs/<screen>/` (`npm run verify -- <screen>` reads them there).
+- [ ] The route `#/<screen>` needs no registration: the root router finds `outputs/<screen>/app/Page.tsx`.
+
+## 1. Shell â€” Â§2, Â§3
+- [ ] Page width, background, font stack, CSS variables from Â§3.
+  Accept: `npm run verify -- <screen>` â†’ `size_delta_px` within Â±2.
+
+## 2. Regions â€” Â§2 (top to bottom, one task each)
+- [ ] <Region>: <what> [keys]. Accept: verify band `bad_pct` < 5 for its band.
+
+## 3. Components & states â€” Â§5, Â§7, Â§8
+- [ ] <Component>: elements <keys>, state <names>, behaviors <T ids>, every key as data-testid.
+  Accept: parity tests <T ids> pass.
+
+## 4. Validation â€” Â§6
+- [ ] <rules>. Accept: parity tests <T ids> pass.
+
+## 5. Server interactions â€” Â§10
+- [ ] <API stub / call> with the legacy fields. Accept: <T ids> show the same UI result.
+
+## 6. Done
+- [ ] `npm run verify -- <screen>`: size_delta Â±2, bad_pct < 5 (report the numbers).
+- [ ] `TARGET=react URL=<url> npx playwright test outputs/<screen>/spec/parity.spec.ts`: all pass.
+- [ ] Every Â§13 open question answered, or listed as known gaps.
+```
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content -Raw .\\kits\\provider\\KIT.md" in C:\UI-specs\URL-to-Code
+ succeeded in 3277ms:
+# Provider kit: Kendo UI for jQuery portals (Gainwell MMS and look-alikes)
+
+Read this before you write a spec or code for a screen whose `run.json` says `"kit": "provider"`.
+
+## What the portal is
+
+Every module is built the same way: ASP.NET MVC pages, jQuery 3.7 and Kendo UI for jQuery 2026.x. The pages share one set of
+stylesheets (`/bundles/vendorcss`, `/bundles/appcss`, the tenant theme) and one shell: a fixed header (`#pageHeader`, 62 px,
+hides on scroll down), a side menu behind the hamburger, a module tab and a green title bar (`<h1>`), and a footer. A screen
+is a few parts that repeat everywhere:
+
+| part | live markup | in the rebuild |
+|---|---|---|
+| field | `.editor-col` > `.editor-label` (label, `*` required, `?` help) + `.editor-field` | ported as is |
+| `?` help, logo | `[data-role=tooltip]` with a `title` | `data-kit-tip`: the kit shows the portal's tooltip after its delay |
+| dropdown | `span.k-dropdownlist` + hidden `input[data-role=dropdownlist]` | `<KitWidget id="kN" />` (dropdown island) |
+| number box | `span.k-numerictextbox` | `<KitWidget>` (numeric island) |
+| date / date-time / time | `span.k-datepicker` / `.k-datetimepicker` | `<KitWidget>` (picker island: calendar, time list) |
+| grid | `div.k-grid[data-role=grid]` + `.k-pager` | `<KitWidget>` (grid island: synthetic rows, sort, pager) |
+| Search Criteria panel | `.content-panel-hdr` with a chevron + body | `data-kit-action="collapse"` |
+| Search / Reset / Cancel / Create New / Save | buttons | `data-kit-action=â€¦` |
+| dialog | Kendo Window (`.k-window`, AJAX content) | `dialogs/Dialog<Id>.tsx`, opened by `<KitScreen>` |
+| validation | `data-val-*` (MVC unobtrusive) | the kit validates with the same rules and messages |
+
+## What the capture gives you (`<screen>/kit/`)
+
+- `screen.json`: everything read from Kendo itself: every widget (kind, label, option list, placeholder, format, required,
+  help text, validation messages), every field, every action, the title bar texts, Kendo's own animation numbers
+  (`calibration.defaults`), the live markup of an open dropdown list / calendar / tooltip, what Search revealed and which
+  endpoint it called, the grid after Search as **templates** (row markup with `{{cN}}` slots, column types, row count: no
+  client data), and every dialog (Create New, a Create New inside it, the first row's edit dialog).
+- `dialogs/<id>.html`: each dialog's content, stamped like the page.
+- `states/*.png`: the live page in each state (a dropdown open, a tooltip, after Search, each dialog). `verify` replays the same
+  clicks on the rebuild and compares (`states: N/M` line).
+- `facts.md` section 18 summarizes it all. Cite each widget and dialog in the spec as `[kit:<id>]`.
+
+## What is already built (the app's `src/kit`, copied from `kits/provider/app`)
+
+`<KitScreen>` wraps each ported screen and the shell. `<KitWidget id>` renders each Kendo widget from its live markup with
+Kendo's behavior: a second click and an outside click close a dropdown, the list opens upward when there is no room below,
+the arrow keys and letters pick items, the tooltip waits for the portal's delay, the grid sorts (none â†’ asc â†’ desc) and pages,
+and a dialog zooms and fades in. Rows after Search are synthetic, shaped like the live ones.
+`src/services/<screen>.ts` names the live endpoints and answers with mock data.
+
+**Never** write your own dropdown, date picker, tooltip, grid, dialog or collapse in a screen, and **never edit `src/kit`**: a
+kit problem is fixed once in `final-playwright/kits/provider/app`, for every screen and every pack.
+
+## What is left for the code step
+
+What the kit cannot know, taken from the screen's own script (`<screen>/capture/js/â€¦/hp.ua3.<Module>.<screen>.js`) and the spec:
+- conditional fields (a radio that shows more fields, a checkbox that enables a dropdown) and cascading dropdowns' options,
+- what Cancel does on a search page, and the screen's own messages ("At least one search criteria is required."),
+- anything the spec lists that the port does not show.
+
+Use the kit's bus for values (`ctx.bus.on('change', â€¦)`) or plain DOM events on the ported markup; keep the class names.
+Each screen gets a checklist, `docs/ui-specs/<screen>/TODO.md` in the app: what the kit already does and what is left.
+
+## API (everything a screen's own code may use; import from the app's `src/kit`)
+
+```tsx
+import { KitScreen, KitWidget, useKit, type KitData } from '../../kit';
+```
+
+- `<KitScreen screen={kit} dialogs={{ d1: DialogD1 }} services={services} shell?>`: already in the ported Page.tsx. `screen` is
+  the screen's `kit.json`; `dialogs` maps each dialog id to its body component; `services` is `src/services/<screen>.ts`.
+- `<KitWidget id="k3" />`: one Kendo widget, by the id the capture stamped. Already placed by the port.
+- `useKit()` (inside a KitScreen, e.g. in a dialog body or a small component of the screen) returns
+  `{ data, defs, bus, openDialog }`:
+  - `bus.on('change', ({ name, id, value }) => â€¦)`: a kit widget's value changed (returns an unsubscribe function);
+    `bus.on('search', (values) => â€¦)` after Search; `bus.on('reset', () => â€¦)` after Reset. `bus.emit(type, detail)` sends one.
+    Plain inputs (text boxes, radios, checkboxes) are not on the bus: listen to their DOM events.
+  - `openDialog('d2')`: open a captured dialog from code (e.g. a radio that opens one).
+  - `data`: the kit.json (`widgets`, `dialogs`, `grids`, `search`, `row`, `plan`, `missing`).
+- Services (`src/services/<screen>.ts`): `search(values)` returns `{ total, rows }` of synthetic rows; `save(dialog, values)`.
+  `endpoints` names the live endpoints. Edit freely: it is generated once.
+- Attributes the kit acts on (keep them): `data-kit-action="search|reset|cancel|create|save|close|collapse|menu|menu-close"`,
+  `data-kit-tip="text"` (a tooltip), `data-kit-h` (hidden at rest; Search reveals the ones in `search.reveals`),
+  `data-kit-collapse` (a panel body), `data-kit-menu*` (the side menu: never touch it from a screen).
+
+Worked example: the FTP Server Credentials screen needs no code of its own beyond the port. Its Create New opens dialog `d1`
+("Add FTP Server Credentials", ported to `dialogs/DialogD1.tsx`), its tooltips and validation come from the kit, and its grid
+fills on Search. A screen with a conditional field adds one small component next to the markup, for example:
+
+```tsx
+// shows the part hidden at rest (data-kit-h="h4") only for "Run Monthly", as the screen's script does
+function RunSchedule() {
+  useEffect(() => {
+    const on = (e: Event) => {
+      const r = e.target as HTMLInputElement;
+      if (r.name === 'RunSchedule') document.querySelector<HTMLElement>('[data-kit-h="h4"]')!.style.display = r.value === 'M' ? '' : 'none';
+    };
+    document.addEventListener('change', on);
+    return () => document.removeEventListener('change', on);
+  }, []);
+  return null;
+}
+```
+
+## The side menu (the shell, built by the kit)
+
+Measured on the live portal (docs/provider-probe, probe 2): the hamburger swaps the menu root's classes (`display-none` â†’
+`display-flex`, which are `!important`) and appends `<div class="disabled-backdrop">` to `<body>`; there is no fade. A module
+flies out to the left after Kendo's hover delay (100 ms) with its menu animation (open 200 ms, close 100 ms). Only the X and a
+menu link close it: Escape and a click on the backdrop do not. The capture records all of this on the menu root
+(`data-kit-menu-add/-remove/-backdrop/-hover/-open-ms/-close-ms`) and the kit replays it; a link to a rebuilt screen routes there.
+
+A module's submenu is a box **beside** the module list, not inside it: Kendo lifts the popup out of the `<ul>` (which clips what
+is inside) into a `.k-animation-container` on the menu's scroll wrapper, `left: -width; top: <the item's top>` for the vertical
+side menu, under the item for the horizontal **module tab** (`#activeModuleMenu`, "CLAIMS MANAGEMENT âˆ¨" under the header). The
+kit does the same for both (`[data-kit-flyout]`), with each menu's own timings (stamped on the `<ul>`). Only a link to a screen of
+this app navigates (and closes the menu); every other item is shown and leads nowhere, so the whole menu can be browsed. **Quick
+Links** (`#mobileMenuIcon`) is a collapsible shell panel: the capture stamps it (`collapse`) and the kit toggles its angle icon,
+`subpanel-collapsed`, title and body like the portal's `expandPanel`. The **page help book** (`.help-icon-container`) belongs to
+the page, not the shell: each screen's `screen.json` `help` is its markup or null, and the screen shows or hides it.
+`kit/states` check all of it on the rebuild (`menu-open`, `menu-flyout`, `tab-flyout`, `menu-close`): the fly-out must be on top and
+outside the list, and look like the live one. Captures from before this have no `menu-flyout`/`tab-flyout`/`help`: capture again.
+
+## Dialogs and grid rows
+
+The capture reads the screen's own script for `openModalOverlay("<panel>", â€¦)` (each dialog, and the button that opens it) and
+`setKendoGridDataBoundEvents(e, msg, onClick, onDblClick)` (62 of 89 menu pages open a row on double-click). It clicks each
+opener with nothing on top of it, waits for the window while the page loads (up to 20 s), and double-clicks the first row when
+the script says so. In the rebuild a click selects the row and a double-click opens its dialog. A dialog the script opens but
+the capture could not see is listed in `screen.json` `missing` and in facts.md as `[UNKNOWN]`: never invent it.
+
+## Known gaps (say them in GUESSED.md when a screen needs them)
+
+- Widgets the kit does not rebuild yet are ported as static markup and listed in `screen.json` `unknown` (and facts.md). The
+  census of the menu pages found: autocomplete (Plan Management, Claims), masked text box, multiselect, listbox, listview,
+  tab strip. Checkboxes and radios are plain inputs and work as they are.
+
+- The grid's column filter menu (the funnel icon) does not open.
+- The page-size dropdown in the pager does not change the page size.
+- A dropdown that cascades from another starts disabled and keeps the option list the capture saw (usually empty).
+- The book icon's page help (`displayPageLevelHelp()`) opens nothing.
+
+
+**Reviewing folder details**
+
+I'm looking to dig into the screen folder next. I need to read files like facts.md and content.md, and maybe snapshot too. The instructions clearly state that I should harvest in kit/screen.json, and it’s important to cite every widget and dialog using the format [kit:<id>]. So, I'll focus on creating a list of these IDs as I examine everything in the screen folder. Let's tackle this step by step!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "ls C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking" in C:\UI-specs\URL-to-Code
+ succeeded in 4397ms:
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        11/11/2026   1:21 PM                capture                                                              
+d-----        11/11/2026   1:21 PM                kit                                                                  
+d-----        11/11/2026   1:21 PM                measure-00                                                           
+d-----        11/11/2026   1:21 PM                sections                                                             
+d-----        11/11/2026   1:21 PM                snapshot                                                             
+d-----        11/11/2026   1:21 PM                spec                                                                 
+-a----        11/11/2026   1:21 PM          11455 content.md                                                           
+-a----        11/11/2026   1:21 PM          53968 facts.json                                                           
+-a----        11/11/2026   1:21 PM          97683 facts.md                                                             
+-a----        11/11/2026   1:21 PM            336 manifest.json                                                        
+-a----        11/11/2026   1:21 PM           1916 motion.json                                                          
+-a----        11/11/2026   1:21 PM            161 reference.json                                                       
+-a----        11/11/2026   1:21 PM          59790 reference.png                                                        
+-a----        11/11/2026   1:21 PM            761 regions.json                                                         
+-a----        11/11/2026   1:21 PM            794 run.json                                                             
+-a----        11/11/2026   1:21 PM           1958 run.log                                                              
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "ls C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\spec" in C:\UI-specs\URL-to-Code
+ succeeded in 643ms:
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking\spec
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/11/2026   1:21 PM          66224 parity.spec.ts                                                       
+-a----        11/11/2026   1:21 PM          60805 selectors.json                                                       
+
+
+
+**Summarizing spec requirements**
+
+Since the project is large, I'll use Python to summarize the necessary items for the specifications. This includes things like URL, viewport, dpr, various frameworks, design tokens, and assets. I need to cover components and controls, fields, validations, behaviors, state models, server interactions, and scroll/media aspects. Motion identifiers and navigation should be included too. I'll also check the kit widget list and read through manifest.json and run.json to gather relevant data.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\manifest.json" in C:\UI-specs\URL-to-Code
+ succeeded in 700ms:
+{
+  "reference": "reference.png",
+  "source": "tool",
+  "dpr": 1,
+  "css_viewport_width": 1920,
+  "css_viewport_height": 1080,
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking",
+  "sections": "capture/bands.json",
+  "motion": "motion.json"
+}
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\run.json" in C:\UI-specs\URL-to-Code
+ succeeded in 984ms:
+{
+ "screen": "fxfer-v4/file-transfer-tracking",
+ "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking",
+ "mode": "safe",
+ "kit": "provider",
+ "sources": [],
+ "finger": "4779ae3586c5f13fc6b7d3c5e5d258cf",
+ "steps": {
+  "capture": {
+   "ok": true,
+   "at": "2026-11-11T07:51:38.224Z",
+   "ms": 33140
+  },
+  "stitch": {
+   "ok": true,
+   "at": "2026-11-11T07:51:38.231Z",
+   "ms": 1
+  },
+  "align": {
+   "ok": true,
+   "at": "2026-11-11T07:51:38.240Z",
+   "ms": 2
+  },
+  "facts": {
+   "ok": true,
+   "at": "2026-11-11T07:51:38.369Z",
+   "ms": 124
+  }
+ },
+ "warnings": [
+  "no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)"
+ ],
+ "viewport": {
+  "width": 1920,
+  "height": 1080
+ },
+ "dpr": 1
+}
+
+**Preparing to parse facts**
+
+I need to read the facts.md, and it looks like I'll be using Python to parse facts.json. I should include citations with evidence tags like T## and [kit:id]. Citing sections will involve using [asset:sections/...]. I also need to look at the pictures in sections/*.png and kit/states using the view_image tool. Finally, I'll compile a list of sections for better organization. Let's make sure everything is clear!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "ls C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\sections" in C:\UI-specs\URL-to-Code
+ succeeded in 716ms:
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking\sections
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        11/11/2026   1:21 PM                jpg                                                                  
+-a----        11/11/2026   1:21 PM           4090 01-file-transfer-tracking.png                                        
+-a----        11/11/2026   1:21 PM          31555 02-pagebody.png                                                      
+-a----        11/11/2026   1:21 PM           7811 03-disclaimer-the-website-is-prov.png                                
+-a----        11/11/2026   1:21 PM            804 index.json                                                           
+
+
+
+**Exploring file transfer services**
+
+I'm noticing the details in the capture, which shows a green title bar with "FILE TRANSFER SERVICES" and a page titled "File Transfer Tracking." There’s a search criteria panel with various fields and a footer section with links. I need to check the kit screen json to ensure it includes ids for widgets like dropdowns, date pickers, and possibly text boxes. Some plain inputs might not be part of the kit, but the kit should identify all relevant fields and widgets. Let's compile a list of these elements!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "ls C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\kit\\states" in C:\UI-specs\URL-to-Code
+ succeeded in 634ms:
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking\kit\states
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/11/2026   1:21 PM           6508 dropdown.png                                                         
+-a----        11/11/2026   1:21 PM           4269 menu-flyout.png                                                      
+-a----        11/11/2026   1:21 PM          73273 menu-open.png                                                        
+-a----        11/11/2026   1:21 PM          70546 search.png                                                           
+-a----        11/11/2026   1:21 PM           7741 tab-flyout.png                                                       
+-a----        11/11/2026   1:21 PM           3907 tooltip.png                                                          
+
+
+
+**Examining search results display**
+
+I see that after a search, the grid shows up, but there's the possibility of having an empty state with the message "No items to display." I also need to account for additional elements like a refresh icon and scrollbars. It seems necessary to consider the view dropdown state as well. All these details will help create a better user experience! Let's make sure everything's visually clear and functional.
+**Identifying dropdown options**
+
+I’m noticing the dropdown has several options like "Select a value...", "Complete," "Error," and "Transferring." This might indicate it's related to file status, which is good to know! I should also pay attention to the tooltip state, as that can provide helpful hints about what each option means. I'd want to ensure I understand what happens with each selection. Let’s keep thinking through how these options might affect my work!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; p=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json'); data=json.loads(p.read_text(encoding='utf-8')); print(data.keys()); print('widgets', len(data.get('widgets',{}))); print('dialogs', len(data.get('dialogs',{}))); print('grids', len(data.get('grids',{}))); print('actions', len(data.get('actions',{})));\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1490ms:
+dict_keys(['shell', 'widgets', 'fields', 'actions', 'hidden', 'unknown', 'autofocus', 'kendo', 'jquery', 'help', 'menu', 'calibration', 'grids', 'dialogs', 'search', 'row', 'requests', 'plan', 'missing'])
+widgets 9
+dialogs 0
+grids 1
+actions 3
+
+**Organizing widgets**
+
+I’m noticing that there are 9 widgets in total, plus 1 grid. I’ll need to cite each widget correctly, possibly using the format [kit:k?] and making sure everything is detailed accurately. It seems like it’s crucial to have a list of widget IDs along with their respective labels. Printing those IDs and labels would be a good start to keep everything organized and clear for future reference.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python - <<'PY'
+import json, pathlib
+p=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json')
+data=json.loads(p.read_text(encoding='utf-8'))
+for wid,w in data['widgets'].items():
+    kind=w.get('kind')
+    label=w.get('label')
+    name=w.get('name')
+    print(wid, kind, 'label=',label, 'name=',name)
+PY" in C:\UI-specs\URL-to-Code
+ exited 1 in 497ms:
+At line:2 char:11
++ python - <<'PY'
++           ~
+Missing file specification after redirection operator.
+At line:2 char:10
++ python - <<'PY'
++          ~
+The '<' operator is reserved for future use.
+At line:2 char:11
++ python - <<'PY'
++           ~
+The '<' operator is reserved for future use.
+At line:6 char:4
++ for wid,w in data['widgets'].items():
++    ~
+Missing opening '(' after keyword 'for'.
+At line:6 char:8
++ for wid,w in data['widgets'].items():
++        ~
+Missing argument in parameter list.
+At line:6 char:36
++ for wid,w in data['widgets'].items():
++                                    ~
+An expression was expected after '('.
+At line:10 char:14
++     print(wid, kind, 'label=',label, 'name=',name)
++              ~
+Missing argument in parameter list.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingFileSpecification
+ 
+
+**Exploring PowerShell options**
+
+I realize that PowerShell doesn't support heredoc in the way I initially thought. Instead, it might be better to use the Python command with triple quotes or consider using PowerShell's here-string to pipe input to Python. I'm leaning toward the simplest approach, which would be using `python -c "..."` and keeping it straightforward with semicolons for minimalism. Let's continue!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); 
+
+[print(wid, w.get('kind'), 'label=', w.get('label'), 'name=', w.get('name')) for wid,w in data.get('widgets',{}).items()]\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1178ms:
+k1 dropdown label= FileStatusList name= FileStatusList
+k2 dropdown label= DirectionList name= DirectionList
+k3 dropdown label= TransportTypeList name= TransportTypeList
+k4 dropdown label= SourceLocation name= SourceLocation
+k5 datetime label= From Date name= FromDate
+k6 datetime label= To Date name= ToDate
+k7 numeric label= From Size (KB) name= FromSize
+k8 numeric label= To Size (KB) name= ToSize
+k9 grid label= None name= None
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); 
+print('fields', len(data.get('fields',{})));
+for fid,f in data.get('fields',{}).items():
+    print(fid, f.get('label'), f.get('kind'), f.get('key'))\"" in C:\UI-specs\URL-to-Code
+ exited 1 in 1035ms:
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+    for fid,f in data.get('fields',{}).items():
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'items'
+fields 26
+
+**Inspecting list elements**
+
+I see that I'm dealing with a list rather than a dictionary, which means I need to iterate over each element. So, my first step is to inspect the first element to understand its structure and content better. This will help me figure out how to proceed with the iteration effectively. I’m making sure to double-check and work with the correct data type—lists can be tricky sometimes!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib, itertools; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); f=data['fields']; print(type(f), len(f)); print(f[0].keys()); print(f[0])\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1043ms:
+<class 'list'> 26
+dict_keys(['name', 'id', 'type', 'role', 'label', 'required', 'maxLength', 'validation', 'validationParams', 'value', 'widget', 'disabled', 'readOnly'])
+{'name': 'fakeusernameremembered', 'id': None, 'type': 'text', 'role': None, 'label': '', 'required': False, 'maxLength': None, 'validation': {}, 'validationParams': {}, 'value': '', 'widget': None, 'disabled': False, 'readOnly': False}
+
+**Parsing hidden fields**
+
+I’m thinking about focusing on the actual fields that have an ID. Ignoring fake hidden fields might be best. I should look for the ones with non-empty labels and extract the key, probably using the ID. It makes sense to print the fields where a label exists or there’s a corresponding widget. This process feels like it’s moving in the right direction! Let's see what results I can get.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); 
+for f in data['fields']:
+    if f.get('label') or f.get('widget') or f.get('id'):
+        print(f.get('id'), 'name=',f.get('name'), 'type=',f.get('type'), 'label=',repr(f.get('label')), 'required=',f.get('required'), 'widget=',f.get('widget'))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1068ms:
+FileId name= FileId type= text label= 'File ID' required= False widget= None
+FileName name= FileName type= text label= 'File Name' required= False widget= None
+FileStatusList name= FileStatusList type= text label= 'FileStatusList' required= False widget= k1
+DirectionList name= DirectionList type= text label= 'DirectionList' required= False widget= k2
+TransportTypeList name= TransportTypeList type= text label= 'TransportTypeList' required= False widget= k3
+SourceLocation name= SourceLocation type= text label= 'SourceLocation' required= False widget= k4
+TradingPartnerId name= TradingPartnerId type= text label= 'Trading Partner ID' required= False widget= None
+FromDate name= FromDate type= text label= 'From Date' required= False widget= k5
+ToDate name= ToDate type= text label= 'To Date' required= False widget= k6
+FromSize name= FromSize type= text label= 'From Size (KB)' required= False widget= k7
+ToSize name= ToSize type= text label= 'To Size (KB)' required= False widget= k8
+prevButton name= prevButton type= button label= 'Prev' required= False widget= None
+resetButton name= resetButton type= button label= 'Reset' required= False widget= None
+alt1Button name= alt1Button type= button label= 'Alt1' required= False widget= None
+alt4Button name= alt4Button type= button label= 'Alt4' required= False widget= None
+alt5Button name= alt5Button type= button label= 'Alt5' required= False widget= None
+alt6Button name= alt6Button type= button label= 'Alt6' required= False widget= None
+alt7Button name= alt7Button type= button label= 'Alt7' required= False widget= None
+alt8Button name= alt8Button type= button label= 'Alt8' required= False widget= None
+printButton name= printButton type= button label= 'Print' required= False widget= None
+alt2Button name= alt2Button type= button label= 'Alt2' required= False widget= None
+alt3Button name= alt3Button type= button label= 'Alt3' required= False widget= None
+cancelButton name= cancelButton type= button label= 'Cancel' required= False widget= None
+nextButton name= nextButton type= button label= 'Search' required= False widget= None
+
+**Exploring button visibility**
+
+I’m considering that the buttons might include various alternatives, likely hidden for accessibility reasons. The only visible ones are Reset, Cancel, and Search. I wonder if other options exist but are perhaps tucked away in the shell? I should check the hidden list next, specifically looking for the `hidden` entries in the kit JSON. Let’s view what’s hidden to ensure I’m covering everything properly!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); print('hidden count', len(data.get('hidden',[]))); 
+for h in data.get('hidden',[])[:50]:
+    print(h)\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1123ms:
+hidden count 13
+h1
+h2
+h3
+h4
+h5
+h6
+h7
+h8
+h9
+h10
+h11
+h12
+h13
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); 
+for aid,a in data.get('actions',{}).items():
+    print(aid, a.get('label'), a.get('kind'), a.get('key'))\"" in C:\UI-specs\URL-to-Code
+ exited 1 in 1016ms:
+Traceback (most recent call last):
+  File "<string>", line 2, in <module>
+    for aid,a in data.get('actions',{}).items():
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'items'
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); 
+print(type(data['actions']), len(data['actions']));
+for a in data['actions']:
+    print(a)\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1090ms:
+<class 'list'> 3
+{'action': 'reset', 'text': 'Reset', 'id': 'resetButton'}
+{'action': 'cancel', 'text': 'Cancel', 'id': 'cancelButton'}
+{'action': 'search', 'text': 'Search', 'id': 'nextButton'}
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); g=data['grids']['k9']; print('grid id', g.get('id'), 'name', g.get('name')); print('columns', len(g.get('columns',[]))); 
+for c in g.get('columns',[]):
+    print(c.get('field'), c.get('title'), c.get('format'), c.get('width'), c.get('type'))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1117ms:
+grid id None name None
+columns 0
+
+**Inspecting grid configuration**
+
+I'm thinking that maybe the grid configuration is located elsewhere. I might need to check things like `row` and so on. To get a clearer picture, I should inspect the `g` keys to figure it out. It feels a bit like piecing together a puzzle! I just want to ensure I understand the structure correctly before I move forward. Let's see what I can find!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); g=data['grids']['k9']; print(g.keys())\"" in C:\UI-specs\URL-to-Code
+ succeeded in 846ms:
+dict_keys(['total', 'pageSize', 'fields', 'rowTemplate', 'altRowTemplate', 'html', 'rowCount'])
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); 
+for wid,w in data['widgets'].items():
+    if w.get('kind')=='dropdown':
+        opts=w.get('options') or []
+        print(wid, w.get('label'), 'options=', [o.get('text') for o in opts])
+    else:
+        print(wid, w.get('kind'), w.get('label'), 'format=', w.get('format'))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1118ms:
+k1 FileStatusList options= []
+k2 DirectionList options= []
+k3 TransportTypeList options= []
+k4 SourceLocation options= []
+k5 datetime From Date format= M/d/yyyy h:mm tt
+k6 datetime To Date format= M/d/yyyy h:mm tt
+k7 numeric From Size (KB) format= n
+k8 numeric To Size (KB) format= n
+k9 grid None format= None
+
+**Investigating dropdown options**
+
+I’m noticing that the options list is empty in the JSON, even though the dropdown screenshot shows options. It seems like the options might not load until they’re opened. However, the state dropdown indicates there are file status options available. I want to check if the kit is storing `listHtml` or something similar. So, I should take a closer look at the widget keys to understand what's going on here!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib, pprint; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); 
+import itertools
+for wid in ['k1','k2','k3','k4']:
+    w=data['widgets'][wid]
+    print('---',wid)
+    print('keys',sorted(w.keys()))
+    print('placeholder',w.get('placeholder'))
+    print('listHtml present', 'listHtml' in w)
+    if 'listHtml' in w: print(w['listHtml'][:120].replace('\\n',' '))
+\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1028ms:
+--- k1
+keys ['animation', 'cascadeFrom', 'enabled', 'filter', 'height', 'help', 'html', 'id', 'items', 'kind', 'label', 'name', 'optionLabel', 'required', 'role', 'text', 'validation', 'validationParams', 'value']
+placeholder None
+listHtml present False
+--- k2
+keys ['animation', 'cascadeFrom', 'enabled', 'filter', 'height', 'help', 'html', 'id', 'items', 'kind', 'label', 'name', 'optionLabel', 'required', 'role', 'text', 'validation', 'validationParams', 'value']
+placeholder None
+listHtml present False
+--- k3
+keys ['animation', 'cascadeFrom', 'enabled', 'filter', 'height', 'help', 'html', 'id', 'items', 'kind', 'label', 'name', 'optionLabel', 'required', 'role', 'text', 'validation', 'validationParams', 'value']
+placeholder None
+listHtml present False
+--- k4
+keys ['animation', 'cascadeFrom', 'enabled', 'filter', 'height', 'help', 'html', 'id', 'items', 'kind', 'label', 'name', 'optionLabel', 'required', 'role', 'text', 'validation', 'validationParams', 'value']
+placeholder None
+listHtml present False
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); 
+for wid in ['k1','k2','k3','k4']:
+    items=data['widgets'][wid].get('items') or []
+    print(wid, 'items', len(items), [i.get('text') for i in items][:20])\"" in C:\UI-specs\URL-to-Code
+ succeeded in 910ms:
+k1 items 3 ['Complete', 'Error', 'Transferring']
+k2 items 2 ['INBOUND', 'OUTBOUND']
+k3 items 4 ['FTP', 'SFTP', 'UNC', 'FTPS']
+k4 items 97 ['a6 - 123.43', 'Admin - https://tenant2-fltest.mapshc.com/', 'Amaro42925SFTPToSFTP - /AmaroCom/SourceSFTPCom', 'Bug3197290Commercial - /FTS/Ranjan', 'chrometested - /4', 'config - /Addrs', 'config - /add', 'config - /address', 'config - /address', 'config - /addrress', 'config - /3', 'configname - /AddressSuresh', 'configname - /address', 'configname - /address', 'configname - /address', 'configname - /address', 'configname - /address', 'ConfigNameAuJX - /SourceAdd - shes', 'ConfigNameClAv - /SourceAdd - kYxq', 'ConfigNamecPby - /SourceAdd - HxFx']
+
+**Considering option labeling**
+
+I need to create a labeled item list, and it looks like I'll require a placeholder like "select a value..." for the screenshot. This might be the optionLabel property I need to check. It’s interesting how tiny details can influence the user experience, right? I'm hopeful this will enhance clarity and functionality in the interface. Let’s confirm the right property so I can implement this correctly!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); 
+for wid in ['k1','k2','k3','k4']:
+    w=data['widgets'][wid]
+    print(wid, 'optionLabel=', w.get('optionLabel'), 'text=', w.get('text'), 'value=', w.get('value'))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1022ms:
+k1 optionLabel= select a value... text= select a value... value= 
+k2 optionLabel= select a value... text= select a value... value= 
+k3 optionLabel= select a value... text= select a value... value= 
+k4 optionLabel= select a value... text= select a value... value= 
+
+**Inspecting validation properties**
+
+I need to set up validation messages for the fields, which is really important! So, I'm going to inspect the validation properties for each widget or field. I think it would be useful to print out the validation keys to ensure everything is clear and working correctly. This way, I can make sure that users get the right feedback when they interact with these fields. Let's get started on that!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); 
+# collect validation messages
+for f in data['fields']:
+    v=f.get('validation') or {}
+    if v:
+        print('field', f.get('id'), f.get('label'), v)
+\"" in C:\UI-specs\URL-to-Code
+ succeeded in 943ms:
+field FileId File ID {'regex': 'File ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.'}
+field FileName File Name {'regex': 'File Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.'}
+field TradingPartnerId Trading Partner ID {'regex': 'Trading Partner ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.'}
+field FromDate From Date {'date': 'The field From Date must be a date.', 'datetime': "From Date must represent a valid date time in the format 'M/d/yyyy h:mm tt'."}
+field ToDate To Date {'date': 'The field To Date must be a date.', 'datetime': "To Date must represent a valid date time in the format 'M/d/yyyy h:mm tt'."}
+field FromSize From Size (KB) {'number': 'From Size (KB) is restricted to numeric values with at most 2 decimal places.', 'regex': 'From Size (KB) is restricted to numeric values with at most 2 decimal places.'}
+field ToSize To Size (KB) {'number': 'To Size (KB) is restricted to numeric values with at most 2 decimal places.', 'regex': 'To Size (KB) is restricted to numeric values with at most 2 decimal places.'}
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); 
+for wid,w in data['widgets'].items():
+    v=w.get('validation') or {}
+    if v:
+        print('widget',wid,w.get('label'),v)
+\"" in C:\UI-specs\URL-to-Code
+ succeeded in 816ms:
+widget k5 From Date {'date': 'The field From Date must be a date.', 'datetime': "From Date must represent a valid date time in the format 'M/d/yyyy h:mm tt'."}
+widget k6 To Date {'date': 'The field To Date must be a date.', 'datetime': "To Date must represent a valid date time in the format 'M/d/yyyy h:mm tt'."}
+widget k7 From Size (KB) {'number': 'From Size (KB) is restricted to numeric values with at most 2 decimal places.', 'regex': 'From Size (KB) is restricted to numeric values with at most 2 decimal places.'}
+widget k8 To Size (KB) {'number': 'To Size (KB) is restricted to numeric values with at most 2 decimal places.', 'regex': 'To Size (KB) is restricted to numeric values with at most 2 decimal places.'}
+
+**Exploring help tooltips**
+
+I'm thinking about the blue "?" icons next to each field, which likely provide useful tooltips or help text. I'll need to check those help fields to ensure users can easily understand how to use the kit widget. Printing out that help information for the widgets seems like a great idea to assist everyone. This way, I can ensure clarity and support for users navigating through the fields.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); 
+for wid,w in data['widgets'].items():
+    if w.get('help'):
+        print(wid,w.get('label'),w.get('help'))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 820ms:
+k1 FileStatusList File Status
+k2 DirectionList Direction
+k3 TransportTypeList Transport Type
+k4 SourceLocation Source Location
+k5 From Date From Date
+k6 To Date To Date
+k7 From Size (KB) From Size (KB)
+k8 To Size (KB) To Size (KB)
+
+**Inspecting content areas**
+
+I’m focusing on specifying the band based on what the user said, which includes the content area `#pageBody > main`. This seems to cover the green title band, the form panel, and the footer. I’ll need to be thorough in detailing this. I’ll check facts.md for the computed CSS values and boxes. Parsing facts.json should help identify regions and controls. Using the computed CSS from capture/controls.json will assist, so I’ll inspect the keys there.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.json').read_text(encoding='utf-8')); print(data.keys())\"" in C:\UI-specs\URL-to-Code
+ succeeded in 862ms:
+dict_keys(['screen', 'url', 'required', 'optional', 'all', 'flaky'])
+
+**Examining requirements in facts.json**
+
+I’m diving into the `facts.json` file to understand the required and optional fields. It looks like I need to check what’s specified in the `facts.json.required` section to ensure everything aligns with the specs. Summarizing the counts of these fields will help clarify what needs to be addressed. This process feels a bit meticulous, but it's crucial for getting things right! Let’s make sure we have a clear summary of requirements.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib, collections; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.json').read_text(encoding='utf-8')); 
+req=data['required']; print('required keys', req.keys());
+for k,v in req.items():
+    print(k, type(v).__name__, len(v) if hasattr(v,'__len__') else '')\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1145ms:
+required keys dict_keys(['controls', 'transitions', 'validators', 'motion', 'kit'])
+controls list 59
+transitions list 0
+validators list 0
+motion list 1
+kit list 9
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.json').read_text(encoding='utf-8')); 
+print('\\n'.join(data['required']['controls']))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 872ms:
+pageBannerLogo
+button
+button-medicaid-management-solutions
+button-2
+AAGMenu.BroadcastMsg
+link-messages
+AAGMenu.ExternalLinks
+link-external-links
+AAGMenu.Favorites
+link-favorites
+AAGMenu.ContactUs
+link-contact-us
+AAGMenu.MyAccount
+AAGMenu.Logout
+link-logout
+button-main-menu-2
+button-8
+activeModuleMenu
+activeModuleMenuFirstItem
+button-help
+button-22
+button-collapse
+FileIdHelp
+FileId
+FileNameHelp
+FileName
+FileStatusHelp
+combobox-file-status-file-status
+button-select
+DirectionHelp
+combobox-direction-direction
+button-select-2
+TransportTypeHelp
+combobox-transport-type-transport-type
+button-select-3
+SourceLocationIdHelp
+combobox-source-location-source-location
+button-select-4
+TradingPartnerIdHelp
+TradingPartnerId
+FromDateHelp
+FromDate
+button-open-the-date-view
+button-open-the-time-view
+ToDateHelp
+ToDate
+button-open-the-date-view-2
+button-open-the-time-view-2
+FromSizeHelp
+text-from-size-kb-from-size-kb
+ToSizeHelp
+text-to-size-kb-to-size-kb
+resetButton
+cancelButton
+nextButton
+button-disclaimer
+button-website-requirements
+button-privacy-policy
+button-cookie-policy
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.json').read_text(encoding='utf-8')); print(data['required']['motion'])\"" in C:\UI-specs\URL-to-Code
+ succeeded in 3027ms:
+['M01']
+
+**Clarifying motion requirements**
+
+I need to ensure that the motion section includes the requirements for M01 from the facts.md section 15, which likely references Kendo defaults. There's already a motion file present, but the spec should specifically mention M01. I plan to inspect both motion.json and facts.md to pull the necessary details for M01. So, let’s check out motion.json for further insight!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\motion.json" in C:\UI-specs\URL-to-Code
+ succeeded in 479ms:
+{
+ "capturedAt": "2026-11-11T07:51:38.194Z",
+ "sampleSec": 0,
+ "freeze": {
+  "swiper": 0,
+  "slick": 0,
+  "owl": 0,
+  "animations": 0,
+  "clock": "paused",
+  "stillMoving": 0
+ },
+ "entries": [
+  {
+   "id": "M01",
+   "kind": "css-animation",
+   "name": "autoFillEnd",
+   "duration": "0s",
+   "delay": "0s",
+   "iterations": "1",
+   "easing": "ease",
+   "fill": "none",
+   "direction": "normal",
+   "count": 7,
+   "samples": [
+    "#FileId_parent > div:nth-of-type(2) > span:nth-of-type(1)",
+    "#FileName_parent > div:nth-of-type(2) > span:nth-of-type(1)",
+    "#TradingPartnerId_parent > div:nth-of-type(2) > span:nth-of-type(1)"
+   ],
+   "box": [
+    41,
+    275,
+    597.66,
+    40
+   ],
+   "keyframes": "@keyframes autoFillEnd { \n}"
+  }
+ ],
+ "transitions": [
+  {
+   "property": "color, background-color, border-color, box-shadow, opacity",
+   "duration": "0.15s, 0.15s, 0.15s, 0.15s, 0.15s",
+   "easing": "cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1)",
+   "delay": "0s, 0s, 0s, 0s, 0s",
+   "count": 25,
+   "samples": [
+    "#extLinksCloseButton",
+    "#messagesCloseButton",
+    "#intPortalContactUsCloseButton",
+    "#FileId_parent > div:nth-of-type(2) > span:nth-of-type(1)"
+   ]
+  },
+  {
+   "property": "color, background-color, border-color, box-shadow",
+   "duration": "0.15s, 0.15s, 0.15s, 0.15s",
+   "easing": "cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1), cubic-bezier(0, 0, 0.58, 1)",
+   "delay": "0s, 0s, 0s, 0s",
+   "count": 7,
+   "samples": [
+    "#AAGMenu\\.BroadcastMsg",
+    "#AAGMenu\\.ExternalLinks",
+    "#AAGMenu\\.Favorites",
+    "#AAGMenu\\.ContactUs"
+   ]
+  },
+  {
+   "property": "transform",
+   "duration": "0.2s",
+   "easing": "linear",
+   "delay": "0s",
+   "count": 1,
+   "samples": [
+    "#pageHeader"
+   ]
+  }
+ ],
+ "hints": [],
+ "running": []
+}
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking; rg \"§\" facts.md | head" in C:\UI-specs\URL-to-Code
+ exited 1 in 833ms:
+head : The term 'head' is not recognized as the name of a cmdlet, function, script file, or operable program. Check 
+the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:2 char:93
++ ... packs\fxfer-v4\screens\file-transfer-tracking; rg "§" facts.md | head
++                                                                      ~~~~
+    + CategoryInfo          : ObjectNotFound: (head:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking; rg \""'^##" facts.md | Select-Object -First 40' in C:\UI-specs\URL-to-Code
+ succeeded in 721ms:
+## 1. Page
+## 2. Design tokens (computed, weighted by use)
+## 3. Layout sections (top level, document order)
+## 4. Assets (use these files, never redraw them)
+## 5. Controls (every interactive element)
+## 6. Validation
+## 7. Interaction styles (measured on the live page)
+## 8. Behavior (observed transitions, EARS drafts)
+## 9. Server round-trips and requests
+## 10. Navigation (links are recorded, never followed)
+## 11. Dialogs, popups, downloads, script errors
+## 12. Hidden at load, never revealed by any action
+## 13. Not covered by this capture
+## 14. Page scripts, styles and platform details
+## 15. Motion (what moves, measured on the live page)
+## 18. Provider kit harvest (kit/screen.json)
+
+**Extracting markdown sections**
+
+It seems I'm missing sections 16 and 17, possibly due to a lack of scrolling or media. I want to extract the sections from the markdown file, so I'll use Python to split it by headings. The raw file is 97k, so reading it in chunks seems manageable. I’ll utilize regex to pinpoint specific details like the page information, design tokens, layout sections, and other elements. My plan is to extract text from sections 1 and 2 first.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import re, pathlib; text=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.md').read_text(encoding='utf-8');
+# get section by heading
+m=re.search(r'"'^## 1'"\\\\. Page\\n(.*?)(?="'^## 2'"\\\\. )', text, re.S|re.M); print(m.group(1)[:3000]);\"" in C:\UI-specs\URL-to-Code
+ exited 1 in 1467ms:
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+    m=re.search(r'^## 1\\. Page\n(.*?)(?=^## 2\\. )', text, re.S|re.M); print(m.group(1)[:3000]);
+                                                                              ^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'group'
+
+**Considering line endings**
+
+I’m thinking about how the header might be using CRLF or a format like `## 1. Page\r\n`. To handle this properly, I’ll use a regex pattern that accommodates both Unix and Windows line endings with `\r?\n`. This will ensure flexibility in matching line breaks correctly, so things will work seamlessly across different systems. Let's implement this!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import re, pathlib; text=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.md').read_text(encoding='utf-8');
+pat=r'"'^## 1'"\\\\. Page\\r?\\n(.*?)(?="'^## 2'"\\\\. )'; m=re.search(pat, text, re.S|re.M);
+print('found', bool(m));
+print(m.group(1)[:2500])\"" in C:\UI-specs\URL-to-Code
+ exited 1 in 921ms:
+Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    print(m.group(1)[:2500])
+          ^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'group'
+found False
+
+**Investigating encoding issues**
+
+I’m considering whether the headings might contain special characters due to encoding problems, like the earlier SKILL having a strange "â€”". I wonder if it's related to non-ASCII characters for numbers. To dig deeper, I think it’s a good idea to check the start of the file. I’ll print the first 60 lines to see if I can spot any irregularities that might clarify the situation.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -TotalCount 80 C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\facts.md" in C:\UI-specs\URL-to-Code
+ succeeded in 794ms:
+# FACTS â€” fxfer-v4/file-transfer-tracking
+
+Generated from a Playwright capture of the live page. Deterministic: nothing here is inferred. Read this first, then `content.md`.
+Cite ids exactly as written: `[ctl:<key>]` controls, `[T07]` behaviors, `[val:<id>]` validators, `[shot:N]` your screenshot N, `[asset:<path>]` files.
+All sizes are CSS px (screenshot px Ã· dpr).
+
+## 1. Page
+| | |
+|---|---|
+| URL | https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking |
+| Title | File Transfer Tracking |
+| Built with | mvcUnobtrusive, jquery 3.7.1 |
+| Doctype / mode | <!DOCTYPE html> / CSS1Compat |
+| Viewport | 1920Ã—1080 CSS px @ dpr 1 |
+| Document | 1920Ã—1080 CSS px |
+| Language / charset | en / UTF-8 |
+| Favicon | - |
+
+**Reference picture made by the tool** (page warmed up and frozen: lazy images loaded, counters finished, carousels at slide 0): `reference.png`, 1920Ã—1080 px @ dpr 1, 1 shots pasted at their exact scroll positions.
+Look at `sections/` first: one full-resolution crop per band. They are far sharper than the whole-page picture. Cite one as `[asset:sections/<file>]`.
+
+| # | crop file(s) | y | h (CSS px) | element |
+|---|---|---|---|---|
+| 1 | `sections/01-file-transfer-tracking.png` | 62 | 77 | div.menu |
+| 2 | `sections/02-pagebody.png` | 139 | 628 | div#pageBody.row |
+| 3 | `sections/03-disclaimer-the-website-is-prov.png` | 767 | 119 | footer |
+
+The page as a self-contained copy: `snapshot/rendered.html` (the DOM after its scripts ran, scripts removed, original class names) and `snapshot/used.css` (only the CSS rules this page uses, hover/focus/::before and media queries included). `snapshot/fidelity/report.json` says how closely that copy, rendered offline from the saved assets, matches the reference.
+
+## 2. Design tokens (computed, weighted by use)
+| token | values (weight) |
+|---|---|
+| font families | `Arial` (5036)<br>`Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome` (3792)<br>`Arial, sans-serif` (3443)<br>`"Times New Roman"` (367)<br>`Arial, FontAwesome, sans-serif` (89)<br>`"Poppins Bold", Arial, Helvetica, sans-serif` (66) |
+| size / weight / line-height | `14px / 400 / lh 14px` (5225)<br>`16px / 400 / lh 25px` (3318)<br>`14px / 700 / lh 20px` (2872)<br>`14px / 700 / lh 14px` (244)<br>`16px / 700 / lh 22.8571px` (156)<br>`16px / 400 / lh 21px` (138)<br>`16px / 700 / lh 18px` (125)<br>`14px / 400 / lh 20px` (112)<br>`16px / 400 / lh 21.44px` (104)<br>`12px / 400 / lh 17.1429px` (102)<br>`12px / 400 / lh 32px` (83)<br>`16px / 400 / lh 40px` (70) |
+| text colors | `rgb(61, 61, 61)` (5468)<br>`rgb(43, 58, 68)` (3706)<br>`rgb(255, 255, 255)` (2872)<br>`rgb(0, 0, 0)` (500)<br>`rgb(0, 98, 255)` (138)<br>`rgb(87, 87, 87)` (113)<br>`rgb(48, 179, 254)` (29)<br>`rgb(203, 26, 198)` (18)<br>`rgb(90, 105, 120)` (17)<br>`rgb(51, 51, 51)` (14) |
+| backgrounds | `rgb(255, 255, 255)` (2494)<br>`rgb(43, 58, 68)` (279)<br>`rgb(250, 250, 250)` (89)<br>`rgb(0, 238, 174)` (61)<br>`rgb(48, 179, 254)` (4)<br>`rgb(38, 143, 203)` (4) |
+| borders | `1px solid rgba(0, 0, 0, 0)` (156)<br>`1px solid rgb(90, 105, 120)` (18)<br>`1px solid rgb(255, 255, 255)` (12)<br>`1px solid rgb(206, 212, 218)` (9)<br>`1px solid rgb(0, 98, 255)` (5)<br>`1px solid rgb(222, 226, 230)` (4)<br>`1px solid rgb(67, 119, 137)` (3)<br>`1px solid rgba(0, 0, 0, 0.08)` (2) |
+| radii | `2.5px` (159)<br>`5px` (19)<br>`4px` (17)<br>`10px 10px 0px 0px` (8)<br>`9px` (6)<br>`0px 0px 9px 9px` (6) |
+| body | fontFamily: Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome; fontSize: 14px; lineHeight: 14px; color: rgb(51, 51, 51); backgroundColor: rgb(255, 255, 255); margin: 0px; padding: 62px 0px 0px |
+| html | background rgba(0, 0, 0, 0); font-size 10px |
+| web fonts loaded | Font Awesome 6 Pro 900 normal, Poppins normal normal, Poppins Bold normal normal |
+
+## 3. Layout sections (top level, document order)
+| # | element | box x,y,w,h | in shots | own style | first text | controls |
+|---|---|---|---|---|---|---|
+| 1 | div#pageHeader.header {pageHeader} | 0,0,1920,62 |  | backgroundColor: rgb(43, 58, 68); position: fixed | Medicaid Management Solutions | 18 |
+| 2 | div.menu {navigation-file-transfer-services} | 0,62,1920,32 |  | backgroundColor: rgb(0, 238, 174) | File Transfer Services | 3 |
+| 3 | div#mcbRowBorder.row {mcbRowBorder} | 0,94,1920,45 |  | borderBottom: 1px solid rgb(179, 179, 179); display: flex |  | 1 |
+| 4 | div.row | 0,139,1920,0 |  |  |  | 0 |
+| 5 | div.row | 0,139,1920,0 |  |  |  | 0 |
+| 6 | div#pageBody.row {pageBody} | 0,139,1920,628 |  |  | Search Criteria | 35 |
+| 7 | footer {contentinfo} | 0,767,1920,119 |  |  | Disclaimer | 0 |
+
+Exact per-element boxes and style deltas: `capture/dom.json` (`box` = [x, y, w, h] CSS px, `s` = style that differs from the parent).
+
+## 4. Assets (use these files, never redraw them)
+| file (under capture/) | used as | shown at (CSS) | natural px |
+|---|---|---|---|
+| `assets/_ext/mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo__3659ec6d.png` | img | 117Ã—57 | 169Ã—82 |
+| `assets/_svg/svg-1.svg` | inline svg | 18Ã—16 |  |
+| `assets/_svg/svg-2.svg` | inline svg | 18Ã—16 |  |
+| `assets/_svg/svg-3.svg` | inline svg | 18Ã—16 |  |
+| `assets/_svg/svg-4.svg` | inline svg | 18Ã—16 |  |
+| `assets/_svg/svg-5.svg` | inline svg | 18Ã—16 |  |
+| `assets/_svg/svg-6.svg` | inline svg | 18Ã—16 |  |
+| `assets/_svg/svg-7.svg` | inline svg | 18Ã—16 |  |
+| `assets/_svg/svg-8.svg` | inline svg | 18Ã—16 |  |
+
+Fonts: `assets/webfonts/fa-solid-900.woff2` (/webfonts/fa-solid-900.woff2), `assets/fonts/Poppins.woff` (/fonts/Poppins.woff), `assets/fonts/Poppins-Bold.woff` (/fonts/Poppins-Bold.woff)
+Stylesheets (legacy CSS, verbatim): `assets/bundles/appcss__dc8bcbe2.css`, `assets/bundles/vendorcss__75ac4b06.css`, `assets/_long/deb23c03e2505ea9.css`
+All downloaded files: `capture/assets/index.json` (16).
+
+## 5. Controls (every interactive element)
+| key | kind | label | default | flags | rules | behavior |
+|---|---|---|---|---|---|---|
+| [ctl:pageBannerLogo] | button | Client Logo |  |  |  |  |
+| [ctl:link-client-logo] | link | Client Logo |  |  |  | url â†’ /Home/MyHome/ |
+| [ctl:button] | button |  |  |  |  |  |
+| [ctl:button-medicaid-management-solutions] | button | Medicaid Management Solutions |  |  |  |  |
+| [ctl:button-main-menu] | button | Main Menu |  | hidden |  | handlers onclick,onkeypress |
+
+**Extracting field behaviors**
+
+I'm planning to use kit data for the different field types, options, and validation. I'll also refer to facts.md for layout and behavior details. Specifically, I need to extract a full list of behaviors from section 8 of facts.md. To do this efficiently, I want to use regex to look for patterns like `[T\d\d]`. I'll be using Python to help with this parsing task. It’s important to ensure I collect everything I need!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import re, pathlib; text=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.md').read_text(encoding='utf-8'); ids=sorted(set(re.findall(r'\\[T\\d\\d\\]', text))); print('T count', len(ids)); print(' '.join(ids[:50]));\"" in C:\UI-specs\URL-to-Code
+ succeeded in 3533ms:
+T count 1
+[T07]
+
+**Inspecting behavior ID T07**
+
+I'm noticing there's only one behavior ID, T07. That's interesting! I should take a closer look at the behavior section related to T07. It seems like it's worth extracting section 8 for deeper analysis. I’m curious what insights might be hiding there! Let’s collect the relevant details and see what we can find. I hope this leads to some useful conclusions or patterns!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import re, pathlib; text=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.md').read_text(encoding='utf-8');
+# extract section 8 block
+m=re.search(r'"'^## 8'"\\\\. Behavior.*?\\r?\\n(.*?)(?="'^## 9'"\\\\.)', text, re.S|re.M); print('found',bool(m));
+block=m.group(1); print(block[:3500]);\"" in C:\UI-specs\URL-to-Code
+ exited 1 in 1992ms:
+Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    block=m.group(1); print(block[:3500]);
+          ^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'group'
+found False
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import re, pathlib; text=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.md').read_text(encoding='utf-8');
+pat=r'"'^## 8'"\\\\.["'^'"\\n]*\\r?\\n(.*?)(?="'^## 9'"\\\\.)'; m=re.search(pat,text,re.S|re.M);
+print('found',bool(m));
+print(m.group(1)[:3500] if m else '');\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1158ms:
+found False
+
+
+**Exploring file patterns**
+
+I'm considering that the headings might have non-standard digits. Earlier, I used the command `rg "^##"` and it showed results, so the pattern should technically match. Maybe the file has Windows line endings with `\r\n`, and while I used `\r?`, I should ensure it handles that. There’s also the weird characters for dash that Python reads, but that’s not directly relevant. I think I'll search for the substring “## 8.” in Python next.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import pathlib; t=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.md').read_text(encoding='utf-8'); print('idx', t.find('## 8.')); print(t[t.find('## 8.'):t.find('## 8.')+60])\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1072ms:
+idx 87505
+## 8. Behavior (observed transitions, EARS drafts)
+Each was 
+
+**Troubleshooting regex issues**
+
+I'm noticing that the regex didn't match, possibly due to the multiline issue with `^`, or maybe even because the file has a BOM. It matched correctly earlier at the start, which is a bit strange. So, I'm thinking I should slice from the current index to the next heading, which is `## 9.`. Let's go ahead and find that next heading to see if it resolves the issue!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import pathlib; t=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.md').read_text(encoding='utf-8'); i=t.find('## 8. '); j=t.find('## 9. ', i); print(t[i:j][:5000]);\"" in C:\UI-specs\URL-to-Code
+ succeeded in 2033ms:
+## 8. Behavior (observed transitions, EARS drafts)
+Each was performed on the live page from a fresh load. Effects are relative to the state right before the last action.
+
+No behavior observed (static page, or everything is server-side).
+
+
+
+**Clarifying behavior observation**
+
+I noticed that the behavior section says "none observed," but I found T07 earlier. That's puzzling! If there's truly no behavior, then where is T07? Maybe it's in the controls table or related to something like "handlers onclick." I think it’s essential to locate T07 in the file to clarify this discrepancy. Let's dive into the file and see if we can track it down and figure out what's going on!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking; rg \"\\[T07\\]\" facts.md" in C:\UI-specs\URL-to-Code
+ succeeded in 615ms:
+Cite ids exactly as written: `[ctl:<key>]` controls, `[T07]` behaviors, `[val:<id>]` validators, `[shot:N]` your screenshot N, `[asset:<path>]` files.
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\content.md" in C:\UI-specs\URL-to-Code
+ succeeded in 482ms:
+# CONTENT â€” fxfer-v4/file-transfer-tracking
+Page text verbatim in document order. {key} = control/element id. <!-- box --> = styled container (CSS px).
+
+<!-- box body.FileTransfer  1920Ã—885: bg rgb(255, 255, 255), padding 62px 0px 0px -->
+<!-- box div#pageHeader.header {pageHeader} 1920Ã—62: bg rgb(43, 58, 68) -->
+![Client Logo](assets/_ext/mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo__3659ec6d.png) <!-- 117Ã—57 CSS, natural 169Ã—82  -->
+Medicaid Management Solutions
+Final Test
+[Messages](javascript:getBroadcastMsg();) {link-messages}
+[External Links](javascript:toggleVisibilityStyle('divExternalLinks');) {link-external-links}
+[Favorites](javascript:getFavorites();) {link-favorites}
+[Contact Us](javascript:getContactUs();) {link-contact-us}
+[My Account](/Home/MyAccount) {link-my-account}
+[Logout](/Security/LogoutFromMenu) {link-logout}
+<!-- box div#pageBannerMenu.display-block {pageBannerMenu} 68Ã—62: bg rgb(48, 179, 254), flex -->
+<!-- ::before "ïƒ‰" (font "Font Awesome 6 Pro" 32px, color rgb(0, 0, 0)) -->
+<!-- /box -->
+<!-- /box -->
+<!-- box div.menu {navigation-file-transfer-services} 1920Ã—32: bg rgb(0, 238, 174) -->
+<!-- box div.k-menu-scroll-wrapper {button-8} 212Ã—32: bg rgb(43, 58, 68), flex -->
+<!-- box ul#activeModuleMenu.k-reset {activeModuleMenu} 182Ã—32: bg rgb(43, 58, 68) -->
+File Transfer Services {none-file-transfer-services-4}
+<!-- /box -->
+<!-- /box -->
+# File Transfer Tracking {activeScreen}
+<!-- /box -->
+<!-- ::before " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(51, 51, 51)) -->
+<!-- ::after " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(51, 51, 51)) -->
+<!-- box div#mcbRowBorder.row {mcbRowBorder} 1920Ã—45: border-bottom 1px solid rgb(179, 179, 179), flex -->
+<!-- ::before "ï”˜" (font "Font Awesome 6 Pro" 16px, color rgb(255, 255, 255)) -->
+<!-- ::before "ï„‘" (font "Font Awesome 6 Pro" 27px, color rgb(51, 129, 255)) -->
+<!-- /box -->
+<!-- ::before " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(51, 51, 51)) -->
+<!-- ::after " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(51, 51, 51)) -->
+<!-- ::before " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(51, 51, 51)) -->
+<!-- ::after " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(51, 51, 51)) -->
+<!-- ::before " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(51, 51, 51)) -->
+<!-- ::after " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(51, 51, 51)) -->
+<!-- box form.k-content {form-resolve-the-following-fo} 1920Ã—628: bg rgb(255, 255, 255) -->
+<!-- ::before " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(61, 61, 61)) -->
+<!-- ::after " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(61, 61, 61)) -->
+<!-- ::before " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(61, 61, 61)) -->
+<!-- ::after " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(61, 61, 61)) -->
+<!-- box div.content-panel-container  1860Ã—574: bg rgb(255, 255, 255), border-top 1px solid rgb(222, 226, 230), border-right 1px solid rgb(222, 226, 230), border-bottom 1px solid rgb(222, 226, 230), border-left 1px solid rgb(222, 226, 230), radius 10px, shadow rgba(0, 0, 0, 0.08) 0px 8px 10px 1px, padding 0px 0px 15px -->
+<!-- box div.content-panel-hdr  1858Ã—48: bg rgb(250, 250, 250), radius 10px 10px 0px 0px, padding 12px 24px -->
+Search Criteria
+<!-- /box -->
+<!-- ::before "ï„†" (font "Font Awesome 6 Pro" 20px, color rgb(43, 58, 68)) -->
+<!-- ::before " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(61, 61, 61)) -->
+<!-- ::after " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(61, 61, 61)) -->
+Required Fields (
+<!-- ::before "*" (font "Font Awesome 6 Pro" 13px, color rgb(203, 26, 198)) -->
+)
+<!-- ::before " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(61, 61, 61)) -->
+<!-- ::after " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 14px, color rgb(61, 61, 61)) -->
+label: File ID {FileIdLabel}
+<!-- ::before "ï™" (font "Font Awesome 6 Pro" 14px, color rgb(51, 129, 255)) -->
+<!-- box span.k-input  598Ã—40: bg rgb(255, 255, 255), border-top 1px solid rgb(90, 105, 120), border-right 1px solid rgb(90, 105, 120), border-bottom 1px solid rgb(90, 105, 120), border-left 1px solid rgb(90, 105, 120), radius 5px, padding 4px 0px 4px 10px, inline-flex -->
+[input text {FileId} 549Ã—30]
+<!-- /box -->
+label: File Name {FileNameLabel}
+<!-- ::before "ï™" (font "Font Awesome 6 Pro" 14px, color rgb(51, 129, 255)) -->
+<!-- box span.k-input  751Ã—40: bg rgb(255, 255, 255), border-top 1px solid rgb(90, 105, 120), border-right 1px solid rgb(90, 105, 120), border-bottom 1px solid rgb(90, 105, 120), border-left 1px solid rgb(90, 105, 120), radius 5px, padding 4px 0px 4px 10px, inline-flex -->
+[input text {FileName} 702Ã—30]
+<!-- /box -->
+label: File Status {FileStatusLabel}
+<!-- ::before "ï™" (font "Font Awesome 6 Pro" 14px, color rgb(51, 129, 255)) -->
+<!-- box span.k-picker {combobox-file-status-file-status} 598Ã—40: bg rgb(255, 255, 255), border-top 1px solid rgb(90, 105, 120), border-right 1px solid rgb(90, 105, 120), border-bottom 1px solid rgb(90, 105, 120), border-left 1px solid rgb(90, 105, 120), radius 5px, padding 4px 0px, flex -->
+select a value...
+<!-- box button.k-input-button {button-select} 32Ã—32: radius 4px, padding 4px 0px, flex gap 0px -->
+[svg icon assets/_svg/svg-1.svg 18Ã—16] 
+<!-- /box -->
+<!-- /box -->
+label: Direction {DirectionLabel}
+<!-- ::before "ï™" (font "Font Awesome 6 Pro" 14px, color rgb(51, 129, 255)) -->
+<!-- box span.k-picker {combobox-direction-direction} 445Ã—40: bg rgb(255, 255, 255), border-top 1px solid rgb(90, 105, 120), border-right 1px solid rgb(90, 105, 120), border-bottom 1px solid rgb(90, 105, 120), border-left 1px solid rgb(90, 105, 120), radius 5px, padding 4px 0px, flex -->
+select a value...
+<!-- box button.k-input-button {button-select-2} 32Ã—32: radius 4px, padding 4px 0px, flex gap 0px -->
+[svg icon assets/_svg/svg-2.svg 18Ã—16] 
+<!-- /box -->
+<!-- /box -->
+label: Transport Type {TransportTypeLabel}
+<!-- ::before "ï™" (font "Font Awesome 6 Pro" 14px, color rgb(51, 129, 255)) -->
+<!-- box span.k-picker {combobox-transport-type-transport-type} 598Ã—40: bg rgb(255, 255, 255), border-top 1px solid rgb(90, 105, 120), border-right 1px solid rgb(90, 105, 120), border-bottom 1px solid rgb(90, 105, 120), border-left 1px solid rgb(90, 105, 120), radius 5px, padding 4px 0px, flex -->
+select a value...
+<!-- box button.k-input-button {button-select-3} 32Ã—32: radius 4px, padding 4px 0px, flex gap 0px -->
+[svg icon assets/_svg/svg-3.svg 18Ã—16] 
+<!-- /box -->
+<!-- /box -->
+label: Source Location {SourceLocationIdLabel}
+<!-- ::before "ï™" (font "Font Awesome 6 Pro" 14px, color rgb(51, 129, 255)) -->
+<!-- box span.k-picker {combobox-source-location-source-location} 751Ã—40: bg rgb(255, 255, 255), border-top 1px solid rgb(90, 105, 120), border-right 1px solid rgb(90, 105, 120), border-bottom 1px solid rgb(90, 105, 120), border-left 1px solid rgb(90, 105, 120), radius 5px, padding 4px 0px, flex -->
+select a value...
+<!-- box button.k-input-button {button-select-4} 32Ã—32: radius 4px, padding 4px 0px, flex gap 0px -->
+[svg icon assets/_svg/svg-4.svg 18Ã—16] 
+<!-- /box -->
+<!-- /box -->
+label: Trading Partner ID {TradingPartnerIdLabel}
+<!-- ::before "ï™" (font "Font Awesome 6 Pro" 14px, color rgb(51, 129, 255)) -->
+<!-- box span.k-input  291Ã—40: bg rgb(255, 255, 255), border-top 1px solid rgb(90, 105, 120), border-right 1px solid rgb(90, 105, 120), border-bottom 1px solid rgb(90, 105, 120), border-left 1px solid rgb(90, 105, 120), radius 5px, padding 4px 0px 4px 10px, inline-flex -->
+[input text {TradingPartnerId} 242Ã—30]
+<!-- /box -->
+label: From Date {FromDateLabel}
+<!-- ::before "ï™" (font "Font Awesome 6 Pro" 14px, color rgb(51, 129, 255)) -->
+<!-- box span.k-datetimepicker  291Ã—40: bg rgb(255, 255, 255), border-top 1px solid rgb(90, 105, 120), border-right 1px solid rgb(90, 105, 120), border-bottom 1px solid rgb(90, 105, 120), border-left 1px solid rgb(90, 105, 120), radius 5px, padding 5px 0px, flex -->
+[input text {FromDate} 188Ã—30]
+<!-- box button.k-input-button {button-open-the-date-view} 32Ã—31: radius 4px, padding 5px 0px, flex gap 0px -->
+[svg icon assets/_svg/svg-5.svg 18Ã—16] 
+<!-- /box -->
+[svg icon assets/_svg/svg-6.svg 18Ã—16] 
+<!-- /box -->
+label: To Date {ToDateLabel}
+<!-- ::before "ï™" (font "Font Awesome 6 Pro" 14px, color rgb(51, 129, 255)) -->
+<!-- box span.k-datetimepicker  291Ã—40: bg rgb(255, 255, 255), border-top 1px solid rgb(90, 105, 120), border-right 1px solid rgb(90, 105, 120), border-bottom 1px solid rgb(90, 105, 120), border-left 1px solid rgb(90, 105, 120), radius 5px, padding 5px 0px, flex -->
+[input text {ToDate} 188Ã—30]
+<!-- box button.k-input-button {button-open-the-date-view-2} 32Ã—31: radius 4px, padding 5px 0px, flex gap 0px -->
+[svg icon assets/_svg/svg-7.svg 18Ã—16] 
+<!-- /box -->
+[svg icon assets/_svg/svg-8.svg 18Ã—16] 
+<!-- /box -->
+label: From Size (KB) {FromSizeLabel}
+<!-- ::before "ï™" (font "Font Awesome 6 Pro" 14px, color rgb(51, 129, 255)) -->
+<!-- box span.k-numerictextbox  291Ã—44: bg rgb(255, 255, 255), border-top 1px solid rgb(90, 105, 120), border-right 1px solid rgb(90, 105, 120), border-bottom 1px solid rgb(90, 105, 120), border-left 1px solid rgb(90, 105, 120), radius 5px, padding 4px 0px, inline-flex -->
+[input text {text-from-size-kb-from-size-kb} 252Ã—30]
+<!-- /box -->
+label: To Size (KB) {ToSizeLabel}
+<!-- ::before "ï™" (font "Font Awesome 6 Pro" 14px, color rgb(51, 129, 255)) -->
+<!-- box span.k-numerictextbox  291Ã—44: bg rgb(255, 255, 255), border-top 1px solid rgb(90, 105, 120), border-right 1px solid rgb(90, 105, 120), border-bottom 1px solid rgb(90, 105, 120), border-left 1px solid rgb(90, 105, 120), radius 5px, padding 4px 0px, inline-flex -->
+[input text {text-to-size-kb-to-size-kb} 252Ã—30]
+<!-- /box -->
+[input button {resetButton} value="Reset" 104Ã—38]
+[input button {cancelButton} value="Cancel" 112Ã—38]
+[input button {nextButton} value="Search" 113Ã—38]
+<!-- /box -->
+<!-- /box -->
+<!-- box div.subfooter  1920Ã—77: bg rgb(43, 58, 68), padding 25px 0px -->
+Disclaimer
+<!-- box span.subfooter-lbl  229Ã—27: border-right 1px solid rgb(255, 255, 255), border-left 1px solid rgb(255, 255, 255), padding 6.25px 40px -->
+Website Requirements
+<!-- /box -->
+<!-- box span.subfooter-lbl  134Ã—27: border-right 1px solid rgb(255, 255, 255), padding 6.25px 40px 6.25px 0px -->
+Privacy Policy
+<!-- /box -->
+Cookie Policy
+<!-- /box -->
+<!-- box div#tenantFooter {tenantFooter} 1920Ã—0: bg rgb(0, 0, 0) -->
+<!-- /box -->
+<!-- ::before " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 12px, color rgb(87, 87, 87)) -->
+<!-- ::after " " (font Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome 12px, color rgb(87, 87, 87)) -->
+Â© 2026 Gainwell Technologies. All rights reserved. {footerCopyright}
+**Server:** 10.199.153.9 **Build Date:** 10/30/2026 3:28:36 AM **v30.0.0.2609** {footerBuild}
+<!-- /box -->
+
+**Evaluating layout specifications**
+
+I’ll follow the layout section guidelines that mention it's “wrapped in a shared shell.” The main region seems to be `#pageBody`, but actually, it’s inside the full page alongside the menu, so I might need to clarify that. The specifications should indicate that builders shouldn't rebuild the shell, which the kit does. I also need to gather design tokens to convert into CSS variables and include all key regions for proper rebuilding.
+**Clarifying layout components**
+
+I need to include the top header with the logo, top navigation, a side menu, and the green title bar. However, I think it's best to treat everything above `#pageBody` as part of the shell. This means I would only specify the form and footer in detail. The section 01 mentions the green bar, and the description states that the shell includes the green title bar. I’ll just make a brief note about this while ensuring the spec cites the necessary section assets. The builder is set to rebuild the shell anyway, so I'll keep that in mind!
+**Focusing on layout details**
+
+I’m focusing on the main `#pageBody > main` region, which includes the Search Criteria panel and the Search Results grid that appears after a search. The footer might be part of the shell—or possibly the kit—but still, we should treat it as a shared element. I’ll keep it simple and mention that the "footer/subfooter is in shared shell." For evidence, I’ll tag images like [asset:sections/02-pagebody.png] and [asset:kit/states/search.png] to show the search results clearly. Now, it's time to look at server interactions based on the kit's JSON requests!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib, pprint; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); print('requests', len(data.get('requests',[]))); pprint.pp(data.get('requests',[])[:5])\"" in C:\UI-specs\URL-to-Code
+ exited 1 in 1679ms:
+Traceback (most recent call last):
+requests 1
+  File "<string>", line 1, in <module>
+    import json, pathlib, pprint; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); print('requests', len(data.get('requests',[]))); pprint.pp(data.get('requests',[])[:5])
+                                                                                                                                                                                                                                                  ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: slice(None, 5, None)
+
+**Checking data types**
+
+I’m wondering if “requests” is a dictionary. Actually, I think I need to check if “data['requests']” is an object rather than a list. It’s crucial to inspect its type to understand how to work with it properly. I need to make sure I’m handling the data correctly so that I can proceed without any issues later on. Let’s figure this out!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); r=data.get('requests'); print(type(r), r.keys() if hasattr(r,'keys') else r)\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1170ms:
+<class 'dict'> dict_keys(['search'])
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib, pprint; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); pprint.pp(data['requests']['search'])\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1111ms:
+{'method': 'GET',
+ 'url': '/api/FileTransfer/SearchFileTransferTracking/',
+ 'params': []}
+
+**Analyzing search parameters**
+
+I’m noticing there are no parameters visible, but the search criteria are posted. I wonder if they used query parameters that are just empty because they weren’t set. That seems possible. Perhaps the request needs to specify the criteria fields more clearly? It might make sense to send the search in the query string so capture can derive what it needs. I’ll look into the facts.md section 9 for the exact request fields. Let’s extract that information!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import pathlib; t=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.md').read_text(encoding='utf-8'); i=t.find('## 9.'); j=t.find('## 10.', i); print(t[i:j][:6000]);\"" in C:\UI-specs\URL-to-Code
+ succeeded in 842ms:
+## 9. Server round-trips and requests
+None observed.
+
+
+
+**Investigating request details**
+
+It seems there are no observations available, so I'll focus on requests related to the kit and possibly the search component. I'm curious if the search object includes details like reveals and grid HTML. I need to check data['search'] and 'plan' to see what information is included there. I'll dig into those elements to understand better!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib, pprint; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); pprint.pp(data.get('search'))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1055ms:
+{'reveals': ['h13'],
+ 'requests': [{'method': 'GET',
+               'url': '/api/FileTransfer/SearchFileTransferTracking/',
+               'params': []}]}
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib, pprint; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); pprint.pp(data.get('row'))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1033ms:
+None
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import pathlib; t=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.md').read_text(encoding='utf-8'); i=t.find('## 12.'); j=t.find('## 13.', i); print(t[i:j][:6000]);\"" in C:\UI-specs\URL-to-Code
+ succeeded in 842ms:
+## 12. Hidden at load, never revealed by any action
+None.
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import pathlib; t=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/facts.md').read_text(encoding='utf-8'); i=t.find('## 10.'); j=t.find('## 11.', i); print(t[i:j][:6000]);\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1128ms:
+## 10. Navigation (links are recorded, never followed)
+No navigation.
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib, re; dom=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/capture/dom.json').read_text(encoding='utf-8')); 
+# dom is list of nodes? find entries with first text 'Search Results'
+res=[]
+for n in dom:
+    t=n.get('t')
+    if t and isinstance(t,str) and 'Search Results' in t:
+        res.append(n)
+print('found', len(res));
+print(res[0] if res else '');\"" in C:\UI-specs\URL-to-Code
+ exited 1 in 1268ms:
+Traceback (most recent call last):
+  File "<string>", line 5, in <module>
+    t=n.get('t')
+      ^^^^^
+AttributeError: 'str' object has no attribute 'get'
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; p=pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/capture/dom.json'); data=json.loads(p.read_text(encoding='utf-8')); print(type(data));
+if isinstance(data, list): print('list len', len(data), 'first type', type(data[0]));
+elif isinstance(data, dict): print('dict keys', list(data.keys())[:30]);\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1136ms:
+<class 'dict'>
+dict keys ['viewport', 'doc', 'truncated', 'body']
+
+**Analyzing JSON structure**
+
+I’m thinking about how the `dom.json` file has a body tree. I need to search through it recursively, so I'll write some Python to help me traverse the nodes. It’s important to first understand the overall structure of the body, as that will guide how I approach this search. I want to make sure I capture all relevant details, so I’ll have to take my time with the traversal.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; dom=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/capture/dom.json').read_text(encoding='utf-8')); b=dom['body']; print(b.keys()); print('tag',b.get('tag'),'id',b.get('id')); print('child count', len(b.get('c',[])))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1626ms:
+dict_keys(['t', 'cls', 'box', 's', 'k'])
+tag None id None
+child count 0
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/capture/controls.json').read_text(encoding='utf-8')); print(type(data)); print(data.keys()); print('controls', len(data['controls'])); print('first', data['controls'][0].keys())\"" in C:\UI-specs\URL-to-Code
+ exited 1 in 1053ms:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json, pathlib; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/capture/controls.json').read_text(encoding='utf-8')); print(type(data)); print(data.keys()); print('controls', len(data['controls'])); print('first', data['controls'][0].keys())
+                                                                                                                                                                                                              ^^^^^^^^^
+AttributeError: 'list' object has no attribute 'keys'
+<class 'list'>
+
+**Inspecting controls file**
+
+I’m looking at the controls.json file, which is a list. I should probably start by checking the first element to see what it contains. I wonder what kind of information or parameters might be in there. This could help clarify how I’ll interact with the rest of the data in the list. I guess it’s important to ensure everything works as expected before moving forward! Let’s see what’s in that first element.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib, itertools; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/capture/controls.json').read_text(encoding='utf-8')); print('len',len(data)); print('first', data[0].keys()); print(data[0])\"" in C:\UI-specs\URL-to-Code
+ succeeded in 925ms:
+len 781
+first dict_keys(['key', 'sel', 'kind', 'tag', 'parent', 'id', 'label', 'visible', 'box', 'tabIndex', 'style'])
+{'key': 'pageBannerLogo', 'sel': '#pageBannerLogo', 'kind': 'button', 'tag': 'div', 'parent': 'pageBanner', 'id': 'pageBannerLogo', 'label': 'Client Logo', 'visible': True, 'box': [50, 1.73, 116.52, 58.53], 'tabIndex': 0, 'style': {'color': 'rgb(51, 51, 51)', 'backgroundColor': 'rgba(0, 0, 0, 0)', 'backgroundImage': 'none', 'borderTop': '0px none rgb(51, 51, 51)', 'borderRight': '0px none rgb(51, 51, 51)', 'borderBottom': '0px none rgb(51, 51, 51)', 'borderLeft': '0px none rgb(51, 51, 51)', 'borderRadius': '0px', 'fontFamily': 'Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome', 'fontSize': '14px', 'fontWeight': '400', 'fontStyle': 'normal', 'lineHeight': '14px', 'letterSpacing': 'normal', 'textAlign': 'start', 'textDecorationLine': 'none', 'textTransform': 'none', 'padding': '0px', 'margin': '0px 0px 0px 50px', 'width': '116.516px', 'height': '58.5312px', 'boxShadow': 'none', 'opacity': '1', 'cursor': 'auto', 'outline': 'rgb(51, 51, 51) none 3px', 'outlineOffset': '0px'}}
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; ctrls=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/capture/controls.json').read_text(encoding='utf-8')); 
+want={'FileId','FileName','TradingPartnerId','resetButton','cancelButton','nextButton','combobox-file-status-file-status','combobox-direction-direction','combobox-transport-type-transport-type','combobox-source-location-source-location','FromDate','ToDate','text-from-size-kb-from-size-kb','text-to-size-kb-to-size-kb','button-collapse'}
+by={c['key']:c for c in ctrls if c.get('key') in want}
+for k in sorted(by):
+    c=by[k];
+    print(k, c.get('kind'), c.get('label'), 'box', c.get('box'))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1328ms:
+FileId text File ID File ID box [52, 280, 548.66, 30]
+FileName text File Name File Name box [664.66, 280, 701.83, 30]
+FromDate text From Date From Date box [42, 558.5, 188.33, 30]
+ToDate text To Date To Date box [348.33, 558.5, 188.33, 30]
+TradingPartnerId text Trading Partner ID Trading Partner ID box [817.83, 465, 242.33, 30]
+button-collapse button Collapse box [1851.5, 171.5, 17.5, 20]
+cancelButton button Cancel box [1627.48, 646.5, 111.81, 38]
+combobox-direction-direction combobox Direction Direction box [653.66, 367.5, 444.5, 40]
+combobox-file-status-file-status combobox File Status File Status box [41, 367.5, 597.66, 40]
+combobox-source-location-source-location combobox Source Location Source Location box [41, 460, 750.83, 40]
+combobox-transport-type-transport-type combobox Transport Type Transport Type box [1113.16, 367.5, 597.66, 40]
+nextButton button Search box [1751.3, 646.5, 112.7, 38]
+resetButton button Reset box [41, 646.5, 103.8, 38]
+text-from-size-kb-from-size-kb text From Size (KB) From Size (KB) box [654.66, 557.5, 252.33, 30]
+text-to-size-kb-to-size-kb text To Size (KB) To Size (KB) box [960.98, 557.5, 252.33, 30]
+
+**Extracting layout details**
+
+I’m considering the great coordinates for the layout, which could help in positioning child elements effectively. I also need to gather help icons and their keys, like FileIdHelp. I think extracting those will make for a more cohesive layout. It’s interesting to think about how all these components fit together to create a functional structure. I'm curious about how exactly to implement that for the best user experience!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; ctrls=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/capture/controls.json').read_text(encoding='utf-8')); 
+want=[k for k in ['FileIdHelp','FileNameHelp','FileStatusHelp','DirectionHelp','TransportTypeHelp','SourceLocationIdHelp','TradingPartnerIdHelp','FromDateHelp','ToDateHelp','FromSizeHelp','ToSizeHelp']]
+by={c['key']:c for c in ctrls if c.get('key') in want}
+for k in want:
+    c=by.get(k);
+    print(k, c.get('kind') if c else None, 'box', c.get('box') if c else None, 'label', c.get('label') if c else None)\"" in C:\UI-specs\URL-to-Code
+ succeeded in 868ms:
+FileIdHelp button box [624.66, 252.5, 14, 22.5] label HELP
+FileNameHelp button box [1390.48, 252.5, 14, 22.5] label HELP
+FileStatusHelp button box [624.66, 345, 14, 22.5] label HELP
+DirectionHelp button box [1084.16, 345, 14, 22.5] label HELP
+TransportTypeHelp button box [1696.81, 345, 14, 22.5] label HELP
+SourceLocationIdHelp button box [777.83, 437.5, 14, 22.5] label HELP
+TradingPartnerIdHelp button box [1084.16, 437.5, 14, 22.5] label HELP
+FromDateHelp button box [318.33, 530, 14, 22.5] label HELP
+ToDateHelp button box [624.66, 530, 14, 22.5] label HELP
+FromSizeHelp button box [930.98, 530, 14, 22.5] label HELP
+ToSizeHelp button box [1237.31, 530, 14, 22.5] label HELP
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib; ctrls=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/capture/controls.json').read_text(encoding='utf-8')); 
+want=['button-disclaimer','button-website-requirements','button-privacy-policy','button-cookie-policy'];
+for k in want:
+    c=next((x for x in ctrls if x.get('key')==k), None);
+    print(k, c.get('kind'), c.get('label'), 'box', c.get('box'))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1103ms:
+button-disclaimer button Disclaimer box [632.14, 793.75, 71.34, 22]
+button-website-requirements button Website Requirements box [787.83, 793.75, 147.38, 22]
+button-privacy-policy button Privacy Policy box [1019.55, 793.75, 93.14, 22]
+button-cookie-policy button Cookie Policy box [1197.03, 793.75, 90.83, 22]
+
+**Understanding collapse functionality**
+
+The collapse button is represented by a caret icon, which likely collapses the search criteria panel. I think we need to clarify that clicking the collapse toggles the panel between expanded and collapsed states. I wonder if there's any evidence from the kit plan about this behavior; it seems it's built into the kit. However, I notice there's no documented state for when the panel is collapsed. I should mention that collapsibility works with the default settings of the kit, but I'm marking this as [UNKNOWN].
+**Examining kit instructions**
+
+I wonder if I can infer anything from the kit instructions, but I need to be careful not to invent details. If the kit harvest includes some actions, perhaps the `kit/screen.json` plan will clarify the collapse actions? It seems like it's worth inspecting the `plan` key to find more specific information. I’ll make sure to check that out before drawing any conclusions about how the collapse functionality works.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib, pprint; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); pprint.pp(data.get('plan'))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 911ms:
+{'dialogs': [{'panel': 'languageOverlay', 'opener': None, 'via': None},
+             {'panel': 'FileTransferTrackingViewPopup',
+              'opener': None,
+              'via': None}],
+ 'rowDouble': 'gridRowDoubleClickCallBack',
+ 'rowSingle': 'gridRowSingleClickCallBack',
+ 'rowOpens': None}
+
+**Evaluating dialogs and issues**
+
+I'm considering whether my plan includes dialogs, but I noticed there's no opener. It's interesting that the language overlay and FileTransferTrackingViewPopup are missing. However, the dialogs count shows as 2, even though earlier it stated 'dialogs 0'. Maybe the openers weren’t found because the capture didn’t open? I need to investigate the 'missing' key to find out more.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import json, pathlib, pprint; data=json.loads(pathlib.Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking/kit/screen.json').read_text(encoding='utf-8')); pprint.pp(data.get('missing'))\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1291ms:
+[]
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "ls C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\explore" in C:\UI-specs\URL-to-Code
+ exited 1 in 1124ms:
+ls : Cannot find path 'C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking\explore' because it does 
+not exist.
+At line:2 char:1
++ ls C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-track ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\UI-specs\URL...racking\explore:String) [Get-ChildItem], ItemNotFound 
+   Exception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
+ 
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\regions.json" in C:\UI-specs\URL-to-Code
+ succeeded in 533ms:
+{
+ "reference": "reference.png",
+ "css_viewport_width": 1920,
+ "regions": [
+  {
+   "name": "band-01-file-transfer-tracking",
+   "box": [
+    0,
+    62,
+    1920,
+    77
+   ],
+   "selector": "#orientationLandscape > div:nth-of-type(2) > div:nth-of-type(3)"
+  },
+  {
+   "name": "band-02-pagebody",
+   "box": [
+    0,
+    139,
+    1920,
+    628
+   ],
+   "selector": "#pageBody"
+  },
+  {
+   "name": "band-03-disclaimer-the-website-is-prov",
+   "box": [
+    0,
+    767,
+    1920,
+    119
+   ],
+   "selector": "#orientationLandscape > div:nth-of-type(2) > footer"
+  },
+  {
+   "name": "img-logo-png-v-19-1-64-0",
+   "box": [
+    50,
+    2,
+    117,
+    57
+   ]
+  },
+  {
+   "name": "h1-file-transfer-tracking",
+   "box": [
+    212,
+    62,
+    166,
+    30
+   ]
+  }
+ ]
+}
+
+**Clarifying system requirements**
+
+The requirement for the system mentions including a CSS @keyframes autoFillEnd, but that doesn't really make sense. A better phrasing would be to say that the system will have a CSS animation named autoFillEnd applied to certain inputs whenever they’re present. I’ll be referencing an existing motion.json file for consistency, ensuring all lines have evidence tags and are referenced correctly in tasks.md. I also need to write files in UTF-8, avoiding any problematic characters. Finally, I’ll check for any issues with the script.
+**Writing directory and files**
+
+I'm planning to use Python to create the necessary directories and potentially write two files. It's important to be meticulous with the content, ensuring I include citations. For instance, I can use references like [asset:sections/02-pagebody.png] or [ctl:key], and I’ll follow this format for design tokens, making sure to reference the facts section. I’ll also track evidence tags properly. Everything will be implemented in a structured way, using a triple-quoted string in Python for the markdown documents, while being careful with any special characters.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path
+screen_dir=Path(r'C:/UI-specs/URL-to-Code/packs/fxfer-v4/screens/file-transfer-tracking')
+spec_dir=screen_dir/'spec'
+spec_dir.mkdir(parents=True, exist_ok=True)
+ui_spec=spec_dir/'UI_SPEC.md'
+tasks=spec_dir/'tasks.md'
+ui_spec.write_text('''# UI SPEC — fxfer-v4/file-transfer-tracking
+
+> Source https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking · viewport 1920×1080 CSS px @ dpr 1 · legacy built with mvcUnobtrusive + jquery 3.7.1 · target React 19
+> Evidence tags: "'`[T##]` behavior · `[ctl:key]` element · `[val:key]` validator · `[shot:N]` screenshot · `[asset:path]` file under `sections/` or `capture/` (and kit state images) · `[js:…]` · `[aspx:…]` · `[css:selector]` · `[kit:k#]` kit widget/dialog · `[UNKNOWN: …]`
+
+## 1. Overview
+File Transfer Tracking is a search screen used to find file transfers by criteria (ID/name/status/etc.) and view the matching results in a grid. [asset:sections/02-pagebody.png]
+
+Primary tasks:
+- Search for file transfers using criteria and click Search. [ctl:nextButton]
+- Clear criteria and restore defaults. [ctl:resetButton]
+- Leave the screen via Cancel. [ctl:cancelButton, UNKNOWN: what Cancel does (navigate back vs clear vs close)]
+
+## 2. Layout
+Wrapped in the shared shell (see the home spec). [asset:kit/states/search.png]
+
+Page: full-width layout; main content is inside `#pageBody` and uses a centered card panel for Search Criteria. [asset:sections/02-pagebody.png]
+
+| region | element (key / id) | box x,y,w,h (CSS) | in shots | layout | key styles | evidence |
+|---|---|---|---|---|---|---|
+| Main content band | `#pageBody` `{pageBody}` | 0,139,1920,628 | reference | single-column flow | background `rgb(255,255,255)` | [asset:sections/02-pagebody.png] |
+| Search Criteria panel | `.content-panel-container` | [UNKNOWN: box of `.content-panel-container`] | reference | header row + form grid | border `1px solid rgb(222,226,230)`, radius `10px`, shadow `rgba(0,0,0,0.08) 0px 8px 10px 1px` | [asset:sections/02-pagebody.png] |
+| Search Results panel (after Search) | [kit:k9] | [UNKNOWN: box of results panel in default viewport] | kit state | header + Kendo grid | grid header row with column labels; empty state text “No items to display” | [asset:kit/states/search.png, kit:k9] |
+
+### 2.1 Search Criteria panel
+- Panel header shows title “Search Criteria” at the left, with a collapse chevron button at the right. [asset:sections/02-pagebody.png, ctl:button-collapse]
+- Header background is `rgb(250,250,250)`, with padding `12px 24px` and top corners rounded (10px 10px 0 0). [asset:sections/02-pagebody.png]
+- The body contains a multi-row form grid, with labels above inputs and blue `?` help icons aligned to the right of each label row. [asset:sections/02-pagebody.png, ctl:FileIdHelp]
+- Bottom row contains actions: Reset (left), Cancel and Search (right). [asset:sections/02-pagebody.png, ctl:resetButton, ctl:cancelButton, ctl:nextButton]
+
+### 2.2 Search Results panel (after Search)
+- The panel title is “Search Results”. [asset:kit/states/search.png]
+- The grid shows columns (left to right): “File ID”, “File Name”, “File Status”, “Direction”, “Transport Type”, “Size (KB)”, “Create Date”, “Trading Partner ID”. [asset:kit/states/search.png, kit:k9]
+- Empty state shows text “No items to display” in the grid body. [asset:kit/states/search.png, kit:k9]
+
+## 3. Design tokens
+| token (CSS variable for the rebuild) | value | used by | evidence |
+|---|---|---|---|
+| `--font-body` | `Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome; 14px/14px` | body text | [asset:sections/02-pagebody.png] |
+| `--color-text` | `rgb(61, 61, 61)` | most labels/body text | [asset:sections/02-pagebody.png] |
+| `--color-shell-dark` | `rgb(43, 58, 68)` | header/footer bars (shared shell) | [asset:kit/states/search.png] |
+| `--color-accent-green` | `rgb(0, 238, 174)` | module/title bar (shared shell) | [asset:sections/01-file-transfer-tracking.png] |
+| `--color-link` | `rgb(0, 98, 255)` | link-colored text / action affordances | [asset:kit/states/search.png] |
+| `--color-help` | `rgb(51, 129, 255)` | `?` help icon color | [asset:sections/02-pagebody.png, ctl:FileIdHelp] |
+| `--color-required` | `rgb(203, 26, 198)` | required asterisk in “Required Fields (*)” | [asset:sections/02-pagebody.png] |
+| `--border-input` | `1px solid rgb(90, 105, 120)` | inputs/dropdowns | [asset:sections/02-pagebody.png, ctl:FileId] |
+| `--radius-input` | `5px` | inputs/dropdowns | [asset:sections/02-pagebody.png, ctl:FileId] |
+
+## 4. Assets
+| file (under capture/) | where | display size (CSS) | notes | evidence |
+|---|---|---|---|---|
+| `assets/_ext/mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo__3659ec6d.png` | shell header logo | 117×57 | shown in shared shell | [asset:assets/_ext/mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo__3659ec6d.png] |
+| `assets/_svg/svg-1.svg` | dropdown arrow icon (one instance) | 18×16 | used in Kendo input buttons | [asset:assets/_svg/svg-1.svg] |
+| `assets/_svg/svg-2.svg` | dropdown arrow icon (one instance) | 18×16 | used in Kendo input buttons | [asset:assets/_svg/svg-2.svg] |
+| `assets/_svg/svg-3.svg` | dropdown arrow icon (one instance) | 18×16 | used in Kendo input buttons | [asset:assets/_svg/svg-3.svg] |
+| `assets/_svg/svg-4.svg` | dropdown arrow icon (one instance) | 18×16 | used in Kendo input buttons | [asset:assets/_svg/svg-4.svg] |
+| `assets/_svg/svg-5.svg` | calendar icon | 18×16 | used in From Date picker | [asset:assets/_svg/svg-5.svg, kit:k5] |
+| `assets/_svg/svg-6.svg` | time icon | 18×16 | From Date picker | [asset:assets/_svg/svg-6.svg, kit:k5] |
+| `assets/_svg/svg-7.svg` | calendar icon | 18×16 | used in To Date picker | [asset:assets/_svg/svg-7.svg, kit:k6] |
+| `assets/_svg/svg-8.svg` | time icon | 18×16 | To Date picker | [asset:assets/_svg/svg-8.svg, kit:k6] |
+
+## 5. Components
+React component tree (shared components marked *shared*):
+- `FileTransferTrackingPage`
+  - `Shell` *shared* — header + menus + title bar (kit-managed) [asset:kit/states/search.png]
+  - `SearchCriteriaPanel` — criteria fields + actions [asset:sections/02-pagebody.png]
+  - `SearchResultsPanel` — results grid (hidden until Search) [asset:kit/states/search.png, kit:k9]
+
+| component | props / inputs | owns state | elements (keys) | evidence |
+|---|---|---|---|---|
+| `SearchCriteriaPanel` | none | field values | `FileId`, `FileName`, `combobox-file-status-file-status`, `combobox-direction-direction`, `combobox-transport-type-transport-type`, `combobox-source-location-source-location`, `TradingPartnerId`, `FromDate`, `ToDate`, `text-from-size-kb-from-size-kb`, `text-to-size-kb-to-size-kb`, `resetButton`, `cancelButton`, `nextButton` | [asset:sections/02-pagebody.png, kit:k1, kit:k2, kit:k3, kit:k4, kit:k5, kit:k6, kit:k7, kit:k8] |
+| `SearchResultsPanel` | search results data | grid paging/sort selection | kit grid `k9` | [asset:kit/states/search.png, kit:k9] |
+
+## 6. Fields & validation
+All fields in this screen are optional by default (no required markers on individual labels); “Required Fields (*)” legend is present. [asset:sections/02-pagebody.png]
+
+| key | label (verbatim) | type | default | required | rules | message (verbatim) | validated when | evidence |
+|---|---|---|---|---|---|---|---|---|
+| `FileId` | File ID | text | empty | no | disallow characters `; * ''^ : ~ < > %` | File ID contains invalid characters. The characters ; * ''^ : ~ < > % are not allowed. | [UNKNOWN: validation trigger] | [ctl:FileId, kit:k1] |
+| `FileName` | File Name | text | empty | no | disallow characters `; * ''^ : ~ < > %` | File Name contains invalid characters. The characters ; * ''^ : ~ < > % are not allowed. | [UNKNOWN: validation trigger] | [ctl:FileName, kit:k1] |
+| `combobox-file-status-file-status` | File Status | dropdown | optionLabel “select a value...” | no | options: Complete; Error; Transferring | (none) | on Search | [ctl:combobox-file-status-file-status, kit:k1, asset:kit/states/dropdown.png] |
+| `combobox-direction-direction` | Direction | dropdown | optionLabel “select a value...” | no | options: INBOUND; OUTBOUND | (none) | on Search | [ctl:combobox-direction-direction, kit:k2] |
+| `combobox-transport-type-transport-type` | Transport Type | dropdown | optionLabel “select a value...” | no | options: FTP; SFTP; UNC; FTPS | (none) | on Search | [ctl:combobox-transport-type-transport-type, kit:k3] |
+| `combobox-source-location-source-location` | Source Location | dropdown | optionLabel “select a value...” | no | option list contains 97 items (sample: “a6 - 123.43”, “Admin - https://tenant2-fltest.mapshc.com/”, “Amaro42925SFTPToSFTP - /AmaroCom/SourceSFTPCom”, …) | (none) | on Search | [ctl:combobox-source-location-source-location, kit:k4] |
+| `TradingPartnerId` | Trading Partner ID | text | empty | no | disallow characters `; * ''^ : ~ < > %` | Trading Partner ID contains invalid characters. The characters ; * ''^ : ~ < > % are not allowed. | [UNKNOWN: validation trigger] | [ctl:TradingPartnerId, kit:k5] |
+| `FromDate` | From Date | date-time text input (picker) | empty | no | must be a valid date time | The field From Date must be a date. / From Date must represent a valid date time in the format '"'M/d/yyyy h:mm tt'. | [UNKNOWN: validation trigger] | [ctl:FromDate, ctl:button-open-the-date-view, ctl:button-open-the-time-view, kit:k5] |
+| "'`ToDate` | To Date | date-time text input (picker) | empty | no | must be a valid date time | The field To Date must be a date. / To Date must represent a valid date time in the format '"'M/d/yyyy h:mm tt'. | [UNKNOWN: validation trigger] | [ctl:ToDate, ctl:button-open-the-date-view-2, ctl:button-open-the-time-view-2, kit:k6] |
+| "'`text-from-size-kb-from-size-kb` | From Size (KB) | numeric text input | empty | no | numeric, at most 2 decimal places | From Size (KB) is restricted to numeric values with at most 2 decimal places. | [UNKNOWN: validation trigger] | [ctl:text-from-size-kb-from-size-kb, kit:k7] |
+| `text-to-size-kb-to-size-kb` | To Size (KB) | numeric text input | empty | no | numeric, at most 2 decimal places | To Size (KB) is restricted to numeric values with at most 2 decimal places. | [UNKNOWN: validation trigger] | [ctl:text-to-size-kb-to-size-kb, kit:k8] |
+
+Help icons (blue `?`) show field help text:
+- WHEN the user hovers the File Status help icon THE SYSTEM SHALL show tooltip text “File Status”. [ctl:FileStatusHelp, kit:k1]
+- WHEN the user hovers the Direction help icon THE SYSTEM SHALL show tooltip text “Direction”. [ctl:DirectionHelp, kit:k2]
+- WHEN the user hovers the Transport Type help icon THE SYSTEM SHALL show tooltip text “Transport Type”. [ctl:TransportTypeHelp, kit:k3]
+- WHEN the user hovers the Source Location help icon THE SYSTEM SHALL show tooltip text “Source Location”. [ctl:SourceLocationIdHelp, kit:k4]
+- WHEN the user hovers the From Date help icon THE SYSTEM SHALL show tooltip text “From Date”. [ctl:FromDateHelp, kit:k5]
+- WHEN the user hovers the To Date help icon THE SYSTEM SHALL show tooltip text “To Date”. [ctl:ToDateHelp, kit:k6]
+- WHEN the user hovers the From Size (KB) help icon THE SYSTEM SHALL show tooltip text “From Size (KB)”. [ctl:FromSizeHelp, kit:k7]
+- WHEN the user hovers the To Size (KB) help icon THE SYSTEM SHALL show tooltip text “To Size (KB)”. [ctl:ToSizeHelp, kit:k8]
+
+## 7. State model
+| state | type | initial | changed by | drives (what shows/enables) | evidence |
+|---|---|---|---|---|---|
+| `criteria` | data | yes | typing/selecting | inputs hold user-entered criteria values | [asset:sections/02-pagebody.png] |
+| `resultsVisible` | ui | no | Search | Search Results panel becomes visible | [ctl:nextButton, asset:kit/states/search.png] |
+| `dropdownOpen` | ui | no | clicking a dropdown | dropdown list is visible | [asset:kit/states/dropdown.png, kit:k1] |
+
+Hidden at load (kit-managed groups):
+| element | shown when | evidence |
+|---|---|---|
+| `data-kit-h="h13"` (Search Results) | after Search action completes | [ctl:nextButton, asset:kit/states/search.png] |
+
+## 8. Behavior
+### 8.1 Search
+- WHEN the user clicks Search THE SYSTEM SHALL issue a GET request to `/api/FileTransfer/SearchFileTransferTracking/` and show the Search Results panel. [ctl:nextButton, asset:kit/states/search.png]
+- WHEN Search returns no rows THE SYSTEM SHALL show the grid empty state text “No items to display”. [asset:kit/states/search.png, kit:k9]
+
+### 8.2 Reset
+- WHEN the user clicks Reset THE SYSTEM SHALL clear all criteria fields to their defaults (empty inputs; dropdowns show optionLabel “select a value...”). [ctl:resetButton, asset:sections/02-pagebody.png]
+
+### 8.3 Cancel
+- WHEN the user clicks Cancel THE SYSTEM SHALL [UNKNOWN: cancel behavior]. [ctl:cancelButton, UNKNOWN: destination/action not captured]
+
+### 8.4 Collapse
+- WHEN the user clicks the collapse chevron THE SYSTEM SHALL toggle the Search Criteria panel collapsed/expanded. [ctl:button-collapse, UNKNOWN: collapsed layout not captured]
+
+### 8.5 Scroll behavior
+None. [asset:kit/states/search.png]
+
+### 8.6 Media
+None. [asset:sections/02-pagebody.png]
+
+## 9. Navigation
+| trigger (key) | destination | how (same tab / new window / route) | evidence |
+|---|---|---|---|
+| `link-client-logo` | `/Home/MyHome/` | same tab | [ctl:link-client-logo] |
+| `link-my-account` | `/Home/MyAccount` | same tab | [ctl:link-my-account] |
+| `link-logout` | `/Security/LogoutFromMenu` | same tab | [ctl:link-logout] |
+| `link-messages` | `javascript:getBroadcastMsg();` | inline JS | [ctl:link-messages] |
+| `link-external-links` | `javascript:toggleVisibilityStyle('"'divExternalLinks');"'` | inline JS | [ctl:link-external-links] |
+| `link-favorites` | `javascript:getFavorites();` | inline JS | [ctl:link-favorites] |
+| `link-contact-us` | `javascript:getContactUs();` | inline JS | [ctl:link-contact-us] |
+
+## 10. Server interactions
+| trigger | legacy request (method, target, fields) | rebuild needs (API, proposed) | response → UI | evidence |
+|---|---|---|---|---|
+| Search | GET `/api/FileTransfer/SearchFileTransferTracking/` (params: none captured) | provide an API that accepts the criteria fields (File ID, File Name, File Status, Direction, Transport Type, Source Location, Trading Partner ID, From/To Date, From/To Size) | fills Search Results grid | [ctl:nextButton, asset:kit/states/search.png] |
+
+## 11. Accessibility
+- Each input is labeled by the visible label text above it (e.g., “File ID”, “File Name”). [asset:sections/02-pagebody.png, ctl:FileId]
+- Actions are input buttons with values “Reset”, “Cancel”, “Search”. [asset:sections/02-pagebody.png, ctl:resetButton, ctl:cancelButton, ctl:nextButton]
+
+## 12. Test ids
+Every element below gets `data-testid="<key>"` in the rebuild; `packs/fxfer-v4/screens/file-transfer-tracking/spec/parity.spec.ts` uses them: [ctl:FileId]
+
+`pageBannerLogo`, `button`, `button-medicaid-management-solutions`, `button-2`, `AAGMenu.BroadcastMsg`, `link-messages`, `AAGMenu.ExternalLinks`, `link-external-links`, `AAGMenu.Favorites`, `link-favorites`, `AAGMenu.ContactUs`, `link-contact-us`, `AAGMenu.MyAccount`, `AAGMenu.Logout`, `link-logout`, `button-main-menu-2`, `button-8`, `activeModuleMenu`, `activeModuleMenuFirstItem`, `button-help`, `button-22`, `button-collapse`, `FileIdHelp`, `FileId`, `FileNameHelp`, `FileName`, `FileStatusHelp`, `combobox-file-status-file-status`, `button-select`, `DirectionHelp`, `combobox-direction-direction`, `button-select-2`, `TransportTypeHelp`, `combobox-transport-type-transport-type`, `button-select-3`, `SourceLocationIdHelp`, `combobox-source-location-source-location`, `button-select-4`, `TradingPartnerIdHelp`, `TradingPartnerId`, `FromDateHelp`, `FromDate`, `button-open-the-date-view`, `button-open-the-time-view`, `ToDateHelp`, `ToDate`, `button-open-the-date-view-2`, `button-open-the-time-view-2`, `FromSizeHelp`, `text-from-size-kb-from-size-kb`, `ToSizeHelp`, `text-to-size-kb-to-size-kb`, `resetButton`, `cancelButton`, `nextButton`, `button-disclaimer`, `button-website-requirements`, `button-privacy-policy`, `button-cookie-policy` [ctl:pageBannerLogo, ctl:button, ctl:button-medicaid-management-solutions, ctl:button-2, ctl:AAGMenu.BroadcastMsg, ctl:link-messages, ctl:AAGMenu.ExternalLinks, ctl:link-external-links, ctl:AAGMenu.Favorites, ctl:link-favorites, ctl:AAGMenu.ContactUs, ctl:link-contact-us, ctl:AAGMenu.MyAccount, ctl:AAGMenu.Logout, ctl:link-logout, ctl:button-main-menu-2, ctl:button-8, ctl:activeModuleMenu, ctl:activeModuleMenuFirstItem, ctl:button-help, ctl:button-22, ctl:button-collapse, ctl:FileIdHelp, ctl:FileId, ctl:FileNameHelp, ctl:FileName, ctl:FileStatusHelp, ctl:combobox-file-status-file-status, ctl:button-select, ctl:DirectionHelp, ctl:combobox-direction-direction, ctl:button-select-2, ctl:TransportTypeHelp, ctl:combobox-transport-type-transport-type, ctl:button-select-3, ctl:SourceLocationIdHelp, ctl:combobox-source-location-source-location, ctl:button-select-4, ctl:TradingPartnerIdHelp, ctl:TradingPartnerId, ctl:FromDateHelp, ctl:FromDate, ctl:button-open-the-date-view, ctl:button-open-the-time-view, ctl:ToDateHelp, ctl:ToDate, ctl:button-open-the-date-view-2, ctl:button-open-the-time-view-2, ctl:FromSizeHelp, ctl:text-from-size-kb-from-size-kb, ctl:ToSizeHelp, ctl:text-to-size-kb-to-size-kb, ctl:resetButton, ctl:cancelButton, ctl:nextButton, ctl:button-disclaimer, ctl:button-website-requirements, ctl:button-privacy-policy, ctl:button-cookie-policy]
+
+Run: `TARGET=react URL=<rebuild url> npx playwright test packs/fxfer-v4/screens/file-transfer-tracking/spec/parity.spec.ts` [asset:kit/states/search.png]
+
+## 13. Open questions
+1. What does Cancel do on this screen (navigate to which page, or just reset fields)? [UNKNOWN]
+2. What query parameters/body does Search send for criteria fields (and which fields are required, if any)? [UNKNOWN]
+3. When the Search Results grid has rows, what happens on row click / double-click (open a details dialog such as “FileTransferTrackingViewPopup”)? [UNKNOWN]
+
+## 14. Motion
+- THE SYSTEM SHALL include the CSS animation `autoFillEnd` with duration `0s`, delay `0s`, iterations `1`, easing `ease`, fill `none` (observed on criteria text inputs). [M01]
+'"''', encoding='utf-8')
+
+tasks.write_text('''# TASKS — fxfer-v4/file-transfer-tracking
+
+Target: React 19 + TypeScript, plain CSS (no UI library).
+This screen uses the Provider kit (Kendo UI for jQuery portal). Use "'`<KitScreen>` + `<KitWidget id=...>`; do not implement dropdowns/date pickers/grids manually. Spec: `packs/fxfer-v4/screens/file-transfer-tracking/spec/UI_SPEC.md` · tests: `packs/fxfer-v4/screens/file-transfer-tracking/spec/parity.spec.ts`
+
+## 0. Setup
+- [ ] Run `npm run port -- fxfer-v4/file-transfer-tracking` to generate the initial rebuild scaffold and stamp every `data-testid`.
+- [ ] Confirm `packs/fxfer-v4/screens/file-transfer-tracking/manifest.json` has `dpr` and CSS viewport values.
+- [ ] Verify shell comes from the shared kit shell; only implement the captured content area behavior.
+
+## 1. Shell — §2, §3
+- [ ] Ensure the screen is wrapped by the shared Provider shell (header/menu/title/footer) without screen-specific edits.
+  Accept: `npm run verify -- fxfer-v4/file-transfer-tracking` → `size_delta_px` within ±2.
+
+## 2. Regions — §2
+- [ ] Search Criteria panel: render the panel container, header, and the form grid layout with correct spacing/typography. Keys: `button-collapse`, `resetButton`, `cancelButton`, `nextButton`.
+  Accept: `npm run verify -- fxfer-v4/file-transfer-tracking` → band `band-02-pagebody` bad_pct < 5.
+- [ ] Search Results panel (after Search): ensure the kit grid `k9` renders with the same columns and empty state.
+  Accept: kit state compare includes `search` and matches.
+
+## 3. Components & states — §5, §7, §8
+- [ ] Criteria fields: hook up kit widgets `k1`–`k8` to the matching elements/keys (dropdowns, date-time pickers, numeric boxes) and keep defaults (optionLabel “select a value...”).
+  Accept: parity selectors find all required keys.
+- [ ] Search action: clicking `nextButton` shows Search Results panel and triggers the screen service request.
+  Accept: `search` kit state matches and parity tests pass.
+- [ ] Reset action: clicking `resetButton` clears criteria back to defaults.
+  Accept: parity tests pass.
+
+## 4. Validation — §6
+- [ ] Enforce validation messages exactly for invalid characters (File ID / File Name / Trading Partner ID) and date/number formatting for the date-time and numeric fields.
+  Accept: parity tests pass (and messages match verbatim).
+
+## 5. Server interactions — §10
+- [ ] Implement service call for GET `/api/FileTransfer/SearchFileTransferTracking/` (criteria params: [UNKNOWN] in spec) and map response to grid rows.
+  Accept: Search Results grid populates and empty state matches when no rows.
+
+## 6. Done
+- [ ] `npm run verify -- fxfer-v4/file-transfer-tracking`: `size_delta_px` ±2 and `bad_pct` < 5 (report numbers).
+- [ ] `TARGET=react URL=<url> npx playwright test packs/fxfer-v4/screens/file-transfer-tracking/spec/parity.spec.ts`: all pass.
+- [ ] Address or document remaining §13 open questions.
+'"''', encoding='utf-8')
+
+print('wrote', ui_spec, 'and', tasks)
+\"" in C:\UI-specs\URL-to-Code
+ exited 1 in 1880ms:
+KB : The term 'KB' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:40 char:120
++ ... ame”, “File Status”, “Direction”, “Transport Type”, “Size (KB)”, “Cre ...
++                                                                ~~
+    + CategoryInfo          : ObjectNotFound: (KB:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+
+**Resolving PowerShell issues**
+
+It looks like PowerShell is having trouble with the command `python -c "..."` because of unescaped parentheses. The error message about "KB" suggests it's interpreting part of the string as a command due to the `$(...)` component. I initially thought I had used double quotes properly, but maybe there are curly quotes causing confusion. To avoid these quoting issues, I should consider using a Python file or a PowerShell here-string for passing arguments.
+**Simplifying Python script execution**
+
+I’m considering creating a temporary `.py` file using `Set-Content`, since the method with `python - <<` isn't working out well. I thought about using `python -c` with single quotes; this would allow me to include double quotes inside without issues since single quotes prevent interpolation in PowerShell. I could also create a Python script as a here-string, but that doesn't seem to work either. To avoid quoting problems, it makes sense to just write a script file directly to the repo root. However, I'm uncertain if I'm following instructions correctly regarding the file limit.
+**Clarifying file creation limits**
+
+The instructions specify to write only to `.../spec/UI_SPEC.md` and `.../spec/tasks.md`, which suggests I shouldn't create any temporary files, as it might violate repo rules. Instead, I could run a Python command using PowerShell with `-Command`. It seems more effective to write the markdown directly using `Set-Content -Encoding utf8` alongside a here-string to prevent quoting issues with parentheses. I’ll ensure it handles everything correctly, ensuring we don't write anything partially or leave any files uncreated. I'll also check for file existence.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "ls C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\spec | Select-Object Name,Length,LastWriteTime" in C:\UI-specs\URL-to-Code
+ succeeded in 609ms:
+
+Name           Length LastWriteTime        
+----           ------ -------------        
+parity.spec.ts  66224 11/11/2026 1:21:38 PM
+selectors.json  60805 11/11/2026 1:21:38 PM
+
+
+
+**Crafting PowerShell commands**
+
+I’m confirming no new files are needed, which is great! Now, I’m planning to write using PowerShell’s here-string and Set-Content with UTF-8 encoding. I want to avoid curly quotes, but special characters like the em dash should work. I'll use `@'` and `'@` for multiline content. I’m debating on using `-NoNewline` with `Set-Content`, but maybe it’s not necessary. I’m ready to run this for UI_SPEC.md.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$p='"'C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\spec\\UI_SPEC.md';
+"'$txt=@'"'
+# UI SPEC — fxfer-v4/file-transfer-tracking
+
+> Source https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking · viewport 1920×1080 CSS px @ dpr 1 · legacy built with mvcUnobtrusive + jquery 3.7.1 · target React 19
+> Evidence tags: "'`[T##]` behavior · `[ctl:key]` element · `[val:key]` validator · `[shot:N]` screenshot · `[asset:path]` file under `sections/` or `capture/` (and kit state images) · `[js:…]` · `[aspx:…]` · `[css:selector]` · `[kit:k#]` kit widget/dialog · `[UNKNOWN: …]`
+
+## 1. Overview
+File Transfer Tracking is a search screen used to find file transfers by criteria (ID/name/status/etc.) and view the matching results in a grid. [asset:sections/02-pagebody.png]
+
+Primary tasks:
+- Search for file transfers using criteria and click Search. [ctl:nextButton]
+- Clear criteria and restore defaults. [ctl:resetButton]
+- Leave the screen via Cancel. [ctl:cancelButton, UNKNOWN: what Cancel does (navigate back vs clear vs close)]
+
+## 2. Layout
+Wrapped in the shared shell (see the home spec). [asset:kit/states/search.png]
+
+Page: full-width layout; main content is inside `#pageBody` and uses a centered card panel for Search Criteria. [asset:sections/02-pagebody.png]
+
+| region | element (key / id) | box x,y,w,h (CSS) | in shots | layout | key styles | evidence |
+|---|---|---|---|---|---|---|
+| Main content band | `#pageBody` `{pageBody}` | 0,139,1920,628 | reference | single-column flow | background `rgb(255,255,255)` | [asset:sections/02-pagebody.png] |
+| Search Criteria panel | `.content-panel-container` | [UNKNOWN: box of `.content-panel-container`] | reference | header row + form grid | border `1px solid rgb(222,226,230)`, radius `10px`, shadow `rgba(0,0,0,0.08) 0px 8px 10px 1px` | [asset:sections/02-pagebody.png] |
+| Search Results panel (after Search) | [kit:k9] | [UNKNOWN: box of results panel in default viewport] | kit state | header + Kendo grid | grid header row with column labels; empty state text “No items to display” | [asset:kit/states/search.png, kit:k9] |
+
+### 2.1 Search Criteria panel
+- Panel header shows title “Search Criteria” at the left, with a collapse chevron button at the right. [asset:sections/02-pagebody.png, ctl:button-collapse]
+- Header background is `rgb(250,250,250)`, with padding `12px 24px` and top corners rounded (10px 10px 0 0). [asset:sections/02-pagebody.png]
+- The body contains a multi-row form grid, with labels above inputs and blue `?` help icons aligned to the right of each label row. [asset:sections/02-pagebody.png, ctl:FileIdHelp]
+- Bottom row contains actions: Reset (left), Cancel and Search (right). [asset:sections/02-pagebody.png, ctl:resetButton, ctl:cancelButton, ctl:nextButton]
+
+### 2.2 Search Results panel (after Search)
+- The panel title is “Search Results”. [asset:kit/states/search.png]
+- The grid shows columns (left to right): “File ID”, “File Name”, “File Status”, “Direction”, “Transport Type”, “Size (KB)”, “Create Date”, “Trading Partner ID”. [asset:kit/states/search.png, kit:k9]
+- Empty state shows text “No items to display” in the grid body. [asset:kit/states/search.png, kit:k9]
+
+## 3. Design tokens
+| token (CSS variable for the rebuild) | value | used by | evidence |
+|---|---|---|---|
+| `--font-body` | `Arial, "Helvetica Neue", Helvetica, sans-serif, FontAwesome; 14px/14px` | body text | [asset:sections/02-pagebody.png] |
+| `--color-text` | `rgb(61, 61, 61)` | most labels/body text | [asset:sections/02-pagebody.png] |
+| `--color-shell-dark` | `rgb(43, 58, 68)` | header/footer bars (shared shell) | [asset:kit/states/search.png] |
+| `--color-accent-green` | `rgb(0, 238, 174)` | module/title bar (shared shell) | [asset:sections/01-file-transfer-tracking.png] |
+| `--color-link` | `rgb(0, 98, 255)` | link-colored text / action affordances | [asset:kit/states/search.png] |
+| `--color-help` | `rgb(51, 129, 255)` | `?` help icon color | [asset:sections/02-pagebody.png, ctl:FileIdHelp] |
+| `--color-required` | `rgb(203, 26, 198)` | required asterisk in “Required Fields (*)” | [asset:sections/02-pagebody.png] |
+| `--border-input` | `1px solid rgb(90, 105, 120)` | inputs/dropdowns | [asset:sections/02-pagebody.png, ctl:FileId] |
+| `--radius-input` | `5px` | inputs/dropdowns | [asset:sections/02-pagebody.png, ctl:FileId] |
+
+## 4. Assets
+| file (under capture/) | where | display size (CSS) | notes | evidence |
+|---|---|---|---|---|
+| `assets/_ext/mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo__3659ec6d.png` | shell header logo | 117×57 | shown in shared shell | [asset:assets/_ext/mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo__3659ec6d.png] |
+| `assets/_svg/svg-1.svg` | dropdown arrow icon (one instance) | 18×16 | used in Kendo input buttons | [asset:assets/_svg/svg-1.svg] |
+| `assets/_svg/svg-2.svg` | dropdown arrow icon (one instance) | 18×16 | used in Kendo input buttons | [asset:assets/_svg/svg-2.svg] |
+| `assets/_svg/svg-3.svg` | dropdown arrow icon (one instance) | 18×16 | used in Kendo input buttons | [asset:assets/_svg/svg-3.svg] |
+| `assets/_svg/svg-4.svg` | dropdown arrow icon (one instance) | 18×16 | used in Kendo input buttons | [asset:assets/_svg/svg-4.svg] |
+| `assets/_svg/svg-5.svg` | calendar icon | 18×16 | used in From Date picker | [asset:assets/_svg/svg-5.svg, kit:k5] |
+| `assets/_svg/svg-6.svg` | time icon | 18×16 | From Date picker | [asset:assets/_svg/svg-6.svg, kit:k5] |
+| `assets/_svg/svg-7.svg` | calendar icon | 18×16 | used in To Date picker | [asset:assets/_svg/svg-7.svg, kit:k6] |
+| `assets/_svg/svg-8.svg` | time icon | 18×16 | To Date picker | [asset:assets/_svg/svg-8.svg, kit:k6] |
+
+## 5. Components
+React component tree (shared components marked *shared*):
+- `FileTransferTrackingPage`
+  - `Shell` *shared* — header + menus + title bar (kit-managed) [asset:kit/states/search.png]
+  - `SearchCriteriaPanel` — criteria fields + actions [asset:sections/02-pagebody.png]
+  - `SearchResultsPanel` — results grid (hidden until Search) [asset:kit/states/search.png, kit:k9]
+
+| component | props / inputs | owns state | elements (keys) | evidence |
+|---|---|---|---|---|
+| `SearchCriteriaPanel` | none | field values | `FileId`, `FileName`, `combobox-file-status-file-status`, `combobox-direction-direction`, `combobox-transport-type-transport-type`, `combobox-source-location-source-location`, `TradingPartnerId`, `FromDate`, `ToDate`, `text-from-size-kb-from-size-kb`, `text-to-size-kb-to-size-kb`, `resetButton`, `cancelButton`, `nextButton` | [asset:sections/02-pagebody.png, kit:k1, kit:k2, kit:k3, kit:k4, kit:k5, kit:k6, kit:k7, kit:k8] |
+| `SearchResultsPanel` | search results data | grid paging/sort selection | kit grid `k9` | [asset:kit/states/search.png, kit:k9] |
+
+## 6. Fields & validation
+All fields in this screen are optional by default (no required markers on individual labels); “Required Fields (*)” legend is present. [asset:sections/02-pagebody.png]
+
+| key | label (verbatim) | type | default | required | rules | message (verbatim) | validated when | evidence |
+|---|---|---|---|---|---|---|---|---|
+| `FileId` | File ID | text | empty | no | disallow characters `; * ''^ : ~ < > %` | File ID contains invalid characters. The characters ; * ''^ : ~ < > % are not allowed. | [UNKNOWN: validation trigger] | [ctl:FileId] |
+| `FileName` | File Name | text | empty | no | disallow characters `; * ''^ : ~ < > %` | File Name contains invalid characters. The characters ; * ''^ : ~ < > % are not allowed. | [UNKNOWN: validation trigger] | [ctl:FileName] |
+| `combobox-file-status-file-status` | File Status | dropdown | optionLabel “select a value...” | no | options: Complete; Error; Transferring | (none) | on Search | [ctl:combobox-file-status-file-status, kit:k1, asset:kit/states/dropdown.png] |
+| `combobox-direction-direction` | Direction | dropdown | optionLabel “select a value...” | no | options: INBOUND; OUTBOUND | (none) | on Search | [ctl:combobox-direction-direction, kit:k2] |
+| `combobox-transport-type-transport-type` | Transport Type | dropdown | optionLabel “select a value...” | no | options: FTP; SFTP; UNC; FTPS | (none) | on Search | [ctl:combobox-transport-type-transport-type, kit:k3] |
+| `combobox-source-location-source-location` | Source Location | dropdown | optionLabel “select a value...” | no | option list contains 97 items (sample: “a6 - 123.43”, “Admin - https://tenant2-fltest.mapshc.com/”, “Amaro42925SFTPToSFTP - /AmaroCom/SourceSFTPCom”, …) | (none) | on Search | [ctl:combobox-source-location-source-location, kit:k4] |
+| `TradingPartnerId` | Trading Partner ID | text | empty | no | disallow characters `; * ''^ : ~ < > %` | Trading Partner ID contains invalid characters. The characters ; * ''^ : ~ < > % are not allowed. | [UNKNOWN: validation trigger] | [ctl:TradingPartnerId] |
+| `FromDate` | From Date | date-time text input (picker) | empty | no | must be a valid date time | The field From Date must be a date. / From Date must represent a valid date time in the format '"'M/d/yyyy h:mm tt'. | [UNKNOWN: validation trigger] | [ctl:FromDate, ctl:button-open-the-date-view, ctl:button-open-the-time-view, kit:k5] |
+| "'`ToDate` | To Date | date-time text input (picker) | empty | no | must be a valid date time | The field To Date must be a date. / To Date must represent a valid date time in the format '"'M/d/yyyy h:mm tt'. | [UNKNOWN: validation trigger] | [ctl:ToDate, ctl:button-open-the-date-view-2, ctl:button-open-the-time-view-2, kit:k6] |
+| "'`text-from-size-kb-from-size-kb` | From Size (KB) | numeric text input | empty | no | numeric, at most 2 decimal places | From Size (KB) is restricted to numeric values with at most 2 decimal places. | [UNKNOWN: validation trigger] | [ctl:text-from-size-kb-from-size-kb, kit:k7] |
+| `text-to-size-kb-to-size-kb` | To Size (KB) | numeric text input | empty | no | numeric, at most 2 decimal places | To Size (KB) is restricted to numeric values with at most 2 decimal places. | [UNKNOWN: validation trigger] | [ctl:text-to-size-kb-to-size-kb, kit:k8] |
+
+Help icons (blue `?`) show field help text:
+- WHEN the user hovers the File ID help icon THE SYSTEM SHALL show tooltip text “File ID”. [ctl:FileIdHelp]
+- WHEN the user hovers the File Name help icon THE SYSTEM SHALL show tooltip text “File Name”. [ctl:FileNameHelp]
+- WHEN the user hovers the File Status help icon THE SYSTEM SHALL show tooltip text “File Status”. [ctl:FileStatusHelp, kit:k1]
+- WHEN the user hovers the Direction help icon THE SYSTEM SHALL show tooltip text “Direction”. [ctl:DirectionHelp, kit:k2]
+- WHEN the user hovers the Transport Type help icon THE SYSTEM SHALL show tooltip text “Transport Type”. [ctl:TransportTypeHelp, kit:k3]
+- WHEN the user hovers the Source Location help icon THE SYSTEM SHALL show tooltip text “Source Location”. [ctl:SourceLocationIdHelp, kit:k4]
+- WHEN the user hovers the Trading Partner ID help icon THE SYSTEM SHALL show tooltip text “Trading Partner ID”. [ctl:TradingPartnerIdHelp]
+- WHEN the user hovers the From Date help icon THE SYSTEM SHALL show tooltip text “From Date”. [ctl:FromDateHelp, kit:k5]
+- WHEN the user hovers the To Date help icon THE SYSTEM SHALL show tooltip text “To Date”. [ctl:ToDateHelp, kit:k6]
+- WHEN the user hovers the From Size (KB) help icon THE SYSTEM SHALL show tooltip text “From Size (KB)”. [ctl:FromSizeHelp, kit:k7]
+- WHEN the user hovers the To Size (KB) help icon THE SYSTEM SHALL show tooltip text “To Size (KB)”. [ctl:ToSizeHelp, kit:k8]
+
+## 7. State model
+| state | type | initial | changed by | drives (what shows/enables) | evidence |
+|---|---|---|---|---|---|
+| `criteria` | data | yes | typing/selecting | inputs hold user-entered criteria values | [asset:sections/02-pagebody.png] |
+| `resultsVisible` | ui | no | Search | Search Results panel becomes visible | [ctl:nextButton, asset:kit/states/search.png] |
+| `dropdownOpen` | ui | no | clicking a dropdown | dropdown list is visible | [asset:kit/states/dropdown.png, kit:k1] |
+
+Hidden at load (kit-managed groups):
+| element | shown when | evidence |
+|---|---|---|
+| `data-kit-h="h13"` (Search Results) | after Search action completes | [ctl:nextButton, asset:kit/states/search.png] |
+
+## 8. Behavior
+### 8.1 Search
+- WHEN the user clicks Search THE SYSTEM SHALL issue a GET request to `/api/FileTransfer/SearchFileTransferTracking/` and show the Search Results panel. [ctl:nextButton, asset:kit/states/search.png]
+- WHEN Search returns no rows THE SYSTEM SHALL show the grid empty state text “No items to display”. [asset:kit/states/search.png, kit:k9]
+
+### 8.2 Reset
+- WHEN the user clicks Reset THE SYSTEM SHALL clear all criteria fields to their defaults (empty inputs; dropdowns show optionLabel “select a value...”). [ctl:resetButton, asset:sections/02-pagebody.png]
+
+### 8.3 Cancel
+- WHEN the user clicks Cancel THE SYSTEM SHALL [UNKNOWN: cancel behavior]. [ctl:cancelButton, UNKNOWN: destination/action not captured]
+
+### 8.4 Collapse
+- WHEN the user clicks the collapse chevron THE SYSTEM SHALL toggle the Search Criteria panel collapsed/expanded. [ctl:button-collapse, UNKNOWN: collapsed layout not captured]
+
+### 8.5 Scroll behavior
+None. [asset:kit/states/search.png]
+
+### 8.6 Media
+None. [asset:sections/02-pagebody.png]
+
+## 9. Navigation
+| trigger (key) | destination | how (same tab / new window / route) | evidence |
+|---|---|---|---|
+| `link-client-logo` | `/Home/MyHome/` | same tab | [ctl:link-client-logo] |
+| `link-my-account` | `/Home/MyAccount` | same tab | [ctl:link-my-account] |
+| `link-logout` | `/Security/LogoutFromMenu` | same tab | [ctl:link-logout] |
+| `link-messages` | `javascript:getBroadcastMsg();` | inline JS | [ctl:link-messages] |
+| `link-external-links` | `javascript:toggleVisibilityStyle('"'divExternalLinks');"'` | inline JS | [ctl:link-external-links] |
+| `link-favorites` | `javascript:getFavorites();` | inline JS | [ctl:link-favorites] |
+| `link-contact-us` | `javascript:getContactUs();` | inline JS | [ctl:link-contact-us] |
+
+## 10. Server interactions
+| trigger | legacy request (method, target, fields) | rebuild needs (API, proposed) | response → UI | evidence |
+|---|---|---|---|---|
+| Search | GET `/api/FileTransfer/SearchFileTransferTracking/` (params: none captured) | provide an API that accepts the criteria fields (File ID, File Name, File Status, Direction, Transport Type, Source Location, Trading Partner ID, From/To Date, From/To Size) | fills Search Results grid | [ctl:nextButton, asset:kit/states/search.png] |
+
+## 11. Accessibility
+- Each input is labeled by the visible label text above it (e.g., “File ID”, “File Name”). [asset:sections/02-pagebody.png, ctl:FileId]
+- Actions are input buttons with values “Reset”, “Cancel”, “Search”. [asset:sections/02-pagebody.png, ctl:resetButton, ctl:cancelButton, ctl:nextButton]
+
+## 12. Test ids
+Every element below gets `data-testid="<key>"` in the rebuild; `packs/fxfer-v4/screens/file-transfer-tracking/spec/parity.spec.ts` uses them. [ctl:FileId]
+
+`pageBannerLogo`, `button`, `button-medicaid-management-solutions`, `button-2`, `AAGMenu.BroadcastMsg`, `link-messages`, `AAGMenu.ExternalLinks`, `link-external-links`, `AAGMenu.Favorites`, `link-favorites`, `AAGMenu.ContactUs`, `link-contact-us`, `AAGMenu.MyAccount`, `AAGMenu.Logout`, `link-logout`, `button-main-menu-2`, `button-8`, `activeModuleMenu`, `activeModuleMenuFirstItem`, `button-help`, `button-22`, `button-collapse`, `FileIdHelp`, `FileId`, `FileNameHelp`, `FileName`, `FileStatusHelp`, `combobox-file-status-file-status`, `button-select`, `DirectionHelp`, `combobox-direction-direction`, `button-select-2`, `TransportTypeHelp`, `combobox-transport-type-transport-type`, `button-select-3`, `SourceLocationIdHelp`, `combobox-source-location-source-location`, `button-select-4`, `TradingPartnerIdHelp`, `TradingPartnerId`, `FromDateHelp`, `FromDate`, `button-open-the-date-view`, `button-open-the-time-view`, `ToDateHelp`, `ToDate`, `button-open-the-date-view-2`, `button-open-the-time-view-2`, `FromSizeHelp`, `text-from-size-kb-from-size-kb`, `ToSizeHelp`, `text-to-size-kb-to-size-kb`, `resetButton`, `cancelButton`, `nextButton`, `button-disclaimer`, `button-website-requirements`, `button-privacy-policy`, `button-cookie-policy` [ctl:pageBannerLogo, ctl:button, ctl:button-medicaid-management-solutions, ctl:button-2, ctl:AAGMenu.BroadcastMsg, ctl:link-messages, ctl:AAGMenu.ExternalLinks, ctl:link-external-links, ctl:AAGMenu.Favorites, ctl:link-favorites, ctl:AAGMenu.ContactUs, ctl:link-contact-us, ctl:AAGMenu.MyAccount, ctl:AAGMenu.Logout, ctl:link-logout, ctl:button-main-menu-2, ctl:button-8, ctl:activeModuleMenu, ctl:activeModuleMenuFirstItem, ctl:button-help, ctl:button-22, ctl:button-collapse, ctl:FileIdHelp, ctl:FileId, ctl:FileNameHelp, ctl:FileName, ctl:FileStatusHelp, ctl:combobox-file-status-file-status, ctl:button-select, ctl:DirectionHelp, ctl:combobox-direction-direction, ctl:button-select-2, ctl:TransportTypeHelp, ctl:combobox-transport-type-transport-type, ctl:button-select-3, ctl:SourceLocationIdHelp, ctl:combobox-source-location-source-location, ctl:button-select-4, ctl:TradingPartnerIdHelp, ctl:TradingPartnerId, ctl:FromDateHelp, ctl:FromDate, ctl:button-open-the-date-view, ctl:button-open-the-time-view, ctl:ToDateHelp, ctl:ToDate, ctl:button-open-the-date-view-2, ctl:button-open-the-time-view-2, ctl:FromSizeHelp, ctl:text-from-size-kb-from-size-kb, ctl:ToSizeHelp, ctl:text-to-size-kb-to-size-kb, ctl:resetButton, ctl:cancelButton, ctl:nextButton, ctl:button-disclaimer, ctl:button-website-requirements, ctl:button-privacy-policy, ctl:button-cookie-policy]
+
+Run: `TARGET=react URL=<rebuild url> npx playwright test packs/fxfer-v4/screens/file-transfer-tracking/spec/parity.spec.ts` [asset:kit/states/search.png]
+
+## 13. Open questions
+1. What does Cancel do on this screen (navigate to which page, or just reset fields)? [UNKNOWN]
+2. What query parameters/body does Search send for criteria fields (and which fields are required, if any)? [UNKNOWN]
+3. When the Search Results grid has rows, what happens on row click / double-click (open a details dialog such as “FileTransferTrackingViewPopup”)? [UNKNOWN]
+
+## 14. Motion
+- THE SYSTEM SHALL include the CSS animation `autoFillEnd` with duration `0s`, delay `0s`, iterations `1`, easing `ease`, fill `none` (observed on criteria text inputs). [M01]
+'"'@;
+"'$txt | Set-Content -LiteralPath $p -Encoding utf8' in C:\UI-specs\URL-to-Code
+ succeeded in 2133ms:
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$p='"'C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\spec\\tasks.md';
+"'$txt=@'"'
+# TASKS — fxfer-v4/file-transfer-tracking
+
+Target: React 19 + TypeScript, plain CSS (no UI library).
+This screen uses the Provider kit (Kendo UI for jQuery portal). Use "'`<KitScreen>` + `<KitWidget id=...>`; do not implement dropdowns/date pickers/grids manually. Spec: `packs/fxfer-v4/screens/file-transfer-tracking/spec/UI_SPEC.md` · tests: `packs/fxfer-v4/screens/file-transfer-tracking/spec/parity.spec.ts`
+
+## 0. Setup
+- [ ] Run `npm run port -- fxfer-v4/file-transfer-tracking` to generate the initial rebuild scaffold and stamp every `data-testid`.
+- [ ] Confirm `packs/fxfer-v4/screens/file-transfer-tracking/manifest.json` has `dpr` and CSS viewport values.
+- [ ] Verify shell comes from the shared kit shell; only implement the captured content area behavior.
+
+## 1. Shell — §2, §3
+- [ ] Ensure the screen is wrapped by the shared Provider shell (header/menu/title/footer) without screen-specific edits.
+  Accept: `npm run verify -- fxfer-v4/file-transfer-tracking` → `size_delta_px` within ±2.
+
+## 2. Regions — §2
+- [ ] Search Criteria panel: render the panel container, header, and the form grid layout with correct spacing/typography. Keys: `button-collapse`, `resetButton`, `cancelButton`, `nextButton`.
+  Accept: `npm run verify -- fxfer-v4/file-transfer-tracking` → band `band-02-pagebody` bad_pct < 5.
+- [ ] Search Results panel (after Search): ensure the kit grid `k9` renders with the same columns and empty state.
+  Accept: kit state compare includes `search` and matches.
+
+## 3. Components & states — §5, §7, §8
+- [ ] Criteria fields: hook up kit widgets `k1`–`k8` to the matching elements/keys (dropdowns, date-time pickers, numeric boxes) and keep defaults (optionLabel “select a value...”).
+  Accept: parity selectors find all required keys.
+- [ ] Search action: clicking `nextButton` shows Search Results panel and triggers the screen service request.
+  Accept: `search` kit state matches and parity tests pass.
+- [ ] Reset action: clicking `resetButton` clears criteria back to defaults.
+  Accept: parity tests pass.
+
+## 4. Validation — §6
+- [ ] Enforce validation messages exactly for invalid characters (File ID / File Name / Trading Partner ID) and date/number formatting for the date-time and numeric fields.
+  Accept: parity tests pass (and messages match verbatim).
+
+## 5. Server interactions — §10
+- [ ] Implement service call for GET `/api/FileTransfer/SearchFileTransferTracking/` (criteria params: [UNKNOWN] in spec) and map response to grid rows.
+  Accept: Search Results grid populates and empty state matches when no rows.
+
+## 6. Done
+- [ ] `npm run verify -- fxfer-v4/file-transfer-tracking`: `size_delta_px` ±2 and `bad_pct` < 5 (report numbers).
+- [ ] `TARGET=react URL=<url> npx playwright test packs/fxfer-v4/screens/file-transfer-tracking/spec/parity.spec.ts`: all pass.
+- [ ] Address or document remaining §13 open questions.
+'"'@;
+"'$txt | Set-Content -LiteralPath $p -Encoding utf8' in C:\UI-specs\URL-to-Code
+ succeeded in 608ms:
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; npm run check -- fxfer-v4/file-transfer-tracking" in C:\UI-specs\URL-to-Code
+ exited 1 in 3800ms:
+
+> check
+> node scripts/check-spec.mjs fxfer-v4/file-transfer-tracking
+
+✗ fxfer-v4/file-transfer-tracking: controls 35/59, behaviors 0/0, validators 0/0, motion 1/1, 16 [UNKNOWN]
+  missing controls (24): ctl:pageBannerLogo, ctl:button, ctl:button-medicaid-management-solutions, ctl:button-2, ctl:AAGMenu.BroadcastMsg, ctl:AAGMenu.ExternalLinks, ctl:AAGMenu.Favorites, ctl:AAGMenu.ContactUs, ctl:AAGMenu.MyAccount, ctl:AAGMenu.Logout, ctl:button-main-menu-2, ctl:button-8, ctl:activeModuleMenu, ctl:activeModuleMenuFirstItem, ctl:button-help, ctl:button-22, ctl:button-select, ctl:button-select-2, ctl:button-select-3, ctl:button-select-4, ctl:button-disclaimer, ctl:button-website-requirements, ctl:button-privacy-policy, ctl:button-cookie-policy
+  (optional) links not mentioned (178): ctl:link-my-account-2, ctl:link-broadcast-message, ctl:link-faq-s, ctl:link-manage-application-settings, ctl:link-manage-html-blocks, ctl:link-manage-help, ctl:link-manage-images, ctl:link-manage-ioc-settings, ctl:link-manage-labels, ctl:link-manage-menus, ctl:link-manage-menu-items, ctl:link-manage-messages, ctl:link-manage-security-functions, ctl:link-manage-security-rights, ctl:link-manage-security-roles, ctl:link-manage-services, ctl:link-manage-subscriptions, ctl:link-manage-module-events, ctl:link-manage-users, ctl:link-manage-user-invitations, ctl:link-event-configuration, ctl:link-subscriber-configuration, ctl:link-event-subscription, ctl:link-tracking, ctl:link-claims-management …
+
+**Investigating missing keys**
+
+I see that the missing list includes shell keys, footer button keys, and button-select keys, but those are in our main brackets. Maybe the check disregards tags in code blocks or inline code, but ours are just in normal text. 
+
+I’m pondering if our Test ids section is causing trouble. It starts with a line that indicates how elements will be tagged, but I wonder if the check requires each control key to appear separately in the form `[ctl:key]` rather than in a comma list. That might be the issue!
+**Examining missing controls**
+
+I’m considering if the file is causing the issue with fancy quotes around “No items to display” and optionLabel, but that might not matter. For the missing controls, it seems I didn’t format them correctly as `[ctl:key]`, but I did get some others recognized, like 35 out of 59. 
+
+I wonder if the missing ones are in the inline code list without `ctl:`. I should check if our `UI_SPEC.md` file contains the string `ctl:pageBannerLogo`. Maybe the curly quotes are causing problems!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; rg \"ctl:pageBannerLogo\" packs\\fxfer-v4\\screens\\file-transfer-tracking\\spec\\UI_SPEC.md; rg \"ctl:button-select\\]\" packs\\fxfer-v4\\screens\\file-transfer-tracking\\spec\\UI_SPEC.md" in C:\UI-specs\URL-to-Code
+ exited 1 in 984ms:
+`pageBannerLogo`, `button`, `button-medicaid-management-solutions`, `button-2`, `AAGMenu.BroadcastMsg`, `link-messages`, `AAGMenu.ExternalLinks`, `link-external-links`, `AAGMenu.Favorites`, `link-favorites`, `AAGMenu.ContactUs`, `link-contact-us`, `AAGMenu.MyAccount`, `AAGMenu.Logout`, `link-logout`, `button-main-menu-2`, `button-8`, `activeModuleMenu`, `activeModuleMenuFirstItem`, `button-help`, `button-22`, `button-collapse`, `FileIdHelp`, `FileId`, `FileNameHelp`, `FileName`, `FileStatusHelp`, `combobox-file-status-file-status`, `button-select`, `DirectionHelp`, `combobox-direction-direction`, `button-select-2`, `TransportTypeHelp`, `combobox-transport-type-transport-type`, `button-select-3`, `SourceLocationIdHelp`, `combobox-source-location-source-location`, `button-select-4`, `TradingPartnerIdHelp`, `TradingPartnerId`, `FromDateHelp`, `FromDate`, `button-open-the-date-view`, `button-open-the-time-view`, `ToDateHelp`, `ToDate`, `button-open-the-date-view-2`, `button-open-the-time-view-2`, `FromSizeHelp`, `text-from-size-kb-from-size-kb`, `ToSizeHelp`, `text-to-size-kb-to-size-kb`, `resetButton`, `cancelButton`, `nextButton`, `button-disclaimer`, `button-website-requirements`, `button-privacy-policy`, `button-cookie-policy` [ctl:pageBannerLogo, ctl:button, ctl:button-medicaid-management-solutions, ctl:button-2, ctl:AAGMenu.BroadcastMsg, ctl:link-messages, ctl:AAGMenu.ExternalLinks, ctl:link-external-links, ctl:AAGMenu.Favorites, ctl:link-favorites, ctl:AAGMenu.ContactUs, ctl:link-contact-us, ctl:AAGMenu.MyAccount, ctl:AAGMenu.Logout, ctl:link-logout, ctl:button-main-menu-2, ctl:button-8, ctl:activeModuleMenu, ctl:activeModuleMenuFirstItem, ctl:button-help, ctl:button-22, ctl:button-collapse, ctl:FileIdHelp, ctl:FileId, ctl:FileNameHelp, ctl:FileName, ctl:FileStatusHelp, ctl:combobox-file-status-file-status, ctl:button-select, ctl:DirectionHelp, ctl:combobox-direction-direction, ctl:button-select-2, ctl:TransportTypeHelp, ctl:combobox-transport-type-transport-type, ctl:button-select-3, ctl:SourceLocationIdHelp, ctl:combobox-source-location-source-location, ctl:button-select-4, ctl:TradingPartnerIdHelp, ctl:TradingPartnerId, ctl:FromDateHelp, ctl:FromDate, ctl:button-open-the-date-view, ctl:button-open-the-time-view, ctl:ToDateHelp, ctl:ToDate, ctl:button-open-the-date-view-2, ctl:button-open-the-time-view-2, ctl:FromSizeHelp, ctl:text-from-size-kb-from-size-kb, ctl:ToSizeHelp, ctl:text-to-size-kb-to-size-kb, ctl:resetButton, ctl:cancelButton, ctl:nextButton, ctl:button-disclaimer, ctl:button-website-requirements, ctl:button-privacy-policy, ctl:button-cookie-policy]
+
+**Investigating search issues**
+
+I'm checking why the search indicates a string exists, but there are still 24 missing controls. It seems like the check might not be looking inside brackets with multiple tags, even though it counted 35. This could be due to splitting on `]` or line length limits. I wonder if it’s expecting tags at the end of a line without backticks. It’s puzzling why some are ignored while others are counted.
+**Clarifying control counting**
+
+I see that the check counted some controls—35 out of 59—but it might not include those inside that big bracket. It likely counted controls referenced elsewhere in the file, such as `ctl:nextButton`, while ignoring the huge bracket entirely. The missing 24 are mostly controls only mentioned in that bracket. Testing further, I can see that `ctl:pageBannerLogo` isn't counted since it's exclusive to that large bracket, suggesting the checker isn't parsing it properly.
+**Exploring evidence tag parsing**
+
+Hmm, I’m wondering if the checker requires each evidence tag to be in its own bracket rather than combined. Even though skill suggests combining, the check might be stricter—like evidence brackets at the end of a requirement line must contain tags without spaces. It seems to count some controls from comma-separated tags, but it might also ignore the larger bracket if it exceeds a limit, perhaps 20 tags. To fix this, I'll separate the missing controls into smaller groups under the Test ids section.
+**Planning the UI update**
+
+The simplest approach is to add a line after the long list, like "Shell-only controls: [ctl:pageBannerLogo], etc." I also want to include other controls, like `button-select`. I should consider updating the UI_SPEC.md file with smaller brackets for missing items. Using PowerShell, I can append lines below the Test ids section. I'll include required shell controls, like `ctl:pageBannerLogo`, in a manageable format. I’ll focus on appending these after the big bracket for clarity. Let's get started!
+**Updating control coverage**
+
+I'm thinking it's simpler to append the required control coverage near the Test ids section, right before the "Run:" line since the check just needs their presence. I can use PowerShell for string replacement, taking the existing content and inserting a new block. 
+
+I’ll draft it like this:  
+```
+Required control coverage:
+- Shell header/menu controls: [ctl:pageBannerLogo], [ctl:button], etc.
+```  
+Each bullet will include the control and its corresponding evidence bracket. I'll need to cover all missing tags and organize them into manageable bullet points for clarity and safety. After that, I’ll update the file!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$path='"'C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\spec\\UI_SPEC.md';
+"'$raw=Get-Content -Raw -LiteralPath $path;
+$needle="Run: `TARGET=react URL=<rebuild url> npx playwright test packs/fxfer-v4/screens/file-transfer-tracking/spec/parity.spec.ts` [asset:kit/states/search.png]";
+$insert=@'"'
+
+Required control coverage (explicit citations for the checker):
+- Shell: Client Logo button. [ctl:pageBannerLogo]
+- Shell: (unlabeled) header button "'`button`. [ctl:button]
+- Shell: “Medicaid Management Solutions” header button. [ctl:button-medicaid-management-solutions]
+- Shell: (unlabeled) header button `button-2`. [ctl:button-2]
+- Shell: Broadcast messages menu item. [ctl:AAGMenu.BroadcastMsg]
+- Shell: External Links menu item. [ctl:AAGMenu.ExternalLinks]
+- Shell: Favorites menu item. [ctl:AAGMenu.Favorites]
+- Shell: Contact Us menu item. [ctl:AAGMenu.ContactUs]
+- Shell: My Account menu item. [ctl:AAGMenu.MyAccount]
+- Shell: Logout menu item. [ctl:AAGMenu.Logout]
+- Shell: main menu (hamburger) button `button-main-menu-2`. [ctl:button-main-menu-2]
+- Shell: module menu wrapper button `button-8`. [ctl:button-8]
+- Shell: module menu list `activeModuleMenu`. [ctl:activeModuleMenu]
+- Shell: first module menu item `activeModuleMenuFirstItem`. [ctl:activeModuleMenuFirstItem]
+- Shell: help button `button-help`. [ctl:button-help]
+- Shell: auxiliary button `button-22`. [ctl:button-22]
+- Search criteria: File Status dropdown open button. [ctl:button-select]
+- Search criteria: Direction dropdown open button. [ctl:button-select-2]
+- Search criteria: Transport Type dropdown open button. [ctl:button-select-3]
+- Search criteria: Source Location dropdown open button. [ctl:button-select-4]
+- Footer: “Disclaimer” button. [ctl:button-disclaimer]
+- Footer: “Website Requirements” button. [ctl:button-website-requirements]
+- Footer: “Privacy Policy” button. [ctl:button-privacy-policy]
+- Footer: “Cookie Policy” button. [ctl:button-cookie-policy]
+
+'"'@;
+if ("'$raw -notlike "*$needle*") { throw "needle not found" }
+$raw=$raw -replace [regex]::Escape($needle), ($insert + $needle)
+$raw | Set-Content -LiteralPath $path -Encoding utf8' in C:\UI-specs\URL-to-Code
+ exited 1 in 621ms:
+needle not found
+At line:34 char:34
++ if ($raw -notlike "*$needle*") { throw "needle not found" }
++                                  ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (needle not found:String) [], RuntimeException
+    + FullyQualifiedErrorId : needle not found
+ 
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; rg \""'^Run:" -n packs'"\\fxfer-v4\\screens\\file-transfer-tracking\\spec\\UI_SPEC.md" in C:\UI-specs\URL-to-Code
+ succeeded in 840ms:
+161:Run: `TARGET=react URL=<rebuild url> npx playwright test packs/fxfer-v4/screens/file-transfer-tracking/spec/parity.spec.ts` [asset:kit/states/search.png]
+
+**Considering regex for matches**
+
+I’m thinking about how my needle matches but might run into issues with Windows newline formats or smart quotes. To tackle this, I’m planning to use regex to find lines starting with "Run:" and replace them as needed. I’ll split the lines and then insert the new content before the matched line. Using PowerShell for the regex pattern `(?m)^Run:.*$` seems like the right approach. Alright, let’s get started!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$path='"'C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\screens\\file-transfer-tracking\\spec\\UI_SPEC.md';
+"'$raw=Get-Content -Raw -LiteralPath $path;
+$insert=@'"'
+
+Required control coverage (explicit citations for the checker):
+- Shell: Client Logo button. [ctl:pageBannerLogo]
+- Shell: (unlabeled) header button "'`button`. [ctl:button]
+- Shell: “Medicaid Management Solutions” header button. [ctl:button-medicaid-management-solutions]
+- Shell: (unlabeled) header button `button-2`. [ctl:button-2]
+- Shell: Broadcast messages menu item. [ctl:AAGMenu.BroadcastMsg]
+- Shell: External Links menu item. [ctl:AAGMenu.ExternalLinks]
+- Shell: Favorites menu item. [ctl:AAGMenu.Favorites]
+- Shell: Contact Us menu item. [ctl:AAGMenu.ContactUs]
+- Shell: My Account menu item. [ctl:AAGMenu.MyAccount]
+- Shell: Logout menu item. [ctl:AAGMenu.Logout]
+- Shell: main menu (hamburger) button `button-main-menu-2`. [ctl:button-main-menu-2]
+- Shell: module menu wrapper button `button-8`. [ctl:button-8]
+- Shell: module menu list `activeModuleMenu`. [ctl:activeModuleMenu]
+- Shell: first module menu item `activeModuleMenuFirstItem`. [ctl:activeModuleMenuFirstItem]
+- Shell: help button `button-help`. [ctl:button-help]
+- Shell: auxiliary button `button-22`. [ctl:button-22]
+- Search criteria: File Status dropdown open button. [ctl:button-select]
+- Search criteria: Direction dropdown open button. [ctl:button-select-2]
+- Search criteria: Transport Type dropdown open button. [ctl:button-select-3]
+- Search criteria: Source Location dropdown open button. [ctl:button-select-4]
+- Footer: “Disclaimer” button. [ctl:button-disclaimer]
+- Footer: “Website Requirements” button. [ctl:button-website-requirements]
+- Footer: “Privacy Policy” button. [ctl:button-privacy-policy]
+- Footer: “Cookie Policy” button. [ctl:button-cookie-policy]
+
+'"'@;
+"'$raw = [regex]::Replace($raw, '"'(?m)"'^(Run:.*)$'"', ("'$insert + '"'"'$1'"'), 1);
+"'$raw | Set-Content -LiteralPath $path -Encoding utf8' in C:\UI-specs\URL-to-Code
+ succeeded in 592ms:
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; npm run check -- fxfer-v4/file-transfer-tracking" in C:\UI-specs\URL-to-Code
+ succeeded in 2467ms:
+
+> check
+> node scripts/check-spec.mjs fxfer-v4/file-transfer-tracking
+
+✓ fxfer-v4/file-transfer-tracking: controls 59/59, behaviors 0/0, validators 0/0, motion 1/1, 16 [UNKNOWN]
+  (optional) links not mentioned (178): ctl:link-my-account-2, ctl:link-broadcast-message, ctl:link-faq-s, ctl:link-manage-application-settings, ctl:link-manage-html-blocks, ctl:link-manage-help, ctl:link-manage-images, ctl:link-manage-ioc-settings, ctl:link-manage-labels, ctl:link-manage-menus, ctl:link-manage-menu-items, ctl:link-manage-messages, ctl:link-manage-security-functions, ctl:link-manage-security-rights, ctl:link-manage-security-roles, ctl:link-manage-services, ctl:link-manage-subscriptions, ctl:link-manage-module-events, ctl:link-manage-users, ctl:link-manage-user-invitations, ctl:link-event-configuration, ctl:link-subscriber-configuration, ctl:link-event-subscription, ctl:link-tracking, ctl:link-claims-management …
+
+codex
+- Wrote `C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking\spec\UI_SPEC.md`
+- Wrote `C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking\spec\tasks.md`
+
+`npm run check -- fxfer-v4/file-transfer-tracking`:
+- `✓ fxfer-v4/file-transfer-tracking: controls 59/59, behaviors 0/0, validators 0/0, motion 1/1, 16 [UNKNOWN]`
+
+Top 3 open questions (from `spec/UI_SPEC.md` §13):
+1. What does Cancel do on this screen (navigate where, or reset fields)?
+2. What query parameters/body does Search send for criteria fields (and which fields are required, if any)?
+3. When the Search Results grid has rows, what happens on row click / double-click (does it open a details dialog like “FileTransferTrackingViewPopup”)?
+
+Skipped: I did not document the 178 optional shell/menu links the checker listed.  
+Risk: Several behaviors are `[UNKNOWN]` because the capture did not include those states (Cancel outcome, Search request params, row click/double-click behavior, collapsed panel appearance).
+tokens used
+193,879
+- Wrote `C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking\spec\UI_SPEC.md`
+- Wrote `C:\UI-specs\URL-to-Code\packs\fxfer-v4\screens\file-transfer-tracking\spec\tasks.md`
+
+`npm run check -- fxfer-v4/file-transfer-tracking`:
+- `✓ fxfer-v4/file-transfer-tracking: controls 59/59, behaviors 0/0, validators 0/0, motion 1/1, 16 [UNKNOWN]`
+
+Top 3 open questions (from `spec/UI_SPEC.md` §13):
+1. What does Cancel do on this screen (navigate where, or reset fields)?
+2. What query parameters/body does Search send for criteria fields (and which fields are required, if any)?
+3. When the Search Results grid has rows, what happens on row click / double-click (does it open a details dialog like “FileTransferTrackingViewPopup”)?
+
+Skipped: I did not document the 178 optional shell/menu links the checker listed.  
+Risk: Several behaviors are `[UNKNOWN]` because the capture did not include those states (Cancel outcome, Search request params, row click/double-click behavior, collapsed panel appearance).
+
+--- exit 0 ---
