@@ -9,8 +9,6 @@ __pycache__/
 
 # ignore packs by default, but keep the one we want to publish
 packs/*
-!packs/ffxfer-index-v1/
-!packs/ffxfer-index-v1/**
-!packs/fxfer-v3/
-!packs/fxfer-v3/**
+!packs/claims-mgmt-v1/
+!packs/claims-mgmt-v1/**
 
