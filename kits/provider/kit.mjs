@@ -122,7 +122,7 @@ async function shellParts(page, scope) {
     const out = { menus: 0, panels: 0 };
     const inScope = scope ? document.querySelector(scope) : null;
     for (const ul of document.querySelectorAll('ul[data-role=menu]')) {
-      if (!ul.querySelector(':scope > li > .k-menu-popup, :scope > li > .k-animation-container')) continue;
+      if (!ul.querySelector(':scope > li > .k-menu-popup, :scope > li > .k-animation-container, :scope > li[data-groupparent]')) continue;
       out.menus++;
       try {
         const m = window.jQuery(ul).data('kendoMenu'), a = m?.options?.animation || {};
@@ -150,10 +150,11 @@ async function shellParts(page, scope) {
 async function demoFlyout(page, which, module) {
   const ok = await page.evaluate(({ which, module }) => {
     const vis = (el) => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden';
-    const sub = ':scope > .k-menu-popup, :scope > .k-animation-container';
-    const ul = [...document.querySelectorAll('ul[data-role=menu]')].find((u) => vis(u) && u.querySelector(':scope > li > .k-menu-popup, :scope > li > .k-animation-container') && (which === 'side') === !!u.closest('[data-kit-menu]'));
+    // an item with a submenu: its popup inside it, or (opened before: a scrollable Kendo menu lifts the popup out) linked by data-groupparent
+    const has = (li) => li.matches('[data-groupparent]') || !!li.querySelector(':scope > .k-menu-popup, :scope > .k-animation-container');
+    const ul = [...document.querySelectorAll('ul[data-role=menu]')].find((u) => vis(u) && [...u.children].some(has) && (which === 'side') === !!u.closest('[data-kit-menu]'));
     if (!ul) return false;
-    const lis = [...ul.children].filter((li) => li.tagName === 'LI' && li.querySelector(sub) && vis(li));
+    const lis = [...ul.children].filter((li) => li.tagName === 'LI' && has(li) && vis(li));
     const li = lis.find((l) => module && l.textContent.replace(/\s+/g, ' ').trim().toLowerCase().startsWith(module.toLowerCase())) || lis[0];
     if (!li) return false;
     li.setAttribute('data-kit-flyout-demo', which);
@@ -347,7 +348,9 @@ export async function explore({ page, context, s, out, log, kit }) {
     await s.settle(300, 6000);
     await page.waitForTimeout(500);
     screen.grids = await page.evaluate(() => window.__kit.grids());
-    screen.search = { reveals: await page.evaluate(() => window.__kit.revealed()), requests: requestsSince(t0) };
+    // rows: what the live page answered to a Search with the form as it loads (nothing typed): the rebuild's Search must
+    // fill the grid from the same click, or the row and dialog checks that follow it have nothing to click
+    screen.search = { reveals: await page.evaluate(() => window.__kit.revealed()), requests: requestsSince(t0), rows: Object.values(screen.grids)[0]?.rowCount ?? 0 };
     screen.requests.search = screen.search.requests[0] || null;
     await page.evaluate(() => scrollTo(0, 0));
     states.push({ name: 'search', steps: [{ do: 'click', sel: '[data-kit-action=search]' }], wait: 1200, full: true, shot: await shot('search') });
@@ -356,6 +359,26 @@ export async function explore({ page, context, s, out, log, kit }) {
   }
   // 5. Create New (and the first row's edit/detail): each dialog harvested, then closed. Never Save.
   let dn = 0;
+  const who = (loc) => loc.evaluate((e) => ({ id: e.id || null, text: (e.value || e.textContent || e.getAttribute('title') || '').replace(/\s+/g, ' ').trim().slice(0, 60) })).catch(() => ({ id: null, text: '' }));
+  // A Create New that opened no window may show a part of what is already there (the Destination form inside the Add
+  // dialog; an inline editor on a page): what the click turned on and off, a picture, and the part put away again with its
+  // own Cancel (never Save). Returns null when nothing changed.
+  const partOf = async (before, nm) => {
+    await s.settle(0, 3000).catch(() => {});
+    await page.waitForTimeout(400);
+    const ch = await page.evaluate((b) => window.__kit.changed(b), before).catch(() => null);
+    if (!ch || (!ch.show.length && !ch.hide.length)) return null;
+    await page.waitForTimeout(200);
+    const part = { ...ch, shot: await shot(nm), restored: false };
+    const cancel = page.locator(ch.show.map((x) => `${x} [data-kit-action=cancel]:visible`).join(', ') || '[data-kit-none]').first();
+    if (await cancel.count()) {
+      await cancel.click({ timeout: 2000 }).catch(() => {});
+      await page.waitForTimeout(600);
+      const back = await page.evaluate((b) => window.__kit.changed(b), before).catch(() => null);
+      part.restored = !!back && !back.show.length && !back.hide.length;
+    }
+    return part;
+  };
   const harvestDialog = async (label, nested) => {
     if (!(await waitWindow(nested ? 6000 : 20000))) return null;
     await s.settle(0, 6000).catch(() => {}); // its content may still be loading (dropdown data, the editor's own script)
@@ -365,44 +388,70 @@ export async function explore({ page, context, s, out, log, kit }) {
     const id = `d${++dn}`;
     fs.writeFileSync(path.join(dir, 'dialogs', `${id}.html`), d.contentHtml);
     delete d.contentHtml;
-    screen.dialogs[id] = { ...d, opener: label, children: [] };
+    screen.dialogs[id] = { ...d, opener: label, children: [], creates: [] };
     await shot(`dialog-${id}`);
-    if (!nested) { // a Create New inside the dialog (Destination Configuration): one level down
+    if (!nested) { // a Create New inside the dialog (Destination Configuration): a window one level down, or a part of this one
       const inner = page.locator('.k-window [data-kit-action=create]:visible');
       for (let i = 0, n = Math.min(await inner.count(), 3); i < n; i++) {
-        const t0 = Date.now();
-        await inner.nth(i).click({ timeout: 3000 }).catch(() => {});
+        const t0 = Date.now(), me = await who(inner.nth(i));
+        const before = await page.evaluate(() => window.__kit.marks()).catch(() => null);
+        await inner.nth(i).click({ timeout: 3000 }).catch((e) => log(`  ! kit: Create New "${me.text}" in dialog ${id} click failed: ${e.message.split('\n')[0]}`));
         await page.waitForTimeout(500);
         const count = await page.evaluate(() => [...document.querySelectorAll('.k-window')].filter((w) => w.getClientRects().length).length);
-        if (count < 2) continue;
+        if (count < 2) {
+          const part = before && await partOf(before, `dialog-${id}-part${i + 1}`);
+          if (!part) { log(`  ! kit: Create New "${me.text}" in dialog ${id} opened no window and showed nothing`); continue; }
+          screen.dialogs[id].creates.push({ index: i, ...me, ...part, requests: requestsSince(t0) });
+          log(`  kit: Create New "${me.text}" in dialog ${id} shows ${part.show.join(', ') || 'nothing'}${part.hide.length ? `, hides ${part.hide.join(', ')}` : ''}${part.restored ? '' : ' (its Cancel did not put it away: no further click in this dialog)'}`);
+          if (!part.restored) break; // the dialog is no longer as it was at rest
+          continue;
+        }
         const sub = await harvestDialog(`${label} > create ${i + 1}`, true);
         if (!sub) continue;
         Object.assign(screen.dialogs[sub], { parent: id, requests: requestsSince(t0) });
         screen.dialogs[id].children.push(sub);
+        screen.dialogs[id].creates.push({ index: i, ...me, dialog: sub });
         await page.evaluate(() => window.__kit.closeDialog());
         await page.waitForTimeout(800);
       }
     }
     return id;
   };
+  // the checks of a dialog's parts, replayed after the steps that open the dialog
+  const partStates = (id, steps) => (screen.dialogs[id].creates || []).filter((c) => !c.dialog).map((c) => ({ name: `dialog-${id}-part${c.index + 1}`,
+    steps: [...steps, { do: 'click', sel: `[data-kit-dialog="${id}"] [data-kit-action=create]`, nth: c.index }], wait: 1200,
+    expect: [...c.show.map((x) => ({ sel: `[data-kit-dialog="${id}"] ${x}`, why: `"${c.text}" in the dialog shows this part` })), ...c.hide.map((x) => ({ sel: `[data-kit-dialog="${id}"] ${x}`, visible: false, why: `"${c.text}" in the dialog hides this part` }))] }));
   const create = page.locator('[data-kit-action=create]:visible');
   const creates = await create.count();
   for (let i = 0; i < Math.min(creates, 3); i++) {
     const el = create.nth(i);
     if (await el.evaluate((e) => !!e.closest('.k-window')).catch(() => true)) continue;
-    let t0 = 0, id = null;
-    for (let attempt = 1; attempt <= 2 && !id; attempt++) { // a second try: the first click may have gone to something on top
+    let t0 = 0, id = null, part = null;
+    const me = await who(el), nav0 = s.guard.events.length;
+    for (let attempt = 1; attempt <= 2 && !id && !part; attempt++) { // a second try: the first click may have gone to something on top
       for (let tries = 0; attempt > 1 && tries < 3 && await visibleWindow(); tries++) { await page.evaluate(() => window.__kit.closeDialog()); await page.waitForTimeout(800); }
       await unblock(el, `Create New #${i + 1}`);
+      const before = await page.evaluate(() => window.__kit.marks()).catch(() => null);
       t0 = Date.now();
       await el.click({ timeout: 3000 }).catch((e) => log(`  ! kit: Create New #${i + 1} click failed: ${e.message.split('\n')[0]}`));
       id = await harvestDialog(`Create New #${i + 1}`, false);
+      // no window: the button may show an editor in the page itself (not after a navigation: the page is another one then)
+      if (!id && before && !s.guard.events.slice(nav0).some((e) => e.type === 'navigation')) part = await partOf(before, `create-${i + 1}-part`);
+    }
+    // replayed in the order it happened here: after Search (the page behind the dialog shows the results)
+    const steps = [...(screen.search ? [{ do: 'click', sel: '[data-kit-action=search]' }] : []), { do: 'click', sel: '[data-kit-action=create]', nth: i }];
+    if (part) {
+      (screen.creates ||= []).push({ index: i, ...me, ...part, requests: requestsSince(t0) });
+      states.push({ name: `create-${i + 1}-part`, steps, wait: 1200, expect: [...part.show.map((x) => ({ sel: x, why: `"${me.text}" shows this part of the page` })), ...part.hide.map((x) => ({ sel: x, visible: false, why: `"${me.text}" hides this part of the page` }))] });
+      log(`  kit: Create New #${i + 1} "${me.text}" opens no dialog: it shows ${part.show.join(', ') || 'nothing'}${part.hide.length ? `, hides ${part.hide.join(', ')}` : ''}`);
+      if (!part.restored) { log('  ! kit: that part could not be put away again: no further Create New is tried on this page'); break; }
+      continue;
     }
     if (!id) { log(`  ! kit: Create New #${i + 1} opened no dialog (requests after the click: ${requestsSince(t0).map((r) => `${r.method} ${r.url}`).join(', ') || 'none'})`); continue; }
     screen.dialogs[id].requests = requestsSince(t0);
     screen.dialogs[id].openerIndex = i;
-    // replayed in the order it happened here: after Search (the page behind the dialog shows the results)
-    states.push({ name: `dialog-${id}`, steps: [...(screen.search ? [{ do: 'click', sel: '[data-kit-action=search]' }] : []), { do: 'click', sel: '[data-kit-action=create]', nth: i }], wait: 1200, shot: `states/dialog-${id}.png` });
+    screen.dialogs[id].openerId = me.id;
+    states.push({ name: `dialog-${id}`, steps, wait: 1200, shot: `states/dialog-${id}.png` }, ...partStates(id, steps));
     for (let tries = 0; tries < 3 && await visibleWindow(); tries++) { await page.evaluate(() => window.__kit.closeDialog()); await page.waitForTimeout(800); }
   }
   // the first row of the first grid: an edit/detail dialog, or a link to another page (recorded, not followed)
@@ -426,7 +475,8 @@ export async function explore({ page, context, s, out, log, kit }) {
       screen.row = { dialog: id, navigates: nav ? nav.url.replace(/^https?:\/\/[^/]+/, '') : null, requests: requestsSince(t0), via: how };
       if (id) {
         screen.dialogs[id].requests = screen.row.requests;
-        states.push({ name: `row-${id}`, steps: [{ do: 'click', sel: '[data-kit-action=search]' }, { do: how === 'dblclick' ? 'dblclick' : 'click', sel: '[data-kit-row="0"]' }], wait: 1200, shot: `states/dialog-${id}.png` });
+        const steps = [{ do: 'click', sel: '[data-kit-action=search]' }, { do: how === 'dblclick' ? 'dblclick' : 'click', sel: '[data-kit-row="0"]' }];
+        states.push({ name: `row-${id}`, steps, wait: 1200, shot: `states/dialog-${id}.png`, expect: [{ sel: `[data-kit-dialog="${id}"]`, why: `a ${how === 'dblclick' ? 'double-click' : 'click'} on a grid row opens its dialog` }] }, ...partStates(id, steps));
         for (let tries = 0; tries < 3 && await visibleWindow(); tries++) { await page.evaluate(() => window.__kit.closeDialog()); await page.waitForTimeout(800); }
       }
       log(`  kit: first row (${how}) -> ${id ? `dialog ${id} "${screen.dialogs[id].title}"` : nav ? `navigates to ${screen.row.navigates} (not followed)` : 'nothing'}`);
@@ -464,6 +514,9 @@ export async function explore({ page, context, s, out, log, kit }) {
   return screen;
 }
 
+// a Create New that shows a part of the page or of a dialog instead of opening a window
+const partLine = (where) => (c) => `- "${c.text}"${c.id ? ` (#${c.id})` : ''} ${where} opens no window: it shows ${c.show.join(', ') || 'nothing'}${c.hide.length ? ` and hides ${c.hide.join(', ')}` : ''} (picture kit/${c.shot}); a Cancel inside that part puts it away again. The kit does this`;
+
 // facts.md: what the harvest found, for the spec writer
 export function factsSection(out) {
   const k = readJson(path.join(out, 'kit', 'screen.json'));
@@ -475,7 +528,9 @@ export function factsSection(out) {
     ...Object.entries(k.widgets).map(([id, def]) => (def.kind === 'grid' ? `- [kit:${id}] grid: ${def.columns.map((c) => `${c.title}${c.sortable ? ' (sortable)' : ''}${c.filterable ? ' (filter)' : ''}`).join(', ')}; page size ${def.pageSize}` : `- [kit:${id}] ${w(def)}`)),
     ...k.fields.filter((x) => Object.keys(x.validation).length).map((x) => `- field ${x.name}: validation ${Object.entries(x.validation).map(([r, m]) => `${r} "${m}"`).join('; ')}`),
     `- Actions: ${k.actions.map((a) => `${a.action} "${a.text}"`).join(', ') || 'none'}`,
-    k.search ? `- Search reveals ${k.search.reveals.join(', ') || 'nothing'}; calls ${k.search.requests.map((r) => `${r.method} ${r.url}`).join(', ') || 'no endpoint'}` : '- No Search on this screen',
+    k.search ? `- Search reveals ${k.search.reveals.join(', ') || 'nothing'}; calls ${k.search.requests.map((r) => `${r.method} ${r.url}`).join(', ') || 'no endpoint'}${k.search.rows ? `. The capture clicked Search with the form as it loads (nothing typed) and the live page listed ${k.search.rows} row(s): Search needs no criteria on this screen` : ''}` : '- No Search on this screen',
+    ...(k.creates ?? []).map(partLine('on the page')),
+    ...Object.entries(k.dialogs).flatMap(([id, d]) => (d.creates ?? []).filter((c) => !c.dialog).map(partLine(`in dialog [kit:${id}] "${d.title}"`))),
     ...Object.entries(k.grids).map(([id, g]) => `- [kit:${id}] after Search: ${g.total} rows, page size ${g.pageSize}; field types ${Object.entries(g.fields).map(([n, t]) => `${n}:${t.type}`).join(', ')} (rows in the rebuild are synthetic)`),
     ...Object.entries(k.dialogs).map(([id, d]) => `- [kit:${id}] dialog "${d.title}" (opened by ${d.opener}${d.parent ? `, inside ${d.parent}` : ''}): actions ${d.actions.map((a) => a.action).join('/')}; ${dlgWidgets(d)}; markup kit/dialogs/${id}.html, picture kit/states/dialog-${id}.png`),
     ...Object.values(k.dialogs).flatMap((d) => d.fields.filter((x) => Object.keys(x.validation).length).map((x) => `- dialog "${d.title}" field ${x.name}: validation ${Object.entries(x.validation).map(([r, m]) => `${r} "${m}"`).join('; ')}`)),
@@ -497,7 +552,9 @@ export function todo(out, { route }) {
   const done = [], left = [];
   for (const [id, w] of Object.entries(k.widgets)) done.push(`${id}: ${w.kind} "${label(w)}"${w.items?.length ? ` (${w.items.length} options)` : ''}`);
   for (const [id, d] of Object.entries(k.dialogs)) done.push(`${id}: dialog "${d.title}", opened by ${d.opener}${d.parent ? ` inside ${d.parent}` : ''} (dialogs/ in the screen folder)`);
-  if (k.search) done.push(`Search: fills the grid with synthetic rows${k.search.reveals.length ? `, reveals ${k.search.reveals.join(', ')}` : ''}`);
+  if (k.search) done.push(`Search: fills the grid with synthetic rows${k.search.reveals.length ? `, reveals ${k.search.reveals.join(', ')}` : ''}${k.search.rows ? `. On the live page a Search with nothing typed listed ${k.search.rows} row(s): keep it that way (no rule of yours may stop a Search with an empty form; the checks click Search, then a row)` : ''}`);
+  for (const [where, list] of [['the page', k.creates ?? []], ...Object.values(k.dialogs).map((d) => [`dialog "${d.title}"`, (d.creates ?? []).filter((c) => !c.dialog)])])
+    for (const c of list) done.push(`"${c.text}" on ${where}: shows ${c.show.join(', ') || 'nothing'}${c.hide.length ? `, hides ${c.hide.join(', ')}` : ''}; Cancel / Save inside that part put it away`);
   if (k.row?.dialog) done.push(`grid row: ${k.row.via === 'dblclick' ? 'a click selects it, a double-click opens' : 'a click opens'} dialog ${k.row.dialog}`);
   if (k.actions.some((a) => a.action === 'reset')) done.push('Reset: clears the fields');
   if (k.actions.some((a) => a.action === 'collapse')) done.push('collapsible panels (chevrons)');
@@ -509,7 +566,7 @@ export function todo(out, { route }) {
   for (const d of Object.values(k.dialogs)) if (d.hidden?.length) left.push(`dialog "${d.title}": ${d.hidden.length} part(s) hidden at rest: the same, from the dialog's script`);
   for (const d of k.missing ?? []) left.push(`dialog ${d.panel} (${d.opener ? `button ${d.opener}` : d.via}) is opened by the screen's script but was NOT captured: do not invent it. Write it in GUESSED.md as "not captured, re-capture needed"`);
   if (k.row && !k.row.dialog && k.plan?.rowDouble) left.push(`grid row double-click calls ${k.plan.rowDouble}${k.plan.rowOpens === 'navigate' ? ' (it navigates to another page: out of this screen, do nothing)' : ' but the capture saw no dialog: write it in GUESSED.md'}`);
-  left.push('every task in spec/tasks.md that the list above does not cover (messages such as "At least one search criteria is required.")');
+  left.push("every task in spec/tasks.md that the list above does not cover (the screen's own messages and rules, exactly as its script has them: do not add a rule the script does not have)");
   return `# Checklist: ${k.shell?.title || route}\n\nGenerated from the capture (kit/screen.json). Route: \`#${route}\`.\n\n## Done by the kit (do not rebuild)\n${done.map((x) => `- [x] ${x}`).join('\n')}\n\n` +
     `## Left for you\n${left.map((x) => `- [ ] ${x}`).join('\n')}\n\n## The screen's own script (paths in the screen folder)\n${own.map((f) => `- ${f}`).join('\n') || '- (none saved)'}\n`;
 }

@@ -164,6 +164,14 @@ async function writeStep(key, { prompt, workdir, expect = [], gate, blocked }) {
     const said = w.code === 0 ? '' : `\nThe writer exited with code ${w.code}${w.timedOut ? ' (timed out)' : ''}. Last lines of its output:\n${tail(lf)}`;
     if (blocked && fs.existsSync(blocked)) {
       const why = fs.readFileSync(blocked, 'utf8').trim();
+      // "the kit is wrong" about something that worked before this writer's change is the change's fault: back to the writer
+      const g = round <= rounds ? await gate() : null;
+      if (g?.broke) {
+        fs.rmSync(blocked, { force: true });
+        report = `${g.text}\nYou wrote BLOCKED.md, but the check shows your own change broke the states listed above: they worked before it. BLOCKED.md was removed. Fix your change.`;
+        log(`   ✗ ${key}: the writer blamed the kit for what its own change broke (${g.broke} state(s)): sent back`);
+        continue;
+      }
       mark(key, 'blocked', { rounds: round, problems: [`the writer reports a problem outside its files (${rel(blocked)}):`, ...why.split('\n').filter(Boolean).slice(0, 30)] });
       log(`   ! ${key}: the writer stopped on a problem it may not fix (kit/shell): ${why.split('\n')[0].slice(0, 200)} (${rel(blocked)})`);
       return false;
@@ -373,6 +381,7 @@ try {
   // with a kit, the shell comes from a module screen (its title bar is what every module screen shows; the home page has none)
   // and the home page is its own complete page
   const ported = (scr) => fs.existsSync(path.join(out, 'src', 'screens', scr.id, 'Page.tsx'));
+  const portedNow = new Set(); // ported in this run: no writer has touched these yet
   // with a kit: a module screen whose capture closed the side menu again (one that froze it open would give every screen
   // an open menu); the kit closes the menu at runtime anyway, this only picks the cleanest source
   const kitOf = (s) => readJson(path.join(screenDir(`${name}/${s.id}`), 'kit', 'screen.json'), null);
@@ -424,6 +433,7 @@ const data = kit as unknown as KitData;
       port([...(scr.scope && !(kit && scr.home) ? ['--scope', scr.scope] : []), '--name', scr.home ? 'Home' : pascal(scr.id), '--out', path.join(out, 'src', 'screens', scr.id),
         ...kitArgs('../../kit'), ...(kit && !scr.home ? ['--services', `../../services/${scr.id}`] : [])]);
       mark(`port:${scr.id}`, 'done');
+      portedNow.add(scr.id);
     } catch (e) { mark(`port:${scr.id}`, 'failed', { problems: [e.message] }); log(`   !! ${e.message}`); }
   }
   if (!fs.existsSync(path.join(out, 'src', 'shell', 'Page.tsx'))) { // no separate content area: screens stand alone
@@ -510,11 +520,42 @@ const data = kit as unknown as KitData;
     const rep = readJson(path.join(vdir, 'report.json'), null);
     if (!v.ok || !rep) return { ok: false, text: `verify could not compare the page:\n${v.text.split('\n').slice(-25).join('\n')}` };
     const lines = v.text.split('\n').filter((l) => /^(behavior:|motion:|states:|sections|cluster|worst)|✗/.test(l.trim()));
-    // kit states (a dropdown open, a dialog...) are reported, not gated: they mostly measure the kit, which the writer must not edit
+    // kit states (a dropdown open, a dialog...) mostly measure the kit, which the writer must not edit: one that already failed on
+    // the port is reported, not gated. One that worked on the port and fails now was broken by the writer: that is gated
     const dh = rep.size_delta_px?.[1] ?? 0, behaviorBad = limits.behavior && lines.some((l) => l.includes('✗') && !l.trim().startsWith('states:'));
     const info = { verify: { bad_pct: rep.bad_pct, size_delta_px: rep.size_delta_px, worst_section: rep.worst_section?.label, behavior: lines.find((l) => l.startsWith('behavior:')), states: lines.find((l) => l.startsWith('states:'))?.split(' | ')[0] } };
-    const ok = rep.bad_pct <= limits.maxBadPct && Math.abs(dh) <= limits.maxHeightDeltaPx * dpr && !behaviorBad;
-    return { ok, info, text: `verify (the app at ${devBase}/#${routeOf(s)} against the captured reference): bad_pct ${rep.bad_pct}% (limit ${limits.maxBadPct}), size_delta_px ${JSON.stringify(rep.size_delta_px)} (height limit ±${limits.maxHeightDeltaPx * dpr}), worst section ${rep.worst_section?.label ?? '?'}\n${lines.join('\n')}\nPictures: ${vdir}${path.sep}candidate.png (the app), diff.png, report.json; the reference is ${screenDir(id)}${path.sep}reference.png` };
+    const base = status.states0?.[s.id], now = statesOf(rep);
+    // broken: its clicks no longer run or what they must show is gone; or its picture, which matched, is clearly further off
+    const broke = base ? Object.entries(now).filter(([n, x]) => base[n] && x.lvl < base[n].lvl && (x.lvl === 0 || (x.pct ?? 0) > (base[n].pct ?? 0) + 5)).map(([n, x]) => `- ${n}: ${x.why}`) : [];
+    const ok = rep.bad_pct <= limits.maxBadPct && Math.abs(dh) <= limits.maxHeightDeltaPx * dpr && !behaviorBad && !broke.length;
+    return { ok, info, broke: broke.length, text: `verify (the app at ${devBase}/#${routeOf(s)} against the captured reference): bad_pct ${rep.bad_pct}% (limit ${limits.maxBadPct}), size_delta_px ${JSON.stringify(rep.size_delta_px)} (height limit ±${limits.maxHeightDeltaPx * dpr}), worst section ${rep.worst_section?.label ?? '?'}\n${lines.join('\n')}\n` +
+      (broke.length ? `States that worked on this screen before your change and fail now. Your change broke them (this is not a kit problem: do not write BLOCKED.md for it). Each is a click path of ${path.join(screenDir(id), 'kit', 'states.json')} (Search, then a grid row, then its dialog...): find the rule or handler of yours that stops it and remove it:\n${broke.join('\n')}\n` : '') +
+      `Pictures: ${vdir}${path.sep}candidate.png (the app), diff.png, report.json; the reference is ${screenDir(id)}${path.sep}reference.png` };
+  };
+  // Kit states before any writer touched a screen (status.json "states0"), per state: 2 it matches the live page, 1 it ran but
+  // its picture is off, 0 its clicks did not run or what they must show is not there. What is below 2 here is the kit's or the
+  // capture's: the writer is told so and need not stop on it. Measured on a fresh port only: once a writer has edited the
+  // screen it cannot be known any more.
+  const statesOf = (rep) => Object.fromEntries((rep?.states ?? []).map((x) => [x.name, { lvl: x.ok ? 2 : x.error ? 0 : 1, pct: x.bad_pct ?? null, why: x.error ?? `${x.bad_pct}% off` }]));
+  const freshPort = (s) => portedNow.has(s.id) || (!status.states0?.[s.id] && !status.items[`code:${s.id}`]);
+  const saveBase = (s) => {
+    const rep = readJson(path.join(screenDir(`${name}/${s.id}`), 'verify', 'report.json'), null);
+    if (!rep?.states) return;
+    (status.states0 ||= {})[s.id] = statesOf(rep);
+    writeJson(statusFile, status);
+  };
+  const baseline = async (s) => {
+    if (!kit || !freshPort(s) || !(await ensureDev())) return;
+    fs.rmSync(path.join(screenDir(`${name}/${s.id}`), 'verify', 'report.json'), { force: true });
+    await nodeRunAsync('verify.mjs', [`${name}/${s.id}`], { URL: `${devBase}/#${routeOf(s)}`, WAIT_ROOT: '1', BEHAVIOR: '0' });
+    saveBase(s);
+  };
+  const known = (s) => {
+    const bad = Object.entries(status.states0?.[s.id] ?? {}).filter(([, x]) => x.lvl < 2).map(([n, x]) => `${n} (${x.why})`);
+    if (!status.states0?.[s.id]) return '';
+    return bad.length
+      ? `- These states of the check already fail on this screen before you start: ${bad.join('; ')}. They are the kit's or the capture's and are already reported to the person running the tool: do not fix them, do not work around them, and do not write BLOCKED.md because of them. Every other state passes now and must still pass when you are done.`
+      : '- Every state of the check passes on this screen before you start (Search, the grid row, the dialogs, the side menu): it must still pass when you are done.';
   };
   const order = [...screens.filter((s) => s.home), ...screens.filter((s) => !s.home)].filter((s) => built.includes(s));
   // the kit's own behavior on the freshly ported app, before any writer touches it: the side menu (opens, flies out, closes),
@@ -527,6 +568,7 @@ const data = kit as unknown as KitData;
     log(`   ${st ?? `no kit states replayed${v.ok ? '' : `: ${v.text.split('\n').slice(-3).join(' | ')}`}`}`);
     const bad = (st ?? '').split(' | ').slice(1).map((x) => x.replace(/^✗\s*/, '').trim()).filter(Boolean);
     mark('preflight:kit', st && !bad.length ? 'done' : 'needs-review', { screen: pre.id, ...(bad.length || !st ? { problems: ['the kit on the raw port (fix it in kits/<kit>, not in the app):', ...(bad.length ? bad : [v.text.split('\n').slice(-5).join(' | ')])] } : {}) });
+    if (freshPort(pre)) { saveBase(pre); portedNow.delete(pre.id); } // this screen's states before its writer: measured just now
   }
   const codeLimit = limiter(kit ? parallel : 1); // without a kit the home step builds the shell every other screen needs
   const codeOf = (s) => {
@@ -542,11 +584,11 @@ const data = kit as unknown as KitData;
       : `Build the screen "${s.label}" in src/screens/${s.id}/ (route #/${s.id}). It renders inside the shared shell (src/shell), which is already built: do not change the shell.`;
     const files = s.home ? (kit ? '- Files you may edit or add: src/screens/home/**, public/assets/home/**.' : '- Files you may edit or add: src/shell/**, src/screens/home/**, public/assets/home/**.')
       : `- Files you may edit or add: src/screens/${s.id}/**, public/assets/${s.id}/**${kit ? `, src/services/${s.id}.ts` : ''}.`;
-    const prompt = kit
-      ? fill('code-kit', { id, dir: screenDir(id), app: out, root: ROOT, name: s.id, goal, files, guide: kit.guide, blocked, verify: verifyCmd(s),
+    const prompt = () => (kit
+      ? fill('code-kit', { id, dir: screenDir(id), app: out, root: ROOT, name: s.id, goal, files, guide: kit.guide, blocked, verify: verifyCmd(s), known: known(s),
         todo: path.join(out, 'docs', 'ui-specs', s.id, 'TODO.md'), extra: kit.prompt('code', { dir: screenDir(id) }) })
-      : fill('code', { id, dir: screenDir(id), app: out, root: ROOT, name: s.id, extra: '', goal, files });
-    return codeLimit(() => writeStep(key, { workdir: out, gate: codeGate(s), prompt, blocked: kit ? blocked : undefined }))
+      : fill('code', { id, dir: screenDir(id), app: out, root: ROOT, name: s.id, extra: '', goal, files }));
+    return codeLimit(async () => { await baseline(s); return writeStep(key, { workdir: out, gate: codeGate(s), prompt: prompt(), blocked: kit ? blocked : undefined }); })
       .catch((e) => { mark(key, 'failed', { problems: [e.message.split('\n')[0]] }); log(`   !! code ${s.id}: ${e.message.split('\n')[0]}`); });
   };
   await Promise.all(order.map(codeOf).filter(Boolean));

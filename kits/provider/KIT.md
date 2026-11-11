@@ -49,8 +49,11 @@ kit problem is fixed once in `final-playwright/kits/provider/app`, for every scr
 
 What the kit cannot know, taken from the screen's own script (`<screen>/capture/js/…/hp.ua3.<Module>.<screen>.js`) and the spec:
 - conditional fields (a radio that shows more fields, a checkbox that enables a dropdown) and cascading dropdowns' options,
-- what Cancel does on a search page, and the screen's own messages ("At least one search criteria is required."),
+- what Cancel does on a search page, and the screen's own messages and rules, exactly as its script has them,
 - anything the spec lists that the port does not show.
+
+Never add a rule the screen's script does not have. In particular: when the checklist says the live Search listed rows with
+nothing typed, Search with an empty form must keep filling the grid (the checks click Search, then a row, then its dialog).
 
 Use the kit's bus for values (`ctx.bus.on('change', …)`) or plain DOM events on the ported markup; keep the class names.
 Each screen gets a checklist, `docs/ui-specs/<screen>/TODO.md` in the app: what the kit already does and what is left.
@@ -107,7 +110,10 @@ menu link close it: Escape and a click on the backdrop do not. The capture recor
 A module's submenu is a box **beside** the module list, not inside it: Kendo lifts the popup out of the `<ul>` (which clips what
 is inside) into a `.k-animation-container` on the menu's scroll wrapper, `left: -width; top: <the item's top>` for the vertical
 side menu, under the item for the horizontal **module tab** (`#activeModuleMenu`, "CLAIMS MANAGEMENT ∨" under the header). The
-kit does the same for both (`[data-kit-flyout]`), with each menu's own timings (stamped on the `<ul>`). Only a link to a screen of
+kit does the same for both (`[data-kit-flyout]`), with each menu's own timings (stamped on the `<ul>`). A module the capture
+itself hovered no longer has its popup inside its `<li>`: Kendo left it in that container, linked by `data-groupparent` (on the
+item) and `data-group` (on the popup); the kit finds it there (this is the module of the pack, hovered for the fly-out check: the
+rebuilt menu once opened every module except that one). Only a link to a screen of
 this app navigates (and closes the menu); every other item is shown and leads nowhere, so the whole menu can be browsed. **Quick
 Links** (`#mobileMenuIcon`) is a collapsible shell panel: the capture stamps it (`collapse`) and the kit toggles its angle icon,
 `subpanel-collapsed`, title and body like the portal's `expandPanel`. The **page help book** (`.help-icon-container`) belongs to
@@ -122,6 +128,14 @@ The capture reads the screen's own script for `openModalOverlay("<panel>", …)`
 opener with nothing on top of it, waits for the window while the page loads (up to 20 s), and double-clicks the first row when
 the script says so. In the rebuild a click selects the row and a double-click opens its dialog. A dialog the script opens but
 the capture could not see is listed in `screen.json` `missing` and in facts.md as `[UNKNOWN]`: never invent it.
+
+A **Create New inside a dialog** (also one in a grid's toolbar, such as the Destination grid of an Add dialog) is clicked too.
+It either opens a window one level down (`dialogs.<id>.children`), or shows a part of the same dialog that is hidden at rest
+(the Destination form): the capture records which parts the click turned on and off (`dialogs.<id>.creates[].show / .hide`,
+selectors inside the dialog; picture `states/dialog-<id>-partN.png`), and puts the part away with its own Cancel. The kit
+replays it: the button shows the part, a Cancel or Save inside the part puts it away (Save validates that part only), and the
+dialog's own Cancel still closes the dialog. The same holds for a Create New on the page that opens no window
+(`screen.json` `creates`). Hidden-at-rest parts of a dialog are stamped `data-kit-h` like the page's.
 
 ## Known gaps (say them in GUESSED.md when a screen needs them)
 

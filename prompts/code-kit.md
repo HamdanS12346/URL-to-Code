@@ -48,6 +48,11 @@ Rules:
 Check your work (the dev server is already running; never start or stop it):
 - `npx tsc --noEmit` in {{app}}: only errors in your own files count.
 - {{verify}}
+- Its `states:` line replays the capture's own clicks on your screen (Search with the form as it loads, a grid row, each
+  dialog, the side menu). A state that passed before you started and fails after your change is your change's fault, not the
+  kit's: the check fails on it. Never add a rule that stops one of those clicks (a "criteria required" message in front of a
+  Search that the live page answered with rows).
+{{known}}
 Do not open the live site.
 Never open, print or copy .env files or anything under packs/*/auth/ (they hold the portal password and session).
 {{extra}}

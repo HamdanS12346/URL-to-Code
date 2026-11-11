@@ -16,12 +16,16 @@ export type WidgetDef = {
 export type GridAfter = { total: number; pageSize: number | null; fields: Record<string, { type: string; maxLen: number; minLen: number }>; rowTemplate: string | null; altRowTemplate: string | null; html: string; rowCount: number };
 export type DialogDef = { title: string; windowClass: string; windowStyle: string | null; titlebarHtml: string | null; contentClass: string; contentId: string | null; contentStyle: string | null;
   overlay: { className: string; style: string | null; background: string; opacity: string } | null; options: Record<string, unknown> | null; widgets: Record<string, WidgetDef>;
-  opener: string; openerIndex?: number; parent?: string; children: string[] };
+  opener: string; openerIndex?: number; openerId?: string | null; parent?: string; children: string[]; creates?: Create[] };
+// what a Create New did on the live page, by the button's id (else its place among the shown ones): opened a dialog, or
+// showed / hid parts of the dialog (or page) it sits in (selectors inside it), scrolling it there
+export type Create = { index: number; id: string | null; text: string; dialog?: string; show?: string[]; hide?: string[]; scroll?: number | null };
 type Anim = { effects?: string; duration?: number };
 export type KitData = {
   shell?: { title: string | null; module: string | null };
   widgets: Record<string, WidgetDef>; grids: Record<string, GridAfter>; dialogs: Record<string, DialogDef>;
-  search: { reveals: string[]; requests: { method: string; url: string; params: string[] }[] } | null;
+  search: { reveals: string[]; requests: { method: string; url: string; params: string[] }[]; rows?: number } | null;
+  creates?: Create[]; // a Create New on the page that opens no dialog
   row: { dialog: string | null; navigates: string | null; via?: 'link' | 'row' | 'dblclick' } | null;
   // what the screen's own script can open (openModalOverlay panels, the row's double-click handler), and which of those
   // the capture did not manage to harvest

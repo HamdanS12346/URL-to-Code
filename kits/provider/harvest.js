@@ -134,8 +134,8 @@
   const actions = (root) => {
     const out = [];
     for (const b of root.querySelectorAll('button, input[type=button], input[type=submit], input[type=reset], a.k-button, a.btn, .k-window-titlebar-action')) {
-      if (b.closest('.k-grid, .k-pager') && !b.closest('.k-grid-toolbar')) continue;
-      if (b.closest('[data-kit]')) continue;
+      // a grid's toolbar holds page buttons (the Create New of a dialog's Destination grid); the rest of a widget is the kit's
+      if (!b.closest('.k-grid-toolbar') && (b.closest('.k-grid, .k-pager') || b.closest('[data-kit]'))) continue;
       const t = clean(b.value || b.textContent || b.getAttribute('aria-label') || b.getAttribute('title'));
       const hit = ACTIONS.find(([, re]) => re.test(t)) || (b.matches('.k-window-titlebar-action') && /close/i.test(b.getAttribute('aria-label') || b.getAttribute('title') || '') ? ['close'] : null);
       if (!hit) continue;
@@ -155,10 +155,20 @@
     }
     return out;
   };
+  // a grid's markup was taken before its toolbar buttons were stamped: take it again, so the rebuilt grid carries them
+  const restamp = (defs) => {
+    for (const [id, def] of Object.entries(defs)) {
+      const el = def.kind === 'grid' && document.querySelector(`[data-kit="${id}"]`);
+      if (el && el.querySelector('.k-grid-toolbar [data-kit-action]')) def.html = el.outerHTML;
+    }
+  };
   const hiddenAtRest = (root) => {
     const out = [];
     for (const el of root.querySelectorAll('div, section, fieldset, table, span, p, ul')) {
-      if (out.length >= 300 || el.closest('[data-kit-h], [data-kit], .k-animation-container, .k-window, script, template, [data-kit-collapse]')) continue;
+      if (out.length >= 300 || el.closest('[data-kit-h], [data-kit], script, template, [data-kit-collapse]')) continue;
+      // Kendo's own hidden wrappers under root are not parts of the page; root itself may sit in one (a dialog's content)
+      const k = el.closest('.k-animation-container, .k-window');
+      if (k && root.contains(k)) continue;
       if (getComputedStyle(el).display !== 'none' || (!el.children.length && !clean(el.textContent))) continue;
       el.setAttribute('data-kit-h', 'h' + ++h);
       out.push(el.getAttribute('data-kit-h'));
@@ -183,15 +193,19 @@
         if (mod) mod.setAttribute('data-kit-shell', 'module');
       }
       // Kendo's leftovers under <body>: hidden window wrappers, overlays, popup containers. The kit renders its own; the port drops these
+      // (not a menu's submenu: once opened, a scrollable Kendo menu keeps it in a container beside the <ul>, and the kit's
+      // fly-out is built from it)
       for (const e of document.querySelectorAll('.k-window, .k-overlay, .k-animation-container, .k-list-container, .k-calendar-container, .k-tooltip, .k-popup'))
-        if (!e.closest('[data-kit-menu], .k-menu, [data-kit]') && !e.parentElement?.closest('.k-window, .k-animation-container')) e.setAttribute('data-kit-drop', '');
+        if (!e.closest('[data-kit-menu], .k-menu, [data-kit]') && !e.parentElement?.closest('.k-window, .k-animation-container') && !e.querySelector('.k-menu-popup')) e.setAttribute('data-kit-drop', '');
       const focus = document.activeElement && document.activeElement !== document.body && root.contains(document.activeElement) ? document.activeElement : null;
       if (focus) focus.setAttribute('data-kit-autofocus', '');
       const header = document.querySelector('#pageHeader');
+      const acts = actions(root);
+      restamp(defs);
       return {
         shell: { title: title ? clean(title.textContent) : null, module: mod ? clean(mod.textContent) : null, headerStyle: header?.getAttribute('style') || null,
           headerHeight: header ? Math.round(header.getBoundingClientRect().height) : null },
-        widgets: defs, fields: fields(root), actions: actions(root), hidden: hiddenAtRest(root), unknown: unknownRoles(root), autofocus: focus ? (focus.id || focus.name || focus.tagName) : null,
+        widgets: defs, fields: fields(root), actions: acts, hidden: hiddenAtRest(root), unknown: unknownRoles(root), autofocus: focus ? (focus.id || focus.name || focus.tagName) : null,
         kendo: window.kendo?.version || null, jquery: $?.fn?.jquery || null,
       };
     },
@@ -246,6 +260,52 @@
       return out;
     },
     revealed() { return [...document.querySelectorAll('[data-kit-h]')].filter(shown).map((e) => e.getAttribute('data-kit-h')); },
+    // A click that opens no window may show a part of the page instead (the Destination form inside the Add dialog). marks():
+    // which parts are shown now, inside the open dialog or else the page: the hidden-at-rest parts and every element with an
+    // id (the portal's scripts show and hide by id). changed(before): what a click turned on and off since, outermost
+    // parts only, as selectors the rebuild resolves inside the same dialog / page.
+    marksRoot() { const win = [...document.querySelectorAll('.k-window')].filter(shown).pop(); return win ? win.querySelector('.k-window-content') || win : document.body; },
+    marks() {
+      const root = this.marksRoot(), out = {};
+      for (const el of root.querySelectorAll('[data-kit-h], [id]')) {
+        if (el.closest('[data-kit], .k-animation-container, script') || (root === document.body && el.closest('.k-window, [data-kit-menu], #pageHeader'))) continue;
+        out[el.hasAttribute('data-kit-h') ? `[data-kit-h="${el.getAttribute('data-kit-h')}"]` : `#${CSS.escape(el.id)}`] = shown(el);
+      }
+      return { parts: out, scroll: Math.round(root === document.body ? scrollY : root.scrollTop) };
+    },
+    changed(before) {
+      const root = this.marksRoot(), now = this.marks();
+      const flipped = Object.keys(now.parts).filter((k) => k in before.parts && now.parts[k] !== before.parts[k]);
+      const els = new Map(flipped.map((k) => [k, root.querySelector(k)]));
+      const outer = (k) => !flipped.some((o) => o !== k && now.parts[o] === now.parts[k] && els.get(o) !== els.get(k) && els.get(o)?.contains(els.get(k)));
+      const pick = (on) => flipped.filter((k) => now.parts[k] === on && outer(k)).slice(0, 20);
+      const show = pick(true);
+      if (show.length) els.get(show[0])?.scrollIntoView({ block: 'nearest' }); // for the picture; the live page's own scroll was read before this
+      return { show, hide: pick(false), scroll: now.scroll !== before.scroll ? now.scroll : null };
+    },
+    // A click that opens no window may show a part of the page instead (the Destination form inside the Add dialog). marks():
+    // which parts are shown now, inside the open dialog or else the page: the hidden-at-rest parts and every element with an
+    // id (the portal's scripts show and hide by id). changed(before): what a click turned on and off since, outermost
+    // parts only, as selectors the rebuild resolves inside the same dialog / page.
+    marksRoot() { const win = [...document.querySelectorAll('.k-window')].filter(shown).pop(); return win ? win.querySelector('.k-window-content') || win : document.body; },
+    marks() {
+      const root = this.marksRoot(), out = {};
+      for (const el of root.querySelectorAll('[data-kit-h], [id]')) {
+        if (el.closest('[data-kit], .k-animation-container, script') || (root === document.body && el.closest('.k-window, [data-kit-menu], #pageHeader'))) continue;
+        out[el.hasAttribute('data-kit-h') ? `[data-kit-h="${el.getAttribute('data-kit-h')}"]` : `#${CSS.escape(el.id)}`] = shown(el);
+      }
+      return { parts: out, scroll: Math.round(root === document.body ? scrollY : root.scrollTop) };
+    },
+    changed(before) {
+      const root = this.marksRoot(), now = this.marks();
+      const flipped = Object.keys(now.parts).filter((k) => k in before.parts && now.parts[k] !== before.parts[k]);
+      const els = new Map(flipped.map((k) => [k, root.querySelector(k)]));
+      const outer = (k) => !flipped.some((o) => o !== k && now.parts[o] === now.parts[k] && els.get(o)?.contains(els.get(k)) && els.get(o) !== els.get(k));
+      const pick = (on) => flipped.filter((k) => now.parts[k] === on && outer(k)).slice(0, 20);
+      const show = pick(true), first = show.length ? els.get(show[0]) : null;
+      first?.scrollIntoView({ block: 'nearest' }); // for the picture; the live page's own scroll was read before this
+      return { show, hide: pick(false), scroll: now.scroll !== before.scroll ? now.scroll : null };
+    },
     // an open Kendo window: stamp it like the page, hand back its parts
     dialog() {
       const win = [...document.querySelectorAll('.k-window')].filter(shown).pop();
@@ -254,6 +314,7 @@
       const defs = {};
       scan(content, defs);
       const acts = actions(win);
+      restamp(defs);
       const hidden = hiddenAtRest(content);
       const w = widgetOf(content.matches('[data-role=window]') ? content : content.querySelector('[data-role=window]') || content);
       const ov = [...document.querySelectorAll('.k-overlay')].find(shown);

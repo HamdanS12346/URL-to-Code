@@ -65,6 +65,12 @@ assert.ok(dlg.some((d) => d.title === 'Add Destination' && d.parent), 'the neste
 assert.ok(cfg.row?.dialog && cfg.dialogs[cfg.row.dialog].title === 'Edit File Transfer Configuration', `first row opens the edit dialog: ${JSON.stringify(cfg.row)}`);
 const add = dlg.find((d) => d.title === 'Add File Transfer Configuration');
 assert.ok(add.fields.some((f) => f.validation.required === 'Configuration Name is a required field.'), 'MVC validation messages harvested');
+// the Add dialog's two Create New buttons: one opens a window, the one in the Destination grid's toolbar shows a part of the dialog
+assert.ok(add.creates?.some((c) => c.id === 'btnAddDest' && c.dialog), `the Create New that opens a window: ${JSON.stringify(add.creates)}`);
+const part = add.creates.find((c) => c.id === 'DestinationGridAddButton');
+assert.ok(part && !part.dialog && part.show.length === 1 && /data-kit-h/.test(part.show[0]), `the Create New in a grid toolbar shows the hidden Destination form: ${JSON.stringify(add.creates)}`);
+assert.equal(part.restored, true, 'and the capture put the form away again with its own Cancel');
+assert.ok(add.hidden.length >= 1, 'the hidden-at-rest parts of a dialog are stamped');
 assert.ok(cfg.calibration.dropdownPopup?.includes('k-list-container'), 'live dropdown popup markup recorded');
 assert.ok(cfg.calibration.tooltip?.includes('k-tooltip'), 'live tooltip markup recorded');
 assert.equal(cfg.calibration.defaults.popup.open.duration, 200, "Kendo's own popup animation");
@@ -87,6 +93,10 @@ assert.equal(trk.dialogs[trk.row.dialog]?.title, 'View File Transfer Tracking', 
 assert.deepEqual(trk.missing, [], 'every dialog the script opens was harvested');
 const cfgStates = j(path.join(S('file-transfer-configuration'), 'kit', 'states.json')).map((s) => s.name);
 for (const n of ['menu-open', 'menu-flyout', 'menu-close', 'tab-flyout']) assert.ok(cfgStates.includes(n), `verify replays ${n}: ${cfgStates}`);
+assert.ok(cfgStates.some((n) => /^dialog-d\d+-part\d+$/.test(n)), `verify replays the dialog's Create New part: ${cfgStates}`);
+// the capture hovers the pack's module for the fly-out check, and a scrollable Kendo menu then keeps that module's popup outside
+// its <li>: the rebuilt menu must still open that module (it once opened every module except this one)
+assert.match(html, /<li[^>]*data-groupparent/, 'the snapshot has a module whose popup Kendo lifted out of it');
 // the page-level help book: the tracking page has it, the others (and so the shell, ported from the first) do not
 assert.ok(j(path.join(S('file-transfer-tracking'), 'kit', 'screen.json')).help?.includes('help-icon-container'), 'the tracking capture records its help book');
 assert.equal(j(path.join(S('file-transfer-configuration'), 'kit', 'screen.json')).help, null, 'the configuration capture records that it has none');
@@ -108,7 +118,11 @@ const tsc = spawnSync(process.execPath, [path.join(ROOT, 'node_modules', 'typesc
 assert.equal(tsc.status, 0, `tsc fails:\n${tsc.stdout}${tsc.stderr}`);
 const vrep = j(path.join(S('file-transfer-configuration'), 'verify', 'report.json'));
 assert.ok(vrep.states?.length >= 3, `kit states replayed by verify: ${JSON.stringify(vrep.states)}`);
-for (const s of vrep.states.filter((x) => x.name.startsWith('menu-'))) assert.ok(s.ok, `verify: ${s.name} on the rebuild: ${s.error ?? `${s.bad_pct}% off`}`);
+for (const s of vrep.states.filter((x) => /^menu-|^dialog-d\d+-part|^row-/.test(x.name))) assert.ok(s.ok, `verify: ${s.name} on the rebuild: ${s.error ?? `${s.bad_pct}% off`}`);
+assert.ok(vrep.states.find((x) => x.name === 'tab-flyout') && !vrep.states.find((x) => x.name === 'tab-flyout').error, `verify: the module tab's fly-out shows on the rebuild: ${JSON.stringify(vrep.states.find((x) => x.name === 'tab-flyout'))}`);
+// the states of each screen before its writer ran: what a writer breaks afterwards is told apart from what the kit got wrong
+const states0 = j(path.join(P, "status.json")).states0;
+for (const s of pack.screens) assert.ok(states0?.[s.id] && Object.keys(states0[s.id]).length, `states0 for ${s.id}: ${JSON.stringify(states0)}`);
 assert.ok(fs.existsSync(path.join(APP, 'docs', 'ui-specs', 'file-transfer-tracking', 'TODO.md')), 'a checklist for the code writer');
 assert.match(read('docs/ui-specs/file-transfer-tracking/TODO.md'), /double-click opens dialog/, 'the checklist says what the kit does for the row');
 
@@ -168,10 +182,24 @@ try {
   await p.waitForSelector('.k-window [data-kit-dialog-content]', { timeout: 3000 });
   await p.waitForTimeout(500);
   assert.equal((await p.locator('.k-window .k-window-title').first().textContent()).trim(), 'Add File Transfer Configuration');
-  await p.locator('.k-window [data-kit-action=save]').click();
+  // the dialog's own Create New (in its Destination grid's toolbar): shows the Destination form inside the dialog; that
+  // form's Save validates the form only, its Cancel puts it away and leaves the dialog open
+  assert.equal(await p.locator('.k-window #divDestinationId').isVisible(), false, 'the Destination form is hidden at rest');
+  await p.locator('.k-window #DestinationGridAddButton').click();
+  await p.waitForTimeout(300);
+  assert.ok(await p.locator('.k-window #divDestinationId').isVisible(), 'the Create New in the dialog shows the Destination form');
+  await p.locator('.k-window #SaveAndCloseButton').click();
+  await p.waitForTimeout(200);
+  const dlgText = await p.locator('.k-window').first().textContent();
+  assert.ok(dlgText.includes('Destination Name is a required field.') && !dlgText.includes('Configuration Name is a required field.'), 'its Save validates the Destination form only');
+  await p.locator('.k-window #DestinationCancelButton').click();
+  await p.waitForTimeout(300);
+  assert.equal(await p.locator('.k-window #divDestinationId').isVisible(), false, 'its Cancel puts the form away');
+  assert.equal(await p.locator('.k-window').count(), 1, 'and the dialog stays open');
+  await p.locator('.k-window #btnSave').click();
   await p.waitForTimeout(200);
   assert.ok((await p.locator('.k-window').first().textContent()).includes('Configuration Name is a required field.'), "Save shows the server's validation message");
-  await p.locator('.k-window [data-kit-action=cancel]').click();
+  await p.locator('.k-window #btnCancelEdit').click();
   await p.waitForTimeout(700);
   assert.equal(await p.locator('.k-window').count(), 0, 'Cancel closes the dialog');
   // the side menu: opens like the portal's (its classes + the backdrop), Escape and the backdrop leave it open, a module

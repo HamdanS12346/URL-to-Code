@@ -32,7 +32,7 @@ body{margin:0;font:14px Arial,"Helvetica Neue",Helvetica,sans-serif;color:#333;b
 #mainMenuContainer{position:fixed;top:0;right:0;width:288px;height:100%;background:#fff;z-index:1002;padding-top:60px;box-sizing:border-box;flex-direction:column}
 #mainMenuContainer .fa-xmark{position:absolute;left:16px;top:20px;color:#2b3a44}
 #mainMenuItemContainer{display:flex;height:82vh}.menu .k-menu{background:#2b3a44;border:0;line-height:32px}.menu .k-menu-link{color:#fff;text-transform:uppercase;padding:0 12px}.menu .k-menu-group{background:#2b3a44}.menu .k-menu-group a{color:#fff;padding:8px 14px;display:block}
-#mainMenu{border:0;width:100%}#mainMenu .k-menu-link,.child-menu .k-menu-link{font-weight:bold;color:#1e2a33}
+.k-menu-scroll-wrapper{width:100%!important}#mainMenu{border:0;width:100%}#mainMenu .k-menu-link,.child-menu .k-menu-link{font-weight:bold;color:#1e2a33}
 #moduleContentBar{display:flex;height:32px;align-items:center;background:#00f0b0}
 .module-name{background:#2b3a44;color:#fff;height:32px;line-height:32px;padding:0 6px 0 36px;text-transform:uppercase}
 #moduleContentBar h1{margin:0 0 0 10px;font:italic bold 14px Arial}
@@ -99,8 +99,10 @@ function openModalOverlay(panelId, url, cssClass){
 }
 function setKendoGridDataBoundEvents(e, msg, onClick, onDblClick){ /* the client's version binds the row clicks here */ }
 $(function(){
-  $('#mainMenu').kendoMenu({ orientation: 'vertical', direction: 'left', hoverDelay: 100, animation: { open: { duration: 200 }, close: { duration: 100 } } });
-  $('#activeModuleMenu').kendoMenu({ openOnClick: false });
+  // scrollable, like the client's: once an item was opened Kendo keeps its popup in a container on the scroll wrapper, out of
+  // the <li> (data-groupparent / data-group). The capture hovers the pack's own module, so that is the one it finds this way
+  $('#mainMenu').kendoMenu({ orientation: 'vertical', direction: 'left', scrollable: true, hoverDelay: 100, animation: { open: { duration: 200 }, close: { duration: 100 } } });
+  $('#activeModuleMenu').kendoMenu({ openOnClick: false, scrollable: true });
   $('[data-role=tooltip]').each(function(){ $(this).kendoTooltip({ position: 'top', showAfter: 400 }); });
 });
 </script></body></html>`;
@@ -170,8 +172,15 @@ ${field('Edit_OwnerEmail', 'Owner Email', text('Edit_OwnerEmail', 'OwnerEmail', 
 </div></div>
 <div class="content-panel-container"><div class="content-panel-hdr">Destination Configuration <button class="btn" type="button" id="btnAddDest">Create New</button></div><div class="content-panel-bdy"><div id="destGrid"></div></div></div>
 <div class="buttons"><button class="btn" type="button" id="btnResetEdit">Reset</button><span class="spacer"></span><button class="btn" type="button" id="btnCancelEdit">Cancel</button><button class="btn btn-primary" type="button" id="btnSave">Save</button></div>
+<div id="divDestinationId" style="display: none;"><div class="content-panel-container"><div class="content-panel-hdr">Destination</div><div class="content-panel-bdy">
+<div class="editor-row">${field('DestinationName', 'Destination Name', text('DestinationName', 'DestinationName', 'data-val="true" data-val-required="Destination Name is a required field."'), 'Destination Name', true)}</div>
+<div class="buttons"><span class="spacer"></span><input id="DestinationCancelButton" type="button" value="Cancel" class="btn"><input id="SaveAndCloseButton" type="button" value="Save" class="btn btn-primary"></div></div></div></div>
 <script>$('#Edit_Protocol').kendoDropDownList({ optionLabel: 'select a value...', dataSource: ['FTP','SFTP','UNC'] });
 $('#destGrid').kendoGrid({ autoBind: false, noRecords: 'There are no records found.', columns: [{ field: 'Address', title: 'Destination Address' }, { field: 'Protocol', title: 'Destination Protocol' }], dataSource: { data: [] } });
+// the client's Add dialog: a second Create New in the Destination grid's toolbar shows a form that is part of the same dialog
+$('#destGrid').prepend('<div class="k-toolbar k-grid-toolbar"><button id="DestinationGridAddButton" title="Create New" type="button" class="k-button"><span class="k-button-text">Create New</span></button></div>');
+$('#DestinationGridAddButton').on('click', function(){ $('#divDestinationId').show(); });
+$('#DestinationCancelButton').on('click', function(){ $('#divDestinationId').hide(); });
 $('.k-window [data-role=tooltip]').each(function(){ if (!$(this).data('kendoTooltip')) $(this).kendoTooltip({ position: 'top', showAfter: 400 }); });</script>`;
 const DEST = `${field('DestAddress', 'Destination Address', text('DestAddress', 'DestAddress', 'data-val="true" data-val-required="Destination Address is a required field."'), 'Destination Address', true)}
 <div class="buttons"><span class="spacer"></span><button class="btn" type="button" id="btnCancelDest">Cancel</button><button class="btn btn-primary" type="button" id="btnSaveDest">Save</button></div>`;

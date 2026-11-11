@@ -9,7 +9,7 @@
 // links to a rebuilt screen, the headroom header (hides on scroll down), and the dialogs (Kendo windows).
 import { useCallback, useLayoutEffect, useMemo, useRef, useState, type ComponentType, type KeyboardEvent as RKeyboardEvent, type ReactNode, type SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
-import { Bus, KitContext, DEFAULTS, parseHtml, styleObject, useIsland, type Ctx, type DialogDef, type KitData, type Services } from './core';
+import { Bus, KitContext, DEFAULTS, parseHtml, styleObject, useIsland, type Create, type Ctx, type DialogDef, type KitData, type Services } from './core';
 
 type Open = { id: string; closing: boolean };
 const shown = (el: Element) => el.getClientRects().length > 0;
@@ -43,6 +43,8 @@ function validate(root: Element | null) {
   clearErrors(root);
   let ok = true;
   for (const i of root.querySelectorAll<HTMLInputElement>('input[data-val="true"], select[data-val="true"], textarea[data-val="true"]')) {
+    const h = i.closest('[data-kit-h]');
+    if (h && !shown(h)) continue; // a part that is not on screen (the Destination form of a dialog) is not validated, as on the portal
     const v = i.value.trim();
     const a = (n: string) => i.getAttribute(`data-val-${n}`);
     let msg: string | null = null;
@@ -66,6 +68,17 @@ function validate(root: Element | null) {
 function reveal(el: HTMLElement) {
   el.style.removeProperty('display');
   if (getComputedStyle(el).display === 'none') el.style.display = 'block';
+}
+
+// ---------- a Create New that shows a part of its dialog (or page) instead of opening a window ----------
+// which recorded Create New this button is: by its id, else by its place among the shown ones (as the capture counted them)
+const createOf = (list: Create[] | undefined, act: Element, all: Element[]) =>
+  list?.find((c) => !!c.id && c.id === act.id) ?? list?.find((c) => !c.id && c.index === all.filter(shown).indexOf(act));
+// shows the parts the live click showed and hides the ones it hid (`key` marks them, so a Cancel or Save inside puts them away)
+function setPart(root: ParentNode, c: Create, key: string | null) {
+  for (const s of c.show ?? []) root.querySelectorAll<HTMLElement>(s).forEach((el) => { if (key) { reveal(el); el.setAttribute('data-kit-part', key); } else { el.style.display = 'none'; el.removeAttribute('data-kit-part'); } });
+  for (const s of c.hide ?? []) root.querySelectorAll<HTMLElement>(s).forEach((el) => { if (key) el.style.display = 'none'; else reveal(el); });
+  if (key && c.scroll != null) { if (root instanceof HTMLElement && root.scrollHeight > root.clientHeight) root.scrollTop = c.scroll; else scrollTo(0, c.scroll); }
 }
 
 // ---------- tooltip (one at a time, like Kendo) ----------
@@ -155,11 +168,21 @@ function hideFly(ul: Element, now = false) {
   f.box.classList.remove('k-animation-container-shown');
   f.box.firstElementChild!.animate([{ transform: 'translate(0, 0)' }, { transform: slideFrom(ul) }], { duration: ms, easing: 'ease-in', fill: 'forwards' }).finished.then(done, done);
 }
+// The item's popup: inside the <li>, as the server wrote it. But once the live Kendo has opened an item of a scrollable menu
+// it leaves the popup in a container on the scroll wrapper, linked to the item by data-groupparent / data-group (and
+// aria-controls): that is how the capture finds the one module it hovered itself, which is the pack's own module.
+function popupOf(li: Element): HTMLElement | null {
+  const own = li.querySelector<HTMLElement>(':scope > .k-menu-popup, :scope > .k-animation-container .k-menu-popup');
+  if (own) return own;
+  const src = (sel: string) => [...li.ownerDocument.querySelectorAll<HTMLElement>(sel)].find((p) => !p.closest('[data-kit-flyout]')) ?? null; // not a fly-out's clone
+  const g = li.getAttribute('data-groupparent'), c = li.getAttribute('aria-controls');
+  return (g ? src(`.k-menu-popup[data-group="${CSS.escape(g)}"]`) : null) ?? (c ? src(`[id="${CSS.escape(c)}"]`)?.closest<HTMLElement>('.k-menu-popup') ?? null : null);
+}
 // opens `li`'s popup (and closes the one that was open); an item without a popup only closes the open one
 function showFly(ul: Element, li: Element) {
   const cur = flys.get(ul);
   if (cur?.li === li) return;
-  const pop = li.querySelector<HTMLElement>(':scope > .k-menu-popup, :scope > .k-animation-container .k-menu-popup');
+  const pop = popupOf(li);
   hideFly(ul, !!pop);
   if (!pop) return;
   li.classList.add('k-hover', 'k-focus'); // the portal's CSS highlights the open item through these
@@ -175,6 +198,7 @@ function showFly(ul: Element, li: Element) {
   const clone = pop.cloneNode(true) as HTMLElement;
   clone.style.removeProperty('display');
   clone.setAttribute('aria-hidden', 'false');
+  clone.querySelectorAll<HTMLElement>('.k-menu-scroll-button').forEach((b) => { b.style.display = 'none'; }); // Kendo hides them while everything fits
   child.append(clone);
   box.append(child);
   Object.assign(box.style, { display: 'block', position: 'absolute', zIndex: '10002', visibility: 'hidden' });
@@ -348,6 +372,13 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
     const kind = act.getAttribute('data-kit-action');
     e.preventDefault();
     e.stopPropagation();
+    // inside a part a Create New showed (data-kit-part="<dialog id | page>:<its place in creates>"): Cancel and Save put it away
+    const part = act.closest<HTMLElement>('[data-kit-part]'), home = (dlg ? scope : root.current) as HTMLElement | null;
+    const putAway = () => {
+      const [where, n] = part!.getAttribute('data-kit-part')!.split(':');
+      const c = (where === 'page' ? screen.creates : screen.dialogs[where]?.creates)?.[+n];
+      if (c && home) setPart(home, c, null);
+    };
     switch (kind) {
       case 'search': {
         const v = values(root.current);
@@ -357,21 +388,28 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
         });
         break;
       }
-      case 'reset': resetFields(scope); bus.emit('reset'); break;
+      case 'reset': resetFields(part ?? scope); bus.emit('reset'); break;
       case 'create': {
-        if (dlg) { // a Create New inside a dialog opens that dialog's own child
-          const i = [...document.querySelectorAll(`[data-kit-dialog-content="${dlg}"] [data-kit-action=create]`)].indexOf(act);
-          const child = screen.dialogs[dlg]?.children?.[i];
+        const all = [...(home?.querySelectorAll('[data-kit-action=create]') ?? [])];
+        if (dlg) { // a Create New inside a dialog opens that dialog's own child, or shows a part of the dialog
+          const list = screen.dialogs[dlg]?.creates, c = createOf(list, act, all);
+          const child = c ? c.dialog : screen.dialogs[dlg]?.children?.[all.indexOf(act)]; // no `creates`: a capture from before them
           if (child) openDialog(child);
+          else if (c && home) setPart(home, c, `${dlg}:${list!.indexOf(c)}`);
         } else {
-          const i = [...root.current!.querySelectorAll('[data-kit-action=create]')].filter(shown).indexOf(act);
-          const id = Object.entries(screen.dialogs ?? {}).find(([, d]) => !d.parent && d.openerIndex === i)?.[0];
+          const tops = Object.entries(screen.dialogs ?? {}).filter(([, d]) => !d.parent), i = all.filter(shown).indexOf(act);
+          const id = (tops.find(([, d]) => !!d.openerId && d.openerId === act.id) ?? tops.find(([, d]) => !d.openerId && d.openerIndex === i))?.[0];
+          const c = id ? undefined : createOf(screen.creates, act, all);
           if (id) openDialog(id);
+          else if (c && home) setPart(home, c, `page:${screen.creates!.indexOf(c)}`);
         }
         break;
       }
-      case 'save': if (dlg && validate(scope)) Promise.resolve(services?.save?.(dlg, values(scope))).finally(() => closeDialog(dlg)); break;
-      case 'cancel': case 'close': if (dlg) closeDialog(dlg); break;
+      case 'save':
+        if (part) { if (validate(part)) Promise.resolve(services?.save?.(dlg ?? 'page', values(part))).finally(putAway); }
+        else if (dlg && validate(scope)) Promise.resolve(services?.save?.(dlg, values(scope))).finally(() => closeDialog(dlg));
+        break;
+      case 'cancel': case 'close': if (part && kind === 'cancel') putAway(); else if (dlg) closeDialog(dlg); break;
       case 'collapse': {
         // the body: the panel container's own (the portal's .content-subpanel-container > .content-subpanel-bdy, whose header
         // tools hold the icon one level down), else the element that follows the header
