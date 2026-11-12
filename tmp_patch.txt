@@ -1,4 +1,0 @@
-﻿*** Begin Patch
-*** Add File: docs/provider-probe/zz-test2.txt
-+hello2
-*** End Patch
