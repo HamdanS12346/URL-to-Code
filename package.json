@@ -19,6 +19,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "ui": "node scripts/ui.mjs",
+    "probe": "node scripts/probe.mjs",
     "smoke:ui": "node test/ui-smoke.mjs",
     "check:writer": "node scripts/check-writer.mjs",
     "smoke:provider": "node test/provider-smoke.mjs"
