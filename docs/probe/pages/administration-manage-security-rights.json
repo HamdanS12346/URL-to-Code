@@ -1,0 +1,265 @@
+{
+ "label": "Administration > Manage Security Rights",
+ "trail": [
+  "Administration",
+  "Manage Security Rights"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Localization/ManageSecurityRights",
+ "at": "2026-11-12T19:13:18.381Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage Security Rights",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 12,
+    "button": 1,
+    "dropdownlist": 3,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 6,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 3,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 5836,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h7\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results Content IDModuleRight NameRight DescriptionLong DescriptionRight TypeStatus Loading...0Pageof 0No items t"
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/LocalizationMaint/SearchSecurityRights/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 106,
+    "visibleMs": 5750
+   },
+   "grids": [
+    {
+     "id": "manageSecurityRightGrid",
+     "rows": 0,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 551,
+      "w": 1859,
+      "h": 145
+     }
+    }
+   ],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "k-loading-text",
+      "text": "Loading...",
+      "icons": [],
+      "rect": {
+       "x": 31,
+       "y": 606,
+       "w": 0,
+       "h": 23
+      },
+      "html": "<span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span>",
+      "close": null
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "administration-manage-security-rights--page-search-validation.png"
+   }
+  },
+  "gridFilter": {
+   "stamp": "p2",
+   "icon": {
+    "x": 297,
+    "y": 562,
+    "w": 30,
+    "h": 30
+   },
+   "iconHtml": "<a aria-hidden=\"true\" aria-label=\"Right Name filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Right Name filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p2\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "Right Name",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "filterableColumns": 4,
+   "popup": {
+    "rect": {
+     "x": 297,
+     "y": 592,
+     "w": 274,
+     "h": 207
+    },
+    "className": "k-animation-container k-animation-container-shown",
+    "html": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"display: block; position: absolute; top: 591.854px; z-index: 10002; left: 296.531px;\"><div class=\"k-child-animation-container\" style=\"width: 274.333px; height: 207.188px; display: block; transform: translateY(0px);\"><form title=\"Show items with value that\" class=\"k-filter-menu k-popup\" data-role=\"popup\" aria-hidden=\"false\" style=\"\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\">Show items with value that:</div><span title=\"Operator\" class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"a8ed9e02-ebde-4481-b112-fb7772113a6b_listbox\" aria-busy=\"false\" aria-describedby=\"4461d12d-805d-44db-8c0b-2d2800298761\" style=\"\"><span id=\"4461d12d-805d-44db-8c0b-2d2800298761\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">Equal To</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><select title=\"Operator\" data-bind=\"value: filters[0].operator\" data-adaptive-mode=\"none\" data-role=\"dropdownlist\" style=\"display: none;\"><option value=\"eq\" selected=\"selected\">Equal To</option><option value=\"contains\">Contains</option><option value=\"endswith\">Ends With</option><option value=\"startswith\">Starts With</option></select></span><span class=\"k-textbox k-input\"><input title=\"Value\" data-bind=\"value:filters[0].value\" class=\"k-input-inner\" type=\"text\" data-adaptive-mode=\"none\"></span><div class=\"k-actions-stretched k-actions\"><button title=\"Filter\" class=\"k-button k-button-primary\" type=\"submit\"><span class=\"k-icon k-svg-icon k-svg-i-filter k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span><span class=\"k-button-text\">Filter</span></button><button title=\"Clear\" class=\"k-button\" type=\"reset\"><span class=\"k-icon k-svg-icon k-svg-i-filter-clear k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m143.5 64 168.2 168.2L288 256v160l-64 64V256L64 96V64zm236.1 100.4L448 96V64H279.3l-64-64L192 22l298 298 22-23.3z\"></path></svg></span><span class=\"k-button-text\">Clear</span></button></div></div><div class=\"k-list-container k-popup k-dropdownlist-popup\" data-role=\"popup\" aria-hidden=\"true\" style=\"display: none;\"><div class=\"k-list\" id=\"a8ed9e02-ebde-4481-b112-fb7772113a6b-list\" data-role=\"staticlist\"><div class=\"k-no-data\" aria-live=\"polite\" style=\"display: none;\">No data found.</div><div class=\"k-list-group-sticky-header\" style=\"display: none;\"></div><div class=\"k-list-content k-list-scroller\" unselectable=\"on\"><ul unselectable=\"on\" tabindex=\"-1\" aria-hidden=\"true\" id=\"a8ed9e02-ebde-4481-b112-fb7772113a6b_listbox\" role=\"listbox\" aria-live=\"off\" class=\"k-list-ul\"><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item k-selected k-focus\" aria-selected=\"true\" data-offset-index=\"0\" id=\"326f241e-e5a5-4391-aab8-d2c5a77deedd\"><span class=\"k-list-item-text\">Equal To</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"1\"><span class=\"k-list-item-text\">Contains</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"2\"><span class=\"k-list-item-text\">Ends With</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"3\"><span class=\"k-list-item-text\">Starts With</span></li></ul></div></div></div></form></div></div>",
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": null,
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "dropdowns": [
+     [
+      "Equal To",
+      "Contains",
+      "Ends With",
+      "Starts With"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "stamp": "p3",
+      "className": "k-picker k-dropdownlist k-focus",
+      "expanded": "false",
+      "text": "Equal ToEqual ToContainsEnds WithStarts ",
+      "after": {
+       "htmlDelta": 678,
+       "expanded": "true",
+       "rect": {
+        "x": 297,
+        "y": 592,
+        "w": 274,
+        "h": 207
+       }
+      }
+     }
+    ],
+    "shot": "administration-manage-security-rights--grid-filter.png"
+   }
+  },
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": [
+   "administration-manage-security-rights--page-search-validation.png",
+   "administration-manage-security-rights--grid-filter.png"
+  ]
+ },
+ "ms": 48178
+}

@@ -1,0 +1,286 @@
+{
+ "label": "Managed Care > Provider",
+ "trail": [
+  "Managed Care",
+  "Provider"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ManagedCare/SearchPCPProvider",
+ "at": "2026-11-12T20:28:16.052Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Provider",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 29,
+    "dropdownlist": 5,
+    "textbox": 6,
+    "autocomplete": 3,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 12,
+    "selectable": 1,
+    "pager": 1,
+    "button": 2,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "NameType.ID": [
+     "I",
+     "B"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 1,
+   "hiddenAtRest": 16,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "autocomplete": {
+    "count": 3,
+    "ids": [
+     "ProviderType",
+     "PrimarySpecialtyCode",
+     "Taxonomy"
+    ]
+   }
+  },
+  "hiddenAtRest": 16,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "NameType.ID",
+     "groupLabel": "Choose Type",
+     "value": "I",
+     "label": "Individual",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h7\"]",
+       "labels": [
+        "Last Name",
+        "First Name",
+        "Middle Name",
+        "Gender",
+        "GenderList",
+        "Gender_ID",
+        "Gender_Name",
+        "Gender_DisplayFormat"
+       ],
+       "required": 2,
+       "text": "Last Name kendo.syncReady(function(){jQuery(\"#LastName\").kendoTextBox({});}); // Replace curly single quotes and apostro"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "#PCPIdentifiersList_validationMessage",
+       "labels": [],
+       "required": 0,
+       "text": ""
+      },
+      {
+       "sel": "#NameType_validationMessage",
+       "labels": [],
+       "required": 0,
+       "text": ""
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "NameType.ID",
+     "groupLabel": "Choose Type",
+     "value": "B",
+     "label": "Business",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h8\"]",
+       "labels": [
+        "Business Name"
+       ],
+       "required": 2,
+       "text": "Business Name kendo.syncReady(function(){jQuery(\"#BusinessName\").kendoTextBox({});}); // Replace curly single quotes and"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h7\"]",
+       "labels": [
+        "Last Name",
+        "First Name",
+        "Middle Name",
+        "Gender",
+        "GenderList",
+        "Gender_ID",
+        "Gender_Name",
+        "Gender_DisplayFormat"
+       ],
+       "required": 0,
+       "text": "Last Name kendo.syncReady(function(){jQuery(\"#LastName\").kendoTextBox({});}); // Replace curly single quotes and apostro"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 7,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 5885,
+   "reveals": [
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#PCPIdentifiersList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ManagedCare/GetPCPs/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 142,
+    "visibleMs": 5800
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "ProviderType",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h10\"]",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/Localization/GetFilteredDataListCombined/PlanManagement.DataList.ProviderSpecialties/",
+     "status": "sent"
+    },
+    {
+     "method": "GET",
+     "url": "/api/ManagedCare/GetPCPs/",
+     "status": "sent"
+    },
+    {
+     "method": "GET",
+     "url": "/api/Localization/GetDataListCombined/PlanManagement.DataList.ProviderTypes/",
+     "status": "sent"
+    }
+   ],
+   "grids": [],
+   "validation": null,
+   "shot": "managed-care-provider--search-nomatch.png"
+  },
+  "shots": [
+   "managed-care-provider--search-nomatch.png"
+  ]
+ },
+ "ms": 75177
+}

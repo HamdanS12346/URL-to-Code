@@ -1,0 +1,51 @@
+{
+ "label": "Provider Management > EFT Enrollments",
+ "trail": [
+  "Provider Management",
+  "EFT Enrollments"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderManagement/SearchBaseEFTEnrollments",
+ "at": "2026-11-12T21:30:11.007Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "EFT Enrollments",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 3,
+    "grid": 1,
+    "checkbox": 1,
+    "button": 2,
+    "selectable": 1,
+    "columnsorter": 13,
+    "pager": 1,
+    "dropdownlist": 2,
+    "numerictextbox": 1
+   },
+   "buttons": [],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 2,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 2,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [],
+  "dialogs": [],
+  "shots": []
+ },
+ "ms": 10969
+}

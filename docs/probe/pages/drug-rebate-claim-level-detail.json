@@ -1,0 +1,419 @@
+{
+ "label": "Drug Rebate > Claim Level Detail",
+ "trail": [
+  "Drug Rebate",
+  "Claim Level Detail"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ClaimDetails/SearchClaims",
+ "at": "2026-11-12T19:31:55.382Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Claim Level Detail",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 16,
+    "maskedtextbox": 1,
+    "textbox": 2,
+    "dropdownlist": 4,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 35,
+    "pager": 1,
+    "button": 2,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "ClaimSearchCriteria.ID": [
+     "00",
+     "01",
+     "02"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 5,
+   "hiddenAtRest": 9,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "maskedtextbox": {
+    "count": 1,
+    "ids": [
+     "NationalDrugCode"
+    ]
+   }
+  },
+  "hiddenAtRest": 9,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "ClaimSearchCriteria.ID",
+     "groupLabel": "Search By",
+     "value": "00",
+     "label": "NDC",
+     "checkedAtRest": true,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "ClaimSearchCriteria.ID",
+     "groupLabel": "Search By",
+     "value": "01",
+     "label": "Claim Number",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h4\"]",
+       "labels": [
+        "Claim Number"
+       ],
+       "required": 2,
+       "text": "Claim Number kendo.syncReady(function(){jQuery(\"#ClaimNumber\").kendoTextBox({});}); // Replace curly single quotes and a"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "#divSearchByNDC",
+       "labels": [
+        "NDC"
+       ],
+       "required": 0,
+       "text": "NDC (typeof KendoLicensing === 'object' && KendoLicensing.setScriptKey('141j041f611f063e0837023e133i0i490g310c3a18445h42"
+      },
+      {
+       "sel": "#divSearchByInvoice",
+       "labels": [
+        "Invoice Type",
+        "InvoiceTypeList",
+        "InvoiceType_ID",
+        "InvoiceType_Name",
+        "InvoiceType_DisplayFormat"
+       ],
+       "required": 0,
+       "text": "Invoice Type select a value...InvoiceTypeList kendo.syncReady(function(){jQuery(\"#InvoiceTypeList\").kendoDropDownList({\""
+      },
+      {
+       "sel": "#divYearQuarterFrom",
+       "labels": [
+        "Invoice Year",
+        "InvoiceYearList",
+        "Invoice Quarter",
+        "InvoiceQuarterList",
+        "InvoiceQuarter_ID",
+        "InvoiceQuarter_Name",
+        "InvoiceQuarter_DisplayFormat"
+       ],
+       "required": 0,
+       "text": "Invoice Year select a value...InvoiceYearList kendo.syncReady(function(){jQuery(\"#InvoiceYearList\").kendoDropDownList({\""
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "ClaimSearchCriteria.ID",
+     "groupLabel": "Search By",
+     "value": "02",
+     "label": "Labeler Code",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h5\"]",
+       "labels": [
+        "Labeler Code"
+       ],
+       "required": 2,
+       "text": "Labeler Code kendo.syncReady(function(){jQuery(\"#LabelerCode\").kendoTextBox({});}); // Replace curly single quotes and a"
+      },
+      {
+       "sel": "#divSearchByInvoice",
+       "labels": [
+        "Invoice Type",
+        "InvoiceTypeList",
+        "InvoiceType_ID",
+        "InvoiceType_Name",
+        "InvoiceType_DisplayFormat"
+       ],
+       "required": 0,
+       "text": "Invoice Type select a value...InvoiceTypeList kendo.syncReady(function(){jQuery(\"#InvoiceTypeList\").kendoDropDownList({\""
+      },
+      {
+       "sel": "#divYearQuarterFrom",
+       "labels": [
+        "Invoice Year",
+        "InvoiceYearList",
+        "Invoice Quarter",
+        "InvoiceQuarterList",
+        "InvoiceQuarter_ID",
+        "InvoiceQuarter_Name",
+        "InvoiceQuarter_DisplayFormat"
+       ],
+       "required": 2,
+       "text": "Invoice Year select a value...InvoiceYearList kendo.syncReady(function(){jQuery(\"#InvoiceYearList\").kendoDropDownList({\""
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h4\"]",
+       "labels": [
+        "Claim Number"
+       ],
+       "required": 0,
+       "text": "Claim Number kendo.syncReady(function(){jQuery(\"#ClaimNumber\").kendoTextBox({});}); // Replace curly single quotes and a"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 6,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 7,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1939,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#InvoiceTypeList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#InvoiceQuarterList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [
+     {
+      "for": "NationalDrugCode",
+      "text": "NDC is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"NationalDrugCode\" id=\"NationalDrugCode_validationMessage\" data-valmsg-for=\"NationalDrugCode\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>NDC is a required field.</span>"
+     },
+     {
+      "for": "InvoiceYearList",
+      "text": "Invoice Year is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"InvoiceYearList\" id=\"InvoiceYearList_validationMessage\" data-valmsg-for=\"InvoiceYearList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Invoice Year is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-input k-maskedtextbox editor-control k-invalid k-focus",
+      "border": "rgb(222, 226, 230) rgb(222, 226, 230) rgb(90, 105, 120)",
+      "background": "rgb(222, 226, 230)"
+     },
+     {
+      "name": "NationalDrugCode",
+      "className": "k-input k-maskedtextbox editor-control k-invalid k-focus",
+      "border": "rgb(222, 226, 230) rgb(222, 226, 230) rgb(90, 105, 120)",
+      "background": "rgb(222, 226, 230)"
+     },
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "InvoiceYearList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "drug-rebate-claim-level-detail--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "NationalDrugCode",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "requests": [],
+   "grids": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p3"
+     }
+    ],
+    "fields": [
+     {
+      "for": "InvoiceYearList",
+      "text": "Invoice Year is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"InvoiceYearList\" id=\"InvoiceYearList_validationMessage\" data-valmsg-for=\"InvoiceYearList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Invoice Year is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "InvoiceYearList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "drug-rebate-claim-level-detail--page-nomatch-validation.png",
+    "summaryCloseHides": true
+   },
+   "shot": "drug-rebate-claim-level-detail--search-nomatch.png"
+  },
+  "shots": [
+   "drug-rebate-claim-level-detail--page-search-validation.png",
+   "drug-rebate-claim-level-detail--page-nomatch-validation.png",
+   "drug-rebate-claim-level-detail--search-nomatch.png"
+  ]
+ },
+ "ms": 160345
+}

@@ -1,0 +1,398 @@
+{
+ "label": "Integration > Event Status Tracking",
+ "trail": [
+  "Integration",
+  "Event Status Tracking"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/EventStatusTracking/SearchEventStatus",
+ "at": "2026-11-12T20:20:38.714Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Event Status Tracking",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 18,
+    "dropdownlist": 4,
+    "multiselect": 1,
+    "datetimepicker": 2,
+    "textbox": 1,
+    "maskedtextbox": 2,
+    "grid": 1,
+    "resizable": 1,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "EventTrackingView.ID": [
+     "Publishing",
+     "Consuming"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 9,
+   "hiddenAtRest": 13,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "multiselect": {
+    "count": 1,
+    "ids": [
+     "EventList"
+    ]
+   },
+   "maskedtextbox": {
+    "count": 2,
+    "ids": [
+     "CommitId",
+     "GroupId"
+    ]
+   }
+  },
+  "hiddenAtRest": 13,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datetimepicker",
+     "id": "CreatedDateFrom",
+     "name": "CreatedDateFrom",
+     "label": "Event Create Date From",
+     "valueAttr": "1/1/1900",
+     "shows": "11/13/2026 12:00 AM",
+     "prefilled": true,
+     "offsetDays": 0,
+     "format": "MM/dd/yyyy h:mm tt",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": true
+    },
+    {
+     "role": "datetimepicker",
+     "id": "CreatedDateTo",
+     "name": "CreatedDateTo",
+     "label": "Event Create Date To",
+     "valueAttr": "1/1/1900",
+     "shows": "11/13/2026 11:59 PM",
+     "prefilled": true,
+     "offsetDays": 0,
+     "format": "MM/dd/yyyy h:mm tt",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datetimepicker",
+    "label": "Event Create Date From",
+    "atRest": "11/13/2026 12:00 AM",
+    "onFocus": "11/13/2026 12:00 AM",
+    "onCalendarButton": "11/13/2026 12:00 AM",
+    "popup": {
+     "x": 41,
+     "y": 407,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 41,
+     "y": 367,
+     "w": 291,
+     "h": 40
+    },
+    "shot": "integration-event-status-tracking--page-date-open.png",
+    "afterPick": "11/13/2026 12:00 AM",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026 12:00 AM"
+   }
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "EventTrackingView.ID",
+     "groupLabel": "View",
+     "value": "Publishing",
+     "label": "Publishing Module",
+     "checkedAtRest": true,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "EventTrackingView.ID",
+     "groupLabel": "View",
+     "value": "Consuming",
+     "label": "Consuming Module",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "ReadStatusList",
+     "label": "ReadStatusList",
+     "value": "1",
+     "text": "Read",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "OverallStatusList",
+       "before": {
+        "enabled": false,
+        "options": 2
+       },
+       "after": {
+        "enabled": true,
+        "options": 2
+       }
+      }
+     ],
+     "requests": []
+    },
+    {
+     "name": "ReadStatusList",
+     "label": "ReadStatusList",
+     "value": "0",
+     "text": "Unread",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "OverallStatusList",
+       "before": {
+        "enabled": true,
+        "options": 2
+       },
+       "after": {
+        "enabled": false,
+        "options": 2
+       }
+      }
+     ],
+     "requests": []
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 8,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 10,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1958,
+   "reveals": [],
+   "hides": [
+    {
+     "sel": "#ReadStatusList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#AggregateId_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [],
+    "fields": [
+     {
+      "for": "ModuleList",
+      "text": "Module is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"ModuleList\" id=\"ModuleList_validationMessage\" data-valmsg-for=\"ModuleList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Module is a required field.</span>"
+     },
+     {
+      "for": "EventList",
+      "text": "Event Type is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"EventList\" id=\"EventList_validationMessage\" data-valmsg-for=\"EventList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Event Type is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "ModuleList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": null,
+      "className": "k-multiselect k-input editor-control k-invalid",
+      "border": "rgb(90, 105, 120)",
+      "background": "rgb(242, 222, 222)"
+     },
+     {
+      "name": "EventList",
+      "className": "k-multiselect k-input editor-control k-invalid",
+      "border": "rgb(90, 105, 120)",
+      "background": "rgb(242, 222, 222)"
+     }
+    ],
+    "shot": "integration-event-status-tracking--page-search-validation.png"
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "",
+   "reveals": [],
+   "requests": [],
+   "grids": [],
+   "validation": {
+    "summary": [],
+    "fields": [
+     {
+      "for": "ModuleList",
+      "text": "Module is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"ModuleList\" id=\"ModuleList_validationMessage\" data-valmsg-for=\"ModuleList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Module is a required field.</span>"
+     },
+     {
+      "for": "EventList",
+      "text": "Event Type is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"EventList\" id=\"EventList_validationMessage\" data-valmsg-for=\"EventList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Event Type is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "ModuleList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": null,
+      "className": "k-multiselect k-input editor-control k-invalid",
+      "border": "rgb(90, 105, 120)",
+      "background": "rgb(242, 222, 222)"
+     },
+     {
+      "name": "EventList",
+      "className": "k-multiselect k-input editor-control k-invalid",
+      "border": "rgb(90, 105, 120)",
+      "background": "rgb(242, 222, 222)"
+     }
+    ],
+    "shot": "integration-event-status-tracking--page-nomatch-validation.png"
+   },
+   "shot": "integration-event-status-tracking--search-nomatch.png"
+  },
+  "shots": [
+   "integration-event-status-tracking--page-date-open.png",
+   "integration-event-status-tracking--page-search-validation.png",
+   "integration-event-status-tracking--page-nomatch-validation.png",
+   "integration-event-status-tracking--search-nomatch.png"
+  ]
+ },
+ "ms": 105025
+}

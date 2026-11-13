@@ -1,0 +1,120 @@
+{
+ "label": "Program Integrity > Dashboard",
+ "trail": [
+  "Program Integrity",
+  "Dashboard"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProgramIntegrity/PIURDashboard",
+ "at": "2026-11-12T20:49:26.527Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Dashboard",
+  "census": {
+   "roles": {
+    "radiobutton": 2,
+    "checkbox": 1,
+    "listview": 2,
+    "calendar": 1,
+    "tabstrip": 1,
+    "grid": 2
+   },
+   "buttons": [
+    {
+     "text": "Friday, November 13, 2026",
+     "action": null
+    }
+   ],
+   "radios": {
+    "entityTypeRadio": [
+     "on",
+     "on"
+    ]
+   },
+   "checkboxes": 1,
+   "required": 0,
+   "hiddenAtRest": 1,
+   "tabs": [
+    "Bookmarks",
+    "BookMark Comments"
+   ],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "listview": {
+    "count": 2,
+    "ids": [
+     "lstEntityRanking",
+     "listStatus"
+    ]
+   },
+   "calendar": {
+    "count": 1,
+    "ids": [
+     "dshbrdEntityCalender"
+    ]
+   },
+   "tabstrip": {
+    "count": 1,
+    "ids": [
+     "dashboardBookMarkTabstrip"
+    ]
+   }
+  },
+  "hiddenAtRest": 1,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "entityTypeRadio",
+     "groupLabel": "entityTypeRadio",
+     "value": "on",
+     "label": "Provider",
+     "checkedAtRest": true,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "entityTypeRadio",
+     "groupLabel": "entityTypeRadio",
+     "value": "on",
+     "label": "Member",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [
+    {
+     "name": "activeCases",
+     "label": "Exclude active cases",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [
+      {
+       "sel": "#pageLoadOverlay",
+       "labels": [],
+       "required": 0,
+       "text": ""
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "dropdowns": []
+  },
+  "toggles": [],
+  "dialogs": [],
+  "shots": []
+ },
+ "ms": 212381
+}

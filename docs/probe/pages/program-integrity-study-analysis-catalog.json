@@ -1,0 +1,102 @@
+{
+ "label": "Program Integrity > Study Analysis Catalog",
+ "trail": [
+  "Program Integrity",
+  "Study Analysis Catalog"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProgramIntegrity/StudyAnalysisCatalog",
+ "at": "2026-11-12T21:00:49.375Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Study Analysis Catalog",
+  "census": {
+   "roles": {
+    "grid": 2,
+    "resizable": 2,
+    "columnsorter": 9,
+    "selectable": 2,
+    "pager": 2,
+    "numerictextbox": 2,
+    "tooltip": 2,
+    "dropdownlist": 2,
+    "scheduler": 1,
+    "toolbar": 1,
+    "buttongroup": 2,
+    "button": 4,
+    "togglebutton": 3
+   },
+   "buttons": [
+    {
+     "text": "Today",
+     "action": null
+    },
+    {
+     "text": "Previous",
+     "action": null
+    },
+    {
+     "text": "Next",
+     "action": null
+    },
+    {
+     "text": "November 2026",
+     "action": null
+    },
+    {
+     "text": "Day",
+     "action": null
+    },
+    {
+     "text": "Week",
+     "action": null
+    },
+    {
+     "text": "Month",
+     "action": null
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 1,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "scheduler": {
+    "count": 1,
+    "ids": [
+     "studyCatalogScheduler"
+    ]
+   },
+   "toolbar": {
+    "count": 1,
+    "ids": []
+   },
+   "buttongroup": {
+    "count": 2,
+    "ids": []
+   },
+   "togglebutton": {
+    "count": 3,
+    "ids": []
+   }
+  },
+  "hiddenAtRest": 1,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [],
+  "dialogs": [],
+  "shots": []
+ },
+ "ms": 132241
+}

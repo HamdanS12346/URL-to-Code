@@ -1,0 +1,326 @@
+{
+ "label": "TPL Policy > Absent Parent",
+ "trail": [
+  "TPL Policy",
+  "Absent Parent"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/TPLPolicy/SearchAbsentParent",
+ "at": "2026-11-12T21:53:53.620Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Absent Parent",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 6,
+    "button": 2,
+    "maskedtextbox": 1,
+    "datepicker": 1,
+    "textbox": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 8,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1,
+    "dropdownlist": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 6,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "maskedtextbox": {
+    "count": 1,
+    "ids": [
+     "SSN"
+    ]
+   }
+  },
+  "hiddenAtRest": 6,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "BirthDate",
+     "name": "BirthDate",
+     "label": "Date of Birth",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "Date of Birth",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 357,
+     "y": 334,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 357,
+     "y": 294,
+     "w": 286,
+     "h": 40
+    },
+    "shot": "tpl-policy-absent-parent--page-date-open.png",
+    "afterPick": "11/13/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026"
+   }
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 9,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 9,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 2335,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. A general error has been encountered. Please try to process your "
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#SSN_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#BirthDate_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#LastName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#FirstName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/TPLPolicy/SearchAbsentParent/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 102,
+    "visibleMs": 550
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. A general error has been encountered. Please try to process your request again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>A general error has been encountered. Please try to process your request again.</li></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "tpl-policy-absent-parent--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "opened": false,
+    "requests": [],
+    "navigates": "/TPLPolicy/AddAbsentParent/",
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "opened": false
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "SSN",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "requests": [],
+   "grids": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p3"
+     }
+    ],
+    "fields": [
+     {
+      "for": "SSN",
+      "text": "Enter a valid SSN.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"SSN\" id=\"SSN_validationMessage\" data-valmsg-for=\"SSN\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Enter a valid SSN.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-input k-maskedtextbox editor-control k-invalid k-focus",
+      "border": "rgb(222, 226, 230) rgb(222, 226, 230) rgb(90, 105, 120)",
+      "background": "rgb(222, 226, 230)"
+     },
+     {
+      "name": "SSN",
+      "className": "k-input k-maskedtextbox editor-control k-invalid k-focus",
+      "border": "rgb(222, 226, 230) rgb(222, 226, 230) rgb(90, 105, 120)",
+      "background": "rgb(222, 226, 230)"
+     }
+    ],
+    "shot": "tpl-policy-absent-parent--page-nomatch-validation.png",
+    "summaryCloseHides": true
+   },
+   "shot": "tpl-policy-absent-parent--search-nomatch.png"
+  },
+  "shots": [
+   "tpl-policy-absent-parent--page-date-open.png",
+   "tpl-policy-absent-parent--page-search-validation.png",
+   "tpl-policy-absent-parent--page-nomatch-validation.png",
+   "tpl-policy-absent-parent--search-nomatch.png"
+  ]
+ },
+ "ms": 77322
+}

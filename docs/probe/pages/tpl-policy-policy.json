@@ -1,0 +1,328 @@
+{
+ "label": "TPL Policy > Policy",
+ "trail": [
+  "TPL Policy",
+  "Policy"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/TPLPolicy/SearchTPLPolicy",
+ "at": "2026-11-12T21:55:10.954Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Policy",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 24,
+    "button": 4,
+    "textbox": 8,
+    "datepicker": 1,
+    "maskedtextbox": 2,
+    "dropdownlist": 2,
+    "checkbox": 1,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 10,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 1,
+   "required": 0,
+   "hiddenAtRest": 15,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "maskedtextbox": {
+    "count": 2,
+    "ids": [
+     "MemberSSN",
+     "PolicyholderSSN"
+    ]
+   }
+  },
+  "hiddenAtRest": 15,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "MemberBirthDate",
+     "name": "MemberBirthDate",
+     "label": "Member DOB",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "Member DOB",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 853,
+     "y": 442,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 853,
+     "y": 402,
+     "w": 384,
+     "h": 40
+    },
+    "shot": "tpl-policy-policy--page-date-open.png",
+    "afterPick": "11/13/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026"
+   }
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [
+    {
+     "name": "IncludeInactives",
+     "label": "Include Inactive Policies",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 9,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 2485,
+   "reveals": [],
+   "hides": [
+    {
+     "sel": "#MemberId_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#CarrierId_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#PolicyId_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#MemberLastName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#MemberFirstName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#MemberBirthDate_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#MemberSSN_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#PolicyholderLastName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/TPLPolicy/SearchPolicy/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 121,
+    "visibleMs": 650
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "msg-inline-close panel-icon clickable",
+      "text": "",
+      "icons": [
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 1849,
+       "y": 162,
+       "w": 25,
+       "h": 31
+      },
+      "html": "<div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" aria-label=\"close\" onclick=\"removeGeneralMessage(this, event)\" onkeypress=\"removeGeneralMessage(this, event)\" tabindex=\"0\"><span class=\"fa-solid fa-xmark\" title=\"Close\"></span></div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "tpl-policy-policy--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "opened": false,
+    "requests": [],
+    "navigates": "/TPLPolicy/AddTPLPolicy/",
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "opened": false
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "MemberId",
+   "reveals": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/TPLPolicy/SearchPolicy/",
+     "status": "sent"
+    }
+   ],
+   "grids": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "msg-inline-close panel-icon clickable",
+      "text": "",
+      "icons": [
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 1849,
+       "y": 162,
+       "w": 25,
+       "h": 31
+      },
+      "html": "<div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" aria-label=\"close\" onclick=\"removeGeneralMessage(this, event)\" onkeypress=\"removeGeneralMessage(this, event)\" tabindex=\"0\"><span class=\"fa-solid fa-xmark\" title=\"Close\"></span></div>",
+      "close": "p3"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "tpl-policy-policy--page-nomatch-validation.png",
+    "summaryCloseHides": true
+   },
+   "shot": "tpl-policy-policy--search-nomatch.png"
+  },
+  "shots": [
+   "tpl-policy-policy--page-date-open.png",
+   "tpl-policy-policy--page-search-validation.png",
+   "tpl-policy-policy--page-nomatch-validation.png",
+   "tpl-policy-policy--search-nomatch.png"
+  ]
+ },
+ "ms": 83439
+}

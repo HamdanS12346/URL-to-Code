@@ -1,0 +1,918 @@
+{
+ "label": "Alert Notification > Event Configuration",
+ "trail": [
+  "Alert Notification",
+  "Event Configuration"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Notifications/EventNotificationSearch",
+ "at": "2026-11-12T19:22:12.378Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Event Configuration",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 9,
+    "button": 2,
+    "textbox": 2,
+    "dropdownlist": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 6,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 5,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 5,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 4826,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h5\"]",
+     "labels": [
+      "popupPanelMsg",
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "popupPanelMsg Search Results Event IDEvent NameModuleCategoryHas SLAStatus47ec7944-14ee-4c19-9029-546959a125a3Job Comple"
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#divEventNotificationCriteriaSearch",
+     "labels": [
+      "Event Name",
+      "Module",
+      "Status",
+      "StatusList",
+      "Status_ID",
+      "Status_Name",
+      "Status_DisplayFormat",
+      "Reset",
+      "Search"
+     ],
+     "required": 0,
+     "text": "Event Name kendo.syncReady(function(){jQuery(\"#EventName\").kendoTextBox({});}); Event Name Module kendo.syncReady(functi"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/Notifications/GetEventServiceSearch/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 108,
+    "visibleMs": 2850
+   },
+   "grids": [
+    {
+     "id": "EventServiceResultsGrid",
+     "rows": 10,
+     "total": 849,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 61,
+      "y": 400,
+      "w": 1783,
+      "h": 612
+     }
+    }
+   ],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": {
+   "stamp": "p2",
+   "icon": {
+    "x": 373,
+    "y": 438,
+    "w": 30,
+    "h": 30
+   },
+   "iconHtml": "<a aria-hidden=\"true\" aria-label=\"Event Name filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Event Name filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p2\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "Event Name",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "filterableColumns": 4,
+   "popup": {
+    "rect": {
+     "x": 373,
+     "y": 468,
+     "w": 274,
+     "h": 207
+    },
+    "className": "k-animation-container k-animation-container-shown",
+    "html": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"display: block; position: absolute; top: 467.75px; z-index: 10002; left: 372.906px;\"><div class=\"k-child-animation-container\" style=\"width: 274.333px; height: 207.188px; display: block; transform: translateY(0px);\"><form title=\"Show items with value that\" class=\"k-filter-menu k-popup\" data-role=\"popup\" aria-hidden=\"false\" data-filter-styled=\"data-filter-styled\" style=\"\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\">Show items with value that:</div><span title=\"Operator\" class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"3948a34f-60b5-4773-8e8d-e99da086a623_listbox\" aria-busy=\"false\" aria-describedby=\"d01f5a89-66c9-4c29-a321-c134a63377c3\" style=\"\"><span id=\"d01f5a89-66c9-4c29-a321-c134a63377c3\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">Equal To</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><select title=\"Operator\" data-bind=\"value: filters[0].operator\" data-adaptive-mode=\"none\" data-role=\"dropdownlist\" style=\"display: none;\"><option value=\"eq\" selected=\"selected\">Equal To</option><option value=\"contains\">Contains</option><option value=\"endswith\">Ends With</option><option value=\"startswith\">Starts With</option></select></span><span class=\"k-textbox k-input\"><input title=\"Value\" data-bind=\"value:filters[0].value\" class=\"k-input-inner\" type=\"text\" data-adaptive-mode=\"none\"></span><div class=\"k-actions-stretched k-actions\"><div class=\"grid-filter-buttons\"><button title=\"Filter\" class=\"k-button k-button-primary\" type=\"submit\"><span class=\"k-icon k-svg-icon k-svg-i-filter k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span><span class=\"k-button-text\">Filter</span></button><button title=\"Clear\" class=\"k-button\" type=\"reset\"><span class=\"k-icon k-svg-icon k-svg-i-filter-clear k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m143.5 64 168.2 168.2L288 256v160l-64 64V256L64 96V64zm236.1 100.4L448 96V64H279.3l-64-64L192 22l298 298 22-23.3z\"></path></svg></span><span class=\"k-button-text\">Clear</span></button></div></div></div><div class=\"k-list-container k-popup k-dropdownlist-popup\" data-role=\"popup\" aria-hidden=\"true\" style=\"display: none;\"><div class=\"k-list\" id=\"3948a34f-60b5-4773-8e8d-e99da086a623-list\" data-role=\"staticlist\"><div class=\"k-no-data\" aria-live=\"polite\" style=\"display: none;\">No data found.</div><div class=\"k-list-group-sticky-header\" style=\"display: none;\"></div><div class=\"k-list-content k-list-scroller\" unselectable=\"on\"><ul unselectable=\"on\" tabindex=\"-1\" aria-hidden=\"true\" id=\"3948a34f-60b5-4773-8e8d-e99da086a623_listbox\" role=\"listbox\" aria-live=\"off\" class=\"k-list-ul\"><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item k-selected k-focus\" aria-selected=\"true\" data-offset-index=\"0\" id=\"655f556d-8782-4205-9ba6-315f31bab548\"><span class=\"k-list-item-text\">Equal To</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"1\"><span class=\"k-list-item-text\">Contains</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"2\"><span class=\"k-list-item-text\">Ends With</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"3\"><span class=\"k-list-item-text\">Starts With</span></li></ul></div></div></div></form></div></div>",
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": null,
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "dropdowns": [
+     [
+      "Equal To",
+      "Contains",
+      "Ends With",
+      "Starts With"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "stamp": "p3",
+      "className": "k-picker k-dropdownlist k-focus",
+      "expanded": "false",
+      "text": "Equal ToEqual ToContainsEnds WithStarts ",
+      "after": {
+       "htmlDelta": 678,
+       "expanded": "true",
+       "rect": {
+        "x": 373,
+        "y": 468,
+        "w": 274,
+        "h": 207
+       }
+      }
+     }
+    ],
+    "shot": "alert-notification-event-configuration--grid-filter.png"
+   }
+  },
+  "row": {
+   "via": "dblclick",
+   "dialog": {
+    "opener": "row dblclick",
+    "info": {
+     "title": "View Event Details",
+     "options": {
+      "modal": {
+       "preventScroll": true
+      },
+      "width": null,
+      "height": null,
+      "actions": [
+       "Custom",
+       "Close"
+      ],
+      "draggable": false,
+      "resizable": false,
+      "animation": {
+       "open": {
+        "effects": {},
+        "duration": 350
+       },
+       "close": {
+        "effects": {},
+        "duration": 350,
+        "hide": true
+       }
+      },
+      "position": {
+       "top": 100.08350000000002,
+       "left": 360
+      }
+     },
+     "windowClass": "k-window panelForm-col-5 ui-draggable",
+     "contentId": "eventConfigurationPopupId",
+     "fields": 64,
+     "required": 22,
+     "hidden": 27,
+     "unknown": {},
+     "actions": [
+      "close: Close",
+      "close: Close"
+     ]
+    },
+    "position": {
+     "viewport": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920
+     },
+     "rect": {
+      "x": 360,
+      "y": 100,
+      "w": 1200,
+      "h": 880
+     },
+     "leftGap": 360,
+     "rightGap": 360,
+     "centeredLeft": 360,
+     "centered": true,
+     "touchesLeft": false,
+     "widerThanViewport": false,
+     "overflowRight": false,
+     "style": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 100.084px; left: 360px; z-index: 11502; opacity: 1; transform: scale(1);",
+     "className": "k-window panelForm-col-5 ui-draggable",
+     "computed": {
+      "width": "1200px",
+      "minWidth": "90px",
+      "maxWidth": "none",
+      "maxHeight": "918px",
+      "position": "absolute",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+     },
+     "kendo": {
+      "position": {
+       "top": 100.08350000000002,
+       "left": 360
+      },
+      "width": null,
+      "minWidth": 90,
+      "maxWidth": null
+     },
+     "rules": [
+      {
+       "selector": ".panel-form-col-5, .panelForm-col-5",
+       "width": "62.5%"
+      }
+     ],
+     "contentRules": [],
+     "title": "View Event Details"
+    },
+    "shot": null,
+    "census": {
+     "roles": {
+      "tooltip": 72,
+      "textbox": 10,
+      "dropdownlist": 6,
+      "checkbox": 32,
+      "validator": 1
+     },
+     "buttons": [
+      {
+       "text": "Edit",
+       "action": null
+      },
+      {
+       "text": "Close",
+       "action": "close"
+      }
+     ],
+     "radios": {
+      "RunSchedule.ID": [
+       "1",
+       "2",
+       "1",
+       "2",
+       "1",
+       "2"
+      ]
+     },
+     "checkboxes": 0,
+     "required": 32,
+     "hiddenAtRest": 27,
+     "tabs": [],
+     "collapsibles": 0
+    },
+    "close": {
+     "edited": null,
+     "attempts": [
+      {
+       "via": "x",
+       "closed": true,
+       "confirm": null,
+       "native": []
+      }
+     ]
+    }
+   }
+  },
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "info": {
+     "title": "Add Event",
+     "options": {
+      "modal": {
+       "preventScroll": true
+      },
+      "width": null,
+      "height": null,
+      "actions": [
+       "Custom",
+       "Close"
+      ],
+      "draggable": false,
+      "resizable": false,
+      "animation": {
+       "open": {
+        "effects": {},
+        "duration": 350
+       },
+       "close": {
+        "effects": {},
+        "duration": 350,
+        "hide": true
+       }
+      },
+      "position": {
+       "top": 233.20850000000002,
+       "left": 360
+      }
+     },
+     "windowClass": "k-window panelForm-col-5 ui-draggable",
+     "contentId": "addEventConfigurationPopup",
+     "fields": 23,
+     "required": 8,
+     "hidden": 13,
+     "unknown": {},
+     "actions": [
+      "close: Close",
+      "reset: Reset",
+      "cancel: Cancel",
+      "save: Save"
+     ]
+    },
+    "position": {
+     "viewport": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920
+     },
+     "rect": {
+      "x": 360,
+      "y": 233,
+      "w": 1200,
+      "h": 614
+     },
+     "leftGap": 360,
+     "rightGap": 360,
+     "centeredLeft": 360,
+     "centered": true,
+     "touchesLeft": false,
+     "widerThanViewport": false,
+     "overflowRight": false,
+     "style": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 233.208px; left: 360px; z-index: 11502; opacity: 1; transform: scale(1);",
+     "className": "k-window panelForm-col-5 ui-draggable",
+     "computed": {
+      "width": "1200px",
+      "minWidth": "90px",
+      "maxWidth": "none",
+      "maxHeight": "918px",
+      "position": "absolute",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+     },
+     "kendo": {
+      "position": {
+       "top": 233.20850000000002,
+       "left": 360
+      },
+      "width": null,
+      "minWidth": 90,
+      "maxWidth": null
+     },
+     "rules": [
+      {
+       "selector": ".panel-form-col-5, .panelForm-col-5",
+       "width": "62.5%"
+      }
+     ],
+     "contentRules": [],
+     "title": "Add Event"
+    },
+    "shot": "alert-notification-event-configuration--create1.png",
+    "census": {
+     "roles": {
+      "validator": 1,
+      "tooltip": 27,
+      "textbox": 3,
+      "dropdownlist": 2,
+      "checkbox": 11
+     },
+     "buttons": [
+      {
+       "text": "Reset",
+       "action": "reset"
+      },
+      {
+       "text": "Cancel",
+       "action": "cancel"
+      },
+      {
+       "text": "Save",
+       "action": "save"
+      }
+     ],
+     "radios": {
+      "RunSchedule.ID": [
+       "1",
+       "2"
+      ]
+     },
+     "checkboxes": 2,
+     "required": 14,
+     "hiddenAtRest": 13,
+     "tabs": [],
+     "collapsibles": 0
+    },
+    "dates": {
+     "inputs": [],
+     "drive": null
+    },
+    "conditionals": {
+     "radios": [
+      {
+       "group": "RunSchedule.ID",
+       "groupLabel": "Run Schedule",
+       "value": "1",
+       "label": "Run Weekly",
+       "checkedAtRest": false,
+       "show": [
+        {
+         "sel": "[data-kit-h=\"h42\"]",
+         "labels": [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+         ],
+         "required": 0,
+         "text": "Sunday kendo.syncReady(function(){jQuery(\"#RunOnSunday\").kendoCheckBox({\"checked\":false,\"label\":\"Sunday\"});}); Sunday Mo"
+        }
+       ],
+       "hide": [],
+       "cascades": [],
+       "requests": []
+      },
+      {
+       "group": "RunSchedule.ID",
+       "groupLabel": "Run Schedule",
+       "value": "2",
+       "label": "Run Monthly",
+       "checkedAtRest": false,
+       "show": [
+        {
+         "sel": "[data-kit-h=\"h43\"]",
+         "labels": [
+          "Run On First Day Month",
+          "Run On Last Day Month",
+          "Run Day Of Month",
+          "RunDayOfMonthList",
+          "RunDayOfMonth_ID",
+          "RunDayOfMonth_Name",
+          "RunDayOfMonth_DisplayFormat"
+         ],
+         "required": 0,
+         "text": "Run On First Day Month kendo.syncReady(function(){jQuery(\"#RunFirstOfMonth\").kendoCheckBox({\"checked\":false,\"label\":\"Run"
+        }
+       ],
+       "hide": [
+        {
+         "sel": "[data-kit-h=\"h42\"]",
+         "labels": [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+         ],
+         "required": 0,
+         "text": "Sunday kendo.syncReady(function(){jQuery(\"#RunOnSunday\").kendoCheckBox({\"checked\":false,\"label\":\"Sunday\"});}); Sunday Mo"
+        }
+       ],
+       "cascades": [],
+       "requests": []
+      }
+     ],
+     "checkboxes": [
+      {
+       "name": "HasSla",
+       "label": "Has SLA",
+       "checkedAtRest": false,
+       "show": [],
+       "hide": [],
+       "cascades": [],
+       "requests": []
+      },
+      {
+       "name": "IsActive",
+       "label": "Active",
+       "checkedAtRest": true,
+       "show": [],
+       "hide": [],
+       "cascades": [],
+       "requests": []
+      }
+     ],
+     "dropdowns": []
+    },
+    "toggles": [],
+    "nested": null,
+    "saveEmpty": {
+     "validation": {
+      "summary": [
+       {
+        "className": "msg-inline-close panel-icon clickable",
+        "text": "",
+        "icons": [
+         "fa-solid fa-xmark"
+        ],
+        "rect": {
+         "x": 1509,
+         "y": 192,
+         "w": 25,
+         "h": 35
+        },
+        "html": "<div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" aria-label=\"close\" onclick=\"removeGeneralMessage(this, event)\" onkeypress=\"removeGeneralMessage(this, event)\" tabindex=\"0\"><span class=\"fa-solid fa-xmark\" title=\"Close\"></span></div>",
+        "close": "p13"
+       }
+      ],
+      "fields": [
+       {
+        "for": "EventName",
+        "text": "Event Name is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"EventName\" id=\"addEventName_validationMessage\" data-valmsg-for=\"EventName\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Event Name is a required field.</span>"
+       },
+       {
+        "for": "Module",
+        "text": "Module is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"Module\" id=\"addModule_validationMessage\" data-valmsg-for=\"Module\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Module is a required field.</span>"
+       },
+       {
+        "for": "CategoryList",
+        "text": "Category is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"CategoryList\" id=\"CategoryList_validationMessage\" data-valmsg-for=\"CategoryList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Category is a required field.</span>"
+       },
+       {
+        "for": "RunTime24HHMM",
+        "text": "Run Time 24HHMM is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"RunTime24HHMM\" id=\"addRunTime24HHMM_validationMessage\" data-valmsg-for=\"RunTime24HHMM\">Run Time 24HHMM is a required field.</span>"
+       },
+       {
+        "for": "EventDetails",
+        "text": "Event Details is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"EventDetails\" id=\"addEventDetails_validationMessage\" data-valmsg-for=\"EventDetails\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Event Details is a required field.</span>"
+       },
+       {
+        "for": "MessageTemplate",
+        "text": "Message Template is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"MessageTemplate\" id=\"addMessageTemplate_validationMessage\" data-valmsg-for=\"MessageTemplate\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Message Template is a required field.</span>"
+       }
+      ],
+      "invalid": [
+       {
+        "name": null,
+        "className": "k-input k-textbox editor-control k-invalid k-focus",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "EventName",
+        "className": "k-input k-textbox editor-control k-invalid k-focus",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": null,
+        "className": "k-input k-textbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "Module",
+        "className": "k-input k-textbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": null,
+        "className": "k-picker k-dropdownlist editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "CategoryList",
+        "className": "k-picker k-dropdownlist editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": null,
+        "className": "k-input k-textbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "RunTime24HHMM",
+        "className": "k-input k-maskedtextbox editor-control k-input-inner",
+        "border": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+       },
+       {
+        "name": "EventDetails",
+        "className": "k-textbox editor-control k-widget k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "MessageTemplate",
+        "className": "k-textbox editor-control k-widget k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       }
+      ],
+      "shot": "alert-notification-event-configuration--rt-notification-event-configuration-save-validation.png",
+      "summaryCloseHides": true
+     },
+     "postAttempted": [],
+     "stillOpen": true,
+     "native": []
+    },
+    "close": {
+     "edited": "EventName",
+     "attempts": [
+      {
+       "via": "x",
+       "closed": false,
+       "confirm": {
+        "title": "Alert Confirmation",
+        "text": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?",
+        "className": "k-window k-focus",
+        "rect": {
+         "x": 659,
+         "y": 434,
+         "w": 601,
+         "h": 213
+        },
+        "buttons": [
+         {
+          "stamp": "p16",
+          "text": "No"
+         },
+         {
+          "stamp": "p17",
+          "text": "Yes"
+         }
+        ],
+        "html": "<div class=\"k-window k-focus\" tabindex=\"0\" role=\"dialog\" aria-labelledby=\"modalMessagePopup_wnd_title\" style=\"min-width: 90px; min-height: 50px; display: inline-flex; top: 433.75px; left: 659.333px; z-index: 11504; opacity: 1; transform: scale(1);\"><div class=\"k-window-titlebar modal-msg-title-alert\"><i class=\"fa-solid modal-msg-icon-alert fa-circle-exclamation\"></i><span class=\"k-window-title\" id=\"modalMessagePopup_wnd_title\">Alert Confirmation</span><div class=\"k-window-titlebar-actions\"></div></div><div id=\"modalMessagePopup\" class=\"modal-msg-panel-container-alert k-window-content\" role=\"dialog\" aria-label=\"Alert Confirmation\" data-role=\"window\" tabindex=\"0\" style=\"\">  <div class=\"panel-body-modal modal-msg-content\">    <div class=\"clear-n-pad\">Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?    </div>    <div id=\"msgButtonRow\" class=\"editor-button-row-modal\">      <div class=\"align-center\">        <input type=\"button\" id=\"cancelModalButton\" class=\"k-button btn-spacer-right\" data-dismiss=\"modal\" value=\"No\" onclick=\"checkExecuteFunctionByName(&quot;&quot;, null); removeModalMessagePopup();\" data-probe=\"p16\">        <input type=\"button\" id=\"okButton\" class=\"k-button\" data-dismiss=\"modal\" value=\"Yes\" data-probe=\"p17\">      </div>    </div>  </div></div></div>",
+        "shot": "alert-notification-event-configuration--create1-confirm-x.png"
+       },
+       "native": [],
+       "answered": "No",
+       "dialogStillOpen": true
+      },
+      {
+       "via": "cancel",
+       "closed": true,
+       "confirm": null,
+       "native": []
+      }
+     ]
+    },
+    "loading": {
+     "className": "wait-dialog",
+     "id": "loadingDialog",
+     "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+     "firstAt": 68,
+     "visibleMs": 750
+    },
+    "requests": [
+     {
+      "method": "GET",
+      "url": "/Notifications/AddEventConfiguration/",
+      "status": "sent"
+     }
+    ],
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "position": {
+       "viewport": {
+        "w": 1280,
+        "h": 720,
+        "docW": 1280
+       },
+       "rect": {
+        "x": 0,
+        "y": 20,
+        "w": 1152,
+        "h": 612
+       },
+       "leftGap": 0,
+       "rightGap": 128,
+       "centeredLeft": 64,
+       "centered": false,
+       "touchesLeft": true,
+       "widerThanViewport": false,
+       "overflowRight": false,
+       "style": "min-width: 1152px; min-height: 50px; max-height: 612px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+       "className": "k-window panelForm-col-5 ui-draggable",
+       "computed": {
+        "width": "1152px",
+        "minWidth": "1152px",
+        "maxWidth": "none",
+        "maxHeight": "612px",
+        "position": "absolute",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+       },
+       "kendo": {
+        "position": {
+         "top": "0",
+         "left": "0"
+        },
+        "width": null,
+        "minWidth": 90,
+        "maxWidth": null
+       },
+       "rules": [
+        {
+         "selector": ".panel-form-col-5, .panelForm-col-5",
+         "width": "62.5%"
+        }
+       ],
+       "contentRules": [],
+       "title": "Add Event"
+      },
+      "shot": "alert-notification-event-configuration--create1-1280x720.png",
+      "cleanClose": {
+       "edited": null,
+       "attempts": [
+        {
+         "via": "x",
+         "closed": true,
+         "confirm": null,
+         "native": []
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "EventName",
+   "reveals": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/Notifications/GetEventServiceSearch/",
+     "status": "sent"
+    }
+   ],
+   "grids": [],
+   "validation": null,
+   "shot": "alert-notification-event-configuration--search-nomatch.png"
+  },
+  "shots": [
+   "alert-notification-event-configuration--grid-filter.png",
+   "alert-notification-event-configuration--create1.png",
+   "alert-notification-event-configuration--rt-notification-event-configuration-save-validation.png",
+   "alert-notification-event-configuration--create1-confirm-x.png",
+   "alert-notification-event-configuration--search-nomatch.png",
+   "alert-notification-event-configuration--create1-1280x720.png"
+  ]
+ },
+ "ms": 78481
+}

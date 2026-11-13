@@ -1,0 +1,189 @@
+{
+ "label": "Administration > Manage Subscriptions",
+ "trail": [
+  "Administration",
+  "Manage Subscriptions"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/EventSubscriptions/ManageSubscription",
+ "at": "2026-11-12T19:17:21.276Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage Subscriptions",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 5,
+    "dropdownlist": 4,
+    "grid": 1,
+    "button": 1,
+    "resizable": 1,
+    "columnsorter": 9,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 5,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 5,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 30,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 5865,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h5\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results Create New kendo.syncReady(function(){jQuery(\"#eventSubscriptionGridAddButton\").kendoButton({\"click\":onEv"
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/EventAdmin/SearchEventSubscriptions/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 156,
+    "visibleMs": 5750
+   },
+   "grids": [
+    {
+     "id": "eventAdminGrid",
+     "rows": 0,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 561,
+      "w": 1859,
+      "h": 172
+     }
+    }
+   ],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "k-loading-text",
+      "text": "Loading...",
+      "icons": [],
+      "rect": {
+       "x": 31,
+       "y": 643,
+       "w": 0,
+       "h": 23
+      },
+      "html": "<span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span>",
+      "close": null
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "administration-manage-subscriptions--page-search-validation.png"
+   }
+  },
+  "gridFilter": {
+   "stamp": null,
+   "icon": null,
+   "iconHtml": null,
+   "column": null,
+   "filterable": false,
+   "columnMenu": false,
+   "filterableColumns": 12
+  },
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": [
+   "administration-manage-subscriptions--page-search-validation.png"
+  ]
+ },
+ "ms": 72813
+}

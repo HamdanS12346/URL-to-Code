@@ -1,0 +1,265 @@
+{
+ "label": "Plan Management > Manage Cycles",
+ "trail": [
+  "Plan Management",
+  "Manage Cycles"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/PlanManagement/SearchCycleSchedule",
+ "at": "2026-11-12T20:48:22.467Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [
+   "create 1: locator.click: Timeout 3000ms exceeded."
+  ],
+  "skipped": [],
+  "title": "Manage Cycles",
+  "census": {
+   "roles": {
+    "tooltip": 13,
+    "validator": 1,
+    "button": 3,
+    "dropdownlist": 3,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 8,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 5,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 5,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "SearchModuleList",
+     "label": "SearchModuleList",
+     "value": "50c9bb65-311f-69e0-e053-4c65a28f8a9e",
+     "text": "Administration",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchApplicationList",
+       "before": {
+        "enabled": false,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 8
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/PlanManagementMaint/GetApplicationListData/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "SearchModuleList",
+     "label": "SearchModuleList",
+     "value": "50c9bb65-3a1f-69e0-e053-4c65a28f8a9e",
+     "text": "Auth Determination",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchApplicationList",
+       "before": {
+        "enabled": true,
+        "options": 8
+       },
+       "after": {
+        "enabled": true,
+        "options": 4
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/PlanManagementMaint/GetApplicationListData/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "SearchModuleList",
+     "label": "SearchModuleList",
+     "value": "50c9bb65-421f-69e0-e053-4c65a28f8a9e",
+     "text": "Claims Management",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchApplicationList",
+       "before": {
+        "enabled": true,
+        "options": 4
+       },
+       "after": {
+        "enabled": true,
+        "options": 3
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/PlanManagementMaint/GetApplicationListData/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "SearchModuleList",
+     "label": "SearchModuleList",
+     "value": "50c9bb65-301f-69e0-e053-4c65a28f8a9e",
+     "text": "Core",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchApplicationList",
+       "before": {
+        "enabled": true,
+        "options": 3
+       },
+       "after": {
+        "enabled": true,
+        "options": 17
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/PlanManagementMaint/GetApplicationListData/",
+       "status": "sent"
+      }
+     ]
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 2,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 5813,
+   "reveals": [
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/CycleSchedule/SearchCycleSchedule/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 106,
+    "visibleMs": 5750
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": [
+   "plan-management-manage-cycles--create1-1280x720.png"
+  ]
+ },
+ "ms": 64013
+}

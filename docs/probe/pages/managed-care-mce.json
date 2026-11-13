@@ -1,0 +1,163 @@
+{
+ "label": "Managed Care > MCE",
+ "trail": [
+  "Managed Care",
+  "MCE"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ManagedCare/SearchMCE",
+ "at": "2026-11-12T20:24:07.047Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [
+   "create 1: locator.click: Timeout 3000ms exceeded."
+  ],
+  "skipped": [],
+  "title": "MCE",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 19,
+    "button": 3,
+    "dropdownlist": 2,
+    "textbox": 6,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 9,
+    "filtermulticheck": 1,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 1,
+   "hiddenAtRest": 9,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 9,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 5889,
+   "reveals": [
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#MCEIdentifierList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ManagedCare/GetMCEs/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 145,
+    "visibleMs": 5800
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": []
+ },
+ "ms": 77301
+}

@@ -1,0 +1,600 @@
+{
+ "label": "Administration > Manage User Invitations",
+ "trail": [
+  "Administration",
+  "Manage User Invitations"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/UserMaintenance/ManageUserInvitations",
+ "at": "2026-11-12T19:20:48.368Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage User Invitations",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 11,
+    "button": 1,
+    "textbox": 4,
+    "datepicker": 2,
+    "checkbox": 1,
+    "dropdownlist": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 7,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 1,
+   "required": 0,
+   "hiddenAtRest": 10,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 10,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "FromCreatedDate",
+     "name": "FromCreatedDate",
+     "label": "From Created Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    },
+    {
+     "role": "datepicker",
+     "id": "ToCreatedDate",
+     "name": "ToCreatedDate",
+     "label": "To Created Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "From Created Date",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 327,
+     "y": 383,
+     "w": 345,
+     "h": 325
+    },
+    "input": {
+     "x": 327,
+     "y": 343,
+     "w": 301,
+     "h": 40
+    },
+    "shot": "administration-manage-user-invitations--page-date-open.png",
+    "afterPick": "11/01/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/01/2026"
+   }
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [
+    {
+     "name": "ExactNameMatch",
+     "label": "Exact Match",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 6,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 4522,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. At least one search criteria value must be provided to initiate t"
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/UserMaintenance/SearchUserInvitations/",
+     "status": "sent"
+    },
+    {
+     "method": "GET",
+     "url": "/api/UserMaintenance/SearchUserInvitations/",
+     "status": "sent"
+    }
+   ],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. At least one search criteria value must be provided to initiate the search.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>At least one search criteria value must be provided to initiate the search.</li></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "administration-manage-user-invitations--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": {
+   "stamp": null,
+   "icon": null,
+   "iconHtml": null,
+   "column": null,
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "filterableColumns": 1
+  },
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "info": {
+     "title": "Add User Invitation",
+     "options": {
+      "modal": {
+       "preventScroll": true
+      },
+      "width": null,
+      "height": null,
+      "actions": [
+       "Custom",
+       "Close"
+      ],
+      "draggable": false,
+      "resizable": false,
+      "animation": {
+       "open": {
+        "effects": {},
+        "duration": 350
+       },
+       "close": {
+        "effects": {},
+        "duration": 350,
+        "hide": true
+       }
+      },
+      "position": {
+       "top": 184.79149999999998,
+       "left": 240
+      }
+     },
+     "windowClass": "k-window panelForm-col-6 ui-draggable",
+     "contentId": "UserInvitationEditOverlay",
+     "fields": 24,
+     "required": 8,
+     "hidden": 15,
+     "unknown": {
+      "maskedtextbox": {
+       "count": 1,
+       "ids": [
+        "PhoneNumber"
+       ]
+      },
+      "multiselect": {
+       "count": 1,
+       "ids": [
+        "ADGroupMultiSelectList"
+       ]
+      }
+     },
+     "actions": [
+      "close: Close",
+      "reset: Reset",
+      "cancel: Cancel",
+      "save: Save"
+     ]
+    },
+    "position": {
+     "viewport": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920
+     },
+     "rect": {
+      "x": 240,
+      "y": 185,
+      "w": 1440,
+      "h": 710
+     },
+     "leftGap": 240,
+     "rightGap": 240,
+     "centeredLeft": 240,
+     "centered": true,
+     "touchesLeft": false,
+     "widerThanViewport": false,
+     "overflowRight": false,
+     "style": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 184.791px; left: 240px; z-index: 11502; opacity: 1; transform: scale(1);",
+     "className": "k-window panelForm-col-6 ui-draggable",
+     "computed": {
+      "width": "1440px",
+      "minWidth": "90px",
+      "maxWidth": "none",
+      "maxHeight": "918px",
+      "position": "absolute",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+     },
+     "kendo": {
+      "position": {
+       "top": 184.79149999999998,
+       "left": 240
+      },
+      "width": null,
+      "minWidth": 90,
+      "maxWidth": null
+     },
+     "rules": [
+      {
+       "selector": ".panel-form-col-6, .panelForm-col-6",
+       "width": "75%"
+      }
+     ],
+     "contentRules": [],
+     "title": "Add User Invitation"
+    },
+    "shot": "administration-manage-user-invitations--create1.png",
+    "census": {
+     "roles": {
+      "validator": 1,
+      "tooltip": 22,
+      "textbox": 5,
+      "maskedtextbox": 1,
+      "dropdownlist": 1,
+      "datepicker": 1,
+      "checkbox": 1,
+      "multiselect": 1
+     },
+     "buttons": [
+      {
+       "text": "Reset",
+       "action": "reset"
+      },
+      {
+       "text": "Cancel",
+       "action": "cancel"
+      },
+      {
+       "text": "Save",
+       "action": "save"
+      }
+     ],
+     "radios": {
+      "InternalRegistration.ID": [
+       "Y",
+       "N"
+      ]
+     },
+     "checkboxes": 1,
+     "required": 14,
+     "hiddenAtRest": 15,
+     "tabs": [],
+     "collapsibles": 0
+    },
+    "dates": {
+     "inputs": [
+      {
+       "role": "datepicker",
+       "id": "AccountExpiresDate",
+       "name": "AccountExpiresDate",
+       "label": "Account Expiration Date",
+       "valueAttr": null,
+       "shows": "",
+       "prefilled": false,
+       "offsetDays": null,
+       "format": "MM/dd/yyyy",
+       "placeholder": null,
+       "masked": false,
+       "required": false,
+       "enabled": true
+      }
+     ],
+     "drive": {
+      "role": "datepicker",
+      "label": "Account Expiration Date",
+      "atRest": "",
+      "onFocus": "__/__/____",
+      "onCalendarButton": "__/__/____",
+      "popup": {
+       "x": 251,
+       "y": 568,
+       "w": 345,
+       "h": 365
+      },
+      "input": {
+       "x": 251,
+       "y": 528,
+       "w": 340,
+       "h": 40
+      },
+      "shot": "administration-manage-user-invitations--create1-date-open.png",
+      "afterPick": "11/13/2026",
+      "popupAfterPick": false,
+      "afterBlur": null
+     }
+    },
+    "conditionals": {
+     "radios": [],
+     "checkboxes": [],
+     "dropdowns": []
+    },
+    "toggles": [],
+    "nested": null,
+    "saveEmpty": null,
+    "close": {
+     "edited": null,
+     "attempts": [
+      {
+       "via": "x",
+       "button": false
+      },
+      {
+       "via": "cancel",
+       "button": false
+      }
+     ]
+    },
+    "loading": {
+     "className": "wait-dialog",
+     "id": "loadingDialog",
+     "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+     "firstAt": 106,
+     "visibleMs": 950
+    },
+    "requests": [
+     {
+      "method": "GET",
+      "url": "/UserMaintenance/UserInvitationEdit/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/UserMaintenance/GetAllADGroups/",
+      "status": "sent"
+     }
+    ],
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "position": {
+       "viewport": {
+        "w": 1280,
+        "h": 720,
+        "docW": 1280
+       },
+       "rect": {
+        "x": 0,
+        "y": 20,
+        "w": 1152,
+        "h": 612
+       },
+       "leftGap": 0,
+       "rightGap": 128,
+       "centeredLeft": 64,
+       "centered": false,
+       "touchesLeft": true,
+       "widerThanViewport": false,
+       "overflowRight": false,
+       "style": "min-width: 1152px; min-height: 50px; max-height: 612px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+       "className": "k-window panelForm-col-6 ui-draggable",
+       "computed": {
+        "width": "1152px",
+        "minWidth": "1152px",
+        "maxWidth": "none",
+        "maxHeight": "612px",
+        "position": "absolute",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+       },
+       "kendo": {
+        "position": {
+         "top": "0",
+         "left": "0"
+        },
+        "width": null,
+        "minWidth": 90,
+        "maxWidth": null
+       },
+       "rules": [
+        {
+         "selector": ".panel-form-col-6, .panelForm-col-6",
+         "width": "75%"
+        }
+       ],
+       "contentRules": [],
+       "title": "Add User Invitation"
+      },
+      "shot": "administration-manage-user-invitations--create1-1280x720.png",
+      "cleanClose": {
+       "edited": null,
+       "attempts": [
+        {
+         "via": "x",
+         "closed": true,
+         "confirm": null,
+         "native": []
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "InvitationCode",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h10\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results Invitation IDInvitation CodeNameEmail AddressAssigned GroupsCreated DateExpiredActiveThere are no records"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/UserMaintenance/SearchUserInvitations/",
+     "status": "sent"
+    },
+    {
+     "method": "GET",
+     "url": "/api/UserMaintenance/SearchUserInvitations/",
+     "status": "sent"
+    }
+   ],
+   "grids": [
+    {
+     "id": "manageUserInvititionsGrid",
+     "rows": 1,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 1,
+      "y": 779,
+      "w": 1903,
+      "h": 158
+     }
+    }
+   ],
+   "validation": null,
+   "shot": "administration-manage-user-invitations--search-nomatch.png"
+  },
+  "shots": [
+   "administration-manage-user-invitations--page-date-open.png",
+   "administration-manage-user-invitations--page-search-validation.png",
+   "administration-manage-user-invitations--create1.png",
+   "administration-manage-user-invitations--create1-date-open.png",
+   "administration-manage-user-invitations--search-nomatch.png",
+   "administration-manage-user-invitations--create1-1280x720.png"
+  ]
+ },
+ "ms": 83978
+}

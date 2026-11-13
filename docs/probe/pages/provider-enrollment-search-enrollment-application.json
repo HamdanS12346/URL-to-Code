@@ -1,0 +1,325 @@
+{
+ "label": "Provider Enrollment > Search Enrollment Application",
+ "trail": [
+  "Provider Enrollment",
+  "Search Enrollment Application"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/SearchProviderApplication",
+ "at": "2026-11-12T21:23:23.202Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Search Enrollment Application",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 40,
+    "textbox": 8,
+    "maskedtextbox": 3,
+    "dropdownlist": 8,
+    "datepicker": 1,
+    "megagrid": 1,
+    "tabstrip": 1,
+    "listview": 2,
+    "resizable": 1,
+    "columnsorter": 22,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Clear",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "TaxIdSelection.ID": [
+     "EIN",
+     "SSN"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 21,
+   "tabs": [
+    "1 Group",
+    "2 Sort",
+    "3 Select"
+   ],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "maskedtextbox": {
+    "count": 3,
+    "ids": [
+     "NPI",
+     "SSN",
+     "EIN"
+    ]
+   },
+   "megagrid": {
+    "count": 1,
+    "ids": [
+     "providerResultsGrid"
+    ]
+   },
+   "tabstrip": {
+    "count": 1,
+    "ids": [
+     "mggdfTabstrip"
+    ]
+   },
+   "listview": {
+    "count": 2,
+    "ids": [
+     "availableListItems",
+     "selectedListItems"
+    ]
+   }
+  },
+  "hiddenAtRest": 21,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "ReceiptDate",
+     "name": "ReceiptDate",
+     "label": "Receipt Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "Receipt Date",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 1420,
+     "y": 571,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 1420,
+     "y": 531,
+     "w": 445,
+     "h": 40
+    },
+    "shot": "provider-enrollment-search-enrollment-application--page-date-open.png",
+    "afterPick": "11/13/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026"
+   }
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "TaxIdSelection.ID",
+     "groupLabel": "Tax ID",
+     "value": "EIN",
+     "label": "EIN",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h7\"]",
+       "labels": [
+        "EIN"
+       ],
+       "required": 0,
+       "text": "EIN kendo.syncReady(function(){jQuery(\"#EIN\").kendoMaskedTextBox({\"mask\":\"\\u0026\\u0026-\\u0026\\u0026\\u0026\\u0026\\u0026\\u0"
+      }
+     ],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "TaxIdSelection.ID",
+     "groupLabel": "Tax ID",
+     "value": "SSN",
+     "label": "SSN",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h6\"]",
+       "labels": [
+        "SSN"
+       ],
+       "required": 0,
+       "text": "SSN kendo.syncReady(function(){jQuery(\"#SSN\").kendoMaskedTextBox({\"mask\":\"\\u0026\\u0026\\u0026-\\u0026\\u0026-\\u0026\\u0026\\u"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h7\"]",
+       "labels": [
+        "EIN"
+       ],
+       "required": 0,
+       "text": "EIN kendo.syncReady(function(){jQuery(\"#EIN\").kendoMaskedTextBox({\"mask\":\"\\u0026\\u0026-\\u0026\\u0026\\u0026\\u0026\\u0026\\u0"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 7,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1872,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. At least one search criteria value must be provided to initiate t"
+    }
+   ],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. At least one search criteria value must be provided to initiate the search.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>At least one search criteria value must be provided to initiate the search.</li></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "provider-enrollment-search-enrollment-application--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "ATN",
+   "reveals": [],
+   "requests": [],
+   "grids": [],
+   "validation": {
+    "summary": [],
+    "fields": [
+     {
+      "for": "ATN",
+      "text": "ATN is restricted to numeric characters only [0-9].",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"ATN\" id=\"ATN_validationMessage\" data-valmsg-for=\"ATN\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>ATN is restricted to numeric characters only [0-9].</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-input k-textbox editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "ATN",
+      "className": "k-input k-textbox editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "provider-enrollment-search-enrollment-application--page-nomatch-validation.png"
+   },
+   "shot": "provider-enrollment-search-enrollment-application--search-nomatch.png"
+  },
+  "shots": [
+   "provider-enrollment-search-enrollment-application--page-date-open.png",
+   "provider-enrollment-search-enrollment-application--page-search-validation.png",
+   "provider-enrollment-search-enrollment-application--page-nomatch-validation.png",
+   "provider-enrollment-search-enrollment-application--search-nomatch.png"
+  ]
+ },
+ "ms": 61543
+}

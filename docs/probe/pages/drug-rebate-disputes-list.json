@@ -1,0 +1,166 @@
+{
+ "label": "Drug Rebate > Disputes List",
+ "trail": [
+  "Drug Rebate",
+  "Disputes List"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Invoice/SearchNDCDisputes",
+ "at": "2026-11-12T19:41:54.147Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [
+   "create 1: locator.click: Timeout 3000ms exceeded.",
+   "viewport 1280x720: page.goto: Timeout 60000ms exceeded."
+  ],
+  "skipped": [],
+  "title": "Disputes List",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 26,
+    "button": 3,
+    "autocomplete": 1,
+    "maskedtextbox": 1,
+    "textbox": 1,
+    "dropdownlist": 7,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 11,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    }
+   ],
+   "radios": {
+    "LabelerNDCSearchCriteria.ID": [
+     "1",
+     "2",
+     "3"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 4,
+   "hiddenAtRest": 3,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "autocomplete": {
+    "count": 1,
+    "ids": [
+     "LabelerNameAutocomplete"
+    ]
+   },
+   "maskedtextbox": {
+    "count": 1,
+    "ids": [
+     "NDC"
+    ]
+   }
+  },
+  "hiddenAtRest": 3,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "LabelerNDCSearchCriteria.ID",
+     "groupLabel": "Search By",
+     "value": "1",
+     "label": "Labeler Code-Name",
+     "checkedAtRest": true,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "LabelerNDCSearchCriteria.ID",
+     "groupLabel": "Search By",
+     "value": "2",
+     "label": "NDC",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "LabelerNDCSearchCriteria.ID",
+     "groupLabel": "Search By",
+     "value": "3",
+     "label": "Invoice ID",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Expand",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 12,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 29,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "dialogs": [],
+  "shots": []
+ },
+ "ms": 341973
+}

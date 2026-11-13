@@ -1,0 +1,333 @@
+{
+ "label": "PI Case Tracking > User Information",
+ "trail": [
+  "PI Case Tracking",
+  "User Information"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProgramIntegrityCT/SearchUserInformation",
+ "at": "2026-11-12T21:19:20.751Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "User Information",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 19,
+    "textbox": 8,
+    "maskedtextbox": 2,
+    "checkbox": 1,
+    "multiselect": 2,
+    "dropdownlist": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 6,
+    "selectable": 1,
+    "pager": 1,
+    "button": 3,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "ProgramIntegrityCTRadioList": [
+     "on",
+     "on"
+    ]
+   },
+   "checkboxes": 1,
+   "required": 0,
+   "hiddenAtRest": 11,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "maskedtextbox": {
+    "count": 2,
+    "ids": [
+     "NonConfigurationUserInformation_Phone",
+     "Phone"
+    ]
+   },
+   "multiselect": {
+    "count": 2,
+    "ids": [
+     "UserRole",
+     "ReviewType"
+    ]
+   }
+  },
+  "hiddenAtRest": 11,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "ProgramIntegrityCTRadioList",
+     "groupLabel": "ProgramIntegrityCTRadioList",
+     "value": "on",
+     "label": "Configured User",
+     "checkedAtRest": true,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "ProgramIntegrityCTRadioList",
+     "groupLabel": "ProgramIntegrityCTRadioList",
+     "value": "on",
+     "label": "Non Configured User",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h2\"]",
+       "labels": [
+        "User ID",
+        "Last Name",
+        "First Name",
+        "Phone",
+        "Email"
+       ],
+       "required": 0,
+       "text": "User ID (typeof KendoLicensing === 'object' && KendoLicensing.setScriptKey('141j041f611f063e0837023e133i0i490g310c3a1844"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "#configuredUserInformation",
+       "labels": [
+        "User ID",
+        "Last Name",
+        "First Name",
+        "Phone",
+        "Include Inactives",
+        "VOS Function",
+        "Review Type",
+        "Email",
+        "Department",
+        "DepartmentList"
+       ],
+       "required": 0,
+       "text": "User ID kendo.syncReady(function(){jQuery(\"#UserId\").kendoTextBox({});}); // Replace curly single quotes and apostrophes"
+      }
+     ],
+     "cascades": [],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/ProgramIntegrityCT/GetActiveReviewType/",
+       "status": "sent"
+      }
+     ]
+    }
+   ],
+   "checkboxes": [
+    {
+     "name": "IncludeInactives",
+     "label": "Include Inactives",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1928,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. At least one search criteria must be selected."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#UserId_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#LastName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#FirstName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#Phone_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#IncludeInactives_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#Email_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. At least one search criteria must be selected.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 87,
+       "y": 156,
+       "w": 1746,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>At least one search criteria must be selected.\t</li></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "pi-case-tracking-user-information--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": {
+   "stamp": null,
+   "icon": null,
+   "iconHtml": null,
+   "column": null,
+   "filterable": false,
+   "columnMenu": false,
+   "filterableColumns": 1
+  },
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "UserId",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h11\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results User Profile IdUser IDPrimary VOS FunctionEmailLast NameFirst NamePhoneStatusIs Active Export to Excel ke"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ProgramIntegrityCT/SearchConfiguredUser/",
+     "status": "sent"
+    }
+   ],
+   "grids": [
+    {
+     "id": "UserInformationResultsGrid",
+     "rows": 0,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 704,
+      "w": 1843,
+      "h": 242
+     }
+    }
+   ],
+   "validation": null,
+   "shot": "pi-case-tracking-user-information--search-nomatch.png"
+  },
+  "shots": [
+   "pi-case-tracking-user-information--page-search-validation.png",
+   "pi-case-tracking-user-information--search-nomatch.png"
+  ]
+ },
+ "ms": 29583
+}

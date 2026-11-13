@@ -1,0 +1,40 @@
+{
+ "label": "Task Management > Dashboard",
+ "trail": [
+  "Task Management",
+  "Dashboard"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/TaskManagement/Dashboard",
+ "at": "2026-11-12T22:05:10.105Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "",
+  "census": {
+   "roles": {},
+   "buttons": [],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 0,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 0,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [],
+  "dialogs": [],
+  "shots": []
+ },
+ "ms": 41571
+}

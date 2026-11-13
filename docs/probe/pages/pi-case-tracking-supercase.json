@@ -1,0 +1,356 @@
+{
+ "label": "PI Case Tracking > SuperCase",
+ "trail": [
+  "PI Case Tracking",
+  "SuperCase"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProgramIntegrityCT/SearchSuperCase",
+ "at": "2026-11-12T21:16:37.927Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "SuperCase",
+  "census": {
+   "roles": {
+    "tooltip": 9,
+    "button": 4,
+    "validator": 1,
+    "textbox": 3,
+    "checkbox": 1,
+    "dropdownlist": 2,
+    "datepicker": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 5,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 1,
+   "required": 0,
+   "hiddenAtRest": 9,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 9,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "SuperCaseCreatedFrom",
+     "name": "SuperCaseCreatedFrom",
+     "label": "SuperCase Created From",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    },
+    {
+     "role": "datepicker",
+     "id": "SuperCaseCreatedThru",
+     "name": "SuperCaseCreatedThru",
+     "label": "SuperCase Created Thru",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "SuperCase Created From",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 508,
+     "y": 441,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 508,
+     "y": 401,
+     "w": 437,
+     "h": 40
+    },
+    "shot": "pi-case-tracking-supercase--page-date-open.png",
+    "afterPick": "11/13/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026"
+   }
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [
+    {
+     "name": "IncludeInactive",
+     "label": "Include Inactive",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 7,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 6,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1874,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. At least one search criteria must be selected."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#SuperCaseCode_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#SuperCaseName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#CaseId_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#IncludeInactive_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#SuperCaseCreatedFrom_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#SuperCaseCreatedThru_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. At least one search criteria must be selected.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>At least one search criteria must be selected.\t</li></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "pi-case-tracking-supercase--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": {
+   "stamp": null,
+   "icon": null,
+   "iconHtml": null,
+   "column": null,
+   "filterable": false,
+   "columnMenu": false,
+   "filterableColumns": 0
+  },
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "opened": false,
+    "requests": [],
+    "navigates": "/ProgramIntegrityCT/AddSuperCase/",
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "opened": false
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "SuperCaseCode",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. A general error has been encountered. Please try to process your "
+    },
+    {
+     "sel": "[data-kit-h=\"h9\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results SuperCase IDSuperCase NameReview TypeSuperCase Created DateStatus Export to Excel kendo.syncReady(functio"
+    }
+   ],
+   "requests": [
+    {
+     "method": "POST",
+     "url": "/api/ProgramIntegrityCT/SearchSuperCaseInformation/",
+     "status": "sent"
+    }
+   ],
+   "grids": [
+    {
+     "id": "SuperCaseGrid",
+     "rows": 0,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 784,
+      "w": 1843,
+      "h": 242
+     }
+    }
+   ],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. A general error has been encountered. Please try to process your request again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1789,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>A general error has been encountered. Please try to process your request again.</li></ul>\n    </div>",
+      "close": "p3"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "pi-case-tracking-supercase--page-nomatch-validation.png",
+    "summaryCloseHides": true
+   },
+   "shot": "pi-case-tracking-supercase--search-nomatch.png"
+  },
+  "shots": [
+   "pi-case-tracking-supercase--page-date-open.png",
+   "pi-case-tracking-supercase--page-search-validation.png",
+   "pi-case-tracking-supercase--page-nomatch-validation.png",
+   "pi-case-tracking-supercase--search-nomatch.png"
+  ]
+ },
+ "ms": 78356
+}

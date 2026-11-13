@@ -1,0 +1,383 @@
+{
+ "label": "Provider Management > Base ID Termination Transactions",
+ "trail": [
+  "Provider Management",
+  "Base ID Termination Transactions"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderManagement/SearchProviderBaseIDTermTransaction",
+ "at": "2026-11-12T21:33:48.126Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Base ID Termination Transactions",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 8,
+    "textbox": 1,
+    "dropdownlist": 2,
+    "datepicker": 4,
+    "grid": 1,
+    "selectable": 1,
+    "columnsorter": 11,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Clear",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 8,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 8,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "TransactionFromDate",
+     "name": "TransactionFromDate",
+     "label": "From Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    },
+    {
+     "role": "datepicker",
+     "id": "TransactionToDate",
+     "name": "TransactionToDate",
+     "label": "To Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    },
+    {
+     "role": "datepicker",
+     "id": "ProcessingFromDate",
+     "name": "ProcessingFromDate",
+     "label": "From Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    },
+    {
+     "role": "datepicker",
+     "id": "ProcessingToDate",
+     "name": "ProcessingToDate",
+     "label": "To Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "From Date",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 71,
+     "y": 441,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 71,
+     "y": 401,
+     "w": 256,
+     "h": 40
+    },
+    "shot": "provider-management-base-id-termination-transactions--page-date-open.png",
+    "afterPick": "11/13/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026"
+   }
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 6,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 2431,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. At least one search criteria value must be provided to initiate t"
+    },
+    {
+     "sel": "[data-kit-h=\"h8\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results Base IDTransaction StatusRequested Contract StatusRequested Contract End DateRequested Location Terminati"
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#BaseId_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#TransactionStatusList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#TransactionFromDate_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#TransactionToDate_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ProcessingFromDate_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ProcessingToDate_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ProviderManagement/SearchBaseIdTermTransData/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 73,
+    "visibleMs": 700
+   },
+   "grids": [
+    {
+     "id": "searchBaseIdTerminatationGrid",
+     "rows": 0,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 777,
+      "w": 1859,
+      "h": 127
+     }
+    }
+   ],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. At least one search criteria value must be provided to initiate the search.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>At least one search criteria value must be provided to initiate the search.</li></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "provider-management-base-id-termination-transactions--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": {
+   "stamp": null,
+   "icon": null,
+   "iconHtml": null,
+   "column": null,
+   "filterable": false,
+   "columnMenu": false,
+   "filterableColumns": 11
+  },
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "BaseId",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "requests": [],
+   "grids": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p3"
+     }
+    ],
+    "fields": [
+     {
+      "for": "BaseId",
+      "text": "Base ID is restricted to numeric characters only [0-9].",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"BaseId\" id=\"BaseId_validationMessage\" data-valmsg-for=\"BaseId\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Base ID is restricted to numeric characters only [0-9].</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-input k-textbox editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "BaseId",
+      "className": "k-input k-textbox editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "provider-management-base-id-termination-transactions--page-nomatch-validation.png",
+    "summaryCloseHides": true
+   },
+   "shot": "provider-management-base-id-termination-transactions--search-nomatch.png"
+  },
+  "shots": [
+   "provider-management-base-id-termination-transactions--page-date-open.png",
+   "provider-management-base-id-termination-transactions--page-search-validation.png",
+   "provider-management-base-id-termination-transactions--page-nomatch-validation.png",
+   "provider-management-base-id-termination-transactions--search-nomatch.png"
+  ]
+ },
+ "ms": 31701
+}

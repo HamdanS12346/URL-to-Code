@@ -1,0 +1,635 @@
+{
+ "label": "Claims Management > Search Claims",
+ "trail": [
+  "Claims Management",
+  "Search Claims"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ClaimsManagement/SearchClaims",
+ "at": "2026-11-12T19:26:51.946Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Search Claims",
+  "census": {
+   "roles": {
+    "validator": 4,
+    "tooltip": 70,
+    "dropdownlist": 13,
+    "textbox": 35,
+    "datepicker": 3,
+    "numerictextbox": 8,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 13,
+    "selectable": 1,
+    "pager": 1,
+    "button": 4,
+    "checkbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 5,
+   "hiddenAtRest": 44,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 44,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "FromDate",
+     "name": "FromDate",
+     "label": "Date From",
+     "valueAttr": "11/12/2024",
+     "shows": "11/12/2024",
+     "prefilled": true,
+     "offsetDays": -731,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": true
+    },
+    {
+     "role": "datepicker",
+     "id": "ToDate",
+     "name": "ToDate",
+     "label": "Date To",
+     "valueAttr": "11/12/2026",
+     "shows": "11/12/2026",
+     "prefilled": true,
+     "offsetDays": -1,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": true
+    },
+    {
+     "role": "datepicker",
+     "id": "View_MemberDOB",
+     "name": "MemberDOB",
+     "label": "DOB",
+     "valueAttr": "01/01/0001",
+     "shows": "01/01/0001",
+     "prefilled": true,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "Date From",
+    "atRest": "11/12/2024",
+    "onFocus": "11/12/2024",
+    "onCalendarButton": "11/12/2024",
+    "popup": {
+     "x": 365,
+     "y": 400,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 365,
+     "y": 360,
+     "w": 197,
+     "h": 40
+    },
+    "shot": "claims-management-search-claims--page-date-open.png",
+    "afterPick": "11/01/2024",
+    "popupAfterPick": false,
+    "afterBlur": "11/01/2024"
+   }
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "ClaimIdentifiersList",
+     "label": "ClaimIdentifiersList",
+     "value": "ICN",
+     "text": "ICN",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h3\"]",
+       "labels": [
+        "ICN"
+       ],
+       "required": 0,
+       "text": "ICN kendo.syncReady(function(){jQuery(\"#SearchICN\").kendoTextBox({});}); // Replace curly single quotes and apostrophes "
+      }
+     ],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "ClaimIdentifiersList",
+     "label": "ClaimIdentifiersList",
+     "value": "MCOICN",
+     "text": "MCO ICN",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h5\"]",
+       "labels": [
+        "MCO ICN"
+       ],
+       "required": 0,
+       "text": "MCO ICN kendo.syncReady(function(){jQuery(\"#MCOICN\").kendoTextBox({});}); // Replace curly single quotes and apostrophes"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h3\"]",
+       "labels": [
+        "ICN"
+       ],
+       "required": 0,
+       "text": "ICN kendo.syncReady(function(){jQuery(\"#SearchICN\").kendoTextBox({});}); // Replace curly single quotes and apostrophes "
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "ClaimIdentifiersList",
+     "label": "ClaimIdentifiersList",
+     "value": "TCN",
+     "text": "TCN",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h4\"]",
+       "labels": [
+        "TCN"
+       ],
+       "required": 0,
+       "text": "TCN kendo.syncReady(function(){jQuery(\"#TCN\").kendoTextBox({});}); // Replace curly single quotes and apostrophes with s"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h5\"]",
+       "labels": [
+        "MCO ICN"
+       ],
+       "required": 0,
+       "text": "MCO ICN kendo.syncReady(function(){jQuery(\"#MCOICN\").kendoTextBox({});}); // Replace curly single quotes and apostrophes"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "MemberByList",
+     "label": "MemberByList",
+     "value": "MI",
+     "text": "ID",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h10\"]",
+       "labels": [
+        "Member ID"
+       ],
+       "required": 0,
+       "text": "Member ID kendo.syncReady(function(){jQuery(\"#MemberID\").kendoTextBox({});}); // Replace curly single quotes and apostro"
+      }
+     ],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "MemberByList",
+     "label": "MemberByList",
+     "value": "MN",
+     "text": "Name",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h11\"]",
+       "labels": [
+        "Member Name"
+       ],
+       "required": 0,
+       "text": "Member Name kendo.syncReady(function(){jQuery(\"#MemberName\").kendoTextBox({});}); // Replace curly single quotes and apo"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h10\"]",
+       "labels": [
+        "Member ID"
+       ],
+       "required": 0,
+       "text": "Member ID kendo.syncReady(function(){jQuery(\"#MemberID\").kendoTextBox({});}); // Replace curly single quotes and apostro"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "MemberByList",
+     "label": "MemberByList",
+     "value": "PAN",
+     "text": "Patient Acct",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h12\"]",
+       "labels": [
+        "Patient Acct"
+       ],
+       "required": 0,
+       "text": "Patient Acct kendo.syncReady(function(){jQuery(\"#PatientAccountNumber\").kendoTextBox({});}); // Replace curly single quo"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h11\"]",
+       "labels": [
+        "Member Name"
+       ],
+       "required": 0,
+       "text": "Member Name kendo.syncReady(function(){jQuery(\"#MemberName\").kendoTextBox({});}); // Replace curly single quotes and apo"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "ProviderRoleList",
+     "label": "ProviderRoleList",
+     "value": "BL",
+     "text": "Billing",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h14\"]",
+       "labels": [
+        "Choose Provider By",
+        "ProviderByList",
+        "ProviderBy_ID",
+        "ProviderBy_Name",
+        "ProviderBy_DisplayFormat"
+       ],
+       "required": 0,
+       "text": "Choose Provider By NPIProviderByList kendo.syncReady(function(){jQuery(\"#ProviderByList\").kendoDropDownList({\"change\":fu"
+      },
+      {
+       "sel": "[data-kit-h=\"h15\"]",
+       "labels": [
+        "NPI"
+       ],
+       "required": 0,
+       "text": "NPI kendo.syncReady(function(){jQuery(\"#NPI\").kendoTextBox({});}); // Replace curly single quotes and apostrophes with s"
+      }
+     ],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "ProviderByList",
+     "label": "ProviderByList",
+     "value": "PI",
+     "text": "Provider ID",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h19\"]",
+       "labels": [
+        "Provider ID"
+       ],
+       "required": 0,
+       "text": "Provider ID kendo.syncReady(function(){jQuery(\"#ProviderID\").kendoTextBox({});}); // Replace curly single quotes and apo"
+      }
+     ],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "ProviderByList",
+     "label": "ProviderByList",
+     "value": "PN",
+     "text": "Name",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h16\"]",
+       "labels": [
+        "Provider Name"
+       ],
+       "required": 0,
+       "text": "Provider Name kendo.syncReady(function(){jQuery(\"#ProviderName\").kendoTextBox({});}); // Replace curly single quotes and"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h19\"]",
+       "labels": [
+        "Provider ID"
+       ],
+       "required": 0,
+       "text": "Provider ID kendo.syncReady(function(){jQuery(\"#ProviderID\").kendoTextBox({});}); // Replace curly single quotes and apo"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "ProviderByList",
+     "label": "ProviderByList",
+     "value": "PT",
+     "text": "Tax ID",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h18\"]",
+       "labels": [
+        "Provider Tax ID"
+       ],
+       "required": 0,
+       "text": "Provider Tax ID kendo.syncReady(function(){jQuery(\"#ProviderTaxID\").kendoTextBox({});}); // Replace curly single quotes "
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h16\"]",
+       "labels": [
+        "Provider Name"
+       ],
+       "required": 0,
+       "text": "Provider Name kendo.syncReady(function(){jQuery(\"#ProviderName\").kendoTextBox({});}); // Replace curly single quotes and"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "ProviderByList",
+     "label": "ProviderByList",
+     "value": "PX",
+     "text": "Taxonomy",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h17\"]",
+       "labels": [
+        "Provider Taxonomy"
+       ],
+       "required": 0,
+       "text": "Provider Taxonomy kendo.syncReady(function(){jQuery(\"#ProviderTaxonomy\").kendoTextBox({});}); // Replace curly single qu"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h18\"]",
+       "labels": [
+        "Provider Tax ID"
+       ],
+       "required": 0,
+       "text": "Provider Tax ID kendo.syncReady(function(){jQuery(\"#ProviderTaxID\").kendoTextBox({});}); // Replace curly single quotes "
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": null,
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-square-minus",
+      "visible": true,
+      "h": 787
+     },
+     "after": {
+      "icon": "fa-solid fa-square-plus",
+      "visible": false,
+      "h": 0,
+      "title": null
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy extprtlprv-int-detail-page-banner-date-separator"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-square-plus",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-square-minus",
+      "visible": true,
+      "h": 787,
+      "title": null
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 13,
+       "h": 787
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy extprtlprv-int-detail-page-banner-date-separator"
+    }
+   },
+   {
+    "header": "",
+    "title": null,
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-square-plus",
+      "visible": true,
+      "h": 392
+     },
+     "after": {
+      "icon": "fa-solid fa-square-minus",
+      "visible": false,
+      "h": 0,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy collapse"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-square-minus",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-square-plus",
+      "visible": true,
+      "h": 392,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 10,
+       "h": 392
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy collapse"
+    }
+   }
+  ],
+  "search": {
+   "ms": 2078,
+   "reveals": [],
+   "hides": [
+    {
+     "sel": "#ClaimIdentifiersList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#MemberByList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ProviderRoleList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ClaimTypeList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ClaimSubTypeList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ClaimStatusList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ClaimSourceCodeList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#PayToList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "msg-inline-close panel-icon clickable",
+      "text": "",
+      "icons": [
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 1823,
+       "y": 244,
+       "w": 25,
+       "h": 31
+      },
+      "html": "<div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" aria-label=\"close\" onclick=\"removeGeneralMessage(this, event)\" onkeypress=\"removeGeneralMessage(this, event)\" tabindex=\"0\"><span class=\"fa-solid fa-xmark\" title=\"Close\"></span></div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "claims-management-search-claims--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "Modifiers1",
+   "reveals": [
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ClaimsManagement/SearchClaims/",
+     "status": "sent"
+    },
+    {
+     "method": "GET",
+     "url": "/api/Localization/GetDataListCombined/PlanManagement.DataList.ModifierCodes/",
+     "status": "sent"
+    }
+   ],
+   "grids": [],
+   "validation": null,
+   "shot": "claims-management-search-claims--search-nomatch.png"
+  },
+  "shots": [
+   "claims-management-search-claims--page-date-open.png",
+   "claims-management-search-claims--page-search-validation.png",
+   "claims-management-search-claims--search-nomatch.png"
+  ]
+ },
+ "ms": 59187
+}

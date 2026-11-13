@@ -1,0 +1,324 @@
+{
+ "label": "Program Integrity > Suppressed Entities",
+ "trail": [
+  "Program Integrity",
+  "Suppressed Entities"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProgramIntegrity/SuppressEntitySearch",
+ "at": "2026-11-12T20:59:24.373Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Suppressed Entities",
+  "census": {
+   "roles": {
+    "tooltip": 10,
+    "validator": 1,
+    "button": 6,
+    "dropdownlist": 3,
+    "textbox": 2,
+    "datepicker": 1,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 8,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 2,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "ActiveAsOf",
+     "name": "ActiveAsOf",
+     "label": "Active As Of",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "Active As Of",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 1258,
+     "y": 365,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 1258,
+     "y": 325,
+     "w": 283,
+     "h": 40
+    },
+    "shot": "program-integrity-suppressed-entities--page-date-open.png",
+    "afterPick": "11/13/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026"
+   }
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down subpanel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down subpanel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1929,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#SuppressEntityCode_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#SuppressEntityName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ActiveAsOf_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [
+     {
+      "for": "SuppressEntityTypeList",
+      "text": "Entity Type is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"SuppressEntityTypeList\" id=\"SuppressEntityTypeList_validationMessage\" data-valmsg-for=\"SuppressEntityTypeList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Entity Type is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "SuppressEntityTypeList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "program-integrity-suppressed-entities--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "opened": false,
+    "requests": [],
+    "navigates": "/ProgramIntegrity/SuppressEntity",
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "opened": false
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "SuppressEntityCode",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "requests": [],
+   "grids": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p3"
+     }
+    ],
+    "fields": [
+     {
+      "for": "SuppressEntityTypeList",
+      "text": "Entity Type is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"SuppressEntityTypeList\" id=\"SuppressEntityTypeList_validationMessage\" data-valmsg-for=\"SuppressEntityTypeList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Entity Type is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "SuppressEntityTypeList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "program-integrity-suppressed-entities--page-nomatch-validation.png",
+    "summaryCloseHides": true
+   },
+   "shot": "program-integrity-suppressed-entities--search-nomatch.png"
+  },
+  "shots": [
+   "program-integrity-suppressed-entities--page-date-open.png",
+   "program-integrity-suppressed-entities--page-search-validation.png",
+   "program-integrity-suppressed-entities--page-nomatch-validation.png",
+   "program-integrity-suppressed-entities--search-nomatch.png"
+  ]
+ },
+ "ms": 84991
+}

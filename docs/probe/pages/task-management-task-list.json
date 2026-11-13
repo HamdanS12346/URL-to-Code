@@ -1,0 +1,730 @@
+{
+ "label": "Task Management > Task List",
+ "trail": [
+  "Task Management",
+  "Task List"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/TaskManagement/SearchTaskList",
+ "at": "2026-11-12T22:07:42.656Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Task List",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 56,
+    "button": 6,
+    "dropdownlist": 12,
+    "datepicker": 2,
+    "autocomplete": 3,
+    "textbox": 2,
+    "megagrid": 1,
+    "tabstrip": 1,
+    "listview": 2,
+    "resizable": 1,
+    "columnsorter": 30,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 7,
+   "hiddenAtRest": 12,
+   "tabs": [
+    "1 Group",
+    "2 Sort",
+    "3 Select"
+   ],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "autocomplete": {
+    "count": 3,
+    "ids": [
+     "FileNameAutoComplete",
+     "UserIdAutoComplete",
+     "RoutingPathIdAutoComplete"
+    ]
+   },
+   "megagrid": {
+    "count": 1,
+    "ids": [
+     "TaskListGrid"
+    ]
+   },
+   "tabstrip": {
+    "count": 1,
+    "ids": [
+     "mggdfTabstrip"
+    ]
+   },
+   "listview": {
+    "count": 2,
+    "ids": [
+     "availableListItems",
+     "selectedListItems"
+    ]
+   }
+  },
+  "hiddenAtRest": 12,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "TaskDateFrom",
+     "name": "TaskDateFrom",
+     "label": "Created Date From",
+     "valueAttr": "11/11/2026",
+     "shows": "11/11/2026",
+     "prefilled": true,
+     "offsetDays": -2,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": false
+    },
+    {
+     "role": "datepicker",
+     "id": "TaskDateTo",
+     "name": "TaskDateTo",
+     "label": "Created Date To",
+     "valueAttr": "11/12/2026",
+     "shows": "11/12/2026",
+     "prefilled": true,
+     "offsetDays": -1,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": false
+    }
+   ],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "TaskAssignedModuleList",
+     "label": "TaskAssignedModuleList",
+     "value": "AD",
+     "text": "Auth Determination",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "DepartmentList",
+       "before": {
+        "enabled": false,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 0
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskDepartment/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "TaskAssignedModuleList",
+     "label": "TaskAssignedModuleList",
+     "value": "CL",
+     "text": "Claims",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "DepartmentList",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 4
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskDepartment/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "TaskAssignedModuleList",
+     "label": "TaskAssignedModuleList",
+     "value": "DR",
+     "text": "Drug Rebate",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "DepartmentList",
+       "before": {
+        "enabled": true,
+        "options": 4
+       },
+       "after": {
+        "enabled": true,
+        "options": 0
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskDepartment/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "TaskAssignedModuleList",
+     "label": "TaskAssignedModuleList",
+     "value": "MC",
+     "text": "Managed Care",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "DepartmentList",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 6
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskDepartment/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "SearchTaskSourceModuleList",
+     "label": "SearchTaskSourceModuleList",
+     "value": "AD",
+     "text": "Auth Determination",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchTaskTypeList",
+       "before": {
+        "enabled": false,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 23
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskType/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "SearchTaskSourceModuleList",
+     "label": "SearchTaskSourceModuleList",
+     "value": "MC",
+     "text": "Managed Care",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchTaskTypeList",
+       "before": {
+        "enabled": true,
+        "options": 23
+       },
+       "after": {
+        "enabled": true,
+        "options": 10
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskType/",
+       "status": "sent"
+      }
+     ]
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 2,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1911,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [
+     {
+      "for": "SearchByList",
+      "text": "Search By is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"SearchByList\" id=\"SearchByList_validationMessage\" data-valmsg-for=\"SearchByList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Search By is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "SearchByList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "task-management-task-list--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "info": {
+     "title": "Add Task",
+     "options": {
+      "modal": {
+       "preventScroll": true
+      },
+      "width": null,
+      "height": null,
+      "actions": [
+       "Custom",
+       "Close"
+      ],
+      "draggable": false,
+      "resizable": false,
+      "animation": {
+       "open": {
+        "effects": {},
+        "duration": 350
+       },
+       "close": {
+        "effects": {},
+        "duration": 350,
+        "hide": true
+       }
+      },
+      "position": {
+       "top": 205.54149999999998,
+       "left": 240
+      }
+     },
+     "windowClass": "k-window panelForm-col-6 ui-draggable",
+     "contentId": "AddTaskList",
+     "fields": 28,
+     "required": 3,
+     "hidden": 20,
+     "unknown": {
+      "autocomplete": {
+       "count": 1,
+       "ids": [
+        "RequestorUserIdAutoComplete"
+       ]
+      }
+     },
+     "actions": [
+      "close: Close",
+      "reset: Reset",
+      "cancel: Cancel",
+      "save: Save"
+     ]
+    },
+    "position": {
+     "viewport": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920
+     },
+     "rect": {
+      "x": 240,
+      "y": 206,
+      "w": 1440,
+      "h": 669
+     },
+     "leftGap": 240,
+     "rightGap": 240,
+     "centeredLeft": 240,
+     "centered": true,
+     "touchesLeft": false,
+     "widerThanViewport": false,
+     "overflowRight": false,
+     "style": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 205.541px; left: 240px; z-index: 11502; opacity: 1; transform: scale(1);",
+     "className": "k-window panelForm-col-6 ui-draggable",
+     "computed": {
+      "width": "1440px",
+      "minWidth": "90px",
+      "maxWidth": "none",
+      "maxHeight": "918px",
+      "position": "absolute",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+     },
+     "kendo": {
+      "position": {
+       "top": 205.54149999999998,
+       "left": 240
+      },
+      "width": null,
+      "minWidth": 90,
+      "maxWidth": null
+     },
+     "rules": [
+      {
+       "selector": ".panel-form-col-6, .panelForm-col-6",
+       "width": "75%"
+      }
+     ],
+     "contentRules": [],
+     "title": "Add Task"
+    },
+    "shot": "task-management-task-list--create1.png",
+    "census": {
+     "roles": {
+      "validator": 1,
+      "tooltip": 22,
+      "dropdownlist": 8,
+      "textbox": 4,
+      "datepicker": 2,
+      "autocomplete": 1,
+      "button": 1
+     },
+     "buttons": [
+      {
+       "text": "Reset",
+       "action": "reset"
+      },
+      {
+       "text": "Cancel",
+       "action": "cancel"
+      },
+      {
+       "text": "Save",
+       "action": "save"
+      }
+     ],
+     "radios": {},
+     "checkboxes": 0,
+     "required": 6,
+     "hiddenAtRest": 20,
+     "tabs": [],
+     "collapsibles": 0
+    },
+    "dates": {
+     "inputs": [
+      {
+       "role": "datepicker",
+       "id": "TaskFollowUpDate",
+       "name": "TaskFollowUpDate",
+       "label": "Follow-up Date",
+       "valueAttr": null,
+       "shows": "",
+       "prefilled": false,
+       "offsetDays": null,
+       "format": "MM/dd/yyyy",
+       "placeholder": null,
+       "masked": false,
+       "required": false,
+       "enabled": true
+      },
+      {
+       "role": "datepicker",
+       "id": "TaskRequiredCompletedDate",
+       "name": "TaskRequiredCompletedDate",
+       "label": "Required Completion Date",
+       "valueAttr": null,
+       "shows": "",
+       "prefilled": false,
+       "offsetDays": null,
+       "format": "MM/dd/yyyy",
+       "placeholder": null,
+       "masked": false,
+       "required": false,
+       "enabled": true
+      }
+     ],
+     "drive": {
+      "role": "datepicker",
+      "label": "Follow-up Date",
+      "atRest": "",
+      "onFocus": "__/__/____",
+      "onCalendarButton": "__/__/____",
+      "popup": {
+       "x": 960,
+       "y": 564,
+       "w": 345,
+       "h": 365
+      },
+      "input": {
+       "x": 960,
+       "y": 524,
+       "w": 221,
+       "h": 40
+      },
+      "shot": "task-management-task-list--create1-date-open.png",
+      "afterPick": "11/13/2026",
+      "popupAfterPick": false,
+      "afterBlur": "11/13/2026"
+     }
+    },
+    "conditionals": {
+     "radios": [],
+     "checkboxes": [],
+     "dropdowns": []
+    },
+    "toggles": [],
+    "nested": null,
+    "saveEmpty": null,
+    "close": {
+     "edited": null,
+     "attempts": [
+      {
+       "via": "x",
+       "button": false
+      },
+      {
+       "via": "cancel",
+       "button": false
+      }
+     ]
+    },
+    "loading": {
+     "className": "wait-dialog",
+     "id": "loadingDialog",
+     "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+     "firstAt": 75,
+     "visibleMs": 9550
+    },
+    "requests": [
+     {
+      "method": "POST",
+      "url": "/TaskManagement/AddTaskList/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/TaskManagement/SearchAccessModules/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/Localization/GetDataList/TaskManagement.DataList.CommentType/",
+      "status": "sent"
+     }
+    ],
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "position": {
+       "viewport": {
+        "w": 1280,
+        "h": 720,
+        "docW": 1280
+       },
+       "rect": {
+        "x": 0,
+        "y": 20,
+        "w": 1152,
+        "h": 612
+       },
+       "leftGap": 0,
+       "rightGap": 128,
+       "centeredLeft": 64,
+       "centered": false,
+       "touchesLeft": true,
+       "widerThanViewport": false,
+       "overflowRight": false,
+       "style": "min-width: 1152px; min-height: 50px; max-height: 612px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+       "className": "k-window panelForm-col-6 ui-draggable",
+       "computed": {
+        "width": "1152px",
+        "minWidth": "1152px",
+        "maxWidth": "none",
+        "maxHeight": "612px",
+        "position": "absolute",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+       },
+       "kendo": {
+        "position": {
+         "top": "0",
+         "left": "0"
+        },
+        "width": null,
+        "minWidth": 90,
+        "maxWidth": null
+       },
+       "rules": [
+        {
+         "selector": ".panel-form-col-6, .panelForm-col-6",
+         "width": "75%"
+        }
+       ],
+       "contentRules": [],
+       "title": "Add Task"
+      },
+      "shot": "task-management-task-list--create1-1280x720.png",
+      "cleanClose": {
+       "edited": null,
+       "attempts": [
+        {
+         "via": "x",
+         "closed": true,
+         "confirm": null,
+         "native": []
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": null,
+  "shots": [
+   "task-management-task-list--page-search-validation.png",
+   "task-management-task-list--create1.png",
+   "task-management-task-list--create1-date-open.png",
+   "task-management-task-list--create1-1280x720.png"
+  ]
+ },
+ "ms": 113827
+}

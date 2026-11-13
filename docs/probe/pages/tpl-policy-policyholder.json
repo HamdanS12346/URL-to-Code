@@ -1,0 +1,183 @@
+{
+ "label": "TPL Policy > Policyholder",
+ "trail": [
+  "TPL Policy",
+  "Policyholder"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/TPLPolicy/SearchPolicyholder",
+ "at": "2026-11-12T21:52:31.807Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [
+   "create 1: locator.click: Timeout 3000ms exceeded."
+  ],
+  "skipped": [],
+  "title": "Policyholder",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 8,
+    "button": 4,
+    "dropdownlist": 2,
+    "textbox": 3,
+    "maskedtextbox": 1,
+    "datepicker": 1,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 6,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "maskedtextbox": {
+    "count": 1,
+    "ids": [
+     "TPLPolicyholderSSN"
+    ]
+   }
+  },
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "TPLPolicyholderDOB",
+     "name": "TPLPolicyholderDOB",
+     "label": "Date of Birth",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    }
+   ],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 5746,
+   "reveals": [
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#PolicyholderSearchbyList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/TPLPolicy/SearchPolicyholder/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 101,
+    "visibleMs": 5650
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": []
+ },
+ "ms": 81803
+}

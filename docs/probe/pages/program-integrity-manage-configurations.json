@@ -1,0 +1,129 @@
+{
+ "label": "Program Integrity > Manage Configurations",
+ "trail": [
+  "Program Integrity",
+  "Manage Configurations"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProgramIntegrity/ManageConfigurations",
+ "at": "2026-11-12T20:52:58.923Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage Configurations",
+  "census": {
+   "roles": {
+    "tooltip": 2,
+    "tabstrip": 1,
+    "grid": 1,
+    "treelist": 1,
+    "toolbar": 1,
+    "button": 2,
+    "dropdownlist": 2,
+    "autocomplete": 1,
+    "radiobutton": 2
+   },
+   "buttons": [
+    {
+     "text": "Save",
+     "action": "save"
+    }
+   ],
+   "radios": {
+    "pushbutton": [
+     "on",
+     "on"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 3,
+   "tabs": [
+    "Member Age Group",
+    "Life Time Codes",
+    "Mega Grid Filter"
+   ],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "tabstrip": {
+    "count": 1,
+    "ids": [
+     "tabstrip"
+    ]
+   },
+   "treelist": {
+    "count": 1,
+    "ids": [
+     "treeList"
+    ]
+   },
+   "toolbar": {
+    "count": 1,
+    "ids": []
+   },
+   "autocomplete": {
+    "count": 1,
+    "ids": [
+     "CodeValue"
+    ]
+   }
+  },
+  "hiddenAtRest": 3,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "pushbutton",
+     "groupLabel": "pushbutton",
+     "value": "on",
+     "label": "Product Defined Template",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "#loadingDialog",
+       "labels": [],
+       "required": 0,
+       "text": "Processing ..."
+      }
+     ],
+     "hide": [],
+     "cascades": [],
+     "requests": [
+      {
+       "method": "POST",
+       "url": "/ProgramIntegrity/MegaGridFilterTemplate",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "group": "pushbutton",
+     "groupLabel": "pushbutton",
+     "value": "on",
+     "label": "Create a new Template",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": [
+      {
+       "method": "POST",
+       "url": "/ProgramIntegrity/MegaGridFilterTemplate",
+       "status": "sent"
+      }
+     ]
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [],
+  "dialogs": [],
+  "shots": []
+ },
+ "ms": 76276
+}

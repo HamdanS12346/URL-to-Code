@@ -1,0 +1,250 @@
+{
+ "label": "Managed Care > Screening Results",
+ "trail": [
+  "Managed Care",
+  "Screening Results"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ManagedCare/ScreeningResults",
+ "at": "2026-11-12T20:31:06.567Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Screening Results",
+  "census": {
+   "roles": {
+    "tooltip": 38,
+    "validator": 1,
+    "checkbox": 4,
+    "textbox": 3,
+    "maskedtextbox": 1,
+    "datepicker": 1,
+    "grid": 3,
+    "resizable": 2,
+    "columnsorter": 14,
+    "selectable": 3,
+    "pager": 2,
+    "numerictextbox": 2,
+    "dropdownlist": 2
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "SearchType.ID": [
+     "I",
+     "B"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 12,
+   "hiddenAtRest": 4,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "maskedtextbox": {
+    "count": 1,
+    "ids": [
+     "SSN"
+    ]
+   }
+  },
+  "hiddenAtRest": 4,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "BirthDate",
+     "name": "BirthDate",
+     "label": "Date of Birth",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": false
+    }
+   ],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "SearchType.ID",
+     "groupLabel": "Entity Type",
+     "value": "I",
+     "label": "Individual",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h3\"]",
+       "labels": [
+        "Select All Services",
+        "EPLS/SAM",
+        "OIG/LEIE",
+        "SSA Death Master",
+        "Last Name",
+        "First Name",
+        "SSN",
+        "Date of Birth",
+        "Legal Business Name"
+       ],
+       "required": 2,
+       "text": "Select Screening Check(s) Select All Services (typeof KendoLicensing === 'object' && KendoLicensing.setScriptKey('141j04"
+      }
+     ],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "SearchType.ID",
+     "groupLabel": "Entity Type",
+     "value": "B",
+     "label": "Business",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [
+      {
+       "sel": "#deathMasterSection",
+       "labels": [
+        "SSA Death Master"
+       ],
+       "required": 0,
+       "text": "SSA Death Master kendo.syncReady(function(){jQuery(\"#DeathMaster\").kendoCheckBox({\"checked\":false,\"label\":\"SSA Death Mas"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1858,
+   "reveals": [],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "text": "Entity Type is required",
+      "icons": [
+       "k-icon k-warning"
+      ],
+      "rect": {
+       "x": 41,
+       "y": 361,
+       "w": 598,
+       "h": 24
+      },
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"SearchType_validationMessage\" role=\"alert\" data-for=\"SearchType\" data-valmsg-for=\"SearchType\"><span class=\"k-icon k-warning\"> </span>Entity Type is required</span>",
+      "close": null
+     }
+    ],
+    "fields": [
+     {
+      "for": "SearchType",
+      "text": "Entity Type is required",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-warning"
+      ],
+      "placement": null,
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"SearchType_validationMessage\" role=\"alert\" data-for=\"SearchType\" data-valmsg-for=\"SearchType\"><span class=\"k-icon k-warning\"> </span>Entity Type is required</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": "AllServices",
+      "className": "editor-control k-checkbox k-invalid",
+      "border": "rgb(90, 105, 120)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "managed-care-screening-results--page-search-validation.png"
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": [
+   "managed-care-screening-results--page-search-validation.png"
+  ]
+ },
+ "ms": 33774
+}

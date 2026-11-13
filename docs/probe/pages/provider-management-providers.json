@@ -1,0 +1,514 @@
+{
+ "label": "Provider Management > Providers",
+ "trail": [
+  "Provider Management",
+  "Providers"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderManagement/SearchProvider",
+ "at": "2026-11-12T21:27:11.531Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Providers",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 42,
+    "dropdownlist": 11,
+    "textbox": 18,
+    "maskedtextbox": 3,
+    "checkbox": 1,
+    "autocomplete": 4,
+    "grid": 1,
+    "selectable": 1,
+    "columnsorter": 12,
+    "pager": 1,
+    "button": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Clear",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "ServiceLocationAddressTypes.ID": [
+     "CityAndState",
+     "ZIPCode",
+     "County"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 31,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "maskedtextbox": {
+    "count": 3,
+    "ids": [
+     "SSN",
+     "PhoneNumber",
+     "ZIPCode"
+    ]
+   },
+   "autocomplete": {
+    "count": 4,
+    "ids": [
+     "SearchProvider_County",
+     "SearchProvider_Type",
+     "SearchProvider_Specialty",
+     "SearchProvider_Taxonomy"
+    ]
+   }
+  },
+  "hiddenAtRest": 31,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "ServiceLocationAddressTypes.ID",
+     "groupLabel": "Choose Address Type",
+     "value": "CityAndState",
+     "label": "City and State",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "ServiceLocationAddressTypes.ID",
+     "groupLabel": "Choose Address Type",
+     "value": "ZIPCode",
+     "label": "ZIP Code",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "ServiceLocationAddressTypes.ID",
+     "groupLabel": "Choose Address Type",
+     "value": "County",
+     "label": "County",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "ProviderIdentifierList",
+     "label": "ProviderIdentifierList",
+     "value": "01",
+     "text": "Provider Location ID",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h4\"]",
+       "labels": [
+        "Provider Location ID"
+       ],
+       "required": 0,
+       "text": "Provider Location ID kendo.syncReady(function(){jQuery(\"#ProviderLocationId\").kendoTextBox({});}); // Replace curly sing"
+      }
+     ],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "ProviderIdentifierList",
+     "label": "ProviderIdentifierList",
+     "value": "02",
+     "text": "NPI",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h3\"]",
+       "labels": [
+        "NPI"
+       ],
+       "required": 0,
+       "text": "NPI kendo.syncReady(function(){jQuery(\"#NPI\").kendoTextBox({});}); // Replace curly single quotes and apostrophes with s"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h4\"]",
+       "labels": [
+        "Provider Location ID"
+       ],
+       "required": 0,
+       "text": "Provider Location ID kendo.syncReady(function(){jQuery(\"#ProviderLocationId\").kendoTextBox({});}); // Replace curly sing"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "ProviderIdentifierList",
+     "label": "ProviderIdentifierList",
+     "value": "03",
+     "text": "IRS Tax ID",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h6\"]",
+       "labels": [
+        "Tax ID"
+       ],
+       "required": 0,
+       "text": "Tax ID kendo.syncReady(function(){jQuery(\"#TaxId\").kendoTextBox({});}); // Replace curly single quotes and apostrophes w"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h3\"]",
+       "labels": [
+        "NPI"
+       ],
+       "required": 0,
+       "text": "NPI kendo.syncReady(function(){jQuery(\"#NPI\").kendoTextBox({});}); // Replace curly single quotes and apostrophes with s"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "ProviderIdentifierList",
+     "label": "ProviderIdentifierList",
+     "value": "04",
+     "text": "SSN",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h5\"]",
+       "labels": [
+        "SSN"
+       ],
+       "required": 0,
+       "text": "SSN kendo.syncReady(function(){jQuery(\"#SSN\").kendoMaskedTextBox({\"mask\":\"000-00-0000\",\"rules\":{}});}); Enter the Social"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h6\"]",
+       "labels": [
+        "Tax ID"
+       ],
+       "required": 0,
+       "text": "Tax ID kendo.syncReady(function(){jQuery(\"#TaxId\").kendoTextBox({});}); // Replace curly single quotes and apostrophes w"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "SecondaryProviderIdentifierList",
+     "label": "SecondaryProviderIdentifierList",
+     "value": "01",
+     "text": "Medicare Number",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h11\"]",
+       "labels": [
+        "Medicare Number"
+       ],
+       "required": 0,
+       "text": "Medicare Number kendo.syncReady(function(){jQuery(\"#MedicareNumber\").kendoTextBox({});}); // Replace curly single quotes"
+      }
+     ],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "SecondaryProviderIdentifierList",
+     "label": "SecondaryProviderIdentifierList",
+     "value": "02",
+     "text": "License Number",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h10\"]",
+       "labels": [
+        "License Number"
+       ],
+       "required": 0,
+       "text": "License Number kendo.syncReady(function(){jQuery(\"#LicenseNumber\").kendoTextBox({});}); // Replace curly single quotes a"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h11\"]",
+       "labels": [
+        "Medicare Number"
+       ],
+       "required": 0,
+       "text": "Medicare Number kendo.syncReady(function(){jQuery(\"#MedicareNumber\").kendoTextBox({});}); // Replace curly single quotes"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "SecondaryProviderIdentifierList",
+     "label": "SecondaryProviderIdentifierList",
+     "value": "03",
+     "text": "Certification Number",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h9\"]",
+       "labels": [
+        "Certification Number"
+       ],
+       "required": 0,
+       "text": "Certification Number kendo.syncReady(function(){jQuery(\"#CertificationNumber\").kendoTextBox({});}); // Replace curly sin"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h10\"]",
+       "labels": [
+        "License Number"
+       ],
+       "required": 0,
+       "text": "License Number kendo.syncReady(function(){jQuery(\"#LicenseNumber\").kendoTextBox({});}); // Replace curly single quotes a"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "SecondaryProviderIdentifierList",
+     "label": "SecondaryProviderIdentifierList",
+     "value": "04",
+     "text": "CLIA Number",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h12\"]",
+       "labels": [
+        "CLIA Number"
+       ],
+       "required": 0,
+       "text": "CLIA Number kendo.syncReady(function(){jQuery(\"#CLIANumber\").kendoTextBox({});}); // Replace curly single quotes and apo"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h9\"]",
+       "labels": [
+        "Certification Number"
+       ],
+       "required": 0,
+       "text": "Certification Number kendo.syncReady(function(){jQuery(\"#CertificationNumber\").kendoTextBox({});}); // Replace curly sin"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 5897,
+   "reveals": [
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#ProviderIdentifierList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#SecondaryProviderIdentifierList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#NameTypeList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#EnrollmentTypeList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ActiveInactiveContractList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ProviderManagement/GetProviders/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 151,
+    "visibleMs": 5750
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": {
+   "stamp": null,
+   "icon": null,
+   "iconHtml": null,
+   "column": null,
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "filterableColumns": 0
+  },
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "SearchProvider_Type",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h25\"]",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "[data-kit-h=\"h31\"]",
+     "labels": [
+      "Search Results",
+      "ExportOptionsList",
+      "ExportOptions_ID",
+      "ExportOptions_Name",
+      "ExportOptions_DisplayFormat"
+     ],
+     "required": 0,
+     "text": "Search Results NPIMedicaid IDBase IDProvider Location IDTypeSpecialtyBase NameLocation NameEnrollment TypeAddressCitySta"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ProviderManagement/GetProviders/",
+     "status": "sent"
+    },
+    {
+     "method": "GET",
+     "url": "/api/Localization/GetDataListCombined/PlanManagement.DataList.ProviderTypes/",
+     "status": "sent"
+    }
+   ],
+   "grids": [
+    {
+     "id": "providerResultsGrid",
+     "rows": 1,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 773,
+      "w": 1843,
+      "h": 277
+     }
+    }
+   ],
+   "validation": null,
+   "shot": "provider-management-providers--search-nomatch.png"
+  },
+  "shots": [
+   "provider-management-providers--search-nomatch.png"
+  ]
+ },
+ "ms": 61878
+}

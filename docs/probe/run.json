@@ -1,0 +1,22 @@
+{
+ "at": "2026-11-12T19:02:25.381Z",
+ "url": "https://uximc.mms.tst.pgwcloud.net/Home/MyHome/",
+ "kit": "provider",
+ "pack": "fxfer-v4",
+ "viewport": {
+  "width": 1920,
+  "height": 1080
+ },
+ "dpr": 1,
+ "viewports": [
+  {
+   "width": 1920,
+   "height": 1080
+  },
+  {
+   "width": 1280,
+   "height": 720
+  }
+ ],
+ "pages": 161
+}

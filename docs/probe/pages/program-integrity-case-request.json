@@ -1,0 +1,288 @@
+{
+ "label": "Program Integrity > Case Request",
+ "trail": [
+  "Program Integrity",
+  "Case Request"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProgramIntegrity/CaseRequestSearch",
+ "at": "2026-11-12T21:08:35.815Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Case Request",
+  "census": {
+   "roles": {
+    "tooltip": 12,
+    "validator": 1,
+    "button": 6,
+    "textbox": 5,
+    "dropdownlist": 6,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 7,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 11,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 11,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down subpanel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 15,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down subpanel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1927,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. Enter at least one search criteria"
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#CaseRequestCode_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#DetectionTypeList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#DetectionSource_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#TransactionTypeList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#EntityTypeList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. Enter at least one search criteria",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>Enter at least one search criteria</li></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "program-integrity-case-request--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": {
+   "stamp": null,
+   "icon": null,
+   "iconHtml": null,
+   "column": null,
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "filterableColumns": 0
+  },
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "opened": false,
+    "requests": [],
+    "navigates": "/ProgramIntegrity/CaseRequest/",
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "opened": false
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "CaseRequestCode",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h11\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Search Results Case Request IDUser IdEntity TypeEntity IDDetection TypeDetection SourceTransaction TypeLoading...There a"
+    },
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ProgramIntegrity/GetCaseRequestSearch/",
+     "status": "sent"
+    }
+   ],
+   "grids": [
+    {
+     "id": "SearchResultGrid",
+     "rows": 1,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 66,
+      "y": 392,
+      "w": 1787,
+      "h": 273
+     }
+    }
+   ],
+   "validation": {
+    "summary": [
+     {
+      "className": "k-loading-text",
+      "text": "Loading...",
+      "icons": [],
+      "rect": {
+       "x": 67,
+       "y": 481,
+       "w": 0,
+       "h": 23
+      },
+      "html": "<span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span>",
+      "close": null
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "program-integrity-case-request--page-nomatch-validation.png"
+   },
+   "shot": "program-integrity-case-request--search-nomatch.png"
+  },
+  "shots": [
+   "program-integrity-case-request--page-search-validation.png",
+   "program-integrity-case-request--page-nomatch-validation.png",
+   "program-integrity-case-request--search-nomatch.png"
+  ]
+ },
+ "ms": 134952
+}

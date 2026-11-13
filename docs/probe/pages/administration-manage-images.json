@@ -1,0 +1,149 @@
+{
+ "label": "Administration > Manage Images",
+ "trail": [
+  "Administration",
+  "Manage Images"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Localization/ManageImages",
+ "at": "2026-11-12T19:06:59.791Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage Images",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 12,
+    "button": 1,
+    "dropdownlist": 4,
+    "resizable": 1,
+    "columnsorter": 5,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 3,
+   "hiddenAtRest": 6,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 6,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 2,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 2647,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h6\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results IDContent IDDescriptionSourceStatusRelease Status c56b3332-d5cf-4436-906c-a90169150d4fAdministration.Imag"
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/LocalizationMaint/ImageSearch/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 112,
+    "visibleMs": 700
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": []
+ },
+ "ms": 45406
+}

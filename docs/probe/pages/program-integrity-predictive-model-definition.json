@@ -1,0 +1,311 @@
+{
+ "label": "Program Integrity > Predictive Model Definition",
+ "trail": [
+  "Program Integrity",
+  "Predictive Model Definition"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProgramIntegrity/SearchPMDefinition",
+ "at": "2026-11-12T21:04:31.353Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Predictive Model Definition",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 9,
+    "button": 6,
+    "textbox": 3,
+    "dropdownlist": 5,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 7,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 9,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 9,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "PMTypeList",
+     "label": "PMTypeList",
+     "value": "Custom",
+     "text": "Custom",
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h6\"]",
+       "labels": [
+        "Predictive Model"
+       ],
+       "required": 0,
+       "text": "Predictive Model kendo.syncReady(function(){jQuery(\"#Description\").kendoTextBox({});}); // Replace curly single quotes a"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "#CategoryList_parent",
+       "labels": [
+        "PM Category",
+        "CategoryList",
+        "Category_ID",
+        "Category_Name",
+        "Category_DisplayFormat"
+       ],
+       "required": 0,
+       "text": "PM Category select a value...CategoryList kendo.syncReady(function(){jQuery(\"#CategoryList\").kendoDropDownList({\"change\""
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down subpanel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down subpanel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1914,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. Enter at least one search criteria"
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#ModelCD_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#SuspectList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#PMTypeList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#CategoryList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ExecutionStatusList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ModelTitle_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. Enter at least one search criteria",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>Enter at least one search criteria</li></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "program-integrity-predictive-model-definition--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": {
+   "stamp": null,
+   "icon": null,
+   "iconHtml": null,
+   "column": null,
+   "filterable": false,
+   "columnMenu": false,
+   "filterableColumns": 1
+  },
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "opened": false,
+    "requests": [],
+    "navigates": "/ProgramIntegrity/AddPredictiveModel/",
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "opened": false
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "ModelCD",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h9\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Search Results Model IDModel IDTopicSuspectWeightPM CategoryExecution StatusExecution DateLoading... Export to Excel ken"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ProgramIntegrity/PredictiveModelSearch/",
+     "status": "sent"
+    }
+   ],
+   "grids": [
+    {
+     "id": "PredictiveModelDefinitionSearchGrid",
+     "rows": 0,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 76,
+      "y": 397,
+      "w": 1767,
+      "h": 259
+     }
+    }
+   ],
+   "validation": {
+    "summary": [
+     {
+      "className": "k-loading-text",
+      "text": "Loading...",
+      "icons": [],
+      "rect": {
+       "x": 77,
+       "y": 496,
+       "w": 0,
+       "h": 23
+      },
+      "html": "<span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span>",
+      "close": null
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "program-integrity-predictive-model-definition--page-nomatch-validation.png"
+   },
+   "shot": "program-integrity-predictive-model-definition--search-nomatch.png"
+  },
+  "shots": [
+   "program-integrity-predictive-model-definition--page-search-validation.png",
+   "program-integrity-predictive-model-definition--page-nomatch-validation.png",
+   "program-integrity-predictive-model-definition--search-nomatch.png"
+  ]
+ },
+ "ms": 98200
+}

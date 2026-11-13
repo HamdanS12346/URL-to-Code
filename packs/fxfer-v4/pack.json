@@ -1,49 +1,53 @@
 {
- "selectors": {},
- "config": {},
- "pack": "fxfer-v4",
- "url": "https://uximc.mms.tst.pgwcloud.net/Home/MyHome/",
- "menu": "File Transfer Services",
- "outRepo": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\app",
- "menuButton": "#pageBannerMenu > nav > div > i",
- "screens": [
-  {
-   "id": "home",
-   "label": "Home",
-   "url": "https://uximc.mms.tst.pgwcloud.net/Home/MyHome/",
-   "home": true,
-   "scope": "#pageBody > main"
-  },
-  {
-   "id": "file-transfer-configuration",
-   "label": "File Transfer Configuration",
-   "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations",
-   "trail": [
-    "File Transfer Services",
-    "File Transfer Configuration"
-   ],
-   "scope": "#pageBody > main"
-  },
-  {
-   "id": "file-transfer-tracking",
-   "label": "File Transfer Tracking",
-   "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking",
-   "trail": [
-    "File Transfer Services",
-    "File Transfer Tracking"
-   ],
-   "scope": "#pageBody > main"
-  },
-  {
-   "id": "ftp-server-credentials",
-   "label": "FTP Server Credentials",
-   "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFTPServerCredentials",
-   "trail": [
-    "File Transfer Services",
-    "FTP Server Credentials"
-   ],
-   "scope": "#pageBody > main"
-  }
- ],
- "kit": "provider"
+    "selectors":  {
+                      "loggedIn":  "a[data-testid^=\u0027link-logout\u0027],a[href*=\u0027LogoutFromMenu\u0027],a[href*=\u0027Logout\u0027],#AAGMenu\\\\.Logout,#AAGMenu\\\\.Logout_mbl"
+                  },
+    "config":  {
+
+               },
+    "pack":  "fxfer-v4",
+    "url":  "https://uximc.mms.tst.pgwcloud.net/Home/MyHome/",
+    "menu":  "File Transfer Services",
+    "outRepo":  "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v4\\app",
+    "menuButton":  "#pageBannerMenu \u003e nav \u003e div \u003e i",
+    "screens":  [
+                    {
+                        "id":  "home",
+                        "label":  "Home",
+                        "url":  "https://uximc.mms.tst.pgwcloud.net/Home/MyHome/",
+                        "home":  true,
+                        "scope":  "#pageBody \u003e main"
+                    },
+                    {
+                        "id":  "file-transfer-configuration",
+                        "label":  "File Transfer Configuration",
+                        "url":  "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations",
+                        "trail":  [
+                                      "File Transfer Services",
+                                      "File Transfer Configuration"
+                                  ],
+                        "scope":  "#pageBody \u003e main"
+                    },
+                    {
+                        "id":  "file-transfer-tracking",
+                        "label":  "File Transfer Tracking",
+                        "url":  "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking",
+                        "trail":  [
+                                      "File Transfer Services",
+                                      "File Transfer Tracking"
+                                  ],
+                        "scope":  "#pageBody \u003e main"
+                    },
+                    {
+                        "id":  "ftp-server-credentials",
+                        "label":  "FTP Server Credentials",
+                        "url":  "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFTPServerCredentials",
+                        "trail":  [
+                                      "File Transfer Services",
+                                      "FTP Server Credentials"
+                                  ],
+                        "scope":  "#pageBody \u003e main"
+                    }
+                ],
+    "kit":  "provider"
 }

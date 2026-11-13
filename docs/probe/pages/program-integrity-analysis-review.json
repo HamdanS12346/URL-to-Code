@@ -1,0 +1,144 @@
+{
+ "label": "Program Integrity > Analysis Review",
+ "trail": [
+  "Program Integrity",
+  "Analysis Review"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProgramIntegrity/AnalysisReviewHome",
+ "at": "2026-11-12T21:07:51.888Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [
+   "page conditionals: page.evaluate: TypeError: Cannot read properties of undefined (reading 'TargetedQueryID')"
+  ],
+  "skipped": [],
+  "title": "Analysis Review",
+  "census": {
+   "roles": {
+    "tooltip": 16,
+    "button": 10,
+    "autocomplete": 4,
+    "dropdownlist": 3
+   },
+   "buttons": [
+    {
+     "text": "Search",
+     "action": "search"
+    },
+    {
+     "text": "List",
+     "action": null
+    },
+    {
+     "text": "View",
+     "action": null
+    },
+    {
+     "text": "View Catalog",
+     "action": null
+    },
+    {
+     "text": "View Catalog",
+     "action": null
+    },
+    {
+     "text": "View",
+     "action": null
+    }
+   ],
+   "radios": {
+    "radiobtnList": [
+     "on",
+     "on",
+     "on"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 6,
+   "hiddenAtRest": 10,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "autocomplete": {
+    "count": 4,
+    "ids": [
+     "RequestIDData",
+     "targetedQueryCode",
+     "predictiveModelCode",
+     "MemberIDData"
+    ]
+   }
+  },
+  "hiddenAtRest": 10,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": null,
+  "toggles": [],
+  "search": {
+   "ms": 5704,
+   "reveals": [
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/ProgramIntegrity/RankingSearchPopUp/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 105,
+    "visibleMs": 5650
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "RequestIDData",
+   "reveals": [
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/ProgramIntegrity/RankingSearchPopUp/",
+     "status": "sent"
+    },
+    {
+     "method": "GET",
+     "url": "/api/ProgramIntegrity/GetStudyRequestId/",
+     "status": "sent"
+    }
+   ],
+   "grids": [],
+   "validation": null,
+   "shot": "program-integrity-analysis-review--search-nomatch.png"
+  },
+  "shots": [
+   "program-integrity-analysis-review--search-nomatch.png"
+  ]
+ },
+ "ms": 43917
+}

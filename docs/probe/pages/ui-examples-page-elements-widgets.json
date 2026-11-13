@@ -1,0 +1,1002 @@
+{
+ "label": "UI Examples > Page Elements / Widgets",
+ "trail": [
+  "UI Examples",
+  "Page Elements / Widgets"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Employee/UIExamples",
+ "at": "2026-11-12T20:07:48.278Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "UI Examples",
+  "census": {
+   "roles": {
+    "tooltip": 309,
+    "autocomplete": 2,
+    "dropdownlist": 16,
+    "datepicker": 3,
+    "datetimepicker": 3,
+    "timepicker": 2,
+    "calendar": 1,
+    "timeline": 1,
+    "checkbox": 97,
+    "switch": 2,
+    "multiselect": 2,
+    "upload": 2,
+    "button": 33,
+    "progressbar": 3,
+    "textbox": 8,
+    "numerictextbox": 13,
+    "maskedtextbox": 7,
+    "tabstrip": 4,
+    "grid": 7,
+    "resizable": 7,
+    "columnsorter": 63,
+    "pager": 7,
+    "wizard": 1,
+    "stepper": 1,
+    "selectable": 2,
+    "listbox": 2,
+    "treelist": 1,
+    "treeview": 2
+   },
+   "buttons": [
+    {
+     "text": "Friday, November 13, 2026",
+     "action": null
+    },
+    {
+     "text": "Processing Icon",
+     "action": null
+    },
+    {
+     "text": "Start",
+     "action": null
+    },
+    {
+     "text": "Start",
+     "action": null
+    },
+    {
+     "text": "Browse...",
+     "action": null
+    },
+    {
+     "text": "Standard",
+     "action": null
+    },
+    {
+     "text": "Standard",
+     "action": null
+    },
+    {
+     "text": "Label",
+     "action": null
+    },
+    {
+     "text": "Label",
+     "action": null
+    },
+    {
+     "text": "Primary",
+     "action": null
+    },
+    {
+     "text": "Primary",
+     "action": null
+    },
+    {
+     "text": "Nav Up1",
+     "action": null
+    },
+    {
+     "text": "Nav Down1",
+     "action": null
+    },
+    {
+     "text": "MG Assoc Right",
+     "action": null
+    },
+    {
+     "text": "MG Assoc Left",
+     "action": null
+    },
+    {
+     "text": "MG Order Up",
+     "action": null
+    },
+    {
+     "text": "MG Order Down",
+     "action": null
+    },
+    {
+     "text": "Next",
+     "action": null
+    },
+    {
+     "text": "1 Enrollment Type",
+     "action": null
+    },
+    {
+     "text": "2 Request Information",
+     "action": null
+    },
+    {
+     "text": "3 Specialties",
+     "action": null
+    },
+    {
+     "text": "4 Addresses",
+     "action": null
+    },
+    {
+     "text": "5 Provider Identification",
+     "action": null
+    },
+    {
+     "text": "6 Network Participation",
+     "action": null
+    },
+    {
+     "text": "7 Languages",
+     "action": null
+    },
+    {
+     "text": "8 EFT Enrollment",
+     "action": null
+    },
+    {
+     "text": "9 ERA Enrollment",
+     "action": null
+    },
+    {
+     "text": "10 Other Information",
+     "action": null
+    },
+    {
+     "text": "11 Managing Individuals",
+     "action": null
+    },
+    {
+     "text": "12 Addendums",
+     "action": null
+    },
+    {
+     "text": "13 Disclosures",
+     "action": null
+    },
+    {
+     "text": "14 Attachments and Fees",
+     "action": null
+    },
+    {
+     "text": "15 Agree and Submit",
+     "action": null
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Previous",
+     "action": null
+    },
+    {
+     "text": "Save & Continue",
+     "action": null
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Previous",
+     "action": null
+    },
+    {
+     "text": "Save & Continue",
+     "action": null
+    },
+    {
+     "text": "Sample Overlay",
+     "action": null
+    },
+    {
+     "text": "Sample Overlay w/MCB",
+     "action": null
+    },
+    {
+     "text": "Up",
+     "action": null
+    },
+    {
+     "text": "Down",
+     "action": null
+    },
+    {
+     "text": "Move To",
+     "action": null
+    },
+    {
+     "text": "Move From",
+     "action": null
+    },
+    {
+     "text": "Move All To",
+     "action": null
+    },
+    {
+     "text": "Move All To",
+     "action": null
+    },
+    {
+     "text": "Delete",
+     "action": null
+    }
+   ],
+   "radios": {
+    "selectedRadbtn": [
+     "true"
+    ],
+    "Gender.ID": [
+     "U",
+     "F",
+     "M",
+     "U",
+     "F",
+     "M",
+     "U",
+     "F",
+     "M"
+    ],
+    "GenderV.ID": [
+     "U",
+     "F",
+     "M"
+    ],
+    "GenderB.ID": [
+     "U",
+     "F",
+     "M"
+    ],
+    "GenderVB.ID": [
+     "U",
+     "F",
+     "M"
+    ]
+   },
+   "checkboxes": 7,
+   "required": 100,
+   "hiddenAtRest": 92,
+   "tabs": [
+    "Pages",
+    "Searches",
+    "All Favorites",
+    "Personal Information",
+    "Space for Rent - Compact",
+    "Space for Rent - Small",
+    "Space for Rent - Mid-Size",
+    "Space for Rent - Large",
+    "Space for Rent - X-Large",
+    "Space for Rent - Way too Big",
+    "Base Grid",
+    "Base Grid w/Toolbars and Types",
+    "Base Grid w/InLine Editing",
+    "Base Grid w/InCell Editing",
+    "Hierarchical",
+    "Base Grid w/Grouping",
+    "Mobile UI",
+    "Info UI Style 1",
+    "Info UI Style 2",
+    "Info UI Style 3",
+    "Info w/Tag UI Style 1",
+    "Info w/Tag UI Style 2",
+    "ID UI",
+    "ID Extra Label UI",
+    "Tab 1",
+    "Tab 2",
+    "1First Step",
+    "2Second Step",
+    "3Third Step"
+   ],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "autocomplete": {
+    "count": 2,
+    "ids": [
+     "ProcedureCode",
+     "ProcedureCodeB"
+    ]
+   },
+   "calendar": {
+    "count": 1,
+    "ids": [
+     "calendar"
+    ]
+   },
+   "timeline": {
+    "count": 1,
+    "ids": [
+     "timeline"
+    ]
+   },
+   "switch": {
+    "count": 2,
+    "ids": [
+     "Employed",
+     "EmployedB"
+    ]
+   },
+   "multiselect": {
+    "count": 2,
+    "ids": [
+     "Attendees",
+     "AttendeesB"
+    ]
+   },
+   "upload": {
+    "count": 2,
+    "ids": [
+     "files",
+     "filesB"
+    ]
+   },
+   "progressbar": {
+    "count": 3,
+    "ids": [
+     "pbPercentage",
+     "pbChunk"
+    ]
+   },
+   "maskedtextbox": {
+    "count": 7,
+    "ids": [
+     "EIN",
+     "Clone_EIN",
+     "EINRedact",
+     "SSN",
+     "Clone_SSN"
+    ]
+   },
+   "tabstrip": {
+    "count": 4,
+    "ids": [
+     "sampleTabstrip",
+     "sampleGridsTabstrip",
+     "sampleCardsTabstrip",
+     "sampleReportsTabstrip"
+    ]
+   },
+   "wizard": {
+    "count": 1,
+    "ids": [
+     "wizard"
+    ]
+   },
+   "stepper": {
+    "count": 1,
+    "ids": []
+   },
+   "listbox": {
+    "count": 2,
+    "ids": [
+     "optional",
+     "selected"
+    ]
+   },
+   "treelist": {
+    "count": 1,
+    "ids": [
+     "treelist"
+    ]
+   },
+   "treeview": {
+    "count": 2,
+    "ids": [
+     "treeviewExample1",
+     "treeviewExample2"
+    ]
+   }
+  },
+  "hiddenAtRest": 92,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "DateOfBirth",
+     "name": "DateOfBirth",
+     "label": "Date of Birth",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": true
+    },
+    {
+     "role": "datepicker",
+     "id": "Clone_DateOfBirth",
+     "name": "DateOfBirth",
+     "label": "Date of Birth",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": false
+    },
+    {
+     "role": "datetimepicker",
+     "id": "CreateDate",
+     "name": "CreateDate",
+     "label": "Create Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "M/d/yyyy h:mm tt",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": true
+    },
+    {
+     "role": "datetimepicker",
+     "id": "Clone_CreateDate",
+     "name": "CreateDate",
+     "label": "Create Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "M/d/yyyy h:mm tt",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": false
+    },
+    {
+     "role": "timepicker",
+     "id": "StartTime",
+     "name": "StartTime",
+     "label": "Start Time",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "t",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": true
+    },
+    {
+     "role": "timepicker",
+     "id": "Clone_StartTime",
+     "name": "StartTime",
+     "label": "Start Time",
+     "valueAttr": null,
+     "shows": "10:30 AM",
+     "prefilled": true,
+     "offsetDays": 0,
+     "format": "t",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": false
+    },
+    {
+     "role": "datepicker",
+     "id": "DateOfBirthB",
+     "name": "DateOfBirthB",
+     "label": "Date of Birth",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": false
+    },
+    {
+     "role": "datetimepicker",
+     "id": "CreateDateB",
+     "name": "CreateDateB",
+     "label": "Create Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "M/d/yyyy h:mm tt",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": false
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "Date of Birth",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 91,
+     "y": 378,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 91,
+     "y": 743,
+     "w": 252,
+     "h": 40
+    },
+    "shot": "ui-examples-page-elements-widgets--page-date-open.png",
+    "afterPick": "",
+    "popupAfterPick": false,
+    "afterBlur": ""
+   }
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "selectedRadbtn",
+     "groupLabel": "selectedRadbtn",
+     "value": "true",
+     "label": "Selected",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "Gender.ID",
+     "groupLabel": "Gender",
+     "value": "U",
+     "label": "Unknown",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "Gender.ID",
+     "groupLabel": "Gender",
+     "value": "F",
+     "label": "Female",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "Gender.ID",
+     "groupLabel": "Gender",
+     "value": "M",
+     "label": "Male",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "Gender.ID",
+     "groupLabel": "Gender",
+     "value": "U",
+     "label": "Unknown",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "Gender.ID",
+     "groupLabel": "Gender",
+     "value": "F",
+     "label": "Female",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "GenderV.ID",
+     "groupLabel": "Gender",
+     "value": "U",
+     "label": "Unknown",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "GenderV.ID",
+     "groupLabel": "Gender",
+     "value": "F",
+     "label": "Female",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "GenderV.ID",
+     "groupLabel": "Gender",
+     "value": "M",
+     "label": "Male",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "GenderB.ID",
+     "groupLabel": "Gender",
+     "value": "U",
+     "label": "Unknown",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "GenderB.ID",
+     "groupLabel": "Gender",
+     "value": "F",
+     "label": "Female",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "GenderB.ID",
+     "groupLabel": "Gender",
+     "value": "M",
+     "label": "Male",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "GenderVB.ID",
+     "groupLabel": "Gender",
+     "value": "U",
+     "label": "Unknown",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "GenderVB.ID",
+     "groupLabel": "Gender",
+     "value": "F",
+     "label": "Female",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "GenderVB.ID",
+     "groupLabel": "Gender",
+     "value": "M",
+     "label": "Male",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [
+    {
+     "name": "checkbox1",
+     "label": "Validate",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "DisplayAll",
+     "label": "Display All",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "selectedChkbx",
+     "label": "Selected",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "DisplayPageMessages",
+     "label": "DisplayPageMessages",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h3\"]",
+       "labels": [],
+       "required": 0,
+       "text": "This is a general test Error message.This is a general test Info message.This is a general test Success message.This is "
+      }
+     ],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "checkedItems",
+     "label": "checkedItems",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "checkedItems",
+     "label": "checkedItems",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "name": "checkedItems",
+     "label": "checkedItems",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 7,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 8,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   },
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 7,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 14,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   },
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 11,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 10,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   },
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down subpanel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 12,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down subpanel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 7,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "dialogs": [],
+  "shots": [
+   "ui-examples-page-elements-widgets--page-date-open.png"
+  ]
+ },
+ "ms": 78338
+}

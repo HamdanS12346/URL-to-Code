@@ -1,0 +1,131 @@
+{
+ "label": "Provider Management > Provider Dashboard",
+ "trail": [
+  "Provider Management",
+  "Provider Dashboard"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderManagement/Dashboard",
+ "at": "2026-11-12T21:35:17.905Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Provider Management",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 10,
+    "textbox": 6,
+    "checkbox": 1,
+    "dropdownlist": 2
+   },
+   "buttons": [
+    {
+     "text": "Clear",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 1,
+   "required": 0,
+   "hiddenAtRest": 10,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 10,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [
+    {
+     "name": "UsePhoneticSearch",
+     "label": "Phonetic Search",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "dropdowns": []
+  },
+  "toggles": [],
+  "search": {
+   "ms": 1886,
+   "reveals": [
+    {
+     "sel": "#SearchProviderDashboardStatus",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again.At least one search criteria value must be provided to initiate th"
+    }
+   ],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "msg-inline-close panel-icon clickable",
+      "text": "",
+      "icons": [
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 898,
+       "y": 238,
+       "w": 25,
+       "h": 31
+      },
+      "html": "<div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" aria-label=\"close\" onclick=\"removeGeneralMessage(this, event)\" onkeypress=\"removeGeneralMessage(this, event)\" tabindex=\"0\"><span class=\"fa-solid fa-xmark\" title=\"Close\"></span></div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "provider-management-provider-dashboard--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "NPI",
+   "reveals": [
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/ProviderManagement/SearchProviderQuick",
+     "status": "sent"
+    }
+   ],
+   "grids": [],
+   "validation": null,
+   "shot": "provider-management-provider-dashboard--search-nomatch.png"
+  },
+  "shots": [
+   "provider-management-provider-dashboard--page-search-validation.png",
+   "provider-management-provider-dashboard--search-nomatch.png"
+  ]
+ },
+ "ms": 30723
+}

@@ -1,0 +1,344 @@
+{
+ "label": "Provider Enrollment > New Enrollment Entry",
+ "trail": [
+  "Provider Enrollment",
+  "New Enrollment Entry"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/CreateSecureEnrollment",
+ "at": "2026-11-12T21:26:04.187Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "New Enrollment Entry",
+  "census": {
+   "roles": {
+    "validator": 4,
+    "tooltip": 130,
+    "textbox": 47,
+    "numerictextbox": 1,
+    "dropdownlist": 16,
+    "datepicker": 4,
+    "maskedtextbox": 7,
+    "multiselect": 1,
+    "checkbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Register",
+     "action": null
+    },
+    {
+     "text": "Previous",
+     "action": null
+    }
+   ],
+   "radios": {
+    "Provider.ChangeOfOwnership.IsChowRequired.ID": [
+     "Yes",
+     "No"
+    ],
+    "Provider.ChangeOfOwnership.TaxIdTransfer.IsTaxIdTransfer.ID": [
+     "Yes",
+     "No"
+    ],
+    "Provider.ChangeOfOwnership.NPITransfer.IsNPITransfer.ID": [
+     "Yes",
+     "No"
+    ],
+    "EnrollmentPreChecklist.TaxIdTypes.ID": [
+     "EIN",
+     "SSN"
+    ],
+    "EnrollmentPreChecklist.IsMedicareEnrolled.ID": [
+     "Y",
+     "N"
+    ],
+    "Provider.ChangeOfOwnership.IsSecurePortalChowRequired.ID": [
+     "Yes",
+     "No"
+    ],
+    "Provider.IsIndividualOrBusiness.ID": [
+     "Individual",
+     "Business"
+    ],
+    "Provider.TaxIdentification.TaxIdTypes.ID": [
+     "EIN",
+     "SSN"
+    ],
+    "Provider.IsCurrentlyEnrolled.ID": [
+     "Yes",
+     "No"
+    ],
+    "Provider.IsPreviouslyEnrolled.ID": [
+     "Yes",
+     "No"
+    ],
+    "Provider.IsMedicareEnrolled.ID": [
+     "Yes",
+     "No"
+    ],
+    "Provider.ProviderCAQHRegistration.IsProviderCAQHRegistered.ID": [
+     "Yes",
+     "No"
+    ],
+    "Provider.ProviderCAQHRegistration.IsProviderCAQHRegisteredReval.ID": [
+     "Yes",
+     "No"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 48,
+   "hiddenAtRest": 13,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "maskedtextbox": {
+    "count": 7,
+    "ids": [
+     "Provider_NationalProviderIdentifier",
+     "Provider_TaxIdentification_RevalSSN",
+     "Provider_TaxIdentification_SSN",
+     "Provider_TaxIdentification_TaxId",
+     "ApplicantContact_Address_PostalCode"
+    ]
+   },
+   "multiselect": {
+    "count": 1,
+    "ids": [
+     "mcoPrograms"
+    ]
+   }
+  },
+  "hiddenAtRest": 13,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "RequestedEffectiveDate",
+     "name": "RequestedEffectiveDate",
+     "label": "Effective Date",
+     "valueAttr": "11/12/2026",
+     "shows": "11/12/2026",
+     "prefilled": true,
+     "offsetDays": -1,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    },
+    {
+     "role": "datepicker",
+     "id": "ReceiptDate",
+     "name": "ReceiptDate",
+     "label": "Receipt Date",
+     "valueAttr": "11/12/2026",
+     "shows": "11/12/2026",
+     "prefilled": true,
+     "offsetDays": -1,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    },
+    {
+     "role": "datepicker",
+     "id": "Provider_IndividualProvider_BirthDate",
+     "name": "Provider.IndividualProvider.BirthDate",
+     "label": "Birth Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    },
+    {
+     "role": "datepicker",
+     "id": "Provider_TaxIdentification_EffectiveFromDate",
+     "name": "Provider.TaxIdentification.EffectiveFromDate",
+     "label": "IRS Effective Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    }
+   ],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "Provider.ChangeOfOwnership.IsChowRequired.ID",
+     "groupLabel": "Do you need to change ownership?",
+     "value": "Yes",
+     "label": "Yes",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [
+      {
+       "sel": "#nextButton",
+       "labels": [],
+       "required": 0,
+       "text": ""
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "Provider.ChangeOfOwnership.IsChowRequired.ID",
+     "groupLabel": "Do you need to change ownership?",
+     "value": "No",
+     "label": "No",
+     "checkedAtRest": true,
+     "show": [
+      {
+       "sel": "#nextButton",
+       "labels": [],
+       "required": 0,
+       "text": ""
+      }
+     ],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "Provider.ChangeOfOwnership.TaxIdTransfer.IsTaxIdTransfer.ID",
+     "groupLabel": "Will the Tax ID transfer?",
+     "value": "Yes",
+     "label": "Yes",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [
+      {
+       "sel": "#nextButton",
+       "labels": [],
+       "required": 0,
+       "text": ""
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "Provider.ChangeOfOwnership.TaxIdTransfer.IsTaxIdTransfer.ID",
+     "groupLabel": "Will the Tax ID transfer?",
+     "value": "No",
+     "label": "No",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "Provider.ChangeOfOwnership.NPITransfer.IsNPITransfer.ID",
+     "groupLabel": "Will the NPI transfer?",
+     "value": "Yes",
+     "label": "Yes",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "Provider.ChangeOfOwnership.NPITransfer.IsNPITransfer.ID",
+     "groupLabel": "Will the NPI transfer?",
+     "value": "No",
+     "label": "No",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "EnrollmentPreChecklist.TaxIdTypes.ID",
+     "groupLabel": "Tax ID Type",
+     "value": "EIN",
+     "label": "EIN",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "EnrollmentPreChecklist.TaxIdTypes.ID",
+     "groupLabel": "Tax ID Type",
+     "value": "SSN",
+     "label": "SSN",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "EnrollmentPreChecklist.IsMedicareEnrolled.ID",
+     "groupLabel": "Are you Medicare enrolled?",
+     "value": "Y",
+     "label": "Yes",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "EnrollmentPreChecklist.IsMedicareEnrolled.ID",
+     "groupLabel": "Are you Medicare enrolled?",
+     "value": "N",
+     "label": "No",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "Provider.ChangeOfOwnership.IsSecurePortalChowRequired.ID",
+     "groupLabel": "Do you need to change ownership?",
+     "value": "Yes",
+     "label": "Yes",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "Provider.ChangeOfOwnership.IsSecurePortalChowRequired.ID",
+     "groupLabel": "Do you need to change ownership?",
+     "value": "No",
+     "label": "No",
+     "checkedAtRest": true,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [],
+  "dialogs": [],
+  "shots": []
+ },
+ "ms": 55114
+}

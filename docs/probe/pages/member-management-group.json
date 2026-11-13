@@ -1,0 +1,200 @@
+{
+ "label": "Member Management > Group",
+ "trail": [
+  "Member Management",
+  "Group"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Group/SearchGroup",
+ "at": "2026-11-12T20:40:00.739Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Group",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 3,
+    "button": 3,
+    "dropdownlist": 2,
+    "checkbox": 1,
+    "textbox": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 2,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 1,
+   "required": 1,
+   "hiddenAtRest": 5,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 5,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [
+    {
+     "name": "GroupSearchShowInvalidCheckBox",
+     "label": "Include Invalids",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": null,
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-square-minus",
+      "visible": true,
+      "h": 230
+     },
+     "after": {
+      "icon": "fa-solid fa-square-plus",
+      "visible": false,
+      "h": 0,
+      "title": null
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 1,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-square-plus",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-square-minus",
+      "visible": true,
+      "h": 230,
+      "title": null
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 1,
+       "h": 230
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 1899,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. At least one search criteria is required."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#GroupIdentifierList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. At least one search criteria is required.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    <div id=\"errMsg\"><ul><li><p>At least one search criteria is required.</p></li></ul></div></div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "member-management-group--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "opened": false,
+    "requests": [],
+    "navigates": "/Group/AddGroup/",
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "opened": false
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": null,
+  "shots": [
+   "member-management-group--page-search-validation.png"
+  ]
+ },
+ "ms": 67398
+}

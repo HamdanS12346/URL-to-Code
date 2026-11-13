@@ -1,0 +1,226 @@
+{
+ "label": "Administration > Manage Application Settings",
+ "trail": [
+  "Administration",
+  "Manage Application Settings"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/AppSetting/ManageAppSettings",
+ "at": "2026-11-12T19:04:14.307Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage Application Settings",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 41,
+    "dropdownlist": 14,
+    "button": 1,
+    "resizable": 1,
+    "columnsorter": 10,
+    "selectable": 3,
+    "pager": 1,
+    "numerictextbox": 1,
+    "checkbox": 1,
+    "textbox": 2,
+    "datepicker": 1,
+    "listbox": 2
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "BooleanValue.ID": [
+     "true",
+     "false"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 25,
+   "hiddenAtRest": 8,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "listbox": {
+    "count": 2,
+    "ids": [
+     "availableItemsListbox",
+     "selectedItemsListbox"
+    ]
+   }
+  },
+  "hiddenAtRest": 8,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "AppValueDate",
+     "name": "AppValueDate",
+     "label": "Date Value",
+     "valueAttr": "11/12/2026",
+     "shows": "11/12/2026",
+     "prefilled": true,
+     "offsetDays": -1,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": false
+    }
+   ],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "BooleanValue.ID",
+     "groupLabel": "Boolean Value",
+     "value": "true",
+     "label": "True (Yes)",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "BooleanValue.ID",
+     "groupLabel": "Boolean Value",
+     "value": "false",
+     "label": "False (No)",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 5747,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h7\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results Create New kendo.syncReady(function(){jQuery(\"#appSettingItemAddButton\").kendoButton({\"click\":onAppSettin"
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/AppSetting/SearchAppSettings/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 104,
+    "visibleMs": 5650
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "k-loading-text",
+      "text": "Loading...",
+      "icons": [],
+      "rect": {
+       "x": 31,
+       "y": 735,
+       "w": 0,
+       "h": 23
+      },
+      "html": "<span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span>",
+      "close": null
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "administration-manage-application-settings--page-search-validation.png"
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": [
+   "administration-manage-application-settings--page-search-validation.png"
+  ]
+ },
+ "ms": 60932
+}

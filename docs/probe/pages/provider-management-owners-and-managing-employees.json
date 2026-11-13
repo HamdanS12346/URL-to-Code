@@ -1,0 +1,267 @@
+{
+ "label": "Provider Management > Owners and Managing Employees",
+ "trail": [
+  "Provider Management",
+  "Owners and Managing Employees"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderManagement/SearchOwnerManagingEmployeeAssociation",
+ "at": "2026-11-12T21:28:13.419Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Owners and Managing Employees",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 8,
+    "textbox": 5,
+    "grid": 1,
+    "selectable": 1,
+    "columnsorter": 8,
+    "pager": 1,
+    "numerictextbox": 1,
+    "dropdownlist": 1
+   },
+   "buttons": [
+    {
+     "text": "Clear",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "SearchType.ID": [
+     "I",
+     "B",
+     "T"
+    ]
+   },
+   "checkboxes": 1,
+   "required": 0,
+   "hiddenAtRest": 6,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 6,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "SearchType.ID",
+     "groupLabel": "Search Type",
+     "value": "I",
+     "label": "Individual Name",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h3\"]",
+       "labels": [
+        "Last Name",
+        "First Name",
+        "Middle Name"
+       ],
+       "required": 0,
+       "text": "Last Name (typeof KendoLicensing === 'object' && KendoLicensing.setScriptKey('141j041f611f063e0837023e133i0i490g310c3a18"
+      }
+     ],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "SearchType.ID",
+     "groupLabel": "Search Type",
+     "value": "B",
+     "label": "Business Name",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h4\"]",
+       "labels": [
+        "Business Name"
+       ],
+       "required": 0,
+       "text": "Business Name kendo.syncReady(function(){jQuery(\"#BusinessName\").kendoTextBox({});}); // Replace curly single quotes and"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h3\"]",
+       "labels": [
+        "Last Name",
+        "First Name",
+        "Middle Name"
+       ],
+       "required": 0,
+       "text": "Last Name (typeof KendoLicensing === 'object' && KendoLicensing.setScriptKey('141j041f611f063e0837023e133i0i490g310c3a18"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "SearchType.ID",
+     "groupLabel": "Search Type",
+     "value": "T",
+     "label": "Tax ID / SSN",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h5\"]",
+       "labels": [
+        "Tax ID / SSN"
+       ],
+       "required": 0,
+       "text": "Tax ID / SSN kendo.syncReady(function(){jQuery(\"#TaxIdOrSSN\").kendoTextBox({});}); // Replace curly single quotes and ap"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h4\"]",
+       "labels": [
+        "Business Name"
+       ],
+       "required": 0,
+       "text": "Business Name kendo.syncReady(function(){jQuery(\"#BusinessName\").kendoTextBox({});}); // Replace curly single quotes and"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [
+    {
+     "name": "searchOwnerManagingEmployeeShowInactives",
+     "label": "Show Inactives",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 2865,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ProviderManagement/GetOwnerManagingEmployeeAssociation/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 103,
+    "visibleMs": 1100
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li></li></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "provider-management-owners-and-managing-employees--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": [
+   "provider-management-owners-and-managing-employees--page-search-validation.png"
+  ]
+ },
+ "ms": 31227
+}

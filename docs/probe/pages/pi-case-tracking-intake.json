@@ -1,0 +1,453 @@
+{
+ "label": "PI Case Tracking > Intake",
+ "trail": [
+  "PI Case Tracking",
+  "Intake"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProgramIntegrityCT/SearchIntake",
+ "at": "2026-11-12T21:13:42.214Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Intake",
+  "census": {
+   "roles": {
+    "tooltip": 33,
+    "button": 4,
+    "validator": 6,
+    "textbox": 19,
+    "multiselect": 1,
+    "dropdownlist": 4,
+    "datepicker": 2,
+    "maskedtextbox": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 6,
+    "filtermulticheck": 1,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 19,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "multiselect": {
+    "count": 1,
+    "ids": [
+     "AssignedUsers"
+    ]
+   },
+   "maskedtextbox": {
+    "count": 2,
+    "ids": [
+     "subjectEntityType1ProviderSSN",
+     "subjectEntityType2MemberSSN"
+    ]
+   }
+  },
+  "hiddenAtRest": 19,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "IntakeCreatedFrom",
+     "name": "IntakeCreatedFrom",
+     "label": "Intake Created From",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    },
+    {
+     "role": "datepicker",
+     "id": "IntakeCreatedThru",
+     "name": "IntakeCreatedThru",
+     "label": "Intake Created Thru",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "Intake Created From",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 960,
+     "y": 441,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 960,
+     "y": 401,
+     "w": 291,
+     "h": 40
+    },
+    "shot": "pi-case-tracking-intake--page-date-open.png",
+    "afterPick": "11/13/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026"
+   }
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 7,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1893,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. At least one search criteria must be selected."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#IntakeNumber_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#CaseNumber_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#RequestorName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#IntakeDescription_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#IntakeCreatedFrom_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#IntakeCreatedThru_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#SubjectEntityList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. At least one search criteria must be selected.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>At least one search criteria must be selected.\t</li></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "pi-case-tracking-intake--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": {
+   "stamp": "p4",
+   "icon": {
+    "x": 1275,
+    "y": 780,
+    "w": 30,
+    "h": 30
+   },
+   "iconHtml": "<a aria-hidden=\"true\" aria-label=\"Created Date filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Created Date filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p4\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "Created Date",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     },
+     "date": {
+      "eq": "Equal To",
+      "gte": "Is After Or Equal To",
+      "lte": "Is Before Or Equal To"
+     }
+    }
+   },
+   "columnMenu": false,
+   "filterableColumns": 3,
+   "popup": {
+    "rect": {
+     "x": 1275,
+     "y": 810,
+     "w": 296,
+     "h": 197
+    },
+    "className": "k-animation-container k-animation-container-shown",
+    "html": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"display: block; position: absolute; top: 810.25px; z-index: 10002; left: 1274.65px;\"><div class=\"k-child-animation-container\" style=\"width: 296.333px; height: 197.188px; display: block; transform: translateY(0px);\"><form title=\"Show items with value that\" class=\"k-filter-menu k-popup\" data-role=\"popup\" aria-hidden=\"false\" style=\"\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\">Show items with value that:</div><span title=\"Operator\" class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"55f6ca19-bce1-49d9-8ae8-fc833c8283e2_listbox\" aria-busy=\"false\" aria-describedby=\"e8ab50f3-fed8-45ce-989d-90ccfd917323\" style=\"\"><span id=\"e8ab50f3-fed8-45ce-989d-90ccfd917323\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">Equal To</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><select title=\"Operator\" data-bind=\"value: filters[0].operator\" data-adaptive-mode=\"none\" data-role=\"dropdownlist\" style=\"display: none;\"><option value=\"eq\" selected=\"selected\">Equal To</option><option value=\"gte\">Is After Or Equal To</option><option value=\"lte\">Is Before Or Equal To</option></select></span><span class=\"k-datepicker k-input\" style=\"\"><input title=\"Value\" data-bind=\"value:filters[0].value\" class=\"k-input-inner\" type=\"text\" data-adaptive-mode=\"none\" data-role=\"datepicker\" inputmode=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"grid\" autocomplete=\"off\" aria-disabled=\"false\" aria-readonly=\"false\"><button aria-label=\"select\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" type=\"button\" role=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-calendar k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 416H288V288h128zm64-352v384c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h64V0h64v32h128V0h64v32h64c17.6 0 32 14.4 32 32m-32 128H64v255.9l.1.1 383.9-.1zm0-127.9q-.15-.15 0 0l-64-.1v32h-64V64H192v32h-64V64H64.1l-.1.1V160h384z\"></path></svg></span></button></span><div class=\"k-actions-stretched k-actions\"><button title=\"Filter\" class=\"k-button k-button-primary\" type=\"submit\"><span class=\"k-icon k-svg-icon k-svg-i-filter k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span><span class=\"k-button-text\">Filter</span></button><button title=\"Clear\" class=\"k-button\" type=\"reset\"><span class=\"k-icon k-svg-icon k-svg-i-filter-clear k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m143.5 64 168.2 168.2L288 256v160l-64 64V256L64 96V64zm236.1 100.4L448 96V64H279.3l-64-64L192 22l298 298 22-23.3z\"></path></svg></span><span class=\"k-button-text\">Clear</span></button></div></div><div class=\"k-list-container k-popup k-dropdownlist-popup\" data-role=\"popup\" aria-hidden=\"true\" style=\"display: none;\"><div class=\"k-list\" id=\"55f6ca19-bce1-49d9-8ae8-fc833c8283e2-list\" data-role=\"staticlist\"><div class=\"k-no-data\" aria-live=\"polite\" style=\"display: none;\">No data found.</div><div class=\"k-list-group-sticky-header\" style=\"display: none;\"></div><div class=\"k-list-content k-list-scroller\" unselectable=\"on\"><ul unselectable=\"on\" tabindex=\"-1\" aria-hidden=\"true\" id=\"55f6ca19-bce1-49d9-8ae8-fc833c8283e2_listbox\" role=\"listbox\" aria-live=\"off\" class=\"k-list-ul\"><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item k-selected k-focus\" aria-selected=\"true\" data-offset-index=\"0\" id=\"b5a95df2-0704-4ed3-8a72-87b860ba281f\"><span class=\"k-list-item-text\">Equal To</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"1\"><span class=\"k-list-item-text\">Is After Or Equal To</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"2\"><span class=\"k-list-item-text\">Is Before Or Equal To</span></li></ul></div></div></div><div aria-hidden=\"true\" class=\"k-calendar-container k-popup\" data-role=\"popup\" style=\"display: none;\"></div></form></div></div>",
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": "datepicker",
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "dropdowns": [
+     [
+      "Equal To",
+      "Is After Or Equal To",
+      "Is Before Or Equal To"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "stamp": "p5",
+      "className": "k-picker k-dropdownlist k-focus",
+      "expanded": "false",
+      "text": "Equal ToEqual ToIs After Or Equal ToIs B",
+      "after": {
+       "htmlDelta": 694,
+       "expanded": "true",
+       "rect": {
+        "x": 1275,
+        "y": 810,
+        "w": 296,
+        "h": 197
+       }
+      }
+     },
+     {
+      "stamp": "p6",
+      "className": "k-input-inner",
+      "expanded": "false",
+      "text": "",
+      "after": {
+       "popupClosed": true
+      }
+     }
+    ],
+    "shot": "pi-case-tracking-intake--grid-filter.png"
+   }
+  },
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "opened": false,
+    "requests": [],
+    "navigates": "/ProgramIntegrityCT/AddIntake/",
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "opened": false
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "IntakeNumber",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. A general error has been encountered. Please try to process your "
+    },
+    {
+     "sel": "[data-kit-h=\"h19\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results Intake IDCase IDEntity/Project NameEntity IDCreated DateDispositionRequested ByIntake ID Export to Excel "
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ProgramIntegrityCT/SearchIntake/",
+     "status": "sent"
+    }
+   ],
+   "grids": [
+    {
+     "id": "IntakeSearchResultGrid",
+     "rows": 0,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 859,
+      "w": 1843,
+      "h": 242
+     }
+    }
+   ],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. A general error has been encountered. Please try to process your request again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1789,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>A general error has been encountered. Please try to process your request again.</li></ul>\n    </div>",
+      "close": "p3"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "pi-case-tracking-intake--page-nomatch-validation.png",
+    "summaryCloseHides": true
+   },
+   "shot": "pi-case-tracking-intake--search-nomatch.png"
+  },
+  "shots": [
+   "pi-case-tracking-intake--page-date-open.png",
+   "pi-case-tracking-intake--page-search-validation.png",
+   "pi-case-tracking-intake--page-nomatch-validation.png",
+   "pi-case-tracking-intake--search-nomatch.png",
+   "pi-case-tracking-intake--grid-filter.png"
+  ]
+ },
+ "ms": 97343
+}

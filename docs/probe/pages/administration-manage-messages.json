@@ -1,0 +1,160 @@
+{
+ "label": "Administration > Manage Messages",
+ "trail": [
+  "Administration",
+  "Manage Messages"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Localization/ManageMessages",
+ "at": "2026-11-12T19:11:28.252Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage Messages",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 10,
+    "dropdownlist": 4,
+    "grid": 1,
+    "button": 1,
+    "resizable": 1,
+    "columnsorter": 5,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 3,
+   "hiddenAtRest": 5,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 5,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1897,
+   "reveals": [],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [],
+    "fields": [
+     {
+      "for": "SearchModuleList",
+      "text": "Module is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"SearchModuleList\" id=\"SearchModuleList_validationMessage\" data-valmsg-for=\"SearchModuleList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Module is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "SearchModuleList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "administration-manage-messages--page-search-validation.png"
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": [
+   "administration-manage-messages--page-search-validation.png"
+  ]
+ },
+ "ms": 51695
+}

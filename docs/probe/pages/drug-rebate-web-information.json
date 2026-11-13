@@ -1,0 +1,278 @@
+{
+ "label": "Drug Rebate > Web Information",
+ "trail": [
+  "Drug Rebate",
+  "Web Information"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/WebAdmin/WebAdmin",
+ "at": "2026-11-12T20:07:03.369Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [
+   "create 1: locator.click: Timeout 3000ms exceeded.",
+   "viewport 1280x720: locator.click: Timeout 3000ms exceeded."
+  ],
+  "skipped": [],
+  "title": "Web Information",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 15,
+    "button": 2,
+    "textbox": 1,
+    "autocomplete": 2,
+    "dropdownlist": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 6,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "WebInformationSearchCriteria.ID": [
+     "1",
+     "2"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 2,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "autocomplete": {
+    "count": 2,
+    "ids": [
+     "ContactFirstNameAutocomplete",
+     "ContactLastNameAutocomplete"
+    ]
+   }
+  },
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "WebInformationSearchCriteria.ID",
+     "groupLabel": "Search By",
+     "value": "1",
+     "label": "TPID",
+     "checkedAtRest": true,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "WebInformationSearchCriteria.ID",
+     "groupLabel": "Search By",
+     "value": "2",
+     "label": "Contact Name",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h6\"]",
+       "labels": [
+        "First Name",
+        "ContactFirstNameAutocomplete",
+        "Last Name",
+        "ContactLastNameAutocomplete",
+        "Status",
+        "StatusCriteriaListText",
+        "StatusCriteriaList",
+        "StatusCriteria_ID",
+        "StatusCriteria_Name",
+        "StatusCriteria_DisplayFormat"
+       ],
+       "required": 0,
+       "text": "First Name ContactFirstNameAutocomplete kendo.syncReady(function(){jQuery(\"#ContactFirstNameAutocomplete\").kendoAutoComp"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "#divSearchByTPId",
+       "labels": [
+        "TPID"
+       ],
+       "required": 0,
+       "text": "TPID kendo.syncReady(function(){jQuery(\"#TpId\").kendoTextBox({});}); // Replace curly single quotes and apostrophes with"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 2125,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/DrugRebate/GetWebAdminByTPId/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 112,
+    "visibleMs": 300
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p2"
+     },
+     {
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "text": "The Entered TPID was not found.",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "rect": {
+       "x": 515,
+       "y": 478,
+       "w": 322,
+       "h": 24
+      },
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"TpId_validationMessage\" role=\"alert\" data-for=\"TpId\" data-valmsg-for=\"TpId\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>The Entered TPID was not found.</span>",
+      "close": null
+     }
+    ],
+    "fields": [
+     {
+      "for": "TpId",
+      "text": "The Entered TPID was not found.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"TpId_validationMessage\" role=\"alert\" data-for=\"TpId\" data-valmsg-for=\"TpId\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>The Entered TPID was not found.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": "TpId",
+      "className": "k-input k-textbox editor-control k-readonly readonly-widget",
+      "border": "rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgb(90, 105, 120)",
+      "background": "rgba(0, 0, 0, 0)"
+     }
+    ],
+    "shot": "drug-rebate-web-information--page-search-validation.png",
+    "summaryCloseHides": false
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": [
+   "drug-rebate-web-information--page-search-validation.png"
+  ]
+ },
+ "ms": 44899
+}

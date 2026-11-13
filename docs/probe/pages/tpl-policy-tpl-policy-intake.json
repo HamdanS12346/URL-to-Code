@@ -1,0 +1,410 @@
+{
+ "label": "TPL Policy > TPL Policy Intake",
+ "trail": [
+  "TPL Policy",
+  "TPL Policy Intake"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/TPLPolicy/SearchPolicyIntake",
+ "at": "2026-11-12T21:56:34.405Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "TPL Policy Intake",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 34,
+    "textbox": 9,
+    "datepicker": 4,
+    "dropdownlist": 5,
+    "grid": 2,
+    "resizable": 2,
+    "columnsorter": 20,
+    "pager": 2,
+    "button": 7,
+    "numerictextbox": 2,
+    "selectable": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "PolicyIntakeRadioList": [
+     "on",
+     "on"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 13,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 13,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "PolicyIntakeErrorModel_LoadFromDate",
+     "name": "PolicyIntakeErrorModel.LoadFromDate",
+     "label": "Load From Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    },
+    {
+     "role": "datepicker",
+     "id": "PolicyIntakeErrorModel_LoadToDate",
+     "name": "PolicyIntakeErrorModel.LoadToDate",
+     "label": "Load To Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    },
+    {
+     "role": "datepicker",
+     "id": "LoadFromDate",
+     "name": "LoadFromDate",
+     "label": "Load Date From",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    },
+    {
+     "role": "datepicker",
+     "id": "LoadToDate",
+     "name": "LoadToDate",
+     "label": "Load Date To",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "Load Date From",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 659,
+     "y": 394,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 659,
+     "y": 354,
+     "w": 286,
+     "h": 40
+    },
+    "shot": "tpl-policy-tpl-policy-intake--page-date-open.png",
+    "afterPick": "11/13/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026"
+   }
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "PolicyIntakeRadioList",
+     "groupLabel": "PolicyIntakeRadioList",
+     "value": "on",
+     "label": "Policy Intake",
+     "checkedAtRest": true,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "PolicyIntakeRadioList",
+     "groupLabel": "PolicyIntakeRadioList",
+     "value": "on",
+     "label": "Policy Intake Error",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h2\"]",
+       "labels": [
+        "Run ID",
+        "Member ID",
+        "Load From Date",
+        "Load To Date",
+        "Policy Number",
+        "Source File",
+        "SourceFileErrorList"
+       ],
+       "required": 0,
+       "text": "Run ID (typeof KendoLicensing === 'object' && KendoLicensing.setScriptKey('141j041f611f063e0837023e133i0i490g310c3a18445"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "#divsearchPolicyintake",
+       "labels": [
+        "PolicyIntakeId",
+        "Run ID",
+        "Member ID",
+        "Load Date From",
+        "Load Date To",
+        "Source File",
+        "SourceFileList",
+        "Assigned To",
+        "Carrier ID",
+        "Carrier Name"
+       ],
+       "required": 0,
+       "text": "PolicyIntakeId Run ID kendo.syncReady(function(){jQuery(\"#RunId\").kendoTextBox({});}); // Replace curly single quotes an"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 3175,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. A general error has been encountered. Please try to process your "
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#RunId_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#MemberId_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#LoadFromDate_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#LoadToDate_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#AssignedTo_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#CarrierIdSearch_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#CarrierNameSearch_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#PolicyNumberSearch_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/TPLPolicy/SearchProcessPolicyIntakeRecord/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 65,
+    "visibleMs": 1400
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. A general error has been encountered. Please try to process your request again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 172,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>A general error has been encountered. Please try to process your request again.</li></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "tpl-policy-tpl-policy-intake--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "RunId",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. A general error has been encountered. Please try to process your "
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/TPLPolicy/SearchProcessPolicyIntakeRecord/",
+     "status": "sent"
+    }
+   ],
+   "grids": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. A general error has been encountered. Please try to process your request again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 172,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>A general error has been encountered. Please try to process your request again.</li></ul>\n    </div>",
+      "close": "p3"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "tpl-policy-tpl-policy-intake--page-nomatch-validation.png",
+    "summaryCloseHides": true
+   },
+   "shot": "tpl-policy-tpl-policy-intake--search-nomatch.png"
+  },
+  "shots": [
+   "tpl-policy-tpl-policy-intake--page-date-open.png",
+   "tpl-policy-tpl-policy-intake--page-search-validation.png",
+   "tpl-policy-tpl-policy-intake--page-nomatch-validation.png",
+   "tpl-policy-tpl-policy-intake--search-nomatch.png"
+  ]
+ },
+ "ms": 49773
+}

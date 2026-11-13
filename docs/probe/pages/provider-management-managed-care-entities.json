@@ -1,0 +1,71 @@
+{
+ "label": "Provider Management > Managed Care Entities",
+ "trail": [
+  "Provider Management",
+  "Managed Care Entities"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderManagedCare/SearchManagedCareEntity",
+ "at": "2026-11-12T21:35:48.641Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Managed Care Entities",
+  "census": {
+   "roles": {
+    "tooltip": 14,
+    "grid": 1,
+    "button": 2,
+    "selectable": 1,
+    "filtermenu": 1,
+    "columnsorter": 11,
+    "pager": 1,
+    "dropdownlist": 2,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 1,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 1,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [],
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "opened": false,
+    "requests": [],
+    "navigates": "/ProviderManagedCare/ManagedCareEntityAdd/",
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "opened": false
+     }
+    ]
+   }
+  ],
+  "shots": []
+ },
+ "ms": 62714
+}

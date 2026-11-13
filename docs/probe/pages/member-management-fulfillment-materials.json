@@ -1,0 +1,269 @@
+{
+ "label": "Member Management > Fulfillment Materials",
+ "trail": [
+  "Member Management",
+  "Fulfillment Materials"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/FulfillmentMaterials/FulfillmentMaterials",
+ "at": "2026-11-12T20:37:51.149Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Fulfillment Materials",
+  "census": {
+   "roles": {
+    "validator": 3,
+    "tooltip": 9,
+    "tabstrip": 1,
+    "button": 4,
+    "dropdownlist": 2,
+    "checkbox": 1,
+    "textbox": 1,
+    "grid": 2,
+    "resizable": 2,
+    "columnsorter": 5,
+    "selectable": 2,
+    "pager": 1,
+    "numerictextbox": 1,
+    "filtermulticheck": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 1,
+   "required": 5,
+   "hiddenAtRest": 5,
+   "tabs": [
+    "Fulfillment Request",
+    "Fulfillment Triggers"
+   ],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "tabstrip": {
+    "count": 1,
+    "ids": [
+     "tabstrip"
+    ]
+   }
+  },
+  "hiddenAtRest": 5,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [
+    {
+     "name": "FulfillmentShowInvalidCheckBox",
+     "label": "Include Invalids",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": null,
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-square-minus",
+      "visible": true,
+      "h": 239
+     },
+     "after": {
+      "icon": "fa-solid fa-square-plus",
+      "visible": false,
+      "h": 0,
+      "title": null
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 1,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-square-plus",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-square-minus",
+      "visible": true,
+      "h": 239,
+      "title": null
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 1,
+       "h": 239
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 1863,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    },
+    {
+     "sel": "[data-kit-h=\"h2\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1789,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p2"
+     },
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 122,
+       "y": 423,
+       "w": 1676,
+       "h": 61
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h2\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p3"
+     }
+    ],
+    "fields": [
+     {
+      "for": "FulfillmentMaterialsLevelList",
+      "text": "Level is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"FulfillmentMaterialsLevelList\" id=\"FulfillmentMaterialsLevelList_validationMessage\" data-valmsg-for=\"FulfillmentMaterialsLevelList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Level is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "FulfillmentMaterialsLevelList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": null,
+      "className": "k-input k-textbox editor-control k-invalid",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "MemberId",
+      "className": "k-input k-textbox editor-control k-invalid",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "member-management-fulfillment-materials--page-search-validation.png",
+    "summaryCloseHides": false
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "opened": false,
+    "requests": [
+     {
+      "method": "GET",
+      "url": "/api/MemberManagement/GetFulfillmentTriggers/",
+      "status": "sent"
+     }
+    ],
+    "navigates": null,
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "opened": false
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": null,
+  "shots": [
+   "member-management-fulfillment-materials--page-search-validation.png"
+  ]
+ },
+ "ms": 103108
+}

@@ -1,0 +1,265 @@
+{
+ "label": "Integration > System Process Tracking",
+ "trail": [
+  "Integration",
+  "System Process Tracking"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/SystemProcessTracking/SearchSystemProcessTracking",
+ "at": "2026-11-12T20:22:23.755Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "System Process Tracking",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 10,
+    "maskedtextbox": 1,
+    "dropdownlist": 3,
+    "datepicker": 2,
+    "grid": 1,
+    "resizable": 1,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 5,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "maskedtextbox": {
+    "count": 1,
+    "ids": [
+     "GroupId"
+    ]
+   }
+  },
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "CreatedDateFrom",
+     "name": "CreatedDateFrom",
+     "label": "Date From",
+     "valueAttr": "01/01/1900",
+     "shows": "11/13/2026",
+     "prefilled": true,
+     "offsetDays": 0,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": true
+    },
+    {
+     "role": "datepicker",
+     "id": "CreatedDateTo",
+     "name": "CreatedDateTo",
+     "label": "Date To",
+     "valueAttr": "01/01/1900",
+     "shows": "11/14/2026",
+     "prefilled": true,
+     "offsetDays": 1,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "Date From",
+    "atRest": "11/13/2026",
+    "onFocus": "11/13/2026",
+    "onCalendarButton": "11/13/2026",
+    "popup": {
+     "x": 41,
+     "y": 407,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 41,
+     "y": 367,
+     "w": 291,
+     "h": 40
+    },
+    "shot": "integration-system-process-tracking--page-date-open.png",
+    "afterPick": "11/13/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026"
+   }
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 6,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 7,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 5830,
+   "reveals": [
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#ModuleNameList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/SystemProcessTracking/SearchSystemProcessTrackingHistory/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 100,
+    "visibleMs": 5750
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "GroupId",
+   "reveals": [],
+   "requests": [],
+   "grids": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "text": "Value entered is not a valid GUID",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "rect": {
+       "x": 41,
+       "y": 316,
+       "w": 445,
+       "h": 24
+      },
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"GroupId_validationMessage\" role=\"alert\" data-for=\"GroupId\" data-valmsg-for=\"GroupId\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Value entered is not a valid GUID</span>",
+      "close": null
+     }
+    ],
+    "fields": [
+     {
+      "for": "GroupId",
+      "text": "Value entered is not a valid GUID",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"GroupId_validationMessage\" role=\"alert\" data-for=\"GroupId\" data-valmsg-for=\"GroupId\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Value entered is not a valid GUID</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": "GroupId",
+      "className": "k-input k-maskedtextbox editor-control k-valid",
+      "border": "rgb(90, 105, 120)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "integration-system-process-tracking--page-nomatch-validation.png"
+   },
+   "shot": "integration-system-process-tracking--search-nomatch.png"
+  },
+  "shots": [
+   "integration-system-process-tracking--page-date-open.png",
+   "integration-system-process-tracking--page-nomatch-validation.png",
+   "integration-system-process-tracking--search-nomatch.png"
+  ]
+ },
+ "ms": 56826
+}

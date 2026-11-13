@@ -1,0 +1,603 @@
+{
+ "label": "Task Management > Routing Configuration",
+ "trail": [
+  "Task Management",
+  "Routing Configuration"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/TaskManagement/SearchRoutingConfiguration",
+ "at": "2026-11-12T22:10:55.208Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Routing Configuration",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 21,
+    "button": 3,
+    "dropdownlist": 6,
+    "autocomplete": 1,
+    "textbox": 1,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 5,
+    "filtermulticheck": 4,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 3,
+   "hiddenAtRest": 5,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "autocomplete": {
+    "count": 1,
+    "ids": [
+     "SearchRoutingPathIdAutoComplete"
+    ]
+   }
+  },
+  "hiddenAtRest": 5,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "SearchTaskAssignedModuleList",
+     "label": "SearchTaskAssignedModuleList",
+     "value": "AD",
+     "text": "Auth Determination",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchDepartmentList",
+       "before": {
+        "enabled": false,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 0
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskDepartment/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "SearchTaskAssignedModuleList",
+     "label": "SearchTaskAssignedModuleList",
+     "value": "CL",
+     "text": "Claims",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchDepartmentList",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 4
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskDepartment/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "SearchTaskAssignedModuleList",
+     "label": "SearchTaskAssignedModuleList",
+     "value": "DR",
+     "text": "Drug Rebate",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchDepartmentList",
+       "before": {
+        "enabled": true,
+        "options": 4
+       },
+       "after": {
+        "enabled": true,
+        "options": 0
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskDepartment/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "SearchTaskAssignedModuleList",
+     "label": "SearchTaskAssignedModuleList",
+     "value": "MC",
+     "text": "Managed Care",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchDepartmentList",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 6
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskDepartment/",
+       "status": "sent"
+      }
+     ]
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 2,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1891,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [
+     {
+      "for": "SearchByList",
+      "text": "Search By is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"SearchByList\" id=\"SearchByList_validationMessage\" data-valmsg-for=\"SearchByList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Search By is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "SearchByList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "task-management-routing-configuration--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "info": {
+     "title": "Add Routing Configuration",
+     "options": {
+      "modal": {
+       "preventScroll": true
+      },
+      "width": null,
+      "height": null,
+      "actions": [
+       "Custom",
+       "Close"
+      ],
+      "draggable": false,
+      "resizable": false,
+      "animation": {
+       "open": {
+        "effects": {},
+        "duration": 350
+       },
+       "close": {
+        "effects": {},
+        "duration": 350,
+        "hide": true
+       }
+      },
+      "position": {
+       "top": 347.29150000000004,
+       "left": 240
+      }
+     },
+     "windowClass": "k-window panelForm-col-6 ui-draggable",
+     "contentId": "AddRoutingConfiguration",
+     "fields": 20,
+     "required": 5,
+     "hidden": 11,
+     "unknown": {},
+     "actions": [
+      "close: Close",
+      "reset: Reset",
+      "cancel: Cancel",
+      "save: Save"
+     ]
+    },
+    "position": {
+     "viewport": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920
+     },
+     "rect": {
+      "x": 240,
+      "y": 347,
+      "w": 1440,
+      "h": 385
+     },
+     "leftGap": 240,
+     "rightGap": 240,
+     "centeredLeft": 240,
+     "centered": true,
+     "touchesLeft": false,
+     "widerThanViewport": false,
+     "overflowRight": false,
+     "style": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 347.291px; left: 240px; z-index: 11502; opacity: 1; transform: scale(1);",
+     "className": "k-window panelForm-col-6 ui-draggable",
+     "computed": {
+      "width": "1440px",
+      "minWidth": "90px",
+      "maxWidth": "none",
+      "maxHeight": "918px",
+      "position": "absolute",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+     },
+     "kendo": {
+      "position": {
+       "top": 347.29150000000004,
+       "left": 240
+      },
+      "width": null,
+      "minWidth": 90,
+      "maxWidth": null
+     },
+     "rules": [
+      {
+       "selector": ".panel-form-col-6, .panelForm-col-6",
+       "width": "75%"
+      }
+     ],
+     "contentRules": [],
+     "title": "Add Routing Configuration"
+    },
+    "shot": "task-management-routing-configuration--create1.png",
+    "census": {
+     "roles": {
+      "validator": 1,
+      "tooltip": 15,
+      "textbox": 2,
+      "datepicker": 2,
+      "dropdownlist": 4
+     },
+     "buttons": [
+      {
+       "text": "Reset",
+       "action": "reset"
+      },
+      {
+       "text": "Cancel",
+       "action": "cancel"
+      },
+      {
+       "text": "Save",
+       "action": "save"
+      }
+     ],
+     "radios": {},
+     "checkboxes": 0,
+     "required": 10,
+     "hiddenAtRest": 11,
+     "tabs": [],
+     "collapsibles": 0
+    },
+    "dates": {
+     "inputs": [
+      {
+       "role": "datepicker",
+       "id": "EffectiveDate",
+       "name": "EffectiveDate",
+       "label": "Effective Date",
+       "valueAttr": "11/12/2026",
+       "shows": "11/12/2026",
+       "prefilled": true,
+       "offsetDays": -1,
+       "format": "MM/dd/yyyy",
+       "placeholder": null,
+       "masked": false,
+       "required": true,
+       "enabled": true
+      },
+      {
+       "role": "datepicker",
+       "id": "EndDate",
+       "name": "EndDate",
+       "label": "End Date",
+       "valueAttr": "12/31/9999",
+       "shows": "12/31/9999",
+       "prefilled": true,
+       "offsetDays": 2912126,
+       "format": "MM/dd/yyyy",
+       "placeholder": null,
+       "masked": false,
+       "required": true,
+       "enabled": true
+      }
+     ],
+     "drive": {
+      "role": "datepicker",
+      "label": "Effective Date",
+      "atRest": "11/12/2026",
+      "onFocus": "11/12/2026",
+      "onCalendarButton": "11/12/2026",
+      "popup": {
+       "x": 1196,
+       "y": 521,
+       "w": 345,
+       "h": 365
+      },
+      "input": {
+       "x": 1196,
+       "y": 481,
+       "w": 221,
+       "h": 40
+      },
+      "shot": "task-management-routing-configuration--create1-date-open.png",
+      "afterPick": "11/13/2026",
+      "popupAfterPick": false,
+      "afterBlur": "11/13/2026"
+     }
+    },
+    "conditionals": {
+     "radios": [],
+     "checkboxes": [],
+     "dropdowns": []
+    },
+    "toggles": [],
+    "nested": null,
+    "saveEmpty": null,
+    "close": {
+     "edited": null,
+     "attempts": [
+      {
+       "via": "x",
+       "button": false
+      },
+      {
+       "via": "cancel",
+       "button": false
+      }
+     ]
+    },
+    "loading": {
+     "className": "wait-dialog",
+     "id": "loadingDialog",
+     "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+     "firstAt": 76,
+     "visibleMs": 8850
+    },
+    "requests": [
+     {
+      "method": "GET",
+      "url": "/TaskManagement/AddRoutingConfiguration/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/TaskManagement/SearchAccessModules/",
+      "status": "sent"
+     }
+    ],
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "position": {
+       "viewport": {
+        "w": 1280,
+        "h": 720,
+        "docW": 1280
+       },
+       "rect": {
+        "x": 0,
+        "y": 20,
+        "w": 1152,
+        "h": 385
+       },
+       "leftGap": 0,
+       "rightGap": 128,
+       "centeredLeft": 64,
+       "centered": false,
+       "touchesLeft": true,
+       "widerThanViewport": false,
+       "overflowRight": false,
+       "style": "min-width: 1152px; min-height: 50px; max-height: 612px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+       "className": "k-window panelForm-col-6 ui-draggable",
+       "computed": {
+        "width": "1152px",
+        "minWidth": "1152px",
+        "maxWidth": "none",
+        "maxHeight": "612px",
+        "position": "absolute",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+       },
+       "kendo": {
+        "position": {
+         "top": "0",
+         "left": "0"
+        },
+        "width": null,
+        "minWidth": 90,
+        "maxWidth": null
+       },
+       "rules": [
+        {
+         "selector": ".panel-form-col-6, .panelForm-col-6",
+         "width": "75%"
+        }
+       ],
+       "contentRules": [],
+       "title": "Add Routing Configuration"
+      },
+      "shot": "task-management-routing-configuration--create1-1280x720.png",
+      "cleanClose": {
+       "edited": null,
+       "attempts": [
+        {
+         "via": "x",
+         "closed": true,
+         "confirm": null,
+         "native": []
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": null,
+  "shots": [
+   "task-management-routing-configuration--page-search-validation.png",
+   "task-management-routing-configuration--create1.png",
+   "task-management-routing-configuration--create1-date-open.png",
+   "task-management-routing-configuration--create1-1280x720.png"
+  ]
+ },
+ "ms": 58940
+}

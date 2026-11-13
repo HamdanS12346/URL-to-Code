@@ -1,0 +1,237 @@
+{
+ "label": "Integration > Dashboard",
+ "trail": [
+  "Integration",
+  "Dashboard"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Integration/Dashboard",
+ "at": "2026-11-12T20:23:20.595Z",
+ "finalUrl": "https://uximc.mms.tst.pgwcloud.net/Integration/Dashboard/",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Integration",
+  "census": {
+   "roles": {
+    "dropdownlist": 11,
+    "chart": 23,
+    "tabstrip": 3,
+    "grid": 10,
+    "resizable": 10,
+    "columnsorter": 30,
+    "tooltip": 20,
+    "selectable": 10,
+    "pager": 10,
+    "numerictextbox": 10
+   },
+   "buttons": [],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 20,
+   "tabs": [
+    "24 Hours",
+    "2 Days",
+    "Week",
+    "Month",
+    "Service",
+    "Timeout",
+    "Endpoint",
+    "Business",
+    "Other",
+    "Service",
+    "Timeout",
+    "Endpoint",
+    "Business",
+    "Other"
+   ],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "chart": {
+    "count": 23,
+    "ids": [
+     "publisherSummaryChart",
+     "publisherModuleSummaryChart24HoursAdministration",
+     "publisherModuleSummaryChart24HoursIdentityManagement",
+     "publisherModuleSummaryChart24HoursIntegration",
+     "publisherModuleSummaryChart24HoursProviderEnrollment"
+    ]
+   },
+   "tabstrip": {
+    "count": 3,
+    "ids": [
+     "tabstrip",
+     "retryQueueTabStrip",
+     "deadQueueTabStrip"
+    ]
+   }
+  },
+  "hiddenAtRest": 20,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 7,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   },
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 2,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   },
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 2,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 9,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "dialogs": [],
+  "shots": []
+ },
+ "ms": 46440
+}

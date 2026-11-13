@@ -1,0 +1,241 @@
+{
+ "label": "Administration > Manage Services",
+ "trail": [
+  "Administration",
+  "Manage Services"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Service/ManageServices",
+ "at": "2026-11-12T19:14:37.075Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [
+   "search no match: page.goto: Timeout 60000ms exceeded."
+  ],
+  "skipped": [],
+  "title": "Manage Services",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 25,
+    "button": 1,
+    "dropdownlist": 8,
+    "resizable": 1,
+    "columnsorter": 4,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1,
+    "textbox": 4,
+    "checkbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 15,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "Status",
+     "label": "Status",
+     "value": "Active",
+     "text": "Active",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "LabelServiceDropdown",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 415
+       }
+      }
+     ],
+     "requests": []
+    },
+    {
+     "name": "TenantModuleList",
+     "label": "TenantModuleList",
+     "value": "50c9bb65-421f-69e0-e053-4c65a28f8a9e",
+     "text": "Claims Management",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SecurityRightDropdown",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 6197
+       }
+      }
+     ],
+     "requests": []
+    },
+    {
+     "name": "TenantModuleList",
+     "label": "TenantModuleList",
+     "value": "50c9bb65-301f-69e0-e053-4c65a28f8a9e",
+     "text": "Core",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchModuleList",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 30
+       }
+      }
+     ],
+     "requests": []
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 5872,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h6\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results IDModuleContent IDStatusRelease Status Loading...0Pageof 0No items to display1051020items per page kendo."
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ServiceMaint/SearchServices/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 116,
+    "visibleMs": 5800
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "k-loading-text",
+      "text": "Loading...",
+      "icons": [],
+      "rect": {
+       "x": 31,
+       "y": 606,
+       "w": 0,
+       "h": 23
+      },
+      "html": "<span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span>",
+      "close": null
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "administration-manage-services--page-search-validation.png"
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": [
+   "administration-manage-services--page-search-validation.png"
+  ]
+ },
+ "ms": 164176
+}

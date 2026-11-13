@@ -1,0 +1,396 @@
+{
+ "label": "Drug Rebate > CCN List",
+ "trail": [
+  "Drug Rebate",
+  "CCN List"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/CashControlNumbers/SearchCashControlNumbers",
+ "at": "2026-11-12T19:34:35.742Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "CCN List",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 26,
+    "dropdownlist": 2,
+    "numerictextbox": 2,
+    "textbox": 3,
+    "datepicker": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 14,
+    "selectable": 1,
+    "pager": 1,
+    "button": 4
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 5,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "CheckDate",
+     "name": "CheckDate",
+     "label": "From Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    },
+    {
+     "role": "datepicker",
+     "id": "CheckDateTo",
+     "name": "CheckDateTo",
+     "label": "To Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    }
+   ],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 8,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 26,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 4907,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#CashControlNumbersSearchCriteriaList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 57,
+    "visibleMs": 4900
+   },
+   "grids": [
+    {
+     "id": "CashControlNumbersGrid",
+     "rows": 0,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 705,
+      "w": 1859,
+      "h": 288
+     }
+    }
+   ],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 172,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p2"
+     },
+     {
+      "className": "k-loading-text",
+      "text": "Loading...",
+      "icons": [],
+      "rect": {
+       "x": 31,
+       "y": 833,
+       "w": 0,
+       "h": 23
+      },
+      "html": "<span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span>",
+      "close": null
+     }
+    ],
+    "fields": [
+     {
+      "for": "CCN",
+      "text": "CCN is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"CCN\" id=\"CCN_validationMessage\" data-valmsg-for=\"CCN\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>CCN  is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-input k-textbox editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "CCN",
+      "className": "k-input k-textbox editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "drug-rebate-ccn-list--page-search-validation.png",
+    "summaryCloseHides": false
+   }
+  },
+  "gridFilter": {
+   "stamp": "p3",
+   "icon": {
+    "x": 109,
+    "y": 650,
+    "w": 30,
+    "h": 30
+   },
+   "iconHtml": "<a aria-hidden=\"true\" aria-label=\"CCN filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"CCN filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p3\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "CCN",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     },
+     "number": {
+      "eq": "Equal To",
+      "gte": "Is Greater Than Or Equal To",
+      "lte": "Is Less Than Or Equal To"
+     },
+     "date": {
+      "eq": "Equal To",
+      "gte": "Is After Or Equal To",
+      "lte": "Is Before Or Equal To"
+     }
+    }
+   },
+   "columnMenu": false,
+   "filterableColumns": 14,
+   "popup": {
+    "rect": {
+     "x": 108,
+     "y": 679,
+     "w": 274,
+     "h": 207
+    },
+    "className": "k-animation-container k-animation-container-shown",
+    "html": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"display: block; position: absolute; top: 679px; z-index: 10002; left: 108.271px;\"><div class=\"k-child-animation-container\" style=\"width: 274.333px; height: 207.188px; display: block; transform: translateY(0px);\"><form title=\"Show items with value that\" class=\"k-filter-menu k-popup\" data-role=\"popup\" aria-hidden=\"false\" style=\"\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\">Show items with value that:</div><span title=\"Operator\" class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"849b6e5d-bd0e-45dc-9cf2-e4c98d1b76ca_listbox\" aria-busy=\"false\" aria-describedby=\"4d234def-3304-45e1-8a0a-70731784002f\" style=\"\"><span id=\"4d234def-3304-45e1-8a0a-70731784002f\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">Equal To</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><select title=\"Operator\" data-bind=\"value: filters[0].operator\" data-adaptive-mode=\"none\" data-role=\"dropdownlist\" style=\"display: none;\"><option value=\"eq\" selected=\"selected\">Equal To</option><option value=\"contains\">Contains</option><option value=\"endswith\">Ends With</option><option value=\"startswith\">Starts With</option></select></span><span class=\"k-textbox k-input\"><input title=\"Value\" data-bind=\"value:filters[0].value\" class=\"k-input-inner\" type=\"text\" data-adaptive-mode=\"none\"></span><div class=\"k-actions-stretched k-actions\"><button title=\"Filter\" class=\"k-button k-button-primary\" type=\"submit\"><span class=\"k-icon k-svg-icon k-svg-i-filter k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span><span class=\"k-button-text\">Filter</span></button><button title=\"Clear\" class=\"k-button\" type=\"reset\"><span class=\"k-icon k-svg-icon k-svg-i-filter-clear k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m143.5 64 168.2 168.2L288 256v160l-64 64V256L64 96V64zm236.1 100.4L448 96V64H279.3l-64-64L192 22l298 298 22-23.3z\"></path></svg></span><span class=\"k-button-text\">Clear</span></button></div></div><div class=\"k-list-container k-popup k-dropdownlist-popup\" data-role=\"popup\" aria-hidden=\"true\" style=\"display: none;\"><div class=\"k-list\" id=\"849b6e5d-bd0e-45dc-9cf2-e4c98d1b76ca-list\" data-role=\"staticlist\"><div class=\"k-no-data\" aria-live=\"polite\" style=\"display: none;\">No data found.</div><div class=\"k-list-group-sticky-header\" style=\"display: none;\"></div><div class=\"k-list-content k-list-scroller\" unselectable=\"on\"><ul unselectable=\"on\" tabindex=\"-1\" aria-hidden=\"true\" id=\"849b6e5d-bd0e-45dc-9cf2-e4c98d1b76ca_listbox\" role=\"listbox\" aria-live=\"off\" class=\"k-list-ul\"><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item k-selected k-focus\" aria-selected=\"true\" data-offset-index=\"0\" id=\"18bb5077-169b-481f-94e0-8e075cb9a65e\"><span class=\"k-list-item-text\">Equal To</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"1\"><span class=\"k-list-item-text\">Contains</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"2\"><span class=\"k-list-item-text\">Ends With</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"3\"><span class=\"k-list-item-text\">Starts With</span></li></ul></div></div></div></form></div></div>",
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": null,
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "dropdowns": [
+     [
+      "Equal To",
+      "Contains",
+      "Ends With",
+      "Starts With"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "stamp": "p4",
+      "className": "k-picker k-dropdownlist k-focus",
+      "expanded": "false",
+      "text": "Equal ToEqual ToContainsEnds WithStarts ",
+      "after": {
+       "htmlDelta": 678,
+       "expanded": "true",
+       "rect": {
+        "x": 108,
+        "y": 679,
+        "w": 274,
+        "h": 207
+       }
+      }
+     }
+    ],
+    "shot": "drug-rebate-ccn-list--grid-filter.png"
+   }
+  },
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "CCN",
+   "reveals": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/DrugRebate/GetCashControlNumbersInformation/",
+     "status": "sent"
+    }
+   ],
+   "grids": [
+    {
+     "id": "CashControlNumbersGrid",
+     "rows": 0,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 586,
+      "w": 1859,
+      "h": 288
+     }
+    }
+   ],
+   "validation": {
+    "summary": [
+     {
+      "className": "k-loading-text",
+      "text": "Loading...",
+      "icons": [],
+      "rect": {
+       "x": 31,
+       "y": 714,
+       "w": 0,
+       "h": 23
+      },
+      "html": "<span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span>",
+      "close": null
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "drug-rebate-ccn-list--page-nomatch-validation.png"
+   },
+   "shot": "drug-rebate-ccn-list--search-nomatch.png"
+  },
+  "shots": [
+   "drug-rebate-ccn-list--page-search-validation.png",
+   "drug-rebate-ccn-list--grid-filter.png",
+   "drug-rebate-ccn-list--page-nomatch-validation.png",
+   "drug-rebate-ccn-list--search-nomatch.png"
+  ]
+ },
+ "ms": 95544
+}

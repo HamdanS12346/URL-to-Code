@@ -1,0 +1,306 @@
+{
+ "label": "Drug Rebate > Provider Recoupment",
+ "trail": [
+  "Drug Rebate",
+  "Provider Recoupment"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderRecoupment/SearchProviderRecoupment",
+ "at": "2026-11-12T20:00:14.838Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [
+   "create 1: locator.click: Timeout 3000ms exceeded.",
+   "viewport 1280x720: locator.click: Timeout 3000ms exceeded."
+  ],
+  "skipped": [],
+  "title": "Provider Recoupment",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 16,
+    "button": 4,
+    "dropdownlist": 2,
+    "textbox": 6,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 4,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "SearchBy.ID": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 3,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "SearchBy.ID",
+     "groupLabel": "Search By",
+     "value": "1",
+     "label": "Letter Status",
+     "checkedAtRest": true,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "SearchBy.ID",
+     "groupLabel": "Search By",
+     "value": "2",
+     "label": "Prescription Number (Rx#)",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h4\"]",
+       "labels": [
+        "Prescription Number (Rx#)"
+       ],
+       "required": 2,
+       "text": "Prescription Number (Rx#) kendo.syncReady(function(){jQuery(\"#RXNumber\").kendoTextBox({});}); // Replace curly single qu"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "#divSearchByLetterStatus",
+       "labels": [
+        "Letter Status",
+        "LetterStatusList",
+        "LetterStatus_ID",
+        "LetterStatus_Name",
+        "LetterStatus_DisplayFormat"
+       ],
+       "required": 0,
+       "text": "Letter Status select a value...LetterStatusList kendo.syncReady(function(){jQuery(\"#LetterStatusList\").kendoDropDownList"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "SearchBy.ID",
+     "groupLabel": "Search By",
+     "value": "3",
+     "label": "Claim Number",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h5\"]",
+       "labels": [
+        "Claim Number"
+       ],
+       "required": 2,
+       "text": "Claim Number kendo.syncReady(function(){jQuery(\"#ClaimId\").kendoTextBox({});}); // Replace curly single quotes and apost"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h4\"]",
+       "labels": [
+        "Prescription Number (Rx#)"
+       ],
+       "required": 0,
+       "text": "Prescription Number (Rx#) kendo.syncReady(function(){jQuery(\"#RXNumber\").kendoTextBox({});}); // Replace curly single qu"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "SearchBy.ID",
+     "groupLabel": "Search By",
+     "value": "4",
+     "label": "Provider",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h6\"]",
+       "labels": [
+        "Provider ID",
+        "Provider Name",
+        "NPI",
+        "Location ID"
+       ],
+       "required": 0,
+       "text": "At least one search criteria should be entered Provider ID kendo.syncReady(function(){jQuery(\"#ProviderId\").kendoTextBox"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h5\"]",
+       "labels": [
+        "Claim Number"
+       ],
+       "required": 0,
+       "text": "Claim Number kendo.syncReady(function(){jQuery(\"#ClaimId\").kendoTextBox({});}); // Replace curly single quotes and apost"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1948,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 172,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [
+     {
+      "for": "LetterStatusList",
+      "text": "Letter Status is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"LetterStatusList\" id=\"LetterStatusList_validationMessage\" data-valmsg-for=\"LetterStatusList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Letter Status is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "LetterStatusList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "drug-rebate-provider-recoupment--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": [
+   "drug-rebate-provider-recoupment--page-search-validation.png"
+  ]
+ },
+ "ms": 71068
+}

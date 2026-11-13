@@ -1,0 +1,257 @@
+{
+ "label": "Integration > File To Event Metadata",
+ "trail": [
+  "Integration",
+  "File To Event Metadata"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/EventsDistributor/SearchFileDefinition",
+ "at": "2026-11-12T20:15:32.952Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "File To Event Metadata",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 13,
+    "button": 3,
+    "dropdownlist": 5,
+    "textbox": 4,
+    "checkbox": 1,
+    "grid": 2,
+    "resizable": 2,
+    "columnsorter": 6,
+    "selectable": 2,
+    "pager": 2,
+    "numerictextbox": 2
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 3,
+   "hiddenAtRest": 8,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 8,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 6,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1949,
+   "reveals": [],
+   "hides": [
+    {
+     "sel": "#ImportJobName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#DataDomainList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ImportFileName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ImportFileTypeList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#OutputFileName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [],
+    "fields": [
+     {
+      "for": "ModuleNameList",
+      "text": "Module Contract is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"ModuleNameList\" id=\"ModuleNameList_validationMessage\" data-valmsg-for=\"ModuleNameList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Module Contract is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "ModuleNameList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "integration-file-to-event-metadata--page-search-validation.png"
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "opened": false,
+    "requests": [
+     {
+      "method": "GET",
+      "url": "/EventsDistributor/InboundFileDefinitionSteps/",
+      "status": "sent"
+     }
+    ],
+    "navigates": null,
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "opened": false
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "ImportJobName",
+   "reveals": [],
+   "requests": [],
+   "grids": [],
+   "validation": {
+    "summary": [],
+    "fields": [
+     {
+      "for": "ModuleNameList",
+      "text": "Module Contract is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"ModuleNameList\" id=\"ModuleNameList_validationMessage\" data-valmsg-for=\"ModuleNameList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Module Contract is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "ModuleNameList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "integration-file-to-event-metadata--page-nomatch-validation.png"
+   },
+   "shot": "integration-file-to-event-metadata--search-nomatch.png"
+  },
+  "shots": [
+   "integration-file-to-event-metadata--page-search-validation.png",
+   "integration-file-to-event-metadata--page-nomatch-validation.png",
+   "integration-file-to-event-metadata--search-nomatch.png"
+  ]
+ },
+ "ms": 130135
+}

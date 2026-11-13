@@ -1,0 +1,283 @@
+{
+ "label": "Alert Notification > Subscriber Configuration",
+ "trail": [
+  "Alert Notification",
+  "Subscriber Configuration"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Notifications/SubscriberSearch",
+ "at": "2026-11-12T19:23:30.892Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [
+   "create 1: locator.click: Timeout 3000ms exceeded."
+  ],
+  "skipped": [],
+  "title": "Subscriber Configuration",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "button": 2,
+    "tooltip": 5,
+    "textbox": 1,
+    "dropdownlist": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 3,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 3,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 3,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 4097,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h3\"]",
+     "labels": [
+      "popupPanelMsg",
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "popupPanelMsg Search Results Subscriber IDEmail AddressSMS AddressStatus08a84157-3c51-4bc8-883b-695847368dd2aa@dx.comaa@"
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#divSubscriberCriteriaSearch",
+     "labels": [
+      "Email Address",
+      "Status",
+      "StatusList",
+      "Status_ID",
+      "Status_Name",
+      "Status_DisplayFormat",
+      "Reset",
+      "Search"
+     ],
+     "required": 0,
+     "text": "Email Address kendo.syncReady(function(){jQuery(\"#EmailAddress\").kendoTextBox({});}); Email Address Status select a valu"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/Notifications/GetSubscriberSearch/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 110,
+    "visibleMs": 2150
+   },
+   "grids": [
+    {
+     "id": "SubscriberConfigurationResultsGrid",
+     "rows": 10,
+     "total": 12,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 400,
+      "w": 1843,
+      "h": 596
+     }
+    }
+   ],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": {
+   "stamp": "p2",
+   "icon": {
+    "x": 599,
+    "y": 438,
+    "w": 30,
+    "h": 30
+   },
+   "iconHtml": "<a aria-hidden=\"true\" aria-label=\"Email Address filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Email Address filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p2\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "Email Address",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "filterableColumns": 2,
+   "popup": {
+    "rect": {
+     "x": 599,
+     "y": 468,
+     "w": 274,
+     "h": 207
+    },
+    "className": "k-animation-container k-animation-container-shown",
+    "html": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"display: block; position: absolute; top: 467.75px; z-index: 10002; left: 598.646px;\"><div class=\"k-child-animation-container\" style=\"width: 274.333px; height: 207.188px; display: block; transform: translateY(0px);\"><form title=\"Show items with value that\" class=\"k-filter-menu k-popup\" data-role=\"popup\" aria-hidden=\"false\" data-filter-styled=\"data-filter-styled\" style=\"\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\">Show items with value that:</div><span title=\"Operator\" class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"c83a0c9f-f200-44f0-a22b-e37c4d1f3e1b_listbox\" aria-busy=\"false\" aria-describedby=\"7af10d32-5ddb-4642-9d03-ad524a118603\" style=\"\"><span id=\"7af10d32-5ddb-4642-9d03-ad524a118603\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">Equal To</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><select title=\"Operator\" data-bind=\"value: filters[0].operator\" data-adaptive-mode=\"none\" data-role=\"dropdownlist\" style=\"display: none;\"><option value=\"eq\" selected=\"selected\">Equal To</option><option value=\"contains\">Contains</option><option value=\"endswith\">Ends With</option><option value=\"startswith\">Starts With</option></select></span><span class=\"k-textbox k-input\"><input title=\"Value\" data-bind=\"value:filters[0].value\" class=\"k-input-inner\" type=\"text\" data-adaptive-mode=\"none\"></span><div class=\"k-actions-stretched k-actions\"><div class=\"grid-filter-buttons\"><button title=\"Filter\" class=\"k-button k-button-primary\" type=\"submit\"><span class=\"k-icon k-svg-icon k-svg-i-filter k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span><span class=\"k-button-text\">Filter</span></button><button title=\"Clear\" class=\"k-button\" type=\"reset\"><span class=\"k-icon k-svg-icon k-svg-i-filter-clear k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m143.5 64 168.2 168.2L288 256v160l-64 64V256L64 96V64zm236.1 100.4L448 96V64H279.3l-64-64L192 22l298 298 22-23.3z\"></path></svg></span><span class=\"k-button-text\">Clear</span></button></div></div></div><div class=\"k-list-container k-popup k-dropdownlist-popup\" data-role=\"popup\" aria-hidden=\"true\" style=\"display: none;\"><div class=\"k-list\" id=\"c83a0c9f-f200-44f0-a22b-e37c4d1f3e1b-list\" data-role=\"staticlist\"><div class=\"k-no-data\" aria-live=\"polite\" style=\"display: none;\">No data found.</div><div class=\"k-list-group-sticky-header\" style=\"display: none;\"></div><div class=\"k-list-content k-list-scroller\" unselectable=\"on\"><ul unselectable=\"on\" tabindex=\"-1\" aria-hidden=\"true\" id=\"c83a0c9f-f200-44f0-a22b-e37c4d1f3e1b_listbox\" role=\"listbox\" aria-live=\"off\" class=\"k-list-ul\"><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item k-selected k-focus\" aria-selected=\"true\" data-offset-index=\"0\" id=\"023cee66-5a60-4f9d-b55f-e8aac7d6b6a4\"><span class=\"k-list-item-text\">Equal To</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"1\"><span class=\"k-list-item-text\">Contains</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"2\"><span class=\"k-list-item-text\">Ends With</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"3\"><span class=\"k-list-item-text\">Starts With</span></li></ul></div></div></div></form></div></div>",
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": null,
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "dropdowns": [
+     [
+      "Equal To",
+      "Contains",
+      "Ends With",
+      "Starts With"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "stamp": "p3",
+      "className": "k-picker k-dropdownlist k-focus",
+      "expanded": "false",
+      "text": "Equal ToEqual ToContainsEnds WithStarts ",
+      "after": {
+       "htmlDelta": 678,
+       "expanded": "true",
+       "rect": {
+        "x": 599,
+        "y": 468,
+        "w": 274,
+        "h": 207
+       }
+      }
+     }
+    ],
+    "shot": "alert-notification-subscriber-configuration--grid-filter.png"
+   }
+  },
+  "row": {
+   "dialog": null,
+   "navigates": null
+  },
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "EmailAddress",
+   "reveals": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/Notifications/GetSubscriberSearch/",
+     "status": "sent"
+    }
+   ],
+   "grids": [],
+   "validation": null,
+   "shot": "alert-notification-subscriber-configuration--search-nomatch.png"
+  },
+  "shots": [
+   "alert-notification-subscriber-configuration--grid-filter.png",
+   "alert-notification-subscriber-configuration--search-nomatch.png",
+   "alert-notification-subscriber-configuration--create1-1280x720.png"
+  ]
+ },
+ "ms": 85280
+}

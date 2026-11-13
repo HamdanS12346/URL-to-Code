@@ -1,0 +1,810 @@
+{
+ "label": "File Transfer Services > File Transfer Configuration",
+ "trail": [
+  "File Transfer Services",
+  "File Transfer Configuration"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations",
+ "at": "2026-11-12T20:09:06.629Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "File Transfer Configuration",
+  "census": {
+   "roles": {
+    "button": 1,
+    "tooltip": 7,
+    "validator": 1,
+    "numerictextbox": 2,
+    "textbox": 2,
+    "dropdownlist": 3,
+    "grid": 1,
+    "checkbox": 1,
+    "resizable": 1,
+    "columnsorter": 8,
+    "selectable": 1,
+    "pager": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 1,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 5836,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h7\"]",
+     "labels": [
+      "Search Results",
+      "Show Inactives"
+     ],
+     "required": 0,
+     "text": "Search Results Show Inactives kendo.syncReady(function(){jQuery(\"#FileTransferShowInactiveCheckBox\").kendoCheckBox({\"lab"
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#divFileBaseSourceStatus",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ConfigId_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ConfigName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#OwnerName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ProtocolList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/FileTransfer/SearchFileTransfer/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 117,
+    "visibleMs": 5750
+   },
+   "grids": [
+    {
+     "id": "FileTransferSearchGrid",
+     "rows": 0,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 727,
+      "w": 1859,
+      "h": 172
+     }
+    }
+   ],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "k-loading-text",
+      "text": "Loading...",
+      "icons": [],
+      "rect": {
+       "x": 31,
+       "y": 809,
+       "w": 0,
+       "h": 23
+      },
+      "html": "<span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span>",
+      "close": null
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "file-transfer-services-file-transfer-configuration--page-search-validation.png"
+   }
+  },
+  "gridFilter": {
+   "stamp": null,
+   "icon": null,
+   "iconHtml": null,
+   "column": null,
+   "filterable": false,
+   "columnMenu": false,
+   "filterableColumns": 9
+  },
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "info": {
+     "title": "Add File Transfer Configuration",
+     "options": {
+      "modal": {
+       "preventScroll": true
+      },
+      "width": null,
+      "height": null,
+      "actions": [
+       "Custom",
+       "Close"
+      ],
+      "draggable": false,
+      "resizable": false,
+      "animation": {
+       "open": {
+        "effects": {},
+        "duration": 350
+       },
+       "close": {
+        "effects": {},
+        "duration": 350,
+        "hide": true
+       }
+      },
+      "position": {
+       "top": 81,
+       "left": 240
+      }
+     },
+     "windowClass": "k-window panelForm-col-6 ui-draggable",
+     "contentId": "FileTransferConfigurationEditPopup",
+     "fields": 55,
+     "required": 18,
+     "hidden": 22,
+     "unknown": {
+      "maskedtextbox": {
+       "count": 2,
+       "ids": [
+        "OwnerPhoneNumber",
+        "ContactPhone"
+       ]
+      }
+     },
+     "actions": [
+      "close: Close",
+      "create: Create New",
+      "reset: Reset",
+      "cancel: Cancel",
+      "save: Save",
+      "reset: Reset",
+      "create: Create from Existing",
+      "cancel: Cancel",
+      "save: Save",
+      "save: Save"
+     ]
+    },
+    "position": {
+     "viewport": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920
+     },
+     "rect": {
+      "x": 240,
+      "y": 81,
+      "w": 1440,
+      "h": 918
+     },
+     "leftGap": 240,
+     "rightGap": 240,
+     "centeredLeft": 240,
+     "centered": true,
+     "touchesLeft": false,
+     "widerThanViewport": false,
+     "overflowRight": false,
+     "style": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 81px; left: 240px; z-index: 11502; opacity: 1; transform: scale(1);",
+     "className": "k-window panelForm-col-6 ui-draggable",
+     "computed": {
+      "width": "1440px",
+      "minWidth": "90px",
+      "maxWidth": "none",
+      "maxHeight": "918px",
+      "position": "absolute",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+     },
+     "kendo": {
+      "position": {
+       "top": 81,
+       "left": 240
+      },
+      "width": null,
+      "minWidth": 90,
+      "maxWidth": null
+     },
+     "rules": [
+      {
+       "selector": ".panel-form-col-6, .panelForm-col-6",
+       "width": "75%"
+      }
+     ],
+     "contentRules": [],
+     "title": "Add File Transfer Configuration"
+    },
+    "shot": "file-transfer-services-file-transfer-configuration--create1.png",
+    "census": {
+     "roles": {
+      "validator": 2,
+      "tooltip": 61,
+      "textbox": 10,
+      "dropdownlist": 14,
+      "maskedtextbox": 2,
+      "checkbox": 18,
+      "grid": 1,
+      "button": 1,
+      "resizable": 1,
+      "selectable": 1,
+      "pager": 1,
+      "numerictextbox": 1
+     },
+     "buttons": [
+      {
+       "text": "Create New",
+       "action": "create"
+      },
+      {
+       "text": "Reset",
+       "action": "reset"
+      },
+      {
+       "text": "Cancel",
+       "action": "cancel"
+      },
+      {
+       "text": "Save",
+       "action": "save"
+      }
+     ],
+     "radios": {
+      "RunSchedule.ID": [
+       "1",
+       "2"
+      ]
+     },
+     "checkboxes": 3,
+     "required": 32,
+     "hiddenAtRest": 22,
+     "tabs": [],
+     "collapsibles": 0
+    },
+    "dates": {
+     "inputs": [],
+     "drive": null
+    },
+    "conditionals": {
+     "radios": [
+      {
+       "group": "RunSchedule.ID",
+       "groupLabel": "Run Schedule",
+       "value": "1",
+       "label": "Run Weekly",
+       "checkedAtRest": false,
+       "show": [
+        {
+         "sel": "[data-kit-h=\"h22\"]",
+         "labels": [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+         ],
+         "required": 0,
+         "text": "Sunday kendo.syncReady(function(){jQuery(\"#RunOnSunday\").kendoCheckBox({\"checked\":false,\"label\":\"Sunday\"});}); Run Sunda"
+        }
+       ],
+       "hide": [],
+       "cascades": [],
+       "requests": []
+      },
+      {
+       "group": "RunSchedule.ID",
+       "groupLabel": "Run Schedule",
+       "value": "2",
+       "label": "Run Monthly",
+       "checkedAtRest": false,
+       "show": [
+        {
+         "sel": "[data-kit-h=\"h23\"]",
+         "labels": [
+          "Run On First Day Month",
+          "Run On Last Day Month",
+          "Run On This Day Month",
+          "RunOnThisDayList",
+          "RunOnThisDay_ID",
+          "RunOnThisDay_Name",
+          "RunOnThisDay_DisplayFormat"
+         ],
+         "required": 0,
+         "text": "Run On First Day Month kendo.syncReady(function(){jQuery(\"#RunOnFirstDay\").kendoCheckBox({\"checked\":false,\"label\":\"Run O"
+        }
+       ],
+       "hide": [
+        {
+         "sel": "[data-kit-h=\"h22\"]",
+         "labels": [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+         ],
+         "required": 0,
+         "text": "Sunday kendo.syncReady(function(){jQuery(\"#RunOnSunday\").kendoCheckBox({\"checked\":false,\"label\":\"Sunday\"});}); Run Sunda"
+        }
+       ],
+       "cascades": [],
+       "requests": []
+      }
+     ],
+     "checkboxes": [
+      {
+       "name": "SendNotification",
+       "label": "Send Notification",
+       "checkedAtRest": false,
+       "show": [],
+       "hide": [],
+       "cascades": [],
+       "requests": []
+      },
+      {
+       "name": "Suspended",
+       "label": "Suspend",
+       "checkedAtRest": false,
+       "show": [],
+       "hide": [],
+       "cascades": [],
+       "requests": []
+      },
+      {
+       "name": "IsActive",
+       "label": "Active",
+       "checkedAtRest": true,
+       "show": [],
+       "hide": [],
+       "cascades": [],
+       "requests": []
+      }
+     ],
+     "dropdowns": []
+    },
+    "toggles": [],
+    "nested": {
+     "inline": {
+      "show": [
+       {
+        "sel": "[data-kit-h=\"h29\"]",
+        "labels": [
+         "appSetting",
+         "Destination Protocol",
+         "DestinationProtocolList",
+         "DestinationProtocol_ID",
+         "DestinationProtocol_Name",
+         "DestinationProtocol_DisplayFormat",
+         "Server",
+         "Server",
+         "Destination Type",
+         "DestinationTypeList"
+        ],
+        "required": 8,
+        "text": "Resolve the following form field errors and try again. appSetting Destination Protocol select a value...DestinationProto"
+       }
+      ],
+      "hide": [
+       {
+        "sel": "#divSourceId",
+        "labels": [
+         "Source Configuration",
+         "FtsSourceLocationId",
+         "FTPServerId",
+         "Configuration Name",
+         "Description",
+         "Protocol",
+         "ProtocolTypeList",
+         "ProtocolType_ID",
+         "ProtocolType_Name",
+         "ProtocolType_DisplayFormat"
+        ],
+        "required": 23,
+        "text": "Source Configuration FtsSourceLocationId FTPServerId Configuration Name (typeof KendoLicensing === 'object' && KendoLice"
+       }
+      ],
+      "cascades": [],
+      "requests": []
+     }
+    },
+    "saveEmpty": {
+     "validation": {
+      "summary": [
+       {
+        "className": "msg-inline-close panel-icon clickable",
+        "text": "",
+        "icons": [
+         "fa-solid fa-xmark"
+        ],
+        "rect": {
+         "x": 1629,
+         "y": 334,
+         "w": 25,
+         "h": 35
+        },
+        "html": "<div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" aria-label=\"close\" onclick=\"removeGeneralMessage(this, event)\" onkeypress=\"removeGeneralMessage(this, event)\" tabindex=\"0\"><span class=\"fa-solid fa-xmark\" title=\"Close\"></span></div>",
+        "close": "p15"
+       }
+      ],
+      "fields": [
+       {
+        "for": "DestinationProtocolList",
+        "text": "Destination Protocol is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"DestinationProtocolList\" id=\"DestinationProtocolList_validationMessage\" data-valmsg-for=\"DestinationProtocolList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Destination Protocol is a required field.</span>"
+       },
+       {
+        "for": "DestinationTypeList",
+        "text": "Destination Type is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"DestinationTypeList\" id=\"DestinationTypeList_validationMessage\" data-valmsg-for=\"DestinationTypeList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Destination Type is a required field.</span>"
+       },
+       {
+        "for": "DestinationAddress",
+        "text": "Destination Address is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"DestinationAddress\" id=\"DestinationAddress_validationMessage\" data-valmsg-for=\"DestinationAddress\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Destination Address is a required field.</span>"
+       }
+      ],
+      "invalid": [
+       {
+        "name": null,
+        "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "DestinationProtocolList",
+        "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": null,
+        "className": "k-picker k-dropdownlist editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "DestinationTypeList",
+        "className": "k-picker k-dropdownlist editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": null,
+        "className": "k-input k-textbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "DestinationAddress",
+        "className": "k-input k-textbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       }
+      ],
+      "shot": "file-transfer-services-file-transfer-configuration--ervices-file-transfer-configuration-save-validation.png",
+      "summaryCloseHides": true
+     },
+     "postAttempted": [],
+     "stillOpen": true,
+     "native": []
+    },
+    "close": {
+     "edited": "DestinationAddress",
+     "attempts": [
+      {
+       "via": "x",
+       "closed": false,
+       "confirm": {
+        "title": "Alert Confirmation",
+        "text": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?",
+        "className": "k-window k-focus",
+        "rect": {
+         "x": 659,
+         "y": 434,
+         "w": 601,
+         "h": 213
+        },
+        "buttons": [
+         {
+          "stamp": "p18",
+          "text": "No"
+         },
+         {
+          "stamp": "p19",
+          "text": "Yes"
+         }
+        ],
+        "html": "<div class=\"k-window k-focus\" tabindex=\"0\" role=\"dialog\" aria-labelledby=\"modalMessagePopup_wnd_title\" style=\"min-width: 90px; min-height: 50px; display: inline-flex; top: 433.75px; left: 659.333px; z-index: 11504; opacity: 1; transform: scale(1);\"><div class=\"k-window-titlebar modal-msg-title-alert\"><i class=\"fa-solid modal-msg-icon-alert fa-circle-exclamation\"></i><span class=\"k-window-title\" id=\"modalMessagePopup_wnd_title\">Alert Confirmation</span><div class=\"k-window-titlebar-actions\"></div></div><div id=\"modalMessagePopup\" class=\"modal-msg-panel-container-alert k-window-content\" role=\"dialog\" aria-label=\"Alert Confirmation\" data-role=\"window\" tabindex=\"0\" style=\"\">  <div class=\"panel-body-modal modal-msg-content\">    <div class=\"clear-n-pad\">Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?    </div>    <div id=\"msgButtonRow\" class=\"editor-button-row-modal\">      <div class=\"align-center\">        <input type=\"button\" id=\"cancelModalButton\" class=\"k-button btn-spacer-right\" data-dismiss=\"modal\" value=\"No\" onclick=\"checkExecuteFunctionByName(&quot;&quot;, null); removeModalMessagePopup();\" data-probe=\"p18\">        <input type=\"button\" id=\"okButton\" class=\"k-button\" data-dismiss=\"modal\" value=\"Yes\" data-probe=\"p19\">      </div>    </div>  </div></div></div>",
+        "shot": "file-transfer-services-file-transfer-configuration--create1-confirm-x.png"
+       },
+       "native": [],
+       "answered": "No",
+       "dialogStillOpen": true
+      },
+      {
+       "via": "cancel",
+       "closed": false,
+       "confirm": null,
+       "native": []
+      }
+     ]
+    },
+    "loading": {
+     "className": "k-loading-mask",
+     "id": null,
+     "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+     "firstAt": 52,
+     "visibleMs": 7600
+    },
+    "requests": [
+     {
+      "method": "POST",
+      "url": "/FileTransfer/FileTransferConfigurationEdit/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/FileTransfer/GetFtpServerDetails/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/FileTransfer/GetDataListData/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/FileTransfer/GetFtpServerDetails/",
+      "status": "sent"
+     }
+    ],
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1280,
+       "height": 720
+      },
+      "position": {
+       "viewport": {
+        "w": 1280,
+        "h": 720,
+        "docW": 1280
+       },
+       "rect": {
+        "x": 0,
+        "y": 20,
+        "w": 1152,
+        "h": 612
+       },
+       "leftGap": 0,
+       "rightGap": 128,
+       "centeredLeft": 64,
+       "centered": false,
+       "touchesLeft": true,
+       "widerThanViewport": false,
+       "overflowRight": false,
+       "style": "min-width: 1152px; min-height: 50px; max-height: 612px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+       "className": "k-window panelForm-col-6 ui-draggable",
+       "computed": {
+        "width": "1152px",
+        "minWidth": "1152px",
+        "maxWidth": "none",
+        "maxHeight": "612px",
+        "position": "absolute",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+       },
+       "kendo": {
+        "position": {
+         "top": "0",
+         "left": "0"
+        },
+        "width": null,
+        "minWidth": 90,
+        "maxWidth": null
+       },
+       "rules": [
+        {
+         "selector": ".panel-form-col-6, .panelForm-col-6",
+         "width": "75%"
+        }
+       ],
+       "contentRules": [],
+       "title": "Add File Transfer Configuration"
+      },
+      "shot": "file-transfer-services-file-transfer-configuration--create1-1280x720.png",
+      "cleanClose": {
+       "edited": null,
+       "attempts": [
+        {
+         "via": "x",
+         "closed": true,
+         "confirm": null,
+         "native": []
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "ConfigName",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h7\"]",
+     "labels": [
+      "Search Results",
+      "Show Inactives"
+     ],
+     "required": 0,
+     "text": "Search Results Show Inactives kendo.syncReady(function(){jQuery(\"#FileTransferShowInactiveCheckBox\").kendoCheckBox({\"lab"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/FileTransfer/SearchFileTransfer/",
+     "status": "sent"
+    }
+   ],
+   "grids": [
+    {
+     "id": "FileTransferSearchGrid",
+     "rows": 1,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 727,
+      "w": 1859,
+      "h": 185
+     }
+    }
+   ],
+   "validation": null,
+   "shot": "file-transfer-services-file-transfer-configuration--search-nomatch.png"
+  },
+  "shots": [
+   "file-transfer-services-file-transfer-configuration--page-search-validation.png",
+   "file-transfer-services-file-transfer-configuration--create1.png",
+   "file-transfer-services-file-transfer-configuration--ervices-file-transfer-configuration-save-validation.png",
+   "file-transfer-services-file-transfer-configuration--create1-confirm-x.png",
+   "file-transfer-services-file-transfer-configuration--search-nomatch.png",
+   "file-transfer-services-file-transfer-configuration--create1-1280x720.png"
+  ]
+ },
+ "ms": 141031
+}

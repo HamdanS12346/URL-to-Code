@@ -1,0 +1,401 @@
+{
+ "label": "Drug Rebate > NDC",
+ "trail": [
+  "Drug Rebate",
+  "NDC"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/NationalDrugCode/SearchNationalDrugCode",
+ "at": "2026-11-12T19:31:27.073Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "NDC",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 23,
+    "button": 4,
+    "textbox": 1,
+    "autocomplete": 2,
+    "maskedtextbox": 1,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 13,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1,
+    "dropdownlist": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "LabelerNDCSearchCriteria.ID": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 3,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "autocomplete": {
+    "count": 2,
+    "ids": [
+     "FederalLabelerNameAutocomplete",
+     "FederalFDADrugNameAutocomplete"
+    ]
+   },
+   "maskedtextbox": {
+    "count": 1,
+    "ids": [
+     "FederalNationalDrugCodeCriteria"
+    ]
+   }
+  },
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "LabelerNDCSearchCriteria.ID",
+     "groupLabel": "Search By",
+     "value": "1",
+     "label": "Code",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h3\"]",
+       "labels": [
+        "Labeler Code"
+       ],
+       "required": 2,
+       "text": "Labeler Code kendo.syncReady(function(){jQuery(\"#FederalLabelerCodeCriteria\").kendoTextBox({});}); // Replace curly sing"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "#divFederalSearchByNDC",
+       "labels": [
+        "NDC"
+       ],
+       "required": 0,
+       "text": "NDC kendo.syncReady(function(){jQuery(\"#FederalNationalDrugCodeCriteria\").kendoMaskedTextBox({\"mask\":\"00000-0000-00\",\"ru"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "LabelerNDCSearchCriteria.ID",
+     "groupLabel": "Search By",
+     "value": "2",
+     "label": "Name",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h4\"]",
+       "labels": [
+        "Labeler Name",
+        "FederalLabelerNameAutocomplete"
+       ],
+       "required": 2,
+       "text": "Labeler Name FederalLabelerNameAutocomplete kendo.syncReady(function(){jQuery(\"#FederalLabelerNameAutocomplete\").kendoAu"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h3\"]",
+       "labels": [
+        "Labeler Code"
+       ],
+       "required": 0,
+       "text": "Labeler Code kendo.syncReady(function(){jQuery(\"#FederalLabelerCodeCriteria\").kendoTextBox({});}); // Replace curly sing"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "LabelerNDCSearchCriteria.ID",
+     "groupLabel": "Search By",
+     "value": "3",
+     "label": "NDC",
+     "checkedAtRest": true,
+     "show": [
+      {
+       "sel": "#divFederalSearchByNDC",
+       "labels": [
+        "NDC"
+       ],
+       "required": 2,
+       "text": "NDC kendo.syncReady(function(){jQuery(\"#FederalNationalDrugCodeCriteria\").kendoMaskedTextBox({\"mask\":\"00000-0000-00\",\"ru"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "[data-kit-h=\"h4\"]",
+       "labels": [
+        "Labeler Name",
+        "FederalLabelerNameAutocomplete"
+       ],
+       "required": 0,
+       "text": "Labeler Name FederalLabelerNameAutocomplete kendo.syncReady(function(){jQuery(\"#FederalLabelerNameAutocomplete\").kendoAu"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "LabelerNDCSearchCriteria.ID",
+     "groupLabel": "Search By",
+     "value": "4",
+     "label": "FDA Drug Name",
+     "checkedAtRest": false,
+     "show": [
+      {
+       "sel": "[data-kit-h=\"h6\"]",
+       "labels": [
+        "FDA Drug Name",
+        "FederalFDADrugNameAutocomplete"
+       ],
+       "required": 2,
+       "text": "FDA Drug Name FederalFDADrugNameAutocomplete kendo.syncReady(function(){jQuery(\"#FederalFDADrugNameAutocomplete\").kendoA"
+      }
+     ],
+     "hide": [
+      {
+       "sel": "#divFederalSearchByNDC",
+       "labels": [
+        "NDC"
+       ],
+       "required": 0,
+       "text": "NDC kendo.syncReady(function(){jQuery(\"#FederalNationalDrugCodeCriteria\").kendoMaskedTextBox({\"mask\":\"00000-0000-00\",\"ru"
+      }
+     ],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 4,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1954,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 172,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [
+     {
+      "for": "FederalNationalDrugCodeCriteria",
+      "text": "NDC is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"FederalNationalDrugCodeCriteria\" id=\"FederalNationalDrugCodeCriteria_validationMessage\" data-valmsg-for=\"FederalNationalDrugCodeCriteria\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>NDC is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-input k-maskedtextbox editor-control k-invalid k-focus",
+      "border": "rgb(222, 226, 230) rgb(222, 226, 230) rgb(90, 105, 120)",
+      "background": "rgb(222, 226, 230)"
+     },
+     {
+      "name": "FederalNationalDrugCodeCriteria",
+      "className": "k-input k-maskedtextbox editor-control k-invalid k-focus",
+      "border": "rgb(222, 226, 230) rgb(222, 226, 230) rgb(90, 105, 120)",
+      "background": "rgb(222, 226, 230)"
+     }
+    ],
+    "shot": "drug-rebate-ndc--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "FederalNationalDrugCodeCriteria",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "requests": [],
+   "grids": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 172,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p3"
+     },
+     {
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "text": "NDC Search Criteria must be 5, 9 or 11 digits",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "rect": {
+       "x": 669,
+       "y": 443,
+       "w": 284,
+       "h": 24
+      },
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"FederalNationalDrugCodeCriteria_validationMessage\" role=\"alert\" data-for=\"FederalNationalDrugCodeCriteria\" data-valmsg-for=\"FederalNationalDrugCodeCriteria\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>NDC Search Criteria must be 5, 9 or 11 digits</span>",
+      "close": null
+     }
+    ],
+    "fields": [
+     {
+      "for": "FederalNationalDrugCodeCriteria",
+      "text": "NDC Search Criteria must be 5, 9 or 11 digits",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"FederalNationalDrugCodeCriteria_validationMessage\" role=\"alert\" data-for=\"FederalNationalDrugCodeCriteria\" data-valmsg-for=\"FederalNationalDrugCodeCriteria\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>NDC Search Criteria must be 5, 9 or 11 digits</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": "FederalNationalDrugCodeCriteria",
+      "className": "k-input k-maskedtextbox editor-control k-valid",
+      "border": "rgb(90, 105, 120)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "drug-rebate-ndc--page-nomatch-validation.png",
+    "summaryCloseHides": false
+   },
+   "shot": "drug-rebate-ndc--search-nomatch.png"
+  },
+  "shots": [
+   "drug-rebate-ndc--page-search-validation.png",
+   "drug-rebate-ndc--page-nomatch-validation.png",
+   "drug-rebate-ndc--search-nomatch.png"
+  ]
+ },
+ "ms": 28286
+}

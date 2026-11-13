@@ -1,0 +1,53 @@
+{
+ "label": "Provider Enrollment > Resume Enrollment Entry",
+ "trail": [
+  "Provider Enrollment",
+  "Resume Enrollment Entry"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/ResumeSecureEnrollment",
+ "at": "2026-11-12T21:26:59.314Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Resume Enrollment Entry",
+  "census": {
+   "roles": {
+    "tooltip": 6,
+    "validator": 1,
+    "textbox": 2
+   },
+   "buttons": [
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Resume",
+     "action": null
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 5,
+   "hiddenAtRest": 3,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 3,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [],
+  "dialogs": [],
+  "shots": []
+ },
+ "ms": 12211
+}

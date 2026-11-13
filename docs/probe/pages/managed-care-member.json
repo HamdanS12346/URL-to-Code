@@ -1,0 +1,223 @@
+{
+ "label": "Managed Care > Member",
+ "trail": [
+  "Managed Care",
+  "Member"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ManagedCare/SearchMember",
+ "at": "2026-11-12T20:25:24.360Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Member",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 28,
+    "dropdownlist": 6,
+    "textbox": 5,
+    "maskedtextbox": 2,
+    "datepicker": 2,
+    "megagrid": 1,
+    "tabstrip": 1,
+    "listview": 2,
+    "resizable": 1,
+    "columnsorter": 4,
+    "filtermenu": 4,
+    "filtermulticheck": 5,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 1,
+   "hiddenAtRest": 7,
+   "tabs": [
+    "1 Group",
+    "2 Sort",
+    "3 Select"
+   ],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "maskedtextbox": {
+    "count": 2,
+    "ids": [
+     "SSN",
+     "PostalCode"
+    ]
+   },
+   "megagrid": {
+    "count": 1,
+    "ids": [
+     "memberResultsGrid"
+    ]
+   },
+   "tabstrip": {
+    "count": 1,
+    "ids": [
+     "mggdfTabstrip"
+    ]
+   },
+   "listview": {
+    "count": 2,
+    "ids": [
+     "availableListItems",
+     "selectedListItems"
+    ]
+   }
+  },
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "DOB",
+     "name": "DOB",
+     "label": "Date Of Birth",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    },
+    {
+     "role": "datepicker",
+     "id": "DOD",
+     "name": "DOD",
+     "label": "Date Of Death",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    }
+   ],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 5,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 5859,
+   "reveals": [
+    {
+     "sel": "#loadingDialog",
+     "labels": [],
+     "required": 0,
+     "text": "Processing ..."
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#MemberIdentifierList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ManagedCare/GetMembers/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 195,
+    "visibleMs": 5750
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": []
+ },
+ "ms": 83378
+}

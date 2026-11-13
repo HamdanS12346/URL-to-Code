@@ -1,0 +1,278 @@
+{
+ "label": "Plan Management > Reference Data",
+ "trail": [
+  "Plan Management",
+  "Reference Data"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/PlanManagement/ReferenceData",
+ "at": "2026-11-12T20:43:39.717Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Reference Data",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 82,
+    "button": 16,
+    "dropdownlist": 14,
+    "autocomplete": 9,
+    "textbox": 3,
+    "datepicker": 2,
+    "grid": 4,
+    "resizable": 4,
+    "columnsorter": 24,
+    "selectable": 4,
+    "pager": 4,
+    "numerictextbox": 4,
+    "checkbox": 3
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 7,
+   "hiddenAtRest": 10,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "autocomplete": {
+    "count": 9,
+    "ids": [
+     "HCPCSCodeIdNameCriteria",
+     "DentalCodeIdNameCriteria",
+     "DRGCodeIdNameCriteria",
+     "ICD9DiagCodeIdNameCriteria",
+     "ICD10DiagCodeIdNameCriteria"
+    ]
+   }
+  },
+  "hiddenAtRest": 10,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "FromDate",
+     "name": "FromDate",
+     "label": "From Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    },
+    {
+     "role": "datepicker",
+     "id": "ToDate",
+     "name": "ToDate",
+     "label": "To Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    }
+   ],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "RestrictedCodesList",
+     "label": "RestrictedCodesList",
+     "value": "HCPCS",
+     "text": "HCPCS",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "DataListDropdown",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 2021
+       }
+      }
+     ],
+     "requests": []
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null,
+      "title": "Expand"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": null
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": false,
+      "h": null,
+      "title": "Collapse"
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 3,
+       "h": null
+      }
+     ],
+     "cssTransition": null,
+     "bodyClass": null
+    }
+   }
+  ],
+  "search": {
+   "ms": 1948,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [
+     {
+      "for": "drpSearchBy",
+      "text": "Search By is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"drpSearchBy\" id=\"drpSearchBy_validationMessage\" data-valmsg-for=\"drpSearchBy\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Search By is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "drpSearchBy",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "CodeSetCodeTypeCriteriaList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "DataListDropdown",
+      "className": "k-picker k-dropdownlist editor-control k-invalid",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "plan-management-reference-data--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": [
+   "plan-management-reference-data--page-search-validation.png"
+  ]
+ },
+ "ms": 74876
+}

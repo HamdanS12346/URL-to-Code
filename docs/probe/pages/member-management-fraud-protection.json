@@ -1,0 +1,218 @@
+{
+ "label": "Member Management > Fraud Protection",
+ "trail": [
+  "Member Management",
+  "Fraud Protection"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/FraudProtection/SearchFraudProtection",
+ "at": "2026-11-12T20:39:34.266Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Fraud Protection",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 7,
+    "dropdownlist": 2,
+    "textbox": 2,
+    "datepicker": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 5,
+    "selectable": 1,
+    "pager": 1,
+    "button": 2,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 3,
+   "hiddenAtRest": 6,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 6,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "StartDate",
+     "name": "StartDate",
+     "label": "Start Date",
+     "valueAttr": "01/01/1900",
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    },
+    {
+     "role": "datepicker",
+     "id": "EndDate",
+     "name": "EndDate",
+     "label": "End Date",
+     "valueAttr": "01/01/1900",
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": false
+    }
+   ],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "",
+    "title": null,
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-square-minus",
+      "visible": true,
+      "h": 230
+     },
+     "after": {
+      "icon": "fa-solid fa-square-plus",
+      "visible": false,
+      "h": 0,
+      "title": null
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 1,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-square-plus",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-square-minus",
+      "visible": true,
+      "h": 230,
+      "title": null
+     },
+     "durationMs": 0,
+     "frames": 1,
+     "samples": [
+      {
+       "t": 1,
+       "h": 230
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 1886,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. At least one search criteria is required."
+    }
+   ],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. At least one search criteria is required.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    <div id=\"errMsg\"><ul><li><p>At least one search criteria is required.</p></li></ul></div></div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [
+     {
+      "for": "FraudProtectionIdentifierList",
+      "text": "Search By is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"FraudProtectionIdentifierList\" id=\"FraudProtectionIdentifierList_validationMessage\" data-valmsg-for=\"FraudProtectionIdentifierList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Search By is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "FraudProtectionIdentifierList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "member-management-fraud-protection--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "shots": [
+   "member-management-fraud-protection--page-search-validation.png"
+  ]
+ },
+ "ms": 26459
+}
