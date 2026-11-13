@@ -38,11 +38,21 @@ npm run probe -- fxfer-v4                                               # then t
 | `--limit N` | the first N pages |
 | `--fresh` | probe pages again that already have a result |
 | `--read-menu` | read the menu live instead of the pack's `menu.json` |
-| `--viewports 1920x1080,1280x720` | where dialogs are measured (default: the capture size and 1280x720 = a 1920x1080 screen at 150%) |
+| `--viewports 1920x1080,1272x588` | where the layout, menus and dialogs are measured (default: the capture size and 1272x588 = a real browser on a 1920x1080 screen at 150%) |
 | `--budget 300` | seconds per page before it moves on |
 | `--headed` | watch it work |
 | `--manual-login` | log in by hand (MFA) |
 | `--summary` | only rebuild `ANSWERS.md` from the pages already probed |
+
+### Second run: one module, fixes only
+
+The first run's results are in `docs\probe`. For the follow-up run give it its own folder, so nothing there is overwritten:
+
+```powershell
+npm run probe -- fxfer-v4 --modules "File Transfer Services" --out docs\probe-2 --fresh
+```
+About 10 minutes. It also measures the page layout at 1272x588 (the portal's small-screen layout), every module's menu fly-out
+(scrollbar or not), X and Cancel on separate fresh dialogs, and the panel animation times. Send back `docs\probe-2`.
 
 ## What comes out
 

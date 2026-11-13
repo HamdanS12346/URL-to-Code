@@ -75,6 +75,9 @@ function inpage() {
       return { viewport: { w: innerWidth, h: innerHeight, docW }, rect: r, leftGap: r.x, rightGap: docW - r.x - r.w, centeredLeft: Math.round((innerWidth - r.w) / 2),
         centered: Math.abs(r.x - (innerWidth - r.w) / 2) <= 2 || Math.abs(r.x - (docW - r.w) / 2) <= 2,
         touchesLeft: r.x <= 1, widerThanViewport: r.w > docW, overflowRight: r.x + r.w > docW + 1, style: w.getAttribute('style'), className: w.className,
+        // height: the portal caps a window at 85% of the viewport; does the content scroll inside it, does the window fit on screen
+        fitsViewport: r.y >= 0 && r.y + r.h <= innerHeight + 1, heightPct: Math.round((r.h / innerHeight) * 100), contentScrolls: !!content && content.scrollHeight > content.clientHeight + 1,
+        contentH: content ? { scroll: content.scrollHeight, client: content.clientHeight, overflowY: getComputedStyle(content).overflowY } : null, isPhone: (() => { try { return typeof isPhone === 'function' ? !!isPhone() : null; } catch { return null; } })(),
         computed: { width: cs.width, minWidth: cs.minWidth, maxWidth: cs.maxWidth, maxHeight: cs.maxHeight, position: cs.position, transform: cs.transform },
         kendo: kw ? { position: kw.options.position, width: kw.options.width ?? null, minWidth: kw.options.minWidth ?? null, maxWidth: kw.options.maxWidth ?? null } : null,
         rules: rulesFor(w), contentRules: content ? rulesFor(content) : [], title: clean(w.querySelector('.k-window-title')?.textContent) };
@@ -176,17 +179,28 @@ function inpage() {
       });
     },
     // Q6: chevrons, square +/-, angles that open and close a part
+    // the panel a toggle icon belongs to: its container's header and body. The icon sits in a "*-hdr-tools" div INSIDE the header,
+    // so a plain closest('[class*=hdr]') finds the tools div (no body after it): go by the container (the first run measured 0 ms for this)
+    panelOf(el) {
+      const box = el.closest('[class*=panel-container]');
+      let hdr = box?.querySelector(':scope > [class*=-hdr]:not([class*=hdr-tools])') || null, body = box?.querySelector(':scope > [class*=-bdy]') || null;
+      if (!hdr || !body) { // no container: the header around the icon, the part after it
+        hdr = el.closest('[class*=hdr]:not([class*=hdr-tools]), [class*=header], .panel-heading') || el.closest('[class*=hdr]');
+        body = hdr?.nextElementSibling || hdr?.parentElement?.querySelector(':scope > [class*=bdy], :scope > [class*=body]') || null;
+      }
+      return { box, hdr, body };
+    },
     toggles(where) {
       const R = root(where);
       if (!R) return [];
       const seen = new Set(), out = [];
       for (const ic of R.querySelectorAll('[data-kit-action=collapse], .fa-chevron-up, .fa-chevron-down, .fa-square-minus, .fa-square-plus, .fa-angle-up, .fa-angle-down, .k-i-arrow-chevron-up, .k-i-arrow-chevron-down')) {
         if (outside(ic) || !shown(ic)) continue;
-        const hdr = ic.closest('[class*=hdr], [class*=header], .panel-heading');
+        const { hdr, body } = this.panelOf(ic);
         if (!hdr || seen.has(hdr) || hdr.closest('.k-grid')) continue;
         seen.add(hdr);
         const i = ic.matches('i, span') ? ic : ic.querySelector('i, span') || ic;
-        out.push({ stamp: stamp(i), header: clean(hdr.textContent).slice(0, 60), icon: i.className, title: i.getAttribute('title') || i.closest('[title]')?.getAttribute('title') || null });
+        out.push({ stamp: stamp(i), header: clean(hdr.textContent).slice(0, 60), icon: i.className, title: i.getAttribute('title') || i.closest('[title]')?.getAttribute('title') || null, hasBody: !!body });
         if (out.length >= 4) break;
       }
       return out;
@@ -195,9 +209,7 @@ function inpage() {
     async toggle(st, ms = 1200) {
       const el = document.querySelector(`[data-probe="${st}"]`);
       if (!el) return null;
-      const hdr = el.closest('[class*=hdr], [class*=header], .panel-heading');
-      let body = hdr?.nextElementSibling;
-      if (!body && hdr) body = hdr.parentElement?.querySelector(':scope > [class*=bdy], :scope > [class*=body]');
+      const { hdr, body } = this.panelOf(el);
       const before = { icon: el.className, visible: shown(body), h: body ? Math.round(body.getBoundingClientRect().height) : null };
       const samples = [];
       const t0 = performance.now();
@@ -218,6 +230,40 @@ function inpage() {
     },
     collapseState() {
       return [...document.querySelectorAll('[data-kit-collapse]')].map((b) => ({ header: clean(b.previousElementSibling?.textContent).slice(0, 60), visible: shown(b), h: Math.round(b.getBoundingClientRect().height) }));
+    },
+    // the page at this viewport: which layout the portal's own breakpoints give, where the shell parts sit, any page scrollbar
+    layout() {
+      const r = (sel) => { const e = [...document.querySelectorAll(sel)].find(shown); return e ? box(e) : null; };
+      let phone = null;
+      try { phone = typeof isPhone === 'function' ? !!isPhone() : null; } catch {}
+      const burgers = [...document.querySelectorAll('i.fa-bars, [class*=hamburger], [id*=BannerMenu] i, [id*=BannerMenu] button, .mobile-nav')].map((e) => ({ tag: e.tagName.toLowerCase(), cls: String(e.className).slice(0, 60), id: e.id || e.parentElement?.id || null, shown: shown(e), rect: shown(e) ? box(e) : null }));
+      const nav = [...document.querySelectorAll('#pageHeader a, #pageHeader button, header a')].filter(shown).map((a) => clean(a.textContent)).filter(Boolean);
+      const cs = (e) => (e ? getComputedStyle(e) : null);
+      const main = document.querySelector('#pageBody > main, main');
+      return { inner: { w: innerWidth, h: innerHeight, docW: document.documentElement.clientWidth, dpr: devicePixelRatio },
+        breakpoints: { max1280: matchMedia('(max-width: 1280px)').matches, max768: matchMedia('(max-width: 768px)').matches, portrait: matchMedia('(orientation: portrait)').matches, isPhone: phone },
+        header: r('#pageHeader, header'), titleBar: r('h1') && { ...r('h1'), text: clean([...document.querySelectorAll('h1')].find(shown)?.textContent).slice(0, 60) }, moduleTab: r('#activeModuleMenuNav, #activeModuleMenu'),
+        main: main && shown(main) ? box(main) : null, footer: r('footer, #pageFooter'), burgers, navLinks: nav,
+        page: { scrollW: document.documentElement.scrollWidth, scrollH: document.documentElement.scrollHeight, horizontalScroll: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1, htmlOverflow: cs(document.documentElement).overflow, bodyOverflow: cs(document.body).overflow } };
+    },
+    // the side menu's modules (the vertical Kendo menu with the most items) and the module tab's (a horizontal one)
+    menus() {
+      const li = (ul) => [...ul.children].filter((x) => x.tagName === 'LI' && shown(x) && x.getAttribute('aria-haspopup') === 'true' || x.matches('[data-groupparent]'))
+        .filter((x) => shown(x)).map((x) => ({ stamp: stamp(x), text: clean(x.querySelector(':scope > .k-link, :scope > a, :scope > span')?.textContent || x.textContent.slice(0, 40)).slice(0, 50) }));
+      const uls = [...document.querySelectorAll('ul[data-role=menu]')].filter(shown).map((u) => ({ ul: u, vertical: u.getAttribute('aria-orientation') === 'vertical' || u.classList.contains('k-menu-vertical'), items: li(u) })).filter((m) => m.items.length);
+      const side = uls.filter((m) => m.vertical).sort((a, b) => b.items.length - a.items.length)[0], bar = uls.filter((m) => !m.vertical)[0];
+      return { side: side && { items: side.items, rect: box(side.ul) }, bar: bar && { items: bar.items, rect: box(bar.ul) } };
+    },
+    // the submenu that is open now: does it scroll? (the portal's .k-menu-popup is overflow:auto + max-height:80vh; Kendo sets overflow:visible inline once it opens one)
+    flyout() {
+      const c = [...document.querySelectorAll('.k-animation-container')].find((e) => shown(e) && e.querySelector('.k-menu-popup'));
+      if (!c) return null;
+      const p = c.querySelector('.k-menu-popup'), cs = getComputedStyle(p), cc = getComputedStyle(c);
+      const items = p.querySelectorAll('li').length;
+      return { rect: box(c), popupRect: box(p), inlineStyle: p.getAttribute('style'), containerStyle: c.getAttribute('style'), overflow: cs.overflow, overflowY: cs.overflowY, maxHeight: cs.maxHeight, containerOverflow: cc.overflow,
+        scrollbar: p.scrollHeight > p.clientHeight + 1 && cs.overflowY !== 'visible' && cs.overflowY !== 'hidden', scrollbarWidth: p.offsetWidth - p.clientWidth, scrollHeight: p.scrollHeight, clientHeight: p.clientHeight,
+        cutOff: c.getBoundingClientRect().bottom > innerHeight + 1 || c.getBoundingClientRect().top < -1, items, scrollButtons: [...p.querySelectorAll('.k-menu-scroll-button')].filter(shown).length,
+        fits: c.getBoundingClientRect().bottom <= innerHeight + 1 };
     },
     // Q5/Q9: what a failed validation looks like
     validation(where) {
@@ -328,16 +374,17 @@ function inpage() {
 }
 
 // ---------- one page ----------
-export async function probePage({ s, viewports = [], shotDir, slug, budgetSec = 300 }) {
+// menuButton: the hamburger's selector (pack.json "menuButton"); shell: also measure the side menu's and module tab's fly-outs (once per run)
+export async function probePage({ s, viewports = [], shotDir, slug, budgetSec = 300, menuButton = null, shell = false }) {
   const page = s.page;
   const deadline = Date.now() + budgetSec * 1000;
   const out = { kendo: null, errors: [], skipped: [] };
   const primary = page.viewportSize();
   const shots = [];
-  const shot = async (name, clip) => {
+  const shot = async (name, clip, full = false) => {
     if (!shotDir) return null;
     const f = path.join(shotDir, `${slug}--${name}.png`);
-    await page.screenshot({ path: f, animations: 'disabled', caret: 'hide', ...(clip ? { clip } : {}) }).catch(() => {});
+    await page.screenshot({ path: f, animations: 'disabled', caret: 'hide', ...(clip ? { clip } : {}), ...(full ? { fullPage: true } : {}) }).catch(() => {});
     shots.push(path.basename(f));
     return path.basename(f);
   };
@@ -450,7 +497,7 @@ export async function probePage({ s, viewports = [], shotDir, slug, budgetSec = 
           drive.popupAfterPick = !!after.popup; // a date-time picker moves on to its time list
         }
       }
-      await page.keyboard.press('Escape').catch(() => {});
+      // no Escape: Kendo's window closes on it, which ended the whole dialog probe on 4 dialogs (restoreDate closes the popup)
       await page.keyboard.press('Tab').catch(() => {});
       await wait(300);
       drive.afterBlur = (await state()).shows;
@@ -499,40 +546,67 @@ export async function probePage({ s, viewports = [], shotDir, slug, budgetSec = 
     } finally { s.guard.allowPost = allow; }
   };
 
-  // Q10: close it (after an edit when `edit`): X first, then Cancel if a confirm let us stay. The confirm is answered
-  // "stay" once (to try Cancel too), then "leave"; anything left open is closed through Kendo (no Save, ever)
-  const closeTest = async (edit, tag) => {
-    const res = { edited: null, attempts: [] };
+  // Q10: X and Cancel, each on its own fresh dialog (`reopen` opens it again), after an edit when `edit`. A confirm is answered
+  // "stay" first (the dialog must still be open, and its text and buttons are what the user sees), then the same button is
+  // clicked again and the confirm answered "leave". Nothing is saved, ever.
+  const confirmButtons = (c) => ({ stay: c.buttons.find((b) => /^(no|cancel|stay|keep editing|return)$/i.test(b.text)), leave: c.buttons.find((b) => /^(yes|ok|discard|leave|continue|close|don.?t save)$/i.test(b.text)) });
+  const closeVia = async (via, edit, tag) => {
+    const a = { via, edited: null, closed: false, confirm: null, native: [] };
     if (edit) {
       const e = await P('window.__probe.editable()');
-      if (e) { await page.locator(`[data-probe="${e.stamp}"]`).fill('probe').catch(() => {}); await page.keyboard.press('Tab').catch(() => {}); await wait(300); res.edited = e.name; }
+      if (e) { await page.locator(`[data-probe="${e.stamp}"]`).fill('probe').catch(() => {}); await page.keyboard.press('Tab').catch(() => {}); await wait(300); a.edited = e.name; }
     }
-    for (const via of ['x', 'cancel']) {
+    const press = async () => {
       const st = await ev((v) => window.__probe.closeButton(v), via);
-      if (!st) { res.attempts.push({ via, button: false }); continue; }
+      if (!st) return null;
       const n0 = await nWin(), ev0 = s.guard.events.length;
       await click(st);
       await wait(1200);
-      const n1 = await nWin();
-      const a = { via, closed: n1 < n0, confirm: null, native: since(ev0).filter((e) => e.type === 'dialog').map((e) => ({ kind: e.kind, message: e.message })) };
-      if (n1 > n0) {
-        a.confirm = await P('window.__probe.confirmInfo()');
-        a.confirm.shot = await shot(`${tag}-confirm-${via}`);
-        const stay = a.confirm.buttons.find((b) => /^(no|cancel|stay|keep editing|return)$/i.test(b.text));
-        const leave = a.confirm.buttons.find((b) => /^(yes|ok|discard|leave|continue|close|don.?t save)$/i.test(b.text));
-        const pick = via === 'x' && stay ? stay : leave || stay;
-        a.answered = pick?.text || null;
-        if (pick) { await click(pick.stamp); await wait(800); } else await P('window.__kit.closeDialog()');
-        a.dialogStillOpen = (await nWin()) >= n0;
-      }
-      res.attempts.push(a);
-      if (a.closed || (a.confirm && !a.dialogStillOpen)) break;
+      return { n0, n1: await nWin(), native: since(ev0).filter((e) => e.type === 'dialog').map((e) => ({ kind: e.kind, message: e.message })) };
+    };
+    const r = await press();
+    if (!r) return { ...a, button: false };
+    a.native = r.native;
+    a.closed = r.n1 < r.n0;
+    if (r.n1 > r.n0) { // a confirm opened on top of the dialog
+      a.confirm = await P('window.__probe.confirmInfo()');
+      a.confirm.shot = await shot(`${tag}-confirm-${via}`);
+      const { stay, leave } = confirmButtons(a.confirm);
+      if (stay) {
+        a.answered = stay.text;
+        await click(stay.stamp);
+        await wait(800);
+        a.stillOpenAfterStay = (await nWin()) >= r.n0; // staying must leave the dialog (and its edit) where it was
+        if (a.stillOpenAfterStay && leave) { // the same button again, this time leaving
+          const r2 = await press();
+          if (r2 && r2.n1 > r2.n0) {
+            const c2 = await P('window.__probe.confirmInfo()'), l2 = confirmButtons(c2).leave;
+            if (l2) { a.leftWith = l2.text; await click(l2.stamp); await wait(800); }
+          }
+          a.closedAfterLeave = (await nWin()) < r.n0;
+        }
+      } else if (leave) { a.answered = leave.text; await click(leave.stamp); await wait(800); a.closedAfterLeave = (await nWin()) < r.n0; }
     }
+    return a;
+  };
+  const closeTest = async (edit, tag, reopen) => {
+    const res = { edited: null, attempts: [] };
+    for (const via of ['x', 'cancel']) {
+      if (via === 'cancel') { // the first one closed (or left) the dialog: a fresh one for Cancel
+        await closeAll();
+        if (!reopen || !(await reopen())) { res.attempts.push({ via, reopened: false }); break; }
+        await P('window.__kit.dialog()').catch(() => {}); // the harvest recognizes the dialog's Cancel / Save buttons (a fresh window has none marked)
+      }
+      const a = await closeVia(via, edit, tag);
+      res.edited ||= a.edited;
+      res.attempts.push(a);
+    }
+    await closeAll();
     return res;
   };
 
-  // a dialog that just opened: where it is, what it holds, what its parts do, Save empty, how it closes
-  const dialog = async (opener, tag, { full = true } = {}) => {
+  // a dialog that just opened: where it is, what it holds, what its parts do, Save empty, how it closes (`reopen`: opens it again)
+  const dialog = async (opener, tag, { full = true, reopen = null } = {}) => {
     const d = { opener };
     d.info = await P('(() => { const x = window.__kit.dialog(); if (!x) return null; return { title: x.title, options: x.options, windowClass: x.windowClass, contentId: x.contentId, fields: x.fields.length, required: x.fields.filter((f) => f.required).length, hidden: x.hidden.length, unknown: x.unknown, actions: x.actions.map((a) => a.action + ": " + a.text) }; })()').catch(() => null);
     d.position = await P('window.__probe.position()');
@@ -560,7 +634,7 @@ export async function probePage({ s, viewports = [], shotDir, slug, budgetSec = 
       });
       d.saveEmpty = await step(`${tag} save empty`, saveEmpty);
     }
-    d.close = await step(`${tag} close`, () => closeTest(true, tag));
+    d.close = await step(`${tag} close`, () => closeTest(true, tag, reopen));
     await closeAll();
     return d;
   };
@@ -618,14 +692,16 @@ export async function probePage({ s, viewports = [], shotDir, slug, budgetSec = 
       const r = await P('window.__probe.firstRow()');
       if (!r) return null;
       const n0 = await nWin(), ev0 = s.guard.events.length;
-      let via = r.link ? 'link' : 'dblclick';
-      await click(r.stamp, r.link ? 'click' : 'dblclick');
+      let how = r.link ? 'click' : 'dblclick', via = r.link ? 'link' : 'dblclick';
+      await click(r.stamp, how);
       if (!(await waitWin(n0, 12000))) {
-        await click(r.stamp, r.link ? 'dblclick' : 'click');
+        how = r.link ? 'dblclick' : 'click';
         via = r.link ? 'link dblclick' : 'click';
+        await click(r.stamp, how);
         if (!(await waitWin(n0, 4000))) return { dialog: null, navigates: since(ev0).find((e) => e.type === 'navigation')?.url?.replace(/^https?:\/\/[^/]+/, '') || null };
       }
-      return { via, dialog: await dialog(`row ${via}`, 'row', { full: false }) };
+      const reopen = async () => { const n = await nWin(); await click(r.stamp, how); return waitWin(n, 12000); };
+      return { via, dialog: await dialog(`row ${via}`, 'row', { full: false, reopen }) };
     });
   }
 
@@ -633,6 +709,11 @@ export async function probePage({ s, viewports = [], shotDir, slug, budgetSec = 
   out.dialogs = [];
   const markCreates = () => P(`[...document.querySelectorAll('[data-kit-action=create]')].filter((e) => e.getClientRects().length && !e.closest('.k-window')).slice(0, 2).map((e) => (e.setAttribute('data-probe-create', ''), (e.value || e.textContent || '').replace(/\\s+/g, ' ').trim()))`).catch(() => []);
   const creates = await markCreates();
+  const reopenCreate = (i) => async () => {
+    const n0 = await nWin();
+    try { await page.locator('[data-probe-create]').nth(i).click({ timeout: 3000 }); } catch { return false; }
+    return waitWin(n0);
+  };
   for (let i = 0; i < creates.length; i++) {
     await step(`create ${i + 1}`, async () => {
       const n0 = await nWin(), ev0 = s.guard.events.length;
@@ -641,7 +722,7 @@ export async function probePage({ s, viewports = [], shotDir, slug, budgetSec = 
       const opened = await waitWin(n0);
       const loading = await P('window.__probe.stopLoading()');
       if (!opened) { out.dialogs.push({ opener: creates[i], opened: false, requests: requests(ev0), navigates: since(ev0).find((e) => e.type === 'navigation')?.url?.replace(/^https?:\/\/[^/]+/, '') || null }); return; }
-      out.dialogs.push({ ...(await dialog(creates[i], `create${i + 1}`)), loading, requests: requests(ev0) });
+      out.dialogs.push({ ...(await dialog(creates[i], `create${i + 1}`, { reopen: reopenCreate(i) })), loading, requests: requests(ev0) });
     });
   }
 
@@ -660,22 +741,72 @@ export async function probePage({ s, viewports = [], shotDir, slug, budgetSec = 
     return r;
   });
 
-  // Q1 at the other viewports (a 1920x1080 screen at 150% is a 1280x720 page) + Q10 a close with no edit
-  if (creates.length) for (const vp of viewports) {
-    if (vp.width === primary.width && vp.height === primary.height) continue;
-    const r = await step(`viewport ${vp.width}x${vp.height}`, async () => {
-      await page.setViewportSize(vp);
+  // Q13 the menus at a viewport: each module of the side menu hovered (does its submenu scroll, is it cut off) and the module tab's
+  const hover = async (st) => { await page.locator(`[data-probe="${st}"]`).first().hover({ timeout: 3000 }).catch(() => {}); await wait(800); };
+  const flyShot = async (tag, f) => (f?.rect ? shot(tag, { x: Math.max(0, f.rect.x - 12), y: Math.max(0, f.rect.y - 12), width: Math.min(innerSize().w, f.rect.w + 24), height: Math.min(innerSize().h, f.rect.h + 24) }) : null);
+  const innerSize = () => ({ w: page.viewportSize().width, h: page.viewportSize().height });
+  const menuProbe = async (tag) => {
+    const res = { bar: [], side: [] };
+    const m0 = await P('window.__probe.menus()');
+    if (m0.bar) for (const it of m0.bar.items.slice(0, 2)) { // the module tab under the header (a page has none on Home)
+      await hover(it.stamp);
+      const f = await P('window.__probe.flyout()');
+      res.bar.push({ item: it.text, ...(f || { popup: false }), shot: await flyShot(`${tag}-tabflyout`, f) });
+      await page.mouse.move(0, 0);
+      await wait(400);
+    }
+    // the side menu: the hamburger (the pack's selector, else the usual ones; below 1280 px the portal shows a twin of it)
+    let opened = false;
+    for (const sel of [menuButton, 'i.fa-bars', '[class*=hamburger]', 'button[aria-label*="menu" i]'].filter(Boolean)) {
+      const b = page.locator(`${sel}:visible`).first();
+      if (!(await b.count())) continue;
+      await b.click({ timeout: 3000 }).catch(() => {});
+      await wait(900);
+      if ((await P('window.__probe.menus()')).side) { opened = true; res.hamburger = sel; break; }
+    }
+    const m = opened ? await P('window.__probe.menus()') : null;
+    if (!m?.side) { res.error = 'the side menu did not open: pass the hamburger as pack.json "menuButton"'; return res; }
+    res.sideRect = m.side.rect;
+    let shots = 0;
+    for (const it of m.side.items) {
+      if (Date.now() > deadline) { out.skipped.push(`menu ${it.text}`); break; }
+      await hover(it.stamp);
+      const f = await P('window.__probe.flyout()');
+      const bad = !!f && (f.scrollbar || f.cutOff || !f.fits);
+      res.side.push({ item: it.text, ...(f || { popup: false }), shot: f && (shots === 0 || (bad && shots < 4)) ? (shots++, await flyShot(`${tag}-flyout-${shots}`, f)) : null });
+    }
+    await page.mouse.move(0, 0);
+    return res;
+  };
+
+  // Q1 + Q13 at each viewport (the first is the capture's own; a 1920x1080 screen at 150% is about 1272x588 in a real browser):
+  // the page layout the portal's breakpoints give, the menus, and the first Create New's dialog (where, how tall, a close with no edit)
+  out.viewports = [];
+  for (const vp of viewports) {
+    const same = vp.width === primary.width && vp.height === primary.height, tag = `${vp.width}x${vp.height}`;
+    const r = await step(`viewport ${tag}`, async () => {
+      if (!same) await page.setViewportSize(vp);
       await reload();
-      await markCreates();
-      const n0 = await nWin();
-      await page.locator('[data-probe-create]').first().click({ timeout: 3000 });
-      if (!(await waitWin(n0))) return { viewport: vp, opened: false };
-      const res = { viewport: vp, position: await P('window.__probe.position()'), shot: await shot(`create1-${vp.width}x${vp.height}`) };
-      res.cleanClose = await closeTest(false, `create1-${vp.width}`);
-      await closeAll();
+      const res = { viewport: vp, layout: await P('window.__probe.layout()') };
+      res.layoutShot = await shot(`layout-${tag}`, null, true);
+      if (shell) res.menus = await menuProbe(tag);
+      if (!same && creates.length) {
+        await reload();
+        await markCreates();
+        const n0 = await nWin();
+        await page.locator('[data-probe-create]').first().click({ timeout: 3000 });
+        if (!(await waitWin(n0))) res.dialog = { opened: false };
+        else {
+          res.dialog = { position: await P('window.__probe.position()'), shot: await shot(`create1-${tag}`) };
+          res.dialog.cleanClose = await closeTest(false, `create1-${vp.width}`, reopenCreate(0));
+          await closeAll();
+        }
+      }
       return res;
     });
-    if (r && out.dialogs[0]) (out.dialogs[0].atViewports ||= []).push(r);
+    if (!r) continue;
+    out.viewports.push(r);
+    if (r.dialog?.position && out.dialogs[0]) (out.dialogs[0].atViewports ||= []).push({ viewport: vp, position: r.dialog.position, shot: r.dialog.shot, cleanClose: r.dialog.cleanClose });
   }
   if (page.viewportSize().width !== primary.width) await page.setViewportSize(primary).catch(() => {});
   out.shots = shots;
@@ -696,7 +827,7 @@ export function summarize(pages) {
   const dialogsOf = (p) => [...(p.probe.dialogs || []), ...(p.probe.row?.dialog ? [{ ...p.probe.row.dialog, opener: `row ${p.probe.row.via}` }] : [])];
 
   const Q1 = all((p) => dialogsOf(p).flatMap((d) => [d.position && { dialog: name(d), ...d.position }, ...(d.atViewports || []).filter((v) => v.position).map((v) => ({ dialog: name(d), ...v.position }))]))
-    .map(({ page, dialog, viewport, rect, centered, touchesLeft, widerThanViewport, overflowRight, className, computed, kendo, rules }) => ({ page, dialog, viewport: `${viewport.w}x${viewport.h}`, rect, centered, touchesLeft, widerThanViewport, overflowRight, windowClass: className, width: computed.width, minWidth: computed.minWidth, kendoPosition: kendo?.position, rules }));
+    .map(({ page, dialog, viewport, rect, centered, touchesLeft, widerThanViewport, overflowRight, className, computed, kendo, rules, heightPct, fitsViewport, contentScrolls, isPhone }) => ({ page, dialog, viewport: `${viewport.w}x${viewport.h}`, rect, centered, touchesLeft, widerThanViewport, overflowRight, windowClass: className, width: computed.width, minWidth: computed.minWidth, maxHeight: computed.maxHeight, heightPct, fitsViewport, contentScrolls, isPhone, kendoPosition: kendo?.position, rules }));
   const Q2 = all((p) => [...(p.probe.dates?.inputs || []).map((d) => ({ where: 'page', ...d })), ...dialogsOf(p).flatMap((d) => (d.dates?.inputs || []).map((x) => ({ where: `dialog ${name(d)}`, ...x })))]);
   const drives = all((p) => [p.probe.dates?.drive && { where: 'page', ...p.probe.dates.drive }, ...dialogsOf(p).map((d) => d.dates?.drive && { where: `dialog ${name(d)}`, ...d.dates.drive })]);
   const labels = (xs) => xs.map((x) => x.labels.join(', ') || x.text).filter(Boolean);
@@ -717,21 +848,26 @@ export function summarize(pages) {
   const autoCollapse = all((p) => p.probe.search && { changed: (p.probe.search.collapseBefore || []).map((b, i) => ({ header: b.header, before: b.visible, after: p.probe.search.collapseAfter?.[i]?.visible })).filter((x) => x.before !== x.after) }).filter((x) => x.changed.length);
   const Q9 = all((p) => dialogsOf(p).filter((d) => d.saveEmpty).map((d) => ({ dialog: name(d), postAttempted: d.saveEmpty.postAttempted, stillOpen: d.saveEmpty.stillOpen, native: d.saveEmpty.native, ...vshape(d.saveEmpty.validation) })));
   const Q10 = all((p) => dialogsOf(p).flatMap((d) => [d.close && { dialog: name(d), edited: d.close.edited, attempts: d.close.attempts }, ...(d.atViewports || []).filter((v) => v.cleanClose).map((v) => ({ dialog: name(d), edited: null, attempts: v.cleanClose.attempts }))]))
-    .map((c) => ({ ...c, attempts: c.attempts.map((a) => ({ via: a.via, button: a.button, closed: a.closed, native: a.native, confirm: a.confirm ? { title: a.confirm.title, text: a.confirm.text, buttons: a.confirm.buttons.map((b) => b.text), className: a.confirm.className, rect: a.confirm.rect, answered: a.answered, shot: a.confirm.shot } : null })) }));
+    .map((c) => ({ ...c, attempts: c.attempts.map((a) => ({ via: a.via, edited: a.edited, reopened: a.reopened, answered: a.answered, button: a.button, closed: a.closed, native: a.native, stillOpenAfterStay: a.stillOpenAfterStay, leftWith: a.leftWith, closedAfterLeave: a.closedAfterLeave, confirm: a.confirm ? { title: a.confirm.title, text: a.confirm.text, buttons: a.confirm.buttons.map((b) => b.text), className: a.confirm.className, rect: a.confirm.rect, answered: a.answered, shot: a.confirm.shot } : null })) }));
   const Q11 = all((p) => p.probe.gridFilter && { filterable: p.probe.gridFilter.filterable, columnMenu: p.probe.gridFilter.columnMenu, icon: p.probe.gridFilter.iconHtml, column: p.probe.gridFilter.column,
     popup: p.probe.gridFilter.popup && { className: p.probe.gridFilter.popup.className, rect: p.probe.gridFilter.popup.rect, fields: p.probe.gridFilter.popup.fields, operators: p.probe.gridFilter.popup.dropdowns, buttons: p.probe.gridFilter.popup.buttons, texts: p.probe.gridFilter.popup.texts, chevrons: p.probe.gridFilter.popup.chevrons.map((c) => ({ className: c.className, text: c.text, after: c.after })), shot: p.probe.gridFilter.popup.shot, shape: shape(p.probe.gridFilter.popup.html) } });
   const Q12 = { unmappedButtons: count(ok.flatMap((p) => [...(p.probe.census?.buttons || []), ...dialogsOf(p).flatMap((d) => d.census?.buttons || [])].filter((b) => !b.action).map((b) => b.text))),
     unknownRoles: count(ok.flatMap((p) => [...Object.keys(p.probe.unknownRoles || {}), ...dialogsOf(p).flatMap((d) => Object.keys(d.info?.unknown || {}))])),
     roles: count(ok.flatMap((p) => Object.entries(p.probe.census?.roles || {}).flatMap(([r, n]) => Array(n).fill(r)))), tabs: all((p) => p.probe.census?.tabs?.length && { tabs: p.probe.census.tabs }) };
 
+  // Q13: per viewport, the page layout and every fly-out of the menus (probed on the first page of a run: the menus are the same everywhere)
+  const Q13 = all((p) => (p.probe.viewports || []).map((v) => ({ viewport: `${v.viewport.width}x${v.viewport.height}`, layout: v.layout, layoutShot: v.layoutShot, menus: v.menus,
+    dialog: v.dialog?.position && { rect: v.dialog.position.rect, heightPct: v.dialog.position.heightPct, fitsViewport: v.dialog.position.fitsViewport, contentScrolls: v.dialog.position.contentScrolls, isPhone: v.dialog.position.isPhone } })));
+  const flyAll = Q13.flatMap((q) => [...(q.menus?.side || []), ...(q.menus?.bar || [])].map((f) => ({ page: q.page, viewport: q.viewport, ...f })));
+  const flyDo = flyAll.filter((f) => f.rect);
   const failed = pages.filter((p) => !p.probe).map((p) => ({ page: p.label, error: p.error }));
   const answers = { pages: pages.length, probed: ok.length, failed, Q1_modalPosition: Q1, Q2_dates: { inputs: Q2, driven: drives }, Q3_Q8_dialogParts: Q3, Q4_search: Q4, Q5_pageValidation: Q5,
-    Q6_toggles: { toggles: Q6, autoCollapseOnSearch: autoCollapse }, Q7_pageConditionals: Q7, Q9_dialogSaveValidation: Q9, Q10_closeConfirm: Q10, Q11_gridFilter: Q11, Q12_vocabulary: Q12,
+    Q6_toggles: { toggles: Q6, autoCollapseOnSearch: autoCollapse }, Q7_pageConditionals: Q7, Q9_dialogSaveValidation: Q9, Q10_closeConfirm: Q10, Q11_gridFilter: Q11, Q12_vocabulary: Q12, Q13_layoutAndMenus: Q13,
     stepErrors: all((p) => (p.probe.errors || []).map((e) => ({ error: e }))), skippedForTime: all((p) => p.probe.skipped?.length && { steps: p.probe.skipped }) };
 
   // the short read: counts first, a few examples each; answers.json has everything
   const ex = (xs, f, n = 5) => xs.slice(0, n).map((x) => `  - ${f(x)}`).join('\n') || '  - (none)';
-  const closeLine = (a) => `${a.via}: ${a.confirm ? `confirm "${a.confirm.text.slice(0, 80)}" [${a.confirm.buttons.join('/')}]` : a.native?.length ? `native ${a.native[0].kind} "${a.native[0].message}"` : a.closed ? 'closes' : a.button === false ? 'no such button' : 'stays open'}`;
+  const closeLine = (a) => `${a.via}: ${a.confirm ? `confirm "${a.confirm.text.slice(0, 80)}" [${a.confirm.buttons.join('/')}], ${a.answered || '?'} keeps it open: ${a.stillOpenAfterStay ?? '?'}, ${a.leftWith || '?'} closes it: ${a.closedAfterLeave ?? '?'}` : a.reopened === false ? 'could not reopen' : a.native?.length ? `native ${a.native[0].kind} "${a.native[0].message}"` : a.closed ? 'closes' : a.button === false ? 'no such button' : 'stays open'}`;
   const md = [`# Probe answers\n`, `${ok.length} of ${pages.length} pages probed${failed.length ? ` (${failed.length} failed: ${failed.slice(0, 5).map((f) => f.page).join(', ')})` : ''}; ${answers.stepErrors.length} step errors, ${answers.skippedForTime.length} pages ran out of time. Everything is in answers.json, one file per page in pages/, pictures in shots/.\n`,
     `## Q1 Modal position`, `- ${Q1.filter((x) => x.centered).length}/${Q1.length} centered, ${Q1.filter((x) => x.touchesLeft).length} touching the left edge, ${Q1.filter((x) => x.widerThanViewport).length} wider than the viewport, ${Q1.filter((x) => x.overflowRight).length} running past the right edge`,
     `- by viewport: ${top(Q1.map((x) => `${x.viewport} ${x.touchesLeft ? 'left-edge' : x.centered ? 'centered' : 'other'}`), 10)}`,
@@ -756,6 +892,11 @@ export function summarize(pages) {
     `\n## Q11 Grid filter`, `- ${Q11.length} grids after Search, ${Q11.filter((x) => x.popup).length} filter popups opened; filterable: ${top(Q11.map((x) => JSON.stringify(x.filterable)))}; ${uniq(Q11.filter((x) => x.popup).map((x) => x.popup.shape)).length} distinct popup shapes`,
     ex(Q11.filter((x) => x.popup), (x) => `${x.page} (${x.column}): fields ${x.popup.fields.map((f) => f.role || f.type).join(',')}; buttons ${x.popup.buttons.join('/')}; chevrons ${x.popup.chevrons.length}`),
     `\n## Q12 Vocabulary`, `- buttons the kit does not map: ${Q12.unmappedButtons.slice(0, 25).map(([k, n]) => `"${k}" x${n}`).join(', ') || 'none'}`, `- widget roles the kit does not rebuild: ${Q12.unknownRoles.map(([k, n]) => `${k} x${n}`).join(', ') || 'none'}`,
-    `- pages with tabs: ${Q12.tabs.length}`].join('\n') + '\n';
+    `- pages with tabs: ${Q12.tabs.length}`,
+    `\n## Q13 Layout and menus per viewport`,
+    ...Q13.map((q) => `- ${q.viewport} (${q.page}): layout ${q.layout.breakpoints.max1280 ? 'small (<=1280)' : 'desktop'}${q.layout.breakpoints.max768 ? ' + <=768' : ''}, isPhone() ${q.layout.breakpoints.isPhone}; header ${q.layout.header?.h ?? '-'}px; hamburgers shown: ${q.layout.burgers.filter((b) => b.shown).length}/${q.layout.burgers.length}; nav links: ${q.layout.navLinks.length}; page ${q.layout.page.horizontalScroll ? 'SCROLLS SIDEWAYS' : 'fits the width'}${q.dialog ? `; dialog x=${q.dialog.rect.x} y=${q.dialog.rect.y} ${q.dialog.rect.w}x${q.dialog.rect.h} (${q.dialog.heightPct}% of the height, fits: ${q.dialog.fitsViewport}, content scrolls: ${q.dialog.contentScrolls})` : ''}`),
+    `- menu fly-outs measured: ${flyDo.length}; with a scrollbar: ${flyDo.filter((f) => f.scrollbar).length}; cut off by the window: ${flyDo.filter((f) => f.cutOff || !f.fits).length}; overflow values seen: ${top(flyDo.map((f) => `${f.overflowY} (inline: ${/overflow/.test(f.inlineStyle || '') ? 'yes' : 'no'})`))}`,
+    ex(flyDo.filter((f) => f.scrollbar || f.cutOff || !f.fits), (f) => `${f.viewport} "${f.item}": ${f.items} items, ${f.popupRect.h}px high, scroll height ${f.scrollHeight}, scrollbar ${f.scrollbar} (${f.scrollbarWidth}px), overflow ${f.overflowY}, max-height ${f.maxHeight}, window bottom at ${f.rect.y + f.rect.h}`, 8),
+    `- side menus that did not open: ${Q13.filter((q) => q.menus?.error).map((q) => `${q.viewport}: ${q.menus.error}`).join('; ') || 'none'}`].join('\n') + '\n';
   return { answers, markdown: md };
 }

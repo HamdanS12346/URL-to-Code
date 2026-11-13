@@ -41,7 +41,8 @@ const log = (m) => { console.log(m); fs.appendFileSync(logFile, m + '\n'); };
 const base = readJson(path.join(ROOT, 'config.json'), {});
 const cfg = { ...base, ...base.urlOnly, ...pack.config, auth: { ...base.auth, ...pack.config?.auth, storageState: null } };
 const viewport = cfg.defaultViewport, dpr = cfg.dpr;
-const viewports = (opt('--viewports') || `${viewport.width}x${viewport.height},1280x720`).split(',').map((v) => { const [width, height] = v.split('x').map(Number); return { width, height }; });
+// the capture's own size, and a real browser on a 1920x1080 screen at 150% (1272x588: the portal switches to its small layout at 1280)
+const viewports = (opt('--viewports') || `${viewport.width}x${viewport.height},1272x588`).split(',').map((v) => { const [width, height] = v.split('x').map(Number); return { width, height }; });
 if (viewports.some((v) => !v.width || !v.height)) die('--viewports takes WxH,WxH (e.g. 1920x1080,1280x720)');
 
 // rebuild the answers from the page files only
@@ -114,6 +115,7 @@ try {
 
   // ---------- each page ----------
   const budget = +(opt('--budget') || 300);
+  let shellDone = false; // the menus are the same on every page: measured on the first page this run probes
   for (const [i, p] of list.entries()) {
     const name = slug(p.trail.join('-')), file = path.join(pagesDir, `${name}.json`);
     const old = readJson(file, null);
@@ -131,7 +133,8 @@ try {
           continue;
         }
         rec.finalUrl = s.page.url() !== p.url ? s.page.url() : undefined;
-        rec.probe = await probe.probePage({ s, cfg, viewports, shotDir, slug: name, budgetSec: budget, log });
+        rec.probe = await probe.probePage({ s, cfg, viewports, shotDir, slug: name, budgetSec: budget, log, menuButton: sel.menuButton || null, shell: !shellDone });
+        shellDone = true;
         delete rec.error;
         break;
       } catch (e) {
