@@ -112,8 +112,20 @@ if (kitStates?.length && process.env.STATES !== '0') {
   const sdir = path.join(outDir, 'states');
   fs.rmSync(sdir, { recursive: true, force: true });
   if (clockOn) await context.clock.resume().catch(() => {}); // the freeze paused time for the whole context: delays (a tooltip's) must run
+  // a state recorded at another viewport profile (the capture's "profiles": e.g. 1272x588 @1.5, below the portal's small-screen switch) is replayed in a
+  // context of that size, so the page, the menus and the dialogs are checked where the live one was photographed
+  const profileCtx = {};
+  const ctxFor = async (st) => {
+    if (!st.profile || !st.viewport) return context;
+    const key = `${st.viewport.width}x${st.viewport.height}@${st.dpr ?? 1}`;
+    if (!profileCtx[key]) {
+      profileCtx[key] = await browser.newContext({ viewport: st.viewport, deviceScaleFactor: st.dpr ?? 1, ignoreHTTPSErrors: true, serviceWorkers: 'block' });
+      await profileCtx[key].addInitScript({ content: INPAGE });
+    }
+    return profileCtx[key];
+  };
   for (const st of kitStates) {
-    const p = await context.newPage();
+    const p = await (await ctxFor(st)).newPage();
     const r = { name: st.name, ok: false };
     try {
       await p.goto(process.env.URL ?? `${base}/#/${screen}`, { timeout: 120000 });
@@ -136,10 +148,16 @@ if (kitStates?.length && process.env.STATES !== '0') {
           .map((x) => {
             const t = x.querySelector('.k-tooltip-content') ?? x, lh = parseFloat(getComputedStyle(t).lineHeight) || 18, r = x.getBoundingClientRect();
             const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2), o = outside && document.querySelector(outside)?.getBoundingClientRect();
-            return { lines: Math.round(t.getBoundingClientRect().height / lh), top: !!hit && x.contains(hit), overlaps: !!o && Math.min(r.right, o.right) - Math.max(r.left, o.left) > 1 && Math.min(r.bottom, o.bottom) - Math.max(r.top, o.top) > 1 };
+            return { lines: Math.round(t.getBoundingClientRect().height / lh), top: !!hit && x.contains(hit), overlaps: !!o && Math.min(r.right, o.right) - Math.max(r.left, o.left) > 1 && Math.min(r.bottom, o.bottom) - Math.max(r.top, o.top) > 1,
+              rect: { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height) } };
           }), e.outside ?? null);
         if ((e.visible ?? true) !== seen.length > 0) failed.push(`${e.sel} ${e.visible === false ? 'still shown' : 'not shown'}${e.why ? ` (${e.why})` : ''}`);
         else if (e.lines && seen.length && seen[0].lines > e.lines) failed.push(`${e.sel} wraps onto ${seen[0].lines} lines, the live one has ${e.lines}`);
+        else if (e.rect && seen.length) { // where and how big the live element was (a dialog at this viewport profile): each of x, y, w, h within its tolerance
+          const tol = { x: 3, y: 3, w: 3, h: 14, ...e.tol }, got = seen[0].rect, off = ['x', 'y', 'w', 'h'].filter((k) => Math.abs(got[k] - e.rect[k]) > tol[k]);
+          const fmt = (r) => `x ${r.x}, y ${r.y}, ${r.w}x${r.h}`;
+          if (off.length) failed.push(`${e.sel} is at ${fmt(got)} but the live one is at ${fmt(e.rect)} (${off.join(', ')} differ)${e.why ? ` (${e.why})` : ''}`);
+        }
         else if (e.top && seen.length && !seen.some((x) => x.top)) failed.push(`${e.sel} is shown but covered or clipped: not on top${e.why ? ` (${e.why})` : ''}`);
         else if (e.outside && seen.some((x) => x.overlaps)) failed.push(`${e.sel} opens inside ${e.outside}, which clips it; the live one opens beside it${e.why ? ` (${e.why})` : ''}`);
       }
@@ -155,6 +173,7 @@ if (kitStates?.length && process.env.STATES !== '0') {
     await p.close();
     rep.states.push(r);
   }
+  for (const c of Object.values(profileCtx)) await c.close().catch(() => {});
   console.log(`states: ${rep.states.filter((s) => s.ok).length}/${rep.states.length} match the live page${rep.states.filter((s) => !s.ok).map((s) => ` | ✗ ${s.name}: ${s.error ?? `${s.bad_pct}% off`}`).join('')}`);
 }
 await browser.close();

@@ -137,13 +137,55 @@ replays it: the button shows the part, a Cancel or Save inside the part puts it 
 dialog's own Cancel still closes the dialog. The same holds for a Create New on the page that opens no window
 (`screen.json` `creates`). Hidden-at-rest parts of a dialog are stamped `data-kit-h` like the page's.
 
+## Viewport profiles: the portal has two layouts
+
+The portal switches layouts at **1280 CSS px wide** (its own `isPhone()` is `matchMedia("(max-width: 1280px)")`). A 1920x1080 screen at
+150% Windows scaling is a 1280-wide page, and a real browser on it is about **1272x588**, so a client sees the small layout. The capture
+photographs the page at its own viewport (1920x1080 for a url-only capture: the "desktop" profile) **and** at each extra profile in
+`config.json` `"profiles"` (default: `client`, 1272x588 at dpr 1.5; a pack overrides it with `pack.json` `config.profiles`, `[]` turns it off).
+Nothing is specific to one machine: a profile is just a size, and what changes between layouts is **measured on the live page**, not typed in.
+
+What the profile pass records (`kit/screen.json` `profiles`, `responsive`; `kit/states.json` entries with `"profile"`, `viewport`, `dpr`):
+- `profiles.<name>`: the viewport, the layout facts (which breakpoints are active, which hamburger shows, nav links, a sideways scrollbar), and each
+  Create New dialog as measured there (rect, min-width, max-height, whether its content scrolls).
+- `responsive`: the rule the runtime applies. `query` is read from the portal's own script (`isPhone`), else it is the profile's width.
+  `dialog` = what the portal's phone branch does (left / top, at least `minWidthPct` of the width, at most `maxHeightPct` of the height);
+  `desktop.maxHeightPct` = the cap above the switch (the portal's `maxOverlayHeight`, 85%). **A dialog touching the left edge at 1272 is the
+  live behavior, not a bug**: the portal does not center a window below its switch.
+- states `layout@<name>`, `menu-open@<name>`, `menu-flyout@<name>`, `menu-close@<name>`, `tab-flyout@<name>`, `dialog-dN@<name>`: replayed by
+  `verify` in a context of that size. A dialog state also checks the window's box (x, y, width, height) against the live one (`expect.rect`).
+
+The runtime (`placeWindow` in `KitScreen.tsx`) centers above `query` (Kendo's `center()`, measured on the layout viewport), places by
+left/top below it, caps the height as a share of the **current** window (not the 918 px the capture froze), scrolls the content inside, and
+re-places on resize and when the content changes size, like the portal.
+
+## What else a screen records (all optional keys of `screen.json`; a capture without them behaves as before)
+
+| key | what the capture does | what the kit does |
+|---|---|---|
+| `search.outcome` (`rows` / `validation` / `empty`), `search.validation` | clicks Search with the form as it loads, waits for the loading indicator to go (the "Processing ..." box, grid masks), records the banner (live markup) and per-field messages | a Search with nothing changed shows that banner and messages (its X hides it) and no grid; with something typed it shows the grid |
+| `dialogs.<id>.saveValidation` | clicks Save with nothing filled, **every POST blocked**; records the banner and field messages | Save shows the live banner as well as the field messages |
+| `dialogs.<id>.close` | with an edit in the dialog: does the X ask "form data has changed"? does Cancel? the confirm's live markup and which button stays / leaves; staying must keep the dialog open | the dialog tracks the person's edits; X / Cancel / Escape ask exactly where the live one asked, with the live window |
+| `conditionals`, `dialogs.<id>.conditionals` | tries every radio value, checkbox and dropdown value (not cascade children), records for each value the **absolute** shown/hidden state of the parts that flipped, puts the control back | `change` on the same control sets those parts: no per-screen code for "Run Schedule" and the like. Cascading option lists stay the code step's |
+| widget `offsetDays`, `minutes`, `focusMask` | a prefilled date as days from the capture's day (the time of day too); the pattern an empty masked date shows on focus (`__/__/____`) | a date within 1000 days of the capture day stays that far from today; a placeholder (12/31/9999, 01/01/1900) stays as it was; the mask shows on focus |
+| `filterPopup` | the grid's filter icon clicked: the popup's live markup and where it opened relative to the icon | the icon opens the popup; Filter / Clear / a press elsewhere close it |
+| `links` | a Create New (or a row) that leaves the page: where it goes (the guard aborts the navigation and records it) | `npm run ui` captures each target as a screen of its own (one level, `parent` in `pack.json`), and the click in the rebuild goes to its route |
+| collapse icons | the portal's `fa-angle-up/down` as well as chevrons, found through the panel container (the icon sits in a `*-hdr-tools` div inside the header) | the panel slides (the portal's 400 ms) and the icon / `*-collapsed` class / title swap |
+
+The side menu's fly-out is built without a native scrollbar (Kendo sets `overflow: visible` inline on a popup it opens; the stylesheet's
+`overflow: auto` + `max-height: 80vh` would give the clone one). When the list is taller than the room (a small window), the kit shows Kendo's scroll buttons
+at both ends and scrolls the list with them and the wheel.
+
 ## Known gaps (say them in GUESSED.md when a screen needs them)
 
 - Widgets the kit does not rebuild yet are ported as static markup and listed in `screen.json` `unknown` (and facts.md). The
   census of the menu pages found: autocomplete (Plan Management, Claims), masked text box, multiselect, listbox, listview,
   tab strip. Checkboxes and radios are plain inputs and work as they are.
 
-- The grid's column filter menu (the funnel icon) does not open.
+- The grid's column filter popup opens and closes, but its operator list and value box do nothing (it does not filter the synthetic rows), and one popup (the first column's) stands for all columns.
+- Screens whose live Search with nothing typed showed a banner have no row template (no rows were ever seen), so a Search with input shows the grid empty.
+- Closing behavior is recorded for the dialogs the capture opens from Create New and the first row; a dialog with no editable text box is only tried unedited.
+- Profile states cover the menus and each Create New dialog; the full page at the second profile is one viewport picture (`layout@<name>`), not a stitched page.
 - The page-size dropdown in the pager does not change the page size.
 - A dropdown that cascades from another starts disabled and keeps the option list the capture saw (usually empty).
 - The book icon's page help (`displayPageLevelHelp()`) opens nothing.

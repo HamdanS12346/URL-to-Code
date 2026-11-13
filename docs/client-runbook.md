@@ -86,6 +86,23 @@ On the home page the tool recognises the portal (Kendo UI for jQuery) and uses i
   the side menu. Each module screen sits in one shared shell that shows its own module tab and title.
 - `src/services/<screen>.ts` names the endpoints the live screen called and answers with mock data.
 
+**Two layouts.** The portal switches layouts at 1280 CSS px wide, and a real browser on a 1920x1080 screen at 150% scaling is about 1272x588,
+so the client sees the small one (a dialog touching the left edge, a second hamburger, a shorter menu). Each screen is therefore also
+captured at the **viewport profiles** in `config.json` (`"profiles"`, default one profile: `client`, 1272x588 at dpr 1.5; the first profile is
+always the capture's own size). The kit records how the layout, the menus and the dialogs look and behave at each, reads the switch point from the
+portal's own script, and `verify` replays each state at its own size (`layout@client`, `menu-open@client`, `dialog-d1@client`, ...). To add a
+size or turn it off, set `config.profiles` in `pack.json` (`[]` = only the capture's own size). The profile pass costs about a minute per screen.
+
+**Pages that a Create New opens.** On the live portal most Create New buttons (35 of 61 probed) do not open a dialog: they go to an Add page of their own.
+The capture records where such a click (or a row) leads, and `npm run ui` then captures, specifies and rebuilds that page as a screen of its own under the one it
+came from (`parent` in `pack.json`, id from the last part of its address, e.g. `add-member`); the rebuilt Create New goes to its route. One level only, same
+site only. `pack.json` `"linked": false` (or `--no-linked`) turns it off; `"maxLinked"` caps how many are added (default 60).
+
+**Small behaviors are recorded, not guessed.** Per screen the capture also clicks Search with nothing typed (rows or a validation banner?),
+Save with nothing filled (every POST blocked), closes each dialog with an edit in it (does the X / Cancel ask "form data has changed"?), tries
+every radio / checkbox / dropdown value (what it shows or hides), reads prefilled dates and masks, and opens the grid's filter popup.
+See `kits/provider/KIT.md` for the keys it writes and what the kit does with each.
+
 `--kit none` turns it off (generic capture, plan and explore); `pack.json` `"kit"` keeps the choice.
 
 ### What happens, in order
@@ -94,7 +111,7 @@ On the home page the tool recognises the portal (Kendo UI for jQuery) and uses i
 |---|---|---|
 | login | opens the home page, clicks the menu button, fills in the user name and password, keeps the session in memory | script |
 | discover | reads the whole menu (every module and its items), finds the URL of each item under your menu item, finds each screen's content area, recognises the site kit | script |
-| capture | photographs and saves each page (DOM, the full CSS, assets); with the kit: the harvest (`kit/screen.json`, `kit/states/`, `kit/dialogs/`) | script |
+| capture | photographs and saves each page (DOM, the full CSS, assets); with the kit: the harvest (`kit/screen.json`, `kit/states/`, `kit/dialogs/`) and the same screen at each viewport profile | script |
 | plan | decides what to hover/click/type on each page (`explore/plan.json`), checked by `check:plan`. **Skipped with the kit** | Codex |
 | explore | carries out the plan on the live page and records every change. **Skipped with the kit** (the harvest did it) | script |
 | spec | writes `spec/UI_SPEC.md` + `tasks.md`, checked by `npm run check` (with the kit: every widget and dialog cited as `[kit:<id>]`) | Codex |
@@ -169,6 +186,8 @@ Everything the tool guesses can be pinned. Edit `pack.json`, then re-run (with `
 | `rounds`, `timeoutSec` | writer retries after a failed check (2), seconds per writer call (3600) |
 | `config` | any `config.json` setting for this pack, e.g. `{ "mode": "readonly", "explore": { "timeBudgetSec": 600 } }` |
 | `kit` | the site kit (`"provider"`), or `false` for the generic flow; found on the home page when missing |
+| `linked`, `maxLinked` | follow Create New / row links to pages of their own (default on, at most 60) |
+| `config.profiles` | the extra viewport profiles: `[{ "name": "client", "viewport": { "width": 1272, "height": 588 }, "dpr": 1.5 }]` (the default); `[]` for none |
 | `outRepo` | where the code goes (default `packs/<pack>/app`) |
 
 ## If something goes wrong

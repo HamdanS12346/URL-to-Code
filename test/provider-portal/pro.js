@@ -57,7 +57,10 @@
       const z = 11502 + $('.k-window:visible').length * 2;
       if (this.options.modal) this.overlay = $('<div class="k-overlay" style="display:block; z-index:' + (z - 1) + '"></div>').appendTo(document.body);
       this.wrapper.css({ display: 'inline-flex', flexDirection: 'column', width: this.options.width, zIndex: z, opacity: 0, transform: 'scale(0.9)', transition: 'opacity 350ms, transform 350ms' });
-      this.center();
+      // the portal's openModalOverlay: on a small screen (isPhone) the window is not centered, it gets left 0 / top 20, at least 90% of the width and at most 85% of the
+      // height; above that width it is centered and at most 85% of the height high
+      if (window.isPhone && window.isPhone()) this.wrapper.css({ minWidth: Math.round($(window).width() * 0.9), maxHeight: Math.round($(window).height() * 0.85), top: 20, left: 0 });
+      else { this.wrapper.css({ maxHeight: Math.round(innerHeight * 0.85) }); this.center(); }
       requestAnimationFrame(() => this.wrapper.css({ opacity: 1, transform: 'scale(1)' }));
       return this;
     },

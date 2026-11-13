@@ -38,8 +38,13 @@ const readJson = (f) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8'
 // carries it and the kit replays it. The menu root is the newly shown element with the most links (a field that
 // happens to appear at the same time is not the menu). Never re-click the opener to close: that opens it again.
 async function sideMenu(page, sel, log, module) {
-  const btn = page.locator(sel).first();
-  if (!(await btn.isVisible().catch(() => false))) return null;
+  // the pack's hamburger; below the portal's small-screen switch it shows a twin of it (the pack's selector is hidden then), so fall back to the usual ones
+  let btn = null;
+  for (const c of [sel, 'i.fa-bars', '[class*=hamburger]', 'button[aria-label*="menu" i]'].filter(Boolean)) {
+    const l = page.locator(`${c}:visible`).first();
+    if (await l.count().catch(() => 0)) { btn = l; break; }
+  }
+  if (!btn) return null;
   await page.evaluate(() => {
     const all = [...document.body.querySelectorAll('*')];
     window.__kitShown = new Set(all.filter((el) => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden'));
@@ -212,6 +217,9 @@ async function scriptPlan(page) {
     }
     const src = texts.join('\n;\n');
     const name = (x) => (x || '').trim().replace(/^["']|["']$/g, '');
+    // the portal's own small-screen switch: isPhone() = matchMedia("(max-width: 1280px)") (the dialog code branches on it)
+    const phoneFn = /(?:function\s+|)\b(is(?:Phone|Mobile|Small|Narrow|Compact))\s*(?:=\s*function)?\s*\([^)]*\)\s*\{([\s\S]{0,600}?)\n\s*\}/.exec(src);
+    const phoneQuery = phoneFn ? /matchMedia\(\s*["']\(\s*max-width:\s*(\d+)px\s*\)["']\s*\)/.exec(phoneFn[2])?.[1] ?? null : null;
     const fnBody = (fn) => { const m = new RegExp(`function\\s+${fn.replace(/[^\w$]/g, '')}\\s*\\([^)]*\\)\\s*\\{([\\s\\S]{0,1500}?)\\n\\}`).exec(src) || new RegExp(`${fn.replace(/[^\w$]/g, '')}\\s*=\\s*function\\s*\\([^)]*\\)\\s*\\{([\\s\\S]{0,1500}?)\\n\\}`).exec(src); return m ? m[1] : ''; };
     const panelIn = (body) => /openModalOverlay\(\s*["']([\w-]+)["']/.exec(body)?.[1] || null;
     const dialogs = [];
@@ -227,12 +235,176 @@ async function scriptPlan(page) {
     const rowPanel = panelIn(rowBody);
     if (rowPanel) add(rowPanel, null, 'row-dblclick');
     for (const m of src.matchAll(/openModalOverlay\(\s*["']([\w-]+)["']/g)) add(m[1], null, null);
-    return { dialogs, rowDouble, rowSingle, rowOpens: rowPanel || (/location(\.href)?\s*=|window\.open\(/.test(rowBody) ? 'navigate' : null) };
-  }).catch(() => ({ dialogs: [], rowDouble: null, rowSingle: null, rowOpens: null }));
+    return { dialogs, rowDouble, rowSingle, rowOpens: rowPanel || (/location(\.href)?\s*=|window\.open\(/.test(rowBody) ? 'navigate' : null), phoneWidth: phoneQuery ? +phoneQuery : null };
+  }).catch(() => ({ dialogs: [], rowDouble: null, rowSingle: null, rowOpens: null, phoneWidth: null }));
+}
+
+// ---------- shared by the capture's clicks and the profile pass ----------
+// waits until the portal's loading indicator (the "Processing ..." box, Kendo's loading masks, a grid's spinner) is gone and has stayed gone
+// for a moment: a Search picture taken while the grid still spins is not the result
+async function waitLoaded(page, s, max = 30000) {
+  const end = Date.now() + max;
+  let quiet = 0;
+  await page.waitForTimeout(250);
+  while (Date.now() < end) {
+    const busy = await page.evaluate(() => window.__kit.loading()).catch(() => false);
+    if (busy) quiet = 0; else { quiet += 200; if (quiet >= 600) break; }
+    await page.waitForTimeout(200);
+  }
+  await s.settle(100, 2000).catch(() => {});
+}
+
+// What radios, checkboxes and dropdown values show or hide on the page (where = 'page') or in the open window ('dialog'): each value is tried, the
+// parts that flipped are recorded with their ABSOLUTE state per value (so the rebuild can set any value from any other one), and the control is put back.
+// Result: [{ where, kind, name, values: { <value>: { <selector>: shown } }, rest: { <selector>: shown } }]
+async function sweep(page, where) {
+  const t = await page.evaluate((w) => window.__kit.triggers(w), where).catch(() => null);
+  if (!t) return [];
+  const out = [], parts = () => page.evaluate(() => window.__kit.parts());
+  const group = async (kind, name, steps, restore, restKey) => {
+    const rest = await parts(), states = {}, flipped = new Set();
+    let prev = rest;
+    for (const st of steps) {
+      await st.act();
+      await page.waitForTimeout(500);
+      const now = await parts();
+      for (const k of Object.keys(now)) if (k in prev && now[k] !== prev[k]) flipped.add(k);
+      states[st.key] = now;
+      prev = now;
+    }
+    await restore();
+    await page.waitForTimeout(400);
+    const back = await parts();
+    for (const k of Object.keys(back)) if (k in prev && back[k] !== prev[k]) flipped.add(k);
+    if (!flipped.size) return;
+    const sels = [...flipped].filter((k) => k in rest);
+    if (!sels.length) return;
+    if (restKey != null) states[restKey] = rest;
+    out.push({ where, kind, name, values: Object.fromEntries(Object.entries(states).map(([k, p]) => [k, Object.fromEntries(sels.map((s) => [s, !!p[s]]))])), rest: Object.fromEntries(sels.map((s) => [s, !!rest[s]])) });
+  };
+  const click = (tid) => page.evaluate((x) => window.__kit.tclick(x), tid);
+  for (const g of t.radios) {
+    const orig = g.options.find((o) => o.checked);
+    await group('radio', g.name, g.options.map((o) => ({ key: o.value, act: () => click(o.t) })),
+      async () => { if (orig) await click(orig.t); else for (const o of g.options) await page.evaluate((x) => window.__kit.tuncheck(x), o.t); }, orig ? orig.value : null);
+  }
+  for (const c of t.checkboxes) await group('checkbox', c.name, [{ key: String(!c.checked), act: () => click(c.t) }], () => click(c.t), String(c.checked));
+  for (const d of t.dropdowns) {
+    const others = d.values.filter((v) => v !== d.value).slice(0, 4);
+    if (!others.length) continue;
+    const pick = (v) => page.evaluate(([x, val]) => window.__kit.tpick(x, val), [d.t, v]);
+    await group('dropdown', d.name, others.map((v) => ({ key: v, act: () => pick(v) })), () => pick(d.value), d.value);
+  }
+  return out;
+}
+
+// the pictures and checks of the side menu and the module tab, for the capture's own viewport (sfx '') and for each profile ('@name')
+function menuStates({ dir, menu, menuShot, flyShot, barFound, sfx = '', extra = {} }) {
+  const out = [], open = { do: 'click', sel: '[data-kit-action=menu]' }, bd = !!menu?.backdrop;
+  const png = (nm, buf) => { fs.writeFileSync(path.join(dir, 'states', `${nm}${sfx}.png`), buf); return `states/${nm}${sfx}.png`; };
+  if (menu) {
+    const shot = menuShot ? png('menu-open', menuShot) : null;
+    out.push({ name: `menu-open${sfx}`, steps: [open], wait: 800, ...(shot ? { shot } : {}), ...extra,
+      expect: [{ sel: '[data-kit-menu]', why: 'the hamburger opens the side menu' }, ...(bd ? [{ sel: '[data-kit-menu-backdrop-live]', why: 'with the backdrop the page appends' }] : [])] });
+    // a module hovered: its submenu is a box beside the menu (Kendo lifts it out of the <ul>, which clips what is inside), on top of the page, and looks like the live one
+    if (flyShot) out.push({ name: `menu-flyout${sfx}`, steps: [open, { do: 'hover', sel: '[data-kit-flyout-demo="side"]', wait: 900 }], wait: 900, clip: menu.flyClip, shot: png('menu-flyout', flyShot), ...extra,
+      expect: [{ sel: '[data-kit-flyout]', top: true, outside: '[data-kit-menu] ul[data-role=menu]', why: 'a module flies out to the left of the menu, over the page' }] });
+    if (menu.close) out.push({ name: `menu-close${sfx}`, steps: [open, { do: 'click', sel: '[data-kit-action=menu-close]' }], wait: 600, ...extra,
+      expect: [{ sel: '[data-kit-menu]', visible: false, why: 'its close icon closes it' }, ...(bd ? [{ sel: '[data-kit-menu-backdrop-live]', visible: false, why: 'and removes the backdrop' }] : [])] });
+  }
+  if (barFound) out.push({ name: `tab-flyout${sfx}`, steps: [{ do: 'hover', sel: '[data-kit-flyout-demo="bar"]', wait: 900 }], wait: 900, clip: barFound.clip, shot: png('tab-flyout', barFound.shot), ...extra,
+    expect: [{ sel: '[data-kit-flyout]', top: true, outside: 'ul:has(> [data-kit-flyout-demo="bar"])', why: 'the module tab opens its screens under it' }] });
+  return out;
+}
+
+const maxHeightOf = (style) => { const m = /max-height:\s*([\d.]+)px/.exec(style || ''); return m ? +m[1] : null; };
+
+// The same screen at each extra viewport profile (config "profiles": e.g. a real browser on a 1920x1080 screen at 150% is 1272x588, below the portal's
+// small-screen switch at 1280). A new page at that size is loaded, and: the layout the portal's breakpoints give is recorded, each side-menu and module-tab
+// state is photographed, each Create New dialog is opened and measured. Everything becomes states (replayed by verify at that size) and screen.profiles /
+// screen.responsive (the dialog rule the kit runtime applies: where, how wide, how high, below which width).
+async function profilePass({ ctx, screen, states, dir, log }) {
+  const { cfg, viewport, dpr, open, url } = ctx;
+  const list = (cfg.profiles || []).filter((p) => p?.viewport?.width && p.viewport.height && !(p.viewport.width === viewport.width && p.viewport.height === viewport.height && (p.dpr || 1) === dpr));
+  if (!open || !list.length) return;
+  const k = cfg.kit || {};
+  screen.profiles = {};
+  for (const prof of list) {
+    const name = prof.name || `${prof.viewport.width}x${prof.viewport.height}`, pdpr = prof.dpr || 1;
+    const extra = { profile: name, viewport: prof.viewport, dpr: pdpr };
+    log(`  kit: profile "${name}" ${prof.viewport.width}x${prof.viewport.height} @${pdpr}`);
+    const s2 = await open({ url, viewport: prof.viewport, dpr: pdpr });
+    s2.guard.allowPost = false;
+    try {
+      const page = s2.page;
+      await s2.load();
+      const rest = await page.evaluate((src) => { if (!window.__kit) (0, eval)(src); return window.__kit.rest({ scope: null, module: null }); }, HARVEST).catch(() => null);
+      await page.evaluate((a) => window.__kit.rest(a), { scope: k.scope || null, module: k.module || null }).catch(() => null);
+      const entry = { viewport: prof.viewport, dpr: pdpr, layout: await page.evaluate(() => window.__kit.layout()), dialogs: {} };
+      screen.profiles[name] = entry;
+      await page.mouse.move(0, 0);
+      await page.screenshot({ path: path.join(dir, 'states', `layout@${name}.png`), animations: 'disabled', caret: 'hide' }).catch(() => {});
+      states.push({ name: `layout@${name}`, steps: [], wait: 600, shot: `states/layout@${name}.png`, ...extra });
+      // the menus at this size
+      const menuFound = k.menuButton ? await sideMenu(page, k.menuButton, log, k.module).catch(() => null) : null;
+      if (menuFound) {
+        const { shot: menuShot, flyShot, ...m } = menuFound;
+        entry.menu = { links: m.links, closed: m.closed };
+        states.push(...menuStates({ dir, menu: m, menuShot, flyShot: flyShot ? Buffer.from(flyShot) : null, sfx: `@${name}`, extra }));
+      }
+      const bar = await demoFlyout(page, 'bar', k.module).catch(() => null);
+      if (bar) states.push(...menuStates({ dir, menu: null, barFound: bar, sfx: `@${name}`, extra }));
+      // each Create New dialog of the main pass, replayed by the same clicks, measured and photographed
+      const wins = () => page.evaluate(() => window.__kit.position());
+      for (const st of states.filter((x) => /^dialog-d\d+$/.test(x.name) && !x.profile && x.steps.every((s) => /^\[data-kit-action=/.test(s.sel)))) {
+        const id = st.name.slice(7);
+        try {
+          await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
+          await s2.settle(300, 6000);
+          await page.evaluate((a) => { if (!window.__kit) (0, eval)(a.src); return window.__kit.rest(a); }, { src: HARVEST, scope: k.scope || null, module: k.module || null });
+          await page.mouse.move(0, 0);
+          for (const step of st.steps) {
+            const loc = page.locator(`${step.sel} >> visible=true`).nth(step.nth ?? 0);
+            await loc.scrollIntoViewIfNeeded({ timeout: 4000 });
+            await loc.click({ timeout: 4000 });
+            await page.waitForTimeout(st.wait ?? 800);
+          }
+          let pos = null;
+          for (let i = 0; i < 40 && !pos; i++) { pos = await wins().catch(() => null); if (!pos) await page.waitForTimeout(500); }
+          await s2.settle(300, 6000);
+          pos = await wins();
+          if (!pos) { log(`  ! kit: dialog ${id} did not open at profile "${name}"`); continue; }
+          await page.screenshot({ path: path.join(dir, 'states', `dialog-${id}@${name}.png`), animations: 'disabled', caret: 'hide' });
+          entry.dialogs[id] = pos;
+          states.push({ name: `dialog-${id}@${name}`, steps: st.steps, wait: st.wait, shot: `states/dialog-${id}@${name}.png`, ...extra,
+            expect: [{ sel: `[data-kit-dialog="${id}"]`, why: `Create New opens dialog ${id} at this size`, rect: { x: pos.rect.x, y: pos.rect.y, w: pos.rect.w, h: pos.rect.h }, tol: { x: 3, y: 3, w: 3, h: 14 } }] });
+          for (let i = 0; i < 3 && (await wins().catch(() => null)); i++) { await page.evaluate(() => window.__kit.closeDialog()); await page.waitForTimeout(800); }
+        } catch (e) { log(`  ! kit: dialog ${id} at profile "${name}": ${e.message.split('\n')[0]}`); }
+      }
+      void rest;
+    } finally { await s2.close().catch(() => {}); }
+  }
+  // the rule the runtime applies: the portal's own dialog code branches below its small-screen width; the measured windows say where, how wide and how high
+  const mainDlg = Object.values(screen.dialogs).find((d) => !d.parent);
+  const desktopPct = mainDlg && maxHeightOf(mainDlg.windowStyle) ? +((maxHeightOf(mainDlg.windowStyle) / viewport.height) * 100).toFixed(1) : null;
+  const responsive = { query: null, source: null, desktop: { maxHeightPct: desktopPct }, dialog: null };
+  for (const [name, p] of Object.entries(screen.profiles)) {
+    const pos = Object.values(p.dialogs)[0];
+    if (!pos || pos.centered) continue;
+    const vw = pos.viewport.docW, vh = pos.viewport.h, width = screen.plan?.phoneWidth ?? p.viewport.width;
+    responsive.query = `(max-width: ${width}px)`;
+    responsive.source = screen.plan?.phoneWidth ? 'script' : `profile ${name}`;
+    responsive.dialog = { left: pos.rect.x, top: pos.rect.y, minWidthPct: pos.minWidth ? +((pos.minWidth / vw) * 100).toFixed(1) : null, widthPct: +((pos.rect.w / vw) * 100).toFixed(1),
+      maxHeightPct: pos.maxHeight ? +((pos.maxHeight / vh) * 100).toFixed(1) : null, from: name };
+    break;
+  }
+  screen.responsive = responsive;
+  if (responsive.dialog) log(`  kit: below ${responsive.query} (${responsive.source}) a dialog sits at left ${responsive.dialog.left}px, top ${responsive.dialog.top}px, ${responsive.dialog.minWidthPct ?? responsive.dialog.widthPct}% wide, at most ${responsive.dialog.maxHeightPct}% high; above it, centered${desktopPct ? `, at most ${desktopPct}% high` : ''}`);
+  else log('  kit: dialogs are centered at every profile');
 }
 
 // after the snapshot: the clicks. No reload in between: the stamps must survive
-export async function explore({ page, context, s, out, log, kit }) {
+export async function explore({ page, context, s, out, log, kit, cfg = {}, url = null, viewport = null, dpr = 1, open = null }) {
   const dir = path.join(out, 'kit');
   fs.rmSync(dir, { recursive: true, force: true });
   for (const d of ['states', 'dialogs']) fs.mkdirSync(path.join(dir, d), { recursive: true });
@@ -317,6 +489,22 @@ export async function explore({ page, context, s, out, log, kit }) {
     await page.evaluate((i) => window.__kit.closePopup(i), dp[0]);
     await page.waitForTimeout(400);
   }
+  // an empty date box the portal masks shows a pattern ("__/__/____") the moment it is focused; read it from the box itself
+  const dateMasks = async (defs, scope) => {
+    for (const [id, w] of Object.entries(defs)) {
+      if (!/date|time/.test(w.kind) || !w.enabled || w.value) continue;
+      const input = page.locator(`${scope}[data-kit="${id}"] input:not([type=hidden])`).first();
+      if (!(await input.count().catch(() => 0))) continue;
+      try {
+        await input.focus({ timeout: 1500 });
+        await page.waitForTimeout(250);
+        const v = await input.inputValue();
+        if (/[_#]/.test(v)) w.focusMask = v;
+        await input.evaluate((e) => e.blur());
+      } catch { /* a date box under something: no mask recorded */ }
+    }
+  };
+  await dateMasks(kit.widgets, '');
   // 3. a help icon hovered: the tooltip's real markup, delay and a picture
   const tips = page.locator('[data-kit-tip]');
   for (let i = 0, n = Math.min(await tips.count(), 8); i < n; i++) {
@@ -346,16 +534,37 @@ export async function explore({ page, context, s, out, log, kit }) {
     const t0 = Date.now();
     await search.click({ timeout: 3000 }).catch((e) => log(`  ! kit: Search click failed: ${e.message.split('\n')[0]}`));
     await s.settle(300, 6000);
+    await waitLoaded(page, s); // a grid that still spins is not the result (the portal's loading mask can take seconds)
     await page.waitForTimeout(500);
     screen.grids = await page.evaluate(() => window.__kit.grids());
     // rows: what the live page answered to a Search with the form as it loads (nothing typed): the rebuild's Search must
     // fill the grid from the same click, or the row and dialog checks that follow it have nothing to click
     screen.search = { reveals: await page.evaluate(() => window.__kit.revealed()), requests: requestsSince(t0), rows: Object.values(screen.grids)[0]?.rowCount ?? 0 };
+    // what the click produced: rows, or a validation banner (and per-field messages) the rebuild must show instead of a grid
+    const sv = await page.evaluate(() => window.__kit.validation()).catch(() => null);
+    screen.search.outcome = screen.search.rows > 0 ? 'rows' : sv ? 'validation' : 'empty';
+    if (sv && screen.search.outcome === 'validation') screen.search.validation = sv;
     screen.requests.search = screen.search.requests[0] || null;
     await page.evaluate(() => scrollTo(0, 0));
     states.push({ name: 'search', steps: [{ do: 'click', sel: '[data-kit-action=search]' }], wait: 1200, full: true, shot: await shot('search') });
     const g = Object.values(screen.grids)[0];
-    log(`  kit: Search -> ${Object.keys(screen.grids).length} grid(s)${g ? `, ${g.total} rows, ${g.rowCount} shown` : ''}, revealed ${screen.search.reveals.length} part(s), ${screen.search.requests.length} request(s)`);
+    log(`  kit: Search -> ${screen.search.outcome}; ${Object.keys(screen.grids).length} grid(s)${g ? `, ${g.total} rows, ${g.rowCount} shown` : ''}, revealed ${screen.search.reveals.length} part(s), ${screen.search.requests.length} request(s)`);
+    // the grid's column filter: the icon, the popup it opens (its real markup) and where it sits relative to the icon
+    const fi = await page.evaluate(() => window.__kit.filterIcon()).catch(() => null);
+    if (fi) {
+      try {
+        await page.locator('[data-kit-filter-icon]').first().click({ timeout: 2500 });
+        await page.waitForTimeout(700);
+        const fp = await page.evaluate(() => window.__kit.filterPopup());
+        if (fp) {
+          screen.filterPopup = { dx: fp.rect.x - fi.x, dy: fp.rect.y - fi.y, w: fp.rect.w, h: fp.rect.h, html: fp.html, buttons: fp.buttons };
+          log(`  kit: grid filter popup ${fp.rect.w}x${fp.rect.h} (${fp.buttons.join(' / ')})`);
+        }
+        await page.keyboard.press('Escape').catch(() => {});
+        await page.evaluate(() => window.__kit.closeFilterPopup()).catch(() => {});
+        await page.waitForTimeout(300);
+      } catch { /* the filter icon is covered: no popup recorded */ }
+    }
   }
   // 5. Create New (and the first row's edit/detail): each dialog harvested, then closed. Never Save.
   let dn = 0;
@@ -390,6 +599,8 @@ export async function explore({ page, context, s, out, log, kit }) {
     delete d.contentHtml;
     screen.dialogs[id] = { ...d, opener: label, children: [], creates: [] };
     await shot(`dialog-${id}`);
+    await dateMasks(d.widgets, '.k-window ');
+    if (!nested) screen.dialogs[id].conditionals = await sweep(page, 'dialog').catch(() => []); // radios / checkboxes / dropdown values that show or hide parts of the dialog
     if (!nested) { // a Create New inside the dialog (Destination Configuration): a window one level down, or a part of this one
       const inner = page.locator('.k-window [data-kit-action=create]:visible');
       for (let i = 0, n = Math.min(await inner.count(), 3); i < n; i++) {
@@ -416,6 +627,82 @@ export async function explore({ page, context, s, out, log, kit }) {
       }
     }
     return id;
+  };
+  // What a dialog does when it is asked to close or to save with nothing filled. Never Save for real: every POST is blocked while it is clicked.
+  //  saveValidation: the summary banner and per-field messages Save shows (the kit shows the same, with the live markup)
+  //  close.x / close.cancel: with an edit in it, does the X / Cancel ask "form data has changed"? Its window (markup, buttons), and that staying keeps the
+  //  dialog open. `reopen` opens the dialog again for the Cancel test (the X test leaves it closed).
+  const windows = () => page.evaluate(() => [...document.querySelectorAll('.k-window')].filter((w) => w.getClientRects().length && getComputedStyle(w).visibility !== 'hidden').length);
+  const dialogBehaviour = async (id, reopen) => {
+    const d = screen.dialogs[id];
+    if (!d) return;
+    const save = page.locator('.k-window [data-kit-action=save]:visible').first();
+    if (await save.count().catch(() => 0)) {
+      const allow = s.guard.allowPost, n0 = s.guard.events.length;
+      s.guard.allowPost = false;
+      try {
+        await save.click({ timeout: 2500 }).catch(() => {});
+        await page.waitForTimeout(1300);
+        await s.settle(100, 3000).catch(() => {});
+        const v = await page.evaluate(() => window.__kit.validation());
+        const posted = s.guard.events.slice(n0).filter((e) => e.status === 'blocked').length;
+        if (v) { d.saveValidation = { ...v, postAttempted: posted > 0 }; log(`  kit: Save with nothing filled in "${d.title}": ${v.summaries.length ? 'a summary banner and ' : ''}${v.fields.length} field message(s)${posted ? ' (and it tried to post)' : ''}`); }
+        else if (posted) d.saveValidation = { summaries: [], fields: [], postAttempted: true };
+      } finally { s.guard.allowPost = allow; }
+    }
+    const closeVia = async (via) => {
+      const r = { edited: false, asks: false };
+      if (await page.evaluate(() => window.__kit.editable())) {
+        await page.locator('[data-kit-edit]').first().fill('probe').catch(() => {});
+        await page.keyboard.press('Tab').catch(() => {});
+        await page.waitForTimeout(300);
+        r.edited = true;
+      }
+      const press = async () => {
+        if (!(await page.evaluate((v) => window.__kit.closeButton(v), via))) return null;
+        const n0 = await windows();
+        await page.locator('[data-kit-close-via]').first().click({ timeout: 2500 }).catch(() => {});
+        await page.waitForTimeout(1200);
+        return { n0, n1: await windows() };
+      };
+      const a = await press();
+      if (!a) return { ...r, button: false };
+      if (a.n1 > a.n0) { // another window opened on top of the dialog: the confirm
+        const cf = await page.evaluate(() => window.__kit.confirm());
+        if (cf) {
+          r.asks = true;
+          r.confirm = { title: cf.title, windowClass: cf.windowClass, windowStyle: cf.windowStyle, titlebarHtml: cf.titlebarHtml, contentClass: cf.contentClass, contentId: cf.contentId, contentStyle: cf.contentStyle,
+            overlay: cf.overlay, options: cf.options, contentHtml: cf.contentHtml, buttons: cf.buttons, rect: cf.rect };
+          await shot(`dialog-${id}-confirm`);
+          const stay = page.locator('.k-window [data-kit-confirm=stay]:visible').first(), leave = page.locator('.k-window [data-kit-confirm=leave]:visible').first();
+          if (await stay.count()) {
+            await stay.click({ timeout: 2500 }).catch(() => {});
+            await page.waitForTimeout(800);
+            r.stayKeepsOpen = (await windows()) >= a.n0; // the answer that stays leaves the dialog (and the edit) where it was
+            if (r.stayKeepsOpen) { // the same button again, this time leaving (the confirm is a new window: its buttons are stamped again)
+              const b = await press();
+              if (b && b.n1 > b.n0) { await page.evaluate(() => window.__kit.confirm()); await page.locator('.k-window [data-kit-confirm=leave]:visible').first().click({ timeout: 2500 }).catch(() => {}); }
+              await page.waitForTimeout(800);
+            }
+          } else if (await leave.count()) { await leave.click({ timeout: 2500 }).catch(() => {}); await page.waitForTimeout(800); }
+        }
+      }
+      r.closed = (await windows()) < a.n0;
+      return r;
+    };
+    const close = {};
+    close.x = await closeVia('x').catch(() => null);
+    let why = !reopen ? 'no way to open it again' : null;
+    if (!why && (await windows()) !== 0) why = `${await windows()} window(s) still open after X`;
+    if (!why && !(await reopen().catch(() => false))) why = 'it did not open again';
+    if (!why) {
+      await page.evaluate(() => window.__kit.dialog()).catch(() => null); // stamps the fresh window's Cancel / Save
+      close.cancel = await closeVia('cancel').catch(() => null);
+    } else log(`  ! kit: Cancel of "${d.title}" not tried: ${why}`);
+    for (let i = 0; i < 3 && (await windows()); i++) { await page.evaluate(() => window.__kit.closeDialog()); await page.waitForTimeout(700); }
+    const first = close.x?.confirm ? close.x : close.cancel?.confirm ? close.cancel : null;
+    d.close = { x: close.x && { edited: close.x.edited, asks: close.x.asks, stayKeepsOpen: close.x.stayKeepsOpen ?? null, button: close.x.button }, cancel: close.cancel && { edited: close.cancel.edited, asks: close.cancel.asks, stayKeepsOpen: close.cancel.stayKeepsOpen ?? null, button: close.cancel.button }, confirm: first?.confirm ?? null };
+    log(`  kit: closing "${d.title}" with an edit: X ${close.x ? (close.x.button === false ? 'has no button' : close.x.asks ? 'asks' : 'closes') : '?'}, Cancel ${close.cancel ? (close.cancel.button === false ? 'has no button' : close.cancel.asks ? 'asks' : 'closes') : 'not tried'}${first?.confirm ? `; the confirm "${first.confirm.buttons.map((b) => b.text).join(' / ')}"` : ''}`);
   };
   // the checks of a dialog's parts, replayed after the steps that open the dialog
   const partStates = (id, steps) => (screen.dialogs[id].creates || []).filter((c) => !c.dialog).map((c) => ({ name: `dialog-${id}-part${c.index + 1}`,
@@ -447,11 +734,20 @@ export async function explore({ page, context, s, out, log, kit }) {
       if (!part.restored) { log('  ! kit: that part could not be put away again: no further Create New is tried on this page'); break; }
       continue;
     }
+    // a Create New that leaves the page (35 of 61 on the live portal: an Add page of its own): the guard aborted the navigation, the target is recorded so the pack can
+    // capture it as a screen of its own (screen.links; scripts/ui.mjs follows them one level)
+    const navEv = s.guard.events.slice(nav0).find((e) => e.type === 'navigation');
+    if (!id && !part && navEv) {
+      (screen.links ||= []).push({ kind: 'create', text: me.text, id: me.id, url: navEv.url });
+      log(`  kit: Create New #${i + 1} "${me.text}" goes to ${navEv.url.replace(/^https?:\/\/[^/]+/, '')}: a page of its own (recorded in screen.links)`);
+      continue;
+    }
     if (!id) { log(`  ! kit: Create New #${i + 1} opened no dialog (requests after the click: ${requestsSince(t0).map((r) => `${r.method} ${r.url}`).join(', ') || 'none'})`); continue; }
     screen.dialogs[id].requests = requestsSince(t0);
     screen.dialogs[id].openerIndex = i;
     screen.dialogs[id].openerId = me.id;
     states.push({ name: `dialog-${id}`, steps, wait: 1200, shot: `states/dialog-${id}.png` }, ...partStates(id, steps));
+    await dialogBehaviour(id, async () => { await el.click({ timeout: 3000 }).catch(() => {}); return waitWindow(20000); });
     for (let tries = 0; tries < 3 && await visibleWindow(); tries++) { await page.evaluate(() => window.__kit.closeDialog()); await page.waitForTimeout(800); }
   }
   // the first row of the first grid: an edit/detail dialog, or a link to another page (recorded, not followed)
@@ -473,10 +769,12 @@ export async function explore({ page, context, s, out, log, kit }) {
       }
       const nav = s.guard.events.slice(nav0).find((e) => e.type === 'navigation');
       screen.row = { dialog: id, navigates: nav ? nav.url.replace(/^https?:\/\/[^/]+/, '') : null, requests: requestsSince(t0), via: how };
+      if (nav && !id) (screen.links ||= []).push({ kind: 'row', url: nav.url });
       if (id) {
         screen.dialogs[id].requests = screen.row.requests;
         const steps = [{ do: 'click', sel: '[data-kit-action=search]' }, { do: how === 'dblclick' ? 'dblclick' : 'click', sel: '[data-kit-row="0"]' }];
         states.push({ name: `row-${id}`, steps, wait: 1200, shot: `states/dialog-${id}.png`, expect: [{ sel: `[data-kit-dialog="${id}"]`, why: `a ${how === 'dblclick' ? 'double-click' : 'click'} on a grid row opens its dialog` }] }, ...partStates(id, steps));
+        await dialogBehaviour(id, async () => { await (how === 'dblclick' ? hit.dblclick({ timeout: 3000 }) : hit.click({ timeout: 3000 })).catch(() => {}); return waitWindow(20000); });
         for (let tries = 0; tries < 3 && await visibleWindow(); tries++) { await page.evaluate(() => window.__kit.closeDialog()); await page.waitForTimeout(800); }
       }
       log(`  kit: first row (${how}) -> ${id ? `dialog ${id} "${screen.dialogs[id].title}"` : nav ? `navigates to ${screen.row.navigates} (not followed)` : 'nothing'}`);
@@ -486,28 +784,15 @@ export async function explore({ page, context, s, out, log, kit }) {
   const got = new Set(Object.values(screen.dialogs).map((d) => d.contentId).filter(Boolean));
   screen.missing = screen.plan.dialogs.filter((d) => !got.has(d.panel) && (d.opener || d.via === 'row-dblclick'));
   if (screen.missing.length) log(`  ! kit: dialogs the script opens but the capture did not see: ${screen.missing.map((d) => `${d.panel} (${d.opener || d.via})`).join(', ')}`);
-  // the side menu, checked on the rebuild: opens (with its backdrop), a module flies out on hover, its close icon closes it
-  if (menuFound) {
-    const open = { do: 'click', sel: '[data-kit-action=menu]' }, bd = !!menu.backdrop;
-    if (menuShot) fs.writeFileSync(path.join(dir, 'states', 'menu-open.png'), menuShot);
-    states.push({ name: 'menu-open', steps: [open], wait: 800, ...(menuShot ? { shot: 'states/menu-open.png' } : {}),
-      expect: [{ sel: '[data-kit-menu]', why: 'the hamburger opens the side menu' }, ...(bd ? [{ sel: '[data-kit-menu-backdrop-live]', why: 'with the backdrop the page appends' }] : [])] });
-    // a module hovered: its submenu is a box beside the menu (Kendo lifts it out of the <ul>, which clips what is inside), on top
-    // of the page, and looks like the live one in the area it lands
-    if (flyShot) {
-      fs.writeFileSync(path.join(dir, 'states', 'menu-flyout.png'), flyShot);
-      states.push({ name: 'menu-flyout', steps: [open, { do: 'hover', sel: '[data-kit-flyout-demo="side"]', wait: 900 }], wait: 900, clip: menu.flyClip, shot: 'states/menu-flyout.png',
-        expect: [{ sel: '[data-kit-flyout]', top: true, outside: '[data-kit-menu] ul[data-role=menu]', why: 'a module flies out to the left of the menu, over the page' }] });
-    } else log('  ! kit: no module of the side menu opened a submenu on hover: the fly-out is not checked');
-    if (menu.close) states.push({ name: 'menu-close', steps: [open, { do: 'click', sel: '[data-kit-action=menu-close]' }], wait: 600,
-      expect: [{ sel: '[data-kit-menu]', visible: false, why: 'its close icon closes it' }, ...(bd ? [{ sel: '[data-kit-menu-backdrop-live]', visible: false, why: 'and removes the backdrop' }] : [])] });
-  }
-  // the module tab under the header (CLAIMS MANAGEMENT v): hovering it opens a band with the module's screens
-  if (barFound) {
-    fs.writeFileSync(path.join(dir, 'states', 'tab-flyout.png'), barFound.shot);
-    states.push({ name: 'tab-flyout', steps: [{ do: 'hover', sel: '[data-kit-flyout-demo="bar"]', wait: 900 }], wait: 900, clip: barFound.clip, shot: 'states/tab-flyout.png',
-      expect: [{ sel: '[data-kit-flyout]', top: true, outside: 'ul:has(> [data-kit-flyout-demo="bar"])', why: 'the module tab opens its screens under it' }] });
-  }
+  // what radios, checkboxes and dropdown values show or hide on the page (the capture put every control back afterwards)
+  screen.conditionals = await sweep(page, 'page').catch(() => []);
+  const nCond = screen.conditionals.length + Object.values(screen.dialogs).reduce((n, d) => n + (d.conditionals?.length || 0), 0);
+  if (nCond) log(`  kit: ${nCond} control(s) show or hide parts (${[...screen.conditionals, ...Object.values(screen.dialogs).flatMap((d) => d.conditionals || [])].map((c) => c.name).join(', ')})`);
+  // the side menu and the module tab, checked on the rebuild: the menu opens (with its backdrop), a module flies out on hover, its close icon closes it; the tab opens a band
+  if (menuFound && !flyShot) log('  ! kit: no module of the side menu opened a submenu on hover: the fly-out is not checked');
+  states.push(...menuStates({ dir, menu: menuFound ? menu : null, menuShot, flyShot, barFound }));
+  // the same screen at the other viewport profiles (config "profiles")
+  await profilePass({ ctx: { cfg, viewport: viewport ?? { width: 0, height: 0 }, dpr, open, url }, screen, states, dir, log }).catch((e) => log(`  ! kit: viewport profiles: ${String(e.message).split('\n')[0]}`));
   log(`  kit: ${Object.keys(screen.dialogs).length} dialog(s) ${Object.values(screen.dialogs).map((d) => `"${d.title}"`).join(', ')}; ${states.length} state check(s)`);
   writeJson(path.join(dir, 'screen.json'), screen);
   writeJson(path.join(dir, 'states.json'), states);
@@ -535,6 +820,14 @@ export function factsSection(out) {
     ...Object.entries(k.dialogs).map(([id, d]) => `- [kit:${id}] dialog "${d.title}" (opened by ${d.opener}${d.parent ? `, inside ${d.parent}` : ''}): actions ${d.actions.map((a) => a.action).join('/')}; ${dlgWidgets(d)}; markup kit/dialogs/${id}.html, picture kit/states/dialog-${id}.png`),
     ...Object.values(k.dialogs).flatMap((d) => d.fields.filter((x) => Object.keys(x.validation).length).map((x) => `- dialog "${d.title}" field ${x.name}: validation ${Object.entries(x.validation).map(([r, m]) => `${r} "${m}"`).join('; ')}`)),
     k.row ? `- First grid row: ${k.row.dialog ? `opens dialog ${k.row.dialog}${k.row.via === 'dblclick' ? ' on double-click (a single click selects the row)' : ''}` : k.row.navigates ? `navigates to ${k.row.navigates} (another page, out of this screen)` : 'no effect'}` : '',
+    // what the capture measured about small behaviors (the kit replays each; none of it needs code in the screen)
+    k.search?.outcome ? `- Search with the form as it loads: ${k.search.outcome === 'validation' ? `answers with a validation banner (${k.search.validation.summaries.map((b) => `"${b.text.slice(0, 120)}"`).join(', ') || 'no summary'}) and ${k.search.validation.fields.length} field message(s), not rows` : k.search.outcome === 'rows' ? `lists ${k.search.rows} row(s)` : 'shows nothing'}` : '',
+    ...[['the page', k.conditionals ?? []], ...Object.values(k.dialogs).map((d) => [`dialog "${d.title}"`, d.conditionals ?? []])].flatMap(([where, list]) => list.map((c) => `- ${c.kind} ${c.name} on ${where}: ${Object.entries(c.values).map(([v, st]) => `${v} shows [${Object.entries(st).filter(([, on]) => on).map(([sel]) => sel).join(', ') || 'none'}]`).join('; ')} (measured; the kit applies it)`)),
+    ...Object.values(k.dialogs).filter((d) => d.saveValidation).map((d) => `- Save with nothing filled in "${d.title}": ${d.saveValidation.summaries.length ? 'a summary banner and ' : ''}${d.saveValidation.fields.length} field message(s), nothing sent`),
+    ...Object.values(k.dialogs).filter((d) => d.close).map((d) => `- Closing "${d.title}" with an edit: X ${d.close.x ? (d.close.x.asks ? 'asks "form data has changed"' : 'closes') : '?'}, Cancel ${d.close.cancel ? (d.close.cancel.asks ? 'asks' : 'closes') : 'not tried'}${d.close.confirm ? `; the confirm's buttons: ${d.close.confirm.buttons.map((b) => b.text).join(' / ')}` : ''}`),
+    ...Object.values(k.widgets).filter((w) => /date|time/.test(w.kind) && (w.offsetDays != null || w.focusMask)).map((w) => `- ${w.label || w.name} (${w.kind}): ${w.offsetDays != null ? `prefilled ${Math.abs(w.offsetDays) <= 1000 ? `${w.offsetDays} day(s) from today` : `with ${w.value} (a placeholder date, stays as is)`}` : 'empty'}${w.focusMask ? `, shows "${w.focusMask}" on focus` : ''}`),
+    k.responsive ? `- Layouts: ${k.responsive.query ? `below ${k.responsive.query} the portal places a dialog by its own phone branch${k.responsive.dialog ? ` (left ${k.responsive.dialog.left}px, top ${k.responsive.dialog.top}px, ${k.responsive.dialog.minWidthPct ?? k.responsive.dialog.widthPct}% wide, at most ${k.responsive.dialog.maxHeightPct}% high)` : ''}; above it centers it${k.responsive.desktop?.maxHeightPct ? `, at most ${k.responsive.desktop.maxHeightPct}% high` : ''}. A dialog touching the left edge at the small size is correct` : 'dialogs are centered at every captured size'}. Captured at: ${Object.entries(k.profiles ?? {}).map(([n, p]) => `${n} ${p.viewport.width}x${p.viewport.height}`).join(', ') || 'one size'}` : '',
+    k.filterPopup ? `- The grid's column filter opens a popup (${k.filterPopup.buttons.join(' / ')}); the kit builds it from the live markup` : '',
     k.menu ? `- Side menu (shell, built by the kit): ${k.menu.links} links; opens by ${k.menu.add?.length ? `class ${k.menu.add.join(' ')}` : 'display'}${k.menu.backdrop ? ` + backdrop ${k.menu.backdrop}` : ''}; closes by its X or a menu link (not Escape, not the backdrop)` : '',
     ...[['the page', k.unknown], ...Object.values(k.dialogs).map((d) => [`dialog "${d.title}"`, d.unknown])].flatMap(([where, u]) => Object.entries(u ?? {}).map(([role, x]) =>
       `- Kendo ${role} on ${where} (${x.count}${x.ids.length ? `: #${x.ids.join(', #')}` : ''}): the kit does not rebuild this widget yet; it is ported as its static markup (it looks right, it does not behave). Specify what it shows and list its behavior as [UNKNOWN: kit has no ${role}]`)),
@@ -556,14 +849,27 @@ export function todo(out, { route }) {
   for (const [where, list] of [['the page', k.creates ?? []], ...Object.values(k.dialogs).map((d) => [`dialog "${d.title}"`, (d.creates ?? []).filter((c) => !c.dialog)])])
     for (const c of list) done.push(`"${c.text}" on ${where}: shows ${c.show.join(', ') || 'nothing'}${c.hide.length ? `, hides ${c.hide.join(', ')}` : ''}; Cancel / Save inside that part put it away`);
   if (k.row?.dialog) done.push(`grid row: ${k.row.via === 'dblclick' ? 'a click selects it, a double-click opens' : 'a click opens'} dialog ${k.row.dialog}`);
+  if (k.search?.outcome === 'validation') done.push(`Search with nothing changed: shows the live validation banner and field messages (not rows); with something typed it shows the grid`);
+  const nCond = (k.conditionals?.length ?? 0) + Object.values(k.dialogs).reduce((n, d) => n + (d.conditionals?.length ?? 0), 0);
+  if (nCond) done.push(`${nCond} radio / checkbox / dropdown effect(s) on hidden parts, measured on the live page and applied by the kit (do not write your own show/hide for them)`);
+  if (Object.values(k.dialogs).some((d) => d.saveValidation)) done.push('Save with nothing filled: the summary banner (with its X) and the field messages');
+  if (Object.values(k.dialogs).some((d) => d.close?.confirm)) done.push('closing a dialog with an edit: the "form data has changed" window where the live one asked (X, Cancel, Escape)');
+  if (k.responsive) done.push(`dialog placement by layout: ${k.responsive.query ? `below ${k.responsive.query} the portal's phone branch, above it centered` : 'centered'}, capped at a share of the window's height (a dialog at the left edge at the small size is correct)`);
+  if (k.filterPopup) done.push("the grid's column filter popup");
   if (k.actions.some((a) => a.action === 'reset')) done.push('Reset: clears the fields');
   if (k.actions.some((a) => a.action === 'collapse')) done.push('collapsible panels (chevrons)');
   done.push('tooltips on every ? icon, MVC validation messages on Save, the shell and its side menu');
   for (const [id, w] of Object.entries({ ...k.widgets, ...Object.assign({}, ...Object.values(k.dialogs).map((d) => d.widgets)) }))
     if (w.cascadeFrom) left.push(`${id} "${label(w)}" cascades from ${w.cascadeFrom}: the kit enables it when the parent has a value; give it the options per parent value from the screen's script`);
   if (k.actions.some((a) => a.action === 'cancel')) left.push("Cancel on the page (not in a dialog): what the screen's script does on it (often: back to the home page, or clear and hide the results)");
-  if (k.hidden.length) left.push(`${k.hidden.length} part(s) hidden at rest (data-kit-h=…) that Search does not reveal${k.search?.reveals?.length ? ` (it reveals ${k.search.reveals.join(', ')})` : ''}: find in the script what shows each (a radio, a checkbox, a dropdown value) and build that`);
-  for (const d of Object.values(k.dialogs)) if (d.hidden?.length) left.push(`dialog "${d.title}": ${d.hidden.length} part(s) hidden at rest: the same, from the dialog's script`);
+  // parts a radio / checkbox / dropdown value shows or hides were measured (conditionals) and the kit applies them: only the rest is left
+  const covered = (list) => new Set((list ?? []).flatMap((c) => Object.values(c.values).flatMap((st) => Object.keys(st))).map((sel) => /data-kit-h="(h\d+)"/.exec(sel)?.[1]).filter(Boolean));
+  const pageLeft = k.hidden.filter((id) => !covered(k.conditionals).has(id) && !(k.search?.reveals ?? []).includes(id));
+  if (pageLeft.length) left.push(`${pageLeft.length} part(s) hidden at rest (data-kit-h=…) that Search and the measured radios / checkboxes / dropdowns do not reveal (${pageLeft.join(', ')}${k.search?.reveals?.length ? `; Search reveals ${k.search.reveals.join(', ')}` : ''}): find in the script what shows each and build that`);
+  for (const d of Object.values(k.dialogs)) {
+    const dl = (d.hidden ?? []).filter((id) => !covered(d.conditionals).has(id));
+    if (dl.length) left.push(`dialog "${d.title}": ${dl.length} part(s) hidden at rest that no measured control shows: from the dialog's script`);
+  }
   for (const d of k.missing ?? []) left.push(`dialog ${d.panel} (${d.opener ? `button ${d.opener}` : d.via}) is opened by the screen's script but was NOT captured: do not invent it. Write it in GUESSED.md as "not captured, re-capture needed"`);
   if (k.row && !k.row.dialog && k.plan?.rowDouble) left.push(`grid row double-click calls ${k.plan.rowDouble}${k.plan.rowOpens === 'navigate' ? ' (it navigates to another page: out of this screen, do nothing)' : ' but the capture saw no dialog: write it in GUESSED.md'}`);
   left.push("every task in spec/tasks.md that the list above does not cover (the screen's own messages and rules, exactly as its script has them: do not add a rule the script does not have)");

@@ -22,6 +22,12 @@ With a kit (`pack.json` `"kit"`), there is no planning step, the spec cites ever
 step builds only what the kit cannot know: read `kits/<kit>/KIT.md` first, and never edit the app's `src/kit` (fix the kit in `kits/<kit>/app`).
 Never open, print or copy `.env` or anything under `packs/*/auth/`: they hold the portal password and the logged-in session.
 
+**Viewport profiles.** The Provider portal has two layouts (switch at 1280 CSS px wide). `config.json` `"profiles"` lists extra sizes; the kit
+capture records each screen at each (`kit/screen.json` `profiles`, `responsive`, states `…@<profile>`), and `verify` replays them at that size.
+What a dialog does below the switch (left edge, 20 px from the top, 90% wide, at most 85% high) is the portal's own behavior, measured, and the
+kit applies it: never "fix" a dialog that touches the left edge at 1272 px, and never hard-code a size or a module in the kit or the scripts.
+`kits/provider/KIT.md` lists everything a screen records and what the kit does with it.
+
 ## Phase 0 — Exploration plan (skill `explore-plan`, stage 3 of `npm run go`)
 
 `npm run go -- <screen>` stops after its survey and asks for a plan ("plan the exploration for <screen>").

@@ -2,7 +2,7 @@
 // markup as it was (same tag, classes, icons), with Kendo's behavior wired onto it. Popups are built from the live
 // popup markup the capture recorded (kit.json calibration), so their look is the portal's, not a guess.
 import { useContext, useLayoutEffect, useRef } from 'react';
-import { KitContext, claimPopup, releasePopup, copyFont, place, slide, parseHtml, useIsland, fill, esc, ms, type Ctx, type Item, type WidgetDef } from './core';
+import { KitContext, claimPopup, releasePopup, copyFont, place, slide, parseHtml, routeFor, useIsland, fill, esc, ms, type Ctx, type Item, type WidgetDef } from './core';
 import { rowsFor } from './data';
 
 // Kendo 2026 markup, used when the capture has no live sample of a popup
@@ -202,6 +202,16 @@ export function formatDate(d: Date, f: string) {
 }
 const dayKey = (d: Date) => `${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
 const toDate = (v: unknown) => { if (!v) return null; const d = new Date(String(v)); return isNaN(+d) ? null : d; };
+// A date the live box held when the page loaded. "Today", "yesterday", "two years back" were captured as a number of days from the capture's day and stay
+// that far from the day the rebuild runs; a date far off (12/31/9999, 01/01/1900) is a placeholder and stays exactly as it was.
+function initialDate(def: WidgetDef): Date | null {
+  const v = toDate(def.value);
+  if (!v) return null;
+  const off = def.offsetDays;
+  if (typeof off !== 'number' || Math.abs(off) > 1000) return v;
+  const t = new Date(), m = def.minutes ?? 0;
+  return new Date(t.getFullYear(), t.getMonth(), t.getDate() + off, Math.floor(m / 60), m % 60);
+}
 
 function calendar(ctx: Ctx, anchor: HTMLElement, opts: { value: Date | null; min: Date | null; max: Date | null; pick: (d: Date) => void; onClose: () => void }) {
   const tpl = parseHtml(ctx.data.calibration?.calendarPopup || DEFAULT_CAL)!;
@@ -277,7 +287,7 @@ function Picker({ id, def }: { id: string; def: WidgetDef }) {
     const input = (w.querySelector('input[data-role]') ?? w.querySelector('input')) as HTMLInputElement;
     const fmt = def.format || (def.kind === 'time' ? 'h:mm tt' : def.kind === 'datetime' ? 'M/d/yyyy h:mm tt' : 'M/d/yyyy');
     const tfmt = def.timeFormat || 'h:mm tt';
-    const initial = toDate(def.value);
+    const initial = initialDate(def);
     let value = initial;
     let popup: { close: () => void } | null = null;
     const set = (d: Date | null) => { value = d; input.value = d ? formatDate(d, fmt) : ''; ctx.bus.emit('change', { name: def.name, id: def.id, value: input.value }); };
@@ -299,15 +309,21 @@ function Picker({ id, def }: { id: string; def: WidgetDef }) {
     };
     const onClick = (e: MouseEvent) => {
       const t = e.target as Element;
-      if (calBtn?.contains(t)) { e.preventDefault(); openCal(); }
+      if (calBtn?.contains(t)) { e.preventDefault(); input.focus(); openCal(); }
       else if (timeBtn?.contains(t)) { e.preventDefault(); if (def.kind === 'date') openCal(); else openTime(); }
     };
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close(); if (e.altKey && e.key === 'ArrowDown') { e.preventDefault(); if (def.kind === 'time') openTime(); else openCal(); } };
     input.value = initial ? formatDate(initial, fmt) : '';
+    // an empty box the portal masks shows its pattern ("__/__/____") while it has the focus, and is empty again when it loses it
+    const mask = def.focusMask;
+    const onFocus = () => { if (mask && !input.value) { input.value = mask; input.select(); } };
+    const onBlur = () => { if (mask && input.value === mask) input.value = ''; };
+    input.addEventListener('focus', onFocus);
+    input.addEventListener('blur', onBlur);
     w.addEventListener('click', onClick);
     w.addEventListener('keydown', onKey);
     const off = ctx.bus.on('reset', () => { close(); set(initial); });
-    return () => { w.removeEventListener('click', onClick); w.removeEventListener('keydown', onKey); close(); off(); };
+    return () => { input.removeEventListener('focus', onFocus); input.removeEventListener('blur', onBlur); w.removeEventListener('click', onClick); w.removeEventListener('keydown', onKey); close(); off(); };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return el;
 }
@@ -380,8 +396,28 @@ function Grid({ id, def }: { id: string; def: WidgetDef }) {
       if (after?.html && !searched) { const t = parseHtml(after.html); if (t) w.innerHTML = t.innerHTML; }
       searched = true; page = 1; draw();
     };
+    // the column filter: the live popup (its markup, where it opened relative to the icon); Filter / Clear / a press elsewhere close it
+    let filter: { close: () => void } | null = null;
+    const openFilter = (icon: HTMLElement) => {
+      if (filter) { filter.close(); return; }
+      const fp = ctx.data.filterPopup!, box = parseHtml(fp.html) as HTMLElement | null;
+      if (!box) return;
+      box.setAttribute('data-kit-popup', '');
+      const r = icon.getBoundingClientRect();
+      Object.assign(box.style, { display: 'block', position: 'absolute', zIndex: '10002', left: `${r.left + scrollX + fp.dx}px`, top: `${r.top + scrollY + fp.dy}px`, width: `${fp.w}px`, height: `${fp.h}px` });
+      box.querySelectorAll<HTMLElement>('.k-child-animation-container, .k-popup').forEach((x) => { x.style.display = 'block'; });
+      document.body.append(box);
+      let closed = false;
+      const close = () => { if (closed) return; closed = true; releasePopup(icon); box.remove(); filter = null; };
+      box.addEventListener('click', (e) => { if ((e.target as Element).closest('button, .k-button')) { e.preventDefault(); close(); } });
+      box.addEventListener('submit', (e) => { e.preventDefault(); close(); });
+      claimPopup(icon, close);
+      filter = { close };
+    };
     const onClick = (e: MouseEvent) => {
       const t = e.target as Element;
+      const fi = t.closest('.k-grid-filter-menu, .k-grid-header-menu') as HTMLElement | null;
+      if (fi && ctx.data.filterPopup) { e.preventDefault(); e.stopPropagation(); openFilter(fi); return; }
       const th = t.closest('.k-grid-header th') as HTMLElement | null;
       if (th && !t.closest('.k-grid-filter-menu, .k-grid-header-menu')) {
         const idx = [...th.parentElement!.children].indexOf(th);
@@ -407,6 +443,7 @@ function Grid({ id, def }: { id: string; def: WidgetDef }) {
         row.classList.add('k-selected');
         row.setAttribute('aria-selected', 'true');
       } else if (ctx.data.row?.dialog) { e.preventDefault(); ctx.openDialog(ctx.data.row.dialog); }
+      else if (ctx.data.row?.navigates) { const hit = routeFor(ctx.data.row.navigates); if (hit) { e.preventDefault(); location.hash = `#${hit.path}`; } } // a row that leaves the page: its screen, when the pack rebuilt it
     };
     const onDbl = (e: MouseEvent) => {
       if (ctx.data.row?.via !== 'dblclick' || !ctx.data.row.dialog || !(e.target as Element).closest('tr[data-kit-row]')) return;
@@ -416,7 +453,7 @@ function Grid({ id, def }: { id: string; def: WidgetDef }) {
     w.addEventListener('click', onClick);
     w.addEventListener('dblclick', onDbl);
     const off = ctx.bus.on('search', onSearch);
-    return () => { w.removeEventListener('click', onClick); w.removeEventListener('dblclick', onDbl); off(); };
+    return () => { w.removeEventListener('click', onClick); w.removeEventListener('dblclick', onDbl); filter?.close(); off(); };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return el;
 }

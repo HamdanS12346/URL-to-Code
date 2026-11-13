@@ -65,7 +65,10 @@
     if (role === 'numerictextbox') return { ...base, kind: 'numeric', value: w.value(), format: w.options.format, decimals: w.options.decimals, min: w.options.min, max: w.options.max, step: w.options.step, spinners: w.options.spinners !== false, placeholder: el.getAttribute('placeholder') || '' };
     if (/^(datepicker|datetimepicker|timepicker|dateinput)$/.test(role)) {
       const kind = role === 'datetimepicker' ? 'datetime' : role === 'timepicker' ? 'time' : 'date';
-      return { ...base, kind, value: iso(w.value()), format: w.options.format, timeFormat: w.options.timeFormat || null, interval: w.options.interval ?? 30, min: iso(w.options.min), max: iso(w.options.max), placeholder: el.getAttribute('placeholder') || '' };
+      // days from today (the capture's day): a prefilled "today" must still be today when the rebuild runs, a 12/31/9999 stays 12/31/9999
+      const v = w.value(), day = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+      const offsetDays = v instanceof Date && !isNaN(v) ? Math.round((day(v) - day(new Date())) / 864e5) : null;
+      return { ...base, kind, value: iso(w.value()), offsetDays, minutes: v instanceof Date && !isNaN(v) ? v.getHours() * 60 + v.getMinutes() : null, format: w.options.format, timeFormat: w.options.timeFormat || null, interval: w.options.interval ?? 30, min: iso(w.options.min), max: iso(w.options.max), placeholder: el.getAttribute('placeholder') || '' };
     }
     if (role === 'grid') {
       const opt = w.options;
@@ -142,12 +145,20 @@
       b.setAttribute('data-kit-action', hit[0]);
       out.push({ action: hit[0], text: t, id: b.id || null });
     }
-    // collapsible panels: a chevron in a panel header toggles the body that follows the header
-    for (const ic of root.querySelectorAll('.fa-chevron-up, .fa-chevron-down, .k-i-chevron-up, .k-i-chevron-down, .k-svg-i-chevron-up, .k-svg-i-chevron-down, [data-toggle=collapse]')) {
-      const hdr = ic.closest('.content-panel-hdr, .panel-heading, .card-header, [class*=panel-hdr], [class*=-hdr], [class*=header]');
-      if (!hdr || hdr.closest('.k-menu, .k-grid, #pageHeader') || hdr.querySelector('[data-kit-action=collapse]')) continue;
-      const body = hdr.nextElementSibling;
-      if (!body) continue;
+    // collapsible panels: a chevron or angle in a panel header toggles the panel's body. The portal's icon sits in a "*-hdr-tools"
+    // div INSIDE the header, so go by the panel container (header and body are its children); an icon with no container falls
+    // back to the header around it and the part after that
+    const panelOf = (ic) => {
+      const box = ic.closest('[class*=panel-container]');
+      const h = box?.querySelector(':scope > [class*=-hdr]:not([class*=hdr-tools])'), b = box?.querySelector(':scope > [class*=-bdy]');
+      if (h && b) return { hdr: h, body: b };
+      if (/fa-angle-(up|down)/.test(ic.className)) return {}; // an angle outside a panel is something else (a dropdown arrow)
+      const o = ic.closest('.content-panel-hdr, .panel-heading, .card-header, [class*=panel-hdr], [class*=-hdr], [class*=header]');
+      return { hdr: o, body: o?.nextElementSibling };
+    };
+    for (const ic of root.querySelectorAll('.fa-chevron-up, .fa-chevron-down, .fa-angle-up, .fa-angle-down, .k-i-chevron-up, .k-i-chevron-down, .k-svg-i-chevron-up, .k-svg-i-chevron-down, [data-toggle=collapse]')) {
+      const { hdr, body } = panelOf(ic);
+      if (!hdr || !body || hdr.closest('.k-menu, .k-grid, #pageHeader, [class*=mainMenu]') || hdr.querySelector('[data-kit-action=collapse]') || body.hasAttribute('data-kit-collapse')) continue;
       const clickable = ic.closest('a, button, .clickable') || ic;
       clickable.setAttribute('data-kit-action', 'collapse');
       body.setAttribute('data-kit-collapse', shown(body) ? 'open' : 'closed');
@@ -334,6 +345,136 @@
       const x = win.querySelector('[data-kit-action=close], .k-window-titlebar-action');
       if (x) { x.click(); return true; }
       return false;
+    },
+
+    // ---------- what the page does at this viewport and on small interactions (read by kit.mjs; the kit runtime replays it) ----------
+    // the page at this viewport: which of the portal's own breakpoints are active, where the shell sits, which hamburger shows
+    layout() {
+      const box = (e) => { const r = e.getBoundingClientRect(); return { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height) }; };
+      const r = (sel) => { const e = [...document.querySelectorAll(sel)].find(shown); return e ? box(e) : null; };
+      let phone = null;
+      try { phone = typeof window.isPhone === 'function' ? !!window.isPhone() : null; } catch {}
+      const mq = (q) => matchMedia(q).matches;
+      return { inner: { w: innerWidth, h: innerHeight, docW: document.documentElement.clientWidth, dpr: devicePixelRatio },
+        breakpoints: { max1280: mq('(max-width: 1280px)'), max768: mq('(max-width: 768px)'), portrait: mq('(orientation: portrait)'), isPhone: phone },
+        header: r('#pageHeader, header'), main: r('#pageBody > main, main'), footer: r('footer, #pageFooter'),
+        burgers: [...document.querySelectorAll('i.fa-bars, [class*=hamburger], .mobile-nav')].filter(shown).length,
+        navLinks: [...document.querySelectorAll('#pageHeader a, header a')].filter(shown).length,
+        horizontalScroll: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1 };
+    },
+    // where the open window sits and how it is sized (Kendo's center() on a desktop, the portal's own phone branch on a small screen)
+    position() {
+      const win = [...document.querySelectorAll('.k-window')].filter(shown).pop();
+      if (!win) return null;
+      const r = win.getBoundingClientRect(), cs = getComputedStyle(win), docW = document.documentElement.clientWidth, content = win.querySelector('.k-window-content');
+      const px = (v) => { const n = parseFloat(v); return isNaN(n) ? null : n; };
+      return { rect: { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height) }, viewport: { w: innerWidth, h: innerHeight, docW },
+        centered: Math.abs(r.x - (docW - r.width) / 2) <= 2, minWidth: px(cs.minWidth), maxHeight: px(cs.maxHeight), width: px(cs.width),
+        contentScrolls: !!content && content.scrollHeight > content.clientHeight + 1, contentMaxHeight: content ? px(getComputedStyle(content).maxHeight) : null,
+        titlebarH: Math.round(win.querySelector('.k-window-titlebar')?.getBoundingClientRect().height ?? 0) };
+    },
+    // the side menu's / module tab's items that open a submenu; the submenu that is open now (does it scroll? does Kendo give it scroll buttons?)
+    menus() {
+      const items = (ul) => [...ul.children].filter((x) => x.tagName === 'LI' && shown(x) && (x.getAttribute('aria-haspopup') === 'true' || x.matches('[data-groupparent]')));
+      const uls = [...document.querySelectorAll('ul[data-role=menu]')].filter(shown).map((u) => ({ ul: u, vertical: u.getAttribute('aria-orientation') === 'vertical' || u.classList.contains('k-menu-vertical'), n: items(u).length })).filter((m) => m.n);
+      return { side: uls.filter((m) => m.vertical).sort((a, b) => b.n - a.n)[0]?.ul ? true : false, bar: uls.some((m) => !m.vertical) };
+    },
+    flyout() {
+      const c = [...document.querySelectorAll('.k-animation-container')].find((e) => shown(e) && e.querySelector('.k-menu-popup'));
+      if (!c) return null;
+      const p = c.querySelector('.k-menu-popup'), cs = getComputedStyle(p), b = c.getBoundingClientRect();
+      return { rect: { x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height) }, inlineStyle: p.getAttribute('style'), overflowY: cs.overflowY, maxHeight: cs.maxHeight,
+        scrollbar: p.scrollHeight > p.clientHeight + 1 && cs.overflowY !== 'visible' && cs.overflowY !== 'hidden', scrollButtons: [...p.querySelectorAll('.k-menu-scroll-button')].filter(shown).length, items: p.querySelectorAll('li').length };
+    },
+
+    // ---------- parts that show or hide on a radio / checkbox / dropdown value ----------
+    // the controls worth trying on a page or in the open window: radio groups, checkboxes, and dropdowns that are not another one's cascade child
+    triggers(where) {
+      const R = where === 'dialog' ? this.marksRoot() : (document.querySelector('#pageBody > main, main') || document.body);
+      let n = 0;
+      const stampT = (el) => el.getAttribute('data-kit-t') || (el.setAttribute('data-kit-t', 't' + ++n + '-' + Math.random().toString(36).slice(2, 5)), el.getAttribute('data-kit-t'));
+      const skip = (el) => el.closest('.k-grid, .k-pager, .k-menu, #pageHeader, [data-kit-menu], .k-animation-container, [data-kit-skip]') || (where !== 'dialog' && el.closest('.k-window'));
+      const groups = {};
+      for (const r of R.querySelectorAll('input[type=radio]')) if (!skip(r) && r.name && !r.disabled) (groups[r.name] ||= []).push(r);
+      const radios = Object.entries(groups).slice(0, 6).map(([name, rs]) => ({ name, options: rs.slice(0, 6).map((r) => ({ t: stampT(r), value: r.value, checked: r.checked })) }));
+      const checkboxes = [...R.querySelectorAll('input[type=checkbox]')].filter((c) => !skip(c) && !c.disabled && (shown(c) || shown(c.closest('label')))).slice(0, 8).map((c) => ({ t: stampT(c), name: c.name || c.id, checked: c.checked }));
+      const dropdowns = [...R.querySelectorAll('input[data-role=dropdownlist], select[data-role=dropdownlist]')].filter((i) => !skip(i)).map((i) => [i, widgetOf(i)])
+        .filter(([, w]) => w && !w.options.cascadeFrom && !w.wrapper.hasClass('k-disabled')).slice(0, 6).map(([i, w]) => {
+          let data = [];
+          try { data = w.dataSource.data().toJSON().slice(0, 6); } catch {}
+          const tf = w.options.dataTextField, vf = w.options.dataValueField;
+          return { t: stampT(i), name: i.name || i.id, value: String(w.value() ?? ''), values: data.map((d) => (d && typeof d === 'object' ? String(d[vf || 'value'] ?? d.Value ?? d[tf] ?? '') : String(d))) };
+        });
+      return { radios, checkboxes, dropdowns };
+    },
+    tclick(t) { const el = document.querySelector(`[data-kit-t="${t}"]`); if (!el) return false; el.click(); return true; },
+    tuncheck(t) { const el = document.querySelector(`[data-kit-t="${t}"]`); if (!el) return false; el.checked = false; el.dispatchEvent(new Event('change', { bubbles: true })); return true; },
+    tpick(t, value) { const w = widgetOf(document.querySelector(`[data-kit-t="${t}"]`)); if (!w) return false; w.value(value); w.trigger('change'); return true; },
+    // which of the parts (hidden-at-rest ones and ids) are shown right now, as selectors
+    parts() { return this.marks().parts; },
+
+    // ---------- validation as the page shows it ----------
+    // the summary banners and per-field messages that are visible now (inside the open window, else the page)
+    validation() {
+      const R = this.marksRoot();
+      const summaries = [...R.querySelectorAll('.validation-summary, .editor-validation-summary, .validation-summary-errors, .k-messagebox-error')].filter(shown).filter((e, _, all) => !all.some((o) => o !== e && o.contains(e)))
+        .slice(0, 2).map((e) => ({ h: e.getAttribute('data-kit-h'), className: e.className.replace(/\bdata-kit\S*/g, '').trim(), style: e.getAttribute('style'), html: e.innerHTML.replace(/\sdata-kit[\w-]*="[^"]*"/g, ''), text: clean(e.textContent) }));
+      const fields = [...R.querySelectorAll('.field-validation-error, .k-invalid-msg, .k-form-error, span[data-valmsg-for]')].filter((e) => shown(e) && clean(e.textContent)).slice(0, 30)
+        .map((e) => ({ for: e.getAttribute('data-valmsg-for') || e.getAttribute('data-for') || (e.previousElementSibling?.querySelector?.('[name]')?.name ?? e.previousElementSibling?.getAttribute?.('name')) || null, text: clean(e.textContent), className: e.className }));
+      return summaries.length || fields.length ? { summaries, fields } : null;
+    },
+    // is a loading indicator on screen (the portal's "Processing ..." box, Kendo's loading masks)?
+    loading() { return [...document.querySelectorAll('#loadingDialog, .k-loading-mask, .k-loading-image, .wait-dialog, .blockUI')].some(shown); },
+
+    // ---------- the "form data has changed" confirm a close can raise ----------
+    // stamps the open window's buttons as the stay / leave answers (by their words), and returns its parts like dialog() does
+    confirm() {
+      const win = [...document.querySelectorAll('.k-window')].filter(shown).pop();
+      if (!win) return null;
+      const btns = [...win.querySelectorAll('button, input[type=button], .k-button')].filter(shown);
+      const answer = (b) => { const t = clean(b.value || b.textContent); return /^(no|cancel|stay|keep editing|return|go back)$/i.test(t) ? 'stay' : /^(yes|ok|discard|leave|continue|close|don.?t save)$/i.test(t) ? 'leave' : null; };
+      for (const b of btns) { const a = answer(b); if (a) b.setAttribute('data-kit-confirm', a); }
+      const d = this.dialog();
+      return d && { ...d, buttons: btns.map((b) => ({ text: clean(b.value || b.textContent), answer: answer(b) })).filter((b) => b.text) };
+    },
+    // a text box in the open window a user could type into, to make it dirty
+    editable() {
+      const win = [...document.querySelectorAll('.k-window')].filter(shown).pop(), R = win && (win.querySelector('.k-window-content') || win);
+      const i = R && [...R.querySelectorAll('input[type=text], input:not([type]), textarea')].find((x) => shown(x) && !x.disabled && !x.readOnly && !x.closest('.k-picker, .k-dropdownlist, .k-numerictextbox, .k-grid') && !/date|time|dropdown|numeric|combo/.test(x.getAttribute('data-role') || ''));
+      if (!i) return null;
+      i.setAttribute('data-kit-edit', '');
+      return true;
+    },
+    // the close button of the open window: the title bar's X, or its Cancel
+    closeButton(via) {
+      const win = [...document.querySelectorAll('.k-window')].filter(shown).pop();
+      if (!win) return false;
+      win.querySelectorAll('[data-kit-close-via]').forEach((e) => e.removeAttribute('data-kit-close-via'));
+      const el = via === 'cancel' ? [...win.querySelectorAll('[data-kit-action=cancel]')].find(shown)
+        : [...win.querySelectorAll('.k-window-titlebar .k-window-titlebar-action, .k-window-titlebar a, .k-window-titlebar button')].find((a) => shown(a) && (/close/i.test(a.getAttribute('aria-label') || a.getAttribute('title') || '') || a.querySelector('.k-i-custom-close, .k-i-close, .k-i-x, .k-svg-i-x')));
+      if (!el) return false;
+      el.setAttribute('data-kit-close-via', via);
+      return true;
+    },
+
+    // ---------- the grid's column filter ----------
+    filterIcon() {
+      const g = [...document.querySelectorAll('[data-role=grid]')].find((x) => shown(x) && !x.closest('.k-window'));
+      const ic = g && [...g.querySelectorAll('.k-grid-header .k-grid-filter-menu, .k-grid-header .k-grid-filter, .k-grid-header .k-header-column-menu')].find(shown);
+      if (!ic) return null;
+      ic.setAttribute('data-kit-filter-icon', '');
+      const b = ic.getBoundingClientRect();
+      return { x: Math.round(b.x + scrollX), y: Math.round(b.y + scrollY), w: Math.round(b.width), h: Math.round(b.height) };
+    },
+    filterPopup() {
+      const p = [...document.querySelectorAll('.k-filter-menu, .k-column-menu, .k-grid-filter-popup')].find(shown);
+      if (!p) return null;
+      const c = p.closest('.k-animation-container') || p.closest('.k-popup') || p, b = c.getBoundingClientRect();
+      return { rect: { x: Math.round(b.x + scrollX), y: Math.round(b.y + scrollY), w: Math.round(b.width), h: Math.round(b.height) }, html: c.outerHTML.replace(/\sdata-kit[\w-]*="[^"]*"/g, ''),
+        buttons: [...c.querySelectorAll('button, .k-button')].filter(shown).map((x) => clean(x.textContent)).filter(Boolean) };
+    },
+    closeFilterPopup() {
+      for (const p of document.querySelectorAll('.k-filter-menu, .k-column-menu, .k-grid-filter-popup')) { try { (widgetOf(p) || $(p).closest('.k-popup').data('kendoPopup'))?.close(); } catch {} }
     },
   };
 })();

@@ -283,7 +283,10 @@ try {
   // the captures run one after another (one browser, one session); each screen's spec writer starts as soon as its capture
   // is done, up to --parallel at once, while the next capture runs
   const specLimit = limiter(parallel), specs = [];
-  for (const scr of screens) {
+  const kebab = (t) => slug(t.replace(/([a-z0-9])([A-Z])/g, '$1-$2'));
+  // a queue, not a fixed list: a Create New / a row that goes to a page of its own adds that page (one level, same site) while the loop runs
+  for (let qi = 0; qi < screens.length; qi++) {
+    const scr = screens[qi];
     const id = `${name}/${scr.id}`, dir = screenDir(id);
     log(`\n>> ${scr.id}: ${scr.label}  ${scr.url}`);
     try {
@@ -315,6 +318,27 @@ try {
       }
       if (r !== 'done') { mark(`capture:${scr.id}`, 'failed', { problems: [`run stopped: ${r}`] }); continue; }
       mark(`capture:${scr.id}`, 'done');
+      // pages this screen links to (the kit recorded where a Create New or a row goes when it leaves the page): each is captured as a screen of its own,
+      // under this one. One level only; `pack.json "linked": false` or --no-linked turns it off; "maxLinked" caps the number (default 60)
+      if (kit && !scr.parent && pack.linked !== false && !flag('--no-linked')) {
+        const norm = (u) => u.replace(/#.*$/, '').replace(/\/$/, '').toLowerCase();
+        for (const l of readJson(path.join(dir, 'kit', 'screen.json'), {}).links ?? []) {
+          let u;
+          try { u = new URL(l.url, scr.url); } catch { continue; }
+          if (u.origin !== new URL(pack.url).origin || pack.screens.some((x) => norm(x.url) === norm(u.href))) continue;
+          if (pack.screens.filter((x) => x.parent).length >= (pack.maxLinked ?? 60)) { log(`   ! ${pack.maxLinked ?? 60} linked pages already: not adding ${u.pathname} (pack.json "maxLinked")`); break; }
+          const last = u.pathname.split('/').filter(Boolean).pop() || 'page';
+          let cid = kebab(last) || 'page';
+          for (let n = 2; pack.screens.some((x) => x.id === cid); n++) cid = `${kebab(last)}-${n}`;
+          const label = last.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
+          const f = pack.scope ? null : await relogin(() => findScope(browser, withSession(cfg0), { url: u.href, viewport, dpr, sel: pack.selectors })).catch(() => null);
+          const child = { id: cid, label, url: u.href, trail: [...(scr.trail ?? [scr.label]), label], parent: scr.id, scope: pack.scope || f?.sel || scr.scope || null };
+          pack.screens.push(child);
+          screens.push(child);
+          savePack();
+          log(`   linked page: ${l.kind === 'create' ? `"${l.text}"` : 'a row'} on ${scr.id} goes to ${u.pathname}: captured as the screen "${cid}"`);
+        }
+      }
 
       const specFile = path.join(dir, 'spec', 'UI_SPEC.md');
       const fresh = fs.existsSync(specFile) && fs.statSync(specFile).mtimeMs >= fs.statSync(path.join(dir, 'facts.md')).mtimeMs;

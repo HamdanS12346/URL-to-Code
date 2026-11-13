@@ -41,7 +41,8 @@ const j = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
 const pack = j(path.join(P, 'pack.json'));
 assert.equal(pack.kit, 'provider', 'the Provider kit should be detected on the home page');
 assert.equal(pack.outRepo, APP, 'without --out the code goes to packs/<pack>/app');
-assert.deepEqual(pack.screens.map((s) => s.id), ['home', 'file-transfer-configuration', 'file-transfer-tracking']);
+assert.deepEqual(pack.screens.map((s) => s.id), ['home', 'file-transfer-configuration', 'file-transfer-tracking', 'ftp-server-credentials', 'add-ftp-credential']);
+assert.equal(pack.screens.find((s) => s.id === 'add-ftp-credential').parent, 'ftp-server-credentials', 'the page a Create New goes to is a child screen of the one it was clicked on');
 const S = (id) => path.join(P, 'screens', id);
 
 // ---- the harvest ----
@@ -93,6 +94,29 @@ assert.equal(trk.dialogs[trk.row.dialog]?.title, 'View File Transfer Tracking', 
 assert.deepEqual(trk.missing, [], 'every dialog the script opens was harvested');
 const cfgStates = j(path.join(S('file-transfer-configuration'), 'kit', 'states.json')).map((s) => s.name);
 for (const n of ['menu-open', 'menu-flyout', 'menu-close', 'tab-flyout']) assert.ok(cfgStates.includes(n), `verify replays ${n}: ${cfgStates}`);
+// ---- the viewport profile (config "profiles": a real browser on a 1920x1080 screen at 150% is 1272x588, below the portal's switch at 1280) ----
+for (const n of ['layout@client', 'menu-open@client', 'menu-flyout@client', 'tab-flyout@client', 'dialog-d1@client']) assert.ok(cfgStates.includes(n), `the capture records ${n}: ${cfgStates}`);
+const profStates = j(path.join(S('file-transfer-configuration'), 'kit', 'states.json')).filter((s) => s.profile === 'client');
+assert.ok(profStates.length >= 5 && profStates.every((s) => s.viewport.width === 1272 && s.dpr === 1.5), 'profile states carry their own viewport and dpr');
+assert.equal(cfg.responsive?.query, '(max-width: 1280px)', `the small-screen switch is read from the portal's own isPhone(): ${JSON.stringify(cfg.responsive)}`);
+assert.deepEqual([cfg.responsive.dialog.left, cfg.responsive.dialog.top, cfg.responsive.dialog.minWidthPct, cfg.responsive.dialog.maxHeightPct, cfg.responsive.desktop.maxHeightPct], [0, 20, 90, 85, 85], `the dialog rule measured at the profile: ${JSON.stringify(cfg.responsive)}`);
+assert.equal(cfg.profiles.client.layout.breakpoints.max1280, true, 'the layout facts say which breakpoint is active');
+const d1pos = cfg.profiles.client.dialogs[Object.keys(cfg.profiles.client.dialogs)[0]];
+assert.ok(d1pos.rect.x === 0 && d1pos.rect.y === 20 && d1pos.contentScrolls, `the dialog measured at the profile touches the left and scrolls inside: ${JSON.stringify(d1pos)}`);
+// ---- the small behaviours, recorded per screen ----
+assert.ok(add.conditionals?.some((c) => c.kind === 'radio' && c.name === 'RunSchedule' && c.values.M['#monthlyPart'] === true && c.values.W['#monthlyPart'] === false), `a radio that shows a part hidden at rest, per value: ${JSON.stringify(add.conditionals)}`);
+assert.ok(add.saveValidation?.summaries.length === 1 && add.saveValidation.fields.length >= 2 && add.saveValidation.postAttempted === false, `Save with nothing filled, POST blocked: a banner and field messages: ${JSON.stringify(add.saveValidation)}`);
+assert.ok(add.close?.x?.asks === true && add.close.cancel?.asks === false && add.close.x.stayKeepsOpen === true, `closing with an edit: the X asks, Cancel does not: ${JSON.stringify(add.close)}`);
+assert.deepEqual(add.close.confirm.buttons.map((b) => b.answer).sort(), ['leave', 'stay'], 'the confirm window records which button stays and which leaves');
+assert.ok(cfg.filterPopup?.html.includes('k-filter-menu') && cfg.filterPopup.buttons.includes('Filter'), `the grid filter popup is recorded: ${JSON.stringify(cfg.filterPopup)?.slice(0, 200)}`);
+const ftp = j(path.join(S('ftp-server-credentials'), 'kit', 'screen.json'));
+assert.equal(ftp.search.outcome, 'validation', 'a Search with nothing typed that answers with a banner, not rows');
+assert.match(ftp.search.validation.summaries[0].html, /Enter at least one search criteria\./, 'the banner keeps its live message');
+assert.equal(ftp.search.validation.fields[0].for, 'ServerName', 'and the field message its field');
+assert.equal(Object.values(ftp.widgets).find((w) => w.label === 'Begin Date').offsetDays, 0, 'a date prefilled with today is stored as days from the capture day');
+assert.equal(Object.values(ftp.widgets).find((w) => w.label === 'End Date').focusMask, '__/__/____', "an empty masked date's pattern, read from the box on focus");
+assert.ok(ftp.conditionals?.some((c) => c.name === 'Sched' && c.values.W['#weeklyPart'] === true), `page-level radio effects: ${JSON.stringify(ftp.conditionals)}`);
+assert.ok(Object.values(ftp.widgets).length && ftp.actions.some((a) => a.action === 'collapse'), 'the Search Criteria chevron is stamped (a collapsible panel)');
 assert.ok(cfgStates.some((n) => /^dialog-d\d+-part\d+$/.test(n)), `verify replays the dialog's Create New part: ${cfgStates}`);
 // the capture hovers the pack's module for the fly-out check, and a scrollable Kendo menu then keeps that module's popup outside
 // its <li>: the rebuilt menu must still open that module (it once opened every module except this one)
@@ -295,6 +319,97 @@ try {
   await p.locator('tr[data-kit-row="1"] td').first().dblclick();
   await p.waitForSelector('.k-window [data-kit-dialog-content]', { timeout: 3000 });
   assert.equal((await p.locator('.k-window .k-window-title').first().textContent()).trim(), 'View File Transfer Tracking', 'a double-click opens the view dialog');
+  // ---- the portal's two layouts, in the rebuild ----
+  const winCount = () => p.locator('.k-window').count();
+  const openCreate = async () => { await p.click('[data-kit-action=create]'); await p.waitForSelector('.k-window [data-kit-dialog-content]', { timeout: 3000 }); await p.waitForTimeout(600); };
+  const closeWin = async () => { await p.locator('.k-window #btnCancelEdit').click(); await p.waitForTimeout(700); };
+  await p.goto(`${base}/#/file-transfer-configuration`);
+  await p.waitForSelector('[data-kit-root]', { state: 'attached', timeout: 60000 });
+  await p.waitForTimeout(600);
+  await openCreate();
+  let box = await p.locator('.k-window').first().boundingBox();
+  const docW = await p.evaluate(() => document.documentElement.clientWidth);
+  assert.ok(Math.abs(box.x - (docW - box.width) / 2) <= 3, `above 1280 px a dialog is centered: x ${box.x}, width ${box.width}, page ${docW}`);
+  assert.ok(box.height <= 900 * 0.85 + 1, `and at most 85% of the window high: ${box.height}`);
+  // a radio shows a part that was hidden at rest, and hides it again (the live page's state per value, no code of this screen)
+  assert.equal(await p.locator('.k-window #monthlyPart').isVisible(), false);
+  await p.locator('.k-window input[value=M]').check();
+  assert.ok(await p.locator('.k-window #monthlyPart').isVisible(), 'Run Monthly shows the monthly part');
+  await p.locator('.k-window input[value=W]').check();
+  assert.equal(await p.locator('.k-window #monthlyPart').isVisible(), false, 'Run Weekly hides it');
+  // Save with nothing filled: the banner (with its X) and a message under each required field
+  await p.locator('.k-window #btnSave').click();
+  await p.waitForTimeout(300);
+  assert.ok(await p.locator('.k-window .validation-summary').isVisible(), 'Save shows the summary banner');
+  assert.match(await p.locator('.k-window .validation-summary').textContent(), /Resolve the following form field errors/);
+  await p.locator('.k-window .validation-summary [data-hide=alert]').click();
+  assert.equal(await p.locator('.k-window .validation-summary').isVisible(), false, "the banner's X hides it");
+  // closing with an edit: the X asks (the live window's markup), staying keeps the dialog, leaving closes it; Cancel closes without asking
+  await p.locator('.k-window input[name=ConfigName]').fill('edited');
+  await p.locator('.k-window .k-window-titlebar-action').first().click();
+  await p.waitForTimeout(400);
+  assert.equal(await winCount(), 2, 'the X of a dialog with an edit opens the confirm window');
+  assert.match(await p.locator('.k-window').last().textContent(), /Form data has changed and has not been saved/);
+  await p.locator('[data-kit-confirm=stay]').click();
+  await p.waitForTimeout(300);
+  assert.equal(await winCount(), 1, 'staying keeps the dialog open');
+  assert.equal(await p.locator('.k-window input[name=ConfigName]').inputValue(), 'edited', 'with the edit in it');
+  await p.locator('.k-window .k-window-titlebar-action').first().click();
+  await p.locator('[data-kit-confirm=leave]').click();
+  await p.waitForTimeout(700);
+  assert.equal(await winCount(), 0, 'leaving closes it');
+  await openCreate();
+  await p.locator('.k-window input[name=ConfigName]').fill('edited');
+  await closeWin();
+  assert.equal(await winCount(), 0, 'Cancel closes a dialog with an edit without asking (as the live one does)');
+  // below 1280 px (a 1920 screen at 150%): the portal's phone branch puts the dialog at the left edge, 20px from the top, 90% wide, at most 85% high
+  const vp0 = p.viewportSize();
+  await p.setViewportSize({ width: 1272, height: 588 });
+  await p.waitForTimeout(300);
+  await openCreate();
+  box = await p.locator('.k-window').first().boundingBox();
+  const docW2 = await p.evaluate(() => document.documentElement.clientWidth);
+  assert.ok(box.x <= 1 && Math.abs(box.y - 20) <= 1, `below 1280 px a dialog touches the left edge, 20px from the top: x ${box.x}, y ${box.y}`);
+  assert.ok(Math.abs(box.width - docW2 * 0.9) <= 3, `and is 90% of the width: ${box.width} of ${docW2}`);
+  assert.ok(box.height <= 588 * 0.85 + 1, `and at most 85% of the height: ${box.height}`);
+  assert.ok(await p.locator('.k-window [data-kit-dialog-content]').evaluate((el) => el.scrollHeight > el.clientHeight), 'its content scrolls inside it');
+  await closeWin();
+  await p.setViewportSize(vp0);
+  await p.waitForTimeout(300);
+  // the grid's column filter: the icon opens the live popup (Filter / Clear close it)
+  await p.click('[data-kit-action=search]');
+  await p.waitForSelector('tr[data-kit-row]', { timeout: 3000 });
+  await p.locator('.k-grid-filter-menu').first().click();
+  await p.waitForTimeout(300);
+  assert.ok(await p.locator('[data-kit-popup] .k-filter-menu').isVisible(), 'the filter icon opens the filter popup');
+  await p.locator('[data-kit-popup] .k-filter-menu button', { hasText: 'Filter' }).click();
+  assert.equal(await p.locator('[data-kit-popup] .k-filter-menu').count(), 0, 'Filter closes it');
+  // a page whose live Search with nothing typed showed a validation banner, a date prefilled with today, a masked empty date, a page-level radio
+  await p.goto(`${base}/#/ftp-server-credentials`);
+  await p.waitForSelector('[data-kit-action=search]', { timeout: 10000 });
+  await p.waitForTimeout(600);
+  const t = new Date(), mmddyyyy = `${String(t.getMonth() + 1).padStart(2, '0')}/${String(t.getDate()).padStart(2, '0')}/${t.getFullYear()}`;
+  assert.equal(await p.locator('#BeginDate').inputValue(), mmddyyyy, "a date prefilled with today on the live page is today's date in the rebuild");
+  await p.locator('#EndDate').focus();
+  assert.equal(await p.locator('#EndDate').inputValue(), '__/__/____', 'an empty masked date shows its pattern on focus');
+  await p.locator('#ServerName').focus();
+  assert.equal(await p.locator('#EndDate').inputValue(), '', 'and is empty again when it loses the focus');
+  await p.click('[data-kit-action=search]');
+  await p.waitForTimeout(400);
+  const banner = p.locator('.validation-summary').first();
+  assert.ok(await banner.isVisible(), 'Search with nothing typed shows the validation banner the live page showed');
+  assert.match(await banner.textContent(), /Enter at least one search criteria\./, 'with its message');
+  assert.match(await p.locator('[data-valmsg-for=ServerName], .k-invalid-msg').first().textContent(), /Server Name is required\./, 'and the message under the field');
+  assert.equal(await p.locator('#divResults').isVisible(), false, 'and no results');
+  await p.locator('.validation-summary [data-hide=alert]').first().click();
+  assert.equal(await banner.isVisible(), false, "the banner's X hides it");
+  await p.locator('input[name=Sched][value=W]').check();
+  assert.ok(await p.locator('#weeklyPart').isVisible(), 'a page-level radio shows its part');
+  // a Create New that leaves the page on the live portal goes to the screen the pack captured for it
+  await p.click('[data-kit-action=create]');
+  await p.waitForTimeout(500);
+  assert.equal(new URL(p.url()).hash, '#/add-ftp-credential', 'Create New goes to its own screen, as the live one leaves for an Add page');
+  assert.equal((await p.locator('#moduleContentBar h1').textContent()).trim(), 'Add FTP Credential', "which shows its own title");
   assert.deepEqual(errors, [], `no errors in the rebuild:\n${errors.join('\n')}`);
 } finally {
   await browser.close();

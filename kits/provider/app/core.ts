@@ -9,6 +9,8 @@ export type WidgetDef = {
   required: boolean; validation: Record<string, string>; validationParams: Record<string, string>; enabled: boolean; help: string | null;
   html: string; animation?: unknown;
   optionLabel?: string | null; items?: Item[]; value?: unknown; text?: string; cascadeFrom?: string | null; height?: number;
+  // dates: days from the capture's day (a prefilled "today" stays today), the time of day, and the pattern an empty box shows on focus ("__/__/____")
+  offsetDays?: number | null; minutes?: number | null; focusMask?: string;
   format?: string; decimals?: number; min?: unknown; max?: unknown; step?: number; spinners?: boolean; placeholder?: string; interval?: number; timeFormat?: string | null;
   columns?: { field: string | null; title: string; width: unknown; hidden: boolean; sortable: boolean; filterable: boolean; command: boolean; format: string | null }[];
   pageable?: { pageSizes?: unknown; buttonCount?: number; refresh?: boolean; info?: boolean } | boolean; pageSize?: number | null;
@@ -16,7 +18,19 @@ export type WidgetDef = {
 export type GridAfter = { total: number; pageSize: number | null; fields: Record<string, { type: string; maxLen: number; minLen: number }>; rowTemplate: string | null; altRowTemplate: string | null; html: string; rowCount: number };
 export type DialogDef = { title: string; windowClass: string; windowStyle: string | null; titlebarHtml: string | null; contentClass: string; contentId: string | null; contentStyle: string | null;
   overlay: { className: string; style: string | null; background: string; opacity: string } | null; options: Record<string, unknown> | null; widgets: Record<string, WidgetDef>;
-  opener: string; openerIndex?: number; openerId?: string | null; parent?: string; children: string[]; creates?: Create[] };
+  opener: string; openerIndex?: number; openerId?: string | null; parent?: string; children: string[]; creates?: Create[];
+  conditionals?: Conditional[]; saveValidation?: Validation & { postAttempted?: boolean };
+  // closing with an edit in it: does the X / Cancel ask "form data has changed"? `confirm` is the live window that asked (its markup and buttons)
+  close?: { x?: { asks: boolean } | null; cancel?: { asks: boolean } | null; confirm?: Confirm | null } };
+export type Confirm = { title: string; windowClass: string; windowStyle: string | null; titlebarHtml: string | null; contentClass: string; contentId: string | null; contentStyle: string | null;
+  overlay: DialogDef['overlay']; options: Record<string, unknown> | null; contentHtml: string; buttons: { text: string; answer: 'stay' | 'leave' | null }[]; rect: { x: number; y: number; w: number; h: number } };
+// a validation summary banner (the live markup) and the per-field messages the page showed
+export type Validation = { summaries: { h: string | null; className: string; style: string | null; html: string; text: string }[]; fields: { for: string | null; text: string; className: string }[] };
+// what a radio / checkbox / dropdown value shows or hides: per value, the absolute state of each part (selector -> shown)
+export type Conditional = { where: string; kind: 'radio' | 'checkbox' | 'dropdown'; name: string; values: Record<string, Record<string, boolean>>; rest: Record<string, boolean> };
+// below `query` the portal places a dialog by its own phone branch (left / top, at least minWidthPct wide, at most maxHeightPct high);
+// above it the dialog is centered (at most desktop.maxHeightPct high). All of it is measured on the live page, at the capture's viewport profiles.
+export type Responsive = { query: string | null; source: string | null; desktop: { maxHeightPct: number | null }; dialog: { left: number; top: number; minWidthPct: number | null; widthPct: number; maxHeightPct: number | null; from: string } | null };
 // what a Create New did on the live page, by the button's id (else its place among the shown ones): opened a dialog, or
 // showed / hid parts of the dialog (or page) it sits in (selectors inside it), scrolling it there
 export type Create = { index: number; id: string | null; text: string; dialog?: string; show?: string[]; hide?: string[]; scroll?: number | null };
@@ -24,7 +38,12 @@ type Anim = { effects?: string; duration?: number };
 export type KitData = {
   shell?: { title: string | null; module: string | null };
   widgets: Record<string, WidgetDef>; grids: Record<string, GridAfter>; dialogs: Record<string, DialogDef>;
-  search: { reveals: string[]; requests: { method: string; url: string; params: string[] }[]; rows?: number } | null;
+  search: { reveals: string[]; requests: { method: string; url: string; params: string[] }[]; rows?: number; outcome?: 'rows' | 'validation' | 'empty'; validation?: Validation } | null;
+  conditionals?: Conditional[]; responsive?: Responsive;
+  // where a Create New / a row went when it left the page (the pack captures each target as a screen of its own; a click goes to its route)
+  links?: { kind: 'create' | 'row'; text?: string; id?: string | null; url: string }[];
+  // the grid's column filter popup: the live markup and where it sat relative to the icon that opened it
+  filterPopup?: { dx: number; dy: number; w: number; h: number; html: string; buttons: string[] };
   creates?: Create[]; // a Create New on the page that opens no dialog
   row: { dialog: string | null; navigates: string | null; via?: 'link' | 'row' | 'dblclick' } | null;
   // what the screen's own script can open (openModalOverlay panels, the row's double-click handler), and which of those
@@ -80,6 +99,14 @@ export function useIsland(html: string, extra: Record<string, unknown> = {}): Re
     props.dangerouslySetInnerHTML = { __html: el.innerHTML };
     return createElement(el.tagName.toLowerCase(), { ...props, ...extra });
   }, [html]); // eslint-disable-line react-hooks/exhaustive-deps
+}
+
+// the rebuilt screen whose live page is this address (the app's routes carry each screen's live URL), if any: a link, a Create New or a row that leaves the page goes there
+export function routeFor(href: string | null | undefined): { path: string } | undefined {
+  const routes = (globalThis as { __kitRoutes?: { path: string; url?: string }[] }).__kitRoutes ?? [];
+  let p = '';
+  try { p = new URL(href ?? '', location.origin).pathname.toLowerCase(); } catch { return undefined; } // javascript: links
+  return p ? routes.find((r) => { try { return !!r.url && new URL(r.url).pathname.toLowerCase() === p; } catch { return false; } }) : undefined;
 }
 
 export const esc = (s: unknown) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);

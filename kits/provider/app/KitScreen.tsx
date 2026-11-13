@@ -9,7 +9,7 @@
 // links to a rebuilt screen, the headroom header (hides on scroll down), and the dialogs (Kendo windows).
 import { useCallback, useLayoutEffect, useMemo, useRef, useState, type ComponentType, type KeyboardEvent as RKeyboardEvent, type ReactNode, type SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
-import { Bus, KitContext, DEFAULTS, parseHtml, styleObject, useIsland, type Create, type Ctx, type DialogDef, type KitData, type Services } from './core';
+import { Bus, KitContext, DEFAULTS, parseHtml, routeFor, styleObject, useIsland, type Conditional, type Confirm, type Create, type Ctx, type DialogDef, type KitData, type Responsive, type Services, type Validation } from './core';
 
 type Open = { id: string; closing: boolean };
 const shown = (el: Element) => el.getClientRects().length > 0;
@@ -26,6 +26,7 @@ function values(root: Element | null) {
 }
 function clearErrors(root: Element) {
   root.querySelectorAll('[data-kit-err]').forEach((e) => e.remove());
+  root.querySelectorAll<HTMLElement>('[data-kit-banner]').forEach((e) => { e.style.display = 'none'; e.removeAttribute('data-kit-banner'); });
   root.querySelectorAll('.k-invalid').forEach((e) => e.classList.remove('k-invalid'));
   root.querySelectorAll('[data-valmsg-for].field-validation-error').forEach((e) => { e.classList.remove('field-validation-error'); e.classList.add('field-validation-valid'); e.textContent = ''; });
 }
@@ -37,8 +38,28 @@ function resetFields(root: Element | null) {
   }
   clearErrors(root);
 }
+// one field's message, as the portal puts it: into the field's own slot (data-valmsg-for), else right after the widget, and the widget marked invalid
+function showMessage(root: Element, name: string, msg: string) {
+  const input = root.querySelector(`[name="${CSS.escape(name)}"]`);
+  const wrap = input?.closest('.k-input, .k-picker, .k-dropdownlist, .k-numerictextbox') ?? input;
+  wrap?.classList.add('k-invalid');
+  const slot = root.querySelector(`[data-valmsg-for="${CSS.escape(name)}"]`);
+  if (slot) { slot.classList.remove('field-validation-valid'); slot.classList.add('field-validation-error'); slot.textContent = msg; }
+  else if (wrap && !wrap.nextElementSibling?.hasAttribute('data-kit-err')) wrap.insertAdjacentHTML('afterend', `<span class="k-form-error k-invalid-msg field-validation-error" data-kit-err="">${msg.replace(/[<>&]/g, '')}</span>`);
+}
+// the summary banner a failed Search / Save shows (the live markup: icon, message, its X), found by the id the capture gave it, else the first one in the scope
+function showBanner(root: Element, v: Validation | null | undefined) {
+  for (const b of v?.summaries ?? []) {
+    const el = (b.h ? root.querySelector<HTMLElement>(`[data-kit-h="${b.h}"]`) : null) ?? root.querySelector<HTMLElement>('.validation-summary, .editor-validation-summary, .validation-summary-errors');
+    if (!el) continue;
+    el.innerHTML = b.html;
+    if (b.className) el.className = b.className;
+    reveal(el);
+    el.setAttribute('data-kit-banner', '');
+  }
+}
 // MVC unobtrusive validation (data-val-*), the rules the portal's forms use; the messages are the server's own
-function validate(root: Element | null) {
+function validate(root: Element | null, banner?: Validation | null) {
   if (!root) return true;
   clearErrors(root);
   let ok = true;
@@ -56,12 +77,9 @@ function validate(root: Element | null) {
     else if (v && a('range') && ((a('range-min') && +v < +a('range-min')!) || (a('range-max') && +v > +a('range-max')!))) msg = a('range');
     if (!msg) continue;
     ok = false;
-    const wrap = i.closest('.k-input, .k-picker, .k-dropdownlist, .k-numerictextbox') ?? i;
-    wrap.classList.add('k-invalid');
-    const slot = root.querySelector(`[data-valmsg-for="${CSS.escape(i.name)}"]`);
-    if (slot) { slot.classList.remove('field-validation-valid'); slot.classList.add('field-validation-error'); slot.textContent = msg; }
-    else wrap.insertAdjacentHTML('afterend', `<span class="k-form-error k-invalid-msg field-validation-error" data-kit-err="">${msg.replace(/[<>&]/g, '')}</span>`);
+    showMessage(root, i.name, msg);
   }
+  if (!ok) showBanner(root, banner);
   return ok;
 }
 // show an element hidden at rest: its own display, or block when its class hides it
@@ -199,10 +217,12 @@ function showFly(ul: Element, li: Element) {
   clone.style.removeProperty('display');
   clone.setAttribute('aria-hidden', 'false');
   clone.querySelectorAll<HTMLElement>('.k-menu-scroll-button').forEach((b) => { b.style.display = 'none'; }); // Kendo hides them while everything fits
+  clone.style.overflow = 'visible'; // what Kendo sets inline on a popup it opens: the stylesheet's overflow:auto would give the submenu a native scrollbar
   child.append(clone);
   box.append(child);
   Object.assign(box.style, { display: 'block', position: 'absolute', zIndex: '10002', visibility: 'hidden' });
   host.append(box);
+  fitFly(clone);
   const w = clone.offsetWidth, h = clone.offsetHeight;
   Object.assign(child.style, { display: 'block', width: `${w}px`, height: `${h}px` });
   const hr = host.getBoundingClientRect(), lr = li.getBoundingClientRect();
@@ -214,23 +234,67 @@ function showFly(ul: Element, li: Element) {
     .finished.then(() => box.classList.add('k-animation-container-shown'), () => {});
 }
 const closeFlys = (root: ParentNode, now = false) => root.querySelectorAll(MENU).forEach((ul) => hideFly(ul, now));
+// A submenu taller than the room (the portal caps it at 80% of the window's height, which is what a small window hits): Kendo gives no native
+// scrollbar, it shows scroll buttons at both ends and scrolls the list with them, the wheel or the keys.
+function fitFly(clone: HTMLElement) {
+  const ul = clone.querySelector<HTMLElement>('ul');
+  const cap = parseFloat(getComputedStyle(clone).maxHeight);
+  if (!ul || isNaN(cap) || ul.scrollHeight <= cap + 1) return;
+  const prev = clone.querySelector<HTMLElement>('.k-menu-scroll-button-prev'), next = clone.querySelector<HTMLElement>('.k-menu-scroll-button-next');
+  Object.assign(clone.style, { display: 'flex', flexDirection: 'column', overflow: 'hidden' });
+  Object.assign(ul.style, { overflow: 'hidden', flex: '1 1 auto', minHeight: '0' });
+  for (const b of [prev, next]) if (b) { b.style.display = 'flex'; b.style.justifyContent = 'center'; b.style.flex = '0 0 auto'; }
+  if (prev) clone.insertBefore(prev, ul);
+  if (next) clone.append(next);
+  const sync = () => { prev?.classList.toggle('k-disabled', ul.scrollTop <= 0); next?.classList.toggle('k-disabled', ul.scrollTop + ul.clientHeight >= ul.scrollHeight - 1); };
+  const by = (d: number) => { ul.scrollTop += d; sync(); };
+  let timer = 0;
+  const hold = (b: HTMLElement | null | undefined, d: number) => b?.addEventListener('mousedown', (e) => { e.preventDefault(); by(d); timer = window.setInterval(() => by(d), 60); });
+  hold(prev, -24); hold(next, 24);
+  addEventListener('mouseup', () => clearInterval(timer), { once: true });
+  clone.addEventListener('wheel', (e) => { e.preventDefault(); by((e as WheelEvent).deltaY); }, { passive: false });
+  sync();
+}
 
 // ---------- a dialog: the portal's Kendo window chrome around the ported content ----------
-function Window({ id, def, Body, depth, closing, onClosed }: { id: string; def: DialogDef; Body?: ComponentType; depth: number; closing: boolean; onClosed: () => void }) {
+// Where a window goes. Above the portal's small-screen width: Kendo's center(). Below it: the portal's own phone branch (measured on the live page at the
+// capture's viewport profiles: left / top, at least minWidthPct of the width). Both: at most a share of the window's height, with the content scrolling inside.
+function placeWindow(w: HTMLElement, content: HTMLElement | null, r: Responsive | null | undefined) {
+  const vw = document.documentElement.clientWidth || innerWidth, vh = document.documentElement.clientHeight || innerHeight; // Kendo/jQuery measure the layout viewport, not innerWidth
+  const small = !!r?.query && !!r.dialog && matchMedia(r.query).matches;
+  if (!('kitMin' in w.dataset)) w.dataset.kitMin = w.style.minWidth;
+  const pct = small ? r!.dialog!.maxHeightPct : r?.desktop?.maxHeightPct;
+  if (pct) {
+    const max = (vh * pct) / 100;
+    w.style.maxHeight = `${max}px`;
+    if (content) content.style.maxHeight = `${Math.max(0, max - (w.querySelector<HTMLElement>('.k-window-titlebar')?.offsetHeight ?? 0))}px`;
+  }
+  if (small) {
+    const d = r!.dialog!;
+    w.style.minWidth = d.minWidthPct ? `${(vw * d.minWidthPct) / 100}px` : w.dataset.kitMin!;
+    w.style.left = `${d.left}px`;
+    w.style.top = `${d.top}px`;
+    return;
+  }
+  w.style.minWidth = w.dataset.kitMin!;
+  w.style.left = `${Math.max(0, (vw - w.offsetWidth) / 2 + scrollX)}px`;
+  w.style.top = `${Math.max(0, (vh - w.offsetHeight) / 2 + scrollY)}px`;
+}
+function Window({ id, def, Body, depth, closing, onClosed, responsive, plain = false }: { id: string; def: DialogDef; Body?: ComponentType; depth: number; closing: boolean; onClosed: () => void; responsive?: Responsive; plain?: boolean }) {
   const win = useRef<HTMLDivElement>(null), ov = useRef<HTMLDivElement>(null);
   const bar = useIsland(def.titlebarHtml || `<div class="k-window-titlebar"><span class="k-window-title">${def.title}</span></div>`);
   const anim = def.options?.animation as { open?: { duration?: number }; close?: { duration?: number } } | false | undefined;
   const openMs = anim === false ? 0 : anim?.open?.duration ?? DEFAULTS.windowMs, closeMs = anim === false ? 0 : anim?.close?.duration ?? DEFAULTS.windowMs;
-  useLayoutEffect(() => { // Kendo centers a window when it opens, then zooms and fades it in
-    const w = win.current!;
-    // Kendo/jQuery centering uses the layout viewport width/height (documentElement.clientWidth/Height),
-    // not window.innerWidth/innerHeight. This matters at 1280x720 (aka 1920x1080 @ 150% zoom) where
-    // dialogs can end up touching the left edge on the live site.
-    const vw = document.documentElement?.clientWidth || innerWidth;
-    const vh = document.documentElement?.clientHeight || innerHeight;
-    w.style.left = `${Math.max(0, (vw - w.offsetWidth) / 2 + scrollX)}px`;
-    w.style.top = `${Math.max(0, (vh - w.offsetHeight) / 2 + scrollY)}px`;
+  useLayoutEffect(() => { // Kendo centers a window when it opens (below the small-screen width the portal places it itself), then zooms and fades it in
+    const w = win.current!, content = w.querySelector<HTMLElement>('[data-kit-dialog-content]');
+    const placeIt = () => placeWindow(w, content, plain ? null : responsive);
+    placeIt();
     if (openMs) { w.animate([{ opacity: 0, transform: 'scale(0.01)' }, { opacity: 1, transform: 'scale(1)' }], { duration: openMs, easing: 'ease-out' }); ov.current?.animate([{ opacity: 0 }, { opacity: 1 }], { duration: openMs }); }
+    // the portal re-centers a window when its content changes size (a part shown, a message appearing) and when the browser window is resized
+    const ro = content && typeof ResizeObserver !== 'undefined' ? new ResizeObserver(placeIt) : null;
+    ro?.observe(content!);
+    addEventListener('resize', placeIt);
+    return () => { ro?.disconnect(); removeEventListener('resize', placeIt); };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useLayoutEffect(() => {
     if (!closing) return;
@@ -250,6 +314,14 @@ function Window({ id, def, Body, depth, closing, onClosed }: { id: string; def: 
     </>, document.body);
 }
 
+// the "form data has changed" window: the live one's chrome and markup (its buttons carry data-kit-confirm = stay | leave), on top of the dialog
+function ConfirmWindow({ c, depth }: { c: Confirm; depth: number }) {
+  const def = { title: c.title, windowClass: c.windowClass, windowStyle: c.windowStyle, titlebarHtml: c.titlebarHtml, contentClass: c.contentClass, contentId: null, contentStyle: c.contentStyle,
+    overlay: c.overlay, options: c.options, widgets: {}, opener: '', children: [] } as DialogDef;
+  const Body = useMemo(() => () => <div dangerouslySetInnerHTML={{ __html: c.contentHtml }} />, [c]);
+  return <Window id="confirm" def={def} Body={Body} depth={depth + 1} closing={false} onClosed={() => {}} plain />;
+}
+
 export function KitScreen({ screen, dialogs = {}, services, shell = false, children }: { screen: KitData; dialogs?: Record<string, ComponentType>; services?: Services; shell?: boolean; children?: ReactNode }) {
   const bus = useMemo(() => new Bus(), []);
   const [open, setOpen] = useState<Open[]>([]);
@@ -259,11 +331,39 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
   const closeDialog = useCallback((id: string) => setOpen((o) => o.map((x) => (x.id === id ? { ...x, closing: true } : x))), []);
   const ctx: Ctx = useMemo(() => ({ data: screen, defs, bus, openDialog }), [screen, defs, bus, openDialog]);
   const menuTimer = useRef(0);
+  const initial = useRef<Record<string, string>>({}); // the form as it loaded: a Search with nothing changed is the one the live capture clicked
+  const [confirm, setConfirm] = useState<{ dlg: string; via: 'x' | 'cancel' } | null>(null);
+  // Close / Cancel / Escape of a dialog: with an edit in it, and the live dialog asked "form data has changed", the same window asks here
+  const requestClose = (id: string, via: 'x' | 'cancel') => {
+    const d = screen.dialogs[id], dirty = document.querySelector(`[data-kit-dialog-content="${id}"]`)?.hasAttribute('data-kit-dirty');
+    if (dirty && d?.close?.[via]?.asks && d.close.confirm) setConfirm({ dlg: id, via });
+    else closeDialog(id);
+  };
+  const markDirty = (e: SyntheticEvent) => { // a person's edit (not a script's) in a dialog makes it "changed"
+    if (!(e.nativeEvent as Event).isTrusted) return;
+    (e.target as Element).closest('[data-kit-dialog-content]')?.setAttribute('data-kit-dirty', '');
+  };
+  // radios / checkboxes / dropdown values that show or hide parts: the live page's own state per value, replayed
+  const applyCond = (list: Conditional[] | undefined, scope: ParentNode | null, kind: Conditional['kind'], name: string, key: string) => {
+    for (const c of scope ? list ?? [] : []) {
+      const st = c.kind === kind && c.name === name ? c.values[key] : null;
+      if (!st) continue;
+      for (const [sel, on] of Object.entries(st)) {
+        try { scope!.querySelectorAll<HTMLElement>(sel).forEach((el) => { if (on) reveal(el); else el.style.display = 'none'; }); } catch { /* a selector the rebuild cannot resolve */ }
+      }
+    }
+  };
+  useLayoutEffect(() => bus.on('change', (d: { name: string | null; value: unknown }) => {
+    if (!d?.name) return;
+    applyCond(screen.conditionals, root.current, 'dropdown', d.name, String(d.value ?? ''));
+    document.querySelectorAll('[data-kit-dialog-content]').forEach((el) => applyCond(screen.dialogs[el.getAttribute('data-kit-dialog-content')!]?.conditionals, el, 'dropdown', d.name!, String(d.value ?? '')));
+  }), []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useLayoutEffect(() => {
     const r = root.current!;
     // a k-focus frozen into the capture belongs to the live page's focus: the rebuild focuses the same field itself
     r.querySelectorAll('.k-focus').forEach((e) => e.classList.remove('k-focus'));
+    initial.current = values(r);
     r.querySelectorAll('[data-kit-tip][title]').forEach((e) => { if (!e.hasAttribute('aria-label')) e.setAttribute('aria-label', e.getAttribute('title')!); e.removeAttribute('title'); });
     const af = r.querySelector<HTMLElement>('[data-kit-autofocus]');
     const focusEl = af?.matches('input, select, textarea, [tabindex]') ? af : af?.querySelector<HTMLElement>('input:not([type=hidden]), [tabindex]');
@@ -350,8 +450,26 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
     return () => { backdrop.current?.remove(); backdrop.current = null; };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const onChangeEvt = (e: SyntheticEvent) => {
+    markDirty(e);
+    const t = e.target as HTMLInputElement;
+    const kind = t.type === 'radio' ? 'radio' : t.type === 'checkbox' ? 'checkbox' : null;
+    const name = t.type === 'radio' ? t.name : t.name || t.id;
+    if (!kind || !name) return;
+    const key = kind === 'radio' ? t.value : String(t.checked), dlgEl = t.closest('[data-kit-dialog-content]');
+    if (dlgEl) applyCond(screen.dialogs[dlgEl.getAttribute('data-kit-dialog-content')!]?.conditionals, dlgEl, kind, name, key);
+    else applyCond(screen.conditionals, root.current, kind, name, key);
+  };
   const onClick = (e: SyntheticEvent) => {
     const t = e.target as Element;
+    // the "form data has changed" window: the answer that stays closes it, the one that leaves closes it and the dialog
+    const ans = t.closest('[data-kit-confirm]');
+    if (ans && confirm) { e.preventDefault(); e.stopPropagation(); const c = confirm; setConfirm(null); if (ans.getAttribute('data-kit-confirm') === 'leave') closeDialog(c.dlg); return; }
+    // a validation banner's X
+    const x = t.closest('[data-hide=alert]');
+    if (x) { e.preventDefault(); x.closest<HTMLElement>('.validation-summary, .editor-validation-summary, .validation-summary-errors, .k-messagebox')?.style.setProperty('display', 'none'); return; }
+    // a dialog being edited marks itself on a click on a list item / calendar day (a widget's pick is not an input event)
+    if (t.closest('.k-list-item, .k-calendar-td .k-link, .k-list-optionlabel')) t.closest('[data-kit-dialog-content]')?.setAttribute('data-kit-dirty', '');
     const act = t.closest('[data-kit-action]');
     const dlg = t.closest('[data-kit-dialog-content]')?.getAttribute('data-kit-dialog-content') ?? t.closest('[data-kit-dialog]')?.getAttribute('data-kit-dialog') ?? null;
     const scope = dlg ? document.querySelector(`[data-kit-dialog-content="${dlg}"]`) : root.current;
@@ -360,10 +478,7 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
       if (!a || t.closest('[data-kit]')) return;
       e.preventDefault(); // the portal's own links: a rebuilt screen goes to its route, everything else stays put
       e.stopPropagation();
-      const routes = (globalThis as { __kitRoutes?: { path: string; url?: string }[] }).__kitRoutes ?? [];
-      let p = '';
-      try { p = new URL(a.getAttribute('href') ?? '', location.origin).pathname.toLowerCase(); } catch { /* javascript: links */ }
-      const hit = p ? routes.find((r) => { try { return !!r.url && new URL(r.url).pathname.toLowerCase() === p; } catch { return false; } }) : undefined;
+      const hit = routeFor(a.getAttribute('href'));
       // an item of a rebuilt screen routes there and closes the menu, like the portal's .child-menu click; every other item of
       // the menu is shown but leads nowhere (the other modules are not rebuilt here), and the menu stays open
       if (hit) {
@@ -387,9 +502,21 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
     switch (kind) {
       case 'search': {
         const v = values(root.current);
+        // the live Search with nothing changed answered with a validation banner (and field messages), not a grid: show that, and no results
+        const untouched = JSON.stringify(v) === JSON.stringify(initial.current), val = screen.search?.validation;
         Promise.resolve(services?.search?.(v)).finally(() => {
+          if (screen.search?.outcome === 'validation' && val && untouched && root.current) {
+            clearErrors(root.current);
+            showBanner(root.current, val);
+            for (const f of val.fields) if (f.for) showMessage(root.current, f.for, f.text);
+            return;
+          }
+          if (screen.search?.outcome === 'validation' && root.current) { // with something typed the live Search lists results: its panel was never seen, so show the one around the grid
+            clearErrors(root.current);
+            root.current.querySelectorAll('.k-grid[data-kit]').forEach((g) => { for (let h = g.closest<HTMLElement>('[data-kit-h]'); h; h = h.parentElement?.closest<HTMLElement>('[data-kit-h]') ?? null) reveal(h); });
+          }
           bus.emit('search', v);
-          for (const id of screen.search?.reveals ?? []) root.current?.querySelectorAll<HTMLElement>(`[data-kit-h="${id}"]`).forEach(reveal);
+          for (const id of screen.search?.reveals ?? []) { if (screen.search?.outcome === 'validation') break; root.current?.querySelectorAll<HTMLElement>(`[data-kit-h="${id}"]`).forEach(reveal); }
         });
         break;
       }
@@ -407,14 +534,18 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
           const c = id ? undefined : createOf(screen.creates, act, all);
           if (id) openDialog(id);
           else if (c && home) setPart(home, c, `page:${screen.creates!.indexOf(c)}`);
+          else { // a Create New that leaves the page on the live portal (an Add page of its own): go to that screen when the pack rebuilt it
+            const ln = screen.links?.find((l) => l.kind === 'create' && (!l.id || l.id === act.id)), hit = ln && routeFor(ln.url);
+            if (hit) location.hash = `#${hit.path}`;
+          }
         }
         break;
       }
       case 'save':
         if (part) { if (validate(part)) Promise.resolve(services?.save?.(dlg ?? 'page', values(part))).finally(putAway); }
-        else if (dlg && validate(scope)) Promise.resolve(services?.save?.(dlg, values(scope))).finally(() => closeDialog(dlg));
+        else if (dlg && validate(scope, screen.dialogs[dlg]?.saveValidation)) Promise.resolve(services?.save?.(dlg, values(scope))).finally(() => closeDialog(dlg));
         break;
-      case 'cancel': case 'close': if (part && kind === 'cancel') putAway(); else if (dlg) closeDialog(dlg); break;
+      case 'cancel': case 'close': if (part && kind === 'cancel') putAway(); else if (dlg) requestClose(dlg, kind === 'close' ? 'x' : 'cancel'); break;
       case 'collapse': {
         // the body: the panel container's own (the portal's .content-subpanel-container > .content-subpanel-bdy, whose header
         // tools hold the icon one level down), else the element that follows the header
@@ -478,16 +609,18 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
   const focusWrap = (e: SyntheticEvent, on: boolean) => { (e.target as Element).closest?.('.k-input, .k-picker, .k-textbox, .k-numerictextbox, .k-dropdownlist')?.classList.toggle('k-focus', on); };
   const onKey = (e: RKeyboardEvent) => {
     if (e.key !== 'Escape') return;
+    if (confirm) { e.stopPropagation(); setConfirm(null); return; } // Escape answers the "form data has changed" window with the answer that stays
     const top = open.filter((x) => !x.closing).at(-1);
-    if (top) { e.stopPropagation(); closeDialog(top.id); } // Escape does not close the side menu on the live portal
+    if (top) { e.stopPropagation(); requestClose(top.id, 'x'); } // Escape does not close the side menu on the live portal
   };
 
   return (
     <KitContext.Provider value={ctx}>
       <div ref={root} data-kit-root="" style={{ display: 'contents' }} onClick={onClick} onMouseOver={onOver} onMouseOut={onOut}
-        onFocus={(e) => focusWrap(e, true)} onBlur={(e) => focusWrap(e, false)} onKeyDown={onKey}>
+        onFocus={(e) => focusWrap(e, true)} onBlur={(e) => focusWrap(e, false)} onKeyDown={onKey} onInput={markDirty} onChange={onChangeEvt}>
         {children}
-        {open.map((o, i) => <Window key={o.id} id={o.id} def={screen.dialogs[o.id]} Body={dialogs[o.id]} depth={i} closing={o.closing} onClosed={() => setOpen((x) => x.filter((y) => y.id !== o.id))} />)}
+        {open.map((o, i) => <Window key={o.id} id={o.id} def={screen.dialogs[o.id]} Body={dialogs[o.id]} depth={i} closing={o.closing} responsive={screen.responsive} onClosed={() => setOpen((x) => x.filter((y) => y.id !== o.id))} />)}
+        {confirm && screen.dialogs[confirm.dlg]?.close?.confirm && <ConfirmWindow c={screen.dialogs[confirm.dlg].close!.confirm!} depth={open.length} />}
       </div>
     </KitContext.Provider>
   );

@@ -56,7 +56,7 @@ body{margin:0;font:14px Arial,"Helvetica Neue",Helvetica,sans-serif;color:#333;b
 
 const MODULES = [
   ['Administration', [['Broadcast Message', '/BroadcastMessage/BroadcastMessageSearch'], ["FAQ's", '/FAQMaintenance/FAQMaintenanceSearch']]],
-  ['File Transfer Services', [['File Transfer Configuration', '/FileTransfer/SearchSourceLocations'], ['File Transfer Tracking', '/FileTransfer/SearchFileTransferTracking']]],
+  ['File Transfer Services', [['File Transfer Configuration', '/FileTransfer/SearchSourceLocations'], ['File Transfer Tracking', '/FileTransfer/SearchFileTransferTracking'], ['FTP Server Credentials', '/FileTransfer/SearchFTPServerCredentials']]],
   ['Claims Management', [['Search Claims', '/ClaimsManagement/SearchClaims']]],
 ];
 const field = (id, label, input, help = label, req = false) => `<div class="editor-col" id="${id}_parent"><div class="editor-label">${req ? `<span class="clickable editor-req-field fa-solid fa-asterisk" title="${label} is a required field." data-role="tooltip"></span>` : ''}<label for="${id}" id="${id}Label">${label}</label><span class="clickable editor-icon fa-solid fa-circle-question" id="${id}Help" role="img" title="${help}" data-role="tooltip"></span></div><div class="editor-field">${input}</div></div>`;
@@ -73,7 +73,7 @@ ${loggedIn ? '<ul class="aag-menu"><li><a href="javascript:void(0)">Messages</a>
 <div class="mobile-nav"><div id="pageBannerMenuMobile"><nav aria-label="Hamburger Mobile Menu"><div class="hamburger"><i class="fa-solid fa-bars clickable" onclick="openMainMenu()" tabindex="0" aria-label="Main Menu" role="button"></i></div></nav></div></div>
 <div id="pageBannerMenu" class="desktop-nav"><nav aria-label="Hamburger Menu"><div class="hamburger"><i class="fa-solid fa-bars clickable" onclick="openMainMenu()" tabindex="0" aria-label="Main Menu" role="button"></i></div></nav></div>
 </header></div>
-<input class="editor-control" id="menuSearch" type="hidden">
+<input class="editor-control" id="menuSearch" type="hidden" style="position:absolute;top:70px;left:0">
 <div id="mainMenuContainer" class="display-none"><i id="mainMenuClose" class="fa-solid fa-xmark clickable" onclick="closeMainMenu()" role="button" aria-label="Close"></i>
 ${loggedIn ? `<div class="mobile-aag"><div class="content-subpanel-container collapsedPanel"><div class="content-subpanel-hdr">Quick Links</div><div class="content-subpanel-hdr-tools"><div class="content-ordered-panel-hdr-tools"><div class="panel-icon clickable"><div id="mobileMenuIcon" class="fa-solid fa-angle-down subpanel-collapsed" title="Expand" tabindex="0"></div></div></div></div><div class="content-subpanel-bdy" style="display:none"><ul class="aag-menu-quick"><li><a href="javascript:void(0)">Messages</a></li><li><a href="/Home/MyAccount">My Account</a></li></ul></div></div></div><div id="mainMenuItemContainer"><ul id="mainMenu">${MODULES.map(([m, items]) => `<li>&nbsp;${m}<ul class="child-menu">${items.map(([l, h]) => `<li><a href="${h}">&nbsp;${l}</a></li>`).join('')}</ul></li>`).join('')}</ul></div>`
     : '<form class="login" method="post" action="/login" style="padding:24px"><label>User name <input name="user" type="text"></label><br><label>Password <input name="pass" type="password"></label><br><button type="submit">Log In</button></form>'}
@@ -89,6 +89,14 @@ ${module ? `<div id="moduleContentBar"><div class="module-name">${module}</div><
 function openMainMenu(){ $('#mainMenuContainer').removeClass('display-none').addClass('display-flex'); $('#menuSearch').attr('type', 'text'); $('body').append("<div class='disabled-backdrop'></div>"); }
 function closeMainMenu(){ $('#mainMenuContainer').removeClass('display-flex').addClass('display-none'); $('#menuSearch').attr('type', 'hidden'); $('.disabled-backdrop').remove(); }
 $(document).on('click', '#mainMenu .child-menu a', closeMainMenu);
+// the portal's own small-screen switch (hp.ua3.core): below 1280 px wide the dialog code takes its phone branch (see pro.js Window.open)
+isPhone = function () {
+  if ((window.matchMedia("(max-width: 1280px)").matches) && (window.matchMedia("(orientation: portrait)"))) {
+    return true;
+  } else {
+    return false;
+  }
+};
 // the portal's core helpers (hp.ua3.core.*): a dialog is a Kendo window on the element id = the panel id, its content by AJAX
 var trackingViewUrl = '/FileTransfer/TrackingView';
 var PANEL_TITLES = { FileTransferTrackingViewPopup: 'View File Transfer Tracking' };
@@ -131,13 +139,59 @@ const PAGES = {
   $('#btnSearch').on('click', () => { $('#divResults').show(); $('#grid').data('kendoGrid').dataSource.read(); });
   $('#btnReset').on('click', () => { $('#ConfigId').data('kendoNumericTextBox').value(null); $('#OwnerModule').data('kendoDropDownList').value(''); });
   ${collapse}
+  // the column filter: an icon in a header and the Kendo popup it opens (filter operator, value, Filter / Clear)
+  $('#grid .k-grid-header th').eq(2).find('.k-cell-inner').append('<a class="k-grid-filter-menu" href="#" title="Protocol filter column settings" aria-label="Protocol filter column settings"><span class="k-icon k-svg-icon k-svg-i-filter"></span></a>');
+  $('body').append('<div id="filterPop" class="k-animation-container k-animation-container-shown" style="display:none;position:absolute;z-index:10002"><div class="k-child-animation-container"><form class="k-filter-menu k-popup" style="padding:8px;background:#fff;border:1px solid #ccc;width:254px"><div class="k-filter-help-text">Show items with value that:</div><input type="text" title="Operator" value="Equal To" style="width:100%;margin:6px 0"><input type="text" title="Value" style="width:100%;margin-bottom:6px"><button class="k-button" type="submit">Filter</button> <button class="k-button" type="reset">Clear</button></form></div></div>');
+  $(document).on('click', '#grid .k-grid-filter-menu', function(e){ e.preventDefault(); e.stopPropagation(); const r = this.getBoundingClientRect(); $('#filterPop').css({ display: 'block', left: r.left + scrollX - 100, top: r.bottom + scrollY + 4 }); });
+  $(document).on('click', '#filterPop button', function(e){ e.preventDefault(); $('#filterPop').hide(); });
+  $(document).on('mousedown', function(e){ if (!$(e.target).closest('#filterPop, .k-grid-filter-menu').length) $('#filterPop').hide(); });
   const win = $('#editWindow').kendoWindow({ title: 'Add File Transfer Configuration', width: '75%' }).data('kendoWindow');
+  // closing with an edit in it: the X asks first (the live portal's "form data has changed"), Cancel closes without asking
+  let dirty = false;
+  $(document).on('input', '#editWindow input', () => { dirty = true; });
+  document.addEventListener('click', (e) => {
+    const x = e.target.closest && e.target.closest('.k-window-titlebar-action');
+    if (!dirty || !x || !$(x).closest('.k-window').find('#editWindow').length || $('#leaveConfirm').length) return;
+    e.stopImmediatePropagation(); e.preventDefault();
+    const c = $('<div id="leaveConfirm" class="k-window k-dialog" style="position:fixed;left:50%;top:40%;margin-left:-210px;z-index:20000;width:420px"><div class="k-window-titlebar"><span class="k-window-title">Alert Confirmation</span></div><div class="k-window-content">Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?<div class="buttons"><span class="spacer"></span><button type="button" class="btn" id="leaveNo">No</button><button type="button" class="btn btn-primary" id="leaveYes">Yes</button></div></div></div>').appendTo('body');
+    $('#leaveNo').on('click', () => c.remove());
+    $('#leaveYes').on('click', () => { c.remove(); dirty = false; win.close(); });
+  }, true);
   const dest = $('#destWindow').kendoWindow({ title: 'Add Destination', width: '50%' }).data('kendoWindow');
-  $('#btnCreate').on('click', () => { win.wrapper.find('.k-window-title').text('Add File Transfer Configuration'); win.refresh({ url: '/FileTransfer/EditPopup' }).then(() => win.open()); });
+  $('#btnCreate').on('click', () => { dirty = false; win.wrapper.find('.k-window-title').text('Add File Transfer Configuration'); win.refresh({ url: '/FileTransfer/EditPopup' }).then(() => win.open()); });
   $(document).on('click', '#btnAddDest', () => dest.refresh({ url: '/FileTransfer/DestinationPopup' }).then(() => dest.open()));
   $(document).on('click', '.k-window [id^=btnCancel]', function(){ $(this).closest('.k-window').find('[data-role=window]').data('kendoWindow').close(); });
   $('#grid').on('click', 'a.clickable', () => { win.wrapper.find('.k-window-title').text('Edit File Transfer Configuration'); win.refresh({ url: '/FileTransfer/EditPopup' }).then(() => win.open()); });
 });</script>`,
+  }),
+  // a page whose Search with nothing typed answers with a validation banner (and a message under the field), not a grid; a date prefilled with today; a masked empty date; a radio that shows a part
+  '/FileTransfer/SearchFTPServerCredentials': () => ({
+    title: 'FTP Server Credentials', module: 'File Transfer Services', bodyClass: 'FileTransfer SearchFTPServerCredentials',
+    body: `<div class="page-toolbar"><button class="btn" type="button" id="btnCreate" onclick="location.href='/FileTransfer/AddFtpCredential'">Create New</button></div><div class="editor-validation-summary validation-summary" style="display:none"><i class="msg-inline-icon fa-solid fa-ban"></i><div class="msg-inline-close panel-icon clickable" role="alert" data-hide="alert" aria-label="close" tabindex="0"><span class="fa-solid fa-xmark" title="Close" data-role="tooltip"></span></div>Resolve the following form field errors and try again.<ul class="validation-errors"></ul></div>` +
+      searchCriteria(`<div class="editor-row">${field('ServerName', 'Server Name', text('ServerName', 'ServerName', 'maxlength="50"'))}${field('BeginDate', 'Begin Date', '<input id="BeginDate" name="BeginDate">')}${field('EndDate', 'End Date', '<input id="EndDate" name="EndDate">')}</div>
+<div class="editor-row"><div class="editor-col"><div class="editor-label"><label>Schedule</label></div><label><input type="radio" name="Sched" value="D"> Daily</label> <label><input type="radio" name="Sched" value="W"> Weekly</label><div id="weeklyPart" style="display:none"><label>Weekday <input name="Weekday"></label></div></div></div>`) + results() +
+      `<script>$(function(){
+  $('#BeginDate').kendoDatePicker({ format: 'MM/dd/yyyy', value: new Date() });
+  $('#EndDate').kendoDatePicker({ format: 'MM/dd/yyyy' });
+  $('#EndDate').on('focus', function(){ if (!this.value) this.value = '__/__/____'; }).on('blur', function(){ if (this.value === '__/__/____') this.value = ''; });
+  $('#grid').kendoGrid({ autoBind: false, columns: [{ field: 'Server', title: 'Server Name' }, { field: 'Status', title: 'Status' }], dataSource: { pageSize: 10, transport: { read: { url: '/FileTransfer/GetFtp', type: 'POST', dataType: 'json' } }, schema: { data: 'Data', total: 'Total' } } });
+  $('input[name=Sched]').on('change', function(){ $('#weeklyPart').toggle(this.value === 'W'); });
+  $('#btnSearch').on('click', function(){
+    if (!$('#ServerName').val()) {
+      $('.validation-errors').html('<li>Enter at least one search criteria.</li>'); $('.validation-summary').show();
+      const col = $('#ServerName').closest('.editor-col'); col.find('.msg').remove(); col.append('<span class="field-validation-error msg" data-valmsg-for="ServerName">Server Name is required.</span>');
+      return;
+    }
+    $('.validation-summary').hide(); $('#divResults').show(); $('#grid').data('kendoGrid').dataSource.read();
+  });
+  $(document).on('click', '[data-hide=alert]', function(){ $(this).closest('.validation-summary').hide(); });
+  ${collapse}
+});</script>`,
+  }),
+  // the page a Create New goes to (the live portal's Add pages: a screen of their own, not a dialog)
+  '/FileTransfer/AddFtpCredential': () => ({
+    title: 'Add FTP Credential', module: 'File Transfer Services', bodyClass: 'FileTransfer AddFtpCredential',
+    body: `<div class="content-panel-container"><div class="content-panel-hdr">Add FTP Credential</div><div class="content-panel-bdy"><div class="editor-row">${field('NewServer', 'Server Name', text('NewServer', 'NewServer', 'maxlength="50"'))}</div><div class="buttons"><button class="btn" type="button" id="btnReset">Reset</button><span class="spacer"></span><button class="btn btn-primary" type="button" id="btnSave">Save</button></div></div></div>`,
   }),
   '/FileTransfer/SearchFileTransferTracking': () => ({
     title: 'File Transfer Tracking', module: 'File Transfer Services', help: true, bodyClass: 'FileTransfer SearchFileTransferTracking',
@@ -163,12 +217,14 @@ function onDisplayTrackingView() {
 </script>`,
   }),
 };
-const POPUP = `<div class="editor-req-field-row">Required Fields ( <span class="editor-req-field fa-solid fa-asterisk"></span>)</div>
+const POPUP = `<div class="editor-validation-summary validation-summary" style="display:none"><i class="msg-inline-icon fa-solid fa-ban"></i><div class="msg-inline-close panel-icon clickable" role="alert" data-hide="alert" aria-label="close" tabindex="0"><span class="fa-solid fa-xmark" title="Close" data-role="tooltip"></span></div>Resolve the following form field errors and try again.<ul class="validation-errors"></ul></div>
+<div class="editor-req-field-row">Required Fields ( <span class="editor-req-field fa-solid fa-asterisk"></span>)</div>
 <div class="content-panel-container"><div class="content-panel-hdr">Source Configuration</div><div class="content-panel-bdy">
 <div class="editor-row">${field('Edit_ConfigName', 'Configuration Name', text('Edit_ConfigName', 'ConfigName', 'data-val="true" data-val-required="Configuration Name is a required field." data-val-length="Configuration Name has a maximum length of 50 characters." data-val-length-max="50" maxlength="50"'), 'Configuration Name', true)}
 ${field('Edit_Protocol', 'Protocol', '<input id="Edit_Protocol" name="EditProtocol" data-val="true" data-val-required="Protocol is a required field.">', 'Protocol', true)}
 ${field('Edit_OwnerEmail', 'Owner Email', text('Edit_OwnerEmail', 'OwnerEmail', 'data-val="true" data-val-email="Owner Email is not a valid e-mail address."'))}</div>
 <div class="editor-row"><label><input type="radio" name="RunSchedule" value="W"> Run Weekly</label><label><input type="radio" name="RunSchedule" value="M"> Run Monthly</label><label><input type="checkbox" name="Active" checked> Active</label></div>
+<div id="monthlyPart" style="display:none"><label>Run Day Of Month <input name="RunDay"></label></div>
 </div></div>
 <div class="content-panel-container"><div class="content-panel-hdr">Destination Configuration <button class="btn" type="button" id="btnAddDest">Create New</button></div><div class="content-panel-bdy"><div id="destGrid"></div></div></div>
 <div class="buttons"><button class="btn" type="button" id="btnResetEdit">Reset</button><span class="spacer"></span><button class="btn" type="button" id="btnCancelEdit">Cancel</button><button class="btn btn-primary" type="button" id="btnSave">Save</button></div>
@@ -176,6 +232,13 @@ ${field('Edit_OwnerEmail', 'Owner Email', text('Edit_OwnerEmail', 'OwnerEmail', 
 <div class="editor-row">${field('DestinationName', 'Destination Name', text('DestinationName', 'DestinationName', 'data-val="true" data-val-required="Destination Name is a required field."'), 'Destination Name', true)}</div>
 <div class="buttons"><span class="spacer"></span><input id="DestinationCancelButton" type="button" value="Cancel" class="btn"><input id="SaveAndCloseButton" type="button" value="Save" class="btn btn-primary"></div></div></div></div>
 <script>$('#Edit_Protocol').kendoDropDownList({ optionLabel: 'select a value...', dataSource: ['FTP','SFTP','UNC'] });
+// a radio shows a part that is hidden at rest; Save with nothing filled shows the summary banner and a message under each required field (no request)
+$('input[name=RunSchedule]').on('change', function(){ $('#monthlyPart').toggle(this.value === 'M'); });
+$('#btnSave').on('click', function(){
+  let bad = false;
+  $('#editWindow [data-val-required]').each(function(){ if (!$(this).val()) { bad = true; const col = $(this).closest('.editor-col'); col.find('.msg').remove(); col.append('<span class="field-validation-error msg" data-valmsg-for="' + this.name + '">' + $(this).attr('data-val-required') + '</span>'); } });
+  if (bad) $('#editWindow .validation-summary').show();
+});
 $('#destGrid').kendoGrid({ autoBind: false, noRecords: 'There are no records found.', columns: [{ field: 'Address', title: 'Destination Address' }, { field: 'Protocol', title: 'Destination Protocol' }], dataSource: { data: [] } });
 // the client's Add dialog: a second Create New in the Destination grid's toolbar shows a form that is part of the same dialog
 $('#destGrid').prepend('<div class="k-toolbar k-grid-toolbar"><button id="DestinationGridAddButton" title="Create New" type="button" class="k-button"><span class="k-button-text">Create New</span></button></div>');
@@ -203,6 +266,7 @@ export function startProviderPortal(port, { password, cookie }) {
     }
     if (u.pathname !== '/Home/MyHome/' && !authed) { res.writeHead(302, { location: '/Home/MyHome/' }); return res.end(); }
     if (u.pathname === '/FileTransfer/GetSourceLocations') return send(200, 'application/json', JSON.stringify(rows(23, (i) => ({ ConfigId: i + 4, ConfigName: `Config${i}`, Protocol: ['FTP', 'SFTP', 'UNC'][i % 3], Owner: `Owner ${i}`, Status: 'Active' }))));
+    if (u.pathname === '/FileTransfer/GetFtp') return send(200, 'application/json', JSON.stringify(rows(5, (i) => ({ Server: `ftp${i}.example.test`, Status: 'Active' }))));
     if (u.pathname === '/FileTransfer/GetTracking') return send(200, 'application/json', JSON.stringify(rows(14, (i) => ({ FileId: `f${1000 + i}`, FileName: `\\\\share\\file${i}.txt`, Status: 'Complete', Created: '5/25/2021 7:37 AM' }))));
     if (u.pathname === '/FileTransfer/EditPopup') return send(200, 'text/html', POPUP);
     if (u.pathname === '/FileTransfer/DestinationPopup') return send(200, 'text/html', DEST);

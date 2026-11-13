@@ -161,7 +161,8 @@ export async function capture({ browser, cfg, url, out, viewport, dpr, log, user
 
     const snap = await snapshot({ page: s.page, out, log, fullCss: !!cfg.fullCss });
     // the kit's clicks come after every picture of the page at rest
-    if (kit) await kit.explore({ page: s.page, context: s.context, s, out, log, kit: kitRest });
+    // `open` gives a kit a second page on the same site (same login, no saved assets) for the viewport profiles
+    if (kit) await kit.explore({ page: s.page, context: s.context, s, out, log, kit: kitRest, cfg, url, viewport, dpr, open: (o) => openPage(browser, cfg, o) });
     const entries = build(mstatic, movers, snap.keyframes);
     writeJson(path.join(out, 'motion.json'), { capturedAt: new Date().toISOString(), sampleSec: cfg.motion?.sampleSec ?? 10, freeze: fz, entries, transitions: mstatic.transitions, hints: mstatic.hints, running: mstatic.running });
     const kinds = Object.entries(entries.reduce((a, e) => ({ ...a, [e.kind]: (a[e.kind] || 0) + 1 }), {})).map(([k, n]) => `${n} ${k}`).join(', ') || 'none';

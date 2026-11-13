@@ -4,6 +4,10 @@
 interaction there: dialogs, dates, Search, validation, chevrons, conditional fields, closing a dialog with unsaved changes,
 the grid's filter icon. It changes nothing in the tool. It writes the answers to `docs/probe/`, which are then used to make the tool smarter.
 
+The conclusions of the runs so far, and where the tool handles each, are in [probe-findings.md](probe-findings.md). The capture now records most of what the
+probe measures (viewport profiles, Search outcome, Save validation, close confirms, conditional parts, dates, the filter popup) on every screen; the probe stays
+as the quick census to run on a **new module** first: it tells you whether the module has a pattern the kit does not handle yet.
+
 No Codex: the probe is a plain script. It never clicks Delete or Update. Save is clicked only with every POST blocked (to see the
 validation), and a dialog that was edited is always closed without saving.
 
