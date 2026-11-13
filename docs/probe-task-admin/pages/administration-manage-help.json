@@ -1,0 +1,522 @@
+{
+ "label": "Administration > Manage Help",
+ "trail": [
+  "Administration",
+  "Manage Help"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ManageHelpContent/HelpContentSearch",
+ "at": "2026-11-13T07:41:34.353Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage Help",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 12,
+    "dropdownlist": 5,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 4,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 5,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "Search Criteria",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 247
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0,
+      "title": "Expand"
+     },
+     "durationMs": 400,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 2,
+       "h": 246
+      },
+      {
+       "t": 25,
+       "h": 244
+      },
+      {
+       "t": 57,
+       "h": 235
+      },
+      {
+       "t": 87,
+       "h": 219
+      },
+      {
+       "t": 119,
+       "h": 197
+      },
+      {
+       "t": 151,
+       "h": 170
+      },
+      {
+       "t": 181,
+       "h": 143
+      },
+      {
+       "t": 212,
+       "h": 113
+      },
+      {
+       "t": 244,
+       "h": 82
+      },
+      {
+       "t": 275,
+       "h": 56
+      },
+      {
+       "t": 306,
+       "h": 33
+      },
+      {
+       "t": 338,
+       "h": 15
+      },
+      {
+       "t": 369,
+       "h": 4
+      },
+      {
+       "t": 400,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 247,
+      "title": "Collapse"
+     },
+     "durationMs": 402,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 3,
+       "h": 0
+      },
+      {
+       "t": 28,
+       "h": 3
+      },
+      {
+       "t": 58,
+       "h": 12
+      },
+      {
+       "t": 90,
+       "h": 29
+      },
+      {
+       "t": 121,
+       "h": 51
+      },
+      {
+       "t": 152,
+       "h": 77
+      },
+      {
+       "t": 183,
+       "h": 106
+      },
+      {
+       "t": 214,
+       "h": 136
+      },
+      {
+       "t": 246,
+       "h": 166
+      },
+      {
+       "t": 278,
+       "h": 193
+      },
+      {
+       "t": 309,
+       "h": 216
+      },
+      {
+       "t": 340,
+       "h": 233
+      },
+      {
+       "t": 372,
+       "h": 243
+      },
+      {
+       "t": 402,
+       "h": 247
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 1884,
+   "reveals": [],
+   "hides": [
+    {
+     "sel": "#ReleaseStatusList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [],
+    "fields": [
+     {
+      "for": "SearchModuleList",
+      "text": "Search Module is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"SearchModuleList\" id=\"SearchModuleList_validationMessage\" data-valmsg-for=\"SearchModuleList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Search Module is a required field.</span>"
+     },
+     {
+      "for": "SearchHelpTypeList",
+      "text": "Help Type is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"SearchHelpTypeList\" id=\"SearchHelpTypeList_validationMessage\" data-valmsg-for=\"SearchHelpTypeList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Help Type is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "SearchModuleList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "SearchHelpTypeList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "administration-manage-help--page-search-validation.png"
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "viewports": [
+   {
+    "viewport": {
+     "width": 1920,
+     "height": 1080
+    },
+    "layout": {
+     "inner": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": false,
+      "max768": false,
+      "portrait": false,
+      "isPhone": false
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 106,
+      "h": 30,
+      "text": "Manage Help"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1920,
+      "h": 374
+     },
+     "footer": {
+      "x": 0,
+      "y": 512,
+      "w": 1920,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1852,
+        "y": 0,
+        "w": 68,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1862,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      }
+     ],
+     "navLinks": [
+      "Messages",
+      "External Links",
+      "Favorites",
+      "Contact Us",
+      "My Account",
+      "Logout"
+     ],
+     "page": {
+      "scrollW": 1920,
+      "scrollH": 1080,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-help--layout-1920x1080.png"
+   },
+   {
+    "viewport": {
+     "width": 1272,
+     "height": 588
+    },
+    "layout": {
+     "inner": {
+      "w": 1272,
+      "h": 588,
+      "docW": 1257,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": true,
+      "max768": false,
+      "portrait": false,
+      "isPhone": true
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1257,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 106,
+      "h": 30,
+      "text": "Manage Help"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1257,
+      "h": 374
+     },
+     "footer": {
+      "x": 0,
+      "y": 512,
+      "w": 1257,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": true,
+       "rect": {
+        "x": 537,
+        "y": 0,
+        "w": 720,
+        "h": 62
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1187,
+        "y": 0,
+        "w": 70,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1197,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      }
+     ],
+     "navLinks": [],
+     "page": {
+      "scrollW": 1257,
+      "scrollH": 631,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-help--layout-1272x588.png"
+   }
+  ],
+  "shots": [
+   "administration-manage-help--page-search-validation.png",
+   "administration-manage-help--layout-1920x1080.png",
+   "administration-manage-help--layout-1272x588.png"
+  ]
+ },
+ "ms": 49789
+}

@@ -1,0 +1,599 @@
+{
+ "label": "Administration > Manage IOC Settings",
+ "trail": [
+  "Administration",
+  "Manage IOC Settings"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/AppSetting/ManageIocSettings",
+ "at": "2026-11-13T07:43:09.169Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage IOC Settings",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 26,
+    "dropdownlist": 7,
+    "button": 1,
+    "resizable": 1,
+    "columnsorter": 8,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1,
+    "checkbox": 1,
+    "textbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 13,
+   "hiddenAtRest": 6,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 6,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "TenantModuleList",
+     "label": "TenantModuleList",
+     "value": "50c9bb65-311f-69e0-e053-4c65a28f8a9e",
+     "text": "Administration",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "ApplicationList",
+       "before": {
+        "enabled": false,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 8
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/LocalizationMaint/GetApplicationListData/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "TenantModuleList",
+     "label": "TenantModuleList",
+     "value": "50c9bb65-3a1f-69e0-e053-4c65a28f8a9e",
+     "text": "Auth Determination",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "ApplicationList",
+       "before": {
+        "enabled": true,
+        "options": 8
+       },
+       "after": {
+        "enabled": true,
+        "options": 4
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/LocalizationMaint/GetApplicationListData/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "TenantModuleList",
+     "label": "TenantModuleList",
+     "value": "50c9bb65-421f-69e0-e053-4c65a28f8a9e",
+     "text": "Claims Management",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "ApplicationList",
+       "before": {
+        "enabled": true,
+        "options": 4
+       },
+       "after": {
+        "enabled": true,
+        "options": 3
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/LocalizationMaint/GetApplicationListData/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "TenantModuleList",
+     "label": "TenantModuleList",
+     "value": "50c9bb65-301f-69e0-e053-4c65a28f8a9e",
+     "text": "Core",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "ApplicationList",
+       "before": {
+        "enabled": true,
+        "options": 3
+       },
+       "after": {
+        "enabled": true,
+        "options": 17
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/LocalizationMaint/GetApplicationListData/",
+       "status": "sent"
+      }
+     ]
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "Search Criteria",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 196
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0,
+      "title": "Expand"
+     },
+     "durationMs": 415,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 2,
+       "h": 195
+      },
+      {
+       "t": 41,
+       "h": 190
+      },
+      {
+       "t": 72,
+       "h": 180
+      },
+      {
+       "t": 103,
+       "h": 165
+      },
+      {
+       "t": 134,
+       "h": 146
+      },
+      {
+       "t": 166,
+       "h": 124
+      },
+      {
+       "t": 196,
+       "h": 101
+      },
+      {
+       "t": 228,
+       "h": 76
+      },
+      {
+       "t": 259,
+       "h": 54
+      },
+      {
+       "t": 290,
+       "h": 34
+      },
+      {
+       "t": 323,
+       "h": 17
+      },
+      {
+       "t": 353,
+       "h": 7
+      },
+      {
+       "t": 385,
+       "h": 1
+      },
+      {
+       "t": 415,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 196,
+      "title": "Collapse"
+     },
+     "durationMs": 402,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 3,
+       "h": 0
+      },
+      {
+       "t": 27,
+       "h": 2
+      },
+      {
+       "t": 59,
+       "h": 10
+      },
+      {
+       "t": 89,
+       "h": 23
+      },
+      {
+       "t": 120,
+       "h": 40
+      },
+      {
+       "t": 152,
+       "h": 62
+      },
+      {
+       "t": 184,
+       "h": 85
+      },
+      {
+       "t": 214,
+       "h": 108
+      },
+      {
+       "t": 245,
+       "h": 132
+      },
+      {
+       "t": 277,
+       "h": 153
+      },
+      {
+       "t": 309,
+       "h": 172
+      },
+      {
+       "t": 339,
+       "h": 184
+      },
+      {
+       "t": 372,
+       "h": 193
+      },
+      {
+       "t": 402,
+       "h": 196
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 5791,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h5\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results Create New kendo.syncReady(function(){jQuery(\"#iocSettingItemAddButton\").kendoButton({\"click\":onIocSettin"
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/AppSetting/SearchAppSettings/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 67,
+    "visibleMs": 5050
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "viewports": [
+   {
+    "viewport": {
+     "width": 1920,
+     "height": 1080
+    },
+    "layout": {
+     "inner": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": false,
+      "max768": false,
+      "portrait": false,
+      "isPhone": false
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 160,
+      "h": 30,
+      "text": "Manage IOC Settings"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1920,
+      "h": 344
+     },
+     "footer": {
+      "x": 0,
+      "y": 482,
+      "w": 1920,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1852,
+        "y": 0,
+        "w": 68,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1862,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      }
+     ],
+     "navLinks": [
+      "Messages",
+      "External Links",
+      "Favorites",
+      "Contact Us",
+      "My Account",
+      "Logout"
+     ],
+     "page": {
+      "scrollW": 1920,
+      "scrollH": 1080,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-ioc-settings--layout-1920x1080.png"
+   },
+   {
+    "viewport": {
+     "width": 1272,
+     "height": 588
+    },
+    "layout": {
+     "inner": {
+      "w": 1272,
+      "h": 588,
+      "docW": 1257,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": true,
+      "max768": false,
+      "portrait": false,
+      "isPhone": true
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1257,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 160,
+      "h": 30,
+      "text": "Manage IOC Settings"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1257,
+      "h": 344
+     },
+     "footer": {
+      "x": 0,
+      "y": 482,
+      "w": 1257,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": true,
+       "rect": {
+        "x": 537,
+        "y": 0,
+        "w": 720,
+        "h": 62
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1187,
+        "y": 0,
+        "w": 70,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1197,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      }
+     ],
+     "navLinks": [],
+     "page": {
+      "scrollW": 1257,
+      "scrollH": 601,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-ioc-settings--layout-1272x588.png"
+   }
+  ],
+  "shots": [
+   "administration-manage-ioc-settings--layout-1920x1080.png",
+   "administration-manage-ioc-settings--layout-1272x588.png"
+  ]
+ },
+ "ms": 57413
+}

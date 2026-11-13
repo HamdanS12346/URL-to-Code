@@ -1,0 +1,1223 @@
+{
+ "label": "Task Management > Routing Configuration",
+ "trail": [
+  "Task Management",
+  "Routing Configuration"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/TaskManagement/SearchRoutingConfiguration",
+ "at": "2026-11-13T08:05:51.788Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Routing Configuration",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 21,
+    "button": 3,
+    "dropdownlist": 6,
+    "autocomplete": 1,
+    "textbox": 1,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 5,
+    "filtermulticheck": 4,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 3,
+   "hiddenAtRest": 5,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "autocomplete": {
+    "count": 1,
+    "ids": [
+     "SearchRoutingPathIdAutoComplete"
+    ]
+   }
+  },
+  "hiddenAtRest": 5,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "SearchTaskAssignedModuleList",
+     "label": "SearchTaskAssignedModuleList",
+     "value": "AD",
+     "text": "Auth Determination",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchDepartmentList",
+       "before": {
+        "enabled": false,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 0
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskDepartment/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "SearchTaskAssignedModuleList",
+     "label": "SearchTaskAssignedModuleList",
+     "value": "CL",
+     "text": "Claims",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchDepartmentList",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 4
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskDepartment/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "SearchTaskAssignedModuleList",
+     "label": "SearchTaskAssignedModuleList",
+     "value": "DR",
+     "text": "Drug Rebate",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchDepartmentList",
+       "before": {
+        "enabled": true,
+        "options": 4
+       },
+       "after": {
+        "enabled": true,
+        "options": 0
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskDepartment/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "SearchTaskAssignedModuleList",
+     "label": "SearchTaskAssignedModuleList",
+     "value": "MC",
+     "text": "Managed Care",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SearchDepartmentList",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 6
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/Localization/GetFilteredDataList/PlanManagement.DataList.TaskDepartment/",
+       "status": "sent"
+      }
+     ]
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "Search Criteria",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 259
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0,
+      "title": "Expand"
+     },
+     "durationMs": 413,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 3,
+       "h": 259
+      },
+      {
+       "t": 39,
+       "h": 253
+      },
+      {
+       "t": 70,
+       "h": 240
+      },
+      {
+       "t": 101,
+       "h": 220
+      },
+      {
+       "t": 132,
+       "h": 195
+      },
+      {
+       "t": 164,
+       "h": 166
+      },
+      {
+       "t": 195,
+       "h": 134
+      },
+      {
+       "t": 226,
+       "h": 103
+      },
+      {
+       "t": 257,
+       "h": 73
+      },
+      {
+       "t": 289,
+       "h": 46
+      },
+      {
+       "t": 319,
+       "h": 25
+      },
+      {
+       "t": 351,
+       "h": 9
+      },
+      {
+       "t": 383,
+       "h": 1
+      },
+      {
+       "t": 413,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 259,
+      "title": "Collapse"
+     },
+     "durationMs": 401,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 3,
+       "h": 0
+      },
+      {
+       "t": 27,
+       "h": 3
+      },
+      {
+       "t": 59,
+       "h": 13
+      },
+      {
+       "t": 89,
+       "h": 30
+      },
+      {
+       "t": 120,
+       "h": 53
+      },
+      {
+       "t": 151,
+       "h": 81
+      },
+      {
+       "t": 183,
+       "h": 112
+      },
+      {
+       "t": 214,
+       "h": 143
+      },
+      {
+       "t": 245,
+       "h": 173
+      },
+      {
+       "t": 277,
+       "h": 203
+      },
+      {
+       "t": 308,
+       "h": 226
+      },
+      {
+       "t": 340,
+       "h": 245
+      },
+      {
+       "t": 370,
+       "h": 255
+      },
+      {
+       "t": 401,
+       "h": 259
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 1907,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again."
+    }
+   ],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 55
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" style=\"display: block;\" data-kit-h=\"h1\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [
+     {
+      "for": "SearchByList",
+      "text": "Search By is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"SearchByList\" id=\"SearchByList_validationMessage\" data-valmsg-for=\"SearchByList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Search By is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "SearchByList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "task-management-routing-configuration--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "info": {
+     "title": "Add Routing Configuration",
+     "options": {
+      "modal": {
+       "preventScroll": true
+      },
+      "width": null,
+      "height": null,
+      "actions": [
+       "Custom",
+       "Close"
+      ],
+      "draggable": false,
+      "resizable": false,
+      "animation": {
+       "open": {
+        "effects": {},
+        "duration": 350
+       },
+       "close": {
+        "effects": {},
+        "duration": 350,
+        "hide": true
+       }
+      },
+      "position": {
+       "top": 347.29150000000004,
+       "left": 240
+      }
+     },
+     "windowClass": "k-window panelForm-col-6 ui-draggable",
+     "contentId": "AddRoutingConfiguration",
+     "fields": 20,
+     "required": 5,
+     "hidden": 11,
+     "unknown": {},
+     "actions": [
+      "close: Close",
+      "reset: Reset",
+      "cancel: Cancel",
+      "save: Save"
+     ]
+    },
+    "position": {
+     "viewport": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920
+     },
+     "rect": {
+      "x": 240,
+      "y": 347,
+      "w": 1440,
+      "h": 385
+     },
+     "leftGap": 240,
+     "rightGap": 240,
+     "centeredLeft": 240,
+     "centered": true,
+     "touchesLeft": false,
+     "widerThanViewport": false,
+     "overflowRight": false,
+     "style": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 347.291px; left: 240px; z-index: 11502; opacity: 1; transform: scale(1);",
+     "className": "k-window panelForm-col-6 ui-draggable",
+     "fitsViewport": true,
+     "heightPct": 36,
+     "contentScrolls": false,
+     "contentH": {
+      "scroll": 347,
+      "client": 347,
+      "overflowY": "auto"
+     },
+     "isPhone": false,
+     "computed": {
+      "width": "1440px",
+      "minWidth": "90px",
+      "maxWidth": "none",
+      "maxHeight": "918px",
+      "position": "absolute",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+     },
+     "kendo": {
+      "position": {
+       "top": 347.29150000000004,
+       "left": 240
+      },
+      "width": null,
+      "minWidth": 90,
+      "maxWidth": null
+     },
+     "rules": [
+      {
+       "selector": ".panel-form-col-6, .panelForm-col-6",
+       "width": "75%"
+      }
+     ],
+     "contentRules": [],
+     "title": "Add Routing Configuration"
+    },
+    "shot": "task-management-routing-configuration--create1.png",
+    "census": {
+     "roles": {
+      "validator": 1,
+      "tooltip": 15,
+      "textbox": 2,
+      "datepicker": 2,
+      "dropdownlist": 4
+     },
+     "buttons": [
+      {
+       "text": "Reset",
+       "action": "reset"
+      },
+      {
+       "text": "Cancel",
+       "action": "cancel"
+      },
+      {
+       "text": "Save",
+       "action": "save"
+      }
+     ],
+     "radios": {},
+     "checkboxes": 0,
+     "required": 10,
+     "hiddenAtRest": 11,
+     "tabs": [],
+     "collapsibles": 0
+    },
+    "dates": {
+     "inputs": [
+      {
+       "role": "datepicker",
+       "id": "EffectiveDate",
+       "name": "EffectiveDate",
+       "label": "Effective Date",
+       "valueAttr": "11/13/2026",
+       "shows": "11/13/2026",
+       "prefilled": true,
+       "offsetDays": 0,
+       "format": "MM/dd/yyyy",
+       "placeholder": null,
+       "masked": false,
+       "required": true,
+       "enabled": true
+      },
+      {
+       "role": "datepicker",
+       "id": "EndDate",
+       "name": "EndDate",
+       "label": "End Date",
+       "valueAttr": "12/31/9999",
+       "shows": "12/31/9999",
+       "prefilled": true,
+       "offsetDays": 2912126,
+       "format": "MM/dd/yyyy",
+       "placeholder": null,
+       "masked": false,
+       "required": true,
+       "enabled": true
+      }
+     ],
+     "drive": {
+      "role": "datepicker",
+      "label": "Effective Date",
+      "atRest": "11/13/2026",
+      "onFocus": "11/13/2026",
+      "onCalendarButton": "11/13/2026",
+      "popup": {
+       "x": 1196,
+       "y": 521,
+       "w": 345,
+       "h": 365
+      },
+      "input": {
+       "x": 1196,
+       "y": 481,
+       "w": 221,
+       "h": 40
+      },
+      "shot": "task-management-routing-configuration--create1-date-open.png",
+      "afterPick": "11/13/2026",
+      "popupAfterPick": false,
+      "afterBlur": "11/13/2026"
+     }
+    },
+    "conditionals": {
+     "radios": [],
+     "checkboxes": [],
+     "dropdowns": []
+    },
+    "toggles": [],
+    "nested": null,
+    "saveEmpty": {
+     "validation": {
+      "summary": [
+       {
+        "className": "msg-inline-close panel-icon clickable",
+        "text": "",
+        "icons": [
+         "fa-solid fa-circle-xmark"
+        ],
+        "rect": {
+         "x": 1594,
+         "y": 391,
+         "w": 30,
+         "h": 35
+        },
+        "html": "<div id=\"ValSummClose\" class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide-overlay=\"alert\" aria-label=\"close\" tabindex=\"0\">\n                        <span class=\"fa-solid fa-circle-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n                    </div>",
+        "close": null
+       },
+       {
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "text": "Routing Path ID is a required field.",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "rect": {
+         "x": 251,
+         "y": 525,
+         "w": 340,
+         "h": 27
+        },
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"RoutingPathID_validationMessage\" role=\"alert\" data-for=\"RoutingPathID\" data-valmsg-for=\"RoutingPathID\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Routing Path ID is a required field.</span>",
+        "close": null
+       },
+       {
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "text": "Routing Path Description is a required field.",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "rect": {
+         "x": 605,
+         "y": 525,
+         "w": 576,
+         "h": 27
+        },
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"RoutingPathDesc_validationMessage\" role=\"alert\" data-for=\"RoutingPathDesc\" data-valmsg-for=\"RoutingPathDesc\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Routing Path Description is a required field.</span>",
+        "close": null
+       }
+      ],
+      "fields": [
+       {
+        "for": "RoutingPathID",
+        "text": "Routing Path ID is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"RoutingPathID_validationMessage\" role=\"alert\" data-for=\"RoutingPathID\" data-valmsg-for=\"RoutingPathID\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Routing Path ID is a required field.</span>"
+       },
+       {
+        "for": "RoutingPathDesc",
+        "text": "Routing Path Description is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"RoutingPathDesc_validationMessage\" role=\"alert\" data-for=\"RoutingPathDesc\" data-valmsg-for=\"RoutingPathDesc\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Routing Path Description is a required field.</span>"
+       },
+       {
+        "for": "TaskAssignedModuleCode",
+        "text": "Task Assigned is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"TaskAssignedModuleCode_validationMessage\" role=\"alert\" data-for=\"TaskAssignedModuleCode\" data-valmsg-for=\"TaskAssignedModuleCode\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Task Assigned is a required field.</span>"
+       }
+      ],
+      "invalid": [
+       {
+        "name": "RoutingPathID",
+        "className": "k-input k-textbox editor-control",
+        "border": "rgb(90, 105, 120)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "RoutingPathDesc",
+        "className": "k-input k-textbox editor-control",
+        "border": "rgb(90, 105, 120)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "TaskAssignedModuleCode",
+        "className": "k-picker k-dropdownlist editor-control",
+        "border": "rgb(90, 105, 120)",
+        "background": "rgb(255, 255, 255)"
+       }
+      ],
+      "shot": "task-management-routing-configuration--sk-management-routing-configuration-save-validation.png"
+     },
+     "postAttempted": [],
+     "stillOpen": true,
+     "native": []
+    },
+    "close": {
+     "edited": "RoutingPathID",
+     "attempts": [
+      {
+       "via": "x",
+       "edited": "RoutingPathID",
+       "closed": false,
+       "confirm": {
+        "title": "Alert Confirmation",
+        "text": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?",
+        "className": "k-window k-focus",
+        "rect": {
+         "x": 659,
+         "y": 434,
+         "w": 601,
+         "h": 213
+        },
+        "buttons": [
+         {
+          "stamp": "p10",
+          "text": "Stay"
+         },
+         {
+          "stamp": "p11",
+          "text": "Leave"
+         }
+        ],
+        "html": "<div class=\"k-window k-focus\" tabindex=\"0\" role=\"dialog\" aria-labelledby=\"modalMessagePopup_wnd_title\" style=\"min-width: 90px; min-height: 50px; display: inline-flex; top: 433.75px; left: 659.333px; z-index: 11504; opacity: 1; transform: scale(1);\"><div class=\"k-window-titlebar modal-msg-title-alert\"><i class=\"fa-solid modal-msg-icon-alert fa-circle-exclamation\"></i><span class=\"k-window-title\" id=\"modalMessagePopup_wnd_title\">Alert Confirmation</span><div class=\"k-window-titlebar-actions\"></div></div><div id=\"modalMessagePopup\" class=\"modal-msg-panel-container-alert k-window-content\" role=\"dialog\" aria-label=\"Alert Confirmation\" data-role=\"window\" tabindex=\"0\" style=\"\">  <div class=\"panel-body-modal modal-msg-content\">    <div class=\"clear-n-pad\">Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?    </div>    <div id=\"msgButtonRow\" class=\"editor-button-row-modal\">      <div class=\"align-center\">        <input type=\"button\" id=\"cancelModalButton\" class=\"k-button btn-spacer-right\" data-dismiss=\"modal\" value=\"Stay\" onclick=\"checkExecuteFunctionByName(&quot;&quot;, null); removeModalMessagePopup();\" data-probe=\"p10\">        <input type=\"button\" id=\"okButton\" class=\"k-button\" data-dismiss=\"modal\" value=\"Leave\" data-probe=\"p11\">      </div>    </div>  </div></div></div>",
+        "shot": "task-management-routing-configuration--create1-confirm-x.png"
+       },
+       "native": [],
+       "answered": "Stay",
+       "stillOpenAfterStay": true,
+       "leftWith": "Leave",
+       "closedAfterLeave": true
+      },
+      {
+       "via": "cancel",
+       "edited": "RoutingPathID",
+       "closed": false,
+       "confirm": {
+        "title": "Alert Confirmation",
+        "text": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?",
+        "className": "k-window k-focus",
+        "rect": {
+         "x": 659,
+         "y": 434,
+         "w": 601,
+         "h": 213
+        },
+        "buttons": [
+         {
+          "stamp": "p16",
+          "text": "Stay"
+         },
+         {
+          "stamp": "p17",
+          "text": "Leave"
+         }
+        ],
+        "html": "<div class=\"k-window k-focus\" tabindex=\"0\" role=\"dialog\" aria-labelledby=\"modalMessagePopup_wnd_title\" style=\"min-width: 90px; min-height: 50px; display: inline-flex; top: 433.75px; left: 659.333px; z-index: 11504; opacity: 1; transform: scale(1);\"><div class=\"k-window-titlebar modal-msg-title-alert\"><i class=\"fa-solid modal-msg-icon-alert fa-circle-exclamation\"></i><span class=\"k-window-title\" id=\"modalMessagePopup_wnd_title\">Alert Confirmation</span><div class=\"k-window-titlebar-actions\"></div></div><div id=\"modalMessagePopup\" class=\"modal-msg-panel-container-alert k-window-content\" role=\"dialog\" aria-label=\"Alert Confirmation\" data-role=\"window\" tabindex=\"0\" style=\"\">  <div class=\"panel-body-modal modal-msg-content\">    <div class=\"clear-n-pad\">Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?    </div>    <div id=\"msgButtonRow\" class=\"editor-button-row-modal\">      <div class=\"align-center\">        <input type=\"button\" id=\"cancelModalButton\" class=\"k-button btn-spacer-right\" data-dismiss=\"modal\" value=\"Stay\" onclick=\"checkExecuteFunctionByName(&quot;&quot;, null); removeModalMessagePopup();\" data-probe=\"p16\">        <input type=\"button\" id=\"okButton\" class=\"k-button\" data-dismiss=\"modal\" value=\"Leave\" data-probe=\"p17\">      </div>    </div>  </div></div></div>",
+        "shot": "task-management-routing-configuration--create1-confirm-cancel.png"
+       },
+       "native": [],
+       "answered": "Stay",
+       "stillOpenAfterStay": true,
+       "leftWith": "Leave",
+       "closedAfterLeave": true
+      }
+     ]
+    },
+    "loading": {
+     "className": "wait-dialog",
+     "id": "loadingDialog",
+     "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+     "firstAt": 72,
+     "visibleMs": 8450
+    },
+    "requests": [
+     {
+      "method": "GET",
+      "url": "/TaskManagement/AddRoutingConfiguration/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/TaskManagement/SearchAccessModules/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/TaskManagement/SearchAccessModules/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/TaskManagement/AddRoutingConfiguration/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/TaskManagement/SearchAccessModules/",
+      "status": "sent"
+     }
+    ],
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1272,
+       "height": 588
+      },
+      "position": {
+       "viewport": {
+        "w": 1272,
+        "h": 588,
+        "docW": 1272
+       },
+       "rect": {
+        "x": 0,
+        "y": 20,
+        "w": 1145,
+        "h": 385
+       },
+       "leftGap": 0,
+       "rightGap": 127,
+       "centeredLeft": 64,
+       "centered": false,
+       "touchesLeft": true,
+       "widerThanViewport": false,
+       "overflowRight": false,
+       "style": "min-width: 1144.8px; min-height: 50px; max-height: 499.8px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+       "className": "k-window panelForm-col-6 ui-draggable",
+       "fitsViewport": true,
+       "heightPct": 65,
+       "contentScrolls": false,
+       "contentH": {
+        "scroll": 347,
+        "client": 347,
+        "overflowY": "auto"
+       },
+       "isPhone": true,
+       "computed": {
+        "width": "1144.79px",
+        "minWidth": "1144.8px",
+        "maxWidth": "none",
+        "maxHeight": "499.8px",
+        "position": "absolute",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+       },
+       "kendo": {
+        "position": {
+         "top": "0",
+         "left": "0"
+        },
+        "width": null,
+        "minWidth": 90,
+        "maxWidth": null
+       },
+       "rules": [
+        {
+         "selector": ".panel-form-col-6, .panelForm-col-6",
+         "width": "75%"
+        }
+       ],
+       "contentRules": [],
+       "title": "Add Routing Configuration"
+      },
+      "shot": "task-management-routing-configuration--create1-1272x588.png",
+      "cleanClose": {
+       "edited": null,
+       "attempts": [
+        {
+         "via": "x",
+         "edited": null,
+         "closed": true,
+         "confirm": null,
+         "native": []
+        },
+        {
+         "via": "cancel",
+         "edited": null,
+         "closed": true,
+         "confirm": null,
+         "native": []
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": null,
+  "viewports": [
+   {
+    "viewport": {
+     "width": 1920,
+     "height": 1080
+    },
+    "layout": {
+     "inner": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": false,
+      "max768": false,
+      "portrait": false,
+      "isPhone": false
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 187,
+      "y": 62,
+      "w": 169,
+      "h": 30,
+      "text": "Routing Configuration"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 187,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1920,
+      "h": 454
+     },
+     "footer": {
+      "x": 0,
+      "y": 592,
+      "w": 1920,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1852,
+        "y": 0,
+        "w": 68,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1862,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      }
+     ],
+     "navLinks": [
+      "Messages",
+      "External Links",
+      "Favorites",
+      "Contact Us",
+      "My Account",
+      "Logout"
+     ],
+     "page": {
+      "scrollW": 1920,
+      "scrollH": 1080,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "task-management-routing-configuration--layout-1920x1080.png"
+   },
+   {
+    "viewport": {
+     "width": 1272,
+     "height": 588
+    },
+    "layout": {
+     "inner": {
+      "w": 1272,
+      "h": 588,
+      "docW": 1257,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": true,
+      "max768": false,
+      "portrait": false,
+      "isPhone": true
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1257,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 187,
+      "y": 62,
+      "w": 169,
+      "h": 30,
+      "text": "Routing Configuration"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 187,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1257,
+      "h": 454
+     },
+     "footer": {
+      "x": 0,
+      "y": 592,
+      "w": 1257,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": true,
+       "rect": {
+        "x": 537,
+        "y": 0,
+        "w": 720,
+        "h": 62
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1187,
+        "y": 0,
+        "w": 70,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1197,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      }
+     ],
+     "navLinks": [],
+     "page": {
+      "scrollW": 1257,
+      "scrollH": 711,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "task-management-routing-configuration--layout-1272x588.png",
+    "dialog": {
+     "position": {
+      "viewport": {
+       "w": 1272,
+       "h": 588,
+       "docW": 1272
+      },
+      "rect": {
+       "x": 0,
+       "y": 20,
+       "w": 1145,
+       "h": 385
+      },
+      "leftGap": 0,
+      "rightGap": 127,
+      "centeredLeft": 64,
+      "centered": false,
+      "touchesLeft": true,
+      "widerThanViewport": false,
+      "overflowRight": false,
+      "style": "min-width: 1144.8px; min-height: 50px; max-height: 499.8px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+      "className": "k-window panelForm-col-6 ui-draggable",
+      "fitsViewport": true,
+      "heightPct": 65,
+      "contentScrolls": false,
+      "contentH": {
+       "scroll": 347,
+       "client": 347,
+       "overflowY": "auto"
+      },
+      "isPhone": true,
+      "computed": {
+       "width": "1144.79px",
+       "minWidth": "1144.8px",
+       "maxWidth": "none",
+       "maxHeight": "499.8px",
+       "position": "absolute",
+       "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "kendo": {
+       "position": {
+        "top": "0",
+        "left": "0"
+       },
+       "width": null,
+       "minWidth": 90,
+       "maxWidth": null
+      },
+      "rules": [
+       {
+        "selector": ".panel-form-col-6, .panelForm-col-6",
+        "width": "75%"
+       }
+      ],
+      "contentRules": [],
+      "title": "Add Routing Configuration"
+     },
+     "shot": "task-management-routing-configuration--create1-1272x588.png",
+     "cleanClose": {
+      "edited": null,
+      "attempts": [
+       {
+        "via": "x",
+        "edited": null,
+        "closed": true,
+        "confirm": null,
+        "native": []
+       },
+       {
+        "via": "cancel",
+        "edited": null,
+        "closed": true,
+        "confirm": null,
+        "native": []
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "shots": [
+   "task-management-routing-configuration--page-search-validation.png",
+   "task-management-routing-configuration--create1.png",
+   "task-management-routing-configuration--create1-date-open.png",
+   "task-management-routing-configuration--sk-management-routing-configuration-save-validation.png",
+   "task-management-routing-configuration--create1-confirm-x.png",
+   "task-management-routing-configuration--create1-confirm-cancel.png",
+   "task-management-routing-configuration--layout-1920x1080.png",
+   "task-management-routing-configuration--layout-1272x588.png",
+   "task-management-routing-configuration--create1-1272x588.png"
+  ]
+ },
+ "ms": 87949
+}

@@ -1,0 +1,35 @@
+
+==== 2026-11-13T07:35:30.494Z  npm run probe -- fxfer-v4 --modules Task Management,Administration --headed --fresh --out docs\probe-task-admin
+>> login
+  logged in
+kit: provider, viewport 1920x1080 @1, dialogs also at 1920x1080, 1272x588
+menu: packs\fxfer-v4\menu.json (19 modules; --read-menu to read it again)
+27 page(s) to probe
+[1/27] Administration > Broadcast Message: 153s, 1 dialog(s), search
+[2/27] Administration > FAQ's: 55s, 0 dialog(s), search
+[3/27] Administration > Manage Application Settings: 68s, 0 dialog(s), search
+[4/27] Administration > Manage HTML Blocks: 73s, 0 dialog(s), search
+[5/27] Administration > Manage Help: 50s, 0 dialog(s), search
+[6/27] Administration > Manage Images: 45s, 0 dialog(s), search
+[7/27] Administration > Manage IOC Settings: 57s, 0 dialog(s), search
+[8/27] Administration > Manage Labels: 36s, 0 dialog(s), search
+[9/27] Administration > Manage Menus: 84s, 0 dialog(s), search
+[10/27] Administration > Manage Menu Items: 114s, 0 dialog(s), search
+[11/27] Administration > Manage Messages: 56s, 0 dialog(s), search
+[12/27] Administration > Manage Security Functions: 68s, 0 dialog(s), search
+[13/27] Administration > Manage Security Rights: 58s, 0 dialog(s), search
+[14/27] Administration > Manage Security Roles: 40s, 0 dialog(s), search
+[15/27] Administration > Manage Services: 214s, 0 dialog(s), search
+[16/27] Administration > Manage Subscriptions: 80s, 0 dialog(s), search
+[17/27] Administration > Manage Module Events: 72s, 0 dialog(s), search
+[18/27] Administration > Manage Users: 56s, 0 dialog(s), search
+[19/27] Administration > Manage User Invitations: 111s, 1 dialog(s), search
+[20/27] Task Management > Dashboard: 17s, 0 dialog(s)
+[21/27] Task Management > Task Template: 82s, 1 dialog(s), search
+[22/27] Task Management > Task List: 146s, 1 dialog(s), search
+[23/27] Task Management > Link Configuration: 70s, 1 dialog(s), search
+[24/27] Task Management > Routing Configuration: 88s, 1 dialog(s), search
+[25/27] Task Management > Manage User Association: 83s, 1 dialog(s), search
+[26/27] Task Management > Manage User Schedule: 82s, 1 dialog(s), search
+[27/27] Task Management > Bulk Recall: 32s, 0 dialog(s), search
+answers: docs\probe-task-admin\ANSWERS.md (27 pages)

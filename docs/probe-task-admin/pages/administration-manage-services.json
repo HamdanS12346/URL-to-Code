@@ -1,0 +1,551 @@
+{
+ "label": "Administration > Manage Services",
+ "trail": [
+  "Administration",
+  "Manage Services"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Service/ManageServices",
+ "at": "2026-11-13T07:51:42.741Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage Services",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 25,
+    "button": 1,
+    "dropdownlist": 8,
+    "resizable": 1,
+    "columnsorter": 4,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1,
+    "textbox": 4,
+    "checkbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 15,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "Status",
+     "label": "Status",
+     "value": "Inactive",
+     "text": "Inactive",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "SecurityRightDropdown",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 6197
+       }
+      }
+     ],
+     "requests": []
+    },
+    {
+     "name": "SearchReleaseStatusList",
+     "label": "SearchReleaseStatusList",
+     "value": "PENDING",
+     "text": "Pending",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "LabelServiceDropdown",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 415
+       }
+      }
+     ],
+     "requests": []
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "Search Criteria",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 207
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0,
+      "title": "Expand"
+     },
+     "durationMs": 412,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 2,
+       "h": 206
+      },
+      {
+       "t": 36,
+       "h": 202
+      },
+      {
+       "t": 68,
+       "h": 192
+      },
+      {
+       "t": 99,
+       "h": 177
+      },
+      {
+       "t": 131,
+       "h": 157
+      },
+      {
+       "t": 161,
+       "h": 134
+      },
+      {
+       "t": 193,
+       "h": 109
+      },
+      {
+       "t": 225,
+       "h": 83
+      },
+      {
+       "t": 255,
+       "h": 60
+      },
+      {
+       "t": 288,
+       "h": 38
+      },
+      {
+       "t": 319,
+       "h": 20
+      },
+      {
+       "t": 349,
+       "h": 8
+      },
+      {
+       "t": 381,
+       "h": 1
+      },
+      {
+       "t": 412,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 207,
+      "title": "Collapse"
+     },
+     "durationMs": 402,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 3,
+       "h": 0
+      },
+      {
+       "t": 26,
+       "h": 2
+      },
+      {
+       "t": 57,
+       "h": 10
+      },
+      {
+       "t": 88,
+       "h": 24
+      },
+      {
+       "t": 119,
+       "h": 42
+      },
+      {
+       "t": 151,
+       "h": 64
+      },
+      {
+       "t": 183,
+       "h": 90
+      },
+      {
+       "t": 213,
+       "h": 114
+      },
+      {
+       "t": 246,
+       "h": 139
+      },
+      {
+       "t": 277,
+       "h": 162
+      },
+      {
+       "t": 307,
+       "h": 180
+      },
+      {
+       "t": 338,
+       "h": 194
+      },
+      {
+       "t": 370,
+       "h": 204
+      },
+      {
+       "t": 402,
+       "h": 207
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 5790,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h6\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results IDModuleContent IDStatusRelease Status Loading...0Pageof 0No items to display1051020items per page kendo."
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/ServiceMaint/SearchServices/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 74,
+    "visibleMs": 5750
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "k-loading-text",
+      "text": "Loading...",
+      "icons": [],
+      "rect": {
+       "x": 31,
+       "y": 606,
+       "w": 0,
+       "h": 23
+      },
+      "html": "<span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span>",
+      "close": null
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "administration-manage-services--page-search-validation.png"
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "viewports": [
+   {
+    "viewport": {
+     "width": 1920,
+     "height": 1080
+    },
+    "layout": {
+     "inner": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": false,
+      "max768": false,
+      "portrait": false,
+      "isPhone": false
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 134,
+      "h": 30,
+      "text": "Manage Services"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1920,
+      "h": 334
+     },
+     "footer": {
+      "x": 0,
+      "y": 472,
+      "w": 1920,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1852,
+        "y": 0,
+        "w": 68,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1862,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      }
+     ],
+     "navLinks": [
+      "Messages",
+      "External Links",
+      "Favorites",
+      "Contact Us",
+      "My Account",
+      "Logout"
+     ],
+     "page": {
+      "scrollW": 1920,
+      "scrollH": 1080,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-services--layout-1920x1080.png"
+   },
+   {
+    "viewport": {
+     "width": 1272,
+     "height": 588
+    },
+    "layout": {
+     "inner": {
+      "w": 1272,
+      "h": 588,
+      "docW": 1257,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": true,
+      "max768": false,
+      "portrait": false,
+      "isPhone": true
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1257,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 134,
+      "h": 30,
+      "text": "Manage Services"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1257,
+      "h": 334
+     },
+     "footer": {
+      "x": 0,
+      "y": 472,
+      "w": 1257,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": true,
+       "rect": {
+        "x": 537,
+        "y": 0,
+        "w": 720,
+        "h": 62
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1187,
+        "y": 0,
+        "w": 70,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1197,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      }
+     ],
+     "navLinks": [],
+     "page": {
+      "scrollW": 1257,
+      "scrollH": 591,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-services--layout-1272x588.png"
+   }
+  ],
+  "shots": [
+   "administration-manage-services--page-search-validation.png",
+   "administration-manage-services--layout-1920x1080.png",
+   "administration-manage-services--layout-1272x588.png"
+  ]
+ },
+ "ms": 213831
+}

@@ -1,0 +1,15 @@
+
+==== 2026-11-13T07:20:26.493Z  npm run probe -- fxfer-v4 --modules File Transfer Services,Alert Notification --headed --fresh --out docs\probe-ft-alert
+>> login
+  logged in
+kit: provider, viewport 1920x1080 @1, dialogs also at 1920x1080, 1272x588
+menu: packs\fxfer-v4\menu.json (19 modules; --read-menu to read it again)
+7 page(s) to probe
+[1/7] Alert Notification > Event Configuration: 143s, 1 dialog(s), search
+[2/7] Alert Notification > Subscriber Configuration: 91s, 0 dialog(s), search, 1 step error(s)
+[3/7] Alert Notification > Event Subscription: 92s, 1 dialog(s), search
+[4/7] Alert Notification > Tracking: 47s, 0 dialog(s), search
+[5/7] File Transfer Services > File Transfer Configuration: 135s, 1 dialog(s), search
+[6/7] File Transfer Services > File Transfer Tracking: 67s, 0 dialog(s), search
+[7/7] File Transfer Services > FTP Server Credentials: 67s, 1 dialog(s), search
+answers: docs\probe-ft-alert\ANSWERS.md (7 pages)

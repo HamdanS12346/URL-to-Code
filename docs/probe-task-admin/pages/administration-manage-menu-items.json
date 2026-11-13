@@ -1,0 +1,475 @@
+{
+ "label": "Administration > Manage Menu Items",
+ "trail": [
+  "Administration",
+  "Manage Menu Items"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Menu/ManageMenuItems",
+ "at": "2026-11-13T07:46:07.043Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage Menu Items",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 44,
+    "button": 1,
+    "dropdownlist": 9,
+    "resizable": 2,
+    "columnsorter": 5,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1,
+    "textbox": 15,
+    "checkbox": 3
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 19,
+   "hiddenAtRest": 7,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 7,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "Search Criteria",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 207
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0,
+      "title": "Expand"
+     },
+     "durationMs": 404,
+     "frames": 13,
+     "samples": [
+      {
+       "t": 30,
+       "h": 204
+      },
+      {
+       "t": 61,
+       "h": 195
+      },
+      {
+       "t": 92,
+       "h": 181
+      },
+      {
+       "t": 122,
+       "h": 163
+      },
+      {
+       "t": 155,
+       "h": 140
+      },
+      {
+       "t": 185,
+       "h": 116
+      },
+      {
+       "t": 217,
+       "h": 91
+      },
+      {
+       "t": 248,
+       "h": 66
+      },
+      {
+       "t": 279,
+       "h": 44
+      },
+      {
+       "t": 310,
+       "h": 25
+      },
+      {
+       "t": 343,
+       "h": 11
+      },
+      {
+       "t": 374,
+       "h": 2
+      },
+      {
+       "t": 404,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 207,
+      "title": "Collapse"
+     },
+     "durationMs": 411,
+     "frames": 10,
+     "samples": [
+      {
+       "t": 3,
+       "h": 0
+      },
+      {
+       "t": 30,
+       "h": 3
+      },
+      {
+       "t": 61,
+       "h": 11
+      },
+      {
+       "t": 93,
+       "h": 26
+      },
+      {
+       "t": 124,
+       "h": 45
+      },
+      {
+       "t": 154,
+       "h": 67
+      },
+      {
+       "t": 186,
+       "h": 92
+      },
+      {
+       "t": 221,
+       "h": 119
+      },
+      {
+       "t": 252,
+       "h": 144
+      },
+      {
+       "t": 411,
+       "h": 207
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 1908,
+   "reveals": [],
+   "hides": [],
+   "requests": [],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [],
+    "fields": [
+     {
+      "for": "SearchMenuList",
+      "text": "Menu is a required field.",
+      "className": "k-form-error k-invalid-msg field-validation-error",
+      "icons": [
+       "k-icon k-i-warning icon-spacer-right"
+      ],
+      "placement": "below",
+      "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"SearchMenuList\" id=\"SearchMenuList_validationMessage\" data-valmsg-for=\"SearchMenuList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Menu is a required field.</span>"
+     }
+    ],
+    "invalid": [
+     {
+      "name": null,
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     },
+     {
+      "name": "SearchMenuList",
+      "className": "k-picker k-dropdownlist editor-control k-invalid k-focus",
+      "border": "rgb(215, 56, 94)",
+      "background": "rgb(255, 255, 255)"
+     }
+    ],
+    "shot": "administration-manage-menu-items--page-search-validation.png"
+   }
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "viewports": [
+   {
+    "viewport": {
+     "width": 1920,
+     "height": 1080
+    },
+    "layout": {
+     "inner": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": false,
+      "max768": false,
+      "portrait": false,
+      "isPhone": false
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 153,
+      "h": 30,
+      "text": "Manage Menu Items"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1920,
+      "h": 334
+     },
+     "footer": {
+      "x": 0,
+      "y": 472,
+      "w": 1920,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1852,
+        "y": 0,
+        "w": 68,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1862,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      }
+     ],
+     "navLinks": [
+      "Messages",
+      "External Links",
+      "Favorites",
+      "Contact Us",
+      "My Account",
+      "Logout"
+     ],
+     "page": {
+      "scrollW": 1920,
+      "scrollH": 1080,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-menu-items--layout-1920x1080.png"
+   },
+   {
+    "viewport": {
+     "width": 1272,
+     "height": 588
+    },
+    "layout": {
+     "inner": {
+      "w": 1272,
+      "h": 588,
+      "docW": 1257,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": true,
+      "max768": false,
+      "portrait": false,
+      "isPhone": true
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1257,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 153,
+      "h": 30,
+      "text": "Manage Menu Items"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1257,
+      "h": 334
+     },
+     "footer": {
+      "x": 0,
+      "y": 472,
+      "w": 1257,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": true,
+       "rect": {
+        "x": 537,
+        "y": 0,
+        "w": 720,
+        "h": 62
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1187,
+        "y": 0,
+        "w": 70,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1197,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      }
+     ],
+     "navLinks": [],
+     "page": {
+      "scrollW": 1257,
+      "scrollH": 591,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-menu-items--layout-1272x588.png"
+   }
+  ],
+  "shots": [
+   "administration-manage-menu-items--page-search-validation.png",
+   "administration-manage-menu-items--layout-1920x1080.png",
+   "administration-manage-menu-items--layout-1272x588.png"
+  ]
+ },
+ "ms": 113800
+}

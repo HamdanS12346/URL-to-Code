@@ -1,0 +1,1284 @@
+{
+ "label": "Administration > Manage User Invitations",
+ "trail": [
+  "Administration",
+  "Manage User Invitations"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/UserMaintenance/ManageUserInvitations",
+ "at": "2026-11-13T07:58:44.771Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage User Invitations",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 11,
+    "button": 1,
+    "textbox": 4,
+    "datepicker": 2,
+    "checkbox": 1,
+    "dropdownlist": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 7,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 1,
+   "required": 0,
+   "hiddenAtRest": 10,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 10,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "FromCreatedDate",
+     "name": "FromCreatedDate",
+     "label": "From Created Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    },
+    {
+     "role": "datepicker",
+     "id": "ToCreatedDate",
+     "name": "ToCreatedDate",
+     "label": "To Created Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "From Created Date",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 327,
+     "y": 383,
+     "w": 345,
+     "h": 325
+    },
+    "input": {
+     "x": 327,
+     "y": 343,
+     "w": 301,
+     "h": 40
+    },
+    "shot": "administration-manage-user-invitations--page-date-open.png",
+    "afterPick": "11/13/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026"
+   }
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [
+    {
+     "name": "ExactNameMatch",
+     "label": "Exact Match",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "Search Criteria",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 410
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0,
+      "title": "Expand"
+     },
+     "durationMs": 400,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 4,
+       "h": 409
+      },
+      {
+       "t": 26,
+       "h": 406
+      },
+      {
+       "t": 56,
+       "h": 391
+      },
+      {
+       "t": 88,
+       "h": 364
+      },
+      {
+       "t": 119,
+       "h": 328
+      },
+      {
+       "t": 151,
+       "h": 283
+      },
+      {
+       "t": 182,
+       "h": 235
+      },
+      {
+       "t": 213,
+       "h": 185
+      },
+      {
+       "t": 245,
+       "h": 135
+      },
+      {
+       "t": 276,
+       "h": 91
+      },
+      {
+       "t": 307,
+       "h": 53
+      },
+      {
+       "t": 338,
+       "h": 25
+      },
+      {
+       "t": 368,
+       "h": 7
+      },
+      {
+       "t": 400,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 410,
+      "title": "Collapse"
+     },
+     "durationMs": 403,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 6,
+       "h": 0
+      },
+      {
+       "t": 27,
+       "h": 5
+      },
+      {
+       "t": 59,
+       "h": 21
+      },
+      {
+       "t": 91,
+       "h": 50
+      },
+      {
+       "t": 121,
+       "h": 86
+      },
+      {
+       "t": 153,
+       "h": 131
+      },
+      {
+       "t": 184,
+       "h": 179
+      },
+      {
+       "t": 216,
+       "h": 230
+      },
+      {
+       "t": 247,
+       "h": 279
+      },
+      {
+       "t": 277,
+       "h": 321
+      },
+      {
+       "t": 308,
+       "h": 358
+      },
+      {
+       "t": 340,
+       "h": 387
+      },
+      {
+       "t": 371,
+       "h": 404
+      },
+      {
+       "t": 403,
+       "h": 410
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 3272,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h1\"]",
+     "labels": [],
+     "required": 0,
+     "text": "Resolve the following form field errors and try again. At least one search criteria value must be provided to initiate t"
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/UserMaintenance/SearchUserInvitations/",
+     "status": "sent"
+    },
+    {
+     "method": "GET",
+     "url": "/api/UserMaintenance/SearchUserInvitations/",
+     "status": "sent"
+    }
+   ],
+   "loading": null,
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "editor-validation-summary validation-summary",
+      "text": "Resolve the following form field errors and try again. At least one search criteria value must be provided to initiate the search.",
+      "icons": [
+       "msg-inline-icon fa-solid fa-ban",
+       "fa-solid fa-xmark"
+      ],
+      "rect": {
+       "x": 58,
+       "y": 156,
+       "w": 1804,
+       "h": 79
+      },
+      "html": "<div class=\"editor-validation-summary validation-summary\" data-kit-h=\"h1\" style=\"display: block;\">\n        <i class=\"msg-inline-icon fa-solid fa-ban\"></i>\n        <div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide=\"alert\" aria-label=\"close\" tabindex=\"0\">\n            <span class=\"fa-solid fa-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n        </div>\n        Resolve the following form field errors and try again. \n        <ul class=\"validation-errors\"><li>At least one search criteria value must be provided to initiate the search.</li></ul>\n    </div>",
+      "close": "p2"
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "administration-manage-user-invitations--page-search-validation.png",
+    "summaryCloseHides": true
+   }
+  },
+  "gridFilter": {
+   "stamp": null,
+   "icon": null,
+   "iconHtml": null,
+   "column": null,
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "filterableColumns": 1
+  },
+  "row": null,
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "info": {
+     "title": "Add User Invitation",
+     "options": {
+      "modal": {
+       "preventScroll": true
+      },
+      "width": null,
+      "height": null,
+      "actions": [
+       "Custom",
+       "Close"
+      ],
+      "draggable": false,
+      "resizable": false,
+      "animation": {
+       "open": {
+        "effects": {},
+        "duration": 350
+       },
+       "close": {
+        "effects": {},
+        "duration": 350,
+        "hide": true
+       }
+      },
+      "position": {
+       "top": 184.79149999999998,
+       "left": 240
+      }
+     },
+     "windowClass": "k-window panelForm-col-6 ui-draggable",
+     "contentId": "UserInvitationEditOverlay",
+     "fields": 24,
+     "required": 8,
+     "hidden": 15,
+     "unknown": {
+      "maskedtextbox": {
+       "count": 1,
+       "ids": [
+        "PhoneNumber"
+       ]
+      },
+      "multiselect": {
+       "count": 1,
+       "ids": [
+        "ADGroupMultiSelectList"
+       ]
+      }
+     },
+     "actions": [
+      "close: Close",
+      "reset: Reset",
+      "cancel: Cancel",
+      "save: Save"
+     ]
+    },
+    "position": {
+     "viewport": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920
+     },
+     "rect": {
+      "x": 240,
+      "y": 185,
+      "w": 1440,
+      "h": 710
+     },
+     "leftGap": 240,
+     "rightGap": 240,
+     "centeredLeft": 240,
+     "centered": true,
+     "touchesLeft": false,
+     "widerThanViewport": false,
+     "overflowRight": false,
+     "style": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 184.791px; left: 240px; z-index: 11502; opacity: 1; transform: scale(1);",
+     "className": "k-window panelForm-col-6 ui-draggable",
+     "fitsViewport": true,
+     "heightPct": 66,
+     "contentScrolls": false,
+     "contentH": {
+      "scroll": 672,
+      "client": 672,
+      "overflowY": "auto"
+     },
+     "isPhone": false,
+     "computed": {
+      "width": "1440px",
+      "minWidth": "90px",
+      "maxWidth": "none",
+      "maxHeight": "918px",
+      "position": "absolute",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+     },
+     "kendo": {
+      "position": {
+       "top": 184.79149999999998,
+       "left": 240
+      },
+      "width": null,
+      "minWidth": 90,
+      "maxWidth": null
+     },
+     "rules": [
+      {
+       "selector": ".panel-form-col-6, .panelForm-col-6",
+       "width": "75%"
+      }
+     ],
+     "contentRules": [],
+     "title": "Add User Invitation"
+    },
+    "shot": "administration-manage-user-invitations--create1.png",
+    "census": {
+     "roles": {
+      "validator": 1,
+      "tooltip": 22,
+      "textbox": 5,
+      "maskedtextbox": 1,
+      "dropdownlist": 1,
+      "datepicker": 1,
+      "checkbox": 1,
+      "multiselect": 1
+     },
+     "buttons": [
+      {
+       "text": "Reset",
+       "action": "reset"
+      },
+      {
+       "text": "Cancel",
+       "action": "cancel"
+      },
+      {
+       "text": "Save",
+       "action": "save"
+      }
+     ],
+     "radios": {
+      "InternalRegistration.ID": [
+       "Y",
+       "N"
+      ]
+     },
+     "checkboxes": 1,
+     "required": 14,
+     "hiddenAtRest": 15,
+     "tabs": [],
+     "collapsibles": 0
+    },
+    "dates": {
+     "inputs": [
+      {
+       "role": "datepicker",
+       "id": "AccountExpiresDate",
+       "name": "AccountExpiresDate",
+       "label": "Account Expiration Date",
+       "valueAttr": null,
+       "shows": "",
+       "prefilled": false,
+       "offsetDays": null,
+       "format": "MM/dd/yyyy",
+       "placeholder": null,
+       "masked": false,
+       "required": false,
+       "enabled": true
+      }
+     ],
+     "drive": {
+      "role": "datepicker",
+      "label": "Account Expiration Date",
+      "atRest": "",
+      "onFocus": "__/__/____",
+      "onCalendarButton": "__/__/____",
+      "popup": {
+       "x": 251,
+       "y": 568,
+       "w": 345,
+       "h": 365
+      },
+      "input": {
+       "x": 251,
+       "y": 528,
+       "w": 340,
+       "h": 40
+      },
+      "shot": "administration-manage-user-invitations--create1-date-open.png",
+      "afterPick": "11/13/2026",
+      "popupAfterPick": false,
+      "afterBlur": "11/13/2026"
+     }
+    },
+    "conditionals": {
+     "radios": [
+      {
+       "group": "InternalRegistration.ID",
+       "groupLabel": "Internal Registration",
+       "value": "Y",
+       "label": "Yes",
+       "checkedAtRest": false,
+       "show": [],
+       "hide": [],
+       "cascades": [],
+       "requests": []
+      },
+      {
+       "group": "InternalRegistration.ID",
+       "groupLabel": "Internal Registration",
+       "value": "N",
+       "label": "No",
+       "checkedAtRest": false,
+       "show": [
+        {
+         "sel": "[data-kit-h=\"h23\"]",
+         "labels": [
+          "Generic Identifier"
+         ],
+         "required": 0,
+         "text": "Generic Identifier kendo.syncReady(function(){jQuery(\"#GenericId\").kendoTextBox({});}); // Replace curly single quotes a"
+        }
+       ],
+       "hide": [],
+       "cascades": [],
+       "requests": []
+      }
+     ],
+     "checkboxes": [
+      {
+       "name": "PasswordNeverExpires",
+       "label": "Password Never Expires",
+       "checkedAtRest": false,
+       "show": [],
+       "hide": [],
+       "cascades": [],
+       "requests": []
+      }
+     ],
+     "dropdowns": []
+    },
+    "toggles": [],
+    "nested": null,
+    "saveEmpty": {
+     "validation": {
+      "summary": [
+       {
+        "className": "msg-inline-close panel-icon clickable",
+        "text": "",
+        "icons": [
+         "fa-solid fa-circle-xmark"
+        ],
+        "rect": {
+         "x": 1604,
+         "y": 170,
+         "w": 30,
+         "h": 35
+        },
+        "html": "<div id=\"ValSummClose\" class=\"msg-inline-close panel-icon clickable\" role=\"alert\" data-hide-overlay=\"alert\" aria-label=\"close\" tabindex=\"0\">\n                        <span class=\"fa-solid fa-circle-xmark\" title=\"Close\" data-role=\"tooltip\" data-kit-tip=\"Close\" data-kit-tip-pos=\"top\" data-kit-tip-after=\"250\"></span>\n                    </div>",
+        "close": null
+       }
+      ],
+      "fields": [
+       {
+        "for": "Name.Last",
+        "text": "Last Name is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"Name.Last\" id=\"Name_Last_validationMessage\" data-valmsg-for=\"Name.Last\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Last Name is a required field.</span>"
+       },
+       {
+        "for": "Name.First",
+        "text": "First Name is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"Name.First\" id=\"Name_First_validationMessage\" data-valmsg-for=\"Name.First\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>First Name is a required field.</span>"
+       },
+       {
+        "for": "EmailAddress",
+        "text": "Email Address is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"EmailAddress\" id=\"Edit_EmailAddress_validationMessage\" data-valmsg-for=\"EmailAddress\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Email Address is a required field.</span>"
+       },
+       {
+        "for": "PhoneNumber",
+        "text": "Phone Number is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"PhoneNumber\" id=\"PhoneNumber_validationMessage\" data-valmsg-for=\"PhoneNumber\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Phone Number is a required field.</span>"
+       },
+       {
+        "for": "PreferredLanguageLocaleList",
+        "text": "Primary Language is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"PreferredLanguageLocaleList\" id=\"PreferredLanguageLocaleList_validationMessage\" data-valmsg-for=\"PreferredLanguageLocaleList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Primary Language is a required field.</span>"
+       },
+       {
+        "for": "ADGroupMultiSelectList",
+        "text": "Assigned Groups is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" data-for=\"ADGroupMultiSelectList\" id=\"ADGroupMultiSelectList_validationMessage\" data-valmsg-for=\"ADGroupMultiSelectList\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Assigned Groups is a required field.</span>"
+       }
+      ],
+      "invalid": [
+       {
+        "name": null,
+        "className": "k-input k-textbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "Name.Last",
+        "className": "k-input k-textbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": null,
+        "className": "k-input k-textbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "Name.First",
+        "className": "k-input k-textbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": null,
+        "className": "k-input k-textbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "EmailAddress",
+        "className": "k-input k-textbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": null,
+        "className": "k-input k-maskedtextbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "PhoneNumber",
+        "className": "k-input k-maskedtextbox editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": null,
+        "className": "k-picker k-dropdownlist editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "PreferredLanguageLocaleList",
+        "className": "k-picker k-dropdownlist editor-control k-invalid",
+        "border": "rgb(215, 56, 94)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": null,
+        "className": "k-multiselect k-input editor-control k-invalid",
+        "border": "rgb(90, 105, 120)",
+        "background": "rgb(242, 222, 222)"
+       },
+       {
+        "name": "ADGroupMultiSelectList",
+        "className": "k-multiselect k-input editor-control k-invalid",
+        "border": "rgb(90, 105, 120)",
+        "background": "rgb(242, 222, 222)"
+       }
+      ],
+      "shot": "administration-manage-user-invitations--inistration-manage-user-invitations-save-validation.png"
+     },
+     "postAttempted": [],
+     "stillOpen": true,
+     "native": []
+    },
+    "close": {
+     "edited": "Name.Last",
+     "attempts": [
+      {
+       "via": "x",
+       "edited": "Name.Last",
+       "closed": true,
+       "confirm": null,
+       "native": []
+      },
+      {
+       "via": "cancel",
+       "edited": "Name.Last",
+       "closed": false,
+       "confirm": {
+        "title": "Alert Confirmation",
+        "text": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?",
+        "className": "k-window k-focus",
+        "rect": {
+         "x": 659,
+         "y": 434,
+         "w": 601,
+         "h": 213
+        },
+        "buttons": [
+         {
+          "stamp": "p14",
+          "text": "Stay"
+         },
+         {
+          "stamp": "p15",
+          "text": "Leave"
+         }
+        ],
+        "html": "<div class=\"k-window k-focus\" tabindex=\"0\" role=\"dialog\" aria-labelledby=\"modalMessagePopup_wnd_title\" style=\"min-width: 90px; min-height: 50px; display: inline-flex; top: 433.75px; left: 659.333px; z-index: 11504; opacity: 1; transform: scale(1);\"><div class=\"k-window-titlebar modal-msg-title-alert\"><i class=\"fa-solid modal-msg-icon-alert fa-circle-exclamation\"></i><span class=\"k-window-title\" id=\"modalMessagePopup_wnd_title\">Alert Confirmation</span><div class=\"k-window-titlebar-actions\"></div></div><div id=\"modalMessagePopup\" class=\"modal-msg-panel-container-alert k-window-content\" role=\"dialog\" aria-label=\"Alert Confirmation\" data-role=\"window\" tabindex=\"0\" style=\"\">  <div class=\"panel-body-modal modal-msg-content\">    <div class=\"clear-n-pad\">Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?    </div>    <div id=\"msgButtonRow\" class=\"editor-button-row-modal\">      <div class=\"align-center\">        <input type=\"button\" id=\"cancelModalButton\" class=\"k-button btn-spacer-right\" data-dismiss=\"modal\" value=\"Stay\" onclick=\"checkExecuteFunctionByName(&quot;&quot;, null); removeModalMessagePopup();\" data-probe=\"p14\">        <input type=\"button\" id=\"okButton\" class=\"k-button\" data-dismiss=\"modal\" value=\"Leave\" data-probe=\"p15\">      </div>    </div>  </div></div></div>",
+        "shot": "administration-manage-user-invitations--create1-confirm-cancel.png"
+       },
+       "native": [],
+       "answered": "Stay",
+       "stillOpenAfterStay": true,
+       "leftWith": "Leave",
+       "closedAfterLeave": true
+      }
+     ]
+    },
+    "loading": {
+     "className": "wait-dialog",
+     "id": "loadingDialog",
+     "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+     "firstAt": 85,
+     "visibleMs": 500
+    },
+    "requests": [
+     {
+      "method": "GET",
+      "url": "/UserMaintenance/UserInvitationEdit/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/UserMaintenance/GetAllADGroups/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/UserMaintenance/UserInvitationEdit/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/UserMaintenance/GetAllADGroups/",
+      "status": "sent"
+     }
+    ],
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1272,
+       "height": 588
+      },
+      "position": {
+       "viewport": {
+        "w": 1272,
+        "h": 588,
+        "docW": 1272
+       },
+       "rect": {
+        "x": 0,
+        "y": 20,
+        "w": 1145,
+        "h": 500
+       },
+       "leftGap": 0,
+       "rightGap": 127,
+       "centeredLeft": 64,
+       "centered": false,
+       "touchesLeft": true,
+       "widerThanViewport": false,
+       "overflowRight": false,
+       "style": "min-width: 1144.8px; min-height: 50px; max-height: 499.8px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+       "className": "k-window panelForm-col-6 ui-draggable",
+       "fitsViewport": true,
+       "heightPct": 85,
+       "contentScrolls": true,
+       "contentH": {
+        "scroll": 672,
+        "client": 461,
+        "overflowY": "auto"
+       },
+       "isPhone": true,
+       "computed": {
+        "width": "1144.79px",
+        "minWidth": "1144.8px",
+        "maxWidth": "none",
+        "maxHeight": "499.8px",
+        "position": "absolute",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+       },
+       "kendo": {
+        "position": {
+         "top": "0",
+         "left": "0"
+        },
+        "width": null,
+        "minWidth": 90,
+        "maxWidth": null
+       },
+       "rules": [
+        {
+         "selector": ".panel-form-col-6, .panelForm-col-6",
+         "width": "75%"
+        }
+       ],
+       "contentRules": [],
+       "title": "Add User Invitation"
+      },
+      "shot": "administration-manage-user-invitations--create1-1272x588.png",
+      "cleanClose": {
+       "edited": null,
+       "attempts": [
+        {
+         "via": "x",
+         "edited": null,
+         "closed": true,
+         "confirm": null,
+         "native": []
+        },
+        {
+         "via": "cancel",
+         "edited": null,
+         "closed": true,
+         "confirm": null,
+         "native": []
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "InvitationCode",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h10\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results Invitation IDInvitation CodeNameEmail AddressAssigned GroupsCreated DateExpiredActiveThere are no records"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/UserMaintenance/SearchUserInvitations/",
+     "status": "sent"
+    },
+    {
+     "method": "GET",
+     "url": "/api/UserMaintenance/SearchUserInvitations/",
+     "status": "sent"
+    }
+   ],
+   "grids": [
+    {
+     "id": "manageUserInvititionsGrid",
+     "rows": 1,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 1,
+      "y": 779,
+      "w": 1903,
+      "h": 158
+     }
+    }
+   ],
+   "validation": null,
+   "shot": "administration-manage-user-invitations--search-nomatch.png"
+  },
+  "viewports": [
+   {
+    "viewport": {
+     "width": 1920,
+     "height": 1080
+    },
+    "layout": {
+     "inner": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": false,
+      "max768": false,
+      "portrait": false,
+      "isPhone": false
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 181,
+      "h": 30,
+      "text": "Manage User Invitations"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1920,
+      "h": 562
+     },
+     "footer": {
+      "x": 0,
+      "y": 700,
+      "w": 1920,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1852,
+        "y": 0,
+        "w": 68,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1862,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      }
+     ],
+     "navLinks": [
+      "Messages",
+      "External Links",
+      "Favorites",
+      "Contact Us",
+      "My Account",
+      "Logout"
+     ],
+     "page": {
+      "scrollW": 1920,
+      "scrollH": 1080,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-user-invitations--layout-1920x1080.png"
+   },
+   {
+    "viewport": {
+     "width": 1272,
+     "height": 588
+    },
+    "layout": {
+     "inner": {
+      "w": 1272,
+      "h": 588,
+      "docW": 1257,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": true,
+      "max768": false,
+      "portrait": false,
+      "isPhone": true
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1257,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 181,
+      "h": 30,
+      "text": "Manage User Invitations"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1257,
+      "h": 562
+     },
+     "footer": {
+      "x": 0,
+      "y": 700,
+      "w": 1257,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": true,
+       "rect": {
+        "x": 537,
+        "y": 0,
+        "w": 720,
+        "h": 62
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1187,
+        "y": 0,
+        "w": 70,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1197,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      }
+     ],
+     "navLinks": [],
+     "page": {
+      "scrollW": 1257,
+      "scrollH": 819,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-user-invitations--layout-1272x588.png",
+    "dialog": {
+     "position": {
+      "viewport": {
+       "w": 1272,
+       "h": 588,
+       "docW": 1272
+      },
+      "rect": {
+       "x": 0,
+       "y": 20,
+       "w": 1145,
+       "h": 500
+      },
+      "leftGap": 0,
+      "rightGap": 127,
+      "centeredLeft": 64,
+      "centered": false,
+      "touchesLeft": true,
+      "widerThanViewport": false,
+      "overflowRight": false,
+      "style": "min-width: 1144.8px; min-height: 50px; max-height: 499.8px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+      "className": "k-window panelForm-col-6 ui-draggable",
+      "fitsViewport": true,
+      "heightPct": 85,
+      "contentScrolls": true,
+      "contentH": {
+       "scroll": 672,
+       "client": 461,
+       "overflowY": "auto"
+      },
+      "isPhone": true,
+      "computed": {
+       "width": "1144.79px",
+       "minWidth": "1144.8px",
+       "maxWidth": "none",
+       "maxHeight": "499.8px",
+       "position": "absolute",
+       "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "kendo": {
+       "position": {
+        "top": "0",
+        "left": "0"
+       },
+       "width": null,
+       "minWidth": 90,
+       "maxWidth": null
+      },
+      "rules": [
+       {
+        "selector": ".panel-form-col-6, .panelForm-col-6",
+        "width": "75%"
+       }
+      ],
+      "contentRules": [],
+      "title": "Add User Invitation"
+     },
+     "shot": "administration-manage-user-invitations--create1-1272x588.png",
+     "cleanClose": {
+      "edited": null,
+      "attempts": [
+       {
+        "via": "x",
+        "edited": null,
+        "closed": true,
+        "confirm": null,
+        "native": []
+       },
+       {
+        "via": "cancel",
+        "edited": null,
+        "closed": true,
+        "confirm": null,
+        "native": []
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "shots": [
+   "administration-manage-user-invitations--page-date-open.png",
+   "administration-manage-user-invitations--page-search-validation.png",
+   "administration-manage-user-invitations--create1.png",
+   "administration-manage-user-invitations--create1-date-open.png",
+   "administration-manage-user-invitations--inistration-manage-user-invitations-save-validation.png",
+   "administration-manage-user-invitations--create1-confirm-cancel.png",
+   "administration-manage-user-invitations--search-nomatch.png",
+   "administration-manage-user-invitations--layout-1920x1080.png",
+   "administration-manage-user-invitations--layout-1272x588.png",
+   "administration-manage-user-invitations--create1-1272x588.png"
+  ]
+ },
+ "ms": 111338
+}

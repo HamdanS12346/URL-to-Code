@@ -1,0 +1,1293 @@
+{
+ "label": "Alert Notification > Event Subscription",
+ "trail": [
+  "Alert Notification",
+  "Event Subscription"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Notifications/SubscriptionDetails",
+ "at": "2026-11-13T07:24:36.135Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Event Subscription",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "button": 2,
+    "tooltip": 7,
+    "textbox": 2,
+    "dropdownlist": 2,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 3,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Create New",
+     "action": "create"
+    },
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 5,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 5,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "Search Criteria",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 188
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0,
+      "title": "Expand"
+     },
+     "durationMs": 401,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 2,
+       "h": 187
+      },
+      {
+       "t": 26,
+       "h": 186
+      },
+      {
+       "t": 56,
+       "h": 179
+      },
+      {
+       "t": 88,
+       "h": 166
+      },
+      {
+       "t": 119,
+       "h": 150
+      },
+      {
+       "t": 150,
+       "h": 130
+      },
+      {
+       "t": 183,
+       "h": 107
+      },
+      {
+       "t": 212,
+       "h": 86
+      },
+      {
+       "t": 243,
+       "h": 63
+      },
+      {
+       "t": 275,
+       "h": 42
+      },
+      {
+       "t": 306,
+       "h": 25
+      },
+      {
+       "t": 337,
+       "h": 12
+      },
+      {
+       "t": 369,
+       "h": 3
+      },
+      {
+       "t": 401,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 188,
+      "title": "Collapse"
+     },
+     "durationMs": 403,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 3,
+       "h": 0
+      },
+      {
+       "t": 26,
+       "h": 2
+      },
+      {
+       "t": 59,
+       "h": 10
+      },
+      {
+       "t": 90,
+       "h": 22
+      },
+      {
+       "t": 120,
+       "h": 39
+      },
+      {
+       "t": 153,
+       "h": 59
+      },
+      {
+       "t": 182,
+       "h": 81
+      },
+      {
+       "t": 215,
+       "h": 104
+      },
+      {
+       "t": 246,
+       "h": 126
+      },
+      {
+       "t": 276,
+       "h": 146
+      },
+      {
+       "t": 308,
+       "h": 164
+      },
+      {
+       "t": 339,
+       "h": 177
+      },
+      {
+       "t": 372,
+       "h": 185
+      },
+      {
+       "t": 403,
+       "h": 188
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 2409,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h5\"]",
+     "labels": [
+      "popupPanelMsg",
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "popupPanelMsg Search Results Event NameEmail AddressSend SMSStatusPEWrkflwBackgroundCheckStartedbasanth.veerabhadraiah@d"
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#divSubscriptionDetails",
+     "labels": [
+      "Email Address",
+      "Event Name",
+      "Status",
+      "StatusList",
+      "Status_ID",
+      "Status_Name",
+      "Status_DisplayFormat",
+      "Reset",
+      "Search"
+     ],
+     "required": 0,
+     "text": "Email Address kendo.syncReady(function(){jQuery(\"#EmailAddressSearch\").kendoTextBox({});}); Email Address Event Name ken"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/Notifications/GetSubscriptionDetailsSearch/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 102,
+    "visibleMs": 450
+   },
+   "grids": [
+    {
+     "id": "SubscriptionDetailsResultsGrid",
+     "rows": 10,
+     "total": 17,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 400,
+      "w": 1843,
+      "h": 580
+     }
+    }
+   ],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": {
+   "stamp": "p2",
+   "icon": {
+    "x": 446,
+    "y": 438,
+    "w": 30,
+    "h": 30
+   },
+   "iconHtml": "<a aria-hidden=\"true\" aria-label=\"Event Name filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Event Name filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p2\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "Event Name",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "filterableColumns": 2,
+   "popup": {
+    "rect": {
+     "x": 446,
+     "y": 468,
+     "w": 274,
+     "h": 207
+    },
+    "className": "k-animation-container k-animation-container-shown",
+    "html": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"display: block; position: absolute; top: 467.75px; z-index: 10002; left: 446.312px;\"><div class=\"k-child-animation-container\" style=\"width: 274.333px; height: 207.188px; display: block; transform: translateY(0px);\"><form title=\"Show items with value that\" class=\"k-filter-menu k-popup\" data-role=\"popup\" aria-hidden=\"false\" data-filter-styled=\"data-filter-styled\" style=\"\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\">Show items with value that:</div><span title=\"Operator\" class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"08391800-8e11-48d0-86e2-1d073d9641e8_listbox\" aria-busy=\"false\" aria-describedby=\"ea589dc5-d00a-434d-8b11-01772ffc2486\" style=\"\"><span id=\"ea589dc5-d00a-434d-8b11-01772ffc2486\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">Equal To</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><select title=\"Operator\" data-bind=\"value: filters[0].operator\" data-adaptive-mode=\"none\" data-role=\"dropdownlist\" style=\"display: none;\"><option value=\"eq\" selected=\"selected\">Equal To</option><option value=\"contains\">Contains</option><option value=\"endswith\">Ends With</option><option value=\"startswith\">Starts With</option></select></span><span class=\"k-textbox k-input\"><input title=\"Value\" data-bind=\"value:filters[0].value\" class=\"k-input-inner\" type=\"text\" data-adaptive-mode=\"none\"></span><div class=\"k-actions-stretched k-actions\"><div class=\"grid-filter-buttons\"><button title=\"Filter\" class=\"k-button k-button-primary\" type=\"submit\"><span class=\"k-icon k-svg-icon k-svg-i-filter k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span><span class=\"k-button-text\">Filter</span></button><button title=\"Clear\" class=\"k-button\" type=\"reset\"><span class=\"k-icon k-svg-icon k-svg-i-filter-clear k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m143.5 64 168.2 168.2L288 256v160l-64 64V256L64 96V64zm236.1 100.4L448 96V64H279.3l-64-64L192 22l298 298 22-23.3z\"></path></svg></span><span class=\"k-button-text\">Clear</span></button></div></div></div><div class=\"k-list-container k-popup k-dropdownlist-popup\" data-role=\"popup\" aria-hidden=\"true\" style=\"display: none;\"><div class=\"k-list\" id=\"08391800-8e11-48d0-86e2-1d073d9641e8-list\" data-role=\"staticlist\"><div class=\"k-no-data\" aria-live=\"polite\" style=\"display: none;\">No data found.</div><div class=\"k-list-group-sticky-header\" style=\"display: none;\"></div><div class=\"k-list-content k-list-scroller\" unselectable=\"on\"><ul unselectable=\"on\" tabindex=\"-1\" aria-hidden=\"true\" id=\"08391800-8e11-48d0-86e2-1d073d9641e8_listbox\" role=\"listbox\" aria-live=\"off\" class=\"k-list-ul\"><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item k-selected k-focus\" aria-selected=\"true\" data-offset-index=\"0\" id=\"b766964f-a948-456d-9463-2e707432df3e\"><span class=\"k-list-item-text\">Equal To</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"1\"><span class=\"k-list-item-text\">Contains</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"2\"><span class=\"k-list-item-text\">Ends With</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"3\"><span class=\"k-list-item-text\">Starts With</span></li></ul></div></div></div></form></div></div>",
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": null,
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "dropdowns": [
+     [
+      "Equal To",
+      "Contains",
+      "Ends With",
+      "Starts With"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "stamp": "p3",
+      "className": "k-picker k-dropdownlist k-focus",
+      "expanded": "false",
+      "text": "Equal ToEqual ToContainsEnds WithStarts ",
+      "after": {
+       "htmlDelta": 678,
+       "expanded": "true",
+       "rect": {
+        "x": 446,
+        "y": 468,
+        "w": 274,
+        "h": 207
+       }
+      }
+     }
+    ],
+    "shot": "alert-notification-event-subscription--grid-filter.png"
+   }
+  },
+  "row": {
+   "via": "dblclick",
+   "dialog": {
+    "opener": "row dblclick",
+    "info": {
+     "title": "View Subscription Details",
+     "options": {
+      "modal": {
+       "preventScroll": true
+      },
+      "width": null,
+      "height": null,
+      "actions": [
+       "Custom",
+       "Close"
+      ],
+      "draggable": false,
+      "resizable": false,
+      "animation": {
+       "open": {
+        "effects": {},
+        "duration": 350
+       },
+       "close": {
+        "effects": {},
+        "duration": 350,
+        "hide": true
+       }
+      },
+      "position": {
+       "top": 335.33349999999996,
+       "left": 480
+      }
+     },
+     "windowClass": "k-window panelForm-col-4 ui-draggable",
+     "contentId": "eventSubscriptionPopup",
+     "fields": 35,
+     "required": 8,
+     "hidden": 12,
+     "unknown": {
+      "autocomplete": {
+       "count": 6,
+       "ids": [
+        "editEventName",
+        "editEmailAddress",
+        "createEventName",
+        "createEmailAddress",
+        "addEventName"
+       ]
+      }
+     },
+     "actions": [
+      "close: Close",
+      "close: Close"
+     ]
+    },
+    "position": {
+     "viewport": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920
+     },
+     "rect": {
+      "x": 480,
+      "y": 335,
+      "w": 960,
+      "h": 409
+     },
+     "leftGap": 480,
+     "rightGap": 480,
+     "centeredLeft": 480,
+     "centered": true,
+     "touchesLeft": false,
+     "widerThanViewport": false,
+     "overflowRight": false,
+     "style": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 335.333px; left: 480px; z-index: 11502; opacity: 1; transform: scale(1);",
+     "className": "k-window panelForm-col-4 ui-draggable",
+     "fitsViewport": true,
+     "heightPct": 38,
+     "contentScrolls": false,
+     "contentH": {
+      "scroll": 371,
+      "client": 371,
+      "overflowY": "auto"
+     },
+     "isPhone": false,
+     "computed": {
+      "width": "960px",
+      "minWidth": "90px",
+      "maxWidth": "none",
+      "maxHeight": "918px",
+      "position": "absolute",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+     },
+     "kendo": {
+      "position": {
+       "top": 335.33349999999996,
+       "left": 480
+      },
+      "width": null,
+      "minWidth": 90,
+      "maxWidth": null
+     },
+     "rules": [
+      {
+       "selector": ".panel-form-col-4, .panelForm-col-4",
+       "width": "50%"
+      }
+     ],
+     "contentRules": [],
+     "title": "View Subscription Details"
+    },
+    "shot": null,
+    "census": {
+     "roles": {
+      "validator": 1,
+      "tooltip": 41,
+      "textbox": 15,
+      "dropdownlist": 4,
+      "checkbox": 7,
+      "autocomplete": 6
+     },
+     "buttons": [
+      {
+       "text": "Edit",
+       "action": null
+      },
+      {
+       "text": "Close",
+       "action": "close"
+      }
+     ],
+     "radios": {},
+     "checkboxes": 0,
+     "required": 14,
+     "hiddenAtRest": 12,
+     "tabs": [],
+     "collapsibles": 0
+    },
+    "close": {
+     "edited": null,
+     "attempts": [
+      {
+       "via": "x",
+       "edited": null,
+       "closed": true,
+       "confirm": null,
+       "native": []
+      },
+      {
+       "via": "cancel",
+       "reopened": false
+      }
+     ]
+    }
+   }
+  },
+  "dialogs": [
+   {
+    "opener": "Create New",
+    "info": {
+     "title": "Add Event Subscription",
+     "options": {
+      "modal": {
+       "preventScroll": true
+      },
+      "width": null,
+      "height": null,
+      "actions": [
+       "Custom",
+       "Close"
+      ],
+      "draggable": false,
+      "resizable": false,
+      "animation": {
+       "open": {
+        "effects": {},
+        "duration": 350
+       },
+       "close": {
+        "effects": {},
+        "duration": 350,
+        "hide": true
+       }
+      },
+      "position": {
+       "top": 316.20849999999996,
+       "left": 480
+      }
+     },
+     "windowClass": "k-window panelForm-col-4 ui-draggable",
+     "contentId": "addSubscriptionPopupId",
+     "fields": 11,
+     "required": 2,
+     "hidden": 10,
+     "unknown": {
+      "autocomplete": {
+       "count": 2,
+       "ids": [
+        "addEventName",
+        "addEmailAddress"
+       ]
+      }
+     },
+     "actions": [
+      "close: Close",
+      "reset: Reset",
+      "cancel: Cancel",
+      "save: Save"
+     ]
+    },
+    "position": {
+     "viewport": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920
+     },
+     "rect": {
+      "x": 480,
+      "y": 316,
+      "w": 960,
+      "h": 448
+     },
+     "leftGap": 480,
+     "rightGap": 480,
+     "centeredLeft": 480,
+     "centered": true,
+     "touchesLeft": false,
+     "widerThanViewport": false,
+     "overflowRight": false,
+     "style": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 316.208px; left: 480px; z-index: 11502; opacity: 1; transform: scale(1);",
+     "className": "k-window panelForm-col-4 ui-draggable",
+     "fitsViewport": true,
+     "heightPct": 41,
+     "contentScrolls": false,
+     "contentH": {
+      "scroll": 409,
+      "client": 409,
+      "overflowY": "auto"
+     },
+     "isPhone": false,
+     "computed": {
+      "width": "960px",
+      "minWidth": "90px",
+      "maxWidth": "none",
+      "maxHeight": "918px",
+      "position": "absolute",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+     },
+     "kendo": {
+      "position": {
+       "top": 316.20849999999996,
+       "left": 480
+      },
+      "width": null,
+      "minWidth": 90,
+      "maxWidth": null
+     },
+     "rules": [
+      {
+       "selector": ".panel-form-col-4, .panelForm-col-4",
+       "width": "50%"
+      }
+     ],
+     "contentRules": [],
+     "title": "Add Event Subscription"
+    },
+    "shot": "alert-notification-event-subscription--create1.png",
+    "census": {
+     "roles": {
+      "validator": 1,
+      "tooltip": 12,
+      "autocomplete": 2,
+      "textbox": 3,
+      "dropdownlist": 1,
+      "checkbox": 2
+     },
+     "buttons": [
+      {
+       "text": "Reset",
+       "action": "reset"
+      },
+      {
+       "text": "Cancel",
+       "action": "cancel"
+      },
+      {
+       "text": "Save",
+       "action": "save"
+      }
+     ],
+     "radios": {},
+     "checkboxes": 2,
+     "required": 5,
+     "hiddenAtRest": 10,
+     "tabs": [],
+     "collapsibles": 0
+    },
+    "dates": {
+     "inputs": [],
+     "drive": null
+    },
+    "conditionals": {
+     "radios": [],
+     "checkboxes": [
+      {
+       "name": "IsActive",
+       "label": "Active",
+       "checkedAtRest": true,
+       "show": [],
+       "hide": [],
+       "cascades": [],
+       "requests": []
+      },
+      {
+       "name": "SendSMS",
+       "label": "Send SMS",
+       "checkedAtRest": false,
+       "show": [
+        {
+         "sel": "[data-kit-h=\"h27\"]",
+         "labels": [
+          "SMS Address"
+         ],
+         "required": 0,
+         "text": "SMS Address kendo.syncReady(function(){jQuery(\"#addSMSAddress\").kendoTextBox({});}); // Replace curly single quotes and "
+        }
+       ],
+       "hide": [],
+       "cascades": [],
+       "requests": []
+      }
+     ],
+     "dropdowns": []
+    },
+    "toggles": [],
+    "nested": null,
+    "saveEmpty": {
+     "validation": {
+      "summary": [
+       {
+        "className": "msg-inline-close panel-icon clickable",
+        "text": "",
+        "icons": [
+         "fa-solid fa-xmark"
+        ],
+        "rect": {
+         "x": 1389,
+         "y": 351,
+         "w": 25,
+         "h": 35
+        },
+        "html": "<div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" aria-label=\"close\" onclick=\"removeGeneralMessage(this, event)\" onkeypress=\"removeGeneralMessage(this, event)\" tabindex=\"0\"><span class=\"fa-solid fa-xmark\" title=\"Close\"></span></div>",
+        "close": "p10"
+       },
+       {
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "text": "Event name is required field",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "rect": {
+         "x": 491,
+         "y": 489,
+         "w": 298,
+         "h": 27
+        },
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"addEventName_validationMessage\" role=\"alert\" data-for=\"addEventName\" data-valmsg-for=\"addEventName\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Event name is required field</span>",
+        "close": null
+       },
+       {
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "text": "Email Address is a required field.",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "rect": {
+         "x": 804,
+         "y": 610,
+         "w": 298,
+         "h": 27
+        },
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"addEmailAddress_validationMessage\" role=\"alert\" data-for=\"addEmailAddress\" data-valmsg-for=\"addEmailAddress\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Email Address is a required field.</span>",
+        "close": null
+       }
+      ],
+      "fields": [
+       {
+        "for": "addEventName",
+        "text": "Event name is required field",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"addEventName_validationMessage\" role=\"alert\" data-for=\"addEventName\" data-valmsg-for=\"addEventName\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Event name is required field</span>"
+       },
+       {
+        "for": "addEmailAddress",
+        "text": "Email Address is a required field.",
+        "className": "k-form-error k-invalid-msg field-validation-error",
+        "icons": [
+         "k-icon k-i-warning icon-spacer-right"
+        ],
+        "placement": "below",
+        "html": "<span class=\"k-form-error k-invalid-msg field-validation-error\" id=\"addEmailAddress_validationMessage\" role=\"alert\" data-for=\"addEmailAddress\" data-valmsg-for=\"addEmailAddress\"><span class=\"k-icon k-i-warning icon-spacer-right\"></span>Email Address is a required field.</span>"
+       }
+      ],
+      "invalid": [
+       {
+        "name": null,
+        "className": "k-autocomplete k-input k-invalid k-focus",
+        "border": "rgb(90, 105, 120)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "addEventName",
+        "className": "k-autocomplete k-input k-invalid k-focus",
+        "border": "rgb(90, 105, 120)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": null,
+        "className": "k-autocomplete k-input k-invalid",
+        "border": "rgb(90, 105, 120)",
+        "background": "rgb(255, 255, 255)"
+       },
+       {
+        "name": "addEmailAddress",
+        "className": "k-autocomplete k-input k-invalid",
+        "border": "rgb(90, 105, 120)",
+        "background": "rgb(255, 255, 255)"
+       }
+      ],
+      "shot": "alert-notification-event-subscription--ert-notification-event-subscription-save-validation.png",
+      "summaryCloseHides": false
+     },
+     "postAttempted": [],
+     "stillOpen": true,
+     "native": []
+    },
+    "close": {
+     "edited": "addEventName",
+     "attempts": [
+      {
+       "via": "x",
+       "edited": "addEventName",
+       "closed": false,
+       "confirm": {
+        "title": "Alert Confirmation",
+        "text": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?",
+        "className": "k-window k-focus",
+        "rect": {
+         "x": 659,
+         "y": 434,
+         "w": 601,
+         "h": 213
+        },
+        "buttons": [
+         {
+          "stamp": "p13",
+          "text": "No"
+         },
+         {
+          "stamp": "p14",
+          "text": "Yes"
+         }
+        ],
+        "html": "<div class=\"k-window k-focus\" tabindex=\"0\" role=\"dialog\" aria-labelledby=\"modalMessagePopup_wnd_title\" style=\"min-width: 90px; min-height: 50px; display: inline-flex; top: 433.75px; left: 659.333px; z-index: 11504; opacity: 1; transform: scale(1);\"><div class=\"k-window-titlebar modal-msg-title-alert\"><i class=\"fa-solid modal-msg-icon-alert fa-circle-exclamation\"></i><span class=\"k-window-title\" id=\"modalMessagePopup_wnd_title\">Alert Confirmation</span><div class=\"k-window-titlebar-actions\"></div></div><div id=\"modalMessagePopup\" class=\"modal-msg-panel-container-alert k-window-content\" role=\"dialog\" aria-label=\"Alert Confirmation\" data-role=\"window\" tabindex=\"0\" style=\"\">  <div class=\"panel-body-modal modal-msg-content\">    <div class=\"clear-n-pad\">Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?    </div>    <div id=\"msgButtonRow\" class=\"editor-button-row-modal\">      <div class=\"align-center\">        <input type=\"button\" id=\"cancelModalButton\" class=\"k-button btn-spacer-right\" data-dismiss=\"modal\" value=\"No\" onclick=\"checkExecuteFunctionByName(&quot;&quot;, null); removeModalMessagePopup();\" data-probe=\"p13\">        <input type=\"button\" id=\"okButton\" class=\"k-button\" data-dismiss=\"modal\" value=\"Yes\" data-probe=\"p14\">      </div>    </div>  </div></div></div>",
+        "shot": "alert-notification-event-subscription--create1-confirm-x.png"
+       },
+       "native": [],
+       "answered": "No",
+       "stillOpenAfterStay": true,
+       "leftWith": "Yes",
+       "closedAfterLeave": true
+      },
+      {
+       "via": "cancel",
+       "edited": "addEventName",
+       "closed": true,
+       "confirm": null,
+       "native": []
+      }
+     ]
+    },
+    "loading": {
+     "className": "wait-dialog",
+     "id": "loadingDialog",
+     "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+     "firstAt": 52,
+     "visibleMs": 8900
+    },
+    "requests": [
+     {
+      "method": "GET",
+      "url": "/Notifications/AddSubscription/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/Notifications/GetEventNameList/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/Notifications/AddSubscription/",
+      "status": "sent"
+     },
+     {
+      "method": "GET",
+      "url": "/api/Notifications/GetEventNameList/",
+      "status": "sent"
+     }
+    ],
+    "atViewports": [
+     {
+      "viewport": {
+       "width": 1272,
+       "height": 588
+      },
+      "position": {
+       "viewport": {
+        "w": 1272,
+        "h": 588,
+        "docW": 1272
+       },
+       "rect": {
+        "x": 0,
+        "y": 20,
+        "w": 1145,
+        "h": 448
+       },
+       "leftGap": 0,
+       "rightGap": 127,
+       "centeredLeft": 64,
+       "centered": false,
+       "touchesLeft": true,
+       "widerThanViewport": false,
+       "overflowRight": false,
+       "style": "min-width: 1144.8px; min-height: 50px; max-height: 499.8px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+       "className": "k-window panelForm-col-4 ui-draggable",
+       "fitsViewport": true,
+       "heightPct": 76,
+       "contentScrolls": false,
+       "contentH": {
+        "scroll": 409,
+        "client": 409,
+        "overflowY": "auto"
+       },
+       "isPhone": true,
+       "computed": {
+        "width": "1144.79px",
+        "minWidth": "1144.8px",
+        "maxWidth": "none",
+        "maxHeight": "499.8px",
+        "position": "absolute",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+       },
+       "kendo": {
+        "position": {
+         "top": "0",
+         "left": "0"
+        },
+        "width": null,
+        "minWidth": 90,
+        "maxWidth": null
+       },
+       "rules": [
+        {
+         "selector": ".panel-form-col-4, .panelForm-col-4",
+         "width": "50%"
+        }
+       ],
+       "contentRules": [],
+       "title": "Add Event Subscription"
+      },
+      "shot": "alert-notification-event-subscription--create1-1272x588.png",
+      "cleanClose": {
+       "edited": null,
+       "attempts": [
+        {
+         "via": "x",
+         "edited": null,
+         "closed": true,
+         "confirm": null,
+         "native": []
+        },
+        {
+         "via": "cancel",
+         "edited": null,
+         "closed": true,
+         "confirm": null,
+         "native": []
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "searchNoMatch": {
+   "field": "EmailAddressSearch",
+   "reveals": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/Notifications/GetSubscriptionDetailsSearch/",
+     "status": "sent"
+    }
+   ],
+   "grids": [],
+   "validation": null,
+   "shot": "alert-notification-event-subscription--search-nomatch.png"
+  },
+  "viewports": [
+   {
+    "viewport": {
+     "width": 1920,
+     "height": 1080
+    },
+    "layout": {
+     "inner": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": false,
+      "max768": false,
+      "portrait": false,
+      "isPhone": false
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 178,
+      "y": 62,
+      "w": 148,
+      "h": 30,
+      "text": "Event Subscription"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 178,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1920,
+      "h": 370
+     },
+     "footer": {
+      "x": 0,
+      "y": 508,
+      "w": 1920,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1852,
+        "y": 0,
+        "w": 68,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1862,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      }
+     ],
+     "navLinks": [
+      "Messages",
+      "External Links",
+      "Favorites",
+      "Contact Us",
+      "My Account",
+      "Logout"
+     ],
+     "page": {
+      "scrollW": 1920,
+      "scrollH": 1080,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "alert-notification-event-subscription--layout-1920x1080.png"
+   },
+   {
+    "viewport": {
+     "width": 1272,
+     "height": 588
+    },
+    "layout": {
+     "inner": {
+      "w": 1272,
+      "h": 588,
+      "docW": 1257,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": true,
+      "max768": false,
+      "portrait": false,
+      "isPhone": true
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1257,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 178,
+      "y": 62,
+      "w": 148,
+      "h": 30,
+      "text": "Event Subscription"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 178,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1257,
+      "h": 370
+     },
+     "footer": {
+      "x": 0,
+      "y": 508,
+      "w": 1257,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": true,
+       "rect": {
+        "x": 537,
+        "y": 0,
+        "w": 720,
+        "h": 62
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1187,
+        "y": 0,
+        "w": 70,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1197,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      }
+     ],
+     "navLinks": [],
+     "page": {
+      "scrollW": 1257,
+      "scrollH": 627,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "alert-notification-event-subscription--layout-1272x588.png",
+    "dialog": {
+     "position": {
+      "viewport": {
+       "w": 1272,
+       "h": 588,
+       "docW": 1272
+      },
+      "rect": {
+       "x": 0,
+       "y": 20,
+       "w": 1145,
+       "h": 448
+      },
+      "leftGap": 0,
+      "rightGap": 127,
+      "centeredLeft": 64,
+      "centered": false,
+      "touchesLeft": true,
+      "widerThanViewport": false,
+      "overflowRight": false,
+      "style": "min-width: 1144.8px; min-height: 50px; max-height: 499.8px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+      "className": "k-window panelForm-col-4 ui-draggable",
+      "fitsViewport": true,
+      "heightPct": 76,
+      "contentScrolls": false,
+      "contentH": {
+       "scroll": 409,
+       "client": 409,
+       "overflowY": "auto"
+      },
+      "isPhone": true,
+      "computed": {
+       "width": "1144.79px",
+       "minWidth": "1144.8px",
+       "maxWidth": "none",
+       "maxHeight": "499.8px",
+       "position": "absolute",
+       "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "kendo": {
+       "position": {
+        "top": "0",
+        "left": "0"
+       },
+       "width": null,
+       "minWidth": 90,
+       "maxWidth": null
+      },
+      "rules": [
+       {
+        "selector": ".panel-form-col-4, .panelForm-col-4",
+        "width": "50%"
+       }
+      ],
+      "contentRules": [],
+      "title": "Add Event Subscription"
+     },
+     "shot": "alert-notification-event-subscription--create1-1272x588.png",
+     "cleanClose": {
+      "edited": null,
+      "attempts": [
+       {
+        "via": "x",
+        "edited": null,
+        "closed": true,
+        "confirm": null,
+        "native": []
+       },
+       {
+        "via": "cancel",
+        "edited": null,
+        "closed": true,
+        "confirm": null,
+        "native": []
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "shots": [
+   "alert-notification-event-subscription--grid-filter.png",
+   "alert-notification-event-subscription--create1.png",
+   "alert-notification-event-subscription--ert-notification-event-subscription-save-validation.png",
+   "alert-notification-event-subscription--create1-confirm-x.png",
+   "alert-notification-event-subscription--search-nomatch.png",
+   "alert-notification-event-subscription--layout-1920x1080.png",
+   "alert-notification-event-subscription--layout-1272x588.png",
+   "alert-notification-event-subscription--create1-1272x588.png"
+  ]
+ },
+ "ms": 91920
+}

@@ -1,0 +1,688 @@
+{
+ "label": "Administration > Manage Module Events",
+ "trail": [
+  "Administration",
+  "Manage Module Events"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/ModuleEvents/ManageModuleEvents",
+ "at": "2026-11-13T07:56:36.927Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage Module Events",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 8,
+    "dropdownlist": 4,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 3,
+    "selectable": 1,
+    "pager": 1,
+    "numerictextbox": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 5,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 5,
+  "dates": {
+   "inputs": [],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": [
+    {
+     "name": "ModuleList",
+     "label": "Modules",
+     "value": "6d29b87b-7605-b540-8c11-3f7af09359dd",
+     "text": "Administration",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "EventList",
+       "before": {
+        "enabled": true,
+        "options": 1059
+       },
+       "after": {
+        "enabled": true,
+        "options": 7
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/EventAdmin/GetEventsList/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "ModuleList",
+     "label": "Modules",
+     "value": "57a8c821-8f2b-4179-a950-166cc2b704da",
+     "text": "AS24OCT29Module",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "EventList",
+       "before": {
+        "enabled": true,
+        "options": 7
+       },
+       "after": {
+        "enabled": true,
+        "options": 1
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/EventAdmin/GetEventsList/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "ModuleList",
+     "label": "Modules",
+     "value": "3b5fb78d-28f9-4806-adaa-b75b05515d33",
+     "text": "AS3016IntModule0904",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "EventList",
+       "before": {
+        "enabled": true,
+        "options": 1
+       },
+       "after": {
+        "enabled": true,
+        "options": 0
+       }
+      }
+     ],
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/api/EventAdmin/GetEventsList/",
+       "status": "sent"
+      }
+     ]
+    },
+    {
+     "name": "EventList",
+     "label": "EventList",
+     "value": "AbsentParentAdded",
+     "text": "AbsentParentAdded",
+     "show": [],
+     "hide": [],
+     "cascades": [
+      {
+       "dropdown": "EventList",
+       "before": {
+        "enabled": true,
+        "options": 0
+       },
+       "after": {
+        "enabled": true,
+        "options": 1059
+       }
+      }
+     ],
+     "requests": []
+    }
+   ]
+  },
+  "toggles": [
+   {
+    "header": "Search Criteria",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 196
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0,
+      "title": "Expand"
+     },
+     "durationMs": 415,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 2,
+       "h": 195
+      },
+      {
+       "t": 40,
+       "h": 191
+      },
+      {
+       "t": 71,
+       "h": 181
+      },
+      {
+       "t": 102,
+       "h": 166
+      },
+      {
+       "t": 134,
+       "h": 147
+      },
+      {
+       "t": 165,
+       "h": 125
+      },
+      {
+       "t": 196,
+       "h": 101
+      },
+      {
+       "t": 228,
+       "h": 77
+      },
+      {
+       "t": 259,
+       "h": 55
+      },
+      {
+       "t": 290,
+       "h": 34
+      },
+      {
+       "t": 322,
+       "h": 18
+      },
+      {
+       "t": 353,
+       "h": 7
+      },
+      {
+       "t": 383,
+       "h": 1
+      },
+      {
+       "t": 415,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 196,
+      "title": "Collapse"
+     },
+     "durationMs": 403,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 2,
+       "h": 0
+      },
+      {
+       "t": 28,
+       "h": 2
+      },
+      {
+       "t": 58,
+       "h": 10
+      },
+      {
+       "t": 89,
+       "h": 23
+      },
+      {
+       "t": 121,
+       "h": 41
+      },
+      {
+       "t": 153,
+       "h": 62
+      },
+      {
+       "t": 183,
+       "h": 85
+      },
+      {
+       "t": 214,
+       "h": 108
+      },
+      {
+       "t": 246,
+       "h": 132
+      },
+      {
+       "t": 278,
+       "h": 154
+      },
+      {
+       "t": 309,
+       "h": 172
+      },
+      {
+       "t": 340,
+       "h": 185
+      },
+      {
+       "t": 371,
+       "h": 193
+      },
+      {
+       "t": 403,
+       "h": 196
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 2534,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h5\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results ModuleEventIDModuleEventsEvent Filter MetaDataActiveSuspendeddf37b156-70d5-b812-e053-eabdaf8221ecTPL Poli"
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/EventAdmin/SearchModuleEvents/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 106,
+    "visibleMs": 500
+   },
+   "grids": [
+    {
+     "id": "eventAdminGrid",
+     "rows": 10,
+     "total": 1097,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 507,
+      "w": 1843,
+      "h": 529
+     }
+    }
+   ],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": {
+   "stamp": "p2",
+   "icon": {
+    "x": 239,
+    "y": 519,
+    "w": 30,
+    "h": 30
+   },
+   "iconHtml": "<a aria-hidden=\"true\" aria-label=\"Module filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Module filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p2\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "Module",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "filterableColumns": 3,
+   "popup": {
+    "rect": {
+     "x": 239,
+     "y": 548,
+     "w": 274,
+     "h": 207
+    },
+    "className": "k-animation-container k-animation-container-shown",
+    "html": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"display: block; position: absolute; top: 548.354px; z-index: 10002; left: 239.312px;\"><div class=\"k-child-animation-container\" style=\"width: 274.333px; height: 207.188px; display: block; transform: translateY(0px);\"><form title=\"Show items with value that\" class=\"k-filter-menu k-popup\" data-role=\"popup\" aria-hidden=\"false\" data-filter-styled=\"data-filter-styled\" style=\"\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\">Show items with value that:</div><span title=\"Operator\" class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"9a5b814f-bfe3-412c-89a2-9754f72c28d2_listbox\" aria-busy=\"false\" aria-describedby=\"79e1ba24-9687-4e8a-ab07-bc0fd2b1173e\" style=\"\"><span id=\"79e1ba24-9687-4e8a-ab07-bc0fd2b1173e\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">Equal To</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><select title=\"Operator\" data-bind=\"value: filters[0].operator\" data-adaptive-mode=\"none\" data-role=\"dropdownlist\" style=\"display: none;\"><option value=\"eq\" selected=\"selected\">Equal To</option><option value=\"contains\">Contains</option><option value=\"endswith\">Ends With</option><option value=\"startswith\">Starts With</option></select></span><span class=\"k-textbox k-input\"><input title=\"Value\" data-bind=\"value:filters[0].value\" class=\"k-input-inner\" type=\"text\" data-adaptive-mode=\"none\"></span><div class=\"k-actions-stretched k-actions\"><div class=\"grid-filter-buttons\"><button title=\"Filter\" class=\"k-button k-button-primary\" type=\"submit\"><span class=\"k-icon k-svg-icon k-svg-i-filter k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span><span class=\"k-button-text\">Filter</span></button><button title=\"Clear\" class=\"k-button\" type=\"reset\"><span class=\"k-icon k-svg-icon k-svg-i-filter-clear k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m143.5 64 168.2 168.2L288 256v160l-64 64V256L64 96V64zm236.1 100.4L448 96V64H279.3l-64-64L192 22l298 298 22-23.3z\"></path></svg></span><span class=\"k-button-text\">Clear</span></button></div></div></div><div class=\"k-list-container k-popup k-dropdownlist-popup\" data-role=\"popup\" aria-hidden=\"true\" style=\"display: none;\"><div class=\"k-list\" id=\"9a5b814f-bfe3-412c-89a2-9754f72c28d2-list\" data-role=\"staticlist\"><div class=\"k-no-data\" aria-live=\"polite\" style=\"display: none;\">No data found.</div><div class=\"k-list-group-sticky-header\" style=\"display: none;\"></div><div class=\"k-list-content k-list-scroller\" unselectable=\"on\"><ul unselectable=\"on\" tabindex=\"-1\" aria-hidden=\"true\" id=\"9a5b814f-bfe3-412c-89a2-9754f72c28d2_listbox\" role=\"listbox\" aria-live=\"off\" class=\"k-list-ul\"><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item k-selected k-focus\" aria-selected=\"true\" data-offset-index=\"0\" id=\"96ab6375-dab9-4e92-b157-e90f880e08e6\"><span class=\"k-list-item-text\">Equal To</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"1\"><span class=\"k-list-item-text\">Contains</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"2\"><span class=\"k-list-item-text\">Ends With</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"3\"><span class=\"k-list-item-text\">Starts With</span></li></ul></div></div></div></form></div></div>",
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": null,
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "dropdowns": [
+     [
+      "Equal To",
+      "Contains",
+      "Ends With",
+      "Starts With"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "stamp": "p3",
+      "className": "k-picker k-dropdownlist k-focus",
+      "expanded": "false",
+      "text": "Equal ToEqual ToContainsEnds WithStarts ",
+      "after": {
+       "htmlDelta": 678,
+       "expanded": "true",
+       "rect": {
+        "x": 239,
+        "y": 548,
+        "w": 274,
+        "h": 207
+       }
+      }
+     }
+    ],
+    "shot": "administration-manage-module-events--grid-filter.png"
+   }
+  },
+  "row": {
+   "dialog": null,
+   "navigates": null
+  },
+  "dialogs": [],
+  "searchNoMatch": null,
+  "viewports": [
+   {
+    "viewport": {
+     "width": 1920,
+     "height": 1080
+    },
+    "layout": {
+     "inner": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": false,
+      "max768": false,
+      "portrait": false,
+      "isPhone": false
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 175,
+      "h": 30,
+      "text": "Manage Module Events"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 106,
+      "w": 1920,
+      "h": 323
+     },
+     "footer": {
+      "x": 0,
+      "y": 429,
+      "w": 1920,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1852,
+        "y": 0,
+        "w": 68,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1862,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      }
+     ],
+     "navLinks": [
+      "Messages",
+      "External Links",
+      "Favorites",
+      "Contact Us",
+      "My Account",
+      "Logout"
+     ],
+     "page": {
+      "scrollW": 1920,
+      "scrollH": 1080,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-module-events--layout-1920x1080.png"
+   },
+   {
+    "viewport": {
+     "width": 1272,
+     "height": 588
+    },
+    "layout": {
+     "inner": {
+      "w": 1272,
+      "h": 588,
+      "docW": 1272,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": true,
+      "max768": false,
+      "portrait": false,
+      "isPhone": true
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1272,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 175,
+      "h": 30,
+      "text": "Manage Module Events"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 106,
+      "w": 1272,
+      "h": 323
+     },
+     "footer": {
+      "x": 0,
+      "y": 429,
+      "w": 1272,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": true,
+       "rect": {
+        "x": 538,
+        "y": 0,
+        "w": 734,
+        "h": 62
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1202,
+        "y": 0,
+        "w": 70,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1212,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      }
+     ],
+     "navLinks": [],
+     "page": {
+      "scrollW": 1272,
+      "scrollH": 588,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-module-events--layout-1272x588.png"
+   }
+  ],
+  "shots": [
+   "administration-manage-module-events--grid-filter.png",
+   "administration-manage-module-events--layout-1920x1080.png",
+   "administration-manage-module-events--layout-1272x588.png"
+  ]
+ },
+ "ms": 72111
+}

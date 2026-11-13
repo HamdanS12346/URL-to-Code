@@ -1,0 +1,4725 @@
+{
+ "pages": 7,
+ "probed": 7,
+ "failed": [],
+ "Q1_modalPosition": [
+  {
+   "page": "Alert Notification > Event Configuration",
+   "dialog": "Add Event",
+   "viewport": "1920x1080",
+   "rect": {
+    "x": 360,
+    "y": 233,
+    "w": 1200,
+    "h": 614
+   },
+   "centered": true,
+   "touchesLeft": false,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-5 ui-draggable",
+   "width": "1200px",
+   "minWidth": "90px",
+   "maxHeight": "918px",
+   "heightPct": 57,
+   "fitsViewport": true,
+   "contentScrolls": false,
+   "isPhone": false,
+   "kendoPosition": {
+    "top": 233.20850000000002,
+    "left": 360
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-5, .panelForm-col-5",
+     "width": "62.5%"
+    }
+   ]
+  },
+  {
+   "page": "Alert Notification > Event Configuration",
+   "dialog": "Add Event",
+   "viewport": "1272x588",
+   "rect": {
+    "x": 0,
+    "y": 20,
+    "w": 1145,
+    "h": 500
+   },
+   "centered": false,
+   "touchesLeft": true,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-5 ui-draggable",
+   "width": "1144.79px",
+   "minWidth": "1144.8px",
+   "maxHeight": "499.8px",
+   "heightPct": 85,
+   "fitsViewport": true,
+   "contentScrolls": true,
+   "isPhone": true,
+   "kendoPosition": {
+    "top": "0",
+    "left": "0"
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-5, .panelForm-col-5",
+     "width": "62.5%"
+    }
+   ]
+  },
+  {
+   "page": "Alert Notification > Event Configuration",
+   "dialog": "View Event Details",
+   "viewport": "1920x1080",
+   "rect": {
+    "x": 360,
+    "y": 100,
+    "w": 1200,
+    "h": 880
+   },
+   "centered": true,
+   "touchesLeft": false,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-5 ui-draggable",
+   "width": "1200px",
+   "minWidth": "90px",
+   "maxHeight": "918px",
+   "heightPct": 81,
+   "fitsViewport": true,
+   "contentScrolls": false,
+   "isPhone": false,
+   "kendoPosition": {
+    "top": 100.08350000000002,
+    "left": 360
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-5, .panelForm-col-5",
+     "width": "62.5%"
+    }
+   ]
+  },
+  {
+   "page": "Alert Notification > Event Subscription",
+   "dialog": "Add Event Subscription",
+   "viewport": "1920x1080",
+   "rect": {
+    "x": 480,
+    "y": 316,
+    "w": 960,
+    "h": 448
+   },
+   "centered": true,
+   "touchesLeft": false,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-4 ui-draggable",
+   "width": "960px",
+   "minWidth": "90px",
+   "maxHeight": "918px",
+   "heightPct": 41,
+   "fitsViewport": true,
+   "contentScrolls": false,
+   "isPhone": false,
+   "kendoPosition": {
+    "top": 316.20849999999996,
+    "left": 480
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-4, .panelForm-col-4",
+     "width": "50%"
+    }
+   ]
+  },
+  {
+   "page": "Alert Notification > Event Subscription",
+   "dialog": "Add Event Subscription",
+   "viewport": "1272x588",
+   "rect": {
+    "x": 0,
+    "y": 20,
+    "w": 1145,
+    "h": 448
+   },
+   "centered": false,
+   "touchesLeft": true,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-4 ui-draggable",
+   "width": "1144.79px",
+   "minWidth": "1144.8px",
+   "maxHeight": "499.8px",
+   "heightPct": 76,
+   "fitsViewport": true,
+   "contentScrolls": false,
+   "isPhone": true,
+   "kendoPosition": {
+    "top": "0",
+    "left": "0"
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-4, .panelForm-col-4",
+     "width": "50%"
+    }
+   ]
+  },
+  {
+   "page": "Alert Notification > Event Subscription",
+   "dialog": "View Subscription Details",
+   "viewport": "1920x1080",
+   "rect": {
+    "x": 480,
+    "y": 335,
+    "w": 960,
+    "h": 409
+   },
+   "centered": true,
+   "touchesLeft": false,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-4 ui-draggable",
+   "width": "960px",
+   "minWidth": "90px",
+   "maxHeight": "918px",
+   "heightPct": 38,
+   "fitsViewport": true,
+   "contentScrolls": false,
+   "isPhone": false,
+   "kendoPosition": {
+    "top": 335.33349999999996,
+    "left": 480
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-4, .panelForm-col-4",
+     "width": "50%"
+    }
+   ]
+  },
+  {
+   "page": "Alert Notification > Tracking",
+   "dialog": "View Event Details",
+   "viewport": "1920x1080",
+   "rect": {
+    "x": 360,
+    "y": 355,
+    "w": 1200,
+    "h": 370
+   },
+   "centered": true,
+   "touchesLeft": false,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-5 ui-draggable",
+   "width": "1200px",
+   "minWidth": "90px",
+   "maxHeight": "918px",
+   "heightPct": 34,
+   "fitsViewport": true,
+   "contentScrolls": false,
+   "isPhone": false,
+   "kendoPosition": {
+    "top": 599.1665,
+    "left": 360
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-5, .panelForm-col-5",
+     "width": "62.5%"
+    }
+   ]
+  },
+  {
+   "page": "File Transfer Services > File Transfer Configuration",
+   "dialog": "Add File Transfer Configuration",
+   "viewport": "1920x1080",
+   "rect": {
+    "x": 240,
+    "y": 81,
+    "w": 1440,
+    "h": 918
+   },
+   "centered": true,
+   "touchesLeft": false,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-6 ui-draggable",
+   "width": "1440px",
+   "minWidth": "90px",
+   "maxHeight": "918px",
+   "heightPct": 85,
+   "fitsViewport": true,
+   "contentScrolls": true,
+   "isPhone": false,
+   "kendoPosition": {
+    "top": 81,
+    "left": 240
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-6, .panelForm-col-6",
+     "width": "75%"
+    }
+   ]
+  },
+  {
+   "page": "File Transfer Services > File Transfer Configuration",
+   "dialog": "Add File Transfer Configuration",
+   "viewport": "1272x588",
+   "rect": {
+    "x": 0,
+    "y": 20,
+    "w": 1145,
+    "h": 500
+   },
+   "centered": false,
+   "touchesLeft": true,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-6 ui-draggable",
+   "width": "1144.79px",
+   "minWidth": "1144.8px",
+   "maxHeight": "499.8px",
+   "heightPct": 85,
+   "fitsViewport": true,
+   "contentScrolls": true,
+   "isPhone": true,
+   "kendoPosition": {
+    "top": "0",
+    "left": "0"
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-6, .panelForm-col-6",
+     "width": "75%"
+    }
+   ]
+  },
+  {
+   "page": "File Transfer Services > File Transfer Configuration",
+   "dialog": "View File Transfer Configuration",
+   "viewport": "1920x1080",
+   "rect": {
+    "x": 240,
+    "y": 81,
+    "w": 1440,
+    "h": 918
+   },
+   "centered": true,
+   "touchesLeft": false,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-6 ui-draggable",
+   "width": "1440px",
+   "minWidth": "90px",
+   "maxHeight": "918px",
+   "heightPct": 85,
+   "fitsViewport": true,
+   "contentScrolls": true,
+   "isPhone": false,
+   "kendoPosition": {
+    "top": 300.3333282470703,
+    "left": 240
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-6, .panelForm-col-6",
+     "width": "75%"
+    }
+   ]
+  },
+  {
+   "page": "File Transfer Services > FTP Server Credentials",
+   "dialog": "Add FTP Server Credentials",
+   "viewport": "1920x1080",
+   "rect": {
+    "x": 240,
+    "y": 232,
+    "w": 1440,
+    "h": 617
+   },
+   "centered": true,
+   "touchesLeft": false,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-6 ui-draggable",
+   "width": "1440px",
+   "minWidth": "90px",
+   "maxHeight": "918px",
+   "heightPct": 57,
+   "fitsViewport": true,
+   "contentScrolls": false,
+   "isPhone": false,
+   "kendoPosition": {
+    "top": 231.66649999999998,
+    "left": 240
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-6, .panelForm-col-6",
+     "width": "75%"
+    }
+   ]
+  },
+  {
+   "page": "File Transfer Services > FTP Server Credentials",
+   "dialog": "Add FTP Server Credentials",
+   "viewport": "1272x588",
+   "rect": {
+    "x": 0,
+    "y": 20,
+    "w": 1145,
+    "h": 500
+   },
+   "centered": false,
+   "touchesLeft": true,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-6 ui-draggable",
+   "width": "1144.79px",
+   "minWidth": "1144.8px",
+   "maxHeight": "499.8px",
+   "heightPct": 85,
+   "fitsViewport": true,
+   "contentScrolls": true,
+   "isPhone": true,
+   "kendoPosition": {
+    "top": "0",
+    "left": "0"
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-6, .panelForm-col-6",
+     "width": "75%"
+    }
+   ]
+  },
+  {
+   "page": "File Transfer Services > FTP Server Credentials",
+   "dialog": "Edit FTP Server Credentials",
+   "viewport": "1920x1080",
+   "rect": {
+    "x": 240,
+    "y": 97,
+    "w": 1440,
+    "h": 886
+   },
+   "centered": true,
+   "touchesLeft": false,
+   "widerThanViewport": false,
+   "overflowRight": false,
+   "windowClass": "k-window panelForm-col-6 ui-draggable",
+   "width": "1440px",
+   "minWidth": "90px",
+   "maxHeight": "918px",
+   "heightPct": 82,
+   "fitsViewport": true,
+   "contentScrolls": false,
+   "isPhone": false,
+   "kendoPosition": {
+    "top": 96.91649999999998,
+    "left": 240
+   },
+   "rules": [
+    {
+     "selector": ".panel-form-col-6, .panelForm-col-6",
+     "width": "75%"
+    }
+   ]
+  }
+ ],
+ "Q2_dates": {
+  "inputs": [
+   {
+    "page": "Alert Notification > Tracking",
+    "where": "page",
+    "role": "datepicker",
+    "id": "Date",
+    "name": "Date",
+    "label": "Date",
+    "valueAttr": "01/01/1900",
+    "shows": "",
+    "prefilled": false,
+    "offsetDays": null,
+    "format": "MM/dd/yyyy",
+    "placeholder": null,
+    "masked": false,
+    "required": false,
+    "enabled": true
+   },
+   {
+    "page": "File Transfer Services > File Transfer Tracking",
+    "where": "page",
+    "role": "datetimepicker",
+    "id": "FromDate",
+    "name": "FromDate",
+    "label": "From Date",
+    "valueAttr": null,
+    "shows": "",
+    "prefilled": false,
+    "offsetDays": 0,
+    "format": "M/d/yyyy h:mm tt",
+    "placeholder": null,
+    "masked": false,
+    "required": false,
+    "enabled": true
+   },
+   {
+    "page": "File Transfer Services > File Transfer Tracking",
+    "where": "page",
+    "role": "datetimepicker",
+    "id": "ToDate",
+    "name": "ToDate",
+    "label": "To Date",
+    "valueAttr": null,
+    "shows": "",
+    "prefilled": false,
+    "offsetDays": 0,
+    "format": "M/d/yyyy h:mm tt",
+    "placeholder": null,
+    "masked": false,
+    "required": false,
+    "enabled": true
+   },
+   {
+    "page": "File Transfer Services > FTP Server Credentials",
+    "where": "dialog Add FTP Server Credentials",
+    "role": "datepicker",
+    "id": "View_CreationDate",
+    "name": "CreationDate",
+    "label": "Creation Date",
+    "valueAttr": "01/01/1900",
+    "shows": "01/01/1900",
+    "prefilled": true,
+    "offsetDays": -46337,
+    "format": "MM/dd/yyyy",
+    "placeholder": null,
+    "masked": false,
+    "required": true,
+    "enabled": false
+   },
+   {
+    "page": "File Transfer Services > FTP Server Credentials",
+    "where": "dialog Add FTP Server Credentials",
+    "role": "datepicker",
+    "id": "View_LastModifiedDate",
+    "name": "LastModifiedDate",
+    "label": "Modified Date",
+    "valueAttr": "01/01/1900",
+    "shows": "01/01/1900",
+    "prefilled": true,
+    "offsetDays": -46337,
+    "format": "MM/dd/yyyy",
+    "placeholder": null,
+    "masked": false,
+    "required": false,
+    "enabled": false
+   }
+  ],
+  "driven": [
+   {
+    "page": "Alert Notification > Tracking",
+    "where": "page",
+    "role": "datepicker",
+    "label": "Date",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 1420,
+     "y": 281,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 1420,
+     "y": 241,
+     "w": 445,
+     "h": 40
+    },
+    "shot": "alert-notification-tracking--page-date-open.png",
+    "afterPick": "11/13/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026"
+   },
+   {
+    "page": "File Transfer Services > File Transfer Tracking",
+    "where": "page",
+    "role": "datetimepicker",
+    "label": "From Date",
+    "atRest": "",
+    "onFocus": "",
+    "onCalendarButton": "",
+    "popup": {
+     "x": 41,
+     "y": 592,
+     "w": 345,
+     "h": 325
+    },
+    "input": {
+     "x": 41,
+     "y": 552,
+     "w": 291,
+     "h": 40
+    },
+    "shot": "file-transfer-services-file-transfer-tracking--page-date-open.png",
+    "afterPick": "11/13/2026 12:00 AM",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026 12:00 AM"
+   }
+  ]
+ },
+ "Q3_Q8_dialogParts": [
+  {
+   "page": "Alert Notification > Event Configuration",
+   "where": "dialog Add Event",
+   "kind": "radio",
+   "trigger": "Run Schedule = Run Weekly",
+   "shows": [
+    "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"
+   ],
+   "hides": [],
+   "cascades": [],
+   "requests": []
+  },
+  {
+   "page": "Alert Notification > Event Configuration",
+   "where": "dialog Add Event",
+   "kind": "radio",
+   "trigger": "Run Schedule = Run Monthly",
+   "shows": [
+    "Run On First Day Month, Run On Last Day Month, Run Day Of Month, RunDayOfMonthList, RunDayOfMonth_ID, RunDayOfMonth_Name, RunDayOfMonth_DisplayFormat"
+   ],
+   "hides": [
+    "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"
+   ],
+   "cascades": [],
+   "requests": []
+  },
+  {
+   "page": "Alert Notification > Event Subscription",
+   "where": "dialog Add Event Subscription",
+   "kind": "checkbox",
+   "trigger": "Send SMS toggled",
+   "shows": [
+    "SMS Address"
+   ],
+   "hides": [],
+   "cascades": [],
+   "requests": []
+  },
+  {
+   "page": "File Transfer Services > File Transfer Configuration",
+   "where": "dialog Add File Transfer Configuration",
+   "kind": "create-new",
+   "nested": null,
+   "inline": [
+    "appSetting, Destination Protocol, DestinationProtocolList, DestinationProtocol_ID, DestinationProtocol_Name, DestinationProtocol_DisplayFormat, Server, Server, Destination Type, DestinationTypeList"
+   ]
+  }
+ ],
+ "Q4_search": [
+  {
+   "page": "Alert Notification > Event Configuration",
+   "rowsOnEmptySearch": 10,
+   "total": 849,
+   "validationInstead": false,
+   "reveals": [
+    "popupPanelMsg, Search Results"
+   ],
+   "requests": [
+    "GET /api/Notifications/GetEventServiceSearch/"
+   ],
+   "loading": "#loadingDialog 800ms",
+   "noMatch": {
+    "rows": null,
+    "noRecords": null,
+    "gridShown": false,
+    "validation": false
+   }
+  },
+  {
+   "page": "Alert Notification > Event Subscription",
+   "rowsOnEmptySearch": 10,
+   "total": 17,
+   "validationInstead": false,
+   "reveals": [
+    "popupPanelMsg, Search Results"
+   ],
+   "requests": [
+    "GET /api/Notifications/GetSubscriptionDetailsSearch/"
+   ],
+   "loading": "#loadingDialog 450ms",
+   "noMatch": {
+    "rows": null,
+    "noRecords": null,
+    "gridShown": false,
+    "validation": false
+   }
+  },
+  {
+   "page": "Alert Notification > Subscriber Configuration",
+   "rowsOnEmptySearch": 10,
+   "total": 12,
+   "validationInstead": false,
+   "reveals": [
+    "popupPanelMsg, Search Results"
+   ],
+   "requests": [
+    "GET /api/Notifications/GetSubscriberSearch/"
+   ],
+   "loading": "#loadingDialog 600ms",
+   "noMatch": {
+    "rows": null,
+    "noRecords": null,
+    "gridShown": false,
+    "validation": false
+   }
+  },
+  {
+   "page": "Alert Notification > Tracking",
+   "rowsOnEmptySearch": 10,
+   "total": 2143265,
+   "validationInstead": false,
+   "reveals": [
+    "popupPanelMsg, Search Results"
+   ],
+   "requests": [
+    "GET /api/Notifications/GetEventNotificationTracking/"
+   ],
+   "loading": "#loadingDialog 2550ms",
+   "noMatch": {
+    "rows": null,
+    "noRecords": null,
+    "gridShown": false,
+    "validation": false
+   }
+  },
+  {
+   "page": "File Transfer Services > File Transfer Configuration",
+   "rowsOnEmptySearch": 10,
+   "total": 97,
+   "validationInstead": false,
+   "reveals": [
+    "Search Results, Show Inactives"
+   ],
+   "requests": [
+    "GET /api/FileTransfer/SearchFileTransfer/"
+   ],
+   "loading": "k-loading-mask 1700ms",
+   "noMatch": {
+    "rows": 1,
+    "noRecords": null,
+    "gridShown": true,
+    "validation": false
+   }
+  },
+  {
+   "page": "File Transfer Services > File Transfer Tracking",
+   "rowsOnEmptySearch": 0,
+   "total": 0,
+   "validationInstead": true,
+   "reveals": [
+    "Search Results"
+   ],
+   "requests": [
+    "GET /api/FileTransfer/SearchFileTransferTracking/"
+   ],
+   "loading": "k-loading-mask 5750ms",
+   "noMatch": {
+    "rows": 1,
+    "noRecords": null,
+    "gridShown": true,
+    "validation": false
+   }
+  },
+  {
+   "page": "File Transfer Services > FTP Server Credentials",
+   "rowsOnEmptySearch": 4,
+   "total": 4,
+   "validationInstead": false,
+   "reveals": [
+    "Search Results, Include Invalids"
+   ],
+   "requests": [
+    "GET /api/FileTransfer/GetFTPServerCredentials/"
+   ],
+   "loading": "#loadingDialog 450ms",
+   "noMatch": {
+    "rows": 1,
+    "noRecords": null,
+    "gridShown": true,
+    "validation": false
+   }
+  }
+ ],
+ "Q5_pageValidation": [
+  {
+   "page": "File Transfer Services > File Transfer Tracking",
+   "when": "search",
+   "summaryClass": [
+    "k-loading-text"
+   ],
+   "summaryIcons": [],
+   "summaryText": [
+    "Loading..."
+   ],
+   "summaryCloseHides": null,
+   "fieldMessage": [],
+   "invalidStyle": [],
+   "shape": "<span role=\"alert\" class=\"k-loading-text\"></span>"
+  }
+ ],
+ "Q6_toggles": {
+  "toggles": [
+   {
+    "page": "Alert Notification > Event Configuration",
+    "where": "page",
+    "header": "Search Criteria",
+    "iconBefore": "fa-angle-up",
+    "iconAfter": "fa-angle-down panel-collapsed",
+    "opens": false,
+    "closes": true,
+    "ms": 401,
+    "backMs": 403,
+    "cssTransition": "all"
+   },
+   {
+    "page": "Alert Notification > Event Subscription",
+    "where": "page",
+    "header": "Search Criteria",
+    "iconBefore": "fa-angle-up",
+    "iconAfter": "fa-angle-down panel-collapsed",
+    "opens": false,
+    "closes": true,
+    "ms": 401,
+    "backMs": 403,
+    "cssTransition": "all"
+   },
+   {
+    "page": "Alert Notification > Subscriber Configuration",
+    "where": "page",
+    "header": "Search Criteria",
+    "iconBefore": "fa-angle-up",
+    "iconAfter": "fa-angle-down panel-collapsed",
+    "opens": false,
+    "closes": true,
+    "ms": 415,
+    "backMs": 402,
+    "cssTransition": "all"
+   },
+   {
+    "page": "Alert Notification > Tracking",
+    "where": "page",
+    "header": "Search Criteria",
+    "iconBefore": "fa-angle-up",
+    "iconAfter": "fa-angle-down panel-collapsed",
+    "opens": false,
+    "closes": true,
+    "ms": 397,
+    "backMs": 418,
+    "cssTransition": "all"
+   },
+   {
+    "page": "File Transfer Services > File Transfer Configuration",
+    "where": "page",
+    "header": "Search Criteria",
+    "iconBefore": "fa-angle-up",
+    "iconAfter": "fa-angle-down panel-collapsed",
+    "opens": false,
+    "closes": true,
+    "ms": 400,
+    "backMs": 402,
+    "cssTransition": "all"
+   },
+   {
+    "page": "File Transfer Services > File Transfer Tracking",
+    "where": "page",
+    "header": "Search Criteria",
+    "iconBefore": "fa-angle-up",
+    "iconAfter": "fa-angle-down panel-collapsed",
+    "opens": false,
+    "closes": true,
+    "ms": 402,
+    "backMs": 403,
+    "cssTransition": "all"
+   },
+   {
+    "page": "File Transfer Services > FTP Server Credentials",
+    "where": "page",
+    "header": "Search Criteria",
+    "iconBefore": "fa-angle-up",
+    "iconAfter": "fa-angle-down panel-collapsed",
+    "opens": false,
+    "closes": true,
+    "ms": 402,
+    "backMs": 402,
+    "cssTransition": "all"
+   }
+  ],
+  "autoCollapseOnSearch": []
+ },
+ "Q7_pageConditionals": [],
+ "Q9_dialogSaveValidation": [
+  {
+   "page": "Alert Notification > Event Configuration",
+   "dialog": "Add Event",
+   "postAttempted": [],
+   "stillOpen": true,
+   "native": [],
+   "summaryClass": [
+    "msg-inline-close panel-icon clickable"
+   ],
+   "summaryIcons": [
+    "fa-solid fa-xmark"
+   ],
+   "summaryText": [
+    ""
+   ],
+   "summaryCloseHides": true,
+   "fieldMessage": [
+    {
+     "class": "k-form-error k-invalid-msg field-validation-error",
+     "placement": "below",
+     "icons": [
+      "k-icon k-i-warning icon-spacer-right"
+     ],
+     "text": "Event Name is a required field."
+    },
+    {
+     "class": "k-form-error k-invalid-msg field-validation-error",
+     "placement": "below",
+     "icons": [
+      "k-icon k-i-warning icon-spacer-right"
+     ],
+     "text": "Module is a required field."
+    },
+    {
+     "class": "k-form-error k-invalid-msg field-validation-error",
+     "placement": "below",
+     "icons": [
+      "k-icon k-i-warning icon-spacer-right"
+     ],
+     "text": "Category is a required field."
+    }
+   ],
+   "invalidStyle": [
+    "rgb(215, 56, 94) / rgb(255, 255, 255)",
+    "rgba(0, 0, 0, 0) / rgba(0, 0, 0, 0)"
+   ],
+   "shape": "<div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" onclick=\"removeGeneralMessage(this, event)\" onkeypress=\"removeGeneralMessage(this, event)\" tabindex=\"0\"><span class=\"fa-solid fa-xmark\"></span></div>"
+  },
+  {
+   "page": "Alert Notification > Event Subscription",
+   "dialog": "Add Event Subscription",
+   "postAttempted": [],
+   "stillOpen": true,
+   "native": [],
+   "summaryClass": [
+    "msg-inline-close panel-icon clickable",
+    "k-form-error k-invalid-msg field-validation-error",
+    "k-form-error k-invalid-msg field-validation-error"
+   ],
+   "summaryIcons": [
+    "fa-solid fa-xmark",
+    "k-icon k-i-warning icon-spacer-right",
+    "k-icon k-i-warning icon-spacer-right"
+   ],
+   "summaryText": [
+    "",
+    "Event name is required field",
+    "Email Address is a required field."
+   ],
+   "summaryCloseHides": false,
+   "fieldMessage": [
+    {
+     "class": "k-form-error k-invalid-msg field-validation-error",
+     "placement": "below",
+     "icons": [
+      "k-icon k-i-warning icon-spacer-right"
+     ],
+     "text": "Event name is required field"
+    },
+    {
+     "class": "k-form-error k-invalid-msg field-validation-error",
+     "placement": "below",
+     "icons": [
+      "k-icon k-i-warning icon-spacer-right"
+     ],
+     "text": "Email Address is a required field."
+    }
+   ],
+   "invalidStyle": [
+    "rgb(90, 105, 120) / rgb(255, 255, 255)"
+   ],
+   "shape": "<div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" onclick=\"removeGeneralMessage(this, event)\" onkeypress=\"removeGeneralMessage(this, event)\" tabindex=\"0\"><span class=\"fa-solid fa-xmark\"></span></div>"
+  },
+  {
+   "page": "File Transfer Services > File Transfer Configuration",
+   "dialog": "Add File Transfer Configuration",
+   "postAttempted": [],
+   "stillOpen": true,
+   "native": [],
+   "summaryClass": [
+    "msg-inline-close panel-icon clickable"
+   ],
+   "summaryIcons": [
+    "fa-solid fa-xmark"
+   ],
+   "summaryText": [
+    ""
+   ],
+   "summaryCloseHides": true,
+   "fieldMessage": [
+    {
+     "class": "k-form-error k-invalid-msg field-validation-error",
+     "placement": "below",
+     "icons": [
+      "k-icon k-i-warning icon-spacer-right"
+     ],
+     "text": "Destination Protocol is a required field."
+    },
+    {
+     "class": "k-form-error k-invalid-msg field-validation-error",
+     "placement": "below",
+     "icons": [
+      "k-icon k-i-warning icon-spacer-right"
+     ],
+     "text": "Destination Type is a required field."
+    },
+    {
+     "class": "k-form-error k-invalid-msg field-validation-error",
+     "placement": "below",
+     "icons": [
+      "k-icon k-i-warning icon-spacer-right"
+     ],
+     "text": "Destination Address is a required field."
+    }
+   ],
+   "invalidStyle": [
+    "rgb(215, 56, 94) / rgb(255, 255, 255)"
+   ],
+   "shape": "<div class=\"msg-inline-close panel-icon clickable\" role=\"alert\" onclick=\"removeGeneralMessage(this, event)\" onkeypress=\"removeGeneralMessage(this, event)\" tabindex=\"0\"><span class=\"fa-solid fa-xmark\"></span></div>"
+  },
+  {
+   "page": "File Transfer Services > FTP Server Credentials",
+   "dialog": "Add FTP Server Credentials",
+   "postAttempted": [],
+   "stillOpen": true,
+   "native": [],
+   "summaryClass": [],
+   "summaryIcons": [],
+   "summaryText": [],
+   "summaryCloseHides": null,
+   "fieldMessage": [
+    {
+     "class": "k-form-error k-invalid-msg field-validation-error",
+     "placement": "below",
+     "icons": [
+      "k-icon k-i-warning icon-spacer-right"
+     ],
+     "text": "Server Name is a required field."
+    },
+    {
+     "class": "k-form-error k-invalid-msg field-validation-error",
+     "placement": "below",
+     "icons": [
+      "k-icon k-i-warning icon-spacer-right"
+     ],
+     "text": "Description is a required field."
+    },
+    {
+     "class": "k-form-error k-invalid-msg field-validation-error",
+     "placement": "below",
+     "icons": [
+      "k-icon k-i-warning icon-spacer-right"
+     ],
+     "text": "Transfer Mode is a required field."
+    }
+   ],
+   "invalidStyle": [
+    "rgb(215, 56, 94) / rgb(255, 255, 255)"
+   ],
+   "shape": ""
+  }
+ ],
+ "Q10_closeConfirm": [
+  {
+   "page": "Alert Notification > Event Configuration",
+   "dialog": "Add Event",
+   "edited": "EventName",
+   "attempts": [
+    {
+     "via": "x",
+     "edited": "EventName",
+     "answered": "No",
+     "closed": false,
+     "native": [],
+     "stillOpenAfterStay": true,
+     "leftWith": "Yes",
+     "closedAfterLeave": true,
+     "confirm": {
+      "title": "Alert Confirmation",
+      "text": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?",
+      "buttons": [
+       "No",
+       "Yes"
+      ],
+      "className": "k-window k-focus",
+      "rect": {
+       "x": 659,
+       "y": 434,
+       "w": 601,
+       "h": 213
+      },
+      "answered": "No",
+      "shot": "alert-notification-event-configuration--create1-confirm-x.png"
+     }
+    },
+    {
+     "via": "cancel",
+     "edited": "EventName",
+     "closed": true,
+     "native": [],
+     "confirm": null
+    }
+   ]
+  },
+  {
+   "page": "Alert Notification > Event Configuration",
+   "dialog": "Add Event",
+   "edited": null,
+   "attempts": [
+    {
+     "via": "x",
+     "edited": null,
+     "closed": true,
+     "native": [],
+     "confirm": null
+    },
+    {
+     "via": "cancel",
+     "edited": null,
+     "closed": true,
+     "native": [],
+     "confirm": null
+    }
+   ]
+  },
+  {
+   "page": "Alert Notification > Event Configuration",
+   "dialog": "View Event Details",
+   "edited": null,
+   "attempts": [
+    {
+     "via": "x",
+     "edited": null,
+     "closed": true,
+     "native": [],
+     "confirm": null
+    },
+    {
+     "via": "cancel",
+     "reopened": false,
+     "confirm": null
+    }
+   ]
+  },
+  {
+   "page": "Alert Notification > Event Subscription",
+   "dialog": "Add Event Subscription",
+   "edited": "addEventName",
+   "attempts": [
+    {
+     "via": "x",
+     "edited": "addEventName",
+     "answered": "No",
+     "closed": false,
+     "native": [],
+     "stillOpenAfterStay": true,
+     "leftWith": "Yes",
+     "closedAfterLeave": true,
+     "confirm": {
+      "title": "Alert Confirmation",
+      "text": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?",
+      "buttons": [
+       "No",
+       "Yes"
+      ],
+      "className": "k-window k-focus",
+      "rect": {
+       "x": 659,
+       "y": 434,
+       "w": 601,
+       "h": 213
+      },
+      "answered": "No",
+      "shot": "alert-notification-event-subscription--create1-confirm-x.png"
+     }
+    },
+    {
+     "via": "cancel",
+     "edited": "addEventName",
+     "closed": true,
+     "native": [],
+     "confirm": null
+    }
+   ]
+  },
+  {
+   "page": "Alert Notification > Event Subscription",
+   "dialog": "Add Event Subscription",
+   "edited": null,
+   "attempts": [
+    {
+     "via": "x",
+     "edited": null,
+     "closed": true,
+     "native": [],
+     "confirm": null
+    },
+    {
+     "via": "cancel",
+     "edited": null,
+     "closed": true,
+     "native": [],
+     "confirm": null
+    }
+   ]
+  },
+  {
+   "page": "Alert Notification > Event Subscription",
+   "dialog": "View Subscription Details",
+   "edited": null,
+   "attempts": [
+    {
+     "via": "x",
+     "edited": null,
+     "closed": true,
+     "native": [],
+     "confirm": null
+    },
+    {
+     "via": "cancel",
+     "reopened": false,
+     "confirm": null
+    }
+   ]
+  },
+  {
+   "page": "Alert Notification > Tracking",
+   "dialog": "View Event Details",
+   "edited": null,
+   "attempts": [
+    {
+     "via": "x",
+     "edited": null,
+     "closed": true,
+     "native": [],
+     "confirm": null
+    },
+    {
+     "via": "cancel",
+     "reopened": false,
+     "confirm": null
+    }
+   ]
+  },
+  {
+   "page": "File Transfer Services > File Transfer Configuration",
+   "dialog": "Add File Transfer Configuration",
+   "edited": "DestinationAddress",
+   "attempts": [
+    {
+     "via": "x",
+     "edited": "DestinationAddress",
+     "answered": "No",
+     "closed": false,
+     "native": [],
+     "stillOpenAfterStay": true,
+     "leftWith": "Yes",
+     "closedAfterLeave": false,
+     "confirm": {
+      "title": "Alert Confirmation",
+      "text": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?",
+      "buttons": [
+       "No",
+       "Yes"
+      ],
+      "className": "k-window k-focus",
+      "rect": {
+       "x": 659,
+       "y": 434,
+       "w": 601,
+       "h": 213
+      },
+      "answered": "No",
+      "shot": "file-transfer-services-file-transfer-configuration--create1-confirm-x.png"
+     }
+    },
+    {
+     "via": "cancel",
+     "edited": "ConfigName",
+     "closed": true,
+     "native": [],
+     "confirm": null
+    }
+   ]
+  },
+  {
+   "page": "File Transfer Services > File Transfer Configuration",
+   "dialog": "Add File Transfer Configuration",
+   "edited": null,
+   "attempts": [
+    {
+     "via": "x",
+     "edited": null,
+     "closed": true,
+     "native": [],
+     "confirm": null
+    },
+    {
+     "via": "cancel",
+     "edited": null,
+     "closed": true,
+     "native": [],
+     "confirm": null
+    }
+   ]
+  },
+  {
+   "page": "File Transfer Services > File Transfer Configuration",
+   "dialog": "View File Transfer Configuration",
+   "edited": null,
+   "attempts": [
+    {
+     "via": "x",
+     "edited": null,
+     "closed": true,
+     "native": [],
+     "confirm": null
+    },
+    {
+     "via": "cancel",
+     "edited": null,
+     "button": false,
+     "closed": false,
+     "native": [],
+     "confirm": null
+    }
+   ]
+  },
+  {
+   "page": "File Transfer Services > FTP Server Credentials",
+   "dialog": "Add FTP Server Credentials",
+   "edited": "FtpServerName",
+   "attempts": [
+    {
+     "via": "x",
+     "edited": "FtpServerName",
+     "answered": "No",
+     "closed": false,
+     "native": [],
+     "stillOpenAfterStay": true,
+     "leftWith": "Yes",
+     "closedAfterLeave": true,
+     "confirm": {
+      "title": "Alert Confirmation",
+      "text": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?",
+      "buttons": [
+       "No",
+       "Yes"
+      ],
+      "className": "k-window k-focus",
+      "rect": {
+       "x": 659,
+       "y": 434,
+       "w": 601,
+       "h": 213
+      },
+      "answered": "No",
+      "shot": "file-transfer-services-ftp-server-credentials--create1-confirm-x.png"
+     }
+    },
+    {
+     "via": "cancel",
+     "edited": "FtpServerName",
+     "closed": true,
+     "native": [],
+     "confirm": null
+    }
+   ]
+  },
+  {
+   "page": "File Transfer Services > FTP Server Credentials",
+   "dialog": "Add FTP Server Credentials",
+   "edited": null,
+   "attempts": [
+    {
+     "via": "x",
+     "edited": null,
+     "closed": true,
+     "native": [],
+     "confirm": null
+    },
+    {
+     "via": "cancel",
+     "edited": null,
+     "closed": true,
+     "native": [],
+     "confirm": null
+    }
+   ]
+  },
+  {
+   "page": "File Transfer Services > FTP Server Credentials",
+   "dialog": "Edit FTP Server Credentials",
+   "edited": "FtpDescription",
+   "attempts": [
+    {
+     "via": "x",
+     "edited": "FtpDescription",
+     "answered": "No",
+     "closed": false,
+     "native": [],
+     "stillOpenAfterStay": true,
+     "leftWith": "Yes",
+     "closedAfterLeave": true,
+     "confirm": {
+      "title": "Alert Confirmation",
+      "text": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?",
+      "buttons": [
+       "No",
+       "Yes"
+      ],
+      "className": "k-window k-focus",
+      "rect": {
+       "x": 659,
+       "y": 434,
+       "w": 601,
+       "h": 213
+      },
+      "answered": "No",
+      "shot": "file-transfer-services-ftp-server-credentials--row-confirm-x.png"
+     }
+    },
+    {
+     "via": "cancel",
+     "edited": "FtpDescription",
+     "closed": true,
+     "native": [],
+     "confirm": null
+    }
+   ]
+  }
+ ],
+ "Q11_gridFilter": [
+  {
+   "page": "Alert Notification > Event Configuration",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "icon": "<a aria-hidden=\"true\" aria-label=\"Event Name filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Event Name filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p2\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "Event Name",
+   "popup": {
+    "className": "k-animation-container k-animation-container-shown",
+    "rect": {
+     "x": 373,
+     "y": 468,
+     "w": 274,
+     "h": 207
+    },
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": null,
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "operators": [
+     [
+      "Equal To",
+      "Contains",
+      "Ends With",
+      "Starts With"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "className": "k-picker k-dropdownlist k-focus",
+      "text": "Equal ToEqual ToContainsEnds WithStarts ",
+      "after": {
+       "htmlDelta": 678,
+       "expanded": "true",
+       "rect": {
+        "x": 373,
+        "y": 468,
+        "w": 274,
+        "h": 207
+       }
+      }
+     }
+    ],
+    "shot": "alert-notification-event-configuration--grid-filter.png",
+    "shape": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\"><div class=\"k-child-animation-container\"><form class=\"k-filter-menu k-popup\" data-role=\"popup\" data-filter-styled=\"data-filter-styled\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\"></div><span class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" tabindex=\"0\"><span unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\"></span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" type=\"button\"><span class=\"k-icon k-svg-icon "
+   }
+  },
+  {
+   "page": "Alert Notification > Event Subscription",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "icon": "<a aria-hidden=\"true\" aria-label=\"Event Name filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Event Name filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p2\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "Event Name",
+   "popup": {
+    "className": "k-animation-container k-animation-container-shown",
+    "rect": {
+     "x": 446,
+     "y": 468,
+     "w": 274,
+     "h": 207
+    },
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": null,
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "operators": [
+     [
+      "Equal To",
+      "Contains",
+      "Ends With",
+      "Starts With"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "className": "k-picker k-dropdownlist k-focus",
+      "text": "Equal ToEqual ToContainsEnds WithStarts ",
+      "after": {
+       "htmlDelta": 678,
+       "expanded": "true",
+       "rect": {
+        "x": 446,
+        "y": 468,
+        "w": 274,
+        "h": 207
+       }
+      }
+     }
+    ],
+    "shot": "alert-notification-event-subscription--grid-filter.png",
+    "shape": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\"><div class=\"k-child-animation-container\"><form class=\"k-filter-menu k-popup\" data-role=\"popup\" data-filter-styled=\"data-filter-styled\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\"></div><span class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" tabindex=\"0\"><span unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\"></span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" type=\"button\"><span class=\"k-icon k-svg-icon "
+   }
+  },
+  {
+   "page": "Alert Notification > Subscriber Configuration",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "endswith": "Ends With",
+      "startswith": "Starts With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "icon": "<a aria-hidden=\"true\" aria-label=\"Email Address filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Email Address filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p2\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "Email Address",
+   "popup": {
+    "className": "k-animation-container k-animation-container-shown",
+    "rect": {
+     "x": 599,
+     "y": 468,
+     "w": 274,
+     "h": 207
+    },
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": null,
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "operators": [
+     [
+      "Equal To",
+      "Contains",
+      "Ends With",
+      "Starts With"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "className": "k-picker k-dropdownlist k-focus",
+      "text": "Equal ToEqual ToContainsEnds WithStarts ",
+      "after": {
+       "htmlDelta": 678,
+       "expanded": "true",
+       "rect": {
+        "x": 599,
+        "y": 468,
+        "w": 274,
+        "h": 207
+       }
+      }
+     }
+    ],
+    "shot": "alert-notification-subscriber-configuration--grid-filter.png",
+    "shape": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\"><div class=\"k-child-animation-container\"><form class=\"k-filter-menu k-popup\" data-role=\"popup\" data-filter-styled=\"data-filter-styled\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\"></div><span class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" tabindex=\"0\"><span unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\"></span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" type=\"button\"><span class=\"k-icon k-svg-icon "
+   }
+  },
+  {
+   "page": "Alert Notification > Tracking",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "startswith": "Starts With",
+      "endswith": "Ends With"
+     },
+     "date": {
+      "eq": "Equal To",
+      "gte": "Greater Than",
+      "lte": "Less Than"
+     }
+    }
+   },
+   "columnMenu": false,
+   "icon": "<a aria-hidden=\"true\" aria-label=\"Event Name filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Event Name filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p2\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "Event Name",
+   "popup": {
+    "className": "k-animation-container k-animation-container-shown",
+    "rect": {
+     "x": 355,
+     "y": 129,
+     "w": 274,
+     "h": 207
+    },
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": null,
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "operators": [
+     [
+      "Equal To",
+      "Contains",
+      "Starts With",
+      "Ends With"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "className": "k-picker k-dropdownlist k-focus",
+      "text": "Equal ToEqual ToContainsStarts WithEnds ",
+      "after": {
+       "htmlDelta": 678,
+       "expanded": "true",
+       "rect": {
+        "x": 355,
+        "y": 129,
+        "w": 274,
+        "h": 207
+       }
+      }
+     }
+    ],
+    "shot": "alert-notification-tracking--grid-filter.png",
+    "shape": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\"><div class=\"k-child-animation-container\"><form class=\"k-filter-menu k-popup\" data-role=\"popup\" data-filter-styled=\"data-filter-styled\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\"></div><span class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" tabindex=\"0\"><span unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\"></span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" type=\"button\"><span class=\"k-icon k-svg-icon "
+   }
+  },
+  {
+   "page": "File Transfer Services > File Transfer Configuration",
+   "filterable": false,
+   "columnMenu": false,
+   "icon": null,
+   "column": null
+  },
+  {
+   "page": "File Transfer Services > File Transfer Tracking",
+   "filterable": false,
+   "columnMenu": false,
+   "icon": null,
+   "column": null
+  },
+  {
+   "page": "File Transfer Services > FTP Server Credentials",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "contains": "Contains",
+      "startswith": "Starts With",
+      "endswith": "Ends With"
+     }
+    }
+   },
+   "columnMenu": false,
+   "icon": "<a aria-hidden=\"true\" aria-label=\"Server Name filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Server Name filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p2\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "Server Name",
+   "popup": {
+    "className": "k-animation-container k-animation-container-shown",
+    "rect": {
+     "x": 297,
+     "y": 472,
+     "w": 274,
+     "h": 207
+    },
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": null,
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "operators": [
+     [
+      "Contains",
+      "Starts With",
+      "Ends With"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "className": "k-picker k-dropdownlist k-focus",
+      "text": "ContainsContainsStarts WithEnds With",
+      "after": {
+       "htmlDelta": 678,
+       "expanded": "true",
+       "rect": {
+        "x": 297,
+        "y": 472,
+        "w": 274,
+        "h": 207
+       }
+      }
+     }
+    ],
+    "shot": "file-transfer-services-ftp-server-credentials--grid-filter.png",
+    "shape": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\"><div class=\"k-child-animation-container\"><form class=\"k-filter-menu k-popup\" data-role=\"popup\" data-filter-styled=\"data-filter-styled\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\"></div><span class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" tabindex=\"0\"><span unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\"></span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" type=\"button\"><span class=\"k-icon k-svg-icon "
+   }
+  }
+ ],
+ "Q12_vocabulary": {
+  "unmappedButtons": [
+   [
+    "Edit",
+    3
+   ],
+   [
+    "Invalidate",
+    1
+   ]
+  ],
+  "unknownRoles": [
+   [
+    "autocomplete",
+    2
+   ],
+   [
+    "maskedtextbox",
+    2
+   ]
+  ],
+  "roles": [
+   [
+    "tooltip",
+    56
+   ],
+   [
+    "columnsorter",
+    37
+   ],
+   [
+    "dropdownlist",
+    16
+   ],
+   [
+    "textbox",
+    14
+   ],
+   [
+    "numerictextbox",
+    10
+   ],
+   [
+    "button",
+    9
+   ],
+   [
+    "validator",
+    8
+   ],
+   [
+    "grid",
+    7
+   ],
+   [
+    "resizable",
+    7
+   ],
+   [
+    "selectable",
+    7
+   ],
+   [
+    "pager",
+    7
+   ],
+   [
+    "checkbox",
+    2
+   ],
+   [
+    "datetimepicker",
+    2
+   ],
+   [
+    "datepicker",
+    1
+   ]
+  ],
+  "tabs": []
+ },
+ "Q13_layoutAndMenus": [
+  {
+   "page": "Alert Notification > Event Configuration",
+   "viewport": "1920x1080",
+   "layout": {
+    "inner": {
+     "w": 1920,
+     "h": 1080,
+     "docW": 1920,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": false,
+     "max768": false,
+     "portrait": false,
+     "isPhone": false
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 178,
+     "y": 62,
+     "w": 154,
+     "h": 30,
+     "text": "Event Configuration"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 178,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1920,
+     "h": 370
+    },
+    "footer": {
+     "x": 0,
+     "y": 508,
+     "w": 1920,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1852,
+       "y": 0,
+       "w": 68,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1862,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     }
+    ],
+    "navLinks": [
+     "Messages",
+     "External Links",
+     "Favorites",
+     "Contact Us",
+     "My Account",
+     "Logout"
+    ],
+    "page": {
+     "scrollW": 1920,
+     "scrollH": 1080,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "alert-notification-event-configuration--layout-1920x1080.png",
+   "menus": {
+    "bar": [
+     {
+      "item": "Alert Notification",
+      "rect": {
+       "x": 0,
+       "y": 94,
+       "w": 1920,
+       "h": 324
+      },
+      "popupRect": {
+       "x": 0,
+       "y": 94,
+       "w": 1920,
+       "h": 325
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 400; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 32px; left: 0px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 326,
+      "clientHeight": 324,
+      "cutOff": false,
+      "items": 4,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": "alert-notification-event-configuration--1920x1080-tabflyout.png"
+     }
+    ],
+    "side": [
+     {
+      "item": "Administration",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": "alert-notification-event-configuration--1920x1080-flyout-1.png"
+     },
+     {
+      "item": "Alert Notification",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Claims Management",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Drug Rebate",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "UI Examples",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "File Transfer Services",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Integration",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Managed Care",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Member Management",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Plan Management",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Program Integrity",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "PI Case Tracking",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Provider Enrollment",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Provider Management",
+      "rect": {
+       "x": 1407,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1407,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Screening/Credentialing",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "TPL Case Tracking",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "TPL Policy",
+      "rect": {
+       "x": 1407,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1407,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "TPL HIPP",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Task Management",
+      "rect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "popupRect": {
+       "x": 1420,
+       "y": 91,
+       "w": 212,
+       "h": 685
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 0px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "864px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 685,
+      "clientHeight": 684,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 0,
+      "fits": true,
+      "shot": null
+     }
+    ],
+    "hamburger": "#pageBannerMenu > nav > div > i",
+    "sideRect": {
+     "x": 1632,
+     "y": 91,
+     "w": 288,
+     "h": 864
+    }
+   }
+  },
+  {
+   "page": "Alert Notification > Event Configuration",
+   "viewport": "1272x588",
+   "layout": {
+    "inner": {
+     "w": 1272,
+     "h": 588,
+     "docW": 1257,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": true,
+     "max768": false,
+     "portrait": false,
+     "isPhone": true
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1257,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 178,
+     "y": 62,
+     "w": 154,
+     "h": 30,
+     "text": "Event Configuration"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 178,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1257,
+     "h": 370
+    },
+    "footer": {
+     "x": 0,
+     "y": 508,
+     "w": 1257,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": true,
+      "rect": {
+       "x": 537,
+       "y": 0,
+       "w": 720,
+       "h": 62
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1187,
+       "y": 0,
+       "w": 70,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1197,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     }
+    ],
+    "navLinks": [],
+    "page": {
+     "scrollW": 1257,
+     "scrollH": 627,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "alert-notification-event-configuration--layout-1272x588.png",
+   "menus": {
+    "bar": [
+     {
+      "item": "Alert Notification",
+      "rect": {
+       "x": 0,
+       "y": 94,
+       "w": 1272,
+       "h": 176
+      },
+      "popupRect": {
+       "x": 0,
+       "y": 94,
+       "w": 1272,
+       "h": 178
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 400; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: 32px; left: -16px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 178,
+      "clientHeight": 176,
+      "cutOff": false,
+      "items": 4,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": "alert-notification-event-configuration--1272x588-tabflyout.png"
+     }
+    ],
+    "side": [
+     {
+      "item": "Administration",
+      "rect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": "alert-notification-event-configuration--1272x588-flyout-1.png"
+     },
+     {
+      "item": "Alert Notification",
+      "rect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Claims Management",
+      "rect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Drug Rebate",
+      "rect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "UI Examples",
+      "rect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "File Transfer Services",
+      "rect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Integration",
+      "rect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Managed Care",
+      "rect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Member Management",
+      "rect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Plan Management",
+      "rect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Program Integrity",
+      "rect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "PI Case Tracking",
+      "rect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 118,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Provider Enrollment",
+      "rect": {
+       "x": 775,
+       "y": 97,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 97,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Provider Management",
+      "rect": {
+       "x": 775,
+       "y": 94,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 94,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Screening/Credentialing",
+      "rect": {
+       "x": 775,
+       "y": 94,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 94,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "TPL Case Tracking",
+      "rect": {
+       "x": 775,
+       "y": 94,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 94,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "TPL Policy",
+      "rect": {
+       "x": 775,
+       "y": 94,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 94,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "TPL HIPP",
+      "rect": {
+       "x": 775,
+       "y": 94,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 94,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     },
+     {
+      "item": "Task Management",
+      "rect": {
+       "x": 775,
+       "y": 94,
+       "w": 212,
+       "h": 470
+      },
+      "popupRect": {
+       "x": 775,
+       "y": 94,
+       "w": 212,
+       "h": 470
+      },
+      "inlineStyle": "overflow: visible; font-size: 14px; font-family: Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 700; line-height: 20px;",
+      "containerStyle": "display: block; position: absolute; z-index: 10002; top: -23.0627px; left: -212.062px;",
+      "overflow": "visible",
+      "overflowY": "visible",
+      "maxHeight": "470.4px",
+      "containerOverflow": "visible",
+      "scrollbar": false,
+      "scrollbarWidth": 1,
+      "scrollHeight": 472,
+      "clientHeight": 469,
+      "cutOff": false,
+      "items": 19,
+      "scrollButtons": 2,
+      "fits": true,
+      "shot": null
+     }
+    ],
+    "hamburger": "i.fa-bars",
+    "sideRect": {
+     "x": 987,
+     "y": 141,
+     "w": 270,
+     "h": 470
+    }
+   },
+   "dialog": {
+    "rect": {
+     "x": 0,
+     "y": 20,
+     "w": 1145,
+     "h": 500
+    },
+    "heightPct": 85,
+    "fitsViewport": true,
+    "contentScrolls": true,
+    "isPhone": true
+   }
+  },
+  {
+   "page": "Alert Notification > Event Subscription",
+   "viewport": "1920x1080",
+   "layout": {
+    "inner": {
+     "w": 1920,
+     "h": 1080,
+     "docW": 1920,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": false,
+     "max768": false,
+     "portrait": false,
+     "isPhone": false
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 178,
+     "y": 62,
+     "w": 148,
+     "h": 30,
+     "text": "Event Subscription"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 178,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1920,
+     "h": 370
+    },
+    "footer": {
+     "x": 0,
+     "y": 508,
+     "w": 1920,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1852,
+       "y": 0,
+       "w": 68,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1862,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     }
+    ],
+    "navLinks": [
+     "Messages",
+     "External Links",
+     "Favorites",
+     "Contact Us",
+     "My Account",
+     "Logout"
+    ],
+    "page": {
+     "scrollW": 1920,
+     "scrollH": 1080,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "alert-notification-event-subscription--layout-1920x1080.png"
+  },
+  {
+   "page": "Alert Notification > Event Subscription",
+   "viewport": "1272x588",
+   "layout": {
+    "inner": {
+     "w": 1272,
+     "h": 588,
+     "docW": 1257,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": true,
+     "max768": false,
+     "portrait": false,
+     "isPhone": true
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1257,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 178,
+     "y": 62,
+     "w": 148,
+     "h": 30,
+     "text": "Event Subscription"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 178,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1257,
+     "h": 370
+    },
+    "footer": {
+     "x": 0,
+     "y": 508,
+     "w": 1257,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": true,
+      "rect": {
+       "x": 537,
+       "y": 0,
+       "w": 720,
+       "h": 62
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1187,
+       "y": 0,
+       "w": 70,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1197,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     }
+    ],
+    "navLinks": [],
+    "page": {
+     "scrollW": 1257,
+     "scrollH": 627,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "alert-notification-event-subscription--layout-1272x588.png",
+   "dialog": {
+    "rect": {
+     "x": 0,
+     "y": 20,
+     "w": 1145,
+     "h": 448
+    },
+    "heightPct": 76,
+    "fitsViewport": true,
+    "contentScrolls": false,
+    "isPhone": true
+   }
+  },
+  {
+   "page": "Alert Notification > Subscriber Configuration",
+   "viewport": "1920x1080",
+   "layout": {
+    "inner": {
+     "w": 1920,
+     "h": 1080,
+     "docW": 1920,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": false,
+     "max768": false,
+     "portrait": false,
+     "isPhone": false
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 178,
+     "y": 62,
+     "w": 189,
+     "h": 30,
+     "text": "Subscriber Configuration"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 178,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1920,
+     "h": 370
+    },
+    "footer": {
+     "x": 0,
+     "y": 508,
+     "w": 1920,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1852,
+       "y": 0,
+       "w": 68,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1862,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     }
+    ],
+    "navLinks": [
+     "Messages",
+     "External Links",
+     "Favorites",
+     "Contact Us",
+     "My Account",
+     "Logout"
+    ],
+    "page": {
+     "scrollW": 1920,
+     "scrollH": 1080,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "alert-notification-subscriber-configuration--layout-1920x1080.png"
+  },
+  {
+   "page": "Alert Notification > Subscriber Configuration",
+   "viewport": "1272x588",
+   "layout": {
+    "inner": {
+     "w": 1272,
+     "h": 588,
+     "docW": 1257,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": true,
+     "max768": false,
+     "portrait": false,
+     "isPhone": true
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1257,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 178,
+     "y": 62,
+     "w": 189,
+     "h": 30,
+     "text": "Subscriber Configuration"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 178,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1257,
+     "h": 370
+    },
+    "footer": {
+     "x": 0,
+     "y": 508,
+     "w": 1257,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": true,
+      "rect": {
+       "x": 537,
+       "y": 0,
+       "w": 720,
+       "h": 62
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1187,
+       "y": 0,
+       "w": 70,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1197,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     }
+    ],
+    "navLinks": [],
+    "page": {
+     "scrollW": 1257,
+     "scrollH": 627,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "alert-notification-subscriber-configuration--layout-1272x588.png",
+   "dialog": {
+    "rect": {
+     "x": 0,
+     "y": 20,
+     "w": 1145,
+     "h": 258
+    },
+    "heightPct": 44,
+    "fitsViewport": true,
+    "contentScrolls": false,
+    "isPhone": true
+   }
+  },
+  {
+   "page": "Alert Notification > Tracking",
+   "viewport": "1920x1080",
+   "layout": {
+    "inner": {
+     "w": 1920,
+     "h": 1080,
+     "docW": 1920,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": false,
+     "max768": false,
+     "portrait": false,
+     "isPhone": false
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 178,
+     "y": 62,
+     "w": 78,
+     "h": 30,
+     "text": "Tracking"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 178,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1920,
+     "h": 302
+    },
+    "footer": {
+     "x": 0,
+     "y": 440,
+     "w": 1920,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1852,
+       "y": 0,
+       "w": 68,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1862,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     }
+    ],
+    "navLinks": [
+     "Messages",
+     "External Links",
+     "Favorites",
+     "Contact Us",
+     "My Account",
+     "Logout"
+    ],
+    "page": {
+     "scrollW": 1920,
+     "scrollH": 1080,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "alert-notification-tracking--layout-1920x1080.png"
+  },
+  {
+   "page": "Alert Notification > Tracking",
+   "viewport": "1272x588",
+   "layout": {
+    "inner": {
+     "w": 1272,
+     "h": 588,
+     "docW": 1272,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": true,
+     "max768": false,
+     "portrait": false,
+     "isPhone": true
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1272,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 178,
+     "y": 62,
+     "w": 78,
+     "h": 30,
+     "text": "Tracking"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 178,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1272,
+     "h": 302
+    },
+    "footer": {
+     "x": 0,
+     "y": 440,
+     "w": 1272,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": true,
+      "rect": {
+       "x": 538,
+       "y": 0,
+       "w": 734,
+       "h": 62
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1202,
+       "y": 0,
+       "w": 70,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1212,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     }
+    ],
+    "navLinks": [],
+    "page": {
+     "scrollW": 1272,
+     "scrollH": 588,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "alert-notification-tracking--layout-1272x588.png"
+  },
+  {
+   "page": "File Transfer Services > File Transfer Configuration",
+   "viewport": "1920x1080",
+   "layout": {
+    "inner": {
+     "w": 1920,
+     "h": 1080,
+     "docW": 1920,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": false,
+     "max768": false,
+     "portrait": false,
+     "isPhone": false
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 212,
+     "y": 62,
+     "w": 199,
+     "h": 30,
+     "text": "File Transfer Configuration"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 212,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1920,
+     "h": 510
+    },
+    "footer": {
+     "x": 0,
+     "y": 649,
+     "w": 1920,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1852,
+       "y": 0,
+       "w": 68,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1862,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     }
+    ],
+    "navLinks": [
+     "Messages",
+     "External Links",
+     "Favorites",
+     "Contact Us",
+     "My Account",
+     "Logout"
+    ],
+    "page": {
+     "scrollW": 1920,
+     "scrollH": 1080,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "file-transfer-services-file-transfer-configuration--layout-1920x1080.png"
+  },
+  {
+   "page": "File Transfer Services > File Transfer Configuration",
+   "viewport": "1272x588",
+   "layout": {
+    "inner": {
+     "w": 1272,
+     "h": 588,
+     "docW": 1257,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": true,
+     "max768": false,
+     "portrait": false,
+     "isPhone": true
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1257,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 212,
+     "y": 62,
+     "w": 199,
+     "h": 30,
+     "text": "File Transfer Configuration"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 212,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1257,
+     "h": 510
+    },
+    "footer": {
+     "x": 0,
+     "y": 649,
+     "w": 1257,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": true,
+      "rect": {
+       "x": 537,
+       "y": 0,
+       "w": 720,
+       "h": 62
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1187,
+       "y": 0,
+       "w": 70,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1197,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     }
+    ],
+    "navLinks": [],
+    "page": {
+     "scrollW": 1257,
+     "scrollH": 767,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "file-transfer-services-file-transfer-configuration--layout-1272x588.png",
+   "dialog": {
+    "rect": {
+     "x": 0,
+     "y": 20,
+     "w": 1145,
+     "h": 500
+    },
+    "heightPct": 85,
+    "fitsViewport": true,
+    "contentScrolls": true,
+    "isPhone": true
+   }
+  },
+  {
+   "page": "File Transfer Services > File Transfer Tracking",
+   "viewport": "1920x1080",
+   "layout": {
+    "inner": {
+     "w": 1920,
+     "h": 1080,
+     "docW": 1920,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": false,
+     "max768": false,
+     "portrait": false,
+     "isPhone": false
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 212,
+     "y": 62,
+     "w": 166,
+     "h": 30,
+     "text": "File Transfer Tracking"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 212,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1920,
+     "h": 627
+    },
+    "footer": {
+     "x": 0,
+     "y": 766,
+     "w": 1920,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1852,
+       "y": 0,
+       "w": 68,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1862,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     }
+    ],
+    "navLinks": [
+     "Messages",
+     "External Links",
+     "Favorites",
+     "Contact Us",
+     "My Account",
+     "Logout"
+    ],
+    "page": {
+     "scrollW": 1920,
+     "scrollH": 1080,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "file-transfer-services-file-transfer-tracking--layout-1920x1080.png"
+  },
+  {
+   "page": "File Transfer Services > File Transfer Tracking",
+   "viewport": "1272x588",
+   "layout": {
+    "inner": {
+     "w": 1272,
+     "h": 588,
+     "docW": 1257,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": true,
+     "max768": false,
+     "portrait": false,
+     "isPhone": true
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1257,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 212,
+     "y": 62,
+     "w": 166,
+     "h": 30,
+     "text": "File Transfer Tracking"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 212,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1257,
+     "h": 627
+    },
+    "footer": {
+     "x": 0,
+     "y": 766,
+     "w": 1257,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": true,
+      "rect": {
+       "x": 537,
+       "y": 0,
+       "w": 720,
+       "h": 62
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1187,
+       "y": 0,
+       "w": 70,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1197,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     }
+    ],
+    "navLinks": [],
+    "page": {
+     "scrollW": 1257,
+     "scrollH": 884,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "file-transfer-services-file-transfer-tracking--layout-1272x588.png"
+  },
+  {
+   "page": "File Transfer Services > FTP Server Credentials",
+   "viewport": "1920x1080",
+   "layout": {
+    "inner": {
+     "w": 1920,
+     "h": 1080,
+     "docW": 1920,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": false,
+     "max768": false,
+     "portrait": false,
+     "isPhone": false
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 212,
+     "y": 62,
+     "w": 174,
+     "h": 30,
+     "text": "FTP Server Credentials"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 212,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1920,
+     "h": 399
+    },
+    "footer": {
+     "x": 0,
+     "y": 537,
+     "w": 1920,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1852,
+       "y": 0,
+       "w": 68,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1862,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     }
+    ],
+    "navLinks": [
+     "Messages",
+     "External Links",
+     "Favorites",
+     "Contact Us",
+     "My Account",
+     "Logout"
+    ],
+    "page": {
+     "scrollW": 1920,
+     "scrollH": 1080,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "file-transfer-services-ftp-server-credentials--layout-1920x1080.png"
+  },
+  {
+   "page": "File Transfer Services > FTP Server Credentials",
+   "viewport": "1272x588",
+   "layout": {
+    "inner": {
+     "w": 1272,
+     "h": 588,
+     "docW": 1257,
+     "dpr": 1.0000000298023224
+    },
+    "breakpoints": {
+     "max1280": true,
+     "max768": false,
+     "portrait": false,
+     "isPhone": true
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1257,
+     "h": 62
+    },
+    "titleBar": {
+     "x": 212,
+     "y": 62,
+     "w": 174,
+     "h": 30,
+     "text": "FTP Server Credentials"
+    },
+    "moduleTab": {
+     "x": 0,
+     "y": 62,
+     "w": 212,
+     "h": 32
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1257,
+     "h": 399
+    },
+    "footer": {
+     "x": 0,
+     "y": 537,
+     "w": 1257,
+     "h": 119
+    },
+    "burgers": [
+     {
+      "tag": "div",
+      "cls": "mobile-nav",
+      "id": "pageBanner",
+      "shown": true,
+      "rect": {
+       "x": 537,
+       "y": 0,
+       "w": 720,
+       "h": 62
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1187,
+       "y": 0,
+       "w": 70,
+       "h": 62
+      }
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": true,
+      "rect": {
+       "x": 1197,
+       "y": 5,
+       "w": 48,
+       "h": 52
+      }
+     },
+     {
+      "tag": "div",
+      "cls": "hamburger",
+      "id": null,
+      "shown": false,
+      "rect": null
+     },
+     {
+      "tag": "i",
+      "cls": "fa-solid fa-bars clickable",
+      "id": null,
+      "shown": false,
+      "rect": null
+     }
+    ],
+    "navLinks": [],
+    "page": {
+     "scrollW": 1257,
+     "scrollH": 655,
+     "horizontalScroll": false,
+     "htmlOverflow": "auto",
+     "bodyOverflow": "visible"
+    }
+   },
+   "layoutShot": "file-transfer-services-ftp-server-credentials--layout-1272x588.png",
+   "dialog": {
+    "rect": {
+     "x": 0,
+     "y": 20,
+     "w": 1145,
+     "h": 500
+    },
+    "heightPct": 85,
+    "fitsViewport": true,
+    "contentScrolls": true,
+    "isPhone": true
+   }
+  }
+ ],
+ "stepErrors": [
+  {
+   "page": "Alert Notification > Subscriber Configuration",
+   "error": "create 1: locator.click: Timeout 3000ms exceeded."
+  }
+ ],
+ "skippedForTime": []
+}

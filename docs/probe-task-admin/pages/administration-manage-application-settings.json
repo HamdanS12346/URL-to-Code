@@ -1,0 +1,540 @@
+{
+ "label": "Administration > Manage Application Settings",
+ "trail": [
+  "Administration",
+  "Manage Application Settings"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/AppSetting/ManageAppSettings",
+ "at": "2026-11-13T07:39:13.051Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Manage Application Settings",
+  "census": {
+   "roles": {
+    "validator": 2,
+    "tooltip": 41,
+    "dropdownlist": 14,
+    "button": 1,
+    "resizable": 1,
+    "columnsorter": 10,
+    "selectable": 3,
+    "pager": 1,
+    "numerictextbox": 1,
+    "checkbox": 1,
+    "textbox": 2,
+    "datepicker": 1,
+    "listbox": 2
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {
+    "BooleanValue.ID": [
+     "true",
+     "false"
+    ]
+   },
+   "checkboxes": 0,
+   "required": 25,
+   "hiddenAtRest": 8,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {
+   "listbox": {
+    "count": 2,
+    "ids": [
+     "availableItemsListbox",
+     "selectedItemsListbox"
+    ]
+   }
+  },
+  "hiddenAtRest": 8,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "AppValueDate",
+     "name": "AppValueDate",
+     "label": "Date Value",
+     "valueAttr": "11/13/2026",
+     "shows": "11/13/2026",
+     "prefilled": true,
+     "offsetDays": 0,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": true,
+     "enabled": false
+    }
+   ],
+   "drive": null
+  },
+  "conditionals": {
+   "radios": [
+    {
+     "group": "BooleanValue.ID",
+     "groupLabel": "Boolean Value",
+     "value": "true",
+     "label": "True (Yes)",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    },
+    {
+     "group": "BooleanValue.ID",
+     "groupLabel": "Boolean Value",
+     "value": "false",
+     "label": "False (No)",
+     "checkedAtRest": false,
+     "show": [],
+     "hide": [],
+     "cascades": [],
+     "requests": []
+    }
+   ],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "Search Criteria",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 288
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0,
+      "title": "Expand"
+     },
+     "durationMs": 417,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 2,
+       "h": 288
+      },
+      {
+       "t": 41,
+       "h": 281
+      },
+      {
+       "t": 73,
+       "h": 266
+      },
+      {
+       "t": 103,
+       "h": 244
+      },
+      {
+       "t": 134,
+       "h": 215
+      },
+      {
+       "t": 167,
+       "h": 182
+      },
+      {
+       "t": 198,
+       "h": 147
+      },
+      {
+       "t": 229,
+       "h": 111
+      },
+      {
+       "t": 259,
+       "h": 80
+      },
+      {
+       "t": 291,
+       "h": 50
+      },
+      {
+       "t": 322,
+       "h": 27
+      },
+      {
+       "t": 353,
+       "h": 10
+      },
+      {
+       "t": 385,
+       "h": 1
+      },
+      {
+       "t": 417,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 288,
+      "title": "Collapse"
+     },
+     "durationMs": 402,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 3,
+       "h": 0
+      },
+      {
+       "t": 27,
+       "h": 3
+      },
+      {
+       "t": 58,
+       "h": 14
+      },
+      {
+       "t": 89,
+       "h": 34
+      },
+      {
+       "t": 121,
+       "h": 60
+      },
+      {
+       "t": 152,
+       "h": 90
+      },
+      {
+       "t": 183,
+       "h": 124
+      },
+      {
+       "t": 215,
+       "h": 161
+      },
+      {
+       "t": 245,
+       "h": 194
+      },
+      {
+       "t": 277,
+       "h": 226
+      },
+      {
+       "t": 308,
+       "h": 251
+      },
+      {
+       "t": 340,
+       "h": 272
+      },
+      {
+       "t": 371,
+       "h": 284
+      },
+      {
+       "t": 402,
+       "h": 288
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 5783,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h7\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results Create New kendo.syncReady(function(){jQuery(\"#appSettingItemAddButton\").kendoButton({\"click\":onAppSettin"
+    }
+   ],
+   "hides": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/AppSetting/SearchAppSettings/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 69,
+    "visibleMs": 5100
+   },
+   "grids": [],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": null,
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": null,
+  "viewports": [
+   {
+    "viewport": {
+     "width": 1920,
+     "height": 1080
+    },
+    "layout": {
+     "inner": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": false,
+      "max768": false,
+      "portrait": false,
+      "isPhone": false
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 211,
+      "h": 30,
+      "text": "Manage Application Settings"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1920,
+      "h": 436
+     },
+     "footer": {
+      "x": 0,
+      "y": 575,
+      "w": 1920,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1852,
+        "y": 0,
+        "w": 68,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1862,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      }
+     ],
+     "navLinks": [
+      "Messages",
+      "External Links",
+      "Favorites",
+      "Contact Us",
+      "My Account",
+      "Logout"
+     ],
+     "page": {
+      "scrollW": 1920,
+      "scrollH": 1080,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-application-settings--layout-1920x1080.png"
+   },
+   {
+    "viewport": {
+     "width": 1272,
+     "height": 588
+    },
+    "layout": {
+     "inner": {
+      "w": 1272,
+      "h": 588,
+      "docW": 1257,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": true,
+      "max768": false,
+      "portrait": false,
+      "isPhone": true
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1257,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 152,
+      "y": 62,
+      "w": 211,
+      "h": 30,
+      "text": "Manage Application Settings"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 152,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1257,
+      "h": 436
+     },
+     "footer": {
+      "x": 0,
+      "y": 575,
+      "w": 1257,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": true,
+       "rect": {
+        "x": 537,
+        "y": 0,
+        "w": 720,
+        "h": 62
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1187,
+        "y": 0,
+        "w": 70,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1197,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      }
+     ],
+     "navLinks": [],
+     "page": {
+      "scrollW": 1257,
+      "scrollH": 693,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "administration-manage-application-settings--layout-1272x588.png"
+   }
+  ],
+  "shots": [
+   "administration-manage-application-settings--layout-1920x1080.png",
+   "administration-manage-application-settings--layout-1272x588.png"
+  ]
+ },
+ "ms": 68029
+}

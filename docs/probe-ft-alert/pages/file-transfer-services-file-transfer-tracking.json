@@ -1,0 +1,668 @@
+{
+ "label": "File Transfer Services > File Transfer Tracking",
+ "trail": [
+  "File Transfer Services",
+  "File Transfer Tracking"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking",
+ "at": "2026-11-13T07:29:09.733Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "File Transfer Tracking",
+  "census": {
+   "roles": {
+    "tooltip": 13,
+    "validator": 1,
+    "textbox": 3,
+    "dropdownlist": 5,
+    "datetimepicker": 2,
+    "numerictextbox": 3,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 7,
+    "selectable": 1,
+    "pager": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Cancel",
+     "action": "cancel"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 1,
+   "hiddenAtRest": 13,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 13,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datetimepicker",
+     "id": "FromDate",
+     "name": "FromDate",
+     "label": "From Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": 0,
+     "format": "M/d/yyyy h:mm tt",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    },
+    {
+     "role": "datetimepicker",
+     "id": "ToDate",
+     "name": "ToDate",
+     "label": "To Date",
+     "valueAttr": null,
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": 0,
+     "format": "M/d/yyyy h:mm tt",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datetimepicker",
+    "label": "From Date",
+    "atRest": "",
+    "onFocus": "",
+    "onCalendarButton": "",
+    "popup": {
+     "x": 41,
+     "y": 592,
+     "w": 345,
+     "h": 325
+    },
+    "input": {
+     "x": 41,
+     "y": 552,
+     "w": 291,
+     "h": 40
+    },
+    "shot": "file-transfer-services-file-transfer-tracking--page-date-open.png",
+    "afterPick": "11/13/2026 12:00 AM",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026 12:00 AM"
+   }
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "Search Criteria",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 500
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0,
+      "title": "Expand"
+     },
+     "durationMs": 402,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 4,
+       "h": 500
+      },
+      {
+       "t": 26,
+       "h": 495
+      },
+      {
+       "t": 58,
+       "h": 476
+      },
+      {
+       "t": 89,
+       "h": 443
+      },
+      {
+       "t": 121,
+       "h": 397
+      },
+      {
+       "t": 152,
+       "h": 344
+      },
+      {
+       "t": 183,
+       "h": 285
+      },
+      {
+       "t": 213,
+       "h": 226
+      },
+      {
+       "t": 245,
+       "h": 165
+      },
+      {
+       "t": 276,
+       "h": 113
+      },
+      {
+       "t": 307,
+       "h": 65
+      },
+      {
+       "t": 338,
+       "h": 30
+      },
+      {
+       "t": 370,
+       "h": 7
+      },
+      {
+       "t": 402,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 500,
+      "title": "Collapse"
+     },
+     "durationMs": 403,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 6,
+       "h": 0
+      },
+      {
+       "t": 28,
+       "h": 6
+      },
+      {
+       "t": 58,
+       "h": 25
+      },
+      {
+       "t": 90,
+       "h": 60
+      },
+      {
+       "t": 121,
+       "h": 103
+      },
+      {
+       "t": 153,
+       "h": 158
+      },
+      {
+       "t": 184,
+       "h": 217
+      },
+      {
+       "t": 215,
+       "h": 277
+      },
+      {
+       "t": 247,
+       "h": 338
+      },
+      {
+       "t": 277,
+       "h": 391
+      },
+      {
+       "t": 309,
+       "h": 439
+      },
+      {
+       "t": 340,
+       "h": 472
+      },
+      {
+       "t": 371,
+       "h": 494
+      },
+      {
+       "t": 403,
+       "h": 500
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 5832,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h13\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results File IDFile NameFile StatusDirectionTransport TypeSize (KB)Create DateTrading Partner IDLoading...0Pageof"
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#FileId_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#FileName_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#FileStatusList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#DirectionList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#TransportTypeList_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#TradingPartnerId_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#FromDate_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    },
+    {
+     "sel": "#ToDate_validationMessage",
+     "labels": [],
+     "required": 0,
+     "text": ""
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/FileTransfer/SearchFileTransferTracking/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "k-loading-mask",
+    "id": null,
+    "html": "<div class=\"k-loading-mask\" style=\"width: 100%; height: 100%; top: 0px; left: 0px;\"><span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span><div class=\"k-loading-image\"></div><div class=\"k-loading-color\"></div></div>",
+    "firstAt": 102,
+    "visibleMs": 5750
+   },
+   "grids": [
+    {
+     "id": "fileTrackingResultsGrid",
+     "rows": 0,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 844,
+      "w": 1843,
+      "h": 145
+     }
+    }
+   ],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": {
+    "summary": [
+     {
+      "className": "k-loading-text",
+      "text": "Loading...",
+      "icons": [],
+      "rect": {
+       "x": 31,
+       "y": 899,
+       "w": 0,
+       "h": 23
+      },
+      "html": "<span role=\"alert\" aria-live=\"polite\" class=\"k-loading-text\">Loading...</span>",
+      "close": null
+     }
+    ],
+    "fields": [],
+    "invalid": [],
+    "shot": "file-transfer-services-file-transfer-tracking--page-search-validation.png"
+   }
+  },
+  "gridFilter": {
+   "stamp": null,
+   "icon": null,
+   "iconHtml": null,
+   "column": null,
+   "filterable": false,
+   "columnMenu": false,
+   "filterableColumns": 8
+  },
+  "row": null,
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "FileId",
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h13\"]",
+     "labels": [
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "Search Results File IDFile NameFile StatusDirectionTransport TypeSize (KB)Create DateTrading Partner IDThere are no reco"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/FileTransfer/SearchFileTransferTracking/",
+     "status": "sent"
+    }
+   ],
+   "grids": [
+    {
+     "id": "fileTrackingResultsGrid",
+     "rows": 1,
+     "total": 0,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 844,
+      "w": 1843,
+      "h": 158
+     }
+    }
+   ],
+   "validation": null,
+   "shot": "file-transfer-services-file-transfer-tracking--search-nomatch.png"
+  },
+  "viewports": [
+   {
+    "viewport": {
+     "width": 1920,
+     "height": 1080
+    },
+    "layout": {
+     "inner": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": false,
+      "max768": false,
+      "portrait": false,
+      "isPhone": false
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 212,
+      "y": 62,
+      "w": 166,
+      "h": 30,
+      "text": "File Transfer Tracking"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 212,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1920,
+      "h": 627
+     },
+     "footer": {
+      "x": 0,
+      "y": 766,
+      "w": 1920,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1852,
+        "y": 0,
+        "w": 68,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1862,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      }
+     ],
+     "navLinks": [
+      "Messages",
+      "External Links",
+      "Favorites",
+      "Contact Us",
+      "My Account",
+      "Logout"
+     ],
+     "page": {
+      "scrollW": 1920,
+      "scrollH": 1080,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "file-transfer-services-file-transfer-tracking--layout-1920x1080.png"
+   },
+   {
+    "viewport": {
+     "width": 1272,
+     "height": 588
+    },
+    "layout": {
+     "inner": {
+      "w": 1272,
+      "h": 588,
+      "docW": 1257,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": true,
+      "max768": false,
+      "portrait": false,
+      "isPhone": true
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1257,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 212,
+      "y": 62,
+      "w": 166,
+      "h": 30,
+      "text": "File Transfer Tracking"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 212,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1257,
+      "h": 627
+     },
+     "footer": {
+      "x": 0,
+      "y": 766,
+      "w": 1257,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": true,
+       "rect": {
+        "x": 537,
+        "y": 0,
+        "w": 720,
+        "h": 62
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1187,
+        "y": 0,
+        "w": 70,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1197,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      }
+     ],
+     "navLinks": [],
+     "page": {
+      "scrollW": 1257,
+      "scrollH": 884,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "file-transfer-services-file-transfer-tracking--layout-1272x588.png"
+   }
+  ],
+  "shots": [
+   "file-transfer-services-file-transfer-tracking--page-date-open.png",
+   "file-transfer-services-file-transfer-tracking--page-search-validation.png",
+   "file-transfer-services-file-transfer-tracking--search-nomatch.png",
+   "file-transfer-services-file-transfer-tracking--layout-1920x1080.png",
+   "file-transfer-services-file-transfer-tracking--layout-1272x588.png"
+  ]
+ },
+ "ms": 67231
+}

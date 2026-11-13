@@ -1,0 +1,783 @@
+{
+ "label": "Alert Notification > Tracking",
+ "trail": [
+  "Alert Notification",
+  "Tracking"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/Notifications/NotificationTracking",
+ "at": "2026-11-13T07:26:08.087Z",
+ "probe": {
+  "kendo": "2026.1.415",
+  "errors": [],
+  "skipped": [],
+  "title": "Tracking",
+  "census": {
+   "roles": {
+    "validator": 1,
+    "tooltip": 9,
+    "textbox": 3,
+    "datepicker": 1,
+    "grid": 1,
+    "resizable": 1,
+    "columnsorter": 4,
+    "selectable": 1,
+    "button": 1,
+    "pager": 1,
+    "numerictextbox": 1,
+    "dropdownlist": 1
+   },
+   "buttons": [
+    {
+     "text": "Reset",
+     "action": "reset"
+    },
+    {
+     "text": "Search",
+     "action": "search"
+    }
+   ],
+   "radios": {},
+   "checkboxes": 0,
+   "required": 0,
+   "hiddenAtRest": 5,
+   "tabs": [],
+   "collapsibles": 0
+  },
+  "unknownRoles": {},
+  "hiddenAtRest": 5,
+  "dates": {
+   "inputs": [
+    {
+     "role": "datepicker",
+     "id": "Date",
+     "name": "Date",
+     "label": "Date",
+     "valueAttr": "01/01/1900",
+     "shows": "",
+     "prefilled": false,
+     "offsetDays": null,
+     "format": "MM/dd/yyyy",
+     "placeholder": null,
+     "masked": false,
+     "required": false,
+     "enabled": true
+    }
+   ],
+   "drive": {
+    "role": "datepicker",
+    "label": "Date",
+    "atRest": "",
+    "onFocus": "__/__/____",
+    "onCalendarButton": "__/__/____",
+    "popup": {
+     "x": 1420,
+     "y": 281,
+     "w": 345,
+     "h": 365
+    },
+    "input": {
+     "x": 1420,
+     "y": 241,
+     "w": 445,
+     "h": 40
+    },
+    "shot": "alert-notification-tracking--page-date-open.png",
+    "afterPick": "11/13/2026",
+    "popupAfterPick": false,
+    "afterBlur": "11/13/2026"
+   }
+  },
+  "conditionals": {
+   "radios": [],
+   "checkboxes": [],
+   "dropdowns": []
+  },
+  "toggles": [
+   {
+    "header": "Search Criteria",
+    "title": "Collapse",
+    "first": {
+     "before": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 188
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0,
+      "title": "Expand"
+     },
+     "durationMs": 397,
+     "frames": 13,
+     "samples": [
+      {
+       "t": 23,
+       "h": 186
+      },
+      {
+       "t": 53,
+       "h": 179
+      },
+      {
+       "t": 85,
+       "h": 167
+      },
+      {
+       "t": 116,
+       "h": 151
+      },
+      {
+       "t": 148,
+       "h": 131
+      },
+      {
+       "t": 179,
+       "h": 109
+      },
+      {
+       "t": 211,
+       "h": 86
+      },
+      {
+       "t": 241,
+       "h": 64
+      },
+      {
+       "t": 272,
+       "h": 44
+      },
+      {
+       "t": 305,
+       "h": 25
+      },
+      {
+       "t": 335,
+       "h": 12
+      },
+      {
+       "t": 366,
+       "h": 3
+      },
+      {
+       "t": 397,
+       "h": 0
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    },
+    "back": {
+     "before": {
+      "icon": "fa-solid fa-angle-down panel-collapsed",
+      "visible": false,
+      "h": 0
+     },
+     "after": {
+      "icon": "fa-solid fa-angle-up",
+      "visible": true,
+      "h": 188,
+      "title": "Collapse"
+     },
+     "durationMs": 418,
+     "frames": 14,
+     "samples": [
+      {
+       "t": 3,
+       "h": 0
+      },
+      {
+       "t": 43,
+       "h": 5
+      },
+      {
+       "t": 73,
+       "h": 15
+      },
+      {
+       "t": 105,
+       "h": 30
+      },
+      {
+       "t": 137,
+       "h": 49
+      },
+      {
+       "t": 167,
+       "h": 70
+      },
+      {
+       "t": 198,
+       "h": 92
+      },
+      {
+       "t": 230,
+       "h": 116
+      },
+      {
+       "t": 262,
+       "h": 137
+      },
+      {
+       "t": 292,
+       "h": 156
+      },
+      {
+       "t": 323,
+       "h": 171
+      },
+      {
+       "t": 355,
+       "h": 182
+      },
+      {
+       "t": 387,
+       "h": 187
+      },
+      {
+       "t": 418,
+       "h": 188
+      }
+     ],
+     "cssTransition": "all",
+     "bodyClass": "content-panel-bdy"
+    }
+   }
+  ],
+  "search": {
+   "ms": 4521,
+   "reveals": [
+    {
+     "sel": "[data-kit-h=\"h5\"]",
+     "labels": [
+      "popupPanelMsg",
+      "Search Results"
+     ],
+     "required": 0,
+     "text": "popupPanelMsg Search Results Event NameEvent Created DateModuleMissed SLAMessageJob Fails: Program Integrity CT CaseList"
+    }
+   ],
+   "hides": [
+    {
+     "sel": "#divNotificationTrackingCriteriaSearch",
+     "labels": [
+      "Event Name",
+      "Module",
+      "Message",
+      "Date",
+      "Reset",
+      "Search"
+     ],
+     "required": 0,
+     "text": "Event Name (typeof KendoLicensing === 'object' && KendoLicensing.setScriptKey('141j041f611f063e0837023e133i0i490g310c3a1"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/Notifications/GetEventNotificationTracking/",
+     "status": "sent"
+    }
+   ],
+   "loading": {
+    "className": "wait-dialog",
+    "id": "loadingDialog",
+    "html": "<div id=\"loadingDialog\" class=\"wait-dialog\" role=\"alert\" aria-busy=\"true\" aria-live=\"assertive\" style=\"display: block;\">\n            <span class=\"wait-dialog-lbl\">Processing ...</span>\n        </div>",
+    "firstAt": 101,
+    "visibleMs": 2550
+   },
+   "grids": [
+    {
+     "id": "EventNotificationResultsGrid",
+     "rows": 10,
+     "total": 2143265,
+     "noRecords": null,
+     "pager": true,
+     "rect": {
+      "x": 31,
+      "y": 88,
+      "w": 1843,
+      "h": 953
+     }
+    }
+   ],
+   "collapseBefore": [],
+   "collapseAfter": [],
+   "validation": null
+  },
+  "gridFilter": {
+   "stamp": "p2",
+   "icon": {
+    "x": 355,
+    "y": 99,
+    "w": 30,
+    "h": 30
+   },
+   "iconHtml": "<a aria-hidden=\"true\" aria-label=\"Event Name filter column settings\" class=\"k-grid-filter-menu k-grid-header-menu\" href=\"javascript:void(0)\" title=\"Event Name filter column settings\" tabindex=\"-1\" data-role=\"tooltip\" data-probe=\"p2\"><span class=\"k-icon k-svg-icon k-svg-i-filter\"><svg aria-hidden=\"true\" focusable=\"false\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg?v=30.0.0.2609\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span></a>",
+   "column": "Event Name",
+   "filterable": {
+    "extra": false,
+    "operators": {
+     "string": {
+      "eq": "Equal To",
+      "contains": "Contains",
+      "startswith": "Starts With",
+      "endswith": "Ends With"
+     },
+     "date": {
+      "eq": "Equal To",
+      "gte": "Greater Than",
+      "lte": "Less Than"
+     }
+    }
+   },
+   "columnMenu": false,
+   "filterableColumns": 4,
+   "popup": {
+    "rect": {
+     "x": 355,
+     "y": 129,
+     "w": 274,
+     "h": 207
+    },
+    "className": "k-animation-container k-animation-container-shown",
+    "html": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"display: block; position: absolute; top: 372.75px; z-index: 10002; left: 354.906px;\"><div class=\"k-child-animation-container\" style=\"width: 274.333px; height: 207.188px; display: block; transform: translateY(0px);\"><form title=\"Show items with value that\" class=\"k-filter-menu k-popup\" data-role=\"popup\" aria-hidden=\"false\" data-filter-styled=\"data-filter-styled\" style=\"\"><div class=\"k-filter-menu-container\"><div class=\"k-filter-help-text\">Show items with value that:</div><span title=\"Operator\" class=\"k-picker k-dropdownlist k-focus\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"3cc7f1a9-20ed-4f25-82b1-0dffc11feaa8_listbox\" aria-busy=\"false\" aria-describedby=\"f8ccec21-e04d-480f-aff1-f91d358a6555\" style=\"\"><span id=\"f8ccec21-e04d-480f-aff1-f91d358a6555\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">Equal To</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><select title=\"Operator\" data-bind=\"value: filters[0].operator\" data-adaptive-mode=\"none\" data-role=\"dropdownlist\" style=\"display: none;\"><option value=\"eq\" selected=\"selected\">Equal To</option><option value=\"contains\">Contains</option><option value=\"startswith\">Starts With</option><option value=\"endswith\">Ends With</option></select></span><span class=\"k-textbox k-input\"><input title=\"Value\" data-bind=\"value:filters[0].value\" class=\"k-input-inner\" type=\"text\" data-adaptive-mode=\"none\"></span><div class=\"k-actions-stretched k-actions\"><div class=\"grid-filter-buttons\"><button title=\"Filter\" class=\"k-button k-button-primary\" type=\"submit\"><span class=\"k-icon k-svg-icon k-svg-i-filter k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64 64v32l160 160v224l64-64V256L448 96V64z\"></path></svg></span><span class=\"k-button-text\">Filter</span></button><button title=\"Clear\" class=\"k-button\" type=\"reset\"><span class=\"k-icon k-svg-icon k-svg-i-filter-clear k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m143.5 64 168.2 168.2L288 256v160l-64 64V256L64 96V64zm236.1 100.4L448 96V64H279.3l-64-64L192 22l298 298 22-23.3z\"></path></svg></span><span class=\"k-button-text\">Clear</span></button></div></div></div><div class=\"k-list-container k-popup k-dropdownlist-popup\" data-role=\"popup\" aria-hidden=\"true\" style=\"display: none;\"><div class=\"k-list\" id=\"3cc7f1a9-20ed-4f25-82b1-0dffc11feaa8-list\" data-role=\"staticlist\"><div class=\"k-no-data\" aria-live=\"polite\" style=\"display: none;\">No data found.</div><div class=\"k-list-group-sticky-header\" style=\"display: none;\"></div><div class=\"k-list-content k-list-scroller\" unselectable=\"on\"><ul unselectable=\"on\" tabindex=\"-1\" aria-hidden=\"true\" id=\"3cc7f1a9-20ed-4f25-82b1-0dffc11feaa8_listbox\" role=\"listbox\" aria-live=\"off\" class=\"k-list-ul\"><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item k-selected k-focus\" aria-selected=\"true\" data-offset-index=\"0\" id=\"034bcb7d-8f64-4018-a410-aee85332a44b\"><span class=\"k-list-item-text\">Equal To</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"1\"><span class=\"k-list-item-text\">Contains</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"2\"><span class=\"k-list-item-text\">Starts With</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"3\"><span class=\"k-list-item-text\">Ends With</span></li></ul></div></div></div></form></div></div>",
+    "fields": [
+     {
+      "role": "dropdownlist",
+      "type": "select-one",
+      "title": "Operator"
+     },
+     {
+      "role": null,
+      "type": "text",
+      "title": "Value"
+     }
+    ],
+    "dropdowns": [
+     [
+      "Equal To",
+      "Contains",
+      "Starts With",
+      "Ends With"
+     ]
+    ],
+    "buttons": [
+     "Filter",
+     "Clear"
+    ],
+    "texts": [
+     "Show items with value that:"
+    ],
+    "chevrons": [
+     {
+      "stamp": "p3",
+      "className": "k-picker k-dropdownlist k-focus",
+      "expanded": "false",
+      "text": "Equal ToEqual ToContainsStarts WithEnds ",
+      "after": {
+       "htmlDelta": 678,
+       "expanded": "true",
+       "rect": {
+        "x": 355,
+        "y": 129,
+        "w": 274,
+        "h": 207
+       }
+      }
+     }
+    ],
+    "shot": "alert-notification-tracking--grid-filter.png"
+   }
+  },
+  "row": {
+   "via": "dblclick",
+   "dialog": {
+    "opener": "row dblclick",
+    "info": {
+     "title": "View Event Details",
+     "options": {
+      "modal": {
+       "preventScroll": true
+      },
+      "width": null,
+      "height": null,
+      "actions": [
+       "Custom",
+       "Close"
+      ],
+      "draggable": false,
+      "resizable": false,
+      "animation": {
+       "open": {
+        "effects": {},
+        "duration": 350
+       },
+       "close": {
+        "effects": {},
+        "duration": 350,
+        "hide": true
+       }
+      },
+      "position": {
+       "top": 599.1665,
+       "left": 360
+      }
+     },
+     "windowClass": "k-window panelForm-col-5 ui-draggable",
+     "contentId": "viewNotificationTrackingOverlay",
+     "fields": 9,
+     "required": 0,
+     "hidden": 9,
+     "unknown": {},
+     "actions": [
+      "close: Close",
+      "close: Close"
+     ]
+    },
+    "position": {
+     "viewport": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920
+     },
+     "rect": {
+      "x": 360,
+      "y": 355,
+      "w": 1200,
+      "h": 370
+     },
+     "leftGap": 360,
+     "rightGap": 360,
+     "centeredLeft": 360,
+     "centered": true,
+     "touchesLeft": false,
+     "widerThanViewport": false,
+     "overflowRight": false,
+     "style": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 599.167px; left: 360px; z-index: 11502; opacity: 1; transform: scale(1);",
+     "className": "k-window panelForm-col-5 ui-draggable",
+     "fitsViewport": true,
+     "heightPct": 34,
+     "contentScrolls": false,
+     "contentH": {
+      "scroll": 331,
+      "client": 331,
+      "overflowY": "auto"
+     },
+     "isPhone": false,
+     "computed": {
+      "width": "1200px",
+      "minWidth": "90px",
+      "maxWidth": "none",
+      "maxHeight": "918px",
+      "position": "absolute",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+     },
+     "kendo": {
+      "position": {
+       "top": 599.1665,
+       "left": 360
+      },
+      "width": null,
+      "minWidth": 90,
+      "maxWidth": null
+     },
+     "rules": [
+      {
+       "selector": ".panel-form-col-5, .panelForm-col-5",
+       "width": "62.5%"
+      }
+     ],
+     "contentRules": [],
+     "title": "View Event Details"
+    },
+    "shot": null,
+    "census": {
+     "roles": {
+      "tooltip": 9,
+      "textbox": 7
+     },
+     "buttons": [
+      {
+       "text": "Close",
+       "action": "close"
+      }
+     ],
+     "radios": {},
+     "checkboxes": 0,
+     "required": 0,
+     "hiddenAtRest": 9,
+     "tabs": [],
+     "collapsibles": 0
+    },
+    "close": {
+     "edited": null,
+     "attempts": [
+      {
+       "via": "x",
+       "edited": null,
+       "closed": true,
+       "confirm": null,
+       "native": []
+      },
+      {
+       "via": "cancel",
+       "reopened": false
+      }
+     ]
+    }
+   }
+  },
+  "dialogs": [],
+  "searchNoMatch": {
+   "field": "EventName",
+   "reveals": [],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/Notifications/GetEventNotificationTracking/",
+     "status": "sent"
+    }
+   ],
+   "grids": [],
+   "validation": null,
+   "shot": "alert-notification-tracking--search-nomatch.png"
+  },
+  "viewports": [
+   {
+    "viewport": {
+     "width": 1920,
+     "height": 1080
+    },
+    "layout": {
+     "inner": {
+      "w": 1920,
+      "h": 1080,
+      "docW": 1920,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": false,
+      "max768": false,
+      "portrait": false,
+      "isPhone": false
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 178,
+      "y": 62,
+      "w": 78,
+      "h": 30,
+      "text": "Tracking"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 178,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1920,
+      "h": 302
+     },
+     "footer": {
+      "x": 0,
+      "y": 440,
+      "w": 1920,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1852,
+        "y": 0,
+        "w": 68,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1862,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      }
+     ],
+     "navLinks": [
+      "Messages",
+      "External Links",
+      "Favorites",
+      "Contact Us",
+      "My Account",
+      "Logout"
+     ],
+     "page": {
+      "scrollW": 1920,
+      "scrollH": 1080,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "alert-notification-tracking--layout-1920x1080.png"
+   },
+   {
+    "viewport": {
+     "width": 1272,
+     "height": 588
+    },
+    "layout": {
+     "inner": {
+      "w": 1272,
+      "h": 588,
+      "docW": 1272,
+      "dpr": 1.0000000298023224
+     },
+     "breakpoints": {
+      "max1280": true,
+      "max768": false,
+      "portrait": false,
+      "isPhone": true
+     },
+     "header": {
+      "x": 0,
+      "y": 0,
+      "w": 1272,
+      "h": 62
+     },
+     "titleBar": {
+      "x": 178,
+      "y": 62,
+      "w": 78,
+      "h": 30,
+      "text": "Tracking"
+     },
+     "moduleTab": {
+      "x": 0,
+      "y": 62,
+      "w": 178,
+      "h": 32
+     },
+     "main": {
+      "x": 0,
+      "y": 138,
+      "w": 1272,
+      "h": 302
+     },
+     "footer": {
+      "x": 0,
+      "y": 440,
+      "w": 1272,
+      "h": 119
+     },
+     "burgers": [
+      {
+       "tag": "div",
+       "cls": "mobile-nav",
+       "id": "pageBanner",
+       "shown": true,
+       "rect": {
+        "x": 538,
+        "y": 0,
+        "w": 734,
+        "h": 62
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1202,
+        "y": 0,
+        "w": 70,
+        "h": 62
+       }
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": true,
+       "rect": {
+        "x": 1212,
+        "y": 5,
+        "w": 48,
+        "h": 52
+       }
+      },
+      {
+       "tag": "div",
+       "cls": "hamburger",
+       "id": null,
+       "shown": false,
+       "rect": null
+      },
+      {
+       "tag": "i",
+       "cls": "fa-solid fa-bars clickable",
+       "id": null,
+       "shown": false,
+       "rect": null
+      }
+     ],
+     "navLinks": [],
+     "page": {
+      "scrollW": 1272,
+      "scrollH": 588,
+      "horizontalScroll": false,
+      "htmlOverflow": "auto",
+      "bodyOverflow": "visible"
+     }
+    },
+    "layoutShot": "alert-notification-tracking--layout-1272x588.png"
+   }
+  ],
+  "shots": [
+   "alert-notification-tracking--page-date-open.png",
+   "alert-notification-tracking--grid-filter.png",
+   "alert-notification-tracking--search-nomatch.png",
+   "alert-notification-tracking--layout-1920x1080.png",
+   "alert-notification-tracking--layout-1272x588.png"
+  ]
+ },
+ "ms": 46725
+}
