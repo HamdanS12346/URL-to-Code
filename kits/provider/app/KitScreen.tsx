@@ -223,8 +223,13 @@ function Window({ id, def, Body, depth, closing, onClosed }: { id: string; def: 
   const openMs = anim === false ? 0 : anim?.open?.duration ?? DEFAULTS.windowMs, closeMs = anim === false ? 0 : anim?.close?.duration ?? DEFAULTS.windowMs;
   useLayoutEffect(() => { // Kendo centers a window when it opens, then zooms and fades it in
     const w = win.current!;
-    w.style.left = `${Math.max(0, (innerWidth - w.offsetWidth) / 2 + scrollX)}px`;
-    w.style.top = `${Math.max(0, (innerHeight - w.offsetHeight) / 2 + scrollY)}px`;
+    // Kendo/jQuery centering uses the layout viewport width/height (documentElement.clientWidth/Height),
+    // not window.innerWidth/innerHeight. This matters at 1280x720 (aka 1920x1080 @ 150% zoom) where
+    // dialogs can end up touching the left edge on the live site.
+    const vw = document.documentElement?.clientWidth || innerWidth;
+    const vh = document.documentElement?.clientHeight || innerHeight;
+    w.style.left = `${Math.max(0, (vw - w.offsetWidth) / 2 + scrollX)}px`;
+    w.style.top = `${Math.max(0, (vh - w.offsetHeight) / 2 + scrollY)}px`;
     if (openMs) { w.animate([{ opacity: 0, transform: 'scale(0.01)' }, { opacity: 1, transform: 'scale(1)' }], { duration: openMs, easing: 'ease-out' }); ov.current?.animate([{ opacity: 0 }, { opacity: 1 }], { duration: openMs }); }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useLayoutEffect(() => {

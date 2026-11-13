@@ -5,6 +5,10 @@
 ## Q1 Modal position
 - 13/23 centered, 10 touching the left edge, 0 wider than the viewport, 0 running past the right edge
 - by viewport: 1920x1080 centered x13, 1280x720 left-edge x10
+- note: this is why some reference shots look "centered" while the live portal (and the 1280x720 shots) show left-edge/touching-left behavior
+  - example: `file-transfer-services-ftp-server-credentials--create1.png` (1920x1080) centered vs `file-transfer-services-ftp-server-credentials--create1-1280x720.png` (1280x720) touching left
+  - example: `file-transfer-services-file-transfer-configuration--create1.png` (1920x1080) centered vs `file-transfer-services-file-transfer-configuration--create1-1280x720.png` (1280x720) touching left
+  - kit runtime fix: use layout viewport (`document.documentElement.clientWidth/Height`) for centering math (was `window.innerWidth/innerHeight`) so rebuild matches Kendo `center()` at 1280x720
 - window classes: "panelForm-col-6 ui-draggable" x17, "panelForm-col-5 ui-draggable" x4, "panelForm-col-3 ui-draggable" x2
 - width rules: .panel-form-col-6, .panelForm-col-6 {width:75%} | .panel-form-col-5, .panelForm-col-5 {width:62.5%} | .panel-form-col-3, .panelForm-col-3 {width:37.5%}
   - Administration > Broadcast Message / Create Broadcast Message @1280x720: x=0 w=1152 (touches left)
