@@ -1,0 +1,29 @@
+{
+ "screen": "fxfer-v7/home",
+ "pass": true,
+ "checkedAt": "2026-11-16T08:25:33.855Z",
+ "coverage": {
+  "controls": "24/24",
+  "transitions": "0/0",
+  "validators": "0/0",
+  "motion": "0/0"
+ },
+ "missing": {
+  "controls": [],
+  "transitions": [],
+  "validators": [],
+  "motion": [],
+  "scroll": [],
+  "media": [],
+  "kit": []
+ },
+ "unknown": [],
+ "untagged": [],
+ "missingSections": [],
+ "tasksFile": true,
+ "unknownMarkers": 10,
+ "optional": {
+  "linksNotCited": [],
+  "unexplainedNotCited": []
+ }
+}

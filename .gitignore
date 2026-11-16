@@ -22,3 +22,6 @@ packs/*
 !packs/fxfer-v6/
 !packs/fxfer-v6/**
 
+!packs/fxfer-v7/
+!packs/fxfer-v7/**
+

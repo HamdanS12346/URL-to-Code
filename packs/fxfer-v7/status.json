@@ -1,0 +1,66 @@
+{
+ "items": {
+  "capture:home": {
+   "status": "done",
+   "at": "2026-11-16T08:12:17.904Z"
+  },
+  "capture:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-16T08:16:02.853Z"
+  },
+  "capture:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-16T08:19:43.707Z"
+  },
+  "capture:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-16T08:22:53.155Z"
+  },
+  "spec:home": {
+   "status": "done",
+   "at": "2026-11-16T08:25:33.874Z",
+   "rounds": 1
+  },
+  "spec:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-16T08:27:51.447Z",
+   "rounds": 1
+  },
+  "spec:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-16T08:28:29.282Z",
+   "rounds": 1
+  },
+  "spec:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-16T08:32:38.733Z",
+   "rounds": 1
+  },
+  "port:home": {
+   "status": "done",
+   "at": "2026-11-16T08:32:46.229Z"
+  },
+  "port:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-16T08:32:59.975Z"
+  },
+  "port:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-16T08:33:07.537Z"
+  },
+  "port:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-16T08:33:14.765Z"
+  },
+  "preflight:kit": {
+   "status": "needs-review",
+   "at": "2026-11-16T08:35:10.543Z",
+   "screen": "file-transfer-configuration",
+   "problems": [
+    "the kit on the raw port (fix it in kits/<kit>, not in the app):",
+    "row-d2: 16.74% off",
+    "row-d2@client: [data-kit-dialog=\"d2\"] is at x 472, y -301, 954x500 but the live one is at x 472, y 247, 10x5 (y, w, h differ) (a row opens dialog d2 at this size)"
+   ]
+  }
+ }
+}

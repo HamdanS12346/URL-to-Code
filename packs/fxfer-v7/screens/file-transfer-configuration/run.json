@@ -1,0 +1,38 @@
+{
+ "screen": "fxfer-v7/file-transfer-configuration",
+ "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations",
+ "mode": "safe",
+ "kit": "provider",
+ "sources": [],
+ "finger": "abb622a2a44d29a7d138f30325ce12c5",
+ "steps": {
+  "capture": {
+   "ok": true,
+   "at": "2026-11-16T08:16:02.336Z",
+   "ms": 219462
+  },
+  "stitch": {
+   "ok": true,
+   "at": "2026-11-16T08:16:02.388Z",
+   "ms": 19
+  },
+  "align": {
+   "ok": true,
+   "at": "2026-11-16T08:16:02.492Z",
+   "ms": 61
+  },
+  "facts": {
+   "ok": true,
+   "at": "2026-11-16T08:16:02.830Z",
+   "ms": 245
+  }
+ },
+ "warnings": [
+  "no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)"
+ ],
+ "viewport": {
+  "width": 1920,
+  "height": 1080
+ },
+ "dpr": 1
+}
