@@ -75,7 +75,9 @@ export async function openPage(browser, cfg, { url, viewport, dpr, assetsDir, js
     }
   });
 
-  const guard = { loading: false, allowPost: cfg.mode !== 'readonly', events: [] };
+  // allow: while allowPost is off, the "METHOD /path" requests that may still go (a kit replaying an opener the main pass already saw send them)
+  const guard = { loading: false, allowPost: cfg.mode !== 'readonly', allow: null, events: [] };
+  const allowed = (method, u) => guard.allowPost || !!guard.allow?.has(`${method} ${u.pathname}`);
   const rec = (e) => guard.events.push({ ...e, at: Date.now() });
   let page;
 
@@ -99,7 +101,7 @@ export async function openPage(browser, cfg, { url, viewport, dpr, assetsDir, js
         return route.abort('aborted');
       }
       if (!mutating) return route.continue(); // reload of this same page
-      const ok = guard.allowPost;
+      const ok = allowed(method, u);
       rec({ type: 'postback', status: ok ? 'sent' : 'blocked', method, url: req.url(), post: formOf(req) });
       return ok ? route.continue() : route.abort('aborted');
     }
@@ -107,7 +109,7 @@ export async function openPage(browser, cfg, { url, viewport, dpr, assetsDir, js
     if (!nav && !guard.loading && (rt === 'xhr' || rt === 'fetch' || rt === 'eventsource' || rt === 'other')) {
       const async = !!req.headers()['x-microsoftajax'];
       if (mutating) {
-        const ok = guard.allowPost;
+        const ok = allowed(method, u);
         rec({ type: async ? 'async-postback' : 'request', status: ok ? 'sent' : 'blocked', method, url: req.url(), post: formOf(req) });
         return ok ? route.continue() : route.abort('aborted');
       }

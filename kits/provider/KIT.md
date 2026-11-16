@@ -184,6 +184,26 @@ at both ends and scrolls the list with them and the wheel.
 - **Windows sit left below the switch.** `isPhone` and `openModalOverlay` are in the portal's shared script, so the placement measured on ANY screen of
   the pack serves all of them (`port` lends it to a screen whose own dialog could not be measured, `responsive.dialog.from` says where it came from).
   The profile pass replays Create New and row dialogs, retries three times, and photographs a dialog that will not open (`states/*-failed.png`).
+  Measured live (`docs/probe-fixes`): below 1280 px a window is at left 0, top 20 *of the screen* (wherever the page was scrolled), 90% wide, at most
+  85% high; above it centered, its width class's (`panelForm-col-6` 75%, `-5` 62.5%, `-3` 37.5%), at most 85% high. Three things made that go wrong once:
+  - an editor is often rendered by a POST (Configuration's Create New, a row of FTP Server Credentials). The profile pass blocks POSTs, so it lets
+    through exactly the requests the main pass saw that opener send (`guard.allow`) and names any other it blocked when a window does not open;
+  - Kendo zooms a window in from `scale(0.01)` (a 10x5 box at its center for the first frames), after the portal's "Processing ..." box. A window is
+    measured only once `position().settled` (no transform, opaque, no loading box) and the same box twice 300 ms apart, never "when it stops moving";
+  - a measurement that is not a whole window (under 30% of the page wide, or outside it) is never a placement: the profile pass rejects it and `port`
+    neither applies nor lends one.
+- **The header hides on scroll** (headroom.js): the capture measures past which scroll position (`headroom.offset`, 150 on the portal) and how small a
+  scroll up brings it back (`tolerance`, 0), on whichever screen and size scrolls far enough; `port` lends it to the others.
+- **Sorting a grid**: one unsorted column is clicked three times. The direction order (`grids.<id>.sortIcons.cycle`: the portal's grids go asc, desc,
+  asc, never back to unsorted) and the elements of the header cell whose classes follow the direction (`parts`: the portal's two carets, the sorted
+  one teal `grid-col-sorted-ind-icon`, both turned down for desc) are replayed; the other columns go back to their unsorted carets. A grid that comes
+  back already sorted by a column (Kendo's sort option) goes on from there.
+- **Dates show what the box showed** (`widgets.<id>.shows`): the portal gives Search dates a value (today 00:00) and an empty box; the date appears once
+  a day is picked. `min`/`max` move with today like the value (`minOffsetDays`/`maxOffsetDays`), so "not after today" stays today.
+- **Search can fold a panel away** (`search.collapses`: FTP Server Credentials closes its Search Criteria, others keep it open): the runtime clicks the
+  same panels' own collapse control after Search.
+- **A popup opened inside a window or another popup stacks above it** (a window's dropdowns, the filter's operator list, which opens under its own
+  dropdown as a real list).
 - **Focus.** The page's focused field is noted right after load (`early` hook, before the warm-up and the capture's own clicks) and stamped
   `data-kit-autofocus`; a window's focused field likewise. The runtime focuses that field, else the first field a person can type in, when a page or
   a window opens.
@@ -202,7 +222,7 @@ at both ends and scrolls the list with them and the wheel.
   census of the menu pages found: autocomplete (Plan Management, Claims), masked text box, multiselect, listbox, listview,
   tab strip. Checkboxes and radios are plain inputs and work as they are.
 
-- The grid's column filter popup opens and closes, but its operator list and value box do nothing (it does not filter the synthetic rows), and one popup (the first column's) stands for all columns.
+- The grid's column filter popup opens and closes and its operator list can be picked from, but it does not filter the synthetic rows, and one popup (the first column's) stands for all columns. Its operator list is as wide as the dropdown (the live one is 20 px wider).
 - Screens whose live Search with nothing typed showed a banner have no row template (no rows were ever seen), so a Search with input shows the grid empty.
 - Closing behavior is recorded for the dialogs the capture opens from Create New and the first row; a dialog with no editable text box is only tried unedited.
 - Profile states cover the menus and each Create New dialog; the full page at the second profile is one viewport picture (`layout@<name>`), not a stitched page.

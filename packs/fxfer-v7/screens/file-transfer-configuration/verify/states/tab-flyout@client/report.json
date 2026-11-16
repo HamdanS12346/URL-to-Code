@@ -3,60 +3,51 @@
     0,
     0
   ],
-  "bad_pct": 3.91,
+  "bad_pct": 3.96,
   "mean_abs": 4.47,
   "worst_band": {
     "y": 250,
-    "bad_pct": 17.9
+    "bad_pct": 17.95
   },
   "bands": [
     {
       "y": 0,
-      "bad_pct": 2.2
+      "bad_pct": 2.25
     },
     {
       "y": 50,
-      "bad_pct": 2.48
+      "bad_pct": 2.53
     },
     {
       "y": 100,
-      "bad_pct": 1.02
+      "bad_pct": 1.07
     },
     {
       "y": 150,
-      "bad_pct": 0.0
+      "bad_pct": 0.05
     },
     {
       "y": 200,
-      "bad_pct": 0.0
+      "bad_pct": 0.05
     },
     {
       "y": 250,
-      "bad_pct": 17.9
+      "bad_pct": 17.95
     },
     {
       "y": 300,
-      "bad_pct": 0.0
+      "bad_pct": 0.05
     }
   ],
   "clusters": [
     {
       "box": [
         0,
-        240,
-        1896,
-        48
-      ],
-      "bad_px": 17072
-    },
-    {
-      "box": [
         0,
-        0,
-        1896,
-        144
+        1908,
+        302
       ],
-      "bad_px": 5440
+      "bad_px": 22803
     },
     {
       "box": [
@@ -65,7 +56,7 @@
         240,
         48
       ],
-      "bad_px": 1176
+      "bad_px": 1171
     }
   ],
   "worst_crop": "worst.png",

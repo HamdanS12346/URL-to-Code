@@ -11,11 +11,18 @@ export type WidgetDef = {
   optionLabel?: string | null; items?: Item[]; value?: unknown; text?: string; cascadeFrom?: string | null; height?: number;
   // dates: days from the capture's day (a prefilled "today" stays today), the time of day, and the pattern an empty box shows on focus ("__/__/____")
   offsetDays?: number | null; minutes?: number | null; focusMask?: string;
+  // min / max the same way (a "not after today" stays today); a capture without them keeps the dates as they were
+  minOffsetDays?: number | null; maxOffsetDays?: number | null;
+  // the text the box showed (a date can have a value and show nothing: the portal's Search dates, today 00:00, empty until a day is picked)
+  shows?: string;
   format?: string; decimals?: number; min?: unknown; max?: unknown; step?: number; spinners?: boolean; placeholder?: string; interval?: number; timeFormat?: string | null;
   columns?: { field: string | null; title: string; width: unknown; hidden: boolean; sortable: boolean; filterable: boolean; command: boolean; format: string | null }[];
   pageable?: { pageSizes?: unknown; buttonCount?: number; refresh?: boolean; info?: boolean } | boolean; pageSize?: number | null;
 };
-export type GridAfter = { total: number; pageSize: number | null; fields: Record<string, { type: string; maxLen: number; minLen: number }>; rowTemplate: string | null; altRowTemplate: string | null; html: string; rowCount: number };
+export type GridAfter = { total: number; pageSize: number | null; fields: Record<string, { type: string; maxLen: number; minLen: number }>; rowTemplate: string | null; altRowTemplate: string | null; html: string; rowCount: number;
+  // what a click on a sortable header did on the live page: the direction each of three clicks gave, and the header's elements whose classes follow it
+  // (tag, unsorted classes and occurrence among the same; asc / desc: their classes then)
+  sortIcons?: { cycle: ('asc' | 'desc' | null)[]; parts: { tag: string; cls: string; n: number; asc: string; desc: string }[]; structural?: boolean } };
 export type DialogDef = { title: string; windowClass: string; windowStyle: string | null; titlebarHtml: string | null; contentClass: string; contentId: string | null; contentStyle: string | null;
   overlay: { className: string; style: string | null; background: string; opacity: string } | null; options: Record<string, unknown> | null; widgets: Record<string, WidgetDef>;
   opener: string; openerIndex?: number; openerId?: string | null; parent?: string; children: string[]; creates?: Create[];
@@ -41,7 +48,9 @@ type Anim = { effects?: string; duration?: number };
 export type KitData = {
   shell?: { title: string | null; module: string | null };
   widgets: Record<string, WidgetDef>; grids: Record<string, GridAfter>; dialogs: Record<string, DialogDef>;
-  search: { reveals: string[]; requests: { method: string; url: string; params: string[] }[]; rows?: number; outcome?: 'rows' | 'validation' | 'empty'; validation?: Validation } | null;
+  search: { reveals: string[]; requests: { method: string; url: string; params: string[] }[]; rows?: number; outcome?: 'rows' | 'validation' | 'empty'; validation?: Validation;
+    // the page's collapsible panels (their places in document order) the live page folded away by itself once the results showed
+    collapses?: number[] } | null;
   conditionals?: Conditional[]; responsive?: Responsive;
   // where a Create New / a row went when it left the page (the pack captures each target as a screen of its own; a click goes to its route)
   links?: { kind: 'create' | 'row'; text?: string; id?: string | null; url: string }[];
@@ -58,6 +67,8 @@ export type KitData = {
   help?: string | null;
   // how fast Kendo scrolls a scrollable menu while the pointer is on its arrow button (px per second, measured on the live page)
   menuScroll?: number | null;
+  // the header that hides while the page scrolls down (headroom.js): past which scroll position, and how small a scroll up brings it back (measured)
+  headroom?: { offset: number; tolerance: number; viewport?: string | null } | null;
   calibration: { defaults?: { popup?: { open?: Anim; close?: Anim }; tooltip?: { showAfter?: number; hideAfter?: number; animation?: { open?: Anim; close?: Anim } } | null; window?: { open?: Anim; close?: Anim } | null; menu?: { open?: Anim; close?: Anim } | null; tooltipGap?: number } | null;
     dropdownPopup?: string | null; calendarPopup?: string | null; tooltip?: string | null };
 };

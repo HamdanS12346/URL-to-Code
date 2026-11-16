@@ -3,11 +3,11 @@
     0,
     0
   ],
-  "bad_pct": 1.95,
-  "mean_abs": 2.32,
+  "bad_pct": 1.96,
+  "mean_abs": 2.33,
   "worst_band": {
     "y": 360,
-    "bad_pct": 2.99
+    "bad_pct": 3
   },
   "bands": [
     {
@@ -16,11 +16,11 @@
     },
     {
       "y": 180,
-      "bad_pct": 2.18
+      "bad_pct": 2.17
     },
     {
       "y": 360,
-      "bad_pct": 2.99
+      "bad_pct": 3
     },
     {
       "y": 540,
@@ -28,7 +28,7 @@
     },
     {
       "y": 720,
-      "bad_pct": 1.39
+      "bad_pct": 1.41
     },
     {
       "y": 900,
@@ -43,7 +43,7 @@
         1872,
         216
       ],
-      "bad_px": 15671,
+      "bad_px": 15650,
       "css_box": [
         24,
         264,
@@ -68,7 +68,7 @@
         1920,
         48
       ],
-      "bad_px": 6452,
+      "bad_px": 6444,
       "css_box": [
         0,
         648,
@@ -89,36 +89,11 @@
     {
       "box": [
         0,
-        96,
-        1920,
-        96
-      ],
-      "bad_px": 4804,
-      "css_box": [
-        0,
-        96,
-        1920,
-        96
-      ],
-      "element": {
-        "el": "span.ellipsis-nowrap",
-        "text": "External Links",
-        "box": [
-          648,
-          110,
-          505,
-          45
-        ]
-      }
-    },
-    {
-      "box": [
-        0,
         720,
         1920,
         48
       ],
-      "bad_px": 4793,
+      "bad_px": 4873,
       "css_box": [
         0,
         720,
@@ -138,12 +113,37 @@
     },
     {
       "box": [
+        0,
+        96,
+        1920,
+        96
+      ],
+      "bad_px": 4812,
+      "css_box": [
+        0,
+        96,
+        1920,
+        96
+      ],
+      "element": {
+        "el": "span.ellipsis-nowrap",
+        "text": "External Links",
+        "box": [
+          648,
+          110,
+          505,
+          45
+        ]
+      }
+    },
+    {
+      "box": [
         1608,
         528,
         264,
         48
       ],
-      "bad_px": 1822,
+      "bad_px": 1831,
       "css_box": [
         1608,
         528,
@@ -183,7 +183,7 @@
       "label": "disclaimer-the-website-is-prov",
       "y": 648.5,
       "h": 118.5,
-      "bad_pct": 4.93
+      "bad_pct": 4.96
     }
   ],
   "worst_section": {
@@ -191,14 +191,14 @@
     "label": "disclaimer-the-website-is-prov",
     "y": 648.5,
     "h": 118.5,
-    "bad_pct": 4.93
+    "bad_pct": 4.96
   },
   "verdict": "close",
   "states": [
     {
       "name": "dropdown",
       "ok": true,
-      "bad_pct": 7.3,
+      "bad_pct": 7.31,
       "size_delta_px": [
         0,
         0
@@ -207,7 +207,7 @@
     {
       "name": "tooltip",
       "ok": true,
-      "bad_pct": 6.59,
+      "bad_pct": 6.55,
       "size_delta_px": [
         0,
         0
@@ -225,7 +225,7 @@
     {
       "name": "dialog-d1",
       "ok": true,
-      "bad_pct": 4.9,
+      "bad_pct": 4.91,
       "size_delta_px": [
         0,
         0
@@ -247,7 +247,7 @@
     {
       "name": "menu-open",
       "ok": true,
-      "bad_pct": 2.02,
+      "bad_pct": 2.04,
       "size_delta_px": [
         0,
         0
@@ -256,7 +256,7 @@
     {
       "name": "menu-flyout",
       "ok": true,
-      "bad_pct": 14.08,
+      "bad_pct": 14.05,
       "size_delta_px": [
         0,
         0
@@ -278,7 +278,7 @@
     {
       "name": "layout@client",
       "ok": true,
-      "bad_pct": 2.44,
+      "bad_pct": 2.48,
       "size_delta_px": [
         0,
         0
@@ -287,7 +287,7 @@
     {
       "name": "menu-open@client",
       "ok": true,
-      "bad_pct": 2.97,
+      "bad_pct": 3.07,
       "size_delta_px": [
         0,
         0
@@ -296,7 +296,7 @@
     {
       "name": "menu-flyout@client",
       "ok": true,
-      "bad_pct": 9,
+      "bad_pct": 9.02,
       "size_delta_px": [
         0,
         0
@@ -309,7 +309,7 @@
     {
       "name": "tab-flyout@client",
       "ok": true,
-      "bad_pct": 3.91,
+      "bad_pct": 3.96,
       "size_delta_px": [
         0,
         0
@@ -318,8 +318,8 @@
     {
       "name": "row-d2@client",
       "ok": false,
-      "error": "[data-kit-dialog=\"d2\"] is at x 472, y -301, 954x500 but the live one is at x 472, y 247, 10x5 (y, w, h differ) (a row opens dialog d2 at this size)",
-      "bad_pct": 71.49,
+      "error": "[data-kit-dialog=\"d2\"] is at x 0, y 20, 1145x500 but the live one is at x 472, y 247, 10x5 (x, y, w, h differ) (a row opens dialog d2 at this size)",
+      "bad_pct": 10.63,
       "size_delta_px": [
         0,
         0
@@ -334,5 +334,12 @@
       "ok": true,
       "detail": "animation autoFillEnd"
     }
-  ]
+  ],
+  "behavior": {
+    "console": {
+      "errors": [],
+      "reactWarnings": [],
+      "failedResources": 0
+    }
+  }
 }

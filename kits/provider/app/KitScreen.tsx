@@ -333,6 +333,13 @@ function fitFly(clone: HTMLElement, box: HTMLElement, speed: number) {
 // ---------- a dialog: the portal's Kendo window chrome around the ported content ----------
 // Where a window goes. Above the portal's small-screen width: Kendo's center(). Below it: the portal's own phone branch (measured on the live page at the
 // capture's viewport profiles: left / top, at least minWidthPct of the width). Both: at most a share of the window's height, with the content scrolling inside.
+// a collapse control's panel body: the panel container's own (the portal's .content-subpanel-container > .content-subpanel-bdy, whose header tools hold
+// the icon one level down), else the element that follows the header
+function collapseBody(act: Element): HTMLElement | null {
+  const box = act.closest<HTMLElement>('[class*=panel-container]');
+  const body = (box?.querySelector(':scope > [data-kit-collapse]') ?? (act.closest('[class*=hdr], [class*=header], [class*=heading]') ?? act.parentElement)?.nextElementSibling) as HTMLElement | null;
+  return body?.matches('[data-kit-collapse]') ? body : null;
+}
 function placeWindow(w: HTMLElement, content: HTMLElement | null, r: Responsive | null | undefined) {
   const vw = document.documentElement.clientWidth || innerWidth, vh = document.documentElement.clientHeight || innerHeight; // Kendo/jQuery measure the layout viewport, not innerWidth
   const small = !!r?.query && !!r.dialog && matchMedia(r.query).matches;
@@ -346,8 +353,8 @@ function placeWindow(w: HTMLElement, content: HTMLElement | null, r: Responsive 
   if (small) {
     const d = r!.dialog!;
     w.style.minWidth = d.minWidthPct ? `${(vw * d.minWidthPct) / 100}px` : w.dataset.kitMin!;
-    w.style.left = `${d.left}px`;
-    w.style.top = `${d.top}px`;
+    w.style.left = `${d.left + scrollX}px`; // measured in the viewport: the live window is at the same place on screen however far the page was scrolled
+    w.style.top = `${d.top + scrollY}px`;
     return;
   }
   w.style.minWidth = w.dataset.kitMin!;
@@ -449,16 +456,18 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
     const stops = [...r.querySelectorAll<HTMLElement>('.k-menu-scroll-wrapper-vertical > ul[data-role=menu]')].map((ul) =>
       scrollable(ul, ul.parentElement!.querySelector<HTMLElement>(':scope > .k-menu-scroll-button-prev'), ul.parentElement!.querySelector<HTMLElement>(':scope > .k-menu-scroll-button-next'), speed, 'lazy'));
     if (!shell) return () => stops.forEach((f) => f());
-    // the header slides away on scroll down and back on scroll up (headroom.js: the portal's CSS owns the classes)
+    // the header slides away on scroll down and back on scroll up (headroom.js: the portal's CSS owns the classes). Past which scroll position and how
+    // small a scroll up are measured on the live page (screen.headroom); a capture without them keeps the header's height and 5 px
     const head = document.querySelector<HTMLElement>('#pageHeader.headroom, .headroom');
+    const hr = screen.headroom;
     let last = scrollY;
     const onScroll = () => {
       if (!head) return;
-      const y = scrollY;
-      head.classList.toggle('headroom--top', y <= 0);
-      head.classList.toggle('headroom--not-top', y > 0);
-      if (Math.abs(y - last) < 5) return;
-      const down = y > last && y > head.offsetHeight;
+      const y = scrollY, top = hr ? hr.offset : 0, tolerance = hr ? hr.tolerance : 4;
+      head.classList.toggle('headroom--top', y <= top);
+      head.classList.toggle('headroom--not-top', y > top);
+      if (Math.abs(y - last) <= tolerance) return;
+      const down = y > last && (hr ? y >= hr.offset : y > head.offsetHeight);
       head.classList.toggle('headroom--unpinned', down);
       head.classList.toggle('headroom--pinned', !down);
       last = y;
@@ -597,6 +606,14 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
           }
           bus.emit('search', v);
           for (const id of screen.search?.reveals ?? []) { if (screen.search?.outcome === 'validation') break; root.current?.querySelectorAll<HTMLElement>(`[data-kit-h="${id}"]`).forEach(reveal); }
+          // the panels the live page folded away by itself once the results showed: closed with their own control (its icon swap and slide)
+          if (screen.search?.outcome !== 'validation' && screen.search?.collapses?.length && root.current) {
+            const r = root.current, bodies = [...r.querySelectorAll<HTMLElement>('[data-kit-collapse]')].filter((b) => !b.closest('.k-window'));
+            for (const i of screen.search.collapses) {
+              const b = bodies[i];
+              if (b && shown(b)) [...r.querySelectorAll<HTMLElement>('[data-kit-action=collapse]')].find((a) => collapseBody(a) === b)?.click();
+            }
+          }
         });
         break;
       }
@@ -627,11 +644,9 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
         break;
       case 'cancel': case 'close': if (part && kind === 'cancel') putAway(); else if (dlg) requestClose(dlg, kind === 'close' ? 'x' : 'cancel'); break;
       case 'collapse': {
-        // the body: the panel container's own (the portal's .content-subpanel-container > .content-subpanel-bdy, whose header
-        // tools hold the icon one level down), else the element that follows the header
         const box = act.closest<HTMLElement>('[class*=panel-container]');
-        const body = (box?.querySelector(':scope > [data-kit-collapse]') ?? (act.closest('[class*=hdr], [class*=header], [class*=heading]') ?? act.parentElement)?.nextElementSibling) as HTMLElement | null;
-        if (!body?.matches('[data-kit-collapse]')) break;
+        const body = collapseBody(act);
+        if (!body) break;
         const opening = !shown(body);
         const icon = act.matches('[class*=chevron], [class*=angle]') ? act : act.querySelector('[class*=chevron], [class*=angle]');
         if (icon) {

@@ -204,6 +204,13 @@ const dayKey = (d: Date) => `${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
 const toDate = (v: unknown) => { if (!v) return null; const d = new Date(String(v)); return isNaN(+d) ? null : d; };
 // A date the live box held when the page loaded. "Today", "yesterday", "two years back" were captured as a number of days from the capture's day and stay
 // that far from the day the rebuild runs; a date far off (12/31/9999, 01/01/1900) is a placeholder and stays exactly as it was.
+// a bound recorded as days from the capture's day moves with today, at its own time of day (a far one, 1/1/1900 or 12/31/9999, stays where it is)
+function shifted(v: unknown, off: number | null | undefined): Date | null {
+  const d = toDate(v);
+  if (!d || typeof off !== 'number' || Math.abs(off) > 1000) return d;
+  const t = new Date();
+  return new Date(t.getFullYear(), t.getMonth(), t.getDate() + off, d.getHours(), d.getMinutes(), d.getSeconds());
+}
 function initialDate(def: WidgetDef): Date | null {
   const v = toDate(def.value);
   if (!v) return null;
@@ -296,7 +303,7 @@ function Picker({ id, def }: { id: string; def: WidgetDef }) {
     const calBtn = btn(/calendar/i), timeBtn = btn(/clock|time/i);
     const openCal = () => {
       if (popup) { close(); return; }
-      popup = calendar(ctx, w, { value, min: toDate(def.min), max: toDate(def.max), onClose: () => (popup = null),
+      popup = calendar(ctx, w, { value, min: shifted(def.min, def.minOffsetDays), max: shifted(def.max, def.maxOffsetDays), onClose: () => (popup = null),
         pick: (d) => { const t = value ?? new Date(2000, 0, 1, 0, 0); set(new Date(d.getFullYear(), d.getMonth(), d.getDate(), def.kind === 'datetime' ? t.getHours() : 0, def.kind === 'datetime' ? t.getMinutes() : 0)); close(); } });
     };
     const openTime = () => {
@@ -313,7 +320,9 @@ function Picker({ id, def }: { id: string; def: WidgetDef }) {
       else if (timeBtn?.contains(t)) { e.preventDefault(); if (def.kind === 'date') openCal(); else openTime(); }
     };
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close(); if (e.altKey && e.key === 'ArrowDown') { e.preventDefault(); if (def.kind === 'time') openTime(); else openCal(); } };
-    input.value = initial ? formatDate(initial, fmt) : '';
+    // a box the live page showed empty stays empty though the widget has a value: that value is only where the calendar opens and the time a picked day takes
+    const atRest = () => { value = initial; input.value = initial && def.shows !== '' ? formatDate(initial, fmt) : ''; };
+    atRest();
     // an empty box the portal masks shows its pattern ("__/__/____") while it has the focus, and is empty again when it loses it
     const mask = def.focusMask;
     const onFocus = () => { if (mask && !input.value) { input.value = mask; input.select(); } };
@@ -322,7 +331,7 @@ function Picker({ id, def }: { id: string; def: WidgetDef }) {
     input.addEventListener('blur', onBlur);
     w.addEventListener('click', onClick);
     w.addEventListener('keydown', onKey);
-    const off = ctx.bus.on('reset', () => { close(); set(initial); });
+    const off = ctx.bus.on('reset', () => { close(); atRest(); ctx.bus.emit('change', { name: def.name, id: def.id, value: input.value }); });
     return () => { input.removeEventListener('focus', onFocus); input.removeEventListener('blur', onBlur); w.removeEventListener('click', onClick); w.removeEventListener('keydown', onKey); close(); off(); };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return el;
@@ -341,6 +350,34 @@ function Grid({ id, def }: { id: string; def: WidgetDef }) {
     const pg = typeof def.pageable === 'object' ? def.pageable : {};
     let size = after?.pageSize ?? def.pageSize ?? 10, page = 1, searched = false;
     let sort: { col: number; dir: 'asc' | 'desc' } | null = null;
+    // the live order of directions (Kendo's default: asc, desc, unsorted; the portal's grids: asc, desc, asc) and the portal's own indicator in each header
+    // (its carets: classes recorded per direction). The header cells of the live grid after Search carry the unsorted ones; they are marked once there
+    const si = after?.sortIcons;
+    const nextDir = (cur: 'asc' | 'desc' | null): 'asc' | 'desc' | null => {
+      const c: ('asc' | 'desc' | null)[] = si?.cycle?.length === 3 ? si.cycle : ['asc', 'desc', null];
+      return cur === null ? c[0] ?? 'asc' : cur === c[0] ? c[1] : c[2];
+    };
+    const STATE = /\bk-(hover|focus|active)\b/g; // pointer state, not the sort's
+    const markSortParts = () => {
+      if (!si?.parts.length) return;
+      for (const th of w.querySelectorAll<HTMLElement>('.k-grid-header th')) {
+        const els = [...th.querySelectorAll<HTMLElement>('*')].filter((e) => !e.closest('.k-sort-icon'));
+        si.parts.forEach((p, j) => {
+          const hit = els.filter((e) => e.tagName.toLowerCase() === p.tag && (e.getAttribute('class') ?? '').replace(STATE, '').replace(/\s+/g, ' ').trim() === p.cls)[p.n];
+          hit?.setAttribute('data-kit-sort-part', String(j));
+        });
+      }
+    };
+    const indicate = () => {
+      if (!si?.parts.length) return;
+      w.querySelectorAll<HTMLElement>('.k-grid-header th').forEach((th) => {
+        const on = !!sort && [...th.parentElement!.children].indexOf(th) === sort.col;
+        th.querySelectorAll<HTMLElement>('[data-kit-sort-part]').forEach((e) => {
+          const p = si.parts[+e.getAttribute('data-kit-sort-part')!];
+          if (p) e.className = on && sort ? p[sort.dir] : p.cls;
+        });
+      });
+    };
     const emptyRow = w.querySelector('.k-grid-norecords')?.outerHTML ?? null;
     const body = () => [...w.querySelectorAll('tbody')].find((b) => !b.closest('.k-grid-header')) as HTMLElement | undefined;
     const pages = () => Math.max(1, Math.ceil(all.length / size));
@@ -393,7 +430,14 @@ function Grid({ id, def }: { id: string; def: WidgetDef }) {
       drawPager();
     };
     const onSearch = () => {
-      if (after?.html && !searched) { const t = parseHtml(after.html); if (t) w.innerHTML = t.innerHTML; }
+      if (after?.html && !searched) {
+        const t = parseHtml(after.html);
+        if (t) w.innerHTML = t.innerHTML;
+        markSortParts();
+        // the live grid came back already sorted by a column (Kendo's sort option): the next click on it goes on from there
+        const th = w.querySelector<HTMLElement>('.k-grid-header th[aria-sort=ascending], .k-grid-header th[aria-sort=descending]');
+        if (th) sort = { col: [...th.parentElement!.children].indexOf(th), dir: th.getAttribute('aria-sort') === 'ascending' ? 'asc' : 'desc' };
+      }
       searched = true; page = 1; draw();
     };
     // the column filter: the live popup (its markup, where it opened relative to the icon); Filter / Clear / a press elsewhere close it
@@ -440,13 +484,15 @@ function Grid({ id, def }: { id: string; def: WidgetDef }) {
       if (th && !t.closest('.k-grid-filter-menu, .k-grid-header-menu')) {
         const idx = [...th.parentElement!.children].indexOf(th);
         if (!cols[idx]?.sortable) return;
-        sort = !sort || sort.col !== idx ? { col: idx, dir: 'asc' } : sort.dir === 'asc' ? { col: idx, dir: 'desc' } : null;
+        const dir = nextDir(sort && sort.col === idx ? sort.dir : null);
+        sort = dir ? { col: idx, dir } : null;
         for (const h of w.querySelectorAll('.k-grid-header th')) { h.classList.remove('k-sorted'); h.setAttribute('aria-sort', 'none'); h.querySelector('.k-sort-icon')?.remove(); }
         if (sort) {
           th.classList.add('k-sorted');
           th.setAttribute('aria-sort', sort.dir === 'asc' ? 'ascending' : 'descending');
           (th.querySelector('.k-column-title') ?? th.querySelector('.k-link'))?.insertAdjacentHTML('afterend', SORT[sort.dir]);
         }
+        indicate();
         page = 1;
         if (searched) draw();
         return;

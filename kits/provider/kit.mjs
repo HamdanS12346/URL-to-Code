@@ -350,6 +350,74 @@ async function measureMenuScroll(page) {
   } catch { return null; }
 }
 
+// A column header before and after each of three clicks -> the direction each click gave and the elements whose classes follow the direction
+// (identified by tag, unsorted classes and occurrence, so the kit finds them in every column whatever else the column holds, a filter icon)
+const STATE_CLS = /\bk-(hover|focus|active)\b/g; // pointer state the click left behind, not the sort's
+function sortIcons(s0, seq) {
+  const dir = (a) => (a === 'ascending' ? 'asc' : a === 'descending' ? 'desc' : null);
+  const cycle = seq.map((x) => dir(x?.aria));
+  if (!cycle[0]) return null;
+  const norm = (c) => c.replace(STATE_CLS, '').replace(/\s+/g, ' ').trim();
+  if (!seq.every((x) => x && x.els.length === s0.els.length)) return { cycle, parts: [], structural: true };
+  const at = (d) => (cycle.includes(d) ? seq[cycle.indexOf(d)] : null);
+  const parts = [], seen = {};
+  s0.els.forEach((e, i) => {
+    const cls = norm(e.cls), key = `${e.tag} ${cls}`, n = (seen[key] = (seen[key] ?? -1) + 1);
+    const asc = at('asc') ? norm(at('asc').els[i].cls) : cls, desc = at('desc') ? norm(at('desc').els[i].cls) : cls;
+    if (asc !== cls || desc !== cls) parts.push({ tag: e.tag, cls, n, asc, desc });
+  });
+  return { cycle, parts };
+}
+
+// The open window once it is where it stays: Kendo zooms it in from scale(0.01) (the first frames are a 10x5 box at its center) after the portal's
+// loading box, and the portal re-places it when its content grows. Waits up to `max` ms for a settled window, then for the same box twice 300 ms apart.
+async function settledWindow(page, max = 25000) {
+  const end = Date.now() + max;
+  let last = null;
+  while (Date.now() < end) {
+    const p = await page.evaluate(() => window.__kit.position()).catch(() => null);
+    if (p?.settled) {
+      if (last && ['x', 'y', 'w', 'h'].every((k) => Math.abs(last.rect[k] - p.rect[k]) <= 1)) return p;
+      last = p;
+      await page.waitForTimeout(300);
+      continue;
+    }
+    last = null;
+    await page.waitForTimeout(250);
+  }
+  return null;
+}
+// a measured window that can be a placement rule: at least 30% of the page wide and inside it (a box caught mid-zoom is 1% wide)
+const plausible = (p) => !!p && p.rect.w >= p.viewport.docW * 0.3 && p.rect.h >= 40 && p.rect.x >= -2 && p.rect.y >= -2 && p.rect.x + p.rect.w <= p.viewport.docW + 2;
+
+// The header that hides while the page scrolls down and comes back on any scroll up (headroom.js: its classes, the portal's CSS slides it): the scroll
+// position past which it hides (headroom's offset) and the smallest scroll up that brings it back (its tolerance + 1). Needs a page that scrolls past the
+// offset: null when this one does not (another screen, or another viewport, measures it). The page is back at the top afterwards.
+async function measureHeadroom(page) {
+  const at = (y) => page.evaluate(async (v) => {
+    scrollTo(0, v);
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    const h = document.querySelector('.headroom');
+    return h ? { y: scrollY, unpinned: h.classList.contains('headroom--unpinned') } : null;
+  }, y);
+  const max = await page.evaluate(() => (document.querySelector('.headroom') ? document.documentElement.scrollHeight - innerHeight : 0)).catch(() => 0);
+  if (max < 20) return null;
+  try {
+    let offset = null;
+    await at(0);
+    for (let y = 5; y <= max - 10 && offset == null; y += 5) if ((await at(y))?.unpinned) offset = y;
+    if (offset == null) return null;
+    let tolerance = null;
+    for (let d = 1; d <= 10 && tolerance == null; d++) { // each try from a fresh unpinned state below the offset
+      const base = Math.min(max - 1, offset + 15);
+      await at(base - 20); await at(base);
+      if (!(await at(base))?.unpinned) break;
+      if (!(await at(base - d))?.unpinned) tolerance = d - 1;
+    }
+    return { offset, tolerance: tolerance ?? 0 };
+  } finally { await at(0).catch(() => {}); }
+}
+
 // The same screen at each extra viewport profile (config "profiles": e.g. a real browser on a 1920x1080 screen at 150% is 1272x588, below the portal's
 // small-screen switch at 1280). A new page at that size is loaded, and: the layout the portal's breakpoints give is recorded, each side-menu and module-tab
 // state is photographed, each Create New dialog is opened and measured. Everything becomes states (replayed by verify at that size) and screen.profiles /
@@ -376,6 +444,10 @@ async function profilePass({ ctx, screen, states, dir, log }) {
       await page.mouse.move(0, 0);
       await page.screenshot({ path: path.join(dir, 'states', `layout@${name}.png`), animations: 'disabled', caret: 'hide' }).catch(() => {});
       states.push({ name: `layout@${name}`, steps: [], wait: 600, shot: `states/layout@${name}.png`, ...extra });
+      if (!screen.headroom) {
+        const hr = await measureHeadroom(page).catch(() => null);
+        if (hr) { screen.headroom = { ...hr, viewport: name }; log(`  kit: the header hides past ${hr.offset}px of scroll and comes back on a ${hr.tolerance + 1}px scroll up (at profile "${name}")`); }
+      }
       // the menus at this size
       const menuFound = k.menuButton ? await sideMenu(page, k.menuButton, log, k.module).catch(() => null) : null;
       if (menuFound) {
@@ -405,20 +477,30 @@ async function profilePass({ ctx, screen, states, dir, log }) {
       entry.dialogErrors = {};
       for (const st of states.filter((x) => /^(dialog|row)-d\d+$/.test(x.name) && !x.profile && x.steps.every((q) => /^\[data-kit-/.test(q.sel)))) {
         const id = st.name.replace(/^(dialog|row)-/, ''), isRow = st.name.startsWith('row-'), at = `${isRow ? 'row' : 'dialog'}-${id}@${name}`;
+        // the requests the main pass saw this opener send (its editor is often rendered by a POST: File Transfer Configuration's Create New, a row of
+        // FTP Server Credentials): those, and only those, go through here too; every other POST stays blocked
+        s2.guard.allow = new Set((screen.dialogs[id]?.requests || []).filter((r) => !/^(GET|HEAD|OPTIONS)$/.test(r.method)).map((r) => `${r.method} ${r.url}`));
         let pos = null, why = '';
         for (let attempt = 1; attempt <= 3 && !pos; attempt++) {
+          const ev0 = s2.guard.events.length;
+          why = '';
           try {
             await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
             await s2.settle(300, 6000);
             await page.evaluate((a) => { if (!window.__kit) (0, eval)(a.src); return window.__kit.rest(a); }, { src: HARVEST, scope: k.scope || null, module: k.module || null });
             await page.mouse.move(0, 0);
             for (const step of st.steps) { await play(step); await page.waitForTimeout(st.wait ?? 800); }
-            for (let i = 0; i < 40 && !pos; i++) { pos = await wins().catch(() => null); if (!pos) await page.waitForTimeout(500); }
-            if (pos) { await s2.settle(300, 6000); pos = await wins(); }
-            else why = 'no window appeared';
-          } catch (e) { why = e.message.split('\n')[0]; }
+            pos = await settledWindow(page);
+            if (pos && !plausible(pos)) { why = `the window measured ${pos.rect.w}x${pos.rect.h} at ${pos.rect.x},${pos.rect.y} in a ${pos.viewport.docW}x${pos.viewport.h} page: not a placement`; pos = null; }
+          } catch (e) { why = e.message.split('\n')[0]; pos = null; }
+          if (!pos && !why) {
+            const blocked = s2.guard.events.slice(ev0).filter((e) => e.status === 'blocked').map((e) => `${e.method} ${e.url.replace(/^https?:\/\/[^/]+/, '').split('?')[0]}`);
+            const open = await wins().catch(() => null), loading = await page.evaluate(() => window.__kit.loading()).catch(() => false);
+            why = open ? 'the window never finished opening (still zooming or loading after 25 s)' : `no window appeared${loading ? ' (the loading box was still up)' : ''}${blocked.length ? `; blocked ${[...new Set(blocked)].join(', ')}` : ''}`;
+          }
           if (!pos) log(`  ! kit: ${at}: attempt ${attempt} failed (${why})`);
         }
+        s2.guard.allow = null;
         if (!pos) {
           await page.screenshot({ path: path.join(dir, 'states', `${at}-failed.png`), animations: 'disabled', caret: 'hide' }).catch(() => {});
           entry.dialogErrors[id] = why;
@@ -517,6 +599,8 @@ export async function explore({ page, context, s, out, log, kit, cfg = {}, url =
     if (still) log(`  ! kit: ${what} is still covered by ${still}`);
     return !still;
   };
+  const hr = await measureHeadroom(page).catch(() => null);
+  if (hr) { screen.headroom = { ...hr, viewport: viewport ? `${viewport.width}x${viewport.height}` : null }; log(`  kit: the header hides past ${hr.offset}px of scroll and comes back on a ${hr.tolerance + 1}px scroll up`); }
   screen.plan = await scriptPlan(page);
   if (screen.plan.dialogs.length) log(`  kit: the screen's script opens ${screen.plan.dialogs.map((d) => `${d.panel}${d.opener ? ` (${d.opener})` : ''}`).join(', ')}${screen.plan.rowDouble ? `; a row double-click calls ${screen.plan.rowDouble}` : ''}`);
 
@@ -584,11 +668,13 @@ export async function explore({ page, context, s, out, log, kit, cfg = {}, url =
   const search = page.locator('[data-kit-action=search]:visible').first();
   if (await search.count()) {
     await unblock(search, 'Search');
+    const scope = (cfg.kit || {}).scope || null;
+    const open0 = await page.evaluate((sc) => window.__kit.collapsed(sc), scope).catch(() => []);
     const t0 = Date.now();
     await search.click({ timeout: 3000 }).catch((e) => log(`  ! kit: Search click failed: ${e.message.split('\n')[0]}`));
     await s.settle(300, 6000);
     await waitLoaded(page, s); // a grid that still spins is not the result (the portal's loading mask can take seconds)
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(900); // a panel the page folds away after Search slides for 400 ms
     screen.grids = await page.evaluate(() => window.__kit.grids());
     // rows: what the live page answered to a Search with the form as it loads (nothing typed): the rebuild's Search must
     // fill the grid from the same click, or the row and dialog checks that follow it have nothing to click
@@ -596,6 +682,11 @@ export async function explore({ page, context, s, out, log, kit, cfg = {}, url =
     // what the click produced: rows, or a validation banner (and per-field messages) the rebuild must show instead of a grid
     const sv = await page.evaluate(() => window.__kit.validation()).catch(() => null);
     screen.search.outcome = screen.search.rows > 0 ? 'rows' : sv ? 'validation' : 'empty';
+    // the collapsible panels the page folded away by itself once the results showed (FTP Server Credentials closes its Search Criteria; others keep it
+    // open): their places among the page's panels, in document order
+    const open1 = await page.evaluate((sc) => window.__kit.collapsed(sc), scope).catch(() => []);
+    const folds = open0.length === open1.length ? open0.flatMap((o, i) => (o && !open1[i] ? [i] : [])) : [];
+    if (folds.length) { screen.search.collapses = folds; log(`  kit: Search folds away ${folds.length} panel(s) of the page by itself`); }
     if (sv && screen.search.outcome === 'validation') screen.search.validation = sv;
     screen.requests.search = screen.search.requests[0] || null;
     await page.evaluate(() => scrollTo(0, 0));
@@ -842,6 +933,29 @@ export async function explore({ page, context, s, out, log, kit, cfg = {}, url =
         for (let tries = 0; tries < 3 && await visibleWindow(); tries++) { await page.evaluate(() => window.__kit.closeDialog()); await page.waitForTimeout(800); }
       }
       log(`  kit: first row (${how}) -> ${id ? `dialog ${id} "${screen.dialogs[id].title}"` : nav ? `navigates to ${screen.row.navigates} (not followed)` : 'nothing'}`);
+    }
+  }
+  // the grid's sort indicator: one unsorted column clicked three times (a sort re-reads the same search: a GET). What the portal's own header script
+  // changed (its carets turn, the sorted one takes another color class) and the order the directions come in are replayed by the kit's grid
+  if (Object.keys(screen.grids).length) {
+    const s0 = await page.evaluate(() => window.__kit.sortHeader()).catch(() => null);
+    if (s0?.field && screen.grids[s0.grid]) {
+      const seq = [];
+      for (let k = 0; k < 3; k++) {
+        const th = page.locator(`[data-kit="${s0.grid}"] .k-grid-header th[data-field="${s0.field}"]`).first();
+        const link = th.locator('.k-link').first();
+        await ((await link.count()) ? link : th).click({ timeout: 3000 }).catch(() => {});
+        await s.settle(300, 6000).catch(() => {});
+        await waitLoaded(page, s);
+        await page.waitForTimeout(400);
+        seq.push(await page.evaluate((f) => window.__kit.sortHeader(f), s0.field).catch(() => null));
+      }
+      await page.mouse.move(0, 0);
+      const si = sortIcons(s0, seq);
+      if (si) {
+        screen.grids[s0.grid].sortIcons = si;
+        log(`  kit: sorting a column goes ${si.cycle.map((d) => d ?? 'unsorted').join(' -> ')}; its indicator: ${si.parts.length ? si.parts.map((p) => `${p.tag}.${p.cls.split(' ').join('.')} -> asc "${p.asc}", desc "${p.desc}"`).join('; ') : 'no class change'}${si.structural ? ' (the header cell changed its elements: only the direction order is replayed)' : ''}`);
+      } else log('  ! kit: a click on a sortable column header did not sort the grid');
     }
   }
   // every dialog the script can open should now be harvested (its window is built on the element id = the panel id)

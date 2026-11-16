@@ -101,16 +101,23 @@ const kitScreen = kitImport ? readJson(path.join(OUT, 'kit', 'screen.json'), nul
 // The portal places a window with one shared script, so a screen whose own dialog could not be measured below the small-screen switch takes the
 // placement another screen of the pack measured (the rule is the portal's, not the screen's); the source is kept in `from`
 // the shell's side menu is the same on every screen: one screen's measured scroll speed serves them all
-if (kitScreen && kitScreen.menuScroll == null && path.basename(path.dirname(OUT)) === 'screens') {
-  for (const sib of fs.readdirSync(path.dirname(OUT))) {
-    const v = sib === path.basename(OUT) ? null : readJson(path.join(path.dirname(OUT), sib, 'kit', 'screen.json'), null)?.menuScroll;
-    if (v) { kitScreen.menuScroll = v; break; }
-  }
+// (so is the header's hide-on-scroll: measured on a screen long enough to scroll past its offset)
+const siblings = kitScreen && path.basename(path.dirname(OUT)) === 'screens' ? fs.readdirSync(path.dirname(OUT)).filter((s) => s !== path.basename(OUT)).map((s) => [s, readJson(path.join(path.dirname(OUT), s, 'kit', 'screen.json'), null)]).filter(([, j]) => j) : [];
+for (const key of ['menuScroll', 'headroom']) {
+  if (!kitScreen || kitScreen[key] != null) continue;
+  const hit = siblings.find(([, j]) => j[key] != null);
+  if (hit) kitScreen[key] = hit[1][key];
 }
-if (kitScreen?.responsive && !kitScreen.responsive.dialog && path.basename(path.dirname(OUT)) === 'screens') {
-  for (const sib of fs.readdirSync(path.dirname(OUT))) {
-    const r = sib === path.basename(OUT) ? null : readJson(path.join(path.dirname(OUT), sib, 'kit', 'screen.json'), null)?.responsive;
-    if (!r?.dialog) continue;
+// a placement is a rule only when it is a whole window: a capture that measured a window mid-zoom (a box 1% wide) is dropped, never applied or lent
+const placement = (d) => !!d && d.widthPct >= 30 && d.left >= -2 && d.top >= -2;
+if (kitScreen?.responsive?.dialog && !placement(kitScreen.responsive.dialog)) {
+  console.log(`  ! kit: the dialog placement measured on this screen is not a whole window (left ${kitScreen.responsive.dialog.left}, top ${kitScreen.responsive.dialog.top}, ${kitScreen.responsive.dialog.widthPct}% wide): dropped`);
+  kitScreen.responsive.dialog = null;
+}
+if (kitScreen?.responsive && !kitScreen.responsive.dialog) {
+  for (const [sib, j] of siblings) {
+    const r = j.responsive;
+    if (!placement(r?.dialog)) continue;
     kitScreen.responsive = { ...kitScreen.responsive, query: kitScreen.responsive.query ?? r.query, source: kitScreen.responsive.query ? kitScreen.responsive.source : `screen ${sib}`, dialog: { ...r.dialog, from: `screen ${sib}` },
       desktop: { maxHeightPct: kitScreen.responsive.desktop?.maxHeightPct ?? r.desktop?.maxHeightPct ?? null } };
     console.log(`  kit: no dialog was measured below ${kitScreen.responsive.query} on this screen: using the placement measured on ${sib}`);

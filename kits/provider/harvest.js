@@ -67,8 +67,11 @@
       const kind = role === 'datetimepicker' ? 'datetime' : role === 'timepicker' ? 'time' : 'date';
       // days from today (the capture's day): a prefilled "today" must still be today when the rebuild runs, a 12/31/9999 stays 12/31/9999
       const v = w.value(), day = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
-      const offsetDays = v instanceof Date && !isNaN(v) ? Math.round((day(v) - day(new Date())) / 864e5) : null;
-      return { ...base, kind, value: iso(w.value()), offsetDays, minutes: v instanceof Date && !isNaN(v) ? v.getHours() * 60 + v.getMinutes() : null, format: w.options.format, timeFormat: w.options.timeFormat || null, interval: w.options.interval ?? 30, min: iso(w.options.min), max: iso(w.options.max), placeholder: el.getAttribute('placeholder') || '' };
+      const off = (d) => (d instanceof Date && !isNaN(d) ? Math.round((day(d) - day(new Date())) / 864e5) : null);
+      const offsetDays = off(v);
+      // shows: the text in the box. It can differ from value(): the portal gives Search dates a value (today 00:00) and clears the box, so the date
+      // shows only once a day is picked
+      return { ...base, kind, value: iso(w.value()), shows: el.value, offsetDays, minutes: v instanceof Date && !isNaN(v) ? v.getHours() * 60 + v.getMinutes() : null, format: w.options.format, timeFormat: w.options.timeFormat || null, interval: w.options.interval ?? 30, min: iso(w.options.min), max: iso(w.options.max), minOffsetDays: off(w.options.min), maxOffsetDays: off(w.options.max), placeholder: el.getAttribute('placeholder') || '' };
     }
     if (role === 'grid') {
       const opt = w.options;
@@ -382,7 +385,11 @@
       if (!win) return null;
       const r = win.getBoundingClientRect(), cs = getComputedStyle(win), docW = document.documentElement.clientWidth, content = win.querySelector('.k-window-content');
       const px = (v) => { const n = parseFloat(v); return isNaN(n) ? null : n; };
-      return { rect: { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height) }, viewport: { w: innerWidth, h: innerHeight, docW },
+      // Kendo opens a window from scale(0.01) and opacity 0 (350 ms): until the zoom is over, the box is a few px at the window's center. Measured
+      // only once it is settled: no transform left, fully opaque, no loading box (a box that merely stops moving can still be at scale 0.01)
+      const m = cs.transform === 'none' ? null : cs.transform.match(/matrix\(([^,]+),/);
+      const settled = (!m || Math.abs(parseFloat(m[1]) - 1) < 0.001) && parseFloat(cs.opacity) > 0.999 && !this.loading();
+      return { rect: { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height) }, settled, viewport: { w: innerWidth, h: innerHeight, docW },
         centered: Math.abs(r.x - (docW - r.width) / 2) <= 2, minWidth: px(cs.minWidth), maxHeight: px(cs.maxHeight), width: px(cs.width),
         contentScrolls: !!content && content.scrollHeight > content.clientHeight + 1, contentMaxHeight: content ? px(getComputedStyle(content).maxHeight) : null,
         titlebarH: Math.round(win.querySelector('.k-window-titlebar')?.getBoundingClientRect().height ?? 0) };
@@ -439,6 +446,25 @@
     },
     // is a loading indicator on screen (the portal's "Processing ..." box, Kendo's loading masks)?
     loading() { return [...document.querySelectorAll('#loadingDialog, .k-loading-mask, .k-loading-image, .wait-dialog, .blockUI')].some(shown); },
+
+    // the collapsible panels of the page (scope: the content area the rebuild ports), in document order: is each body shown now?
+    collapsed(scope) {
+      const R = (scope && document.querySelector(scope)) || document;
+      return [...R.querySelectorAll('[data-kit-collapse]')].filter((b) => !b.closest('.k-window')).map((b) => shown(b));
+    },
+
+    // ---------- the grid's sort indicator ----------
+    // one sortable header cell of the first grid with rows (one not sorted yet, when `field` is not given): its aria-sort and every element in it with its
+    // classes, in document order. Kendo's own .k-sort-icon is left out (the kit draws that one); what is left is what the portal's header script changes
+    sortHeader(field) {
+      const g = document.querySelector('[data-kit] tbody tr:not(.k-grid-norecords)')?.closest('[data-kit]');
+      if (!g) return null;
+      const ths = [...g.querySelectorAll('.k-grid-header th[data-role=columnsorter]')].filter(shown);
+      const th = field ? ths.find((t) => t.getAttribute('data-field') === field) : ths.find((t) => !/^(ascending|descending)$/.test(t.getAttribute('aria-sort') || '')) || ths[0];
+      if (!th) return null;
+      return { grid: g.getAttribute('data-kit'), field: th.getAttribute('data-field'), aria: th.getAttribute('aria-sort'),
+        els: [...th.querySelectorAll('*')].filter((e) => !e.closest('.k-sort-icon')).map((e) => ({ tag: e.tagName.toLowerCase(), cls: (typeof e.className === 'string' ? e.className : e.getAttribute('class') || '').trim() })) };
+    },
 
     // ---------- the "form data has changed" confirm a close can raise ----------
     // stamps the open window's buttons as the stay / leave answers (by their words), and returns its parts like dialog() does

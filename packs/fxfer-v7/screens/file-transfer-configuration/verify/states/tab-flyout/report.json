@@ -4,10 +4,10 @@
     0
   ],
   "bad_pct": 2.45,
-  "mean_abs": 2.48,
+  "mean_abs": 2.44,
   "worst_band": {
     "y": 290,
-    "bad_pct": 10.98
+    "bad_pct": 10.99
   },
   "bands": [
     {
@@ -32,7 +32,7 @@
     },
     {
       "y": 290,
-      "bad_pct": 10.98
+      "bad_pct": 10.99
     }
   ],
   "clusters": [
@@ -43,7 +43,7 @@
         1920,
         36
       ],
-      "bad_px": 12227
+      "bad_px": 12235
     },
     {
       "box": [
@@ -52,7 +52,7 @@
         1920,
         96
       ],
-      "bad_px": 4132
+      "bad_px": 4125
     }
   ],
   "worst_crop": "worst.png",
