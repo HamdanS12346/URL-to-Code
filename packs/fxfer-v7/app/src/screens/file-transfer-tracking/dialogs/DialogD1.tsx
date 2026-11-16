@@ -1,4 +1,5 @@
 // @ts-nocheck - mechanical port of the captured DOM (unknown legacy attributes); drop this line once you hand-edit the file
+import { KitWidget } from '../../../kit';
 // Dialog d1 "File Transfer Tracking" of fxfer-v7/file-transfer-tracking: ported from packs/fxfer-v7/screens/file-transfer-tracking/kit/dialogs/d1.html.
 export default function DialogD1() {
   return (
@@ -36,20 +37,7 @@ export default function DialogD1() {
                 <div className="editor-field">
                   <label id="Information_DirectionListTextLabel" htmlFor="Information_DirectionListText" className="display-none">{"Information_DirectionListText"}</label>
                   <input className="k-textbox editor-control" id="Information_DirectionListText" name="Information.DirectionListText" readOnly={true} defaultValue="OUTBOUND" aria-labelledby="Information_DirectionLabel" />
-                  <div style={{"display": "none"}} data-kit-h="h8">{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="Information_DirectionList_listbox" aria-busy="false" aria-describedby="36f8ae43-dcb5-426e-9bbb-20fa2ae146d3" aria-labelledby="Information_DirectionLabel Information_DirectionHelpDesc" data-kit="k10" style={{}}>
-                      <span id="36f8ae43-dcb5-426e-9bbb-20fa2ae146d3" unselectable="on" className="k-input-inner readonly-widget">
-                        <span className="k-input-value-text">{"OUTBOUND"}</span>
-                        </span>
-                      <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                        <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                          <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M256 352 128 160h256z" />
-                            </svg>
-                          </span>
-                        </button>
-                      <label id="Information_DirectionListLabel" htmlFor="Information_DirectionList" className="display-none">{"Information_DirectionList"}</label>
-                      <input className="editor-control" id="Information_DirectionList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.FileDirection" listviewdisplayformat="Name" name="Information.DirectionList" not-data-val-required="Direction is a required field." propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingInformationModel-/FileTransfer/FileTransferTrackingView-Desktop-Direction" readOnly={true} type="text" defaultValue="2" data-role="dropdownlist" aria-labelledby="Information_DirectionListLabel" style={{"display": "none"}} />
-                      </span>{" "}<label id="Information_Direction_IDLabel" htmlFor="Information_Direction_ID" className="display-none">{"Information_Direction_ID"}</label>
+                  <div style={{"display": "none"}} data-kit-h="h8">{" "}<KitWidget id="k10" />{" "}<label id="Information_Direction_IDLabel" htmlFor="Information_Direction_ID" className="display-none">{"Information_Direction_ID"}</label>
                     <input id="Information_Direction_ID" name="Information.Direction.ID" type="hidden" defaultValue="2" aria-labelledby="Information_Direction_IDLabel" />{" "}<label id="Information_Direction_NameLabel" htmlFor="Information_Direction_Name" className="display-none">{"Information_Direction_Name"}</label>
                     <input id="Information_Direction_Name" name="Information.Direction.Name" type="hidden" defaultValue="OUTBOUND" aria-labelledby="Information_Direction_NameLabel" />{" "}<label id="Information_Direction_DisplayFormatLabel" htmlFor="Information_Direction_DisplayFormat" className="display-none">{"Information_Direction_DisplayFormat"}</label>
                     <input id="Information_Direction_DisplayFormat" name="Information.Direction.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="Information_Direction_DisplayFormatLabel" />
@@ -95,20 +83,7 @@ export default function DialogD1() {
                 <div className="editor-field">
                   <label id="Information_FileStatusListTextLabel" htmlFor="Information_FileStatusListText" className="display-none">{"Information_FileStatusListText"}</label>
                   <input className="k-textbox editor-control" id="Information_FileStatusListText" name="Information.FileStatusListText" readOnly={true} defaultValue="Complete" aria-labelledby="Information_FileStatusLabel" />
-                  <div style={{"display": "none"}} data-kit-h="h13">{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="Information_FileStatusList_listbox" aria-busy="false" aria-describedby="9dc60cc7-e83a-4c4f-8c86-8fed593a70dc" aria-labelledby="Information_FileStatusLabel Information_FileStatusHelpDesc" data-kit="k11" style={{}}>
-                      <span id="9dc60cc7-e83a-4c4f-8c86-8fed593a70dc" unselectable="on" className="k-input-inner readonly-widget">
-                        <span className="k-input-value-text">{"Complete"}</span>
-                        </span>
-                      <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                        <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                          <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M256 352 128 160h256z" />
-                            </svg>
-                          </span>
-                        </button>
-                      <label id="Information_FileStatusListLabel" htmlFor="Information_FileStatusList" className="display-none">{"Information_FileStatusList"}</label>
-                      <input className="editor-control" id="Information_FileStatusList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.FileStatus" listviewdisplayformat="Name" name="Information.FileStatusList" not-data-val-required="File Status is a required field." propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingInformationModel-/FileTransfer/FileTransferTrackingView-Desktop-FileStatus" readOnly={true} type="text" defaultValue="1" data-role="dropdownlist" aria-labelledby="Information_FileStatusListLabel" style={{"display": "none"}} />
-                      </span>{" "}<label id="Information_FileStatus_IDLabel" htmlFor="Information_FileStatus_ID" className="display-none">{"Information_FileStatus_ID"}</label>
+                  <div style={{"display": "none"}} data-kit-h="h13">{" "}<KitWidget id="k11" />{" "}<label id="Information_FileStatus_IDLabel" htmlFor="Information_FileStatus_ID" className="display-none">{"Information_FileStatus_ID"}</label>
                     <input id="Information_FileStatus_ID" name="Information.FileStatus.ID" type="hidden" defaultValue="1" aria-labelledby="Information_FileStatus_IDLabel" />{" "}<label id="Information_FileStatus_NameLabel" htmlFor="Information_FileStatus_Name" className="display-none">{"Information_FileStatus_Name"}</label>
                     <input id="Information_FileStatus_Name" name="Information.FileStatus.Name" type="hidden" defaultValue="Complete" aria-labelledby="Information_FileStatus_NameLabel" />{" "}<label id="Information_FileStatus_DisplayFormatLabel" htmlFor="Information_FileStatus_DisplayFormat" className="display-none">{"Information_FileStatus_DisplayFormat"}</label>
                     <input id="Information_FileStatus_DisplayFormat" name="Information.FileStatus.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="Information_FileStatus_DisplayFormatLabel" />
@@ -124,20 +99,7 @@ export default function DialogD1() {
                 <div className="editor-field">
                   <label id="Information_TransportTypeListTextLabel" htmlFor="Information_TransportTypeListText" className="display-none">{"Information_TransportTypeListText"}</label>
                   <input className="k-textbox editor-control" id="Information_TransportTypeListText" name="Information.TransportTypeListText" readOnly={true} defaultValue="UNC" aria-labelledby="Information_TransportTypeLabel" />
-                  <div style={{"display": "none"}} data-kit-h="h15">{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="Information_TransportTypeList_listbox" aria-busy="false" aria-describedby="61822e35-23e8-4b0c-a1f6-991978607b2c" aria-labelledby="Information_TransportTypeLabel Information_TransportTypeHelpDesc" data-kit="k12" style={{}}>
-                      <span id="61822e35-23e8-4b0c-a1f6-991978607b2c" unselectable="on" className="k-input-inner readonly-widget">
-                        <span className="k-input-value-text">{"UNC"}</span>
-                        </span>
-                      <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                        <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                          <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M256 352 128 160h256z" />
-                            </svg>
-                          </span>
-                        </button>
-                      <label id="Information_TransportTypeListLabel" htmlFor="Information_TransportTypeList" className="display-none">{"Information_TransportTypeList"}</label>
-                      <input className="editor-control" id="Information_TransportTypeList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.ProtocolType" listviewdisplayformat="Name" name="Information.TransportTypeList" not-data-val-required="Transport Type is a required field." propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingInformationModel-/FileTransfer/FileTransferTrackingView-Desktop-TransportType" readOnly={true} type="text" defaultValue="3" data-role="dropdownlist" aria-labelledby="Information_TransportTypeListLabel" style={{"display": "none"}} />
-                      </span>{" "}<label id="Information_TransportType_IDLabel" htmlFor="Information_TransportType_ID" className="display-none">{"Information_TransportType_ID"}</label>
+                  <div style={{"display": "none"}} data-kit-h="h15">{" "}<KitWidget id="k12" />{" "}<label id="Information_TransportType_IDLabel" htmlFor="Information_TransportType_ID" className="display-none">{"Information_TransportType_ID"}</label>
                     <input id="Information_TransportType_ID" name="Information.TransportType.ID" type="hidden" defaultValue="3" aria-labelledby="Information_TransportType_IDLabel" />{" "}<label id="Information_TransportType_NameLabel" htmlFor="Information_TransportType_Name" className="display-none">{"Information_TransportType_Name"}</label>
                     <input id="Information_TransportType_Name" name="Information.TransportType.Name" type="hidden" defaultValue="UNC" aria-labelledby="Information_TransportType_NameLabel" />{" "}<label id="Information_TransportType_DisplayFormatLabel" htmlFor="Information_TransportType_DisplayFormat" className="display-none">{"Information_TransportType_DisplayFormat"}</label>
                     <input id="Information_TransportType_DisplayFormat" name="Information.TransportType.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="Information_TransportType_DisplayFormatLabel" />
@@ -175,104 +137,7 @@ export default function DialogD1() {
                     </span>{" "}<span className="k-invalid-msg" id="Information_TradingPartnerId_validationMessage" data-for="Information.TradingPartnerId"></span>
                   <span id="Information_TradingPartnerIdHelpDesc" hidden={true} data-kit-h="h19">{"Trading Partner ID"}</span>
                   </div>
-                </div>{" "}</div>{" "}<div className="subsec-panel-hdr">{"\n                Events\n            "}</div>{" "}<div className="content-panel-container">{" "}<div className="content-panel-bdy">{" "}<div className="k-grid editor-grid" id="trackingEventsGrid" data-role="grid" data-kit="k13">
-                  <table id="a24a2c26-1d5d-47eb-9290-79ac0472b379" role="grid" tabIndex={0} className="k-grid-table k-table" aria-colcount="3" style={{}}>
-                    <colgroup>
-                      <col style={{"width": "21px"}} />
-                      <col style={{"width": "21px"}} />
-                      <col />
-                      </colgroup>
-                    <thead className="k-table-thead k-grid-header" role="rowgroup">
-                      <tr className="k-table-row" role="row">
-                        <th className="k-table-th k-header" data-field="EventCode" data-index="0" data-resizable="true" data-title="Event Code" id="8af27bac-8047-42d8-b9c6-ec6f252e1a28" role="columnheader" scope="col" aria-colindex="1" data-header-styled="data-header-styled">
-                          <span className="k-cell-inner">
-                            <span className="grid-col-hdr-cell">
-                              <span className="k-link">
-                                <span className="k-column-title">{"Event Code"}</span>
-                                </span>
-                              </span>
-                            </span>
-                          </th>
-                        <th className="k-table-th k-header" data-field="CreateDate" data-index="1" data-resizable="true" data-title="Create Date" id="6b855364-6d8c-47af-b1a3-a3e80a7463e4" role="columnheader" scope="col" aria-colindex="2" data-header-styled="data-header-styled">
-                          <span className="k-cell-inner">
-                            <span className="grid-col-hdr-cell">
-                              <span className="k-link">
-                                <span className="k-column-title">{"Create Date"}</span>
-                                </span>
-                              </span>
-                            </span>
-                          </th>
-                        <th className="k-table-th k-header" data-field="Description" data-index="2" data-resizable="true" data-title="Description" id="13841c45-f0c3-41d3-af6a-7583dc3229f0" role="columnheader" scope="col" aria-colindex="3" data-header-styled="data-header-styled">
-                          <span className="k-cell-inner">
-                            <span className="grid-col-hdr-cell">
-                              <span className="k-link">
-                                <span className="k-column-title">{"Description"}</span>
-                                </span>
-                              </span>
-                            </span>
-                          </th>
-                        </tr>
-                      </thead>
-                    <tbody className="k-table-tbody" role="rowgroup">
-                      <tr className="k-table-row k-master-row" data-uid="79df199f-d083-45e1-9234-6dad1f687fa7" role="row">
-                        <td className="k-table-td" role="gridcell" aria-colindex="1">{"T"}</td>
-                        <td className="k-table-td" role="gridcell" aria-colindex="2">{"5/25/2021 1:07 PM"}</td>
-                        <td className="k-table-td" role="gridcell" aria-colindex="3">{"\\\\mapsftshrfs01\\CommercialSharedFolder\\ProgramIntegrity\\Case\\Batch\\Input\\CaseTrackingInput_20210518.csv"}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>{" "}</div>{" "}</div>{" "}<div className="subsec-panel-hdr">{"\n                Exceptions\n            "}</div>{" "}<div className="content-panel-container">{" "}<div className="content-panel-bdy">{" "}<div className="k-grid editor-grid" id="trackingExceptionsGrid" data-role="grid" data-kit="k14">
-                  <table id="2fb7876b-cbcc-44c9-879e-91988dd5a5ea" role="treegrid" tabIndex={0} className="k-grid-table k-table" aria-rowcount="1" style={{}}>
-                    <colgroup>
-                      <col className="k-hierarchy-col" />
-                      <col style={{"width": "21px"}} />
-                      <col style={{"width": "21px"}} />
-                      <col />
-                      </colgroup>
-                    <thead className="k-table-thead k-grid-header" role="rowgroup">
-                      <tr className="k-table-row" role="row" aria-rowindex="1">
-                        <th className="k-hierarchy-cell k-table-th k-header" scope="col" role="columnheader" data-header-styled="data-header-styled">
-                          <span className="k-cell-inner">{" "}</span>
-                          </th>
-                        <th className="k-table-th k-header" data-field="Date" data-index="0" data-resizable="true" data-title="Date" id="a4cc6c75-92bb-486a-95de-6816337a1a83" role="columnheader" scope="col" data-header-styled="data-header-styled">
-                          <span className="k-cell-inner">
-                            <span className="grid-col-hdr-cell">
-                              <span className="k-link">
-                                <span className="k-column-title">{"Date"}</span>
-                                </span>
-                              </span>
-                            </span>
-                          </th>
-                        <th className="k-table-th k-header" data-field="ExceptionType" data-index="1" data-resizable="true" data-title="Exception Type" id="51ed1090-551d-4f48-baa2-456cbb5ebcaa" role="columnheader" scope="col" data-header-styled="data-header-styled">
-                          <span className="k-cell-inner">
-                            <span className="grid-col-hdr-cell">
-                              <span className="k-link">
-                                <span className="k-column-title">{"Exception Type"}</span>
-                                </span>
-                              </span>
-                            </span>
-                          </th>
-                        <th className="k-table-th k-header" data-field="MethodName" data-index="2" data-resizable="true" data-title="Method Name" id="a591f8bf-daf1-4a3f-a094-b9c6ae168379" role="columnheader" scope="col" data-header-styled="data-header-styled">
-                          <span className="k-cell-inner">
-                            <span className="grid-col-hdr-cell">
-                              <span className="k-link">
-                                <span className="k-column-title">{"Method Name"}</span>
-                                </span>
-                              </span>
-                            </span>
-                          </th>
-                        </tr>
-                      </thead>
-                    <tbody className="k-table-tbody" role="rowgroup">
-                      <tr className="kendo-data-row">
-                        <td colSpan={4} style={{"textAlign": "center"}}>
-                          <br />
-                          <strong>{"There are no records found."}</strong>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>{" "}</div>{" "}</div>{" "}<div id="overlayModelEditorButtonRow" className="editor-button-row-modal">{" "}<div className="editor-button-nav-left">{" "}<label id="altLeft1ButtonLabel" htmlFor="altLeft1Button" className="display-none">{"altLeft1Button"}</label>
+                </div>{" "}</div>{" "}<div className="subsec-panel-hdr">{"\n                Events\n            "}</div>{" "}<div className="content-panel-container">{" "}<div className="content-panel-bdy">{" "}<KitWidget id="k13" />{" "}</div>{" "}</div>{" "}<div className="subsec-panel-hdr">{"\n                Exceptions\n            "}</div>{" "}<div className="content-panel-container">{" "}<div className="content-panel-bdy">{" "}<KitWidget id="k14" />{" "}</div>{" "}</div>{" "}<div id="overlayModelEditorButtonRow" className="editor-button-row-modal">{" "}<div className="editor-button-nav-left">{" "}<label id="altLeft1ButtonLabel" htmlFor="altLeft1Button" className="display-none">{"altLeft1Button"}</label>
                 <input id="altLeft1Button" type="button" className="k-button btn-spacer-right" aria-labelledby="altLeft1ButtonLabel" value=" " style={{"display": "none"}} />{" "}<label id="altLeft2ButtonLabel" htmlFor="altLeft2Button" className="display-none">{"altLeft2Button"}</label>
                 <input id="altLeft2Button" type="button" className="k-button btn-spacer-right" aria-labelledby="altLeft2ButtonLabel" value=" " style={{"display": "none"}} />{" "}<label id="altLeft3ButtonLabel" htmlFor="altLeft3Button" className="display-none">{"altLeft3Button"}</label>
                 <input id="altLeft3Button" type="button" className="k-button btn-spacer-right" aria-labelledby="altLeft3ButtonLabel" value=" " style={{"display": "none"}} />{" "}<label id="altLeft4ButtonLabel" htmlFor="altLeft4Button" className="display-none">{"altLeft4Button"}</label>

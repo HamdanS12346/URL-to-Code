@@ -79,3 +79,17 @@ are kept as counts only. Still, look through `shots\` before you send it.
 | a page says `✗ …` in the log | it is recorded in `answers.json` `failed`; the run goes on. Re-run with `--only "<page>" --fresh --headed` to watch it |
 | `out of time (skipped …)` | `--budget 600 --only "<page>" --fresh` |
 | a dialog is left open on the portal | close the browser; nothing was saved (POSTs are blocked on Save) |
+
+## Follow-up probe: the measurements for the open fixes (`--probe fixes`)
+
+`kits/provider/probe-fixes.mjs` asks the questions the rebuild of `fxfer-v7` left open (see `packs/fxfer-v7/changes/`): how a dialog
+opens frame by frame at each size (and whether it opens with POSTs blocked), the grid's sort icons over three clicks, what a date box
+shows next to the widget's value, where the header hides while scrolling, where the filter's operator list and a dialog's dropdown
+lists open. Same driver, same login, read-only like the census probe.
+
+```powershell
+cd C:\UI-specs\final-playwright
+git pull
+npm run probe -- fxfer-v7 --probe fixes --modules "File Transfer Services" --out docs\probe-fixes --fresh --budget 600
+```
+About 5 to 10 minutes for the module's three pages. Send back the whole `docs\probe-fixes` folder (`ANSWERS.md`, `pages\`, `shots\`, `probe.log`).

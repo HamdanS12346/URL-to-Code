@@ -19,13 +19,13 @@ const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 
 // ---------- a list popup (dropdown items, a time list), built from the live popup markup ----------
 type ListPopup = { close: () => void; el: HTMLElement; up: boolean };
-function openList(ctx: Ctx, anchor: HTMLElement, opts: { label: string | null; items: Item[]; value: string; height: number; pick: (v: string) => void; onClose: () => void }): ListPopup {
+function openList(ctx: Ctx, anchor: HTMLElement, opts: { label: string | null; items: Item[]; value: string; height: number; pick: (v: string) => void; onClose: () => void; nested?: boolean }): ListPopup {
   const tpl = parseHtml(ctx.data.calibration?.dropdownPopup || DEFAULT_LIST)!;
   const listC = (tpl.matches('.k-list-container') ? tpl : tpl.querySelector('.k-list-container')) as HTMLElement;
   const box = document.createElement('div');
   box.className = 'k-animation-container';
   box.setAttribute('data-kit-popup', '');
-  Object.assign(box.style, { position: 'absolute', zIndex: '10002', overflow: 'hidden' });
+  Object.assign(box.style, { position: 'absolute', zIndex: zAbove(anchor), overflow: 'hidden' });
   const child = document.createElement('div');
   child.className = 'k-child-animation-container';
   child.style.display = 'block';
@@ -78,11 +78,11 @@ function openList(ctx: Ctx, anchor: HTMLElement, opts: { label: string | null; i
   const close = () => {
     if (closed) return;
     closed = true;
-    releasePopup(anchor);
+    if (!opts.nested) releasePopup(anchor);
     slide(child, up, false, ms(ctx.data, 'popupClose')).then(() => box.remove());
     opts.onClose();
   };
-  claimPopup(anchor, close);
+  if (!opts.nested) claimPopup(anchor, close); // a list inside another popup (the filter's operator) must not close its parent
   return { close, el: box, up };
 }
 
@@ -223,7 +223,7 @@ function calendar(ctx: Ctx, anchor: HTMLElement, opts: { value: Date | null; min
   const box = document.createElement('div');
   box.className = 'k-animation-container';
   box.setAttribute('data-kit-popup', '');
-  Object.assign(box.style, { position: 'absolute', zIndex: '10002', overflow: 'hidden' });
+  Object.assign(box.style, { position: 'absolute', zIndex: zAbove(anchor), overflow: 'hidden' });
   const child = document.createElement('div');
   child.className = 'k-child-animation-container';
   child.append(cont);
@@ -404,12 +404,30 @@ function Grid({ id, def }: { id: string; def: WidgetDef }) {
       if (!box) return;
       box.setAttribute('data-kit-popup', '');
       const r = icon.getBoundingClientRect();
-      Object.assign(box.style, { display: 'block', position: 'absolute', zIndex: '10002', left: `${r.left + scrollX + fp.dx}px`, top: `${r.top + scrollY + fp.dy}px`, width: `${fp.w}px`, height: `${fp.h}px` });
+      Object.assign(box.style, { display: 'block', position: 'absolute', zIndex: zAbove(icon), left: `${r.left + scrollX + fp.dx}px`, top: `${r.top + scrollY + fp.dy}px`, width: `${fp.w}px`, height: `${fp.h}px` });
+      // the captured popup carries the operator dropdown's own list (hidden). It is not part of the filter box: lifted out, its items drive a real dropdown that opens under itself
+      const inner = box.querySelector<HTMLElement>('.k-list-container');
+      const items: Item[] = [...(inner?.querySelectorAll('li') ?? [])].map((li, i) => ({ text: li.textContent?.trim() ?? '', value: String(i) }));
+      let pickedAt = Math.max(0, [...(inner?.querySelectorAll('li') ?? [])].findIndex((li) => li.classList.contains('k-selected')));
+      inner?.remove();
       box.querySelectorAll<HTMLElement>('.k-child-animation-container, .k-popup').forEach((x) => { x.style.display = 'block'; });
       document.body.append(box);
-      let closed = false;
-      const close = () => { if (closed) return; closed = true; releasePopup(icon); box.remove(); filter = null; };
-      box.addEventListener('click', (e) => { if ((e.target as Element).closest('button, .k-button')) { e.preventDefault(); close(); } });
+      let closed = false, list: ListPopup | null = null;
+      const close = () => { if (closed) return; closed = true; list?.close(); releasePopup(icon); box.remove(); filter = null; };
+      const op = box.querySelector<HTMLElement>('.k-dropdownlist');
+      const toggleList = () => {
+        if (list) { list.close(); return; }
+        if (!op || !items.length) return;
+        op.setAttribute('aria-expanded', 'true');
+        list = openList(ctx, op, { label: null, items, value: String(pickedAt), height: 200, nested: true,
+          pick: (v) => { pickedAt = +v; const t = op.querySelector('.k-input-value-text'); if (t) t.textContent = items[pickedAt].text; list?.close(); },
+          onClose: () => { list = null; op.setAttribute('aria-expanded', 'false'); } });
+      };
+      box.addEventListener('click', (e) => {
+        const t = e.target as Element;
+        if (op?.contains(t)) { e.preventDefault(); op.focus(); toggleList(); return; }
+        if (t.closest('button, .k-button')) { e.preventDefault(); close(); }
+      });
       box.addEventListener('submit', (e) => { e.preventDefault(); close(); });
       claimPopup(icon, close);
       filter = { close };
@@ -467,4 +485,11 @@ export function KitWidget({ id }: { id: string }) {
   if (def.kind === 'numeric') return <Numeric id={id} def={def} />;
   if (def.kind === 'grid') return <Grid id={id} def={def} />;
   return <Picker id={id} def={def} />;
+}
+
+// a popup opened from inside a window (or inside another popup) must sit above it: Kendo stacks popups over their owner's window
+function zAbove(anchor: Element) {
+  const own = anchor.closest('.k-window, [data-kit-popup]');
+  const z = own ? parseInt(getComputedStyle(own).zIndex) : NaN;
+  return String(Math.max(10002, isNaN(z) ? 0 : z + 1));
 }

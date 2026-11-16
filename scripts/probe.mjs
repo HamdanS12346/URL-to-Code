@@ -8,6 +8,7 @@
 //   --fresh             probe pages again that already have a file (default: continue where it stopped)
 //   --read-menu         read the menu live even when the pack has menu.json
 //   --viewports W1xH1,W2xH2   where dialogs are measured (default: the capture viewport and 1280x720 = 1920x1080 at 150%)
+//   --probe <name>      run kits/<kit>/probe-<name>.mjs instead (e.g. fixes: the follow-up measurements)
 //   --budget <sec>      time per page (300); --out <dir> (docs/probe); --headed; --manual-login; --env <file>; --summary (only rebuild ANSWERS.md)
 import fs from 'node:fs';
 import path from 'node:path';
@@ -24,9 +25,11 @@ const die = (m) => { console.error(`\n✗ ${m}`); process.exit(1); };
 const readJson = (f, d) => { try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch { return d; } };
 const writeJson = (f, o) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, JSON.stringify(o, null, 1)); };
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80) || 'page';
-const takesValue = new Set(['--url', '--modules', '--only', '--limit', '--viewports', '--budget', '--out', '--env', '--kit']);
+const takesValue = new Set(['--url', '--modules', '--only', '--limit', '--viewports', '--budget', '--out', '--env', '--kit', '--probe']);
 const packName = argv.find((a, i) => !a.startsWith('--') && !takesValue.has(argv[i - 1]));
 
+// --probe <name>: a kit's other probe (kits/<kit>/probe-<name>.mjs: the same probePage + summarize, other questions)
+const PROBE = opt('--probe') ? `probe-${opt('--probe')}.mjs` : 'probe.mjs';
 const OUT = path.resolve(opt('--out') || path.join(ROOT, 'docs', 'probe'));
 const pagesDir = path.join(OUT, 'pages'), shotDir = path.join(OUT, 'shots');
 const pack = packName ? readJson(path.join(packDir(packName), 'pack.json'), null) ?? die(`no packs/${packName}/pack.json`) : {};
@@ -47,7 +50,7 @@ if (viewports.some((v) => !v.width || !v.height)) die('--viewports takes WxH,WxH
 
 // rebuild the answers from the page files only
 const summarize = async (kitName) => {
-  const probe = await import(pathToFileURL(path.join(ROOT, 'kits', kitName, 'probe.mjs')).href);
+  const probe = await import(pathToFileURL(path.join(ROOT, 'kits', kitName, PROBE)).href);
   const pages = fs.readdirSync(pagesDir).filter((f) => f.endsWith('.json')).map((f) => readJson(path.join(pagesDir, f), null)).filter(Boolean);
   const { answers, markdown } = probe.summarize(pages);
   writeJson(path.join(OUT, 'answers.json'), answers);
@@ -83,8 +86,8 @@ try {
     const s = await openPage(browser, withSession(), { url, viewport, dpr });
     try { await s.load(); kitName = await detectKit(s.page); } finally { await s.close(); }
   }
-  if (!kitName || !fs.existsSync(path.join(ROOT, 'kits', kitName, 'probe.mjs'))) die(`no site kit with a probe for this portal (kit: ${kitName || 'none detected'}). Pass --kit <name>`);
-  const probe = await import(pathToFileURL(path.join(ROOT, 'kits', kitName, 'probe.mjs')).href);
+  if (!kitName || !fs.existsSync(path.join(ROOT, 'kits', kitName, PROBE))) die(`no site kit with a probe for this portal (kit: ${kitName || 'none detected'}). Pass --kit <name>`);
+  const probe = await import(pathToFileURL(path.join(ROOT, 'kits', kitName, PROBE)).href);
   log(`kit: ${kitName}, viewport ${viewport.width}x${viewport.height} @${dpr}, dialogs also at ${viewports.map((v) => `${v.width}x${v.height}`).join(', ')}`);
 
   // ---------- the menu: every leaf with a URL is a page ----------
@@ -144,7 +147,7 @@ try {
     rec.ms = Date.now() - t0;
     writeJson(file, rec);
     const pr = rec.probe;
-    log(`[${i + 1}/${list.length}] ${p.label}: ${rec.error ? `✗ ${rec.error}` : `${(rec.ms / 1000).toFixed(0)}s, ${pr.dialogs.length} dialog(s)${pr.search ? ', search' : ''}${pr.errors.length ? `, ${pr.errors.length} step error(s)` : ''}${pr.skipped.length ? `, out of time (skipped ${pr.skipped.join(', ')})` : ''}`}`);
+    log(`[${i + 1}/${list.length}] ${p.label}: ${rec.error ? `✗ ${rec.error}` : `${(rec.ms / 1000).toFixed(0)}s, ${pr.dialogs?.length ?? 0} dialog(s)${pr.search ? ', search' : ''}${pr.errors.length ? `, ${pr.errors.length} step error(s)` : ''}${pr.skipped.length ? `, out of time (skipped ${pr.skipped.join(', ')})` : ''}`}`);
   }
   await summarize(kitName);
 } finally { await browser.close().catch(() => {}); }

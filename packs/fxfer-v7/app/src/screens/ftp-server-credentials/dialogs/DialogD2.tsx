@@ -1,4 +1,5 @@
 // @ts-nocheck - mechanical port of the captured DOM (unknown legacy attributes); drop this line once you hand-edit the file
+import { KitWidget } from '../../../kit';
 // Dialog d2 "Edit FTP Server Credentials" of fxfer-v7/ftp-server-credentials: ported from packs/fxfer-v7/screens/ftp-server-credentials/kit/dialogs/d2.html.
 export default function DialogD2() {
   return (
@@ -136,32 +137,14 @@ export default function DialogD2() {
                         <div className="editor-label">
                           <label htmlFor="View_CreationDate" id="View_CreationDateLabel" readOnly={true} className="readonly-label" title="Creation Date">{"Creation Date"}</label>
                           </div>
-                        <div className="editor-field">{" "}<span className="k-datepicker k-input editor-control k-input-inner readonly-bkgrnd-color" style={{"padding": "0"}} data-kit="k6">
-                            <input readOnly={true} className="editor-control k-input-inner readonly-widget" data-val="true" data-val-date="Creation Date must represent a valid date in the format 'MM/DD/YYYY'." data-val-minmax-date="Creation Date must be within 01/01/1900 and 12/31/9999." data-val-required="Creation Date is a required field." id="View_CreationDate" ignoredirtydata="False" name="CreationDate" type="text" defaultValue="03/28/2025" data-role="datepicker" inputMode="text" role="combobox" aria-expanded="false" aria-haspopup="grid" aria-controls="View_CreationDate_dateview" autoComplete="off" aria-disabled="false" aria-readonly="true" style={{}} aria-labelledby="View_CreationDateLabel" />
-                            <button aria-label="select" tabIndex={-1} className="k-input-button k-button k-icon-button display-none-priority readonly-bkgrnd-color" type="button" role="button">
-                              <span className="k-icon k-svg-icon k-svg-i-calendar k-button-icon readonly-cursor display-none-priority">
-                                <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M416 416H288V288h128zm64-352v384c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h64V0h64v32h128V0h64v32h64c17.6 0 32 14.4 32 32m-32 128H64v255.9l.1.1 383.9-.1zm0-127.9q-.15-.15 0 0l-64-.1v32h-64V64H192v32h-64V64H64.1l-.1.1V160h384z" />
-                                  </svg>
-                                </span>
-                              </button>
-                            </span>
+                        <div className="editor-field">{" "}<KitWidget id="k6" />
                           <span className="k-invalid-msg" id="View_CreationDate_validationMessage" data-for="View_CreationDate"></span>
                           </div>
                         </div>{" "}<div className="col-md-2 editor-col" id="View_LastModifiedDate_parent" data-template="Date">
                         <div className="editor-label">
                           <label htmlFor="View_LastModifiedDate" id="View_LastModifiedDateLabel" readOnly={true} className="readonly-label" title="Modified Date">{"Modified Date"}</label>
                           </div>
-                        <div className="editor-field">{" "}<span className="k-datepicker k-input editor-control k-input-inner readonly-bkgrnd-color" style={{"padding": "0"}} data-kit="k7">
-                            <input readOnly={true} className="editor-control k-input-inner readonly-widget" data-val="true" data-val-date="Modified Date must represent a valid date in the format 'MM/DD/YYYY'." data-val-minmax-date="Modified Date must be within 01/01/1900 and 12/31/9999." height="0" id="View_LastModifiedDate" ignoredirtydata="False" name="LastModifiedDate" not-data-val-required="Modified Date is a required field." type="text" defaultValue="03/28/2025" data-role="datepicker" inputMode="text" role="combobox" aria-expanded="false" aria-haspopup="grid" aria-controls="View_LastModifiedDate_dateview" autoComplete="off" aria-disabled="false" aria-readonly="true" style={{}} aria-labelledby="View_LastModifiedDateLabel" />
-                            <button aria-label="select" tabIndex={-1} className="k-input-button k-button k-icon-button display-none-priority readonly-bkgrnd-color" type="button" role="button">
-                              <span className="k-icon k-svg-icon k-svg-i-calendar k-button-icon readonly-cursor display-none-priority">
-                                <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M416 416H288V288h128zm64-352v384c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h64V0h64v32h128V0h64v32h64c17.6 0 32 14.4 32 32m-32 128H64v255.9l.1.1 383.9-.1zm0-127.9q-.15-.15 0 0l-64-.1v32h-64V64H192v32h-64V64H64.1l-.1.1V160h384z" />
-                                  </svg>
-                                </span>
-                              </button>
-                            </span>
+                        <div className="editor-field">{" "}<KitWidget id="k7" />
                           <span className="k-invalid-msg" id="View_LastModifiedDate_validationMessage" data-for="View_LastModifiedDate"></span>
                           </div>
                         </div>{" "}<div className="col-md-2 editor-col" id="View_IsValid_parent" data-template="Text">

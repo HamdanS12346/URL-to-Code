@@ -49,7 +49,7 @@ const readJson = (f, d) => { try { return JSON.parse(fs.readFileSync(f, 'utf8'))
 const pascal = (s) => s.replace(/(^|[^a-zA-Z0-9]+)([a-zA-Z0-9])/g, (_, __, c) => c.toUpperCase()).replace(/[^a-zA-Z0-9]/g, '');
 const Screen = opt('--name') || pascal(screen.split('/').pop());
 const dest = opt('--out') ? path.resolve(opt('--out')) : path.join(OUT, 'app');
-if (fs.existsSync(dest) && fs.readdirSync(dest).length && !flag('--force')) {
+if (fs.existsSync(dest) && fs.readdirSync(dest).length && !flag('--force') && !flag('--dialogs')) {
   console.error(`${dest} already exists (hand edits would be lost). Re-run with --force to overwrite it.`);
   process.exit(3);
 }
@@ -70,8 +70,8 @@ for (const [url, a] of Object.entries(index)) {
   if (b) byBase.set(b, byBase.has(b) && byBase.get(b) !== f ? null : f);
 }
 const assetsTo = opt('--assets-dir') ? path.resolve(opt('--assets-dir')) : path.join(dest, 'assets');
-fs.rmSync(assetsTo, { recursive: true, force: true });
-if (fs.existsSync(path.join(CAP, 'assets'))) {
+if (!flag('--dialogs')) fs.rmSync(assetsTo, { recursive: true, force: true });
+if (!flag('--dialogs') && fs.existsSync(path.join(CAP, 'assets'))) {
   fs.cpSync(path.join(CAP, 'assets'), assetsTo, { recursive: true });
   fs.rmSync(path.join(assetsTo, 'index.json'), { force: true });
   fs.rmSync(path.join(assetsTo, 'metrics'), { recursive: true, force: true });
@@ -122,7 +122,7 @@ if (kitImport && !kitScreen) { console.error(`--kit-import: ${OUT}/kit/screen.js
 const kitFrom = (depth) => (kitImport?.startsWith('.') && depth ? `../${kitImport}` : kitImport);
 const cssFile = kitScreen && fs.existsSync(path.join(SNAP, 'full.css')) ? 'full.css' : 'used.css';
 const usedCss = inlineImports(fs.readFileSync(path.join(SNAP, cssFile), 'utf8'), pageUrl, index, OUT);
-fs.writeFileSync(path.join(dest, 'style.css'), unsetFirst(localizeCss(usedCss)));
+if (!flag('--dialogs')) fs.writeFileSync(path.join(dest, 'style.css'), unsetFirst(localizeCss(usedCss)));
 
 // ---------- markup: cut the frozen DOM into bands ----------
 const bands = readJson(path.join(CAP, 'bands.json'), []);
@@ -201,7 +201,7 @@ if (kitScreen) for (const id of Object.keys(kitScreen.dialogs || {})) {
     box.innerHTML = html;
     box.querySelectorAll('script, noscript, style, link').forEach((e) => e.remove());
     for (const el of [...box.querySelectorAll('[data-kit]')]) {
-      if (!islands.includes(el.getAttribute('data-kit')) || !el.isConnected) continue;
+      if (!islands.includes(el.getAttribute('data-kit'))) continue; // the box is detached: isConnected would skip every widget of a dialog
       const s = document.createElement('div'); s.setAttribute('data-slot-kit', el.getAttribute('data-kit')); el.replaceWith(s);
     }
     return box.innerHTML;
@@ -227,7 +227,7 @@ for (const p of cut.parts) {
   const jsx = kitShell(islands(pretty(toJsx(p.html, rewriteAttr))));
   const props = /\{(title|module)\}/.test(jsx);
   if (props) withProps.add(p.name);
-  fs.writeFileSync(path.join(dest, 'components', `${p.name}.tsx`),
+  if (!flag('--dialogs')) fs.writeFileSync(path.join(dest, 'components', `${p.name}.tsx`),
     `${head}${usesKit(jsx)}// Band ${p.i + 1} of ${screen}: ported from ${relDir(screen)}/snapshot/rendered.html (${p.tag}${p.id ? '#' + p.id : ''}).\n` +
     `export default function ${p.name}(${props ? '{ title, module }: { title?: string; module?: string }' : ''}) {\n  return (\n    ${jsx}\n  );\n}\n`);
 }
@@ -243,9 +243,17 @@ if (kitScreen) {
     fs.writeFileSync(path.join(dest, 'dialogs', `${nm}.tsx`), `${head}${usesKit(jsx)}// Dialog ${id} "${kitScreen.dialogs[id].title}" of ${screen}: ported from ${relDir(screen)}/kit/dialogs/${id}.html.\n` +
       `export default function ${nm}() {\n  return (\n    <>${jsx}</>\n  );\n}\n`);
   }
-  fs.writeFileSync(path.join(dest, 'kit.json'), JSON.stringify(kitScreen)); // the kit runtime reads its widgets, grids, dialogs and the live popup templates from here
+  if (!flag('--dialogs')) fs.writeFileSync(path.join(dest, 'kit.json'), JSON.stringify(kitScreen)); // the kit runtime reads its widgets, grids, dialogs and the live popup templates from here
 }
 
+if (flag('--dialogs')) {
+  for (const [id, d] of Object.entries(kitScreen?.dialogs ?? {})) {
+    const live = (fs.readFileSync(path.join(dest, 'dialogs', `${dialogNames[id]}.tsx`), 'utf8').match(/<KitWidget /g) || []).length, n = Object.keys(d.widgets).length;
+    console.log(`  dialog ${id}: ${live}/${n} widgets live`);
+    if (live < n) process.exitCode = 4;
+  }
+  process.exit();
+}
 let body = toJsx(cut.body, rewriteAttr);
 body = kitShell(islands(pretty(body.replace(/<div data-slot="(\d+)"><\/div>/g, (_, i) => `<${cut.parts[+i].name}${withProps.has(cut.parts[+i].name) ? ' title={title} module={module}' : ''} />`).replace(/<div data-slot="children"><\/div>/, '{children}'))));
 if (kitScreen) body = `<KitScreen screen={kit as unknown as KitData} dialogs={{ ${Object.entries(dialogNames).map(([id, nm]) => `${id}: ${nm}`).join(', ')} }}${opt('--services') ? ' services={services}' : ''}${slot ? ' shell' : ''}>${body}</KitScreen>`;

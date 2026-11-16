@@ -1,4 +1,5 @@
 // @ts-nocheck - mechanical port of the captured DOM (unknown legacy attributes); drop this line once you hand-edit the file
+import { KitWidget } from '../../../kit';
 // Dialog d2 "View File Transfer Configuration" of fxfer-v7/file-transfer-configuration: ported from packs/fxfer-v7/screens/file-transfer-configuration/kit/dialogs/d2.html.
 export default function DialogD2() {
   return (
@@ -31,20 +32,7 @@ export default function DialogD2() {
                         <div className="editor-field">
                           <label id="ProtocolTypeListTextLabel" htmlFor="ProtocolTypeListText" className="display-none">{"ProtocolTypeListText"}</label>
                           <input readOnly={true} className="k-textbox editor-control" id="ProtocolTypeListText" name="ProtocolTypeListText" defaultValue="FTP" aria-labelledby="eft_ProtocolTypeLabel" />
-                          <div style={{"display": "none"}} data-kit-h="h70">{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="eft_ProtocolTypeList_listbox" aria-busy="false" aria-describedby="f4a734a3-870f-4fe5-8228-ad629767a2b0" aria-labelledby="eft_ProtocolTypeLabel eft_ProtocolTypeHelpDesc" data-kit="k33" style={{}}>
-                              <span id="f4a734a3-870f-4fe5-8228-ad629767a2b0" unselectable="on" className="k-input-inner readonly-widget">
-                                <span className="k-input-value-text">{"FTP"}</span>
-                                </span>
-                              <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                                <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                                  <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M256 352 128 160h256z" />
-                                    </svg>
-                                  </span>
-                                </button>
-                              <label id="eft_ProtocolTypeListLabel" htmlFor="eft_ProtocolTypeList" className="display-none">{"eft_ProtocolTypeList"}</label>
-                              <input readOnly={true} isclonedisplayfor="true" className="editor-control" data-val="true" data-val-required="Protocol is a required field." height="0" id="eft_ProtocolTypeList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.ProtocolType" listviewdisplayformat="Name" name="ProtocolTypeList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-ProtocolType" type="text" defaultValue="1" data-role="dropdownlist" aria-labelledby="eft_ProtocolTypeListLabel" style={{"display": "none"}} />
-                              </span>{" "}<label id="eft_ProtocolType_IDLabel" htmlFor="eft_ProtocolType_ID" className="display-none">{"eft_ProtocolType_ID"}</label>
+                          <div style={{"display": "none"}} data-kit-h="h70">{" "}<KitWidget id="k33" />{" "}<label id="eft_ProtocolType_IDLabel" htmlFor="eft_ProtocolType_ID" className="display-none">{"eft_ProtocolType_ID"}</label>
                             <input readOnly={true} id="eft_ProtocolType_ID" name="ProtocolType.ID" type="hidden" defaultValue="1" aria-labelledby="eft_ProtocolType_IDLabel" />{" "}<label id="eft_ProtocolType_NameLabel" htmlFor="eft_ProtocolType_Name" className="display-none">{"eft_ProtocolType_Name"}</label>
                             <input readOnly={true} id="eft_ProtocolType_Name" name="ProtocolType.Name" type="hidden" defaultValue="FTP" aria-labelledby="eft_ProtocolType_NameLabel" />{" "}<label id="eft_ProtocolType_DisplayFormatLabel" htmlFor="eft_ProtocolType_DisplayFormat" className="display-none">{"eft_ProtocolType_DisplayFormat"}</label>
                             <input readOnly={true} id="eft_ProtocolType_DisplayFormat" name="ProtocolType.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="eft_ProtocolType_DisplayFormatLabel" />
@@ -90,20 +78,7 @@ export default function DialogD2() {
                         <div className="editor-field">
                           <label id="FileDirectionListTextLabel" htmlFor="FileDirectionListText" className="display-none">{"FileDirectionListText"}</label>
                           <input readOnly={true} className="k-textbox editor-control" id="FileDirectionListText" name="FileDirectionListText" defaultValue="" aria-labelledby="eft_FileDirectionLabel" />
-                          <div style={{"display": "none"}} data-kit-h="h75">{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="eft_FileDirectionList_listbox" aria-busy="false" aria-describedby="3f98752c-e999-45d5-a81e-53a304bfc45f" aria-labelledby="eft_FileDirectionLabel eft_FileDirectionHelpDesc" data-kit="k34" style={{}}>
-                              <span id="3f98752c-e999-45d5-a81e-53a304bfc45f" unselectable="on" className="k-input-inner display-none">
-                                <span className="k-input-value-text">{"select a value..."}</span>
-                                </span>
-                              <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                                <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                                  <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M256 352 128 160h256z" />
-                                    </svg>
-                                  </span>
-                                </button>
-                              <label id="eft_FileDirectionListLabel" htmlFor="eft_FileDirectionList" className="display-none">{"eft_FileDirectionList"}</label>
-                              <input readOnly={true} isclonedisplayfor="true" className="editor-control" height="0" id="eft_FileDirectionList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.FileDirection" listviewdisplayformat="Name" name="FileDirectionList" not-data-val-required="File Direction is a required field." propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-FileDirection" type="text" data-role="dropdownlist" aria-labelledby="eft_FileDirectionListLabel" style={{"display": "none"}} />
-                              </span>{" "}<label id="eft_FileDirection_IDLabel" htmlFor="eft_FileDirection_ID" className="display-none">{"eft_FileDirection_ID"}</label>
+                          <div style={{"display": "none"}} data-kit-h="h75">{" "}<KitWidget id="k34" />{" "}<label id="eft_FileDirection_IDLabel" htmlFor="eft_FileDirection_ID" className="display-none">{"eft_FileDirection_ID"}</label>
                             <input readOnly={true} id="eft_FileDirection_ID" name="FileDirection.ID" type="hidden" defaultValue="" aria-labelledby="eft_FileDirection_IDLabel" />{" "}<label id="eft_FileDirection_NameLabel" htmlFor="eft_FileDirection_Name" className="display-none">{"eft_FileDirection_Name"}</label>
                             <input readOnly={true} id="eft_FileDirection_Name" name="FileDirection.Name" type="hidden" defaultValue="" aria-labelledby="eft_FileDirection_NameLabel" />{" "}<label id="eft_FileDirection_DisplayFormatLabel" htmlFor="eft_FileDirection_DisplayFormat" className="display-none">{"eft_FileDirection_DisplayFormat"}</label>
                             <input readOnly={true} id="eft_FileDirection_DisplayFormat" name="FileDirection.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="eft_FileDirection_DisplayFormatLabel" />
@@ -151,20 +126,7 @@ export default function DialogD2() {
                         <div className="editor-field">
                           <label id="OwnerSubsystemListTextLabel" htmlFor="OwnerSubsystemListText" className="display-none">{"OwnerSubsystemListText"}</label>
                           <input readOnly={true} className="k-textbox editor-control" id="OwnerSubsystemListText" name="OwnerSubsystemListText" defaultValue="Administration" aria-labelledby="eft_OwnerSubsystemLabel" />
-                          <div style={{"display": "none"}} data-kit-h="h80">{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="eft_OwnerSubsystemList_listbox" aria-busy="false" aria-describedby="d6734aaf-bfda-4c2d-9213-f1612c19d730" aria-labelledby="eft_OwnerSubsystemLabel eft_OwnerSubsystemHelpDesc" data-kit="k35" style={{}}>
-                              <span id="d6734aaf-bfda-4c2d-9213-f1612c19d730" unselectable="on" className="k-input-inner readonly-widget">
-                                <span className="k-input-value-text">{"Administration"}</span>
-                                </span>
-                              <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                                <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                                  <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M256 352 128 160h256z" />
-                                    </svg>
-                                  </span>
-                                </button>
-                              <label id="eft_OwnerSubsystemListLabel" htmlFor="eft_OwnerSubsystemList" className="display-none">{"eft_OwnerSubsystemList"}</label>
-                              <input readOnly={true} isclonedisplayfor="true" className="editor-control" data-val="true" data-val-required="Owner Module is a required field." height="0" id="eft_OwnerSubsystemList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.OwnerModule" listviewdisplayformat="Name" name="OwnerSubsystemList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-OwnerSubsystem" type="text" defaultValue="0B34481F-F69C-3AB6-E053-C9157ACEFF03" data-role="dropdownlist" aria-labelledby="eft_OwnerSubsystemListLabel" style={{"display": "none"}} />
-                              </span>{" "}<label id="eft_OwnerSubsystem_IDLabel" htmlFor="eft_OwnerSubsystem_ID" className="display-none">{"eft_OwnerSubsystem_ID"}</label>
+                          <div style={{"display": "none"}} data-kit-h="h80">{" "}<KitWidget id="k35" />{" "}<label id="eft_OwnerSubsystem_IDLabel" htmlFor="eft_OwnerSubsystem_ID" className="display-none">{"eft_OwnerSubsystem_ID"}</label>
                             <input readOnly={true} id="eft_OwnerSubsystem_ID" name="OwnerSubsystem.ID" type="hidden" defaultValue="0B34481F-F69C-3AB6-E053-C9157ACEFF03" aria-labelledby="eft_OwnerSubsystem_IDLabel" />{" "}<label id="eft_OwnerSubsystem_NameLabel" htmlFor="eft_OwnerSubsystem_Name" className="display-none">{"eft_OwnerSubsystem_Name"}</label>
                             <input readOnly={true} id="eft_OwnerSubsystem_Name" name="OwnerSubsystem.Name" type="hidden" defaultValue="Administration" aria-labelledby="eft_OwnerSubsystem_NameLabel" />{" "}<label id="eft_OwnerSubsystem_DisplayFormatLabel" htmlFor="eft_OwnerSubsystem_DisplayFormat" className="display-none">{"eft_OwnerSubsystem_DisplayFormat"}</label>
                             <input readOnly={true} id="eft_OwnerSubsystem_DisplayFormat" name="OwnerSubsystem.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="eft_OwnerSubsystem_DisplayFormatLabel" />
@@ -341,20 +303,7 @@ export default function DialogD2() {
                               <div className="editor-field">
                                 <label id="RunOnThisDayListTextLabel" htmlFor="RunOnThisDayListText" className="display-none">{"RunOnThisDayListText"}</label>
                                 <input readOnly={true} className="k-textbox editor-control" id="RunOnThisDayListText" name="RunOnThisDayListText" defaultValue="" aria-labelledby="eft_RunOnThisDayLabel" />
-                                <div style={{"display": "none"}} data-kit-h="h95">{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="eft_RunOnThisDayList_listbox" aria-busy="false" aria-describedby="3517ef7e-5145-489b-97a0-51352f89ad48" aria-labelledby="eft_RunOnThisDayLabel eft_RunOnThisDayHelpDesc" data-kit="k36" style={{}}>
-                                    <span id="3517ef7e-5145-489b-97a0-51352f89ad48" unselectable="on" className="k-input-inner readonly-widget">
-                                      <span className="k-input-value-text">{"null"}</span>
-                                      </span>
-                                    <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                                      <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                                        <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M256 352 128 160h256z" />
-                                          </svg>
-                                        </span>
-                                      </button>
-                                    <label id="eft_RunOnThisDayListLabel" htmlFor="eft_RunOnThisDayList" className="display-none">{"eft_RunOnThisDayList"}</label>
-                                    <input readOnly={true} isclonedisplayfor="true" className="editor-control" height="0" id="eft_RunOnThisDayList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.DayOfMonth" listviewdisplayformat="Name" name="RunOnThisDayList" not-data-val-required="Run On This Day Month is a required field." propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-RunOnThisDay" type="text" defaultValue="0" data-role="dropdownlist" aria-labelledby="eft_RunOnThisDayListLabel" style={{"display": "none"}} />
-                                    </span>{" "}<label id="eft_RunOnThisDay_IDLabel" htmlFor="eft_RunOnThisDay_ID" className="display-none">{"eft_RunOnThisDay_ID"}</label>
+                                <div style={{"display": "none"}} data-kit-h="h95">{" "}<KitWidget id="k36" />{" "}<label id="eft_RunOnThisDay_IDLabel" htmlFor="eft_RunOnThisDay_ID" className="display-none">{"eft_RunOnThisDay_ID"}</label>
                                   <input readOnly={true} id="eft_RunOnThisDay_ID" name="RunOnThisDay.ID" type="hidden" defaultValue="0" aria-labelledby="eft_RunOnThisDay_IDLabel" />{" "}<label id="eft_RunOnThisDay_NameLabel" htmlFor="eft_RunOnThisDay_Name" className="display-none">{"eft_RunOnThisDay_Name"}</label>
                                   <input readOnly={true} id="eft_RunOnThisDay_Name" name="RunOnThisDay.Name" type="hidden" defaultValue="" aria-labelledby="eft_RunOnThisDay_NameLabel" />{" "}<label id="eft_RunOnThisDay_DisplayFormatLabel" htmlFor="eft_RunOnThisDay_DisplayFormat" className="display-none">{"eft_RunOnThisDay_DisplayFormat"}</label>
                                   <input readOnly={true} id="eft_RunOnThisDay_DisplayFormat" name="RunOnThisDay.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="eft_RunOnThisDay_DisplayFormatLabel" />
@@ -370,20 +319,7 @@ export default function DialogD2() {
                           <div className="editor-field">
                             <label id="TimeWindowStartListTextLabel" htmlFor="TimeWindowStartListText" className="display-none">{"TimeWindowStartListText"}</label>
                             <input readOnly={true} className="k-textbox editor-control" id="TimeWindowStartListText" name="TimeWindowStartListText" defaultValue="0000" aria-labelledby="eft_TimeWindowStartLabel" />
-                            <div style={{"display": "none"}} data-kit-h="h97">{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="eft_TimeWindowStartList_listbox" aria-busy="false" aria-describedby="f80fc3fe-28b2-4ae1-8406-183ca5721240" aria-labelledby="eft_TimeWindowStartLabel eft_TimeWindowStartHelpDesc" data-kit="k37" style={{}}>
-                                <span id="f80fc3fe-28b2-4ae1-8406-183ca5721240" unselectable="on" className="k-input-inner readonly-widget">
-                                  <span className="k-input-value-text">{"0000"}</span>
-                                  </span>
-                                <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                                  <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                                    <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M256 352 128 160h256z" />
-                                      </svg>
-                                    </span>
-                                  </button>
-                                <label id="eft_TimeWindowStartListLabel" htmlFor="eft_TimeWindowStartList" className="display-none">{"eft_TimeWindowStartList"}</label>
-                                <input readOnly={true} isclonedisplayfor="true" className="editor-control" data-val="true" data-val-required="Time Window Start is a required field." height="0" id="eft_TimeWindowStartList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.TimeWindow" listviewdisplayformat="Name" name="TimeWindowStartList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-TimeWindowStart" type="text" defaultValue="0000" data-role="dropdownlist" aria-labelledby="eft_TimeWindowStartListLabel" style={{"display": "none"}} />
-                                </span>{" "}<label id="eft_TimeWindowStart_IDLabel" htmlFor="eft_TimeWindowStart_ID" className="display-none">{"eft_TimeWindowStart_ID"}</label>
+                            <div style={{"display": "none"}} data-kit-h="h97">{" "}<KitWidget id="k37" />{" "}<label id="eft_TimeWindowStart_IDLabel" htmlFor="eft_TimeWindowStart_ID" className="display-none">{"eft_TimeWindowStart_ID"}</label>
                               <input readOnly={true} id="eft_TimeWindowStart_ID" name="TimeWindowStart.ID" type="hidden" defaultValue="0000" aria-labelledby="eft_TimeWindowStart_IDLabel" />{" "}<label id="eft_TimeWindowStart_NameLabel" htmlFor="eft_TimeWindowStart_Name" className="display-none">{"eft_TimeWindowStart_Name"}</label>
                               <input readOnly={true} id="eft_TimeWindowStart_Name" name="TimeWindowStart.Name" type="hidden" defaultValue="0000" aria-labelledby="eft_TimeWindowStart_NameLabel" />{" "}<label id="eft_TimeWindowStart_DisplayFormatLabel" htmlFor="eft_TimeWindowStart_DisplayFormat" className="display-none">{"eft_TimeWindowStart_DisplayFormat"}</label>
                               <input readOnly={true} id="eft_TimeWindowStart_DisplayFormat" name="TimeWindowStart.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="eft_TimeWindowStart_DisplayFormatLabel" />
@@ -399,20 +335,7 @@ export default function DialogD2() {
                           <div className="editor-field">
                             <label id="TimeWindowEndListTextLabel" htmlFor="TimeWindowEndListText" className="display-none">{"TimeWindowEndListText"}</label>
                             <input readOnly={true} className="k-textbox editor-control" id="TimeWindowEndListText" name="TimeWindowEndListText" defaultValue="0030" aria-labelledby="eft_TimeWindowEndLabel" />
-                            <div style={{"display": "none"}} data-kit-h="h99">{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="eft_TimeWindowEndList_listbox" aria-busy="false" aria-describedby="3db62e4d-7970-469e-8366-7559d6dd9242" aria-labelledby="eft_TimeWindowEndLabel eft_TimeWindowEndHelpDesc" data-kit="k38" style={{}}>
-                                <span id="3db62e4d-7970-469e-8366-7559d6dd9242" unselectable="on" className="k-input-inner readonly-widget">
-                                  <span className="k-input-value-text">{"0030"}</span>
-                                  </span>
-                                <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                                  <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                                    <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M256 352 128 160h256z" />
-                                      </svg>
-                                    </span>
-                                  </button>
-                                <label id="eft_TimeWindowEndListLabel" htmlFor="eft_TimeWindowEndList" className="display-none">{"eft_TimeWindowEndList"}</label>
-                                <input readOnly={true} isclonedisplayfor="true" className="editor-control" data-val="true" data-val-required="Time Window End is a required field." height="0" id="eft_TimeWindowEndList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.TimeWindow" listviewdisplayformat="Name" name="TimeWindowEndList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.FileTransferConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-TimeWindowEnd" type="text" defaultValue="0030" data-role="dropdownlist" aria-labelledby="eft_TimeWindowEndListLabel" style={{"display": "none"}} />
-                                </span>{" "}<label id="eft_TimeWindowEnd_IDLabel" htmlFor="eft_TimeWindowEnd_ID" className="display-none">{"eft_TimeWindowEnd_ID"}</label>
+                            <div style={{"display": "none"}} data-kit-h="h99">{" "}<KitWidget id="k38" />{" "}<label id="eft_TimeWindowEnd_IDLabel" htmlFor="eft_TimeWindowEnd_ID" className="display-none">{"eft_TimeWindowEnd_ID"}</label>
                               <input readOnly={true} id="eft_TimeWindowEnd_ID" name="TimeWindowEnd.ID" type="hidden" defaultValue="0030" aria-labelledby="eft_TimeWindowEnd_IDLabel" />{" "}<label id="eft_TimeWindowEnd_NameLabel" htmlFor="eft_TimeWindowEnd_Name" className="display-none">{"eft_TimeWindowEnd_Name"}</label>
                               <input readOnly={true} id="eft_TimeWindowEnd_Name" name="TimeWindowEnd.Name" type="hidden" defaultValue="0030" aria-labelledby="eft_TimeWindowEnd_NameLabel" />{" "}<label id="eft_TimeWindowEnd_DisplayFormatLabel" htmlFor="eft_TimeWindowEnd_DisplayFormat" className="display-none">{"eft_TimeWindowEnd_DisplayFormat"}</label>
                               <input readOnly={true} id="eft_TimeWindowEnd_DisplayFormat" name="TimeWindowEnd.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="eft_TimeWindowEnd_DisplayFormatLabel" />
@@ -460,173 +383,7 @@ export default function DialogD2() {
                               </span>{" "}<span className="k-invalid-msg" id="eft_Status_validationMessage" data-for="eft_Status"></span>
                             <span id="eft_StatusHelpDesc" hidden={true} data-kit-h="h103">{"Status"}</span>
                             </div>
-                          </div>{" "}</div>{" "}</div>{" "}</div>{" "}<div className="content-panel-container">{" "}<div className="content-panel-hdr">{"\n                                    Destination Configuration\n                                "}</div>{" "}<div className="content-panel-bdy">{" "}<div className="k-grid editor-grid" id="FileTransferDestinationGrid" data-role="grid" style={{}} data-kit="k39">
-                        <div aria-controls="6c5d07e4-ba16-4d4a-9783-7260b4e041a7" aria-label="grid toolbar" className="k-toolbar k-grid-toolbar k-toolbar-resizable" role="toolbar">{" "}<div className="grid-toolbar-primary align-right">{" "}<span className="k-checkbox-wrap">
-                              <input data-role="checkbox" id="DestinationShowInactiveCheckBox" ignoredirtydata="true" name="DestinationShowInactiveCheckBox" title="Show Inactives" type="checkbox" defaultValue="true" className="k-checkbox" style={{}} />
-                              </span>
-                            <input name="DestinationShowInactiveCheckBox" type="hidden" defaultValue="false" />{" "}</div>{" "}</div>
-                        <div className="k-grid-header" style={{"paddingRight": "15px"}}>
-                          <div className="k-grid-header-wrap k-auto-scrollable" data-role="resizable">
-                            <table role="grid" className="k-grid-header-table k-table">
-                              <colgroup>
-                                <col />
-                                <col />
-                                <col />
-                                <col style={{"width": "75px"}} />
-                                </colgroup>
-                              <thead className="k-table-thead" role="rowgroup" id="dfc1dae4-1cec-4cb0-ad8c-47586431fc9e">
-                                <tr className="k-table-row" role="row">
-                                  <th className="k-table-th k-header" data-field="DestinationAddress" data-index="0" data-resizable="true" data-title="Destination Address" id="3560db5c-8c7b-4123-a244-00053dda3210" role="columnheader" scope="col" aria-colindex="1">
-                                    <span className="k-cell-inner">
-                                      <span className="k-link">
-                                        <span className="k-column-title">{"Destination Address"}</span>
-                                        </span>
-                                      </span>
-                                    </th>
-                                  <th className="k-table-th k-header" data-field="DestinationProtocol.Name" data-index="1" data-resizable="true" data-title="Destination Protocol" id="df31358c-d58c-4474-8c8e-316613864032" role="columnheader" scope="col" aria-colindex="2">
-                                    <span className="k-cell-inner">
-                                      <span className="k-link">
-                                        <span className="k-column-title">{"Destination Protocol"}</span>
-                                        </span>
-                                      </span>
-                                    </th>
-                                  <th className="k-table-th k-header" data-field="ContactName" data-index="2" data-resizable="true" data-title="Contact Name" id="1c86ffb4-1f74-46d1-8c6e-de289610151b" role="columnheader" scope="col" aria-colindex="3">
-                                    <span className="k-cell-inner">
-                                      <span className="k-link">
-                                        <span className="k-column-title">{"Contact Name"}</span>
-                                        </span>
-                                      </span>
-                                    </th>
-                                  <th className="k-table-th k-header" data-field="Status" data-index="3" data-resizable="true" data-title="Status" id="0faf1c1c-7624-4859-beb6-0b348e5e60c3" role="columnheader" scope="col" aria-colindex="4">
-                                    <span className="k-cell-inner">
-                                      <span className="k-link">
-                                        <span className="k-column-title">{"Status"}</span>
-                                        </span>
-                                      </span>
-                                    </th>
-                                  <th className="k-table-th k-header k-hidden" data-field="Active" data-index="4" data-resizable="true" data-title="Active" id="8d85d364-985e-44cf-8bf3-c02c19a52642" role="columnheader" scope="col" aria-colindex="5" style={{"display": "none"}}>
-                                    <span className="k-cell-inner">
-                                      <span className="k-link">
-                                        <span className="k-column-title">{"Active"}</span>
-                                        </span>
-                                      </span>
-                                    </th>
-                                  </tr>
-                                </thead>
-                              </table>
-                            </div>
-                          </div>
-                        <div className="k-grid-container">
-                          <div className="k-grid-content k-auto-scrollable" style={{"height": "200px"}}>
-                            <table id="6c5d07e4-ba16-4d4a-9783-7260b4e041a7" role="grid" tabIndex={0} className="k-grid-table k-table k-selectable" data-role="selectable" aria-colcount="5" aria-owns="dfc1dae4-1cec-4cb0-ad8c-47586431fc9e 9721e549-c61d-406c-aecf-89e9b19b2a00 ">
-                              <colgroup>
-                                <col />
-                                <col />
-                                <col />
-                                <col style={{"width": "75px"}} />
-                                </colgroup>
-                              <tbody className="k-table-tbody" id="9721e549-c61d-406c-aecf-89e9b19b2a00" role="rowgroup">
-                                <tr className="k-table-row k-master-row" data-uid="f32fa222-a1c6-4e9f-8acb-efe4d541f14f" role="row">
-                                  <td className="k-table-td" role="gridcell" aria-colindex="1">{"https://dxccommercial.test.mapshc.com"}</td>
-                                  <td className="k-table-td" role="gridcell" aria-colindex="2">{"FTP"}</td>
-                                  <td className="k-table-td" role="gridcell" aria-colindex="3"></td>
-                                  <td className="k-table-td" role="gridcell" aria-colindex="4">{"Active"}</td>
-                                  <td className="k-table-td" role="gridcell" aria-colindex="5" style={{"display": "none"}}>{"true"}</td>
-                                  </tr>
-                                <tr className="k-table-row k-table-alt-row k-master-row" data-uid="7817c54f-fd4e-4cd9-8f68-0c0c582a5192" role="row">
-                                  <td className="k-table-td" role="gridcell" aria-colindex="1">{"/Test"}</td>
-                                  <td className="k-table-td" role="gridcell" aria-colindex="2">{"SFTP"}</td>
-                                  <td className="k-table-td" role="gridcell" aria-colindex="3"></td>
-                                  <td className="k-table-td" role="gridcell" aria-colindex="4">{"Active"}</td>
-                                  <td className="k-table-td" role="gridcell" aria-colindex="5" style={{"display": "none"}}>{"true"}</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        <div aria-controls="6c5d07e4-ba16-4d4a-9783-7260b4e041a7" className="k-pager k-grid-pager k-pager-responsive" data-role="pager" aria-label="Page navigation, page 1 of 1" role="application" aria-roledescription="pager" aria-keyshortcuts="Enter ArrowRight ArrowLeft" id="17944864-dcba-45a2-b3f3-96171e61f493" tabIndex={0}>
-                          <div className="k-pager-numbers-wrap">
-                            <button aria-label="Go to the first page" className="k-button k-pager-nav k-button-flat k-icon-button k-disabled k-pager-first" data-page="1" title="Go to the first page" tabIndex={-1} aria-disabled="true">
-                              <span className="k-icon k-svg-icon k-svg-i-caret-alt-to-left k-button-icon">
-                                <svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg?v=30.0.0.2609">
-                                  <path d="M352 384 160 256l192-128zM128 128v256h32V128z" />
-                                  </svg>
-                                </span>
-                              </button>
-                            <button aria-label="Go to the previous page" className="k-button k-pager-nav k-button-flat k-icon-button k-disabled" data-page="1" title="Go to the previous page" tabIndex={-1} aria-disabled="true">
-                              <span className="k-icon k-svg-icon k-svg-i-caret-alt-left k-button-icon">
-                                <svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg?v=30.0.0.2609">
-                                  <path d="m160 256 192-128v256z" />
-                                  </svg>
-                                </span>
-                              </button>
-                            <div className="k-pager-numbers">
-                              <button role="button" aria-current="page" tabIndex={0} aria-label="Page 1" className="k-button  k-button-flat k-button-primary k-selected">
-                                <span className="k-button-text">{"1"}</span>
-                                </button>
-                              </div>
-                            <button aria-label="Go to the next page" className="k-button k-pager-nav k-button-flat k-icon-button k-disabled" data-page="1" title="Go to the next page" tabIndex={-1} aria-disabled="true">
-                              <span className="k-icon k-svg-icon k-svg-i-caret-alt-right k-button-icon">
-                                <svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg?v=30.0.0.2609">
-                                  <path d="M352 256 160 384V128z" />
-                                  </svg>
-                                </span>
-                              </button>
-                            <button aria-label="Go to the last page" className="k-button k-pager-nav k-button-flat k-icon-button k-disabled k-pager-last" data-page="1" title="Go to the last page" tabIndex={-1} aria-disabled="true">
-                              <span className="k-icon k-svg-icon k-svg-i-caret-alt-to-right k-button-icon">
-                                <svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg?v=30.0.0.2609">
-                                  <path d="m128 128 192 128-192 128zm224 256V128h-32v256z" />
-                                  </svg>
-                                </span>
-                              </button>
-                            <span className="k-pager-input" style={{"display": "none"}}>
-                              <span>
-                                <span>{"Page"}</span>
-                                </span>
-                              <span className="k-numerictextbox k-input" style={{}}>
-                                <input type="text" data-validate="false" title="1" tabIndex={0} className="k-input-inner" role="spinbutton" aria-valuemin="1" autoComplete="off" aria-disabled="false" aria-label="Page" aria-valuenow="1" style={{}} />
-                                <input aria-label="Page" data-role="numerictextbox" role="spinbutton" className="k-input-inner" inputMode="text" type="text" aria-valuemin="1" aria-disabled="false" aria-valuenow="1" style={{"display": "none"}} />
-                                <span className="k-icon k-svg-icon k-svg-i-exclamation-circle k-input-validation-icon k-hidden">
-                                  <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M224 128h64v160h-64zm0 256h64v-64h-64zm256-128c0 123.7-100.3 224-224 224S32 379.7 32 256 132.3 32 256 32s224 100.3 224 224m-32 0c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192" />
-                                    </svg>
-                                  </span>
-                                </span>
-                              <span>
-                                <span>{"of 1"}</span>
-                                </span>
-                              </span>
-                            </div>
-                          <a aria-label="Refresh" className="k-pager-refresh k-button k-button-flat k-icon-button" href="/FileTransfer/FileTransferConfigurationView?subdomain=uximc&amp;ftsSourceLocationId=aab80b60-a4ec-4713-8e70-c2208c327cd1&amp;isPanel=1" title="Refresh" data-role="tooltip" data-kit-tip="Refresh" data-kit-tip-pos="top" data-kit-tip-after="250">
-                            <span className="k-icon k-svg-icon k-svg-i-arrow-rotate-cw k-button-icon">
-                              <svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg?v=30.0.0.2609">
-                                <path d="M480 288c0 123.7-100.3 224-224 224S32 411.7 32 288 132.3 64 256 64V0l160 96-160 96v-64c-88.2 0-160 71.8-160 160s71.8 160 160 160 160-71.8 160-160c0-29.1-7.8-56.4-21.5-80l55.5-32c19.1 32.9 30 71.2 30 112" />
-                                </svg>
-                              </span>
-                            </a>
-                          <span className="k-pager-info">{"1 - 2 of 2 items"}</span>
-                          <span className="k-pager-sizes">
-                            <span title="" className="k-picker k-dropdownlist" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-label="Page sizes drop down" aria-disabled="false" aria-readonly="false" aria-controls="1bf3a4df-bbcc-4fcf-acaa-d2a251078c17_listbox" aria-busy="false" aria-describedby="f7c55168-70ef-4b81-bd7e-bd77f23bfb89" style={{}}>
-                              <span id="f7c55168-70ef-4b81-bd7e-bd77f23bfb89" unselectable="on" className="k-input-inner">
-                                <span className="k-input-value-text">{"10"}</span>
-                                </span>
-                              <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                                <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon">
-                                  <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M256 352 128 160h256z" />
-                                    </svg>
-                                  </span>
-                                </button>
-                              <select defaultValue="10" aria-label="Page sizes drop down" data-role="dropdownlist" style={{"display": "none"}}>
-                                <option value="5">{"5"}</option>
-                                <option value="10">{"10"}</option>
-                                <option value="20">{"20"}</option>
-                                </select>
-                              </span>
-                            <span>{"items per page"}</span>
-                            </span>
-                          </div>
-                        </div>{" "}</div>{" "}</div>{" "}<div id="FileTransferConfigurationViewButtons">
+                          </div>{" "}</div>{" "}</div>{" "}</div>{" "}<div className="content-panel-container">{" "}<div className="content-panel-hdr">{"\n                                    Destination Configuration\n                                "}</div>{" "}<div className="content-panel-bdy">{" "}<KitWidget id="k39" />{" "}</div>{" "}</div>{" "}<div id="FileTransferConfigurationViewButtons">
                     <div id="FileTransferConfigurationViewFormButtonRow" className="editor-button-row">
                       <input id="editFileTransferConfigurationButton" type="button" value="Edit" className="cancel k-button btn-spacer-right" />
                       <span className="editor-button-nav">
@@ -641,20 +398,7 @@ export default function DialogD2() {
                           <div className="editor-field">
                             <label id="DestinationProtocolListTextLabel" htmlFor="DestinationProtocolListText" className="display-none">{"DestinationProtocolListText"}</label>
                             <input readOnly={true} className="k-textbox editor-control" id="DestinationProtocolListText" name="DestinationProtocolListText" defaultValue="" aria-labelledby="viewDestinationProtocolLabel" />
-                            <div style={{"display": "none"}}>{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="viewDestinationProtocolList_listbox" aria-busy="false" aria-describedby="26522db9-0447-4897-8581-53431bad5ff8" aria-labelledby="viewDestinationProtocolLabel viewDestinationProtocolHelpDesc" data-kit="k40" style={{}}>
-                                <span id="26522db9-0447-4897-8581-53431bad5ff8" unselectable="on" className="k-input-inner display-none">
-                                  <span className="k-input-value-text">{"select a value..."}</span>
-                                  </span>
-                                <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                                  <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                                    <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M256 352 128 160h256z" />
-                                      </svg>
-                                    </span>
-                                  </button>
-                                <label id="viewDestinationProtocolListLabel" htmlFor="viewDestinationProtocolList" className="display-none">{"viewDestinationProtocolList"}</label>
-                                <input readOnly={true} isclonedisplayfor="true" className="editor-control" data-val="true" data-val-required="Destination Protocol is a required field." id="viewDestinationProtocolList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.ProtocolType" listviewdisplayformat="Name" name="DestinationProtocolList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.DestinationConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-DestinationProtocol" type="text" data-role="dropdownlist" aria-labelledby="viewDestinationProtocolListLabel" style={{"display": "none"}} />
-                                </span>{" "}<label id="viewDestinationProtocol_IDLabel" htmlFor="viewDestinationProtocol_ID" className="display-none">{"viewDestinationProtocol_ID"}</label>
+                            <div style={{"display": "none"}}>{" "}<KitWidget id="k40" />{" "}<label id="viewDestinationProtocol_IDLabel" htmlFor="viewDestinationProtocol_ID" className="display-none">{"viewDestinationProtocol_ID"}</label>
                               <input readOnly={true} id="viewDestinationProtocol_ID" name="DestinationProtocol.ID" type="hidden" defaultValue="" aria-labelledby="viewDestinationProtocol_IDLabel" />{" "}<label id="viewDestinationProtocol_NameLabel" htmlFor="viewDestinationProtocol_Name" className="display-none">{"viewDestinationProtocol_Name"}</label>
                               <input readOnly={true} id="viewDestinationProtocol_Name" name="DestinationProtocol.Name" type="hidden" defaultValue="" aria-labelledby="viewDestinationProtocol_NameLabel" />{" "}<label id="viewDestinationProtocol_DisplayFormatLabel" htmlFor="viewDestinationProtocol_DisplayFormat" className="display-none">{"viewDestinationProtocol_DisplayFormat"}</label>
                               <input readOnly={true} id="viewDestinationProtocol_DisplayFormat" name="DestinationProtocol.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="viewDestinationProtocol_DisplayFormatLabel" />
@@ -670,20 +414,7 @@ export default function DialogD2() {
                             <div className="editor-field">
                               <label id="FTPServerListTextLabel" htmlFor="FTPServerListText" className="display-none">{"FTPServerListText"}</label>
                               <input readOnly={true} className="k-textbox editor-control" id="FTPServerListText" name="FTPServerListText" defaultValue="" aria-labelledby="viewFTPServerLabel" />
-                              <div style={{"display": "none"}}>{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="viewFTPServerList_listbox" aria-labelledby="viewFTPServerLabel viewFTPServerHelpDesc" data-kit="k41" style={{}}>
-                                  <span id="033691bd-d782-4021-96bc-735204caf087" unselectable="on" className="k-input-inner display-none">
-                                    <span className="k-input-value-text">{"select a value..."}</span>
-                                    </span>
-                                  <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                                    <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                                      <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M256 352 128 160h256z" />
-                                        </svg>
-                                      </span>
-                                    </button>
-                                  <label id="viewFTPServerListLabel" htmlFor="viewFTPServerList" className="display-none">{"viewFTPServerList"}</label>
-                                  <input readOnly={true} isclonedisplayfor="true" className="editor-control" data-val="true" data-val-required="Server is a required field." id="viewFTPServerList" ignoredirtydata="False" listviewdatalistcontentid="" listviewdisplayformat="Name" name="FTPServerList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.DestinationConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-FTPServer" type="text" data-role="dropdownlist" aria-labelledby="viewFTPServerListLabel" style={{"display": "none"}} />
-                                  </span>{" "}<label id="viewFTPServer_IDLabel" htmlFor="viewFTPServer_ID" className="display-none">{"viewFTPServer_ID"}</label>
+                              <div style={{"display": "none"}}>{" "}<KitWidget id="k41" />{" "}<label id="viewFTPServer_IDLabel" htmlFor="viewFTPServer_ID" className="display-none">{"viewFTPServer_ID"}</label>
                                 <input readOnly={true} id="viewFTPServer_ID" name="FTPServer.ID" type="hidden" defaultValue="" aria-labelledby="viewFTPServer_IDLabel" />{" "}<label id="viewFTPServer_NameLabel" htmlFor="viewFTPServer_Name" className="display-none">{"viewFTPServer_Name"}</label>
                                 <input readOnly={true} id="viewFTPServer_Name" name="FTPServer.Name" type="hidden" defaultValue="" aria-labelledby="viewFTPServer_NameLabel" />{" "}<label id="viewFTPServer_DisplayFormatLabel" htmlFor="viewFTPServer_DisplayFormat" className="display-none">{"viewFTPServer_DisplayFormat"}</label>
                                 <input readOnly={true} id="viewFTPServer_DisplayFormat" name="FTPServer.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="viewFTPServer_DisplayFormatLabel" />
@@ -698,20 +429,7 @@ export default function DialogD2() {
                           <div className="editor-field">
                             <label id="DestinationTypeListTextLabel" htmlFor="DestinationTypeListText" className="display-none">{"DestinationTypeListText"}</label>
                             <input readOnly={true} className="k-textbox editor-control" id="DestinationTypeListText" name="DestinationTypeListText" defaultValue="" aria-labelledby="viewDestinationTypeLabel" />
-                            <div style={{"display": "none"}}>{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="viewDestinationTypeList_listbox" aria-busy="false" aria-describedby="3afd6fd4-5e93-4cfe-9d8d-171cf7070890" aria-labelledby="viewDestinationTypeLabel" data-kit="k42" style={{}}>
-                                <span id="3afd6fd4-5e93-4cfe-9d8d-171cf7070890" unselectable="on" className="k-input-inner display-none">
-                                  <span className="k-input-value-text">{"select a value..."}</span>
-                                  </span>
-                                <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                                  <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                                    <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M256 352 128 160h256z" />
-                                      </svg>
-                                    </span>
-                                  </button>
-                                <label id="viewDestinationTypeListLabel" htmlFor="viewDestinationTypeList" className="display-none">{"viewDestinationTypeList"}</label>
-                                <input readOnly={true} isclonedisplayfor="true" className="editor-control" data-val="true" data-val-required="Destination Type is a required field." id="viewDestinationTypeList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.DestinationType" listviewdisplayformat="Name" name="DestinationTypeList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.DestinationConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-DestinationType" type="text" data-role="dropdownlist" aria-labelledby="viewDestinationTypeListLabel" style={{"display": "none"}} />
-                                </span>{" "}<label id="viewDestinationType_IDLabel" htmlFor="viewDestinationType_ID" className="display-none">{"viewDestinationType_ID"}</label>
+                            <div style={{"display": "none"}}>{" "}<KitWidget id="k42" />{" "}<label id="viewDestinationType_IDLabel" htmlFor="viewDestinationType_ID" className="display-none">{"viewDestinationType_ID"}</label>
                               <input readOnly={true} id="viewDestinationType_ID" name="DestinationType.ID" type="hidden" defaultValue="" aria-labelledby="viewDestinationType_IDLabel" />{" "}<label id="viewDestinationType_NameLabel" htmlFor="viewDestinationType_Name" className="display-none">{"viewDestinationType_Name"}</label>
                               <input readOnly={true} id="viewDestinationType_Name" name="DestinationType.Name" type="hidden" defaultValue="" aria-labelledby="viewDestinationType_NameLabel" />{" "}<label id="viewDestinationType_DisplayFormatLabel" htmlFor="viewDestinationType_DisplayFormat" className="display-none">{"viewDestinationType_DisplayFormat"}</label>
                               <input readOnly={true} id="viewDestinationType_DisplayFormat" name="DestinationType.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="viewDestinationType_DisplayFormatLabel" />
@@ -735,20 +453,7 @@ export default function DialogD2() {
                             <div className="editor-field">
                               <label id="ContractNameListTextLabel" htmlFor="ContractNameListText" className="display-none">{"ContractNameListText"}</label>
                               <input readOnly={true} className="k-textbox editor-control" id="ContractNameListText" name="ContractNameListText" defaultValue="" aria-labelledby="viewContractNameLabel" />
-                              <div style={{"display": "none"}}>{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="viewContractNameList_listbox" aria-busy="false" aria-describedby="feef50fa-7f39-4997-b3d1-51046a5706ef" aria-labelledby="viewContractNameLabel" data-kit="k43" style={{}}>
-                                  <span id="feef50fa-7f39-4997-b3d1-51046a5706ef" unselectable="on" className="k-input-inner display-none">
-                                    <span className="k-input-value-text">{"select a value..."}</span>
-                                    </span>
-                                  <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                                    <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                                      <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M256 352 128 160h256z" />
-                                        </svg>
-                                      </span>
-                                    </button>
-                                  <label id="viewContractNameListLabel" htmlFor="viewContractNameList" className="display-none">{"viewContractNameList"}</label>
-                                  <input readOnly={true} isclonedisplayfor="true" className="editor-control" data-val="true" data-val-required="FTE Module Contract is a required field." id="viewContractNameList" ignoredirtydata="False" listviewdatalistcontentid="Integration.DataList.HPPContractAssemblies" listviewdisplayformat="Name" name="ContractNameList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.DestinationConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-ContractName" type="text" data-role="dropdownlist" aria-labelledby="viewContractNameListLabel" style={{"display": "none"}} />
-                                  </span>{" "}<label id="viewContractName_IDLabel" htmlFor="viewContractName_ID" className="display-none">{"viewContractName_ID"}</label>
+                              <div style={{"display": "none"}}>{" "}<KitWidget id="k43" />{" "}<label id="viewContractName_IDLabel" htmlFor="viewContractName_ID" className="display-none">{"viewContractName_ID"}</label>
                                 <input readOnly={true} id="viewContractName_ID" name="ContractName.ID" type="hidden" defaultValue="" aria-labelledby="viewContractName_IDLabel" />{" "}<label id="viewContractName_NameLabel" htmlFor="viewContractName_Name" className="display-none">{"viewContractName_Name"}</label>
                                 <input readOnly={true} id="viewContractName_Name" name="ContractName.Name" type="hidden" defaultValue="" aria-labelledby="viewContractName_NameLabel" />{" "}<label id="viewContractName_DisplayFormatLabel" htmlFor="viewContractName_DisplayFormat" className="display-none">{"viewContractName_DisplayFormat"}</label>
                                 <input readOnly={true} id="viewContractName_DisplayFormat" name="ContractName.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="viewContractName_DisplayFormatLabel" />
@@ -865,20 +570,7 @@ export default function DialogD2() {
                             <div className="editor-field">
                               <label id="RenamePatternListTextLabel" htmlFor="RenamePatternListText" className="display-none">{"RenamePatternListText"}</label>
                               <input readOnly={true} className="k-textbox editor-control" id="RenamePatternListText" name="RenamePatternListText" defaultValue="" aria-labelledby="viewRenamePatternLabel" />
-                              <div style={{"display": "none"}}>{" "}<span title="" className="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabIndex={0} aria-disabled="false" aria-readonly="true" aria-controls="viewRenamePatternList_listbox" aria-busy="false" aria-describedby="91f8bf21-c077-48e6-8bd4-a35626b49832" aria-labelledby="viewRenamePatternLabel viewRenamePatternHelpDesc" data-kit="k44" style={{}}>
-                                  <span id="91f8bf21-c077-48e6-8bd4-a35626b49832" unselectable="on" className="k-input-inner display-none">
-                                    <span className="k-input-value-text">{"select a value..."}</span>
-                                    </span>
-                                  <button role="button" tabIndex={-1} className="k-input-button k-button k-icon-button" aria-label="select" type="button">
-                                    <span className="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority">
-                                      <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M256 352 128 160h256z" />
-                                        </svg>
-                                      </span>
-                                    </button>
-                                  <label id="viewRenamePatternListLabel" htmlFor="viewRenamePatternList" className="display-none">{"viewRenamePatternList"}</label>
-                                  <input readOnly={true} isclonedisplayfor="true" className="editor-control" data-val="true" data-val-length-max="Rename Pattern has a maximum length of 50 characters." data-val-required="Rename Pattern is a required field." id="viewRenamePatternList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.RenamePattern" listviewdisplayformat="Name" maxLength={50} name="RenamePatternList" propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransfer.DestinationConfigurationModel-/FileTransfer/FileTransferConfigurationView-Desktop-RenamePattern" type="text" data-role="dropdownlist" aria-labelledby="viewRenamePatternListLabel" style={{"display": "none"}} />
-                                  </span>{" "}<label id="viewRenamePattern_IDLabel" htmlFor="viewRenamePattern_ID" className="display-none">{"viewRenamePattern_ID"}</label>
+                              <div style={{"display": "none"}}>{" "}<KitWidget id="k44" />{" "}<label id="viewRenamePattern_IDLabel" htmlFor="viewRenamePattern_ID" className="display-none">{"viewRenamePattern_ID"}</label>
                                 <input readOnly={true} id="viewRenamePattern_ID" name="RenamePattern.ID" type="hidden" defaultValue="" aria-labelledby="viewRenamePattern_IDLabel" />{" "}<label id="viewRenamePattern_NameLabel" htmlFor="viewRenamePattern_Name" className="display-none">{"viewRenamePattern_Name"}</label>
                                 <input readOnly={true} id="viewRenamePattern_Name" name="RenamePattern.Name" type="hidden" defaultValue="" aria-labelledby="viewRenamePattern_NameLabel" />{" "}<label id="viewRenamePattern_DisplayFormatLabel" htmlFor="viewRenamePattern_DisplayFormat" className="display-none">{"viewRenamePattern_DisplayFormat"}</label>
                                 <input readOnly={true} id="viewRenamePattern_DisplayFormat" name="RenamePattern.DisplayFormat" type="hidden" defaultValue="Name" aria-labelledby="viewRenamePattern_DisplayFormatLabel" />
