@@ -176,6 +176,26 @@ The side menu's fly-out is built without a native scrollbar (Kendo sets `overflo
 `overflow: auto` + `max-height: 80vh` would give the clone one). When the list is taller than the room (a small window), the kit shows Kendo's scroll buttons
 at both ends and scrolls the list with them and the wheel.
 
+## Behaviors every module shares (measured once, replayed everywhere)
+
+- **A window locks the page.** The portal opens windows with `modal.preventScroll` and sets `html` overflow hidden: no page scrollbar, only the window's
+  content scrolls. The capture stores what changed on `<html>`/`<body>` as `dialogs.<id>.pageLock`; a capture without it falls back on the window's
+  `options.modal.preventScroll`. The lock is applied before the window is placed (the room is the width without the scrollbar).
+- **Windows sit left below the switch.** `isPhone` and `openModalOverlay` are in the portal's shared script, so the placement measured on ANY screen of
+  the pack serves all of them (`port` lends it to a screen whose own dialog could not be measured, `responsive.dialog.from` says where it came from).
+  The profile pass replays Create New and row dialogs, retries three times, and photographs a dialog that will not open (`states/*-failed.png`).
+- **Focus.** The page's focused field is noted right after load (`early` hook, before the warm-up and the capture's own clicks) and stamped
+  `data-kit-autofocus`; a window's focused field likewise. The runtime focuses that field, else the first field a person can type in, when a page or
+  a window opens.
+- **Scrollable Kendo menus** (the side menu's list, a tall submenu, the module tab's popup): arrow buttons, a list that scrolls while the pointer rests
+  on a button (`menuScroll` px/s, measured at a profile), the wheel too. Side list: the lower arrow shows while it can scroll, the upper one once it
+  has scrolled (and stays, disabled, at the top). Submenu: both arrows while it overflows, inside a `.k-menu-scroll-wrapper` as Kendo builds it. The
+  module tab's popup keeps the arrows its live markup had and is at least as high as the portal's CSS says (30vh); the list height Kendo froze into
+  the snapshot is dropped. A submenu is kept inside the window (Kendo's fit).
+- **`&nbsp;` stays U+00A0** in the port: a plain leading space collapses inside a flex item and moves every menu label.
+- `verify` checks all of this on every dialog and on the side menu, whether or not the capture's states mention it (focus in a window with fields, the page
+  locked, the side menu's last item reachable by hovering its lower arrow). `ui` stops when the kit fails its own check on the raw port (`--ignore-kit` goes on).
+
 ## Known gaps (say them in GUESSED.md when a screen needs them)
 
 - Widgets the kit does not rebuild yet are ported as static markup and listed in `screen.json` `unknown` (and facts.md). The

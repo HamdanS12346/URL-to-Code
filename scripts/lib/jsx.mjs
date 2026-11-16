@@ -101,7 +101,7 @@ function jsxAttrs(tag, raw, inSvg, rw) {
 }
 
 const ENT = {
-  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', copy: '©', reg: '®',
+  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u00a0', copy: '©', reg: '®',
   trade: '™', hellip: '…', mdash: '—', ndash: '–', rsquo: '’', lsquo: '‘',
   ldquo: '“', rdquo: '”', middot: '·', bull: '•', deg: '°',
 };
@@ -119,7 +119,7 @@ export function toJsx(html, rw = (s) => s) {
   let svgDepth = 0;
   const text = (s) => {
     const t = decode(s);
-    if (!t.trim()) { if (t.length && out.length) out.push('{" "}'); return; }
+    if (!/[^\s]|\u00a0/.test(t)) { if (t.length && out.length) out.push('{" "}'); return; }
     out.push('{' + JSON.stringify(t) + '}');
   };
   const re = /<(\/?)([a-zA-Z][a-zA-Z0-9-]*)((?:"[^"]*"|'[^']*'|[^>"'])*?)(\/?)>|<!--[\s\S]*?-->/g;

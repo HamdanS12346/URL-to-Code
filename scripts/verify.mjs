@@ -107,6 +107,7 @@ if (process.env.BEHAVIOR !== '0') {
 // a site kit's states (kit/states.json): the clicks the capture made on the live page (a dropdown open, a tooltip, Search,
 // each dialog), replayed on the rebuild by the same stamped selectors, each picture diffed against the live one
 const kitStates = readJson(path.join(dir, 'kit', 'states.json'), null);
+const kitScreenJson = readJson(path.join(dir, 'kit', 'screen.json'), null);
 if (kitStates?.length && process.env.STATES !== '0') {
   rep.states = [];
   const sdir = path.join(outDir, 'states');
@@ -161,6 +162,21 @@ if (kitStates?.length && process.env.STATES !== '0') {
         else if (e.top && seen.length && !seen.some((x) => x.top)) failed.push(`${e.sel} is shown but covered or clipped: not on top${e.why ? ` (${e.why})` : ''}`);
         else if (e.outside && seen.some((x) => x.overlaps)) failed.push(`${e.sel} opens inside ${e.outside}, which clips it; the live one opens beside it${e.why ? ` (${e.why})` : ''}`);
       }
+      // what every window of the portal does, whether or not the capture's states say so: it focuses a field, locks the page behind it (only its content scrolls),
+      // and a window taller than the room scrolls inside itself. A side menu taller than the room reaches its last item through its arrow button.
+      const dlg = (st.expect ?? []).find((e) => /^\[data-kit-dialog="[^"]+"\]$/.test(e.sel));
+      if (dlg) {
+        const id = /data-kit-dialog="([^"]+)"/.exec(dlg.sel)?.[1], locks = !!kitScreenJson?.dialogs?.[id]?.options?.modal?.preventScroll;
+        const got = await p.evaluate((sel) => {
+          const w = document.querySelector(sel), a = document.activeElement, c = w?.querySelector('.k-window-content');
+          const fields = w ? [...w.querySelectorAll('input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([type=button]):not([disabled]):not([readonly]), select:not([disabled]), textarea:not([disabled]):not([readonly])')].filter((x) => x.getClientRects().length).length : 0;
+          return { focus: !fields || (!!w && w.contains(a)) && (/^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName) || a.classList.contains('k-dropdownlist')), locked: getComputedStyle(document.documentElement).overflowY === 'hidden' || getComputedStyle(document.body).overflowY === 'hidden',
+            contentScrolls: !!c && c.scrollHeight > c.clientHeight + 1 && ['auto', 'scroll'].includes(getComputedStyle(c).overflowY) };
+        }, dlg.sel).catch(() => null);
+        if (got && !got.focus) failed.push(`${dlg.sel} opened with no field focused (the portal focuses one when a window opens)`);
+        if (got && locks && !got.locked) failed.push(`${dlg.sel} opened but the page behind it can still scroll (the portal's windows lock it)`);
+        if (got && got.contentScrolls === false && (await p.evaluate((sel) => { const c = document.querySelector(sel)?.querySelector('.k-window-content'); return !!c && c.scrollHeight > c.clientHeight + 1; }, dlg.sel).catch(() => false))) failed.push(`${dlg.sel}: its content is taller than the window but does not scroll inside it`);
+      }
       if (failed.length) r.error = failed.join('; ');
       if (!st.shot) { r.ok = !failed.length; } else {
         const d = path.join(sdir, st.name);
@@ -169,6 +185,23 @@ if (kitStates?.length && process.env.STATES !== '0') {
         const res = py('diff.py', path.join(dir, 'kit', st.shot), path.join(d, 'candidate.png'), d);
         Object.assign(r, { bad_pct: res.bad_pct, size_delta_px: res.size_delta_px, ok: !failed.length && res.bad_pct <= (+process.env.STATE_MAX_BAD_PCT || 15) });
       }
+      const post = [];
+      if (st.name.startsWith('menu-open')) {
+        const reach = await p.evaluate(async () => {
+          const ul = [...document.querySelectorAll('[data-kit-menu] ul[data-role=menu]')].find((u) => u.getClientRects().length && u.scrollHeight > u.clientHeight + 1);
+          if (!ul) return null;
+          const next = ul.parentElement.querySelector('.k-menu-scroll-button-next');
+          return { shown: !!next && next.getClientRects().length > 0 };
+        }).catch(() => null);
+        if (reach && !reach.shown) post.push('the side menu is taller than its room but has no scroll arrow: its last items cannot be reached');
+        if (reach?.shown) {
+          const nb = p.locator('[data-kit-menu] .k-menu-scroll-button-next >> visible=true').first();
+          await nb.hover({ timeout: 3000 }).catch(() => {});
+          await p.waitForFunction(() => { const u = [...document.querySelectorAll('[data-kit-menu] ul[data-role=menu]')].find((x) => x.scrollHeight > x.clientHeight + 1 || x.scrollTop > 0); return !!u && u.scrollTop + u.clientHeight >= u.scrollHeight - 2; }, null, { timeout: 15000 }).catch(() => post.push('hovering the lower arrow of the side menu does not scroll the list to its last item'));
+          await p.mouse.move(0, 0);
+        }
+      }
+      if (post.length) { r.error = [r.error, ...post].filter(Boolean).join('; '); r.ok = false; }
     } catch (e) { r.error = e.message.split('\n')[0]; }
     await p.close();
     rep.states.push(r);

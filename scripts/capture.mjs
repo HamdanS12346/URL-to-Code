@@ -50,6 +50,7 @@ export async function capture({ browser, cfg, url, out, viewport, dpr, log, user
     const grown = await s.page.evaluate(() => __pw.expandScroller());
     if (grown) log(`  ! the page scrolls inside \`${grown.sel}\` (${grown.from}px tall, content ${grown.to}px): expanded so all of it is photographed; the real page keeps that area scrollable`);
 
+    if (kit?.early) await kit.early({ page: s.page, cfg, log });
     // 1. warm up: scroll through so lazy images, reveal-on-scroll and counters have all run; then back to the top
     await warmUp(s.page, cfg.warmup);
     await s.settle();

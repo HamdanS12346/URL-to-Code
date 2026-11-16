@@ -98,6 +98,25 @@ fs.mkdirSync(path.join(dest, 'components'), { recursive: true });
 const pageUrl = readJson(path.join(OUT, 'run.json'), {}).url || 'https://localhost/';
 const kitImport = opt('--kit-import');
 const kitScreen = kitImport ? readJson(path.join(OUT, 'kit', 'screen.json'), null) : null;
+// The portal places a window with one shared script, so a screen whose own dialog could not be measured below the small-screen switch takes the
+// placement another screen of the pack measured (the rule is the portal's, not the screen's); the source is kept in `from`
+// the shell's side menu is the same on every screen: one screen's measured scroll speed serves them all
+if (kitScreen && kitScreen.menuScroll == null && path.basename(path.dirname(OUT)) === 'screens') {
+  for (const sib of fs.readdirSync(path.dirname(OUT))) {
+    const v = sib === path.basename(OUT) ? null : readJson(path.join(path.dirname(OUT), sib, 'kit', 'screen.json'), null)?.menuScroll;
+    if (v) { kitScreen.menuScroll = v; break; }
+  }
+}
+if (kitScreen?.responsive && !kitScreen.responsive.dialog && path.basename(path.dirname(OUT)) === 'screens') {
+  for (const sib of fs.readdirSync(path.dirname(OUT))) {
+    const r = sib === path.basename(OUT) ? null : readJson(path.join(path.dirname(OUT), sib, 'kit', 'screen.json'), null)?.responsive;
+    if (!r?.dialog) continue;
+    kitScreen.responsive = { ...kitScreen.responsive, query: kitScreen.responsive.query ?? r.query, source: kitScreen.responsive.query ? kitScreen.responsive.source : `screen ${sib}`, dialog: { ...r.dialog, from: `screen ${sib}` },
+      desktop: { maxHeightPct: kitScreen.responsive.desktop?.maxHeightPct ?? r.desktop?.maxHeightPct ?? null } };
+    console.log(`  kit: no dialog was measured below ${kitScreen.responsive.query} on this screen: using the placement measured on ${sib}`);
+    break;
+  }
+}
 if (kitImport && !kitScreen) { console.error(`--kit-import: ${OUT}/kit/screen.json not found (capture this screen with its kit first)`); process.exit(2); }
 // a component one folder down (components/, dialogs/) imports the kit one level further up
 const kitFrom = (depth) => (kitImport?.startsWith('.') && depth ? `../${kitImport}` : kitImport);

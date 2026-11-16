@@ -3,28 +3,28 @@
     0,
     0
   ],
-  "bad_pct": 1.11,
-  "mean_abs": 1.42,
+  "bad_pct": 1.09,
+  "mean_abs": 1.43,
   "worst_band": {
     "y": 540,
-    "bad_pct": 3.39
+    "bad_pct": 3.33
   },
   "bands": [
     {
       "y": 0,
-      "bad_pct": 2.31
+      "bad_pct": 2.3
     },
     {
       "y": 180,
-      "bad_pct": 0.32
+      "bad_pct": 0.31
     },
     {
       "y": 360,
-      "bad_pct": 0.63
+      "bad_pct": 0.6
     },
     {
       "y": 540,
-      "bad_pct": 3.39
+      "bad_pct": 3.33
     },
     {
       "y": 720,
@@ -41,14 +41,14 @@
         0,
         456,
         1920,
-        264
+        288
       ],
-      "bad_px": 13660,
+      "bad_px": 13404,
       "css_box": [
         0,
         456,
         1920,
-        264
+        288
       ],
       "element": {
         "el": "div.broadcast-msg-list",
@@ -68,7 +68,7 @@
         1920,
         48
       ],
-      "bad_px": 3986,
+      "bad_px": 3987,
       "css_box": [
         0,
         72,
@@ -118,7 +118,7 @@
         264,
         24
       ],
-      "bad_px": 1055,
+      "bad_px": 1054,
       "css_box": [
         1152,
         24,
@@ -143,7 +143,7 @@
         144,
         144
       ],
-      "bad_px": 1003,
+      "bad_px": 997,
       "css_box": [
         1008,
         168,
@@ -169,7 +169,7 @@
       "label": "mcbrowborder",
       "y": 62,
       "h": 570.2299999999999,
-      "bad_pct": 1.22
+      "bad_pct": 1.19
     },
     {
       "n": 2,
@@ -191,7 +191,7 @@
     {
       "name": "tooltip",
       "ok": true,
-      "bad_pct": 6.01,
+      "bad_pct": 5.98,
       "size_delta_px": [
         0,
         0
@@ -200,7 +200,7 @@
     {
       "name": "menu-open",
       "ok": true,
-      "bad_pct": 1.61,
+      "bad_pct": 1.25,
       "size_delta_px": [
         0,
         0
@@ -209,7 +209,7 @@
     {
       "name": "menu-flyout",
       "ok": true,
-      "bad_pct": 14.2,
+      "bad_pct": 13.69,
       "size_delta_px": [
         0,
         0
@@ -222,7 +222,7 @@
     {
       "name": "layout@client",
       "ok": true,
-      "bad_pct": 0.92,
+      "bad_pct": 0.94,
       "size_delta_px": [
         0,
         0
@@ -231,7 +231,7 @@
     {
       "name": "menu-open@client",
       "ok": true,
-      "bad_pct": 2.08,
+      "bad_pct": 1.83,
       "size_delta_px": [
         0,
         0
@@ -239,8 +239,8 @@
     },
     {
       "name": "menu-flyout@client",
-      "ok": false,
-      "bad_pct": 22.68,
+      "ok": true,
+      "bad_pct": 8.96,
       "size_delta_px": [
         0,
         0
@@ -251,12 +251,5 @@
       "ok": true
     }
   ],
-  "bands_note": "the rebuild has 0 top-level bands, the original 2: section heights not compared",
-  "behavior": {
-    "console": {
-      "errors": [],
-      "reactWarnings": [],
-      "failedResources": 0
-    }
-  }
+  "bands_note": "the rebuild has 0 top-level bands, the original 2: section heights not compared"
 }

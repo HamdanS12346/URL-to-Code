@@ -4,10 +4,10 @@
     0
   ],
   "bad_pct": 2.7,
-  "mean_abs": 3.35,
+  "mean_abs": 3.36,
   "worst_band": {
     "y": 360,
-    "bad_pct": 5.16
+    "bad_pct": 5.17
   },
   "bands": [
     {
@@ -20,15 +20,15 @@
     },
     {
       "y": 360,
-      "bad_pct": 5.16
+      "bad_pct": 5.17
     },
     {
       "y": 540,
-      "bad_pct": 2.92
+      "bad_pct": 2.94
     },
     {
       "y": 720,
-      "bad_pct": 3.34
+      "bad_pct": 3.36
     },
     {
       "y": 900,
@@ -43,7 +43,7 @@
         1704,
         168
       ],
-      "bad_px": 16358,
+      "bad_px": 16376,
       "css_box": [
         24,
         240,
@@ -68,7 +68,7 @@
         1248,
         72
       ],
-      "bad_px": 8307,
+      "bad_px": 8367,
       "css_box": [
         24,
         528,
@@ -118,7 +118,7 @@
         1920,
         96
       ],
-      "bad_px": 5262,
+      "bad_px": 5265,
       "css_box": [
         0,
         96,
@@ -143,7 +143,7 @@
         1920,
         48
       ],
-      "bad_px": 5067,
+      "bad_px": 5136,
       "css_box": [
         0,
         840,
@@ -176,14 +176,14 @@
       "label": "pagebody",
       "y": 138.17,
       "h": 627.33,
-      "bad_pct": 3.29
+      "bad_pct": 3.3
     },
     {
       "n": 3,
       "label": "disclaimer-the-website-is-prov",
       "y": 765.5,
       "h": 118.5,
-      "bad_pct": 4.24
+      "bad_pct": 4.27
     }
   ],
   "worst_section": {
@@ -191,14 +191,14 @@
     "label": "disclaimer-the-website-is-prov",
     "y": 765.5,
     "h": 118.5,
-    "bad_pct": 4.24
+    "bad_pct": 4.27
   },
   "verdict": "close",
   "states": [
     {
       "name": "dropdown",
       "ok": true,
-      "bad_pct": 8.83,
+      "bad_pct": 8.84,
       "size_delta_px": [
         0,
         0
@@ -207,7 +207,7 @@
     {
       "name": "tooltip",
       "ok": true,
-      "bad_pct": 6.59,
+      "bad_pct": 6.55,
       "size_delta_px": [
         0,
         0
@@ -216,7 +216,7 @@
     {
       "name": "search",
       "ok": true,
-      "bad_pct": 5.1,
+      "bad_pct": 5.11,
       "size_delta_px": [
         0,
         0
@@ -225,7 +225,7 @@
     {
       "name": "row-d1",
       "ok": true,
-      "bad_pct": 14.58,
+      "bad_pct": 12.66,
       "size_delta_px": [
         0,
         0
@@ -234,7 +234,7 @@
     {
       "name": "menu-open",
       "ok": true,
-      "bad_pct": 3.18,
+      "bad_pct": 2.82,
       "size_delta_px": [
         0,
         0
@@ -243,7 +243,7 @@
     {
       "name": "menu-flyout",
       "ok": true,
-      "bad_pct": 13.78,
+      "bad_pct": 13.39,
       "size_delta_px": [
         0,
         0
@@ -256,7 +256,7 @@
     {
       "name": "tab-flyout",
       "ok": true,
-      "bad_pct": 11.06,
+      "bad_pct": 2.35,
       "size_delta_px": [
         0,
         0
@@ -265,7 +265,7 @@
     {
       "name": "layout@client",
       "ok": true,
-      "bad_pct": 3.24,
+      "bad_pct": 3.27,
       "size_delta_px": [
         0,
         0
@@ -274,7 +274,7 @@
     {
       "name": "menu-open@client",
       "ok": true,
-      "bad_pct": 4.29,
+      "bad_pct": 4.04,
       "size_delta_px": [
         0,
         0
@@ -283,7 +283,7 @@
     {
       "name": "menu-flyout@client",
       "ok": true,
-      "bad_pct": 9.88,
+      "bad_pct": 9.65,
       "size_delta_px": [
         0,
         0
@@ -295,8 +295,8 @@
     },
     {
       "name": "tab-flyout@client",
-      "ok": false,
-      "bad_pct": 21.71,
+      "ok": true,
+      "bad_pct": 4.42,
       "size_delta_px": [
         0,
         0
@@ -311,12 +311,5 @@
       "ok": true,
       "detail": "animation autoFillEnd"
     }
-  ],
-  "behavior": {
-    "console": {
-      "errors": [],
-      "reactWarnings": [],
-      "failedResources": 0
-    }
-  }
+  ]
 }

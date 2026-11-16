@@ -20,8 +20,11 @@ export type DialogDef = { title: string; windowClass: string; windowStyle: strin
   overlay: { className: string; style: string | null; background: string; opacity: string } | null; options: Record<string, unknown> | null; widgets: Record<string, WidgetDef>;
   opener: string; openerIndex?: number; openerId?: string | null; parent?: string; children: string[]; creates?: Create[];
   conditionals?: Conditional[]; saveValidation?: Validation & { postAttempted?: boolean };
+  // what opening the window did to the page behind it (a scroll lock), and the field the portal focused in it (stamped data-kit-autofocus in its markup)
+  pageLock?: PageLock | null; autofocus?: string | null;
   // closing with an edit in it: does the X / Cancel ask "form data has changed"? `confirm` is the live window that asked (its markup and buttons)
   close?: { x?: { asks: boolean } | null; cancel?: { asks: boolean } | null; confirm?: Confirm | null } };
+export type PageLock = { htmlOverflow: string | null; bodyOverflow: string | null; bodyAdd: string[]; bodyScroll: string | null };
 export type Confirm = { title: string; windowClass: string; windowStyle: string | null; titlebarHtml: string | null; contentClass: string; contentId: string | null; contentStyle: string | null;
   overlay: DialogDef['overlay']; options: Record<string, unknown> | null; contentHtml: string; buttons: { text: string; answer: 'stay' | 'leave' | null }[]; rect: { x: number; y: number; w: number; h: number } };
 // a validation summary banner (the live markup) and the per-field messages the page showed
@@ -53,6 +56,8 @@ export type KitData = {
   // the page-level help icon (the book, .help-icon-container) as the live page had it, or null when it had none; the icon
   // belongs to the page, not the shared shell, so each screen shows or hides it (undefined: a capture from before this)
   help?: string | null;
+  // how fast Kendo scrolls a scrollable menu while the pointer is on its arrow button (px per second, measured on the live page)
+  menuScroll?: number | null;
   calibration: { defaults?: { popup?: { open?: Anim; close?: Anim }; tooltip?: { showAfter?: number; hideAfter?: number; animation?: { open?: Anim; close?: Anim } } | null; window?: { open?: Anim; close?: Anim } | null; menu?: { open?: Anim; close?: Anim } | null; tooltipGap?: number } | null;
     dropdownPopup?: string | null; calendarPopup?: string | null; tooltip?: string | null };
 };
@@ -142,7 +147,7 @@ if (typeof document !== 'undefined') document.addEventListener('mousedown', (e) 
 }, true);
 
 // Kendo's own defaults (kendo.ui.Popup / Tooltip / Window / Menu); kit.json calibration.defaults overrides them
-export const DEFAULTS = { popupOpen: 200, popupClose: 100, tooltipShow: 100, tooltipHide: 100, windowMs: 350, menuMs: 200, collapseMs: 400, tooltipGap: 6 };
+export const DEFAULTS = { popupOpen: 200, popupClose: 100, tooltipShow: 100, tooltipHide: 100, windowMs: 350, menuMs: 200, collapseMs: 400, tooltipGap: 6, menuScroll: 180 };
 export const ms = (d: KitData, kind: 'popupOpen' | 'popupClose' | 'windowMs' | 'menuMs') => {
   const c = d.calibration?.defaults;
   const v = kind === 'popupOpen' ? c?.popup?.open?.duration : kind === 'popupClose' ? c?.popup?.close?.duration : kind === 'windowMs' ? c?.window?.open?.duration : c?.menu?.open?.duration;

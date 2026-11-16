@@ -216,7 +216,7 @@
       return {
         shell: { title: title ? clean(title.textContent) : null, module: mod ? clean(mod.textContent) : null, headerStyle: header?.getAttribute('style') || null,
           headerHeight: header ? Math.round(header.getBoundingClientRect().height) : null },
-        widgets: defs, fields: fields(root), actions: acts, hidden: hiddenAtRest(root), unknown: unknownRoles(root), autofocus: focus ? (focus.id || focus.name || focus.tagName) : null,
+        widgets: defs, fields: fields(root), actions: acts, hidden: hiddenAtRest(root), unknown: unknownRoles(root), autofocus: focus ? (focus.id || focus.name || focus.tagName) : (document.querySelector('[data-kit-autofocus]')?.id || document.querySelector('[data-kit-autofocus]')?.name || null),
         kendo: window.kendo?.version || null, jquery: $?.fn?.jquery || null,
       };
     },
@@ -318,10 +318,24 @@
       return { show, hide: pick(false), scroll: now.scroll !== before.scroll ? now.scroll : null };
     },
     // an open Kendo window: stamp it like the page, hand back its parts
+    // what a modal does to the page behind it: scroll lock (html / body overflow, classes), read by kit.mjs against the state before it opened
+    pageState() {
+      const h = document.documentElement, b = document.body, ch = getComputedStyle(h), cb = getComputedStyle(b);
+      return { htmlOverflow: ch.overflowY, bodyOverflow: cb.overflowY, htmlInline: h.style.overflow || '', bodyClass: b.className, bodyScroll: b.getAttribute('scroll') };
+    },
+    // the field the page itself focused on load (before the capture's own clicks take the focus away): stamped so the port keeps it
+    noteFocus(scope) {
+      const root = (scope && document.querySelector(scope)) || document.body, a = document.activeElement;
+      if (!a || a === document.body || !root.contains(a)) return null;
+      a.setAttribute('data-kit-autofocus', '');
+      return a.id || a.name || a.tagName;
+    },
     dialog() {
       const win = [...document.querySelectorAll('.k-window')].filter(shown).pop();
       if (!win) return null;
       const content = win.querySelector('.k-window-content') || win;
+      const fa = document.activeElement && content.contains(document.activeElement) ? document.activeElement : null;
+      if (fa) fa.setAttribute('data-kit-autofocus', ''); // before contentHtml is read below
       const defs = {};
       scan(content, defs);
       const acts = actions(win);
@@ -335,7 +349,7 @@
         titlebarHtml: tb?.outerHTML || null, contentClass: content.className, contentId: content.id || null, contentStyle: content.getAttribute('style'), contentHtml: content.innerHTML,
         overlay: ov ? { className: ov.className, style: ov.getAttribute('style'), background: cs.backgroundColor, opacity: cs.opacity } : null,
         options: w ? plain({ modal: w.options.modal, width: w.options.width, height: w.options.height, actions: w.options.actions, draggable: w.options.draggable, resizable: w.options.resizable, animation: w.options.animation, position: w.options.position }) : null,
-        widgets: defs, fields: fields(content), actions: acts, hidden, unknown: unknownRoles(content), rect: win.getBoundingClientRect().toJSON() };
+        widgets: defs, fields: fields(content), actions: acts, hidden, unknown: unknownRoles(content), autofocus: fa ? (fa.id || fa.name || fa.tagName) : null, pageState: this.pageState(), rect: win.getBoundingClientRect().toJSON() };
     },
     closeDialog() {
       const win = [...document.querySelectorAll('.k-window')].filter(shown).pop();

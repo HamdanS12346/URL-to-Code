@@ -3,20 +3,20 @@
     0,
     0
   ],
-  "bad_pct": 11.01,
-  "mean_abs": 10.8,
+  "bad_pct": 2.39,
+  "mean_abs": 2.41,
   "worst_band": {
     "y": 290,
-    "bad_pct": 39.3
+    "bad_pct": 10.62
   },
   "bands": [
     {
       "y": 0,
-      "bad_pct": 25.45
+      "bad_pct": 3.17
     },
     {
       "y": 58,
-      "bad_pct": 1.34
+      "bad_pct": 0.54
     },
     {
       "y": 116,
@@ -32,18 +32,18 @@
     },
     {
       "y": 290,
-      "bad_pct": 39.3
+      "bad_pct": 10.62
     }
   ],
   "clusters": [
     {
       "box": [
         0,
-        288,
+        312,
         1920,
-        60
+        36
       ],
-      "bad_px": 43765
+      "bad_px": 11823
     },
     {
       "box": [
@@ -52,9 +52,9 @@
         1920,
         96
       ],
-      "bad_px": 29828
+      "bad_px": 4125
     }
   ],
   "worst_crop": "worst.png",
-  "verdict": "differs"
+  "verdict": "close"
 }

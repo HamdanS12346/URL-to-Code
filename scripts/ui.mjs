@@ -592,6 +592,8 @@ const data = kit as unknown as KitData;
     log(`   ${st ?? `no kit states replayed${v.ok ? '' : `: ${v.text.split('\n').slice(-3).join(' | ')}`}`}`);
     const bad = (st ?? '').split(' | ').slice(1).map((x) => x.replace(/^✗\s*/, '').trim()).filter(Boolean);
     mark('preflight:kit', st && !bad.length ? 'done' : 'needs-review', { screen: pre.id, ...(bad.length || !st ? { problems: ['the kit on the raw port (fix it in kits/<kit>, not in the app):', ...(bad.length ? bad : [v.text.split('\n').slice(-5).join(' | ')])] } : {}) });
+    // a writer cannot fix the kit: a failed state here would only be carried into every screen, so the run stops until the kit (or the capture) is fixed
+    if (bad.length && !flag('--ignore-kit')) die(`the kit fails its own check on the raw port (${bad.length} state(s) above). Fix it in kits/${kit.name ?? 'provider'} (or re-capture), then run again; --ignore-kit goes on anyway.`);
     if (freshPort(pre)) { saveBase(pre); portedNow.delete(pre.id); } // this screen's states before its writer: measured just now
   }
   const codeLimit = limiter(kit ? parallel : 1); // without a kit the home step builds the shell every other screen needs

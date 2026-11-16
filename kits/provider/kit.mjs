@@ -185,6 +185,13 @@ async function demoFlyout(page, which, module) {
   return out;
 }
 
+// right after load, before anything is scrolled or clicked: which field the page focused by itself (stamped, so the port keeps it)
+export async function early({ page, cfg, log }) {
+  await inject(page);
+  const f = await page.evaluate((sc) => window.__kit.noteFocus(sc), (cfg.kit || {}).scope || null).catch(() => null);
+  log(f ? `  kit: the page focuses "${f}" on load` : '  kit: the page focuses nothing on load');
+}
+
 export async function prepare({ page, cfg, log }) {
   await inject(page);
   const k = cfg.kit || {};
@@ -319,6 +326,30 @@ function menuStates({ dir, menu, menuShot, flyShot, barFound, sfx = '', extra = 
 
 const maxHeightOf = (style) => { const m = /max-height:\s*([\d.]+)px/.exec(style || ''); return m ? +m[1] : null; };
 
+// How fast Kendo scrolls a scrollable menu while the pointer rests on its arrow button (px per second): the side menu overflows only in a small window, so this
+// is read at a profile. The menu is opened, the lower arrow hovered for a moment, the list's scrollTop read twice; then the pointer leaves and the menu closes.
+async function measureMenuScroll(page) {
+  try {
+    const open = page.locator('[data-kit-action=menu] >> visible=true').first();
+    if (!(await open.count())) return null;
+    await open.click({ timeout: 3000 });
+    await page.waitForTimeout(700);
+    const btn = page.locator('[data-kit-menu] .k-menu-scroll-button-next >> visible=true').first();
+    if (!(await btn.count())) return null;
+    const top = () => page.evaluate(() => { const u = [...document.querySelectorAll('[data-kit-menu] ul[data-role=menu]')].find((x) => x.getClientRects().length && x.scrollHeight > x.clientHeight + 1); return u ? u.scrollTop : null; });
+    const a0 = await top();
+    await btn.hover({ timeout: 3000 });
+    await page.waitForTimeout(150);
+    const t0 = Date.now(), y0 = await top();
+    await page.waitForTimeout(900);
+    const y1 = await top(), dt = (Date.now() - t0) / 1000;
+    await page.mouse.move(0, 0);
+    await page.locator('[data-kit-action=menu-close] >> visible=true').first().click({ timeout: 2000 }).catch(() => {});
+    if (a0 == null || y0 == null || y1 == null || y1 <= y0) return null;
+    return Math.round((y1 - y0) / dt);
+  } catch { return null; }
+}
+
 // The same screen at each extra viewport profile (config "profiles": e.g. a real browser on a 1920x1080 screen at 150% is 1272x588, below the portal's
 // small-screen switch at 1280). A new page at that size is loaded, and: the layout the portal's breakpoints give is recorded, each side-menu and module-tab
 // state is photographed, each Create New dialog is opened and measured. Everything becomes states (replayed by verify at that size) and screen.profiles /
@@ -354,32 +385,51 @@ async function profilePass({ ctx, screen, states, dir, log }) {
       }
       const bar = await demoFlyout(page, 'bar', k.module).catch(() => null);
       if (bar) states.push(...menuStates({ dir, menu: null, barFound: bar, sfx: `@${name}`, extra }));
-      // each Create New dialog of the main pass, replayed by the same clicks, measured and photographed
+      const speed = menuFound ? await measureMenuScroll(page) : null;
+      if (speed && !screen.menuScroll) { screen.menuScroll = speed; log(`  kit: the side menu scrolls at ${speed} px/s while its arrow is hovered`); }
+      else if (menuFound && !speed) log(`  kit: no scrollable side menu at profile "${name}": scroll speed not measured`);
+      // each dialog of the main pass (a Create New, a row's double-click), replayed by the same clicks, measured and photographed. The portal's placement code
+      // is the shared script's, so any one dialog measured here gives the rule for every screen: a dialog that will not open is an error, with a picture, not a shrug
       const wins = () => page.evaluate(() => window.__kit.position());
-      for (const st of states.filter((x) => /^dialog-d\d+$/.test(x.name) && !x.profile && x.steps.every((s) => /^\[data-kit-action=/.test(s.sel)))) {
-        const id = st.name.slice(7);
-        try {
-          await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
-          await s2.settle(300, 6000);
-          await page.evaluate((a) => { if (!window.__kit) (0, eval)(a.src); return window.__kit.rest(a); }, { src: HARVEST, scope: k.scope || null, module: k.module || null });
-          await page.mouse.move(0, 0);
-          for (const step of st.steps) {
-            const loc = page.locator(`${step.sel} >> visible=true`).nth(step.nth ?? 0);
-            await loc.scrollIntoViewIfNeeded({ timeout: 4000 });
-            await loc.click({ timeout: 4000 });
-            await page.waitForTimeout(st.wait ?? 800);
-          }
-          let pos = null;
-          for (let i = 0; i < 40 && !pos; i++) { pos = await wins().catch(() => null); if (!pos) await page.waitForTimeout(500); }
-          await s2.settle(300, 6000);
-          pos = await wins();
-          if (!pos) { log(`  ! kit: dialog ${id} did not open at profile "${name}"`); continue; }
-          await page.screenshot({ path: path.join(dir, 'states', `dialog-${id}@${name}.png`), animations: 'disabled', caret: 'hide' });
-          entry.dialogs[id] = pos;
-          states.push({ name: `dialog-${id}@${name}`, steps: st.steps, wait: st.wait, shot: `states/dialog-${id}@${name}.png`, ...extra,
-            expect: [{ sel: `[data-kit-dialog="${id}"]`, why: `Create New opens dialog ${id} at this size`, rect: { x: pos.rect.x, y: pos.rect.y, w: pos.rect.w, h: pos.rect.h }, tol: { x: 3, y: 3, w: 3, h: 14 } }] });
-          for (let i = 0; i < 3 && (await wins().catch(() => null)); i++) { await page.evaluate(() => window.__kit.closeDialog()); await page.waitForTimeout(800); }
-        } catch (e) { log(`  ! kit: dialog ${id} at profile "${name}": ${e.message.split('\n')[0]}`); }
+      const play = async (step) => {
+        if (/data-kit-row/.test(step.sel)) { // a row of the live grid (the stamp is the rebuild's)
+          const td = page.locator('[data-kit] tbody tr:not(.k-grid-norecords) td').first();
+          await td.scrollIntoViewIfNeeded({ timeout: 6000 });
+          return step.do === 'dblclick' ? td.dblclick({ timeout: 4000 }) : td.click({ timeout: 4000 });
+        }
+        const loc = page.locator(`${step.sel} >> visible=true`).nth(step.nth ?? 0);
+        await loc.scrollIntoViewIfNeeded({ timeout: 6000 });
+        await loc.click({ timeout: 4000 }).catch(() => loc.click({ timeout: 4000, force: true }));
+        if (/data-kit-action=search/.test(step.sel)) await waitLoaded(page, s2);
+      };
+      entry.dialogErrors = {};
+      for (const st of states.filter((x) => /^(dialog|row)-d\d+$/.test(x.name) && !x.profile && x.steps.every((q) => /^\[data-kit-/.test(q.sel)))) {
+        const id = st.name.replace(/^(dialog|row)-/, ''), isRow = st.name.startsWith('row-'), at = `${isRow ? 'row' : 'dialog'}-${id}@${name}`;
+        let pos = null, why = '';
+        for (let attempt = 1; attempt <= 3 && !pos; attempt++) {
+          try {
+            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
+            await s2.settle(300, 6000);
+            await page.evaluate((a) => { if (!window.__kit) (0, eval)(a.src); return window.__kit.rest(a); }, { src: HARVEST, scope: k.scope || null, module: k.module || null });
+            await page.mouse.move(0, 0);
+            for (const step of st.steps) { await play(step); await page.waitForTimeout(st.wait ?? 800); }
+            for (let i = 0; i < 40 && !pos; i++) { pos = await wins().catch(() => null); if (!pos) await page.waitForTimeout(500); }
+            if (pos) { await s2.settle(300, 6000); pos = await wins(); }
+            else why = 'no window appeared';
+          } catch (e) { why = e.message.split('\n')[0]; }
+          if (!pos) log(`  ! kit: ${at}: attempt ${attempt} failed (${why})`);
+        }
+        if (!pos) {
+          await page.screenshot({ path: path.join(dir, 'states', `${at}-failed.png`), animations: 'disabled', caret: 'hide' }).catch(() => {});
+          entry.dialogErrors[id] = why;
+          log(`  ! kit: dialog ${id} did not open at profile "${name}" (${why}); picture states/${at}-failed.png`);
+          continue;
+        }
+        await page.screenshot({ path: path.join(dir, 'states', `dialog-${id}@${name}.png`), animations: 'disabled', caret: 'hide' });
+        entry.dialogs[id] = pos;
+        states.push({ name: at, steps: st.steps, wait: st.wait, shot: `states/dialog-${id}@${name}.png`, ...extra,
+          expect: [{ sel: `[data-kit-dialog="${id}"]`, why: `${isRow ? 'a row opens' : 'Create New opens'} dialog ${id} at this size`, rect: { x: pos.rect.x, y: pos.rect.y, w: pos.rect.w, h: pos.rect.h }, tol: { x: 3, y: 3, w: 3, h: 14 } }] });
+        for (let i = 0; i < 3 && (await wins().catch(() => null)); i++) { await page.evaluate(() => window.__kit.closeDialog()); await page.waitForTimeout(800); }
       }
       void rest;
     } finally { await s2.close().catch(() => {}); }
@@ -389,8 +439,8 @@ async function profilePass({ ctx, screen, states, dir, log }) {
   const desktopPct = mainDlg && maxHeightOf(mainDlg.windowStyle) ? +((maxHeightOf(mainDlg.windowStyle) / viewport.height) * 100).toFixed(1) : null;
   const responsive = { query: null, source: null, desktop: { maxHeightPct: desktopPct }, dialog: null };
   for (const [name, p] of Object.entries(screen.profiles)) {
-    const pos = Object.values(p.dialogs)[0];
-    if (!pos || pos.centered) continue;
+    const pos = Object.values(p.dialogs).find((x) => !x.centered);
+    if (!pos) continue;
     const vw = pos.viewport.docW, vh = pos.viewport.h, width = screen.plan?.phoneWidth ?? p.viewport.width;
     responsive.query = `(max-width: ${width}px)`;
     responsive.source = screen.plan?.phoneWidth ? 'script' : `profile ${name}`;
@@ -398,6 +448,9 @@ async function profilePass({ ctx, screen, states, dir, log }) {
       maxHeightPct: pos.maxHeight ? +((pos.maxHeight / vh) * 100).toFixed(1) : null, from: name };
     break;
   }
+  // the switch is the portal's (isPhone in the shared script), so it is known even when this screen's own dialog could not be measured below it; ui.mjs lends the
+  // measured placement of another screen of the pack
+  if (!responsive.query && screen.plan?.phoneWidth) { responsive.query = `(max-width: ${screen.plan.phoneWidth}px)`; responsive.source = 'script'; }
   screen.responsive = responsive;
   if (responsive.dialog) log(`  kit: below ${responsive.query} (${responsive.source}) a dialog sits at left ${responsive.dialog.left}px, top ${responsive.dialog.top}px, ${responsive.dialog.minWidthPct ?? responsive.dialog.widthPct}% wide, at most ${responsive.dialog.maxHeightPct}% high; above it, centered${desktopPct ? `, at most ${desktopPct}% high` : ''}`);
   else log('  kit: dialogs are centered at every profile');
@@ -568,6 +621,15 @@ export async function explore({ page, context, s, out, log, kit, cfg = {}, url =
   }
   // 5. Create New (and the first row's edit/detail): each dialog harvested, then closed. Never Save.
   let dn = 0;
+  const baseState = await page.evaluate(() => window.__kit.pageState()).catch(() => null); // the page before any window opens
+  // what opening a window did to the page behind it (a scroll lock: html / body overflow, a class): the kit sets the same while a window is open
+  const lockOf = (st) => {
+    if (!baseState || !st) return null;
+    const w = (x) => new Set((x || '').split(/\s+/).filter(Boolean)), was = w(baseState.bodyClass), now = w(st.bodyClass);
+    const lock = { htmlOverflow: st.htmlOverflow !== baseState.htmlOverflow ? st.htmlOverflow : null, bodyOverflow: st.bodyOverflow !== baseState.bodyOverflow ? st.bodyOverflow : null,
+      bodyAdd: [...now].filter((c) => !was.has(c)), bodyScroll: st.bodyScroll !== baseState.bodyScroll ? st.bodyScroll : null };
+    return lock.htmlOverflow || lock.bodyOverflow || lock.bodyAdd.length || lock.bodyScroll ? lock : null;
+  };
   const who = (loc) => loc.evaluate((e) => ({ id: e.id || null, text: (e.value || e.textContent || e.getAttribute('title') || '').replace(/\s+/g, ' ').trim().slice(0, 60) })).catch(() => ({ id: null, text: '' }));
   // A Create New that opened no window may show a part of what is already there (the Destination form inside the Add
   // dialog; an inline editor on a page): what the click turned on and off, a picture, and the part put away again with its
@@ -597,7 +659,9 @@ export async function explore({ page, context, s, out, log, kit, cfg = {}, url =
     const id = `d${++dn}`;
     fs.writeFileSync(path.join(dir, 'dialogs', `${id}.html`), d.contentHtml);
     delete d.contentHtml;
-    screen.dialogs[id] = { ...d, opener: label, children: [], creates: [] };
+    const { pageState, ...rest } = d;
+    screen.dialogs[id] = { ...rest, pageLock: lockOf(pageState), opener: label, children: [], creates: [] };
+    if (!nested) log(`  kit: dialog ${id} ${screen.dialogs[id].pageLock ? `locks the page behind it (${JSON.stringify(screen.dialogs[id].pageLock)})` : 'leaves the page behind it scrollable'}; focus on ${d.autofocus ?? 'nothing'}`);
     await shot(`dialog-${id}`);
     await dateMasks(d.widgets, '.k-window ');
     if (!nested) screen.dialogs[id].conditionals = await sweep(page, 'dialog').catch(() => []); // radios / checkboxes / dropdown values that show or hide parts of the dialog

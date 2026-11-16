@@ -4,10 +4,10 @@
     0
   ],
   "bad_pct": 1.34,
-  "mean_abs": 1.74,
+  "mean_abs": 1.75,
   "worst_band": {
     "y": 540,
-    "bad_pct": 2.94
+    "bad_pct": 2.95
   },
   "bands": [
     {
@@ -20,11 +20,11 @@
     },
     {
       "y": 360,
-      "bad_pct": 1.41
+      "bad_pct": 1.42
     },
     {
       "y": 540,
-      "bad_pct": 2.94
+      "bad_pct": 2.95
     },
     {
       "y": 720,
@@ -43,7 +43,7 @@
         1920,
         120
       ],
-      "bad_px": 12093,
+      "bad_px": 12127,
       "css_box": [
         0,
         528,
@@ -68,7 +68,7 @@
         1920,
         96
       ],
-      "bad_px": 4773,
+      "bad_px": 4781,
       "css_box": [
         0,
         96,
@@ -93,7 +93,7 @@
         312,
         96
       ],
-      "bad_px": 1918,
+      "bad_px": 1916,
       "css_box": [
         24,
         288,
@@ -118,7 +118,7 @@
         264,
         48
       ],
-      "bad_px": 1596,
+      "bad_px": 1600,
       "css_box": [
         1608,
         408,
@@ -143,7 +143,7 @@
         192,
         48
       ],
-      "bad_px": 1301,
+      "bad_px": 1305,
       "css_box": [
         48,
         192,
@@ -183,7 +183,7 @@
       "label": "disclaimer-the-website-is-prov",
       "y": 537,
       "h": 118.5,
-      "bad_pct": 5.29
+      "bad_pct": 5.31
     }
   ],
   "worst_section": {
@@ -191,14 +191,14 @@
     "label": "disclaimer-the-website-is-prov",
     "y": 537,
     "h": 118.5,
-    "bad_pct": 5.29
+    "bad_pct": 5.31
   },
   "verdict": "close",
   "states": [
     {
       "name": "tooltip",
       "ok": true,
-      "bad_pct": 6.59,
+      "bad_pct": 6.55,
       "size_delta_px": [
         0,
         0
@@ -207,7 +207,7 @@
     {
       "name": "search",
       "ok": true,
-      "bad_pct": 3.9,
+      "bad_pct": 3.91,
       "size_delta_px": [
         0,
         0
@@ -225,7 +225,7 @@
     {
       "name": "row-d2",
       "ok": true,
-      "bad_pct": 3.03,
+      "bad_pct": 3.09,
       "size_delta_px": [
         0,
         0
@@ -234,7 +234,7 @@
     {
       "name": "menu-open",
       "ok": true,
-      "bad_pct": 1.85,
+      "bad_pct": 1.5,
       "size_delta_px": [
         0,
         0
@@ -243,7 +243,7 @@
     {
       "name": "menu-flyout",
       "ok": true,
-      "bad_pct": 13.64,
+      "bad_pct": 13.26,
       "size_delta_px": [
         0,
         0
@@ -256,7 +256,7 @@
     {
       "name": "tab-flyout",
       "ok": true,
-      "bad_pct": 11.01,
+      "bad_pct": 2.39,
       "size_delta_px": [
         0,
         0
@@ -265,7 +265,7 @@
     {
       "name": "layout@client",
       "ok": true,
-      "bad_pct": 1.63,
+      "bad_pct": 1.67,
       "size_delta_px": [
         0,
         0
@@ -274,7 +274,7 @@
     {
       "name": "menu-open@client",
       "ok": true,
-      "bad_pct": 2.64,
+      "bad_pct": 2.41,
       "size_delta_px": [
         0,
         0
@@ -283,7 +283,7 @@
     {
       "name": "menu-flyout@client",
       "ok": true,
-      "bad_pct": 9.22,
+      "bad_pct": 8.95,
       "size_delta_px": [
         0,
         0
@@ -295,8 +295,8 @@
     },
     {
       "name": "tab-flyout@client",
-      "ok": false,
-      "bad_pct": 21.92,
+      "ok": true,
+      "bad_pct": 4.14,
       "size_delta_px": [
         0,
         0
@@ -304,9 +304,8 @@
     },
     {
       "name": "dialog-d1@client",
-      "ok": false,
-      "error": "[data-kit-dialog=\"d1\"] is at x 0, y 20, 1131x500 but the live one is at x 0, y 20, 1145x500 (w differ) (Create New opens dialog d1 at this size)",
-      "bad_pct": 7.87,
+      "ok": true,
+      "bad_pct": 4.86,
       "size_delta_px": [
         0,
         0
@@ -321,12 +320,5 @@
       "ok": true,
       "detail": "animation autoFillEnd"
     }
-  ],
-  "behavior": {
-    "console": {
-      "errors": [],
-      "reactWarnings": [],
-      "failedResources": 0
-    }
-  }
+  ]
 }

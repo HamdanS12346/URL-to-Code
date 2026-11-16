@@ -9,10 +9,41 @@
 // links to a rebuilt screen, the headroom header (hides on scroll down), and the dialogs (Kendo windows).
 import { useCallback, useLayoutEffect, useMemo, useRef, useState, type ComponentType, type KeyboardEvent as RKeyboardEvent, type ReactNode, type SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
-import { Bus, KitContext, DEFAULTS, parseHtml, routeFor, styleObject, useIsland, type Conditional, type Confirm, type Create, type Ctx, type DialogDef, type KitData, type Responsive, type Services, type Validation } from './core';
+import { Bus, KitContext, DEFAULTS, parseHtml, routeFor, styleObject, useIsland, type Conditional, type Confirm, type Create, type Ctx, type DialogDef, type KitData, type PageLock, type Responsive, type Services, type Validation } from './core';
 
 type Open = { id: string; closing: boolean };
 const shown = (el: Element) => el.getClientRects().length > 0;
+
+// The field the portal focuses when a page or a window opens: the one the capture saw focused (data-kit-autofocus), else the first
+// field a person can type in (the portal's pages open on their first field, whichever the module).
+const FIELD = 'input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([disabled]):not([readonly]), select:not([disabled]), textarea:not([disabled]):not([readonly]), .k-dropdownlist[tabindex]';
+function focusFirst(root: ParentNode) {
+  const af = root.querySelector<HTMLElement>('[data-kit-autofocus]');
+  const el = af ? (af.matches('input, select, textarea, [tabindex]') ? af : af.querySelector<HTMLElement>('input:not([type=hidden]), [tabindex]')) : null;
+  (el && shown(el) ? el : [...root.querySelectorAll<HTMLElement>(FIELD)].find(shown))?.focus({ preventScroll: true });
+}
+
+// A modal window locks the page behind it (the portal's windows are opened with preventScroll, and its own script sets html overflow hidden): no page scrollbar,
+// only the window's content scrolls. What the capture saw the page do (pageLock) is replayed; a capture without it falls back on the window's own option.
+const lock = { n: 0, html: '', body: '', scroll: null as string | null };
+function lockPage(def: DialogDef): () => void {
+  const m = def.options?.modal as { preventScroll?: boolean } | boolean | undefined;
+  const pl: PageLock | null = def.pageLock ?? (m && typeof m === 'object' && m.preventScroll ? { htmlOverflow: 'hidden', bodyOverflow: null, bodyAdd: [], bodyScroll: null } : null);
+  if (!pl) return () => {};
+  const h = document.documentElement, b = document.body, added = pl.bodyAdd.filter((c) => !b.classList.contains(c));
+  if (lock.n++ === 0) Object.assign(lock, { html: h.style.overflow, body: b.style.overflow, scroll: b.getAttribute('scroll') });
+  if (pl.htmlOverflow) h.style.overflow = pl.htmlOverflow;
+  if (pl.bodyOverflow) b.style.overflow = pl.bodyOverflow;
+  if (pl.bodyScroll) b.setAttribute('scroll', pl.bodyScroll);
+  b.classList.add(...added);
+  return () => {
+    b.classList.remove(...added);
+    if (--lock.n > 0) return;
+    h.style.overflow = lock.html;
+    b.style.overflow = lock.body;
+    if (lock.scroll === null) b.removeAttribute('scroll'); else b.setAttribute('scroll', lock.scroll);
+  };
+}
 
 // values of the named fields under an element: what Search / Save would send
 function values(root: Element | null) {
@@ -168,7 +199,7 @@ const menuMs = (menu: Element | null, which: 'hover' | 'open-ms' | 'close-ms', d
 // it), beside the item: to the left of a vertical menu (left: -width, top: the item's top), under a horizontal one. The
 // portal's CSS styles that container, so the clone gets the same classes. Timings: the menu's own (data-kit-menu-*), else Kendo's.
 const MENU = 'ul[data-role=menu]';
-type Fly = { li: Element; box: HTMLElement };
+type Fly = { li: Element; box: HTMLElement; undo?: () => void };
 const flys = new WeakMap<Element, Fly>();
 const flyMs = (ul: Element, which: 'hover' | 'open-ms' | 'close-ms', dflt: number) =>
   menuMs(ul.hasAttribute(`data-kit-menu-${which}`) ? ul : ul.closest(`[data-kit-menu-${which}]`), which, dflt);
@@ -181,7 +212,7 @@ function hideFly(ul: Element, now = false) {
   flys.delete(ul);
   f.li.classList.remove('k-hover', 'k-focus');
   f.li.setAttribute('aria-expanded', 'false');
-  const ms = now ? 0 : flyMs(ul, 'close-ms', 100), done = () => f.box.remove();
+  const ms = now ? 0 : flyMs(ul, 'close-ms', 100), done = () => { f.undo?.(); f.box.remove(); };
   if (!ms) return done();
   f.box.classList.remove('k-animation-container-shown');
   f.box.firstElementChild!.animate([{ transform: 'translate(0, 0)' }, { transform: slideFrom(ul) }], { duration: ms, easing: 'ease-in', fill: 'forwards' }).finished.then(done, done);
@@ -197,7 +228,7 @@ function popupOf(li: Element): HTMLElement | null {
   return (g ? src(`.k-menu-popup[data-group="${CSS.escape(g)}"]`) : null) ?? (c ? src(`[id="${CSS.escape(c)}"]`)?.closest<HTMLElement>('.k-menu-popup') ?? null : null);
 }
 // opens `li`'s popup (and closes the one that was open); an item without a popup only closes the open one
-function showFly(ul: Element, li: Element) {
+function showFly(ul: Element, li: Element, speed: number) {
   const cur = flys.get(ul);
   if (cur?.li === li) return;
   const pop = popupOf(li);
@@ -216,44 +247,87 @@ function showFly(ul: Element, li: Element) {
   const clone = pop.cloneNode(true) as HTMLElement;
   clone.style.removeProperty('display');
   clone.setAttribute('aria-hidden', 'false');
-  clone.querySelectorAll<HTMLElement>('.k-menu-scroll-button').forEach((b) => { b.style.display = 'none'; }); // Kendo hides them while everything fits
   clone.style.overflow = 'visible'; // what Kendo sets inline on a popup it opens: the stylesheet's overflow:auto would give the submenu a native scrollbar
   child.append(clone);
   box.append(child);
   Object.assign(box.style, { display: 'block', position: 'absolute', zIndex: '10002', visibility: 'hidden' });
   host.append(box);
-  fitFly(clone);
+  const undoFit = fitFly(clone, box, speed);
   const w = clone.offsetWidth, h = clone.offsetHeight;
   Object.assign(child.style, { display: 'block', width: `${w}px`, height: `${h}px` });
   const hr = host.getBoundingClientRect(), lr = li.getBoundingClientRect();
   if (isHorizontal(ul)) Object.assign(box.style, { top: `${lr.bottom - hr.top}px`, left: `${lr.left - hr.left}px` });
-  else Object.assign(box.style, { top: `${lr.top - hr.top}px`, left: `${-w}px` });
+  else Object.assign(box.style, { top: `${Math.max(0, Math.min(lr.top, (document.documentElement.clientHeight || innerHeight) - h)) - hr.top}px`, left: `${-w}px` }); // Kendo keeps a submenu inside the window
   box.style.removeProperty('visibility');
-  flys.set(ul, { li, box });
+  flys.set(ul, { li, box, undo: undoFit });
   child.animate([{ transform: slideFrom(ul) }, { transform: 'translate(0, 0)' }], { duration: flyMs(ul, 'open-ms', DEFAULTS.menuMs), easing: 'ease-out' })
     .finished.then(() => box.classList.add('k-animation-container-shown'), () => {});
 }
 const closeFlys = (root: ParentNode, now = false) => root.querySelectorAll(MENU).forEach((ul) => hideFly(ul, now));
-// A submenu taller than the room (the portal caps it at 80% of the window's height, which is what a small window hits): Kendo gives no native
-// scrollbar, it shows scroll buttons at both ends and scrolls the list with them, the wheel or the keys.
-function fitFly(clone: HTMLElement) {
-  const ul = clone.querySelector<HTMLElement>('ul');
-  const cap = parseFloat(getComputedStyle(clone).maxHeight);
-  if (!ul || isNaN(cap) || ul.scrollHeight <= cap + 1) return;
-  const prev = clone.querySelector<HTMLElement>('.k-menu-scroll-button-prev'), next = clone.querySelector<HTMLElement>('.k-menu-scroll-button-next');
-  Object.assign(clone.style, { display: 'flex', flexDirection: 'column', overflow: 'hidden' });
-  Object.assign(ul.style, { overflow: 'hidden', flex: '1 1 auto', minHeight: '0' });
-  for (const b of [prev, next]) if (b) { b.style.display = 'flex'; b.style.justifyContent = 'center'; b.style.flex = '0 0 auto'; }
-  if (prev) clone.insertBefore(prev, ul);
-  if (next) clone.append(next);
-  const sync = () => { prev?.classList.toggle('k-disabled', ul.scrollTop <= 0); next?.classList.toggle('k-disabled', ul.scrollTop + ul.clientHeight >= ul.scrollHeight - 1); };
-  const by = (d: number) => { ul.scrollTop += d; sync(); };
-  let timer = 0;
-  const hold = (b: HTMLElement | null | undefined, d: number) => b?.addEventListener('mousedown', (e) => { e.preventDefault(); by(d); timer = window.setInterval(() => by(d), 60); });
-  hold(prev, -24); hold(next, 24);
-  addEventListener('mouseup', () => clearInterval(timer), { once: true });
-  clone.addEventListener('wheel', (e) => { e.preventDefault(); by((e as WheelEvent).deltaY); }, { passive: false });
+// A scrollable Kendo menu (the side menu's module list, a submenu taller than its room, the module tab's popup): arrow buttons at both ends, a list that
+// scrolls while the pointer rests on a button (at Kendo's own speed: `speed`, px per second), with the wheel too; the end it has reached is k-disabled.
+// `auto`: the live page hides the buttons while everything fits. 'both': both show while the list overflows (a submenu); 'lazy': the lower one shows while it
+// overflows, the upper one once it has scrolled (the side menu's list). Returns what undoes it.
+const ARROW = { prev: 'm256 160 128 192H128z', next: 'm256 352 128-192H128z' };
+function arrowButton(dir: 'prev' | 'next') {
+  const b = document.createElement('span');
+  b.className = `k-button k-button-flat k-icon-button k-menu-scroll-button k-menu-scroll-button-${dir} k-disabled`;
+  b.setAttribute('unselectable', 'on');
+  b.style.width = '100%';
+  b.innerHTML = `<span class="k-icon k-svg-icon k-svg-i-caret-alt-${dir === 'prev' ? 'up' : 'down'} k-button-icon"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="${ARROW[dir]}"/></svg></span>`;
+  return b;
+}
+function scrollable(ul: HTMLElement, prev: HTMLElement | null, next: HTMLElement | null, speed: number, auto: false | 'both' | 'lazy') {
+  const ac = new AbortController(), on = { signal: ac.signal };
+  const over = () => ul.scrollHeight > ul.clientHeight + 1;
+  let scrolled = false;
+  const sync = () => {
+    // Kendo: the lower arrow shows while the list can scroll; the upper one appears once it has scrolled, and stays (disabled, gray) when it is back at the top
+    if (auto) {
+      scrolled ||= ul.scrollTop > 0;
+      for (const [b, on] of [[prev, auto === 'both' ? over() : scrolled], [next, over()]] as const) if (b) { if (on) b.style.removeProperty('display'); else b.style.display = 'none'; }
+    }
+    prev?.classList.toggle('k-disabled', ul.scrollTop <= 0);
+    next?.classList.toggle('k-disabled', ul.scrollTop + ul.clientHeight >= ul.scrollHeight - 1);
+  };
+  let raf = 0, dir = 0, last = 0;
+  const tick = (t: number) => { if (!dir) return; ul.scrollTop += (dir * speed * (t - last)) / 1000; last = t; sync(); raf = requestAnimationFrame(tick); };
+  const go = (d: number) => { dir = d; cancelAnimationFrame(raf); last = performance.now(); if (d) raf = requestAnimationFrame(tick); };
+  for (const [b, d] of [[prev, -1], [next, 1]] as const) { b?.addEventListener('mouseenter', () => go(d), on); b?.addEventListener('mouseleave', () => go(0), on); }
+  ul.addEventListener('wheel', (e) => { if (!over()) return; e.preventDefault(); e.stopPropagation(); ul.scrollTop += e.deltaY; sync(); }, { ...on, passive: false });
+  ul.addEventListener('scroll', sync, on);
+  const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(sync) : null;
+  ro?.observe(ul);
   sync();
+  return () => { ac.abort(); ro?.disconnect(); cancelAnimationFrame(raf); };
+}
+// A popup's size and its scroll parts. Kendo gives the list an explicit height (frozen into the snapshot at the capture's window size, so it is dropped here), the
+// popup is at least as high as the portal's CSS says (the module tab's: 30vh) and at most its max-height; the buttons the live markup had stay as they were.
+function fitFly(clone: HTMLElement, box: HTMLElement, speed: number) {
+  const ul = clone.querySelector<HTMLElement>('ul');
+  if (!ul) return () => {};
+  const wrap = clone.querySelector<HTMLElement>(':scope > .k-menu-scroll-wrapper');
+  const inner = wrap ?? clone;
+  ul.style.removeProperty('height');
+  const cap = parseFloat(getComputedStyle(clone).maxHeight), min = parseFloat(getComputedStyle(box).minHeight) || 0;
+  let prev = inner.querySelector<HTMLElement>(':scope > .k-menu-scroll-button-prev'), next = inner.querySelector<HTMLElement>(':scope > .k-menu-scroll-button-next');
+  const had = !!(prev || next);
+  const natural = clone.offsetHeight;
+  const h = Math.min(Math.max(natural, min), isNaN(cap) ? Infinity : cap);
+  if (!had && ul.scrollHeight <= h + 1) return () => {}; // fits: Kendo shows no buttons
+  Object.assign(clone.style, { display: 'flex', flexDirection: 'column', overflow: 'visible', height: `${h}px` }); // visible: the upper arrow sits above the popup, as Kendo's does
+  if (wrap) Object.assign(wrap.style, { display: 'flex', flexDirection: 'column', flex: '1 1 auto', minHeight: '0' });
+  Object.assign(ul.style, { overflow: 'hidden', flex: '1 1 auto', minHeight: '0' });
+  if (!had) { // what Kendo builds around a list that scrolls: a scroll wrapper with the two arrows (the portal's CSS styles its items through it)
+    const w = document.createElement('div');
+    w.className = 'k-menu-scroll-wrapper k-menu-scroll-wrapper-vertical';
+    Object.assign(w.style, { flex: '1 1 auto', minHeight: '0' });
+    prev = arrowButton('prev'); next = arrowButton('next');
+    ul.replaceWith(w);
+    w.append(prev, ul, next);
+  }
+  for (const b of [prev, next]) if (b) b.style.flex = '0 0 auto';
+  return scrollable(ul, prev, next, speed, had ? false : 'both');
 }
 
 // ---------- a dialog: the portal's Kendo window chrome around the ported content ----------
@@ -287,14 +361,18 @@ function Window({ id, def, Body, depth, closing, onClosed, responsive, plain = f
   const openMs = anim === false ? 0 : anim?.open?.duration ?? DEFAULTS.windowMs, closeMs = anim === false ? 0 : anim?.close?.duration ?? DEFAULTS.windowMs;
   useLayoutEffect(() => { // Kendo centers a window when it opens (below the small-screen width the portal places it itself), then zooms and fades it in
     const w = win.current!, content = w.querySelector<HTMLElement>('[data-kit-dialog-content]');
+    const unlock = plain ? () => {} : lockPage(def); // before placing: without the page's scrollbar the window's room is wider
     const placeIt = () => placeWindow(w, content, plain ? null : responsive);
     placeIt();
+    // the portal focuses a field of the window once it is open; a k-focus frozen into the markup belongs to the capture, not to this window
+    content?.querySelectorAll('.k-focus').forEach((e) => e.classList.remove('k-focus'));
+    const fid = plain ? 0 : requestAnimationFrame(() => { if (content) focusFirst(content); });
     if (openMs) { w.animate([{ opacity: 0, transform: 'scale(0.01)' }, { opacity: 1, transform: 'scale(1)' }], { duration: openMs, easing: 'ease-out' }); ov.current?.animate([{ opacity: 0 }, { opacity: 1 }], { duration: openMs }); }
     // the portal re-centers a window when its content changes size (a part shown, a message appearing) and when the browser window is resized
     const ro = content && typeof ResizeObserver !== 'undefined' ? new ResizeObserver(placeIt) : null;
     ro?.observe(content!);
     addEventListener('resize', placeIt);
-    return () => { ro?.disconnect(); removeEventListener('resize', placeIt); };
+    return () => { cancelAnimationFrame(fid); unlock(); ro?.disconnect(); removeEventListener('resize', placeIt); };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useLayoutEffect(() => {
     if (!closing) return;
@@ -365,10 +443,12 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
     r.querySelectorAll('.k-focus').forEach((e) => e.classList.remove('k-focus'));
     initial.current = values(r);
     r.querySelectorAll('[data-kit-tip][title]').forEach((e) => { if (!e.hasAttribute('aria-label')) e.setAttribute('aria-label', e.getAttribute('title')!); e.removeAttribute('title'); });
-    const af = r.querySelector<HTMLElement>('[data-kit-autofocus]');
-    const focusEl = af?.matches('input, select, textarea, [tabindex]') ? af : af?.querySelector<HTMLElement>('input:not([type=hidden]), [tabindex]');
-    focusEl?.focus({ preventScroll: true });
-    if (!shell) return;
+    if (!shell) focusFirst(r); // the portal's pages open on their first field (the shared shell has none of its own)
+    // the side menu's module list is a scrollable Kendo menu: its buttons show only while it overflows (a small window), and scroll it while hovered
+    const speed = screen.menuScroll ?? DEFAULTS.menuScroll;
+    const stops = [...r.querySelectorAll<HTMLElement>('.k-menu-scroll-wrapper-vertical > ul[data-role=menu]')].map((ul) =>
+      scrollable(ul, ul.parentElement!.querySelector<HTMLElement>(':scope > .k-menu-scroll-button-prev'), ul.parentElement!.querySelector<HTMLElement>(':scope > .k-menu-scroll-button-next'), speed, 'lazy'));
+    if (!shell) return () => stops.forEach((f) => f());
     // the header slides away on scroll down and back on scroll up (headroom.js: the portal's CSS owns the classes)
     const head = document.querySelector<HTMLElement>('#pageHeader.headroom, .headroom');
     let last = scrollY;
@@ -384,7 +464,7 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
       last = y;
     };
     addEventListener('scroll', onScroll, { passive: true });
-    return () => removeEventListener('scroll', onScroll);
+    return () => { stops.forEach((f) => f()); removeEventListener('scroll', onScroll); };
   }, [shell]);
 
   // the page-level help icon (the book): it sits in the title row, which the shared shell owns, but the live page decides per
@@ -591,7 +671,7 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
     } else if (li && !li.classList.contains('k-hover')) {
       const ul = li.parentElement!;
       clearTimeout(menuTimer.current);
-      menuTimer.current = window.setTimeout(() => showFly(ul, li), flyMs(ul, 'hover', 100));
+      menuTimer.current = window.setTimeout(() => showFly(ul, li, screen.menuScroll ?? DEFAULTS.menuScroll), flyMs(ul, 'hover', 100));
     } else if (li) clearTimeout(menuTimer.current);
   };
   const onOut = (e: SyntheticEvent) => {
