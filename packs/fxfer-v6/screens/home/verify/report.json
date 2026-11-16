@@ -1,0 +1,262 @@
+{
+  "size_delta_px": [
+    0,
+    0
+  ],
+  "bad_pct": 1.11,
+  "mean_abs": 1.42,
+  "worst_band": {
+    "y": 540,
+    "bad_pct": 3.39
+  },
+  "bands": [
+    {
+      "y": 0,
+      "bad_pct": 2.31
+    },
+    {
+      "y": 180,
+      "bad_pct": 0.32
+    },
+    {
+      "y": 360,
+      "bad_pct": 0.63
+    },
+    {
+      "y": 540,
+      "bad_pct": 3.39
+    },
+    {
+      "y": 720,
+      "bad_pct": 0
+    },
+    {
+      "y": 900,
+      "bad_pct": 0
+    }
+  ],
+  "clusters": [
+    {
+      "box": [
+        0,
+        456,
+        1920,
+        264
+      ],
+      "bad_px": 13660,
+      "css_box": [
+        0,
+        456,
+        1920,
+        264
+      ],
+      "element": {
+        "el": "div.broadcast-msg-list",
+        "text": "You have no messages",
+        "box": [
+          388,
+          338,
+          1221,
+          378
+        ]
+      }
+    },
+    {
+      "box": [
+        0,
+        72,
+        1920,
+        48
+      ],
+      "bad_px": 3986,
+      "css_box": [
+        0,
+        72,
+        1920,
+        48
+      ],
+      "element": {
+        "el": "div#mcbRowBorder.row.menu-row",
+        "text": "Notes Mail Audit Set Panel Tabs MITA Ste",
+        "box": [
+          0,
+          62,
+          1920,
+          45
+        ]
+      }
+    },
+    {
+      "box": [
+        216,
+        0,
+        288,
+        48
+      ],
+      "bad_px": 1173,
+      "css_box": [
+        216,
+        0,
+        288,
+        48
+      ],
+      "element": {
+        "el": "div.system-name[data-testid=button]",
+        "text": "Medicaid Management Solutions",
+        "box": [
+          202,
+          12,
+          320,
+          18
+        ]
+      }
+    },
+    {
+      "box": [
+        1152,
+        24,
+        264,
+        24
+      ],
+      "bad_px": 1055,
+      "css_box": [
+        1152,
+        24,
+        264,
+        24
+      ],
+      "element": {
+        "el": "a.k-link.display-block[data-testid=link-messages]",
+        "text": "Messages",
+        "box": [
+          1209,
+          21,
+          87,
+          19
+        ]
+      }
+    },
+    {
+      "box": [
+        1008,
+        168,
+        144,
+        144
+      ],
+      "bad_px": 1003,
+      "css_box": [
+        1008,
+        168,
+        144,
+        144
+      ],
+      "element": {
+        "el": "li#AAGMenu.ExternalLinks.HPE.external-link",
+        "text": "Gainwell",
+        "box": [
+          646,
+          226,
+          552,
+          21
+        ]
+      }
+    }
+  ],
+  "worst_crop": "worst.png",
+  "sections": [
+    {
+      "n": 1,
+      "label": "mcbrowborder",
+      "y": 62,
+      "h": 570.2299999999999,
+      "bad_pct": 1.22
+    },
+    {
+      "n": 2,
+      "label": "disclaimer-the-website-is-prov",
+      "y": 632.23,
+      "h": 118.5,
+      "bad_pct": 2.47
+    }
+  ],
+  "worst_section": {
+    "n": 2,
+    "label": "disclaimer-the-website-is-prov",
+    "y": 632.23,
+    "h": 118.5,
+    "bad_pct": 2.47
+  },
+  "verdict": "close",
+  "states": [
+    {
+      "name": "tooltip",
+      "ok": true,
+      "bad_pct": 6.01,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-open",
+      "ok": true,
+      "bad_pct": 1.61,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-flyout",
+      "ok": true,
+      "bad_pct": 14.2,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-close",
+      "ok": true
+    },
+    {
+      "name": "layout@client",
+      "ok": true,
+      "bad_pct": 0.92,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-open@client",
+      "ok": true,
+      "bad_pct": 2.08,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-flyout@client",
+      "ok": false,
+      "bad_pct": 22.68,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-close@client",
+      "ok": true
+    }
+  ],
+  "bands_note": "the rebuild has 0 top-level bands, the original 2: section heights not compared",
+  "behavior": {
+    "console": {
+      "errors": [],
+      "reactWarnings": [],
+      "failedResources": 0
+    }
+  }
+}

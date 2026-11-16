@@ -1,0 +1,545 @@
+ <div id="FileTransferTrackingViewPopup_content" class="loading"> <div id="FileTransferTrackingViewPopup_body">
+
+<script>
+    var fileTransferTrackingViewTitle = "File Transfer Tracking";
+</script>
+<script src="/Scripts/FileTransferTracking/hp.ua3.fileTransfer.fileTransferTrackingView.js?v=30.0.0.2609"></script>
+
+<form action="/FileTransfer/FileTransferTrackingView" id="FileTransferTrackingViewForm" method="post" name="FileTransferTrackingViewForm" data-role="validator" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="j29Z-BYDlq9zTthU6U2HE2BhGSOtE44gJOhIwT-LUO6DHbbptnLttsjITFqwQZ5sZe-EEqFqvAqFVEUrPkglMPWiHPQkx7ir-1cllPnLt-TdE5Nqz7aYkt1CSNKhy_fyIEFSACWl1B21wJxP43jSdw2">
+
+<div class="container">
+    <div class="editor-validation-summary validation-summary" data-kit-h="h3">
+        <i class="msg-inline-icon fa-solid fa-ban"></i>
+        <div class="msg-inline-close panel-icon clickable" role="alert" data-hide="alert" aria-label="close" tabindex="0">
+            <span class="fa-solid fa-xmark" title="Close" data-role="tooltip" data-kit-tip="Close" data-kit-tip-pos="top" data-kit-tip-after="250"></span>
+        </div>
+        Resolve the following form field errors and try again. 
+        <ul class="validation-errors"></ul>
+    </div>
+</div><div class="" id="trackingViewPanel">
+    
+
+<script>
+    var closeFunction = 'processFileTransfertrackingClose';
+    var overlayTitle = $('<div/>').html('File Transfer Tracking').text();
+</script>
+
+<div id="divOverlayModelWrapper">
+    <div class="modal-panel-hdr display-none" style="display: none;" data-kit-h="h4">
+        <span>File Transfer Tracking</span>
+        <a id="overlayCloseIcon" onkeypress="triggerCloseOnClick()" tabindex="0"><i class="fa-solid fa-circle-xmark float-right clickable overlay-icons" title="Close"></i></a>
+
+    </div>
+    <div class="gm-container-modal" id="gmContainerModal" style="display:none"></div>
+    <script>
+        var overlayCloseIconIdFromView = '#' + 'overlayCloseIcon';
+        var overlayHelpIconIdFromView = '#' + 'overlayHelpIcon';
+        var validationErrorsOverlayIdFromView = '#' + 'validationErrorsOverlay';
+        var validationSummaryOverlayIdFromView = '#' + 'validationSummaryOverlay';
+        var gmContainerModalIdFromView = '#' + 'gmContainerModal';
+        var helpContentKeyOverlayFromView = '';
+        var closeFunctionIdFromView = 'closeFunction';
+        var overlayTitleIdFromView = 'overlayTitle';
+        var validationSummaryCloseId = 'ValSummClose';
+        var actionAlertTitle = "Alert Confirmation";
+    </script>
+
+            <div class="container clear-n-pad-top">
+                <div id="validationSummaryOverlay" class="msg-inline msg-inline-error display-none" style="display: none;" data-kit-h="h5">
+                    <i class="msg-inline-icon fa-solid fa-circle-xmark"></i>
+                    <div id="ValSummClose" class="msg-inline-close panel-icon clickable" role="alert" data-hide-overlay="alert" aria-label="close" tabindex="0">
+                        <span class="fa-solid fa-circle-xmark" title="Close" data-role="tooltip" data-kit-tip="Close" data-kit-tip-pos="top" data-kit-tip-after="250"></span>
+                    </div>
+                    Resolve the following form field errors and try again. 
+                    <ul id="validationErrorsOverlay"></ul>
+                </div>
+            </div>
+
+    <label id="closeFunctionLabel" for="closeFunction" class="display-none">closeFunction</label><input type="hidden" id="closeFunction" value="processFileTransfertrackingClose" aria-labelledby="closeFunctionLabel">
+    <label id="overlayTitleLabel" for="overlayTitle" class="display-none">overlayTitle</label><input type="hidden" id="overlayTitle" value="File Transfer Tracking" aria-labelledby="overlayTitleLabel">
+
+</div>
+
+    <div class="">
+        <div class="panel-body-modal">
+            <div class="subsec-panel-hdr-topmost">
+                Information
+            </div>
+            <div class="row">
+                <div class="col-md-6 editor-col" id="Information.FileId_parent" data-template="Text"><div class="editor-label"><label for="Information_FileId" id="Information_FileIdLabel" readonly="readonly" class="readonly-label" title="File ID">File ID</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="Information_FileIdHelp" role="img" title="File ID" data-role="tooltip" data-kit-tip="File ID" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget readonly-widget-focus" style=""><input class="editor-control k-input-inner readonly-widget" data-val-length-max="File ID has a maximum length of 50 characters." data-val-regex="File ID contains invalid characters. The characters ; * ^ : ~ &lt; &gt; % are not allowed." data-val-regex-pattern="^([^;*^:~&lt;&gt;%])*$" id="Information_FileId" ignoredirtydata="False" maxlength="50" name="Information.FileId" not-data-val-required="File ID is a required field." readonly="readonly" value="0b3ad742-223b-4bc1-8b5b-867d8dfde039" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" aria-labelledby="Information_FileIdLabel Information_FileIdHelpDesc" style="width: 100%;"></span><script>
+	(typeof KendoLicensing === 'object' && KendoLicensing.setScriptKey('141j041f611f063e0837023e133i0i490g310c3a18445h425d38573a5j3a58385a345a4b61145f0k4j024b02240e2213203f5h16253f5g4026092606211a213e25022g034e041k13220k1c1325166016220k573j604a5j4a593j09213f2d5k105e263k2g5c1742053h204f3j175c2i3g064k2g0f53254i3h145c1i3c1k552e321b5e044f2d57175d225i3f2a552j612f4926482d542g0f4h30531h1a2740234j0d56490f4f20312537101g5a2i55210i3512335a1f5c0c362c610h345d103j07551c39025c255e2j3b0g391521591g3j2h5e2a600i5e305k0d5503365c0k345h0f3722342h5c0f4g41163g1j15400g3i1h511k4f3j27034122611j5g0g4b2c613g02562k0e43033i2f5e0e3040163g1f11460e4b562b440h4h205502512645500h4b165j3e02422b054b0849551c4i2d4a0i3i164k094a0g5j19572k3j014207551c3902521g4e2d043c0c451b542k0e2g4f2a4d11460e48265k2g5a07390c3f1f500027470k31155d2e561d123e1b5046123k116114394i1c4e264f3f125i3b02381c12355e0h5g1b401i4h0f3d043j155a2i0450481144285j39213705290b4i0i370b4d2537195813204i19583a5j183522015a2b35063257072c332e320b4f3f5e005f013a61181g520853253d20321f601758171j335734244i275h0j1f5a0k4a531g0h382j3k164a2d32082h451e4304410j581f3f5e320k2f4i431b5g1c47033j51450a591441003822455b1f53480a2k5i151e45004b2d4b1j504a2848104808532f431c4106571c3527355j0i1b42550f47305i3d2e4d2851075k2a4h25124j2j552g42153h124b004d101c590g5a1a562215345a21321161085j0b490a57335824454d2052025d003j0d2h4g0j4h1059045k0g5g0f340h1g352j0e3a2f3422513j2a4i2k0f2c480b53191i103e075830562h320e395i1256264f1i361e4j064e0e5f0k5h0d4820572f460k3106401e5024440j3b5h1g312a5920452g511a3j2d6124125i1k183926435c1j5c'));window._wrappersMetadata = Object.freeze({"name":"@progress/kendo-ui","productCode":"KENDOUIMVC","productName":"Telerik UI for ASP.NET MVC","version":"2026.1.415","licensingDocsUrl":"https://www.telerik.com/aspnet-mvc/documentation/installation/activating-your-license/setting-up-your-license"});kendo.syncReady(function(){jQuery("#Information_FileId").kendoTextBox({"value":"0b3ad742-223b-4bc1-8b5b-867d8dfde039"});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("Information_FileId");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="Information_FileId_validationMessage" data-for="Information.FileId"></span><span id="Information_FileIdHelpDesc" hidden="hidden" data-kit-h="h6">File ID</span></div></div>
+                <div class="col-md-4 editor-col" id="Information.CreateDate_parent" data-template="Text"><div class="editor-label"><label for="Information_CreateDate" id="Information_CreateDateLabel" readonly="readonly" class="readonly-label" title="Create Date">Create Date</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="Information_CreateDateHelp" role="img" title="Create Date" data-role="tooltip" data-kit-tip="Create Date" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input class="editor-control k-input-inner readonly-widget" data-val="true" data-val-date="The field Create Date must be a date." data-val-datetime="Create Date must represent a valid date time in the format 'M/d/yyyy h:mm tt'." height="0" id="Information_CreateDate" ignoredirtydata="False" name="Information.CreateDate" not-data-val-required="Create Date is a required field." readonly="readonly" value="5/25/2021 7:37:51 AM" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" style="width: 100%;" aria-labelledby="Information_CreateDateLabel Information_CreateDateHelpDesc"></span><script>
+	kendo.syncReady(function(){jQuery("#Information_CreateDate").kendoTextBox({"value":"5/25/2021 7:37:51 AM"});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("Information_CreateDate");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="Information_CreateDate_validationMessage" data-for="Information.CreateDate"></span><span id="Information_CreateDateHelpDesc" hidden="hidden" data-kit-h="h7">Create Date</span></div></div>
+                <div class="col-md-2 editor-col" id="Information.DirectionList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="Information_Direction" id="Information_DirectionLabel" readonly="readonly" class="readonly-label" title="Direction">Direction</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="Information_DirectionHelp" role="img" title="Direction" data-role="tooltip" data-kit-tip="Direction" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><label id="Information_DirectionListTextLabel" for="Information_DirectionListText" class="display-none">Information_DirectionListText</label><input class="k-textbox editor-control" id="Information_DirectionListText" name="Information.DirectionListText" readonly="readonly" value="OUTBOUND" aria-labelledby="Information_DirectionLabel"><div style="display: none;" data-kit-h="h8">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="Information_DirectionList_listbox" aria-busy="false" aria-describedby="7ae94e69-e890-414a-96ba-aecd222c3fce" aria-labelledby="Information_DirectionLabel Information_DirectionHelpDesc" data-kit="k10" style=""><span id="7ae94e69-e890-414a-96ba-aecd222c3fce" unselectable="on" class="k-input-inner readonly-widget"><span class="k-input-value-text">OUTBOUND</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="Information_DirectionListLabel" for="Information_DirectionList" class="display-none">Information_DirectionList</label><input class="editor-control" id="Information_DirectionList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.FileDirection" listviewdisplayformat="Name" name="Information.DirectionList" not-data-val-required="Direction is a required field." propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingInformationModel-/FileTransfer/FileTransferTrackingView-Desktop-Direction" readonly="readonly" type="text" value="2" data-role="dropdownlist" aria-labelledby="Information_DirectionListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#Information_DirectionList").kendoDropDownList({"change":function(e) {
+        var sel = $('#Information_DirectionList').val();
+        if (sel != '') {
+            $('#Information_Direction_ID').val(sel);
+            var txt = $('#Information_DirectionList').data('kendoDropDownList').text();
+            $('#Information_Direction_Name').val(txt);
+        } else {
+            $('#Information_Direction_ID').val('');
+            $('#Information_Direction_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#Information_DirectionList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[{"ID":"1","Name":"INBOUND","DisplayFormat":0,"FormattedText":"INBOUND","DefaultCode":null},{"ID":"2","Name":"OUTBOUND","DisplayFormat":0,"FormattedText":"OUTBOUND","DefaultCode":null}],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="Information_Direction_IDLabel" for="Information_Direction_ID" class="display-none">Information_Direction_ID</label><input id="Information_Direction_ID" name="Information.Direction.ID" type="hidden" value="2" aria-labelledby="Information_Direction_IDLabel">
+<label id="Information_Direction_NameLabel" for="Information_Direction_Name" class="display-none">Information_Direction_Name</label><input id="Information_Direction_Name" name="Information.Direction.Name" type="hidden" value="OUTBOUND" aria-labelledby="Information_Direction_NameLabel">
+<label id="Information_Direction_DisplayFormatLabel" for="Information_Direction_DisplayFormat" class="display-none">Information_Direction_DisplayFormat</label><input id="Information_Direction_DisplayFormat" name="Information.Direction.DisplayFormat" type="hidden" value="Name" aria-labelledby="Information_Direction_DisplayFormatLabel"></div><span class="k-invalid-msg" id="Information_DirectionList_validationMessage" data-for="Information.DirectionList"></span><span id="Information_DirectionHelpDesc" hidden="hidden" data-kit-h="h9">Direction</span></div></div>
+                <div class="col-md-5 editor-col editor-clear" id="Information.FileName_parent" data-template="Text"><div class="editor-label"><label for="Information_FileName" id="Information_FileNameLabel" readonly="readonly" class="readonly-label" title="File Name">File Name</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="Information_FileNameHelp" role="img" title="File Name" data-role="tooltip" data-kit-tip="File Name" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input class="editor-control k-input-inner readonly-widget" data-val-length-max="File Name has a maximum length of 100 characters." data-val-regex="File Name contains invalid characters. The characters ; * ^ : ~ &lt; &gt; % are not allowed." data-val-regex-pattern="^([^;*^:~&lt;&gt;%])*$" id="Information_FileName" ignoredirtydata="False" maxlength="100" name="Information.FileName" not-data-val-required="File Name is a required field." readonly="readonly" value="\\mapsftshrfs01\CommercialSharedFolder\ProgramIntegrityCT\CaseListRefresh\Batch\Output\CaseTrackingInput_20210518.csv" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" aria-labelledby="Information_FileNameLabel Information_FileNameHelpDesc" style="width: 100%;"></span><script>
+	kendo.syncReady(function(){jQuery("#Information_FileName").kendoTextBox({"value":"\\\\mapsftshrfs01\\CommercialSharedFolder\\ProgramIntegrityCT\\CaseListRefresh\\Batch\\Output\\CaseTrackingInput_20210518.csv"});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("Information_FileName");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="Information_FileName_validationMessage" data-for="Information.FileName"></span><span id="Information_FileNameHelpDesc" hidden="hidden" data-kit-h="h10">File Name</span></div></div>
+                <div class="col-md-3 editor-col" id="Information.Size_parent" data-template=""><div class="editor-label"><label for="Information_Size" id="Information_SizeLabel" readonly="readonly" class="readonly-label" title="Size (KB)">Size (KB)</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="Information_SizeHelp" role="img" title="Size (KB)" data-role="tooltip" data-kit-tip="Size (KB)" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input class="editor-control k-input-inner readonly-widget" data-val="true" data-val-length-max="Size (KB) has a maximum length of 15 characters." data-val-number="Size (KB) is restricted to numeric values with at most 2 decimal places." data-val-regex="Size (KB) is restricted to numeric values with at most 2 decimal places." data-val-regex-pattern="^[+-]?(?=\d|\.\d{0,2})\d*(\.\d{0,2})?$" height="0" id="Information_Size" ignoredirtydata="False" maxlength="15" name="Information.Size" not-data-val-required="Size (KB) is a required field." readonly="readonly" value="0" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" style="width: 100%;" aria-labelledby="Information_SizeLabel Information_SizeHelpDesc"></span><script>
+	kendo.syncReady(function(){jQuery("#Information_Size").kendoTextBox({"value":"0"});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("Information_Size");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="Information_Size_validationMessage" data-for="Information.Size"></span><span id="Information_SizeHelpDesc" hidden="hidden" data-kit-h="h11">Size (KB)</span></div></div>
+                <div class="col-md-4 editor-col" id="Information.CheckSumCode_parent" data-template="Text"><div class="editor-label"><label for="Information_CheckSumCode" id="Information_CheckSumCodeLabel" readonly="readonly" class="readonly-label" title="Check Sum Code">Check Sum Code</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="Information_CheckSumCodeHelp" role="img" title="Check Sum Code" data-role="tooltip" data-kit-tip="Check Sum Code" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input class="editor-control k-input-inner readonly-widget" data-val-length-max="Check Sum Code has a maximum length of 50 characters." id="Information_CheckSumCode" ignoredirtydata="False" maxlength="50" name="Information.CheckSumCode" not-data-val-required="Check Sum Code is a required field." readonly="readonly" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" aria-labelledby="Information_CheckSumCodeLabel Information_CheckSumCodeHelpDesc" style="width: 100%;"></span><script>
+	kendo.syncReady(function(){jQuery("#Information_CheckSumCode").kendoTextBox({});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("Information_CheckSumCode");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="Information_CheckSumCode_validationMessage" data-for="Information.CheckSumCode"></span><span id="Information_CheckSumCodeHelpDesc" hidden="hidden" data-kit-h="h12">Check Sum Code</span></div></div>
+                <div class="col-md-3 editor-col editor-clear" id="Information.FileStatusList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="Information_FileStatus" id="Information_FileStatusLabel" readonly="readonly" class="readonly-label" title="File Status">File Status</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="Information_FileStatusHelp" role="img" title="File Status" data-role="tooltip" data-kit-tip="File Status" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><label id="Information_FileStatusListTextLabel" for="Information_FileStatusListText" class="display-none">Information_FileStatusListText</label><input class="k-textbox editor-control" id="Information_FileStatusListText" name="Information.FileStatusListText" readonly="readonly" value="Complete" aria-labelledby="Information_FileStatusLabel"><div style="display: none;" data-kit-h="h13">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="Information_FileStatusList_listbox" aria-busy="false" aria-describedby="6ac4c14f-134b-4e05-ac2f-7246164f4144" aria-labelledby="Information_FileStatusLabel Information_FileStatusHelpDesc" data-kit="k11" style=""><span id="6ac4c14f-134b-4e05-ac2f-7246164f4144" unselectable="on" class="k-input-inner readonly-widget"><span class="k-input-value-text">Complete</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="Information_FileStatusListLabel" for="Information_FileStatusList" class="display-none">Information_FileStatusList</label><input class="editor-control" id="Information_FileStatusList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.FileStatus" listviewdisplayformat="Name" name="Information.FileStatusList" not-data-val-required="File Status is a required field." propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingInformationModel-/FileTransfer/FileTransferTrackingView-Desktop-FileStatus" readonly="readonly" type="text" value="1" data-role="dropdownlist" aria-labelledby="Information_FileStatusListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#Information_FileStatusList").kendoDropDownList({"change":function(e) {
+        var sel = $('#Information_FileStatusList').val();
+        if (sel != '') {
+            $('#Information_FileStatus_ID').val(sel);
+            var txt = $('#Information_FileStatusList').data('kendoDropDownList').text();
+            $('#Information_FileStatus_Name').val(txt);
+        } else {
+            $('#Information_FileStatus_ID').val('');
+            $('#Information_FileStatus_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#Information_FileStatusList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[{"ID":"1","Name":"Complete","DisplayFormat":0,"FormattedText":"Complete","DefaultCode":null},{"ID":"2","Name":"Error","DisplayFormat":0,"FormattedText":"Error","DefaultCode":null},{"ID":"3","Name":"Transferring","DisplayFormat":0,"FormattedText":"Transferring","DefaultCode":null}],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="Information_FileStatus_IDLabel" for="Information_FileStatus_ID" class="display-none">Information_FileStatus_ID</label><input id="Information_FileStatus_ID" name="Information.FileStatus.ID" type="hidden" value="1" aria-labelledby="Information_FileStatus_IDLabel">
+<label id="Information_FileStatus_NameLabel" for="Information_FileStatus_Name" class="display-none">Information_FileStatus_Name</label><input id="Information_FileStatus_Name" name="Information.FileStatus.Name" type="hidden" value="Complete" aria-labelledby="Information_FileStatus_NameLabel">
+<label id="Information_FileStatus_DisplayFormatLabel" for="Information_FileStatus_DisplayFormat" class="display-none">Information_FileStatus_DisplayFormat</label><input id="Information_FileStatus_DisplayFormat" name="Information.FileStatus.DisplayFormat" type="hidden" value="Name" aria-labelledby="Information_FileStatus_DisplayFormatLabel"></div><span class="k-invalid-msg" id="Information_FileStatusList_validationMessage" data-for="Information.FileStatusList"></span><span id="Information_FileStatusHelpDesc" hidden="hidden" data-kit-h="h14">File Status</span></div></div>
+                <div class="col-md-3 editor-col" id="Information.TransportTypeList_parent" data-template="ListItemSingle"><div class="editor-label"><label for="Information_TransportType" id="Information_TransportTypeLabel" readonly="readonly" class="readonly-label" title="Transport Type">Transport Type</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="Information_TransportTypeHelp" role="img" title="Transport Type" data-role="tooltip" data-kit-tip="Transport Type" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field"><label id="Information_TransportTypeListTextLabel" for="Information_TransportTypeListText" class="display-none">Information_TransportTypeListText</label><input class="k-textbox editor-control" id="Information_TransportTypeListText" name="Information.TransportTypeListText" readonly="readonly" value="UNC" aria-labelledby="Information_TransportTypeLabel"><div style="display: none;" data-kit-h="h15">
+
+<span title="" class="k-picker k-dropdownlist editor-control readonly-widget readonly-cursor" unselectable="on" role="combobox" aria-expanded="false" tabindex="0" aria-disabled="false" aria-readonly="true" aria-controls="Information_TransportTypeList_listbox" aria-busy="false" aria-describedby="9fa78db4-75e7-40cb-bd59-e22b62253284" aria-labelledby="Information_TransportTypeLabel Information_TransportTypeHelpDesc" data-kit="k12" style=""><span id="9fa78db4-75e7-40cb-bd59-e22b62253284" unselectable="on" class="k-input-inner readonly-widget"><span class="k-input-value-text">UNC</span></span><button role="button" tabindex="-1" class="k-input-button k-button k-icon-button" aria-label="select" type="button"><span class="k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority"><svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256z"></path></svg></span></button><label id="Information_TransportTypeListLabel" for="Information_TransportTypeList" class="display-none">Information_TransportTypeList</label><input class="editor-control" id="Information_TransportTypeList" ignoredirtydata="False" listviewdatalistcontentid="FileTransfer.DataList.ProtocolType" listviewdisplayformat="Name" name="Information.TransportTypeList" not-data-val-required="Transport Type is a required field." propertydefinitioncachekey="PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingInformationModel-/FileTransfer/FileTransferTrackingView-Desktop-TransportType" readonly="readonly" type="text" value="3" data-role="dropdownlist" aria-labelledby="Information_TransportTypeListLabel" style="display: none;"></span><script>
+	kendo.syncReady(function(){jQuery("#Information_TransportTypeList").kendoDropDownList({"change":function(e) {
+        var sel = $('#Information_TransportTypeList').val();
+        if (sel != '') {
+            $('#Information_TransportType_ID').val(sel);
+            var txt = $('#Information_TransportTypeList').data('kendoDropDownList').text();
+            $('#Information_TransportType_Name').val(txt);
+        } else {
+            $('#Information_TransportType_ID').val('');
+            $('#Information_TransportType_Name').val('');
+        }
+    },"select":function(e) {
+            if (e.item) {
+               var dataItem = this.dataItem(e.item);
+               $('#Information_TransportTypeList').data('kendoDropDownList').wrapper.attr('title', '');
+            }
+        },"dataSource":[{"ID":"1","Name":"FTP","DisplayFormat":0,"FormattedText":"FTP","DefaultCode":null},{"ID":"2","Name":"SFTP","DisplayFormat":0,"FormattedText":"SFTP","DefaultCode":null},{"ID":"3","Name":"UNC","DisplayFormat":0,"FormattedText":"UNC","DefaultCode":null},{"ID":"4","Name":"FTPS","DisplayFormat":0,"FormattedText":"FTPS","DefaultCode":null}],"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});
+</script>
+<label id="Information_TransportType_IDLabel" for="Information_TransportType_ID" class="display-none">Information_TransportType_ID</label><input id="Information_TransportType_ID" name="Information.TransportType.ID" type="hidden" value="3" aria-labelledby="Information_TransportType_IDLabel">
+<label id="Information_TransportType_NameLabel" for="Information_TransportType_Name" class="display-none">Information_TransportType_Name</label><input id="Information_TransportType_Name" name="Information.TransportType.Name" type="hidden" value="UNC" aria-labelledby="Information_TransportType_NameLabel">
+<label id="Information_TransportType_DisplayFormatLabel" for="Information_TransportType_DisplayFormat" class="display-none">Information_TransportType_DisplayFormat</label><input id="Information_TransportType_DisplayFormat" name="Information.TransportType.DisplayFormat" type="hidden" value="Name" aria-labelledby="Information_TransportType_DisplayFormatLabel"></div><span class="k-invalid-msg" id="Information_TransportTypeList_validationMessage" data-for="Information.TransportTypeList"></span><span id="Information_TransportTypeHelpDesc" hidden="hidden" data-kit-h="h16">Transport Type</span></div></div>
+                <div class="col-md-6 editor-col" id="Information.OriginatingServerName_parent" data-template="Text"><div class="editor-label"><label for="Information_OriginatingServerName" id="Information_OriginatingServerNameLabel" readonly="readonly" class="readonly-label" title="Originating Server Name">Originating Server Name</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="Information_OriginatingServerNameHelp" role="img" title="Originating Server Name" data-role="tooltip" data-kit-tip="Originating Server Name" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input class="editor-control k-input-inner readonly-widget" data-val-length-max="Originating Server Name has a maximum length of 100 characters." data-val-regex="Originating Server Name contains invalid characters. The characters ; * ^ : ~ &lt; &gt; % are not allowed." data-val-regex-pattern="^([^;*^:~&lt;&gt;%])*$" id="Information_OriginatingServerName" ignoredirtydata="False" maxlength="100" name="Information.OriginatingServerName" not-data-val-required="Originating Server Name is a required field." readonly="readonly" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" aria-labelledby="Information_OriginatingServerNameLabel Information_OriginatingServerNameHelpDesc" style="width: 100%;"></span><script>
+	kendo.syncReady(function(){jQuery("#Information_OriginatingServerName").kendoTextBox({});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("Information_OriginatingServerName");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="Information_OriginatingServerName_validationMessage" data-for="Information.OriginatingServerName"></span><span id="Information_OriginatingServerNameHelpDesc" hidden="hidden" data-kit-h="h17">Originating Server Name</span></div></div>
+                <div class="col-md-8 editor-col editor-clear" id="Information.SourceLocation_parent" data-template="Text"><div class="editor-label"><label for="Information_SourceLocation" id="Information_SourceLocationLabel" readonly="readonly" class="readonly-label" title="Source Location">Source Location</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="Information_SourceLocationHelp" role="img" title="Source Location" data-role="tooltip" data-kit-tip="Source Location" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input class="editor-control k-input-inner readonly-widget" data-val-length-max="Source Location has a maximum length of 250 characters." data-val-regex="Source Location contains invalid characters. The characters ; * ^ : ~ &lt; &gt; % are not allowed." data-val-regex-pattern="^([^;*^:~&lt;&gt;%])*$" id="Information_SourceLocation" ignoredirtydata="False" maxlength="250" name="Information.SourceLocation" not-data-val-required="Source Location is a required field." readonly="readonly" value="PICTOutBound - \\mapsftshrfs01\CommercialSharedFolder\ProgramIntegrityCT\CaseListRefresh\Batch\Output" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" aria-labelledby="Information_SourceLocationLabel Information_SourceLocationHelpDesc" style="width: 100%;"></span><script>
+	kendo.syncReady(function(){jQuery("#Information_SourceLocation").kendoTextBox({"value":"PICTOutBound - \\\\mapsftshrfs01\\CommercialSharedFolder\\ProgramIntegrityCT\\CaseListRefresh\\Batch\\Output"});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("Information_SourceLocation");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="Information_SourceLocation_validationMessage" data-for="Information.SourceLocation"></span><span id="Information_SourceLocationHelpDesc" hidden="hidden" data-kit-h="h18">Source Location</span></div></div>
+                <div class="col-md-4" id="Information.TradingPartnerId_parent" data-template="Text"><div class="editor-label"><label for="Information_TradingPartnerId" id="Information_TradingPartnerIdLabel" readonly="readonly" class="readonly-label" title="Trading Partner ID">Trading Partner ID</label><span aria-label="HELP" class="clickable editor-icon fa-solid fa-circle-question" id="Information_TradingPartnerIdHelp" role="img" title="Trading Partner ID" data-role="tooltip" data-kit-tip="Trading Partner ID" data-kit-tip-pos="top" data-kit-tip-after="250"></span></div><div class="editor-field">
+
+
+<span class="k-input k-textbox editor-control k-readonly readonly-widget" style=""><input class="editor-control k-input-inner readonly-widget" data-val-length-max="Trading Partner ID has a maximum length of 15 characters." data-val-regex="Trading Partner ID contains invalid characters. The characters ; * ^ : ~ &lt; &gt; % are not allowed." data-val-regex-pattern="^([^;*^:~&lt;&gt;%])*$" id="Information_TradingPartnerId" ignoredirtydata="False" maxlength="15" name="Information.TradingPartnerId" not-data-val-required="Trading Partner ID is a required field." readonly="readonly" data-role="textbox" aria-disabled="false" inputmode="text" autocomplete="off" aria-labelledby="Information_TradingPartnerIdLabel Information_TradingPartnerIdHelpDesc" style="width: 100%;"></span><script>
+	kendo.syncReady(function(){jQuery("#Information_TradingPartnerId").kendoTextBox({});});
+</script>
+
+<script>
+    // Replace curly single quotes and apostrophes with straight single quote
+    //      /[\u2018\u2019\u201a\u201b\u2032\u2035]/g  =>  "'"
+    // Replace curly double quotes with straight double quote
+    //      /[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g  =>  '"'
+    // Optionally replace em-dashes and en-dashes with hyphens
+    //      /[\u2013\u2014]/g  =>  '-'
+    $(document).ready(function (e) {
+        var element = document.getElementById("Information_TradingPartnerId");
+        if (element) {
+            element.addEventListener("blur", function (e) {
+                var inputTarget = e.target;
+                var inputValue = inputTarget.value;
+
+                if (inputValue != null) {
+                    inputValue = inputValue.replaceAll(/[\u2018\u2019\u201a\u201b\u2032\u2035]/g, "'");
+                    inputValue = inputValue.replaceAll(/[\u201c\u201d\u201e\u201f\u2033\u2034\u2036\u2037]/g, '"');
+                    inputValue = inputValue.replaceAll(/[\u2013\u2014]/g, '-');
+                    if (inputValue !== inputTarget.value) {
+                        inputTarget.value = inputValue;
+                    }
+                }
+            }, true);
+        }
+    });
+</script>
+<span class="k-invalid-msg" id="Information_TradingPartnerId_validationMessage" data-for="Information.TradingPartnerId"></span><span id="Information_TradingPartnerIdHelpDesc" hidden="hidden" data-kit-h="h19">Trading Partner ID</span></div></div>
+            </div>
+            <div class="subsec-panel-hdr">
+                Events
+            </div>
+            <div class="content-panel-container">
+                <div class="content-panel-bdy">
+                    <div class="k-grid editor-grid" id="trackingEventsGrid" data-role="grid" data-kit="k13"><table id="5cb550f2-0bc6-42fa-9413-a025800b6956" role="grid" tabindex="0" class="k-grid-table k-table" aria-colcount="3" style=""><colgroup><col style="width: 21px;"><col style="width: 21px;"><col></colgroup><thead class="k-table-thead k-grid-header" role="rowgroup"><tr class="k-table-row" role="row"><th class="k-table-th k-header" data-field="EventCode" data-index="0" data-resizable="true" data-title="Event Code" id="4f64ad5c-8da6-4e1a-aa48-756a9b7cb003" role="columnheader" scope="col" aria-colindex="1" data-header-styled="data-header-styled"><span class="k-cell-inner"><span class="grid-col-hdr-cell"><span class="k-link"><span class="k-column-title">Event Code</span></span></span></span></th><th class="k-table-th k-header" data-field="CreateDate" data-index="1" data-resizable="true" data-title="Create Date" id="291a31dc-a4e0-4a80-b722-2cb20234fba6" role="columnheader" scope="col" aria-colindex="2" data-header-styled="data-header-styled"><span class="k-cell-inner"><span class="grid-col-hdr-cell"><span class="k-link"><span class="k-column-title">Create Date</span></span></span></span></th><th class="k-table-th k-header" data-field="Description" data-index="2" data-resizable="true" data-title="Description" id="9f6f5ff2-9586-4cbc-a039-451a0cf2d0f5" role="columnheader" scope="col" aria-colindex="3" data-header-styled="data-header-styled"><span class="k-cell-inner"><span class="grid-col-hdr-cell"><span class="k-link"><span class="k-column-title">Description</span></span></span></span></th></tr></thead><tbody class="k-table-tbody" role="rowgroup"><tr class="k-table-row k-master-row" data-uid="518fcccd-be89-489a-9645-2f54cd969da0" role="row"><td class="k-table-td" role="gridcell" aria-colindex="1">T</td><td class="k-table-td" role="gridcell" aria-colindex="2">5/25/2021 1:07 PM</td><td class="k-table-td" role="gridcell" aria-colindex="3">\\mapsftshrfs01\CommercialSharedFolder\ProgramIntegrity\Case\Batch\Input\CaseTrackingInput_20210518.csv</td></tr></tbody></table></div><script>
+	kendo.syncReady(function(){jQuery("#trackingEventsGrid").kendoGrid({"dataBound":trackingEventsGridOnDatabound,"columns":[{"title":"Event Code","headerAttributes":{"data-field":"EventCode","data-title":"Event Code"},"field":"EventCode","encoded":true},{"title":"Create Date","headerAttributes":{"data-field":"CreateDate","data-title":"Create Date"},"field":"CreateDate","format":"{0:g}","encoded":true},{"title":"Description","headerAttributes":{"data-field":"Description","data-title":"Description"},"field":"Description","encoded":true}],"scrollable":false,"dataSource":{"type":(function(){if(kendo.data.transports['aspnetmvc-ajax']){return 'aspnetmvc-ajax';} else{throw new Error('The kendo.aspnetmvc.min.js script is not included.');}})(),"transport":{"read":{"url":""},"prefix":""},"schema":{"data":"Data","total":"Total","errors":"Errors","model":{"fields":{"CreateDate":{"type":"date","defaultValue":null},"EventCode":{"type":"string"},"Description":{"type":"string"}}}},"data":{"Data":[{"CreateDate":"\/Date(1621928271258)\/","EventCode":"T","Description":"\\\\mapsftshrfs01\\CommercialSharedFolder\\ProgramIntegrity\\Case\\Batch\\Input\\CaseTrackingInput_20210518.csv"}],"Total":1,"AggregateResults":null}},"navigatable":true});});
+</script>
+                </div>
+            </div>
+            <div class="subsec-panel-hdr">
+                Exceptions
+            </div>
+            <div class="content-panel-container">
+                <div class="content-panel-bdy">
+                    <div class="k-grid editor-grid" id="trackingExceptionsGrid" data-role="grid" data-kit="k14"><table id="00e42847-582e-4d45-a9b8-86125255a9bf" role="treegrid" tabindex="0" class="k-grid-table k-table" aria-rowcount="1" style=""><colgroup><col class="k-hierarchy-col"><col style="width: 21px;"><col style="width: 21px;"><col></colgroup><thead class="k-table-thead k-grid-header" role="rowgroup"><tr class="k-table-row" role="row" aria-rowindex="1"><th class="k-hierarchy-cell k-table-th k-header" scope="col" role="columnheader" data-header-styled="data-header-styled"><span class="k-cell-inner">&nbsp;</span></th><th class="k-table-th k-header" data-field="Date" data-index="0" data-resizable="true" data-title="Date" id="840b309d-8ffd-432b-8c7a-ffe50be9b486" role="columnheader" scope="col" data-header-styled="data-header-styled"><span class="k-cell-inner"><span class="grid-col-hdr-cell"><span class="k-link"><span class="k-column-title">Date</span></span></span></span></th><th class="k-table-th k-header" data-field="ExceptionType" data-index="1" data-resizable="true" data-title="Exception Type" id="3554bc96-6fc7-4e9a-b173-cb72d70a45df" role="columnheader" scope="col" data-header-styled="data-header-styled"><span class="k-cell-inner"><span class="grid-col-hdr-cell"><span class="k-link"><span class="k-column-title">Exception Type</span></span></span></span></th><th class="k-table-th k-header" data-field="MethodName" data-index="2" data-resizable="true" data-title="Method Name" id="fbd748a8-c760-4e44-8347-e3223469b59c" role="columnheader" scope="col" data-header-styled="data-header-styled"><span class="k-cell-inner"><span class="grid-col-hdr-cell"><span class="k-link"><span class="k-column-title">Method Name</span></span></span></span></th></tr></thead><tbody class="k-table-tbody" role="rowgroup"><tr class="kendo-data-row" onclick="preventAction(event)" ondblclick="preventAction(event)"><td colspan="4" style="text-align:center"><br><strong>There are no records found.</strong></td></tr></tbody></table></div><script>
+	kendo.syncReady(function(){jQuery("#trackingExceptionsGrid").kendoGrid({"dataBound":trackingExceptionsGridOnDatabound,"columns":[{"title":"Date","headerAttributes":{"data-field":"Date","data-title":"Date"},"field":"Date","format":"{0:g}","encoded":true},{"title":"Exception Type","headerAttributes":{"data-field":"ExceptionType","data-title":"Exception Type"},"field":"ExceptionType","encoded":true},{"title":"Method Name","headerAttributes":{"data-field":"MethodName","data-title":"Method Name"},"field":"MethodName","encoded":true}],"scrollable":false,"dataSource":{"type":(function(){if(kendo.data.transports['aspnetmvc-ajax']){return 'aspnetmvc-ajax';} else{throw new Error('The kendo.aspnetmvc.min.js script is not included.');}})(),"transport":{"read":{"url":""},"prefix":""},"schema":{"data":"Data","total":"Total","errors":"Errors","model":{"fields":{"Date":{"type":"date","defaultValue":null},"ExceptionType":{"type":"string"},"Message":{"type":"string"},"MethodName":{"type":"string"},"StackTrace":{"type":"string"}}}},"data":{"Data":[],"Total":0,"AggregateResults":null}},"detailTemplate":kendo.template(jQuery('#trackingExceptionsTemplate').html()),"navigatable":true});});
+</script>
+                    <script id="trackingExceptionsTemplate" type="text/kendo-tmpl">
+                        <div class="col-md-12 editor-col">
+                            <div class="editor-label">Message</div>
+                            <div class="editor-field">
+                                <textarea type="name" id="Exception_Message" name="Exception.CreateDate" class="k-textbox editor-control font-weight-bold" readonly="readonly">#: Message #</textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12 editor-col editor-clear">
+                            <div class="editor-label">Stack Trace</div>
+                            <div class="editor-field">
+                                
+                                <textarea type="name" id="Exception_CreateDate" name="Exception.CreateDate" class="k-textbox editor-control font-weight-bold" readonly="readonly" style="height: 17rem">#: StackTrace #</textarea>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </div>
+            
+
+
+<div id="overlayModelEditorButtonRow" class="editor-button-row-modal">
+    <div class="editor-button-nav-left">
+        <label id="altLeft1ButtonLabel" for="altLeft1Button" class="display-none">altLeft1Button</label><input id="altLeft1Button" type="button" class="k-button btn-spacer-right" aria-labelledby="altLeft1ButtonLabel" value=" " style="display: none;">
+        <label id="altLeft2ButtonLabel" for="altLeft2Button" class="display-none">altLeft2Button</label><input id="altLeft2Button" type="button" class="k-button btn-spacer-right" aria-labelledby="altLeft2ButtonLabel" value=" " style="display: none;">
+        <label id="altLeft3ButtonLabel" for="altLeft3Button" class="display-none">altLeft3Button</label><input id="altLeft3Button" type="button" class="k-button btn-spacer-right" aria-labelledby="altLeft3ButtonLabel" value=" " style="display: none;">
+        <label id="altLeft4ButtonLabel" for="altLeft4Button" class="display-none">altLeft4Button</label><input id="altLeft4Button" type="button" class="k-button btn-spacer-right" aria-labelledby="altLeft4ButtonLabel" value=" " style="display: none;">
+        <label id="altLeft5ButtonLabel" for="altLeft5Button" class="display-none">altLeft5Button</label><input id="altLeft5Button" type="button" class="k-button btn-spacer-right" aria-labelledby="altLeft5ButtonLabel" value=" " style="display: none;">
+        <label id="altLeft6ButtonLabel" for="altLeft6Button" class="display-none">altLeft6Button</label><input id="altLeft6Button" type="button" class="k-button" aria-labelledby="altLeft6ButtonLabel" value=" " style="display: none;">
+    </div>
+    <div class="editor-button-nav-right">
+        <label id="altRight6ButtonLabel" for="altRight6Button" class="display-none">altRight6Button</label><input id="altRight6Button" type="button" class="k-button" aria-labelledby="altRight6ButtonLabel" value=" " style="display: none;">
+        <label id="altRight5ButtonLabel" for="altRight5Button" class="display-none">altRight5Button</label><input id="altRight5Button" type="button" class="k-button btn-spacer-left" aria-labelledby="altRight5ButtonLabel" value=" " style="display: none;">
+        <label id="altRight4ButtonLabel" for="altRight4Button" class="display-none">altRight4Button</label><input id="altRight4Button" type="button" class="k-button btn-spacer-left" aria-labelledby="altRight4ButtonLabel" value=" " style="display: none;">
+        <label id="altRight3ButtonLabel" for="altRight3Button" class="display-none">altRight3Button</label><input id="altRight3Button" type="button" class="k-button btn-spacer-left" aria-labelledby="altRight3ButtonLabel" value=" " style="display: none;">
+        <label id="altRight2ButtonLabel" for="altRight2Button" class="display-none">altRight2Button</label><input id="altRight2Button" type="button" class="k-button btn-spacer-left" aria-labelledby="altRight2ButtonLabel" value=" " style="display: none;">
+        <label id="altRight1ButtonLabel" for="altRight1Button" class="display-none">Cancel</label><input id="altRight1Button" type="button" class="k-button btn-spacer-left primary-button" aria-labelledby="altRight1ButtonLabel" value="Cancel" aria-label="Cancel" data-kit-action="cancel">
+    </div>
+</div>
+<div id="formIdCheckDiv" style="visibility:hidden"></div>
+<label id="parentOverlayDivLabel" for="parentOverlayDiv" class="display-none">parentOverlayDiv</label><input id="parentOverlayDiv" type="hidden" value="" aria-labelledby="parentOverlayDivLabel">
+<label id="childOverlayDivLabel" for="childOverlayDiv" class="display-none">childOverlayDiv</label><input id="childOverlayDiv" type="hidden" value="" aria-labelledby="childOverlayDivLabel">
+<label id="overlayEntityNameIdLabel" for="overlayEntityNameId" class="display-none">overlayEntityNameId</label><input id="overlayEntityNameId" type="hidden" aria-labelledby="overlayEntityNameIdLabel">
+<label id="isOverlayDirtyDataEnabledIdLabel" for="isOverlayDirtyDataEnabledId" class="display-none">isOverlayDirtyDataEnabledId</label><input id="isOverlayDirtyDataEnabledId" type="hidden" value="True" aria-labelledby="isOverlayDirtyDataEnabledIdLabel">
+<label id="overlayDirtyDataMessageLabel" for="overlayDirtyDataMessage" class="display-none">overlayDirtyDataMessage</label><input id="overlayDirtyDataMessage" type="hidden" value="Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?" aria-labelledby="overlayDirtyDataMessageLabel">
+
+<script>
+    var closeFunctionRoot;
+    var altLeft1ButtonId = '#' + 'altLeft1Button';
+    var altLeft2ButtonId = '#' + 'altLeft2Button';
+    var altLeft3ButtonId = '#' + 'altLeft3Button';
+    var altLeft4ButtonId = '#' + 'altLeft4Button';
+    var altLeft5ButtonId = '#' + 'altLeft5Button';
+    var altLeft6ButtonId = '#' + 'altLeft6Button';
+    var altRight1ButtonId = '#' + 'altRight1Button';
+    var altRight2ButtonId = '#' + 'altRight2Button';
+    var altRight3ButtonId = '#' + 'altRight3Button';
+    var altRight4ButtonId = '#' + 'altRight4Button';
+    var altRight5ButtonId = '#' + 'altRight5Button';
+    var altRight6ButtonId = '#' + 'altRight6Button';
+    var formIdCheckDivId = '#' + 'formIdCheckDiv';
+    var leftButtonArray = [];
+    var rightButtonArray = [{"IsCancelButton":false,"IsCloseButton":false,"IsEnabled":true,"IsResetButton":false,"IsSubmitButton":false,"LabelText":"Cancel","Order":1,"PostprocessFunction":"cancelFileTranferTrackingView","PreprocessFunction":null,"RedirectUrl":null,"ResetCallbackFunction":null,"SubmitError":null,"SubmitSuccess":null,"SubmitUrl":null,"SubmitVerb":null}];
+
+    var editorAltLeft1Preprocess = "" + "left1Preprocess";
+    var editorAltLeft1Postprocess = "" + "left1Postprocess";
+    var editorAltLeft1ResetCallback;
+    var editorAltLeft1IsResetButton;
+    var editorAltLeft2Preprocess = "" + "left2Preprocess";
+    var editorAltLeft2Postprocess = "" + "left2Postprocess";
+    var editorAltLeft3Preprocess = "" + "left3Preprocess";
+    var editorAltLeft3Postprocess = "" + "left3Postprocess";
+    var editorAltLeft4Preprocess = "" + "left4Preprocess";
+    var editorAltLeft4Postprocess = "" + "left4Postprocess";
+    var editorAltLeft5Preprocess = "" + "left5Preprocess";
+    var editorAltLeft5Postprocess = "" + "left5Postprocess";
+    var editorAltLeft6Preprocess = "" + "left6Preprocess";
+    var editorAltLeft6Postprocess = "" + "left6Postprocess";
+    var editorAltRight1Preprocess = "" + "right1Preprocess";
+    var editorAltRight1Postprocess = "" + "right1Postprocess";
+    var editorAltRight1IsCloseButton;
+    var editorAltRight1SubmitUrl;
+    var editorAltRight1SubmitVerb;
+    var editorAltRight1SubmitSuccess;
+    var editorAltRight1SubmitError;
+    var editorAltRight2Preprocess = "" + "right2Preprocess";
+    var editorAltRight2Postprocess = "" + "right2Postprocess";
+    var editorAltRight2IsCancelButton;
+    var editorAltRight3Preprocess = "" + "right3Preprocess";
+    var editorAltRight3Postprocess = "" + "right3Postprocess";
+    var editorAltRight4Preprocess = "" + "right4Preprocess";
+    var editorAltRight4Postprocess = "" + "right4Postprocess";
+    var editorAltRight5Preprocess = "" + "right5Preprocess";
+    var editorAltRight5Postprocess = "" + "right5Postprocess";
+    var editorAltRight6Preprocess = "" + "right6Preprocess";
+    var editorAltRight6Postprocess = "" + "right6Postprocess";
+    var isOverlayDirtyDataEnabledId = "isOverlayDirtyDataEnabledId";
+    var overlayDirtyDataMessageId = "overlayDirtyDataMessage";
+    var parentOverlayDivId = "parentOverlayDiv";
+    var childOverlayDivId = "childOverlayDiv";
+
+    var isOverlayDataDirty = false;
+    var overlayDirtyDataMessage;
+    var isOverlayDirtyDataEnabled;
+    var ignoreOverlayDirtyData;
+    var defaultValidator;
+
+    if (typeof overlayInfoArray === 'undefined') {
+        var overlayInfoArray = [];
+    }
+
+</script>
+
+<script src="/Scripts/hp.ua3.core.overlayModelEditor.js?v=30.0.0.2609"></script>
+        </div>
+    </div>
+</div>
+</form></div> </div>

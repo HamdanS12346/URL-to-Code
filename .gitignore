@@ -19,3 +19,6 @@ packs/*
 !packs/fxfer-v3/
 !packs/fxfer-v3/**
 
+!packs/fxfer-v6/
+!packs/fxfer-v6/**
+

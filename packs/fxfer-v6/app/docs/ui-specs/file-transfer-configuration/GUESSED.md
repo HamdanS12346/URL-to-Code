@@ -1,0 +1,6 @@
+﻿- Page Cancel (`#cancelButton`) behaves like Reset + hides Search Results panel.
+- Source Protocol (Dialog d1 `#ProtocolTypeList`) shows `#ftpServer` only for FTP/SFTP/FTPS.
+- Destination Protocol (Dialog d1 `#DestinationProtocolList`) shows `#divFTPId` only for FTP/SFTP/FTPS.
+- Destination Type (Dialog d1 `#DestinationTypeList`) shows FTE-only fields (`#divContractName`, `#divFTEMetadataId`, `#divInstructions`) when the selected type text contains "FTE".
+- Destination edit mode toggles (`#DestinationRemoveButton`, `#UpdateAndCloseButton`) when `#updateDestinationId` is non-empty.
+- View dialog destination details (`#divDestinationConfigurationView`) are revealed on a click in `#FileTransferDestinationGrid`, and the details panel is filled from the row’s visible cells.

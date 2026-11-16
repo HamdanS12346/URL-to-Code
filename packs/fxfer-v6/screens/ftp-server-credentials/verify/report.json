@@ -1,0 +1,332 @@
+{
+  "size_delta_px": [
+    0,
+    0
+  ],
+  "bad_pct": 1.34,
+  "mean_abs": 1.74,
+  "worst_band": {
+    "y": 540,
+    "bad_pct": 2.94
+  },
+  "bands": [
+    {
+      "y": 0,
+      "bad_pct": 2.72
+    },
+    {
+      "y": 180,
+      "bad_pct": 0.97
+    },
+    {
+      "y": 360,
+      "bad_pct": 1.41
+    },
+    {
+      "y": 540,
+      "bad_pct": 2.94
+    },
+    {
+      "y": 720,
+      "bad_pct": 0
+    },
+    {
+      "y": 900,
+      "bad_pct": 0
+    }
+  ],
+  "clusters": [
+    {
+      "box": [
+        0,
+        528,
+        1920,
+        120
+      ],
+      "bad_px": 12093,
+      "css_box": [
+        0,
+        528,
+        1920,
+        120
+      ],
+      "element": {
+        "el": "span.subfooter-lbl.subfooter-lbl-separator",
+        "text": "Website Requirements",
+        "box": [
+          747,
+          563,
+          229,
+          27
+        ]
+      }
+    },
+    {
+      "box": [
+        0,
+        96,
+        1920,
+        96
+      ],
+      "bad_px": 4773,
+      "css_box": [
+        0,
+        96,
+        1920,
+        96
+      ],
+      "element": {
+        "el": "span.ellipsis-nowrap",
+        "text": "External Links",
+        "box": [
+          648,
+          110,
+          505,
+          45
+        ]
+      }
+    },
+    {
+      "box": [
+        24,
+        288,
+        312,
+        96
+      ],
+      "bad_px": 1918,
+      "css_box": [
+        24,
+        288,
+        312,
+        96
+      ],
+      "element": {
+        "el": "input#FtpServerName.editor-control.k-input-inner[data-testid=FtpServerName]",
+        "text": "",
+        "box": [
+          52,
+          333,
+          242,
+          30
+        ]
+      }
+    },
+    {
+      "box": [
+        1608,
+        408,
+        264,
+        48
+      ],
+      "bad_px": 1596,
+      "css_box": [
+        1608,
+        408,
+        264,
+        48
+      ],
+      "element": {
+        "el": "div.editor-button-nav-right",
+        "text": "Alt2 Alt3 Cancel Search",
+        "box": [
+          1615,
+          418,
+          249,
+          38
+        ]
+      }
+    },
+    {
+      "box": [
+        48,
+        192,
+        192,
+        48
+      ],
+      "bad_px": 1301,
+      "css_box": [
+        48,
+        192,
+        192,
+        48
+      ],
+      "element": {
+        "el": "div.content-panel-hdr",
+        "text": "Search Criteria",
+        "box": [
+          31,
+          193,
+          1858,
+          48
+        ]
+      }
+    }
+  ],
+  "worst_crop": "worst.png",
+  "sections": [
+    {
+      "n": 1,
+      "label": "ftp-server-credentials",
+      "y": 62,
+      "h": 76.17000000000002,
+      "bad_pct": 1.93
+    },
+    {
+      "n": 2,
+      "label": "pagebody",
+      "y": 138.17,
+      "h": 398.83,
+      "bad_pct": 1.19
+    },
+    {
+      "n": 3,
+      "label": "disclaimer-the-website-is-prov",
+      "y": 537,
+      "h": 118.5,
+      "bad_pct": 5.29
+    }
+  ],
+  "worst_section": {
+    "n": 3,
+    "label": "disclaimer-the-website-is-prov",
+    "y": 537,
+    "h": 118.5,
+    "bad_pct": 5.29
+  },
+  "verdict": "close",
+  "states": [
+    {
+      "name": "tooltip",
+      "ok": true,
+      "bad_pct": 6.59,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "search",
+      "ok": true,
+      "bad_pct": 3.9,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "dialog-d1",
+      "ok": true,
+      "bad_pct": 2.38,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "row-d2",
+      "ok": true,
+      "bad_pct": 3.03,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-open",
+      "ok": true,
+      "bad_pct": 1.85,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-flyout",
+      "ok": true,
+      "bad_pct": 13.64,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-close",
+      "ok": true
+    },
+    {
+      "name": "tab-flyout",
+      "ok": true,
+      "bad_pct": 11.01,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "layout@client",
+      "ok": true,
+      "bad_pct": 1.63,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-open@client",
+      "ok": true,
+      "bad_pct": 2.64,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-flyout@client",
+      "ok": true,
+      "bad_pct": 9.22,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-close@client",
+      "ok": true
+    },
+    {
+      "name": "tab-flyout@client",
+      "ok": false,
+      "bad_pct": 21.92,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "dialog-d1@client",
+      "ok": false,
+      "error": "[data-kit-dialog=\"d1\"] is at x 0, y 20, 1131x500 but the live one is at x 0, y 20, 1145x500 (w differ) (Create New opens dialog d1 at this size)",
+      "bad_pct": 7.87,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    }
+  ],
+  "bands_note": "the rebuild has 0 top-level bands, the original 3: section heights not compared",
+  "motion": [
+    {
+      "id": "M01",
+      "kind": "css-animation",
+      "ok": true,
+      "detail": "animation autoFillEnd"
+    }
+  ],
+  "behavior": {
+    "console": {
+      "errors": [],
+      "reactWarnings": [],
+      "failedResources": 0
+    }
+  }
+}
