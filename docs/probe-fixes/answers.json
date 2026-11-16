@@ -1,0 +1,344 @@
+{
+ "File Transfer Services > File Transfer Configuration": {
+  "F1 1920x1080 Create New \"Create New\"": {
+   "opened": true,
+   "final": "953,535 14x9",
+   "firstSeen": {
+    "t": 5624,
+    "box": "953,535 14x9"
+   },
+   "settledAt": 5624
+  },
+  "F1 1920x1080 row double-click": {
+   "opened": true,
+   "final": "240,81 1440x918",
+   "firstSeen": {
+    "t": 3617,
+    "box": "953,535 14x9"
+   },
+   "settledAt": 4995
+  },
+  "F4 1920x1080": {
+   "parts": [
+    "div#pageHeader.header.headroom.headroom--top",
+    "module bar div.k-menu-scroll-wrapper"
+   ],
+   "max": 0,
+   "changes": []
+  },
+  "F1 1272x588 Create New \"Create New\"": {
+   "opened": true,
+   "final": "0,20 1145x500",
+   "firstSeen": {
+    "t": 3774,
+    "box": "472,247 10x5"
+   },
+   "settledAt": 4136
+  },
+  "F1 1272x588 row double-click": {
+   "opened": true,
+   "final": "0,20 1145x500",
+   "firstSeen": {
+    "t": 1719,
+    "box": "472,247 10x5"
+   },
+   "settledAt": 2137
+  },
+  "F4 1272x588": {
+   "parts": [
+    "div#pageHeader.header.headroom.headroom--top",
+    "module bar div.k-menu-scroll-wrapper"
+   ],
+   "max": 179,
+   "changes": [
+    "down@10: 0 [headroom headroom--top headroom--not-bottom] / 52",
+    "down@20: 0 [headroom headroom--top headroom--not-bottom] / 42",
+    "down@30: 0 [headroom headroom--top headroom--not-bottom] / 32",
+    "down@40: 0 [headroom headroom--top headroom--not-bottom] / 22",
+    "down@50: 0 [headroom headroom--top headroom--not-bottom] / 12",
+    "down@60: 0 [headroom headroom--top headroom--not-bottom] / 2",
+    "down@70: 0 [headroom headroom--top headroom--not-bottom] / -8",
+    "down@80: 0 [headroom headroom--top headroom--not-bottom] / -18",
+    "down@90: 0 [headroom headroom--top headroom--not-bottom] / -28",
+    "down@100: 0 [headroom headroom--top headroom--not-bottom] / -38",
+    "down@110: 0 [headroom headroom--top headroom--not-bottom] / -48",
+    "down@120: 0 [headroom headroom--top headroom--not-bottom] / -58",
+    "down@130: 0 [headroom headroom--top headroom--not-bottom] / -68",
+    "down@140: 0 [headroom headroom--top headroom--not-bottom] / -78",
+    "down@150: -20 [headroom headroom--top headroom--not-bottom headroom--unpinned] / -88",
+    "down@160: -44 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -98",
+    "down@170: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -108",
+    "down@179: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -117",
+    "up 2@177: 0 [headroom headroom--not-bottom headroom--not-top headroom--pinned] / -115",
+    "up 5@172: 0 [headroom headroom--not-bottom headroom--not-top headroom--pinned] / -110",
+    "up 10@162: 0 [headroom headroom--not-bottom headroom--not-top headroom--pinned] / -100",
+    "up 20@142: 0 [headroom headroom--not-bottom headroom--pinned headroom--top] / -80",
+    "up 40@102: 0 [headroom headroom--not-bottom headroom--pinned headroom--top] / -40"
+   ]
+  },
+  "F2": [
+   {
+    "column": "Configuration ID",
+    "unsorted": [
+     "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)",
+     "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)"
+    ],
+    "clicks": [
+     [
+      "k-sort-icon rgb(255, 99, 88)",
+      "k-icon k-svg-icon k-svg-i-sort-asc-small rgb(43, 58, 68)",
+      "fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon rgb(0, 238, 174)",
+      "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)"
+     ],
+     [
+      "k-sort-icon rgb(255, 99, 88)",
+      "k-icon k-svg-icon k-svg-i-sort-desc-small rgb(43, 58, 68)",
+      "fa-solid fa-caret-down fa-stack-1x grid-col-sorted-ind-icon rgb(0, 238, 174)",
+      "fa-light fa-caret-down fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)"
+     ],
+     [
+      "k-sort-icon rgb(255, 99, 88)",
+      "k-icon k-svg-icon k-svg-i-sort-asc-small rgb(43, 58, 68)",
+      "fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon rgb(0, 238, 174)",
+      "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)"
+     ]
+    ]
+   },
+   {
+    "column": "Configuration Name",
+    "unsorted": [
+     "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)",
+     "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)"
+    ],
+    "clicks": [
+     [
+      "k-sort-icon rgb(255, 99, 88)",
+      "k-icon k-svg-icon k-svg-i-sort-asc-small rgb(43, 58, 68)",
+      "fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon rgb(0, 238, 174)",
+      "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)"
+     ],
+     [
+      "k-sort-icon rgb(255, 99, 88)",
+      "k-icon k-svg-icon k-svg-i-sort-desc-small rgb(43, 58, 68)",
+      "fa-solid fa-caret-down fa-stack-1x grid-col-sorted-ind-icon rgb(0, 238, 174)",
+      "fa-light fa-caret-down fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)"
+     ],
+     [
+      "k-sort-icon rgb(255, 99, 88)",
+      "k-icon k-svg-icon k-svg-i-sort-asc-small rgb(43, 58, 68)",
+      "fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon rgb(0, 238, 174)",
+      "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)"
+     ]
+    ]
+   }
+  ]
+ },
+ "File Transfer Services > File Transfer Tracking": {
+  "F4 1920x1080": {
+   "parts": [
+    "div#pageHeader.header.headroom.headroom--top",
+    "module bar div.k-menu-scroll-wrapper"
+   ],
+   "max": 0,
+   "changes": []
+  },
+  "F4 1272x588": {
+   "parts": [
+    "div#pageHeader.header.headroom.headroom--top",
+    "module bar div.k-menu-scroll-wrapper"
+   ],
+   "max": 296,
+   "changes": [
+    "down@10: 0 [headroom headroom--top headroom--not-bottom] / 52",
+    "down@20: 0 [headroom headroom--top headroom--not-bottom] / 42",
+    "down@30: 0 [headroom headroom--top headroom--not-bottom] / 32",
+    "down@40: 0 [headroom headroom--top headroom--not-bottom] / 22",
+    "down@50: 0 [headroom headroom--top headroom--not-bottom] / 12",
+    "down@60: 0 [headroom headroom--top headroom--not-bottom] / 2",
+    "down@70: 0 [headroom headroom--top headroom--not-bottom] / -8",
+    "down@80: 0 [headroom headroom--top headroom--not-bottom] / -18",
+    "down@90: 0 [headroom headroom--top headroom--not-bottom] / -28",
+    "down@100: 0 [headroom headroom--top headroom--not-bottom] / -38",
+    "down@110: 0 [headroom headroom--top headroom--not-bottom] / -48",
+    "down@120: 0 [headroom headroom--top headroom--not-bottom] / -58",
+    "down@130: 0 [headroom headroom--top headroom--not-bottom] / -68",
+    "down@140: 0 [headroom headroom--top headroom--not-bottom] / -78",
+    "down@150: -29 [headroom headroom--top headroom--not-bottom headroom--unpinned] / -88",
+    "down@160: -54 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -98",
+    "down@170: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -108",
+    "down@180: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -118",
+    "down@190: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -128",
+    "down@200: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -138",
+    "down@210: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -148",
+    "down@220: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -158",
+    "down@230: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -168",
+    "down@240: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -178",
+    "down@250: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -188",
+    "down@260: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -198",
+    "down@270: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -208",
+    "down@280: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -218",
+    "down@290: -62 [headroom headroom--not-bottom headroom--unpinned headroom--not-top] / -228",
+    "down@296: -62 [headroom headroom--unpinned headroom--not-top headroom--bottom] / -234",
+    "up 1@295: 0 [headroom headroom--not-top headroom--not-bottom headroom--pinned] / -233",
+    "up 2@293: 0 [headroom headroom--not-top headroom--not-bottom headroom--pinned] / -231",
+    "up 5@289: 0 [headroom headroom--not-top headroom--not-bottom headroom--pinned] / -227",
+    "up 10@279: 0 [headroom headroom--not-top headroom--not-bottom headroom--pinned] / -217",
+    "up 20@259: 0 [headroom headroom--not-top headroom--not-bottom headroom--pinned] / -197",
+    "up 40@219: 0 [headroom headroom--not-top headroom--not-bottom headroom--pinned] / -157"
+   ]
+  },
+  "F3": [
+   {
+    "id": "FromDate",
+    "shows": "",
+    "value": "2026-11-16T18:30:00.000Z"
+   },
+   {
+    "id": "ToDate",
+    "shows": "",
+    "value": "2026-11-16T18:30:00.000Z"
+   }
+  ]
+ },
+ "File Transfer Services > FTP Server Credentials": {
+  "F1 1920x1080 Create New \"Create New\"": {
+   "opened": true,
+   "final": "240,232 1440x617",
+   "firstSeen": {
+    "t": 815,
+    "box": "953,536 14x8"
+   },
+   "settledAt": 1195
+  },
+  "F1 1920x1080 row double-click": {
+   "opened": true,
+   "final": "240,97 1440x886",
+   "firstSeen": {
+    "t": 1097,
+    "box": "953,536 14x8"
+   },
+   "settledAt": 1493
+  },
+  "F4 1920x1080": {
+   "parts": [
+    "div#pageHeader.header.headroom.headroom--top",
+    "module bar div.k-menu-scroll-wrapper"
+   ],
+   "max": 0,
+   "changes": []
+  },
+  "F1 1272x588 Create New \"Create New\"": {
+   "opened": true,
+   "final": "0,20 1145x500",
+   "firstSeen": {
+    "t": 1025,
+    "box": "472,247 10x5"
+   },
+   "settledAt": 1374
+  },
+  "F1 1272x588 row double-click": {
+   "opened": true,
+   "final": "0,20 1145x500",
+   "firstSeen": {
+    "t": 952,
+    "box": "472,247 10x5"
+   },
+   "settledAt": 1379
+  },
+  "F4 1272x588": {
+   "parts": [
+    "div#pageHeader.header.headroom.headroom--top",
+    "module bar div.k-menu-scroll-wrapper"
+   ],
+   "max": 67,
+   "changes": [
+    "down@10: 0 [headroom headroom--top headroom--not-bottom] / 52",
+    "down@20: 0 [headroom headroom--top headroom--not-bottom] / 42",
+    "down@30: 0 [headroom headroom--top headroom--not-bottom] / 32",
+    "down@40: 0 [headroom headroom--top headroom--not-bottom] / 22",
+    "down@50: 0 [headroom headroom--top headroom--not-bottom] / 12",
+    "down@60: 0 [headroom headroom--top headroom--not-bottom] / 2",
+    "down@67: 0 [headroom headroom--top headroom--not-bottom] / -5",
+    "up 2@65: 0 [headroom headroom--top headroom--not-bottom] / -3",
+    "up 5@60: 0 [headroom headroom--top headroom--not-bottom] / 2",
+    "up 10@50: 0 [headroom headroom--top headroom--not-bottom] / 12",
+    "up 20@30: 0 [headroom headroom--top headroom--not-bottom] / 32",
+    "up 40@0: 0 [headroom headroom--top headroom--not-bottom] / 62"
+   ]
+  },
+  "F2": [
+   {
+    "column": "Server Name",
+    "unsorted": [
+     "k-sort-icon rgb(255, 99, 88)",
+     "k-icon k-svg-icon k-svg-i-sort-asc-small rgb(43, 58, 68)",
+     "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)",
+     "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)",
+     "k-icon k-svg-icon k-svg-i-filter rgb(43, 58, 68)"
+    ],
+    "clicks": [
+     [
+      "k-sort-icon rgb(255, 99, 88)",
+      "k-icon k-svg-icon k-svg-i-sort-desc-small rgb(43, 58, 68)",
+      "fa-solid fa-caret-down fa-stack-1x grid-col-sorted-ind-icon rgb(0, 238, 174)",
+      "fa-light fa-caret-down fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)",
+      "k-icon k-svg-icon k-svg-i-filter rgb(43, 58, 68)"
+     ],
+     [
+      "k-sort-icon rgb(255, 99, 88)",
+      "k-icon k-svg-icon k-svg-i-sort-asc-small rgb(43, 58, 68)",
+      "fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon rgb(0, 238, 174)",
+      "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)",
+      "k-icon k-svg-icon k-svg-i-filter rgb(43, 58, 68)"
+     ],
+     [
+      "k-sort-icon rgb(255, 99, 88)",
+      "k-icon k-svg-icon k-svg-i-sort-desc-small rgb(43, 58, 68)",
+      "fa-solid fa-caret-down fa-stack-1x grid-col-sorted-ind-icon rgb(0, 238, 174)",
+      "fa-light fa-caret-down fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)",
+      "k-icon k-svg-icon k-svg-i-filter rgb(43, 58, 68)"
+     ]
+    ]
+   },
+   {
+    "column": "Description",
+    "unsorted": [
+     "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)",
+     "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)",
+     "k-icon k-svg-icon k-svg-i-filter rgb(43, 58, 68)"
+    ],
+    "clicks": [
+     [
+      "k-sort-icon rgb(255, 99, 88)",
+      "k-icon k-svg-icon k-svg-i-sort-asc-small rgb(43, 58, 68)",
+      "fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon rgb(0, 238, 174)",
+      "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)",
+      "k-icon k-svg-icon k-svg-i-filter rgb(43, 58, 68)"
+     ],
+     [
+      "k-sort-icon rgb(255, 99, 88)",
+      "k-icon k-svg-icon k-svg-i-sort-desc-small rgb(43, 58, 68)",
+      "fa-solid fa-caret-down fa-stack-1x grid-col-sorted-ind-icon rgb(0, 238, 174)",
+      "fa-light fa-caret-down fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)",
+      "k-icon k-svg-icon k-svg-i-filter rgb(43, 58, 68)"
+     ],
+     [
+      "k-sort-icon rgb(255, 99, 88)",
+      "k-icon k-svg-icon k-svg-i-sort-asc-small rgb(43, 58, 68)",
+      "fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon rgb(0, 238, 174)",
+      "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon rgb(43, 58, 68)",
+      "k-icon k-svg-icon k-svg-i-filter rgb(43, 58, 68)"
+     ]
+    ]
+   }
+  ],
+  "F5": {
+   "list": "307,560 273x128",
+   "dx": 0,
+   "dy": 0,
+   "dw": 20,
+   "coversInput": true,
+   "insidePopup": false
+  }
+ }
+}

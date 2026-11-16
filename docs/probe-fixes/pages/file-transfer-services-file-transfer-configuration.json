@@ -1,0 +1,4092 @@
+{
+ "label": "File Transfer Services > File Transfer Configuration",
+ "trail": [
+  "File Transfer Services",
+  "File Transfer Configuration"
+ ],
+ "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations",
+ "at": "2026-11-16T19:46:32.227Z",
+ "probe": {
+  "errors": [],
+  "skipped": [],
+  "viewports": [
+   {
+    "viewport": {
+     "width": 1920,
+     "height": 1080
+    },
+    "creates": [
+     {
+      "opener": "Create New",
+      "postsBlocked": {
+       "opened": false,
+       "blocked": [
+        "POST /FileTransfer/FileTransferConfigurationEdit/"
+       ],
+       "requests": [
+        {
+         "method": "POST",
+         "url": "/FileTransfer/FileTransferConfigurationEdit/",
+         "status": "blocked"
+        }
+       ],
+       "loadingStillShown": true,
+       "shot": "file-transfer-services-file-transfer-configuration--1920x1080-create1-blocked.png"
+      },
+      "open": {
+       "opened": true,
+       "ms": 7502,
+       "requests": [
+        {
+         "method": "POST",
+         "url": "/FileTransfer/FileTransferConfigurationEdit/",
+         "status": "sent"
+        },
+        {
+         "method": "GET",
+         "url": "/api/FileTransfer/GetFtpServerDetails/",
+         "status": "sent"
+        },
+        {
+         "method": "GET",
+         "url": "/api/FileTransfer/GetDataListData/",
+         "status": "sent"
+        },
+        {
+         "method": "GET",
+         "url": "/api/FileTransfer/GetFtpServerDetails/",
+         "status": "sent"
+        }
+       ],
+       "blocked": [],
+       "samples": [
+        {
+         "t": 595,
+         "wins": [],
+         "loading": []
+        },
+        {
+         "t": 5624,
+         "wins": [
+          {
+           "x": 953,
+           "y": 535,
+           "w": 14,
+           "h": 9,
+           "title": "",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+           "opacity": "0",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        },
+        {
+         "t": 6598,
+         "wins": [
+          {
+           "x": 953,
+           "y": 535,
+           "w": 14,
+           "h": 9,
+           "title": "Add File Transfer Configuration",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+           "opacity": "0",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        }
+       ],
+       "final": {
+        "x": 953,
+        "y": 535,
+        "w": 14,
+        "h": 9,
+        "title": "Add File Transfer Configuration",
+        "id": "FileTransferConfigurationEditPopup",
+        "loading": false,
+        "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+        "opacity": "0",
+        "z": "11502",
+        "className": "k-window panelForm-col-6 ui-draggable",
+        "inlineStyle": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 81px; left: 240px; z-index: 11502; opacity: 1; transform: scale(1);",
+        "css": {
+         "width": "1440px",
+         "minWidth": "90px",
+         "maxWidth": "none",
+         "maxHeight": "918px",
+         "left": "240px",
+         "top": "81px",
+         "position": "absolute"
+        },
+        "rules": [
+         {
+          "selector": ".panel-form-col-6, .panelForm-col-6",
+          "width": "75%"
+         }
+        ],
+        "options": {
+         "position": {
+          "top": 81,
+          "left": 240
+         },
+         "width": null,
+         "height": null,
+         "modal": {
+          "preventScroll": true
+         },
+         "animation": {
+          "open": {
+           "effects": {
+            "zoom": {
+             "direction": "in"
+            },
+            "fade": {
+             "direction": "in"
+            }
+           },
+           "duration": 350
+          },
+          "close": {
+           "effects": {
+            "zoom": {
+             "direction": "out",
+             "properties": {
+              "scale": 0.7
+             }
+            },
+            "fade": {
+             "direction": "out"
+            }
+           },
+           "duration": 350,
+           "hide": true
+          }
+         }
+        },
+        "content": {
+         "scrollH": 1191,
+         "clientH": 879,
+         "maxHeight": "918px"
+        },
+        "viewport": {
+         "innerW": 1920,
+         "innerH": 1080,
+         "docW": 1920,
+         "dpr": 1.0000000298023224,
+         "isPhone": false,
+         "max1280": false
+        },
+        "lock": {
+         "html": "hidden",
+         "body": "hidden"
+        },
+        "focus": "Edit_ConfigName"
+       },
+       "shot": "file-transfer-services-file-transfer-configuration--1920x1080-create1.png",
+       "firstSeen": {
+        "t": 5624,
+        "box": {
+         "x": 953,
+         "y": 535,
+         "w": 14,
+         "h": 9,
+         "title": "",
+         "id": "FileTransferConfigurationEditPopup",
+         "loading": false,
+         "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+         "opacity": "0",
+         "z": "11502"
+        }
+       },
+       "settledAt": 5624,
+       "dates": [],
+       "dropdowns": [
+        {
+         "label": "Protocol",
+         "dropdown": {
+          "x": 952,
+          "y": 290,
+          "w": 323,
+          "h": 40
+         },
+         "list": {
+          "x": 952,
+          "y": 330,
+          "w": 323,
+          "h": 168,
+          "z": "11512",
+          "items": 4,
+          "parent": "body"
+         },
+         "dx": 0,
+         "dy": 0,
+         "windowZ": "11502",
+         "shot": "file-transfer-services-file-transfer-configuration--1920x1080-create1-dd.png"
+        },
+        {
+         "label": "File Direction",
+         "dropdown": {
+          "x": 952,
+          "y": 383,
+          "w": 323,
+          "h": 40
+         },
+         "list": {
+          "x": 952,
+          "y": 423,
+          "w": 323,
+          "h": 103,
+          "z": "11512",
+          "items": 2,
+          "parent": "body"
+         },
+         "dx": 0,
+         "dy": 0,
+         "windowZ": "11502",
+         "shot": null
+        },
+        {
+         "label": "Owner Module",
+         "dropdown": {
+          "x": 952,
+          "y": 475,
+          "w": 323,
+          "h": 40
+         },
+         "list": {
+          "x": 952,
+          "y": 515,
+          "w": 323,
+          "h": 200,
+          "z": "11512",
+          "items": 30,
+          "parent": "body"
+         },
+         "dx": 0,
+         "dy": 0,
+         "windowZ": "11502",
+         "shot": null
+        },
+        {
+         "label": "Time Window Start",
+         "dropdown": {
+          "x": 293,
+          "y": 682,
+          "w": 315,
+          "h": 40
+         },
+         "list": {
+          "x": 293,
+          "y": 722,
+          "w": 315,
+          "h": 200,
+          "z": "11512",
+          "items": 48,
+          "parent": "body"
+         },
+         "dx": 0,
+         "dy": 0,
+         "windowZ": "11502",
+         "shot": null
+        }
+       ]
+      }
+     }
+    ],
+    "scroll": {
+     "parts": [
+      {
+       "stamp": "f1",
+       "sel": "div#pageHeader.header.headroom.headroom--top",
+       "position": "fixed"
+      },
+      {
+       "stamp": "f2",
+       "sel": "module bar div.k-menu-scroll-wrapper",
+       "position": "relative"
+      }
+     ],
+     "max": 0,
+     "changes": [
+      {
+       "dir": "rest",
+       "y": 0,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 62,
+         "bottom": 94,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      }
+     ],
+     "wheel": [
+      {
+       "dy": 100,
+       "y": 0,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 62,
+         "bottom": 94,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dy": 100,
+       "y": 0,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 62,
+         "bottom": 94,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dy": 100,
+       "y": 0,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 62,
+         "bottom": 94,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dy": 100,
+       "y": 0,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 62,
+         "bottom": 94,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dy": -30,
+       "y": 0,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 62,
+         "bottom": 94,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dy": -30,
+       "y": 0,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 62,
+         "bottom": 94,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      }
+     ],
+     "shots": [
+      "file-transfer-services-file-transfer-configuration--1920x1080-scroll-0.png",
+      "file-transfer-services-file-transfer-configuration--1920x1080-scroll-100.png",
+      "file-transfer-services-file-transfer-configuration--1920x1080-scroll-200.png",
+      "file-transfer-services-file-transfer-configuration--1920x1080-scroll-0.png",
+      "file-transfer-services-file-transfer-configuration--1920x1080-scroll-0-up30.png"
+     ]
+    },
+    "searched": true,
+    "row": {
+     "opened": true,
+     "ms": 6846,
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/FileTransfer/FileTransferConfigurationView/",
+       "status": "sent"
+      }
+     ],
+     "blocked": [],
+     "samples": [
+      {
+       "t": 991,
+       "wins": [],
+       "loading": []
+      },
+      {
+       "t": 3617,
+       "wins": [
+        {
+         "x": 953,
+         "y": 535,
+         "w": 14,
+         "h": 9,
+         "title": "",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+         "opacity": "0",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 3994,
+       "wins": [
+        {
+         "x": 953,
+         "y": 535,
+         "w": 14,
+         "h": 9,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+         "opacity": "0",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 4995,
+       "wins": [
+        {
+         "x": 240,
+         "y": 81,
+         "w": 1440,
+         "h": 918,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(1, 0, 0, 1, 0, 0)",
+         "opacity": "1",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      }
+     ],
+     "final": {
+      "x": 240,
+      "y": 81,
+      "w": 1440,
+      "h": 918,
+      "title": "View File Transfer Configuration",
+      "id": "FileTransferConfigurationViewOverlay",
+      "loading": false,
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "opacity": "1",
+      "z": "11502",
+      "className": "k-window panelForm-col-6 ui-draggable",
+      "inlineStyle": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 81px; left: 240px; z-index: 11502; opacity: 1; transform: scale(1);",
+      "css": {
+       "width": "1440px",
+       "minWidth": "90px",
+       "maxWidth": "none",
+       "maxHeight": "918px",
+       "left": "240px",
+       "top": "81px",
+       "position": "absolute"
+      },
+      "rules": [
+       {
+        "selector": ".panel-form-col-6, .panelForm-col-6",
+        "width": "75%"
+       }
+      ],
+      "options": {
+       "position": {
+        "top": 81,
+        "left": 240
+       },
+       "width": null,
+       "height": null,
+       "modal": {
+        "preventScroll": true
+       },
+       "animation": {
+        "open": {
+         "effects": {
+          "zoom": {
+           "direction": "in"
+          },
+          "fade": {
+           "direction": "in"
+          }
+         },
+         "duration": 350
+        },
+        "close": {
+         "effects": {
+          "zoom": {
+           "direction": "out",
+           "properties": {
+            "scale": 0.7
+           }
+          },
+          "fade": {
+           "direction": "out"
+          }
+         },
+         "duration": 350,
+         "hide": true
+        }
+       }
+      },
+      "content": {
+       "scrollH": 1241,
+       "clientH": 879,
+       "maxHeight": "918px"
+      },
+      "viewport": {
+       "innerW": 1920,
+       "innerH": 1080,
+       "docW": 1920,
+       "dpr": 1.0000000298023224,
+       "isPhone": false,
+       "max1280": false
+      },
+      "lock": {
+       "html": "hidden",
+       "body": "hidden"
+      },
+      "focus": "eft_ConfigName"
+     },
+     "shot": "file-transfer-services-file-transfer-configuration--1920x1080-row.png",
+     "firstSeen": {
+      "t": 3617,
+      "box": {
+       "x": 953,
+       "y": 535,
+       "w": 14,
+       "h": 9,
+       "title": "",
+       "id": "FileTransferConfigurationViewOverlay",
+       "loading": false,
+       "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+       "opacity": "0",
+       "z": "11502"
+      }
+     },
+     "settledAt": 4995,
+     "dropdowns": [
+      {
+       "label": "",
+       "dropdown": {
+        "x": 489,
+        "y": 1218,
+        "w": 104,
+        "h": 40
+       },
+       "list": {
+        "x": 489,
+        "y": 896,
+        "w": 104,
+        "h": 108,
+        "z": "11512",
+        "items": 3,
+        "parent": "body"
+       },
+       "dx": 0,
+       "dy": -362,
+       "windowZ": "11502",
+       "shot": "file-transfer-services-file-transfer-configuration--1920x1080-row-dd.png"
+      }
+     ]
+    }
+   },
+   {
+    "viewport": {
+     "width": 1272,
+     "height": 588
+    },
+    "creates": [
+     {
+      "opener": "Create New",
+      "postsBlocked": {
+       "opened": false,
+       "blocked": [
+        "POST /FileTransfer/FileTransferConfigurationEdit/"
+       ],
+       "requests": [
+        {
+         "method": "POST",
+         "url": "/FileTransfer/FileTransferConfigurationEdit/",
+         "status": "blocked"
+        }
+       ],
+       "loadingStillShown": true,
+       "shot": "file-transfer-services-file-transfer-configuration--1272x588-create1-blocked.png"
+      },
+      "open": {
+       "opened": true,
+       "ms": 5923,
+       "requests": [
+        {
+         "method": "POST",
+         "url": "/FileTransfer/FileTransferConfigurationEdit/",
+         "status": "sent"
+        },
+        {
+         "method": "GET",
+         "url": "/api/FileTransfer/GetFtpServerDetails/",
+         "status": "sent"
+        },
+        {
+         "method": "GET",
+         "url": "/api/FileTransfer/GetDataListData/",
+         "status": "sent"
+        },
+        {
+         "method": "GET",
+         "url": "/api/FileTransfer/GetFtpServerDetails/",
+         "status": "sent"
+        }
+       ],
+       "blocked": [],
+       "samples": [
+        {
+         "t": 1,
+         "wins": [],
+         "loading": []
+        },
+        {
+         "t": 134,
+         "wins": [],
+         "loading": [
+          {
+           "sel": "#loadingDialog",
+           "x": 585,
+           "y": 234,
+           "w": 103,
+           "h": 120
+          }
+         ]
+        },
+        {
+         "t": 3774,
+         "wins": [
+          {
+           "x": 472,
+           "y": 247,
+           "w": 10,
+           "h": 5,
+           "title": "",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+           "opacity": "0",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        },
+        {
+         "t": 3896,
+         "wins": [
+          {
+           "x": 472,
+           "y": 247,
+           "w": 10,
+           "h": 5,
+           "title": "Add File Transfer Configuration",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+           "opacity": "0",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        },
+        {
+         "t": 3909,
+         "wins": [
+          {
+           "x": 282,
+           "y": 156,
+           "w": 389,
+           "h": 204,
+           "title": "Add File Transfer Configuration",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.40818, 0, 0, 0.40818, 0, 0)",
+           "opacity": "0.402202",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        },
+        {
+         "t": 3914,
+         "wins": [
+          {
+           "x": 227,
+           "y": 129,
+           "w": 499,
+           "h": 262,
+           "title": "Add File Transfer Configuration",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.523579, 0, 0, 0.523579, 0, 0)",
+           "opacity": "0.518766",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        },
+        {
+         "t": 3950,
+         "wins": [
+          {
+           "x": 177,
+           "y": 105,
+           "w": 600,
+           "h": 314,
+           "title": "Add File Transfer Configuration",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.628834, 0, 0, 0.628834, 0, 0)",
+           "opacity": "0.625085",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        },
+        {
+         "t": 3979,
+         "wins": [
+          {
+           "x": 131,
+           "y": 83,
+           "w": 692,
+           "h": 362,
+           "title": "Add File Transfer Configuration",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.72492, 0, 0, 0.72492, 0, 0)",
+           "opacity": "0.722141",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        },
+        {
+         "t": 4010,
+         "wins": [
+          {
+           "x": 91,
+           "y": 64,
+           "w": 773,
+           "h": 405,
+           "title": "Add File Transfer Configuration",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.810022, 0, 0, 0.810022, 0, 0)",
+           "opacity": "0.808103",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        },
+        {
+         "t": 4044,
+         "wins": [
+          {
+           "x": 60,
+           "y": 47,
+           "w": 900,
+           "h": 441,
+           "title": "Add File Transfer Configuration",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.882402, 0, 0, 0.882402, 0, 0)",
+           "opacity": "0.881214",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        },
+        {
+         "t": 4072,
+         "wins": [
+          {
+           "x": 32,
+           "y": 34,
+           "w": 1017,
+           "h": 470,
+           "title": "Add File Transfer Configuration",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.940264, 0, 0, 0.940264, 0, 0)",
+           "opacity": "0.939661",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        },
+        {
+         "t": 4103,
+         "wins": [
+          {
+           "x": 11,
+           "y": 24,
+           "w": 1103,
+           "h": 490,
+           "title": "Add File Transfer Configuration",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.98078, 0, 0, 0.98078, 0, 0)",
+           "opacity": "0.980586",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        },
+        {
+         "t": 4136,
+         "wins": [
+          {
+           "x": 0,
+           "y": 20,
+           "w": 1144,
+           "h": 500,
+           "title": "Add File Transfer Configuration",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(0.999424, 0, 0, 0.999424, 0, 0)",
+           "opacity": "0.999418",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        },
+        {
+         "t": 4167,
+         "wins": [
+          {
+           "x": 0,
+           "y": 20,
+           "w": 1145,
+           "h": 500,
+           "title": "Add File Transfer Configuration",
+           "id": "FileTransferConfigurationEditPopup",
+           "loading": false,
+           "transform": "matrix(1, 0, 0, 1, 0, 0)",
+           "opacity": "1",
+           "z": "11502"
+          }
+         ],
+         "loading": []
+        }
+       ],
+       "final": {
+        "x": 0,
+        "y": 20,
+        "w": 1145,
+        "h": 500,
+        "title": "Add File Transfer Configuration",
+        "id": "FileTransferConfigurationEditPopup",
+        "loading": false,
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "opacity": "1",
+        "z": "11502",
+        "className": "k-window panelForm-col-6 ui-draggable",
+        "inlineStyle": "min-width: 1144.8px; min-height: 50px; max-height: 499.8px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+        "css": {
+         "width": "1144.79px",
+         "minWidth": "1144.8px",
+         "maxWidth": "none",
+         "maxHeight": "499.8px",
+         "left": "0px",
+         "top": "20px",
+         "position": "absolute"
+        },
+        "rules": [
+         {
+          "selector": ".panel-form-col-6, .panelForm-col-6",
+          "width": "75%"
+         }
+        ],
+        "options": {
+         "position": {
+          "top": "0",
+          "left": "0"
+         },
+         "width": null,
+         "height": null,
+         "modal": {
+          "preventScroll": true
+         },
+         "animation": {
+          "open": {
+           "effects": {
+            "zoom": {
+             "direction": "in"
+            },
+            "fade": {
+             "direction": "in"
+            }
+           },
+           "duration": 350
+          },
+          "close": {
+           "effects": {
+            "zoom": {
+             "direction": "out",
+             "properties": {
+              "scale": 0.7
+             }
+            },
+            "fade": {
+             "direction": "out"
+            }
+           },
+           "duration": 350,
+           "hide": true
+          }
+         }
+        },
+        "content": {
+         "scrollH": 1191,
+         "clientH": 461,
+         "maxHeight": "470.4px"
+        },
+        "viewport": {
+         "innerW": 1272,
+         "innerH": 588,
+         "docW": 1272,
+         "dpr": 1.0000000298023224,
+         "isPhone": true,
+         "max1280": true
+        },
+        "lock": {
+         "html": "hidden",
+         "body": "hidden"
+        },
+        "focus": "Edit_ConfigName"
+       },
+       "shot": "file-transfer-services-file-transfer-configuration--1272x588-create1.png",
+       "firstSeen": {
+        "t": 3774,
+        "box": {
+         "x": 472,
+         "y": 247,
+         "w": 10,
+         "h": 5,
+         "title": "",
+         "id": "FileTransferConfigurationEditPopup",
+         "loading": false,
+         "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+         "opacity": "0",
+         "z": "11502"
+        }
+       },
+       "settledAt": 4136,
+       "dates": [],
+       "dropdowns": [
+        {
+         "label": "Protocol",
+         "dropdown": {
+          "x": 565,
+          "y": 229,
+          "w": 249,
+          "h": 40
+         },
+         "list": {
+          "x": 565,
+          "y": 269,
+          "w": 249,
+          "h": 168,
+          "z": "11512",
+          "items": 4,
+          "parent": "body"
+         },
+         "dx": 0,
+         "dy": 0,
+         "windowZ": "11502",
+         "shot": "file-transfer-services-file-transfer-configuration--1272x588-create1-dd.png"
+        },
+        {
+         "label": "File Direction",
+         "dropdown": {
+          "x": 565,
+          "y": 322,
+          "w": 249,
+          "h": 40
+         },
+         "list": {
+          "x": 565,
+          "y": 362,
+          "w": 249,
+          "h": 103,
+          "z": "11512",
+          "items": 2,
+          "parent": "body"
+         },
+         "dx": 0,
+         "dy": 0,
+         "windowZ": "11502",
+         "shot": null
+        },
+        {
+         "label": "Owner Module",
+         "dropdown": {
+          "x": 565,
+          "y": 414,
+          "w": 249,
+          "h": 40
+         },
+         "list": {
+          "x": 565,
+          "y": 203,
+          "w": 249,
+          "h": 200,
+          "z": "11512",
+          "items": 30,
+          "parent": "body"
+         },
+         "dx": 0,
+         "dy": -251,
+         "windowZ": "11502",
+         "shot": null
+        },
+        {
+         "label": "Time Window Start",
+         "dropdown": {
+          "x": 53,
+          "y": 621,
+          "w": 241,
+          "h": 40
+         },
+         "list": {
+          "x": 53,
+          "y": 309,
+          "w": 241,
+          "h": 200,
+          "z": "11512",
+          "items": 48,
+          "parent": "body"
+         },
+         "dx": 0,
+         "dy": -352,
+         "windowZ": "11502",
+         "shot": null
+        }
+       ]
+      }
+     }
+    ],
+    "scroll": {
+     "parts": [
+      {
+       "stamp": "f1",
+       "sel": "div#pageHeader.header.headroom.headroom--top",
+       "position": "fixed"
+      },
+      {
+       "stamp": "f2",
+       "sel": "module bar div.k-menu-scroll-wrapper",
+       "position": "relative"
+      }
+     ],
+     "max": 179,
+     "changes": [
+      {
+       "dir": "rest",
+       "y": 0,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 62,
+         "bottom": 94,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 10,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 52,
+         "bottom": 84,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 20,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 42,
+         "bottom": 74,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 30,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 32,
+         "bottom": 64,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 40,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 22,
+         "bottom": 54,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 50,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 12,
+         "bottom": 44,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 60,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": 2,
+         "bottom": 34,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 70,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": -8,
+         "bottom": 24,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 80,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": -18,
+         "bottom": 14,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 90,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": -28,
+         "bottom": 4,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 100,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": -38,
+         "bottom": -6,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 110,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": -48,
+         "bottom": -16,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 120,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": -58,
+         "bottom": -26,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 130,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": -68,
+         "bottom": -36,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 140,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--top headroom--not-bottom",
+         "transform": "none"
+        },
+        {
+         "s": "f2",
+         "top": -78,
+         "bottom": -46,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 150,
+       "parts": [
+        {
+         "s": "f1",
+         "top": -20,
+         "bottom": 42,
+         "cls": "headroom headroom--top headroom--not-bottom headroom--unpinned",
+         "transform": "matrix(1, 0, 0, 1, 0, -20.031)"
+        },
+        {
+         "s": "f2",
+         "top": -88,
+         "bottom": -56,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 160,
+       "parts": [
+        {
+         "s": "f1",
+         "top": -44,
+         "bottom": 18,
+         "cls": "headroom headroom--not-bottom headroom--unpinned headroom--not-top",
+         "transform": "matrix(1, 0, 0, 1, 0, -43.9115)"
+        },
+        {
+         "s": "f2",
+         "top": -98,
+         "bottom": -66,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 170,
+       "parts": [
+        {
+         "s": "f1",
+         "top": -62,
+         "bottom": 0,
+         "cls": "headroom headroom--not-bottom headroom--unpinned headroom--not-top",
+         "transform": "matrix(1, 0, 0, 1, 0, -62)"
+        },
+        {
+         "s": "f2",
+         "top": -108,
+         "bottom": -76,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "down",
+       "y": 179,
+       "parts": [
+        {
+         "s": "f1",
+         "top": -62,
+         "bottom": 0,
+         "cls": "headroom headroom--not-bottom headroom--unpinned headroom--not-top",
+         "transform": "matrix(1, 0, 0, 1, 0, -62)"
+        },
+        {
+         "s": "f2",
+         "top": -117,
+         "bottom": -85,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "up 2",
+       "y": 177,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--not-bottom headroom--not-top headroom--pinned",
+         "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+         "s": "f2",
+         "top": -115,
+         "bottom": -83,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "up 5",
+       "y": 172,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--not-bottom headroom--not-top headroom--pinned",
+         "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+         "s": "f2",
+         "top": -110,
+         "bottom": -78,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "up 10",
+       "y": 162,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--not-bottom headroom--not-top headroom--pinned",
+         "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+         "s": "f2",
+         "top": -100,
+         "bottom": -68,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "up 20",
+       "y": 142,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--not-bottom headroom--pinned headroom--top",
+         "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+         "s": "f2",
+         "top": -80,
+         "bottom": -48,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dir": "up 40",
+       "y": 102,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--not-bottom headroom--pinned headroom--top",
+         "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+         "s": "f2",
+         "top": -40,
+         "bottom": -8,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      }
+     ],
+     "wheel": [
+      {
+       "dy": 100,
+       "y": 100,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--not-bottom headroom--pinned headroom--top",
+         "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+         "s": "f2",
+         "top": -38,
+         "bottom": -6,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dy": 100,
+       "y": 179,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--not-bottom headroom--pinned headroom--top",
+         "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+         "s": "f2",
+         "top": -117,
+         "bottom": -85,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dy": 100,
+       "y": 179,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--not-bottom headroom--pinned headroom--top",
+         "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+         "s": "f2",
+         "top": -117,
+         "bottom": -85,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dy": 100,
+       "y": 179,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--not-bottom headroom--pinned headroom--top",
+         "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+         "s": "f2",
+         "top": -117,
+         "bottom": -85,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dy": -30,
+       "y": 149,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--not-bottom headroom--pinned headroom--top",
+         "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+         "s": "f2",
+         "top": -87,
+         "bottom": -55,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      },
+      {
+       "dy": -30,
+       "y": 119,
+       "parts": [
+        {
+         "s": "f1",
+         "top": 0,
+         "bottom": 62,
+         "cls": "headroom headroom--not-bottom headroom--pinned headroom--top",
+         "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+         "s": "f2",
+         "top": -57,
+         "bottom": -25,
+         "cls": "",
+         "transform": "none"
+        }
+       ]
+      }
+     ],
+     "shots": [
+      "file-transfer-services-file-transfer-configuration--1272x588-scroll-0.png",
+      "file-transfer-services-file-transfer-configuration--1272x588-scroll-100.png",
+      "file-transfer-services-file-transfer-configuration--1272x588-scroll-200.png",
+      "file-transfer-services-file-transfer-configuration--1272x588-scroll-179.png",
+      "file-transfer-services-file-transfer-configuration--1272x588-scroll-179-up30.png"
+     ]
+    },
+    "searched": true,
+    "row": {
+     "opened": true,
+     "ms": 3837,
+     "requests": [
+      {
+       "method": "GET",
+       "url": "/FileTransfer/FileTransferConfigurationView/",
+       "status": "sent"
+      }
+     ],
+     "blocked": [],
+     "samples": [
+      {
+       "t": 30,
+       "wins": [],
+       "loading": []
+      },
+      {
+       "t": 148,
+       "wins": [],
+       "loading": [
+        {
+         "sel": "#loadingDialog",
+         "x": 585,
+         "y": 234,
+         "w": 103,
+         "h": 120
+        }
+       ]
+      },
+      {
+       "t": 1719,
+       "wins": [
+        {
+         "x": 472,
+         "y": 247,
+         "w": 10,
+         "h": 5,
+         "title": "",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+         "opacity": "0",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 1806,
+       "wins": [
+        {
+         "x": 472,
+         "y": 247,
+         "w": 10,
+         "h": 5,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+         "opacity": "0",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 1817,
+       "wins": [
+        {
+         "x": 404,
+         "y": 215,
+         "w": 145,
+         "h": 76,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.152466, 0, 0, 0.152466, 0, 0)",
+         "opacity": "0.143905",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 1822,
+       "wins": [
+        {
+         "x": 341,
+         "y": 184,
+         "w": 272,
+         "h": 142,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.284921, 0, 0, 0.284921, 0, 0)",
+         "opacity": "0.277698",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 1842,
+       "wins": [
+        {
+         "x": 282,
+         "y": 156,
+         "w": 389,
+         "h": 204,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.408244, 0, 0, 0.408244, 0, 0)",
+         "opacity": "0.402267",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 1872,
+       "wins": [
+        {
+         "x": 227,
+         "y": 129,
+         "w": 499,
+         "h": 262,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.523285, 0, 0, 0.523285, 0, 0)",
+         "opacity": "0.51847",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 1903,
+       "wins": [
+        {
+         "x": 177,
+         "y": 105,
+         "w": 600,
+         "h": 314,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.628889, 0, 0, 0.628889, 0, 0)",
+         "opacity": "0.62514",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 1935,
+       "wins": [
+        {
+         "x": 131,
+         "y": 83,
+         "w": 692,
+         "h": 362,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.724969, 0, 0, 0.724969, 0, 0)",
+         "opacity": "0.722191",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 1967,
+       "wins": [
+        {
+         "x": 91,
+         "y": 64,
+         "w": 773,
+         "h": 405,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.809812, 0, 0, 0.809812, 0, 0)",
+         "opacity": "0.807891",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 2001,
+       "wins": [
+        {
+         "x": 60,
+         "y": 47,
+         "w": 900,
+         "h": 441,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.882438, 0, 0, 0.882438, 0, 0)",
+         "opacity": "0.88125",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 2037,
+       "wins": [
+        {
+         "x": 32,
+         "y": 34,
+         "w": 1017,
+         "h": 470,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.940291, 0, 0, 0.940291, 0, 0)",
+         "opacity": "0.939688",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 2065,
+       "wins": [
+        {
+         "x": 11,
+         "y": 24,
+         "w": 1103,
+         "h": 490,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.980797, 0, 0, 0.980797, 0, 0)",
+         "opacity": "0.980603",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 2099,
+       "wins": [
+        {
+         "x": 0,
+         "y": 20,
+         "w": 1143,
+         "h": 499,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(0.999409, 0, 0, 0.999409, 0, 0)",
+         "opacity": "0.999403",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      },
+      {
+       "t": 2137,
+       "wins": [
+        {
+         "x": 0,
+         "y": 20,
+         "w": 1145,
+         "h": 500,
+         "title": "View File Transfer Configuration",
+         "id": "FileTransferConfigurationViewOverlay",
+         "loading": false,
+         "transform": "matrix(1, 0, 0, 1, 0, 0)",
+         "opacity": "1",
+         "z": "11502"
+        }
+       ],
+       "loading": []
+      }
+     ],
+     "final": {
+      "x": 0,
+      "y": 20,
+      "w": 1145,
+      "h": 500,
+      "title": "View File Transfer Configuration",
+      "id": "FileTransferConfigurationViewOverlay",
+      "loading": false,
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "opacity": "1",
+      "z": "11502",
+      "className": "k-window panelForm-col-6 ui-draggable",
+      "inlineStyle": "min-width: 1144.8px; min-height: 50px; max-height: 499.8px; display: inline-flex; top: 20px; left: 0px; z-index: 11502; opacity: 1; transform: scale(1);",
+      "css": {
+       "width": "1144.79px",
+       "minWidth": "1144.8px",
+       "maxWidth": "none",
+       "maxHeight": "499.8px",
+       "left": "0px",
+       "top": "20px",
+       "position": "absolute"
+      },
+      "rules": [
+       {
+        "selector": ".panel-form-col-6, .panelForm-col-6",
+        "width": "75%"
+       }
+      ],
+      "options": {
+       "position": {
+        "top": "0",
+        "left": "0"
+       },
+       "width": null,
+       "height": null,
+       "modal": {
+        "preventScroll": true
+       },
+       "animation": {
+        "open": {
+         "effects": {
+          "zoom": {
+           "direction": "in"
+          },
+          "fade": {
+           "direction": "in"
+          }
+         },
+         "duration": 350
+        },
+        "close": {
+         "effects": {
+          "zoom": {
+           "direction": "out",
+           "properties": {
+            "scale": 0.7
+           }
+          },
+          "fade": {
+           "direction": "out"
+          }
+         },
+         "duration": 350,
+         "hide": true
+        }
+       }
+      },
+      "content": {
+       "scrollH": 1241,
+       "clientH": 461,
+       "maxHeight": "470.4px"
+      },
+      "viewport": {
+       "innerW": 1272,
+       "innerH": 588,
+       "docW": 1272,
+       "dpr": 1.0000000298023224,
+       "isPhone": true,
+       "max1280": true
+      },
+      "lock": {
+       "html": "hidden",
+       "body": "hidden"
+      },
+      "focus": "eft_ConfigName"
+     },
+     "shot": "file-transfer-services-file-transfer-configuration--1272x588-row.png",
+     "firstSeen": {
+      "t": 1719,
+      "box": {
+       "x": 472,
+       "y": 247,
+       "w": 10,
+       "h": 5,
+       "title": "",
+       "id": "FileTransferConfigurationViewOverlay",
+       "loading": false,
+       "transform": "matrix(0.01, 0, 0, 0.01, 0, 0)",
+       "opacity": "0",
+       "z": "11502"
+      }
+     },
+     "settledAt": 2137,
+     "dropdowns": [
+      {
+       "label": "",
+       "dropdown": {
+        "x": 249,
+        "y": 1157,
+        "w": 104,
+        "h": 40
+       },
+       "list": {
+        "x": 249,
+        "y": 416,
+        "w": 104,
+        "h": 108,
+        "z": "11512",
+        "items": 3,
+        "parent": "body"
+       },
+       "dx": 0,
+       "dy": -781,
+       "windowZ": "11502",
+       "shot": "file-transfer-services-file-transfer-configuration--1272x588-row-dd.png"
+      }
+     ]
+    }
+   }
+  ],
+  "dates": null,
+  "sort": {
+   "columns": [
+    {
+     "title": "Configuration ID",
+     "sortable": true
+    },
+    {
+     "title": "Configuration Name",
+     "sortable": true
+    },
+    {
+     "title": "Protocol",
+     "sortable": false
+    },
+    {
+     "title": "Address",
+     "sortable": true
+    },
+    {
+     "title": "Mask",
+     "sortable": true
+    },
+    {
+     "title": "Owner Name",
+     "sortable": true
+    },
+    {
+     "title": "Owner Module",
+     "sortable": true
+    },
+    {
+     "title": "Status",
+     "sortable": true
+    }
+   ],
+   "unsorted": [
+    {
+     "title": "Configuration ID",
+     "ariaSort": "none",
+     "className": "k-table-th k-header clickable",
+     "icons": [
+      {
+       "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "900",
+       "x": 254,
+       "y": 766,
+       "w": 18,
+       "h": 32
+      },
+      {
+       "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "300",
+       "x": 254,
+       "y": 766,
+       "w": 18,
+       "h": 32
+      }
+     ],
+     "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration ID</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+    },
+    {
+     "title": "Configuration Name",
+     "ariaSort": "none",
+     "className": "k-table-th k-header clickable",
+     "icons": [
+      {
+       "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "900",
+       "x": 505,
+       "y": 766,
+       "w": 18,
+       "h": 32
+      },
+      {
+       "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "300",
+       "x": 505,
+       "y": 766,
+       "w": 18,
+       "h": 32
+      }
+     ],
+     "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration Name</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+    },
+    {
+     "title": "Protocol",
+     "ariaSort": null,
+     "className": "k-table-th k-header",
+     "icons": [],
+     "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Protocol</span></span></span></span>"
+    },
+    {
+     "title": "Address",
+     "ariaSort": "none",
+     "className": "k-table-th k-header clickable",
+     "icons": [
+      {
+       "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "900",
+       "x": 1005,
+       "y": 766,
+       "w": 18,
+       "h": 32
+      },
+      {
+       "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "300",
+       "x": 1005,
+       "y": 766,
+       "w": 18,
+       "h": 32
+      }
+     ],
+     "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Address</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+    },
+    {
+     "title": "Mask",
+     "ariaSort": "none",
+     "className": "k-table-th k-header clickable",
+     "icons": [
+      {
+       "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "900",
+       "x": 1256,
+       "y": 766,
+       "w": 18,
+       "h": 32
+      },
+      {
+       "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "300",
+       "x": 1256,
+       "y": 766,
+       "w": 18,
+       "h": 32
+      }
+     ],
+     "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Mask</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+    },
+    {
+     "title": "Owner Name",
+     "ariaSort": "none",
+     "className": "k-table-th k-header clickable",
+     "icons": [
+      {
+       "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "900",
+       "x": 1506,
+       "y": 766,
+       "w": 18,
+       "h": 32
+      },
+      {
+       "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "300",
+       "x": 1506,
+       "y": 766,
+       "w": 18,
+       "h": 32
+      }
+     ],
+     "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Name</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+    },
+    {
+     "title": "Owner Module",
+     "ariaSort": "none",
+     "className": "k-table-th k-header clickable",
+     "icons": [
+      {
+       "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "900",
+       "x": 1757,
+       "y": 766,
+       "w": 18,
+       "h": 32
+      },
+      {
+       "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "300",
+       "x": 1757,
+       "y": 766,
+       "w": 18,
+       "h": 32
+      }
+     ],
+     "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Module</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+    },
+    {
+     "title": "Status",
+     "ariaSort": "none",
+     "className": "k-table-th k-header clickable",
+     "icons": [
+      {
+       "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "900",
+       "x": 1836,
+       "y": 766,
+       "w": 13,
+       "h": 32
+      },
+      {
+       "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+       "color": "rgb(43, 58, 68)",
+       "display": "block",
+       "glyph": "\"\"",
+       "fontFamily": "\"Font Awesome 6 Pro\"",
+       "fontWeight": "300",
+       "x": 1836,
+       "y": 766,
+       "w": 13,
+       "h": 32
+      }
+     ],
+     "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Status</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+    }
+   ],
+   "runs": [
+    {
+     "column": "Configuration ID",
+     "clicks": [
+      {
+       "click": 1,
+       "ms": 2293,
+       "requests": [
+        {
+         "method": "GET",
+         "url": "/api/FileTransfer/SearchFileTransfer/",
+         "status": "sent"
+        }
+       ],
+       "head": [
+        {
+         "title": "Configuration ID",
+         "ariaSort": "ascending",
+         "className": "k-table-th k-header clickable k-focus k-sorted",
+         "icons": [
+          {
+           "cls": "k-sort-icon",
+           "color": "rgb(255, 99, 88)",
+           "display": "inline",
+           "glyph": "none",
+           "fontFamily": "Arial, FontAwesome, sans-serif",
+           "fontWeight": "700",
+           "x": 167,
+           "y": 768,
+           "w": 0,
+           "h": 18
+          },
+          {
+           "cls": "k-icon k-svg-icon k-svg-i-sort-asc-small",
+           "color": "rgb(43, 58, 68)",
+           "display": "none",
+           "glyph": "none",
+           "fontFamily": "FontAwesome, Arial, sans-serif",
+           "fontWeight": "700",
+           "x": 0,
+           "y": 0,
+           "w": 0,
+           "h": 0
+          },
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon",
+           "color": "rgb(0, 238, 174)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 254,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 254,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration ID</span><span class=\"k-sort-icon\"><span class=\"k-icon k-svg-icon k-svg-i-sort-asc-small\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 192v224h-32V192h-96L240 64l112 128z\"></path></svg></span></span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Configuration Name",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 505,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 505,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration Name</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Protocol",
+         "ariaSort": null,
+         "className": "k-table-th k-header",
+         "icons": [],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Protocol</span></span></span></span>"
+        },
+        {
+         "title": "Address",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1005,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1005,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Address</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Mask",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1256,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1256,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Mask</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Owner Name",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1506,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1506,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Name</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Owner Module",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1757,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1757,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Module</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Status",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1836,
+           "y": 766,
+           "w": 13,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1836,
+           "y": 766,
+           "w": 13,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Status</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        }
+       ],
+       "shot": "file-transfer-services-file-transfer-configuration--sort-click1.png"
+      },
+      {
+       "click": 2,
+       "ms": 2146,
+       "requests": [
+        {
+         "method": "GET",
+         "url": "/api/FileTransfer/SearchFileTransfer/",
+         "status": "sent"
+        }
+       ],
+       "head": [
+        {
+         "title": "Configuration ID",
+         "ariaSort": "descending",
+         "className": "k-table-th k-header clickable k-sorted k-focus",
+         "icons": [
+          {
+           "cls": "k-sort-icon",
+           "color": "rgb(255, 99, 88)",
+           "display": "inline",
+           "glyph": "none",
+           "fontFamily": "Arial, FontAwesome, sans-serif",
+           "fontWeight": "700",
+           "x": 167,
+           "y": 768,
+           "w": 0,
+           "h": 18
+          },
+          {
+           "cls": "k-icon k-svg-icon k-svg-i-sort-desc-small",
+           "color": "rgb(43, 58, 68)",
+           "display": "none",
+           "glyph": "none",
+           "fontFamily": "FontAwesome, Arial, sans-serif",
+           "fontWeight": "700",
+           "x": 0,
+           "y": 0,
+           "w": 0,
+           "h": 0
+          },
+          {
+           "cls": "fa-solid fa-caret-down fa-stack-1x grid-col-sorted-ind-icon",
+           "color": "rgb(0, 238, 174)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 254,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-down fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 254,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration ID</span><span class=\"k-sort-icon\"><span class=\"k-icon k-svg-icon k-svg-i-sort-desc-small\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M352 288 240 416 128 288h96V64h32v224z\"></path></svg></span></span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-down fa-stack-1x grid-col-sorted-ind-icon\"></i><i class=\"fa-light fa-caret-down fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Configuration Name",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 505,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 505,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration Name</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Protocol",
+         "ariaSort": null,
+         "className": "k-table-th k-header",
+         "icons": [],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Protocol</span></span></span></span>"
+        },
+        {
+         "title": "Address",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1005,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1005,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Address</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Mask",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1256,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1256,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Mask</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Owner Name",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1506,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1506,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Name</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Owner Module",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1757,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1757,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Module</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Status",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1836,
+           "y": 766,
+           "w": 13,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1836,
+           "y": 766,
+           "w": 13,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Status</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        }
+       ],
+       "shot": "file-transfer-services-file-transfer-configuration--sort-click2.png"
+      },
+      {
+       "click": 3,
+       "ms": 2145,
+       "requests": [
+        {
+         "method": "GET",
+         "url": "/api/FileTransfer/SearchFileTransfer/",
+         "status": "sent"
+        }
+       ],
+       "head": [
+        {
+         "title": "Configuration ID",
+         "ariaSort": "ascending",
+         "className": "k-table-th k-header clickable k-sorted k-focus",
+         "icons": [
+          {
+           "cls": "k-sort-icon",
+           "color": "rgb(255, 99, 88)",
+           "display": "inline",
+           "glyph": "none",
+           "fontFamily": "Arial, FontAwesome, sans-serif",
+           "fontWeight": "700",
+           "x": 167,
+           "y": 768,
+           "w": 0,
+           "h": 18
+          },
+          {
+           "cls": "k-icon k-svg-icon k-svg-i-sort-asc-small",
+           "color": "rgb(43, 58, 68)",
+           "display": "none",
+           "glyph": "none",
+           "fontFamily": "FontAwesome, Arial, sans-serif",
+           "fontWeight": "700",
+           "x": 0,
+           "y": 0,
+           "w": 0,
+           "h": 0
+          },
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon",
+           "color": "rgb(0, 238, 174)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 254,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 254,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration ID</span><span class=\"k-sort-icon\"><span class=\"k-icon k-svg-icon k-svg-i-sort-asc-small\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 192v224h-32V192h-96L240 64l112 128z\"></path></svg></span></span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Configuration Name",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 505,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 505,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration Name</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Protocol",
+         "ariaSort": null,
+         "className": "k-table-th k-header",
+         "icons": [],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Protocol</span></span></span></span>"
+        },
+        {
+         "title": "Address",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1005,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1005,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Address</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Mask",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1256,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1256,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Mask</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Owner Name",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1506,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1506,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Name</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Owner Module",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1757,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1757,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Module</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Status",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1836,
+           "y": 766,
+           "w": 13,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1836,
+           "y": 766,
+           "w": 13,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Status</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        }
+       ],
+       "shot": "file-transfer-services-file-transfer-configuration--sort-click3.png"
+      }
+     ]
+    },
+    {
+     "column": "Configuration Name",
+     "clicks": [
+      {
+       "click": 1,
+       "ms": 2136,
+       "requests": [
+        {
+         "method": "GET",
+         "url": "/api/FileTransfer/SearchFileTransfer/",
+         "status": "sent"
+        }
+       ],
+       "head": [
+        {
+         "title": "Configuration ID",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 254,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 254,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration ID</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Configuration Name",
+         "ariaSort": "ascending",
+         "className": "k-table-th k-header clickable k-focus k-sorted",
+         "icons": [
+          {
+           "cls": "k-sort-icon",
+           "color": "rgb(255, 99, 88)",
+           "display": "inline",
+           "glyph": "none",
+           "fontFamily": "Arial, FontAwesome, sans-serif",
+           "fontWeight": "700",
+           "x": 445,
+           "y": 768,
+           "w": 0,
+           "h": 18
+          },
+          {
+           "cls": "k-icon k-svg-icon k-svg-i-sort-asc-small",
+           "color": "rgb(43, 58, 68)",
+           "display": "none",
+           "glyph": "none",
+           "fontFamily": "FontAwesome, Arial, sans-serif",
+           "fontWeight": "700",
+           "x": 0,
+           "y": 0,
+           "w": 0,
+           "h": 0
+          },
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon",
+           "color": "rgb(0, 238, 174)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 505,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 505,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration Name</span><span class=\"k-sort-icon\"><span class=\"k-icon k-svg-icon k-svg-i-sort-asc-small\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 192v224h-32V192h-96L240 64l112 128z\"></path></svg></span></span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Protocol",
+         "ariaSort": null,
+         "className": "k-table-th k-header",
+         "icons": [],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Protocol</span></span></span></span>"
+        },
+        {
+         "title": "Address",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1005,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1005,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Address</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Mask",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1256,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1256,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Mask</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Owner Name",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1506,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1506,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Name</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Owner Module",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1757,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1757,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Module</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Status",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1836,
+           "y": 766,
+           "w": 13,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1836,
+           "y": 766,
+           "w": 13,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Status</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        }
+       ],
+       "shot": null
+      },
+      {
+       "click": 2,
+       "ms": 3200,
+       "requests": [
+        {
+         "method": "GET",
+         "url": "/api/FileTransfer/SearchFileTransfer/",
+         "status": "sent"
+        }
+       ],
+       "head": [
+        {
+         "title": "Configuration ID",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 254,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 254,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration ID</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Configuration Name",
+         "ariaSort": "descending",
+         "className": "k-table-th k-header clickable k-sorted k-focus",
+         "icons": [
+          {
+           "cls": "k-sort-icon",
+           "color": "rgb(255, 99, 88)",
+           "display": "inline",
+           "glyph": "none",
+           "fontFamily": "Arial, FontAwesome, sans-serif",
+           "fontWeight": "700",
+           "x": 445,
+           "y": 768,
+           "w": 0,
+           "h": 18
+          },
+          {
+           "cls": "k-icon k-svg-icon k-svg-i-sort-desc-small",
+           "color": "rgb(43, 58, 68)",
+           "display": "none",
+           "glyph": "none",
+           "fontFamily": "FontAwesome, Arial, sans-serif",
+           "fontWeight": "700",
+           "x": 0,
+           "y": 0,
+           "w": 0,
+           "h": 0
+          },
+          {
+           "cls": "fa-solid fa-caret-down fa-stack-1x grid-col-sorted-ind-icon",
+           "color": "rgb(0, 238, 174)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 505,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-down fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 505,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration Name</span><span class=\"k-sort-icon\"><span class=\"k-icon k-svg-icon k-svg-i-sort-desc-small\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M352 288 240 416 128 288h96V64h32v224z\"></path></svg></span></span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-down fa-stack-1x grid-col-sorted-ind-icon\"></i><i class=\"fa-light fa-caret-down fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Protocol",
+         "ariaSort": null,
+         "className": "k-table-th k-header",
+         "icons": [],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Protocol</span></span></span></span>"
+        },
+        {
+         "title": "Address",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1005,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1005,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Address</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Mask",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1256,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1256,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Mask</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Owner Name",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1506,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1506,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Name</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Owner Module",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1757,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1757,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Module</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Status",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1836,
+           "y": 766,
+           "w": 13,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1836,
+           "y": 766,
+           "w": 13,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Status</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        }
+       ],
+       "shot": null
+      },
+      {
+       "click": 3,
+       "ms": 3919,
+       "requests": [
+        {
+         "method": "GET",
+         "url": "/api/FileTransfer/SearchFileTransfer/",
+         "status": "sent"
+        }
+       ],
+       "head": [
+        {
+         "title": "Configuration ID",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 254,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 254,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration ID</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Configuration Name",
+         "ariaSort": "ascending",
+         "className": "k-table-th k-header clickable k-sorted k-focus",
+         "icons": [
+          {
+           "cls": "k-sort-icon",
+           "color": "rgb(255, 99, 88)",
+           "display": "inline",
+           "glyph": "none",
+           "fontFamily": "Arial, FontAwesome, sans-serif",
+           "fontWeight": "700",
+           "x": 445,
+           "y": 768,
+           "w": 0,
+           "h": 18
+          },
+          {
+           "cls": "k-icon k-svg-icon k-svg-i-sort-asc-small",
+           "color": "rgb(43, 58, 68)",
+           "display": "none",
+           "glyph": "none",
+           "fontFamily": "FontAwesome, Arial, sans-serif",
+           "fontWeight": "700",
+           "x": 0,
+           "y": 0,
+           "w": 0,
+           "h": 0
+          },
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon",
+           "color": "rgb(0, 238, 174)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 505,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 505,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Configuration Name</span><span class=\"k-sort-icon\"><span class=\"k-icon k-svg-icon k-svg-i-sort-asc-small\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 192v224h-32V192h-96L240 64l112 128z\"></path></svg></span></span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sorted-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Protocol",
+         "ariaSort": null,
+         "className": "k-table-th k-header",
+         "icons": [],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Protocol</span></span></span></span>"
+        },
+        {
+         "title": "Address",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1005,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1005,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Address</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Mask",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1256,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1256,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Mask</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Owner Name",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1506,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1506,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Name</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Owner Module",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1757,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1757,
+           "y": 766,
+           "w": 18,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Owner Module</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        },
+        {
+         "title": "Status",
+         "ariaSort": "none",
+         "className": "k-table-th k-header clickable",
+         "icons": [
+          {
+           "cls": "fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "900",
+           "x": 1836,
+           "y": 766,
+           "w": 13,
+           "h": 32
+          },
+          {
+           "cls": "fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon",
+           "color": "rgb(43, 58, 68)",
+           "display": "block",
+           "glyph": "\"\"",
+           "fontFamily": "\"Font Awesome 6 Pro\"",
+           "fontWeight": "300",
+           "x": 1836,
+           "y": 766,
+           "w": 13,
+           "h": 32
+          }
+         ],
+         "html": "<span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title clickable\">Status</span></span></span><span class=\"grid-sort-icon-cell fa-stack\"><i class=\"fa-solid fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i><i class=\"fa-light fa-caret-up fa-stack-1x grid-col-sort-ind-icon\"></i></span></span>"
+        }
+       ],
+       "shot": null
+      }
+     ]
+    }
+   ],
+   "shotUnsorted": "file-transfer-services-file-transfer-configuration--sort-0.png"
+  },
+  "filter": null
+ },
+ "ms": 245243
+}

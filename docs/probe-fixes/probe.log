@@ -1,0 +1,14 @@
+
+==== 2026-11-16T19:46:17.252Z  npm run probe -- fxfer-v7 --probe fixes --modules File Transfer Services --out docs\probe-fixes --fresh --budget 600 --headed
+>> login
+  logged in
+kit: provider, viewport 1920x1080 @1, dialogs also at 1920x1080, 1272x588
+menu: packs\fxfer-v7\menu.json (19 modules; --read-menu to read it again)
+3 page(s) to probe
+   1920x1080: create open/blocked NOT open, row open; 1272x588: create open/blocked NOT open, row open, sort
+[1/3] File Transfer Services > File Transfer Configuration: 245s, 0 dialog(s)
+   1920x1080: create -, row -; 1272x588: create -, row -, dates
+[2/3] File Transfer Services > File Transfer Tracking: 118s, 0 dialog(s)
+   1920x1080: create open/blocked open, row open; 1272x588: create open/blocked open, row open, sort, filter
+[3/3] File Transfer Services > FTP Server Credentials: 129s, 0 dialog(s)
+answers: docs\probe-fixes\ANSWERS.md (3 pages)
