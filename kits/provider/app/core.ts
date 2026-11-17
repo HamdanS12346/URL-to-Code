@@ -26,6 +26,7 @@ export type GridAfter = { total: number; pageSize: number | null; fields: Record
 export type DialogDef = { title: string; windowClass: string; windowStyle: string | null; titlebarHtml: string | null; contentClass: string; contentId: string | null; contentStyle: string | null;
   overlay: { className: string; style: string | null; background: string; opacity: string } | null; options: Record<string, unknown> | null; widgets: Record<string, WidgetDef>;
   opener: string; openerIndex?: number; openerId?: string | null; parent?: string; children: string[]; creates?: Create[];
+  flow?: string; // found by the flows stage (the state's id in flows/index.json), not by the capture
   conditionals?: Conditional[]; saveValidation?: Validation & { postAttempted?: boolean };
   // what opening the window did to the page behind it (a scroll lock), and the field the portal focused in it (stamped data-kit-autofocus in its markup)
   pageLock?: PageLock | null; autofocus?: string | null;
@@ -44,6 +45,7 @@ export type Responsive = { query: string | null; source: string | null; desktop:
 // what a Create New did on the live page, by the button's id (else its place among the shown ones): opened a dialog, or
 // showed / hid parts of the dialog (or page) it sits in (selectors inside it), scrolling it there
 export type Create = { index: number; id: string | null; text: string; dialog?: string; show?: string[]; hide?: string[]; scroll?: number | null };
+export type Flow = { node: string; from: string | null; css: string; nth: number; text?: string; via: 'click' | 'dblclick'; opens?: string; show?: string[]; hide?: string[] };
 type Anim = { effects?: string; duration?: number };
 export type KitData = {
   shell?: { title: string | null; module: string | null };
@@ -57,6 +59,9 @@ export type KitData = {
   // the grid's column filter popup: the live markup and where it sat relative to the icon that opened it
   filterPopup?: { dx: number; dy: number; w: number; h: number; html: string; buttons: string[] };
   creates?: Create[]; // a Create New on the page that opens no dialog
+  // clicks the flows stage saw open a window or show / hide parts, that nothing else of the kit replays: the element is the nth shown match of `css`
+  // in its layer (the dialog `from`, else the screen)
+  flows?: Flow[];
   row: { dialog: string | null; navigates: string | null; via?: 'link' | 'row' | 'dblclick' } | null;
   // what the screen's own script can open (openModalOverlay panels, the row's double-click handler), and which of those
   // the capture did not manage to harvest

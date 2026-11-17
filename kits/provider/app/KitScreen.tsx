@@ -9,7 +9,7 @@
 // links to a rebuilt screen, the headroom header (hides on scroll down), and the dialogs (Kendo windows).
 import { useCallback, useLayoutEffect, useMemo, useRef, useState, type ComponentType, type KeyboardEvent as RKeyboardEvent, type ReactNode, type SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
-import { Bus, KitContext, DEFAULTS, parseHtml, routeFor, styleObject, useIsland, type Conditional, type Confirm, type Create, type Ctx, type DialogDef, type KitData, type PageLock, type Responsive, type Services, type Validation } from './core';
+import { Bus, KitContext, DEFAULTS, parseHtml, routeFor, styleObject, useIsland, type Conditional, type Confirm, type Create, type Ctx, type DialogDef, type Flow, type KitData, type PageLock, type Responsive, type Services, type Validation } from './core';
 
 type Open = { id: string; closing: boolean };
 const shown = (el: Element) => el.getClientRects().length > 0;
@@ -539,6 +539,26 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
     return () => { backdrop.current?.remove(); backdrop.current = null; };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // a click the flows stage saw open a window or show / hide parts on the live page (kit.json "flows"), that no other handler replays. The shell's
+  // own KitScreen never does: its kit.json is one screen's, and those selectors mean nothing on another route
+  const runFlow = (t: Element, via: Flow['via']) => {
+    if (shell) return false;
+    for (const f of screen.flows ?? []) {
+      if (f.via !== via) continue;
+      const box = f.from ? document.querySelector(`[data-kit-dialog-content="${f.from}"]`) : root.current;
+      if (!box) continue;
+      let el: Element | undefined;
+      try { el = [...box.querySelectorAll(f.css)].filter(shown)[f.nth]; } catch { continue; }
+      if (!el || !el.contains(t)) continue;
+      if (f.opens) openDialog(f.opens);
+      for (const s of f.show ?? []) box.querySelectorAll<HTMLElement>(s).forEach(reveal);
+      for (const s of f.hide ?? []) box.querySelectorAll<HTMLElement>(s).forEach((x) => { x.style.display = 'none'; });
+      return true;
+    }
+    return false;
+  };
+  const onDouble = (e: SyntheticEvent) => { if (runFlow(e.target as Element, 'dblclick')) { e.preventDefault(); e.stopPropagation(); } };
+
   const onChangeEvt = (e: SyntheticEvent) => {
     markDirty(e);
     const t = e.target as HTMLInputElement;
@@ -562,6 +582,7 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
     const act = t.closest('[data-kit-action]');
     const dlg = t.closest('[data-kit-dialog-content]')?.getAttribute('data-kit-dialog-content') ?? t.closest('[data-kit-dialog]')?.getAttribute('data-kit-dialog') ?? null;
     const scope = dlg ? document.querySelector(`[data-kit-dialog-content="${dlg}"]`) : root.current;
+    if (!act && runFlow(t, 'click')) { e.preventDefault(); e.stopPropagation(); return; }
     if (!act) {
       const a = t.closest('a[href]');
       if (!a || t.closest('[data-kit]')) return;
@@ -711,7 +732,7 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
 
   return (
     <KitContext.Provider value={ctx}>
-      <div ref={root} data-kit-root="" style={{ display: 'contents' }} onClick={onClick} onMouseOver={onOver} onMouseOut={onOut}
+      <div ref={root} data-kit-root="" style={{ display: 'contents' }} onClick={onClick} onDoubleClick={onDouble} onMouseOver={onOver} onMouseOut={onOut}
         onFocus={(e) => focusWrap(e, true)} onBlur={(e) => focusWrap(e, false)} onKeyDown={onKey} onInput={markDirty} onChange={onChangeEvt}>
         {children}
         {open.map((o, i) => <Window key={o.id} id={o.id} def={screen.dialogs[o.id]} Body={dialogs[o.id]} depth={i} closing={o.closing} responsive={screen.responsive} onClosed={() => setOpen((x) => x.filter((y) => y.id !== o.id))} />)}

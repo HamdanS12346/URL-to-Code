@@ -114,6 +114,7 @@ See `kits/provider/KIT.md` for the keys it writes and what the kit does with eac
 | capture | photographs and saves each page (DOM, the full CSS, assets); with the kit: the harvest (`kit/screen.json`, `kit/states/`, `kit/dialogs/`) and the same screen at each viewport profile | script |
 | plan | decides what to hover/click/type on each page (`explore/plan.json`), checked by `check:plan`. **Skipped with the kit** | Codex |
 | explore | carries out the plan on the live page and records every change. **Skipped with the kit** (the harvest did it) | script |
+| flows | **with `--flows`**: explores each screen to the end of every path (dialogs in dialogs, Edit modes, tabs, a row's window, wrong input), up to the click that would save or create; Codex plans each wave, the script clicks with every write blocked. Output `screens/<screen>/flows/` (FLOWS.md, one folder per state). See `kits/provider/KIT.md` "The flows stage" | Codex + script |
 | spec | writes `spec/UI_SPEC.md` + `tasks.md`, checked by `npm run check` (with the kit: every widget and dialog cited as `[kit:<id>]`) | Codex |
 | port | copies each page into the app as static React; with the kit: every widget becomes a kit component, every dialog a component, the shell comes from a module screen | script |
 | code | builds what is left (conditional fields, cascades, the screen's own messages), checked by `tsc` and `verify` (pixels, behavior, and with the kit each recorded state: dropdown open, tooltip, Search, dialogs) | Codex |
@@ -148,10 +149,13 @@ npm run ui -- ffxfer-v2 --from spec             # write the specs again (and eve
 npm run ui -- ffxfer-v2 --from code             # write the code again
 npm run ui -- ffxfer-v2 --only file-transfer-tracking --redo   # one screen, every writer step again
 npm run ui -- ffxfer-v2 --no-build              # specs only
+npm run ui -- ffxfer-v2 --flows --from flows    # explore every path of every screen (kept on in pack.json), then specs and code again
+npm run ui -- ffxfer-v2 --only file-transfer-configuration --from flows --flow-workers 3   # one screen, three browser contexts
 npm run ui -- ffxfer-v2 --from discover         # read the menu again (new screens)
 npm run ui -- ffxfer-v3                         # the same module again, from scratch, in a new pack
 ```
-Stages: `login, discover, capture, plan, explore, spec, port, code`. `--from port` re-ports and overwrites the code in `packs/<pack>/app/src/screens`
+Stages: `login, discover, capture, plan, explore, flows, spec, port, code` (`flows` only with `--flows` / `pack.json "flows"`; `--no-flows` skips it for one run).
+An interrupted flows run continues from `flows/index.json`; `--from flows` starts each screen's flows again from scratch. `--from port` re-ports and overwrites the code in `packs/<pack>/app/src/screens`
 (the kit runtime `src/kit` is copied fresh on every run: fix the kit in `kits/provider/app`, never in an app).
 
 ## Codex (the writer)
@@ -189,6 +193,7 @@ Everything the tool guesses can be pinned. Edit `pack.json`, then re-run (with `
 | `linked`, `maxLinked` | follow Create New / row links to pages of their own (default on, at most 60) |
 | `config.profiles` | the extra viewport profiles: `[{ "name": "client", "viewport": { "width": 1272, "height": 588 }, "dpr": 1.5 }]` (the default); `[]` for none |
 | `outRepo` | where the code goes (default `packs/<pack>/app`) |
+| `flows` | `true` (or `--flows`) runs the flows stage; an object sets its budget: `{ "maxNodes": 40, "maxDepth": 6, "workers": 2, "timeBudgetSec": 1500, "ai": true, "allow": ["POST /Module/RenderEditor"] }` (`allow`: a POST that renders and must go through; everything else that writes is blocked) |
 
 ## If something goes wrong
 

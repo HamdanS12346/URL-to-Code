@@ -21,6 +21,9 @@
 //   --kit <name|none> force a site kit, or none (default: detected on the home page and kept in pack.json)
 //   --parallel N      writer calls at once (3; pack.json "parallel"): each spec starts as soon as its capture is done (the
 //                     captures stay one at a time, one browser); with a kit the screens' code steps run side by side too
+//   --flows           the flows stage after each capture (kept in pack.json "flows"; an object there sets its budget, see
+//                     config.json "flows"): the writer plans, the script clicks, every path explored up to the save/create point
+//   --no-flows        skip it this run      --flow-workers N  browser contexts per screen (2)
 import crypto from 'node:crypto';
 import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -31,9 +34,11 @@ import { readEnv, ask, askSecret, login, manualLogin, sessionValid, readMenu, fi
 import { defaultWriter, fill, runWriter, tail } from './lib/writer.mjs';
 import { runScreen } from './run.mjs';
 import { detectKit, loadKit } from './lib/kit.mjs';
+import { runFlows } from './flows.mjs';
+import { checkPlanFile } from './check-flows.mjs';
 
-const STAGES = ['login', 'discover', 'capture', 'plan', 'explore', 'spec', 'port', 'code'];
-const VALUED = new Set(['--url', '--menu', '--out', '--writer', '--from', '--only', '--rounds', '--timeout', '--env', '--mode', '--kit', '--parallel']);
+const STAGES = ['login', 'discover', 'capture', 'plan', 'explore', 'flows', 'spec', 'port', 'code'];
+const VALUED = new Set(['--url', '--menu', '--out', '--writer', '--from', '--only', '--rounds', '--timeout', '--env', '--mode', '--kit', '--parallel', '--flow-workers']);
 const argv = process.argv.slice(2);
 const flag = (n) => argv.includes(n);
 const opt = (n) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] : undefined; };
@@ -275,6 +280,11 @@ try {
   }
   const kit = pack.kit ? await loadKit(pack.kit) : null;
   log(kit ? `site kit: ${pack.kit} (kits/${pack.kit}): the harvest replaces plan + explore; screens are built on its runtime` : 'site kit: none (generic capture, plan and explore)');
+  // the flows stage: on with --flows (kept in pack.json) or pack.json "flows"; its budget from config.json "flows" + pack.json "flows" (an object)
+  if (flag('--flows') && !pack.flows) { pack.flows = true; savePack(); }
+  const flowsOn = !!pack.flows && !flag('--no-flows');
+  const flowBudget = { ...base.flows, ...(typeof pack.flows === 'object' ? pack.flows : {}), ...(opt('--flow-workers') ? { workers: Math.max(1, +opt('--flow-workers') || 1) } : {}) };
+  if (flowsOn) log(`flows: on (${flowBudget.workers ?? 2} browser context(s) per screen, at most ${flowBudget.maxNodes ?? 40} states, ${flowBudget.ai === false ? 'rule-based plans' : 'the writer plans each wave'})`);
   const screens = pack.screens.filter((s) => !opt('--only') || s.id === opt('--only'));
   if (!screens.length) die(`--only ${opt('--only')}: no such screen. Screens: ${pack.screens.map((s) => s.id).join(', ')}`);
   const menu = readJson(path.join(P, 'menu.json'), { modules: [] });
@@ -318,6 +328,26 @@ try {
       }
       if (r !== 'done') { mark(`capture:${scr.id}`, 'failed', { problems: [`run stopped: ${r}`] }); continue; }
       mark(`capture:${scr.id}`, 'done');
+      // ---------- flows: every path of the screen up to the click that would save or create (scripts/flows.mjs) ----------
+      // Runs before the linked pages below, so a page a deeper click leads to is captured too. The writer plans each wave (what to click,
+      // type, pick, from each new state), the script carries it out with every write blocked; a plan that fails its gate twice: the rules plan
+      if (flowsOn && !scr.home && (!isDone(`flows:${scr.id}`) || forced('flows') || flag('--redo'))) {
+        let fresh = forced('flows') || flag('--redo') || !fs.existsSync(path.join(dir, 'flows', 'index.json'));
+        const planner = async ({ wave, file, frontierFile }) => writeStep(`flowplan:${scr.id}:w${wave}`, {
+          workdir: ROOT, expect: [file],
+          prompt: fill('flows', { id, dir, root: ROOT, label: scr.label, url: scr.url, wave, plan: file, frontier: frontierFile, max: flowBudget.maxActions ?? 12,
+            guide: kit ? kit.guide : '(no site kit)', kit: kit ? `${dir}/kit/screen.json` : '(none)' }),
+          gate: async () => { const errs = checkPlanFile(file, frontierFile); return { ok: !errs.length, text: errs.length ? `The plan does not pass:\n${errs.map((x) => `- ${x}`).join('\n')}` : '' }; },
+        });
+        log(`   flows: ${fresh ? 'exploring' : 'continuing'} ${scr.id} up to the save/create point`);
+        try {
+          const r = await relogin(() => { const f = fresh; fresh = false; return runFlows({ browser, cfg: withSession(structuredClone(cfg)), url: scr.url, out: dir, kit, log: (m) => log(`   ${m}`), planner, budget: flowBudget, fresh: f, scope: scr.scope || null }); });
+          mark(`flows:${scr.id}`, r.ok ? 'done' : 'needs-review', { states: r.states, boundaries: r.boundaries, ...(r.ok ? {} : { problems: [`${r.left} state(s) left, ${r.unreachable} unreachable: see ${rel(path.join(dir, 'flows', 'FLOWS.md'))}; a re-run continues`] }) });
+        } catch (e) {
+          mark(`flows:${scr.id}`, 'failed', { problems: [e.message.split('\n')[0]] });
+          log(`   ! flows ${scr.id}: ${e.message.split('\n')[0]} (the capture stands; a re-run continues from flows/index.json)`);
+        }
+      }
       // pages this screen links to (the kit recorded where a Create New or a row goes when it leaves the page): each is captured as a screen of its own,
       // under this one. One level only; `pack.json "linked": false` or --no-linked turns it off; "maxLinked" caps the number (default 60)
       if (kit && !scr.parent && pack.linked !== false && !flag('--no-linked')) {
@@ -341,7 +371,8 @@ try {
       }
 
       const specFile = path.join(dir, 'spec', 'UI_SPEC.md');
-      const fresh = fs.existsSync(specFile) && fs.statSync(specFile).mtimeMs >= fs.statSync(path.join(dir, 'facts.md')).mtimeMs;
+      const flowIdx = path.join(dir, 'flows', 'index.json'), hasFlows = fs.existsSync(flowIdx);
+      const fresh = fs.existsSync(specFile) && fs.statSync(specFile).mtimeMs >= fs.statSync(path.join(dir, 'facts.md')).mtimeMs && (!hasFlows || fs.statSync(specFile).mtimeMs >= fs.statSync(flowIdx).mtimeMs);
       if (isDone(`spec:${scr.id}`) && fresh && !forced('spec') && !flag('--redo')) { log('   spec: up to date'); continue; }
       if (scr.home) {
         fs.copyFileSync(path.join(P, 'menu.json'), path.join(dir, 'menu.json'));
@@ -349,7 +380,8 @@ try {
       }
       const specPrompt = fill('spec', { id, dir, root: ROOT, label: scr.label, url: scr.url, extra: (scr.home
         ? `\nThis is the HOME page, and it also defines the shell every screen of the rebuilt app shares: the header and the site menu (opened by \`${pack.menuButton ?? '?'}\`).\nThe menu's full tree, read from the live site, is in ${dir}/menu.json. List every module and item from it in Navigation and Components and cite it as [asset:menu.json].\nThe hover/flyout look of the menu is in ${dir}/menu/*.png: one picture per module, taken with the menu open and that module hovered (the explorer records the menu opening, not the CSS hover flyouts). Look at every one and cite them as [asset:menu/<file>.png]. Items under "${pack.menu}" open the screens of this app; every other item is shown (and hovers/opens the same way) but goes nowhere.`
-        : `\nThis screen is shown inside the shared shell (header + site menu) that the home page's spec covers. The capture was scoped to its content area${scr.scope ? ` \`${scr.scope}\`` : ''}: specify that area; for the shell write one line under Layout: "Wrapped in the shared shell (see the home spec)."`) + (kit ? kit.prompt('spec', { dir }) : '') });
+        : `\nThis screen is shown inside the shared shell (header + site menu) that the home page's spec covers. The capture was scoped to its content area${scr.scope ? ` \`${scr.scope}\`` : ''}: specify that area; for the shell write one line under Layout: "Wrapped in the shared shell (see the home spec)."`) + (kit ? kit.prompt('spec', { dir }) : '') +
+        (hasFlows ? `\nThe flows stage explored this screen deeper than the capture: every state a click, a typed value or a picked option led to, up to the point where the live page would save or create something. The tree is ${dir}/flows/FLOWS.md; each state has a folder ${dir}/flows/<id>-<name>/ with shot.png (the live state), map.png, node.json ("fields": what each text box accepts when typed into and the message it shows; "saveProbe": what Save showed with every write blocked; "requests") and layer.html (a window's markup). Specify every state under Behavior / States (what leads there, what it shows, what can be done in it) and cite each as [flow:<id>] (ids from FLOWS.md, e.g. [flow:n1.2]). A "boundary" state is where the live page would have written (the request is listed): specify the button and the request it would send, as a call to the screen's service.` : '') });
       log(`   spec: queued (${parallel} writer(s) at once)`);
       specs.push(specLimit(() => writeStep(`spec:${scr.id}`, {
         workdir: ROOT, expect: [specFile, path.join(dir, 'spec', 'tasks.md')], prompt: specPrompt,
@@ -409,9 +441,11 @@ try {
   // with a kit: a module screen whose capture closed the side menu again (one that froze it open would give every screen
   // an open menu); the kit closes the menu at runtime anyway, this only picks the cleanest source
   const kitOf = (s) => readJson(path.join(screenDir(`${name}/${s.id}`), 'kit', 'screen.json'), null);
-  const shellCands = kit ? pack.screens.filter((s) => !s.home && s.scope && kitOf(s)) : [];
+  // a screen with a title bar first: a module's landing page (Provider Enrollment's Dashboard) has none, and a shell ported from it gave every screen none
+  const allCands = kit ? pack.screens.filter((s) => !s.home && s.scope && kitOf(s)) : [];
+  const titled = allCands.filter((s) => kitOf(s).shell?.title), shellCands = titled.length ? titled : allCands;
   const shellFrom = kit ? shellCands.find((s) => kitOf(s).menu?.closed !== false) ?? shellCands[0] : pack.screens.find((s) => s.home);
-  if (kit && shellFrom) log(`   shell (header + side menu) ported from ${shellFrom.id}${kitOf(shellFrom).menu ? (kitOf(shellFrom).menu.closed === false ? ' (its menu stayed open in the capture: the kit closes it at runtime)' : '') : ' (no side menu was found on it)'}`);
+  if (kit && shellFrom) log(`   shell (header + side menu) ported from ${shellFrom.id}${kitOf(shellFrom).shell?.title ? '' : ' (NO screen of this module has a title bar)'}${kitOf(shellFrom).menu ? (kitOf(shellFrom).menu.closed === false ? ' (its menu stayed open in the capture: the kit closes it at runtime)' : '') : ' (no side menu was found on it)'}`);
   if (kit) fs.mkdirSync(path.join(out, 'src', 'services'), { recursive: true });
   // src/services/<screen>.ts: the endpoints the live screen called (recorded by the capture), answered with mock data
   // (synthetic rows, no client data) until the real backend is wired in. Written once: hand edits are kept.
@@ -590,7 +624,8 @@ const data = kit as unknown as KitData;
     const v = await nodeRunAsync('verify.mjs', [`${name}/${pre.id}`], { URL: `${devBase}/#${routeOf(pre)}`, WAIT_ROOT: '1', BEHAVIOR: '0' });
     const st = v.text.split('\n').find((l) => l.startsWith('states:'));
     log(`   ${st ?? `no kit states replayed${v.ok ? '' : `: ${v.text.split('\n').slice(-3).join(' | ')}`}`}`);
-    const bad = (st ?? '').split(' | ').slice(1).map((x) => x.replace(/^✗\s*/, '').trim()).filter(Boolean);
+    // the flows stage's states (flow-*) check deeper clicks than the kit's own: reported per screen like any state, never a reason to stop here
+    const bad = (st ?? '').split(' | ').slice(1).map((x) => x.replace(/^✗\s*/, '').trim()).filter((x) => x && !x.startsWith('flow-'));
     mark('preflight:kit', st && !bad.length ? 'done' : 'needs-review', { screen: pre.id, ...(bad.length || !st ? { problems: ['the kit on the raw port (fix it in kits/<kit>, not in the app):', ...(bad.length ? bad : [v.text.split('\n').slice(-5).join(' | ')])] } : {}) });
     // a writer cannot fix the kit: a failed state here would only be carried into every screen, so the run stops until the kit (or the capture) is fixed
     if (bad.length && !flag('--ignore-kit')) die(`the kit fails its own check on the raw port (${bad.length} state(s) above). Fix it in kits/${kit.name ?? 'provider'} (or re-capture), then run again; --ignore-kit goes on anyway.`);

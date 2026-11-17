@@ -20,10 +20,15 @@ if (kind === 'plan') {
   if (el && ![...plan.actions, ...plan.hover].some((e) => (e.key ?? e) === el.key)) plan.actions.unshift({ key: el.key, why: 'opens the site menu' });
   fs.writeFileSync(path.join(dir, 'explore', 'plan.json'), JSON.stringify({ ...plan, source: 'agent' }, null, 1));
 }
+if (kind === 'flows') { // the rules plan of the wave, through the same gate as the writer's
+  const plan = (prompt.match(/^Write only (.+?\.json)\./m) || [])[1];
+  if (plan) fs.copyFileSync(plan.replace(/\.json$/, '.suggested.json'), plan);
+}
 if (kind === 'spec') {
   const R = json(path.join(dir, 'facts.json')).required;
+  const flows = (() => { try { return Object.keys(json(path.join(dir, 'flows', 'index.json')).nodes).filter((n) => n !== 'n0'); } catch { return []; } })();
   const cites = [...R.controls.map((k) => `[ctl:${k}]`), ...R.transitions.map((t) => `[${t}]`), ...R.validators.map((v) => `[val:${v}]`),
-    ...[...(R.motion || []), ...(R.scroll || []), ...(R.media || [])].map((m) => `[${m}]`), ...(R.kit || []).map((k) => `[kit:${k}]`)];
+    ...[...(R.motion || []), ...(R.scroll || []), ...(R.media || [])].map((m) => `[${m}]`), ...(R.kit || []).map((k) => `[kit:${k}]`), ...flows.map((f) => `[flow:${f}]`)];
   const sections = [...SECTIONS, ...(Array.isArray(R.motion) ? ['Motion'] : [])];
   const extra = fs.existsSync(path.join(dir, 'menu.json')) ? ' Menu tree [asset:menu.json].' : '';
   fs.mkdirSync(path.join(dir, 'spec'), { recursive: true });

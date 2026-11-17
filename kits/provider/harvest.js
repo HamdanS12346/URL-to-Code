@@ -202,7 +202,9 @@
       let mod = null;
       if (module && scope) {
         const want = module.toLowerCase();
-        mod = [...document.body.querySelectorAll('div, span, a, li, h2, h3')].filter((e) => shown(e) && !root.contains(e) && !e.closest('#pageHeader, .k-menu, [data-kit-skip]') && clean(e.textContent).toLowerCase() === want)
+        // the module tab may itself be a Kendo menu (Provider Enrollment's "PROVIDER ENROLLMENT ▾" lists the module's screens); the side menu
+        // (stamped data-kit-menu before this runs) and open popups are not the tab
+        mod = [...document.body.querySelectorAll('div, span, a, li, h2, h3')].filter((e) => shown(e) && !root.contains(e) && !e.closest('#pageHeader, [data-kit-menu], .k-menu-popup, .k-animation-container, [data-kit-skip]') && clean(e.textContent).toLowerCase() === want)
           .sort((a, b) => a.querySelectorAll('*').length - b.querySelectorAll('*').length)[0] || null;
         if (mod) mod.setAttribute('data-kit-shell', 'module');
       }

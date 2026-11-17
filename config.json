@@ -43,7 +43,19 @@
     "focusShare": 0.55,
     "followPerGroup": 4
   },
-  "denyPattern": "\\b(save|delete|remove|submit|update|approve|reject|pay|send|insert|add|create|upload|import|post|process|confirm|finali[sz]e|cancel|log ?out|log ?off|sign ?out|purchase|checkout|order|place|transfer|archive|reset|register)\\b",
+  "flows": {
+    "maxNodes": 40,
+    "maxDepth": 6,
+    "maxWaves": 6,
+    "maxActions": 12,
+    "timeBudgetSec": 1500,
+    "workers": 2,
+    "probeFields": 8,
+    "saveProbe": true,
+    "ai": true,
+    "allow": []
+  },
+  "denyPattern":"\\b(save|delete|remove|submit|update|approve|reject|pay|send|insert|add|create|upload|import|post|process|confirm|finali[sz]e|cancel|log ?out|log ?off|sign ?out|purchase|checkout|order|place|transfer|archive|reset|register)\\b",
   "urlOnly": {
     "dpr": 1,
     "defaultViewport": {

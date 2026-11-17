@@ -76,8 +76,10 @@ export async function openPage(browser, cfg, { url, viewport, dpr, assetsDir, js
   });
 
   // allow: while allowPost is off, the "METHOD /path" requests that may still go (a kit replaying an opener the main pass already saw send them)
-  const guard = { loading: false, allowPost: cfg.mode !== 'readonly', allow: null, events: [] };
-  const allowed = (method, u) => guard.allowPost || !!guard.allow?.has(`${method} ${u.pathname}`);
+  // policy(method, url, post) / blockGet(method, url): optional, set by the flows stage (scripts/lib/safety.mjs): a write that may still go
+  // while allowPost is off (a grid's read), and a GET that must not (a path that names a Delete)
+  const guard = { loading: false, allowPost: cfg.mode !== 'readonly', allow: null, policy: null, blockGet: null, events: [] };
+  const allowed = (method, u, req) => guard.allowPost || !!guard.allow?.has(`${method} ${u.pathname}`) || !!guard.policy?.(method, u, req ? formOf(req) : undefined);
   const rec = (e) => guard.events.push({ ...e, at: Date.now() });
   let page;
 
@@ -101,7 +103,7 @@ export async function openPage(browser, cfg, { url, viewport, dpr, assetsDir, js
         return route.abort('aborted');
       }
       if (!mutating) return route.continue(); // reload of this same page
-      const ok = allowed(method, u);
+      const ok = allowed(method, u, req);
       rec({ type: 'postback', status: ok ? 'sent' : 'blocked', method, url: req.url(), post: formOf(req) });
       return ok ? route.continue() : route.abort('aborted');
     }
@@ -109,10 +111,11 @@ export async function openPage(browser, cfg, { url, viewport, dpr, assetsDir, js
     if (!nav && !guard.loading && (rt === 'xhr' || rt === 'fetch' || rt === 'eventsource' || rt === 'other')) {
       const async = !!req.headers()['x-microsoftajax'];
       if (mutating) {
-        const ok = allowed(method, u);
+        const ok = allowed(method, u, req);
         rec({ type: async ? 'async-postback' : 'request', status: ok ? 'sent' : 'blocked', method, url: req.url(), post: formOf(req) });
         return ok ? route.continue() : route.abort('aborted');
       }
+      if (guard.blockGet?.(method, u)) { rec({ type: 'request', status: 'blocked', method, url: req.url() }); return route.abort('aborted'); }
       if (rt !== 'other') rec({ type: 'request', status: 'sent', method, url: req.url() });
     }
     return route.continue();

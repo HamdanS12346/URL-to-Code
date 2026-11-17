@@ -22,7 +22,9 @@
     "probe": "node scripts/probe.mjs",
     "smoke:ui": "node test/ui-smoke.mjs",
     "check:writer": "node scripts/check-writer.mjs",
-    "smoke:provider": "node test/provider-smoke.mjs"
+    "smoke:provider": "node test/provider-smoke.mjs",
+    "smoke:flows": "node scripts/lib/safety.mjs && node test/flows-smoke.mjs",
+    "check:flows": "node scripts/check-flows.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",

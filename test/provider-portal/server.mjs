@@ -216,8 +216,44 @@ function onDisplayTrackingView() {
 }
 </script>`,
   }),
+  // npm run smoke:flows only (not in the menu, so npm run ui never captures it): a chain the flows stage must walk to its end. Search -> a row's link
+  // View (a window) -> Edit (a part of it) and a destination row (a window in the window); Create New (a window) whose Continue posts. Every
+  // write it could make (Save, Delete Destination, Continue, Refresh Cache) is counted by the server: the test asserts none arrived
+  '/FileTransfer/FlowsLab': () => ({
+    title: 'Flows Lab', module: 'File Transfer Services', bodyClass: 'FileTransfer FlowsLab',
+    body: `<div class="page-toolbar"><button class="btn" type="button" id="btnCreate">Create New</button></div>` +
+      searchCriteria(`<div class="editor-row">${field('LabName', 'Lab Name', text('LabName', 'LabName', 'maxlength="20"'))}</div>`) + results() +
+      `<div id="labWindow"></div><div id="detailWindow"></div>
+<script>$(function(){
+  $('#grid').kendoGrid({ autoBind: false, rowLink: true, columns: [{ field: 'Name', title: 'Name' }, { field: 'Status', title: 'Status' }],
+    dataSource: { pageSize: 10, transport: { read: { url: '/FileTransfer/GetLab', type: 'POST', dataType: 'json' } }, schema: { data: 'Data', total: 'Total' } } });
+  $('#btnSearch').on('click', () => { $('#divResults').show(); $('#grid').data('kendoGrid').dataSource.read(); });
+  ${collapse}
+  const lab = $('#labWindow').kendoWindow({ title: 'View Lab', width: '70%', visible: false, modal: true }).data('kendoWindow');
+  const det = $('#detailWindow').kendoWindow({ title: 'Destination Detail', width: '40%', visible: false, modal: true }).data('kendoWindow');
+  $('#grid').on('click', 'a.clickable', () => { lab.wrapper.find('.k-window-title').text('View Lab'); lab.refresh({ url: '/FileTransfer/LabView' }).then(() => lab.center().open()); });
+  $('#btnCreate').on('click', () => { lab.wrapper.find('.k-window-title').text('Add Lab'); lab.refresh({ url: '/FileTransfer/LabAdd' }).then(() => lab.center().open()); });
+  $(document).on('click', '#btnEditLab', () => { $('#labEdit').show(); $('#labRead').hide(); });
+  $(document).on('click', '.dest-open', () => det.refresh({ url: '/FileTransfer/LabDest' }).then(() => det.center().open()));
+  $(document).on('click', '#btnSaveLab', () => $.post('/FileTransfer/SaveLab', { Name: $('#LabEditName').val() }));
+  $(document).on('click', '#btnRefreshLab', () => $.get('/FileTransfer/DeleteCache?id=1'));
+  $(document).on('click', '#btnNextLab', () => $.post('/FileTransfer/AddLab', { Name: $('#NewLab').val() }));
+  $(document).on('click', '#btnDeleteDest', () => $.post('/FileTransfer/DeleteDestination', { Id: 1 }));
+  $(document).on('click', '.k-window [id^=btnClose]', function(){ $(this).closest('.k-window').find('[data-role=window]').data('kendoWindow').close(); });
+});</script>`,
+  }),
 };
-const POPUP = `<div class="editor-validation-summary validation-summary" style="display:none"><i class="msg-inline-icon fa-solid fa-ban"></i><div class="msg-inline-close panel-icon clickable" role="alert" data-hide="alert" aria-label="close" tabindex="0"><span class="fa-solid fa-xmark" title="Close" data-role="tooltip"></span></div>Resolve the following form field errors and try again.<ul class="validation-errors"></ul></div>
+const LAB = {
+  '/FileTransfer/LabView': `<div id="labRead"><div class="editor-row">${field('ViewName', 'Name', text('ViewName', 'ViewName', 'readonly value="Lab 1"'))}</div><button class="btn" type="button" id="btnEditLab">Edit</button></div>
+<div id="labEdit" style="display:none"><div class="editor-row">${field('LabEditName', 'Name', text('LabEditName', 'LabEditName', 'maxlength="10" data-val="true" data-val-required="Name is required." data-val-length-max="10"'))}${field('LabCode', 'Code', text('LabCode', 'LabCode', 'oninput="this.value=this.value.replace(/[^0-9]/g,\'\')"'))}</div>
+<div class="buttons"><button class="btn btn-primary" type="button" id="btnSaveLab">Save</button><button class="btn" type="button" id="btnRefreshLab">Refresh Cache</button></div></div>
+<div class="content-panel-container"><div class="content-panel-hdr">Destinations</div><table class="table"><tbody><tr><td><a class="clickable dest-open" href="javascript:void(0)">Dest A</a></td></tr><tr><td><a class="clickable dest-open" href="javascript:void(0)">Dest B</a></td></tr></tbody></table></div>
+<div class="buttons"><button class="btn" type="button" id="btnCloseLab">Close</button></div>`,
+  '/FileTransfer/LabDest': '<p>Destination detail</p><div class="buttons"><button class="btn" type="button" id="btnDeleteDest">Delete Destination</button><button class="btn" type="button" id="btnCloseDest">Close</button></div>',
+  '/FileTransfer/LabAdd': `${field('NewLab', 'Lab Name', text('NewLab', 'NewLab', 'maxlength="15"'))}<div class="buttons"><button class="btn" type="button" id="btnNextLab">Continue</button><button class="btn" type="button" id="btnCloseAdd">Close</button></div>`,
+};
+const LAB_WRITES = new Set(['/FileTransfer/SaveLab', '/FileTransfer/DeleteCache', '/FileTransfer/AddLab', '/FileTransfer/DeleteDestination']);
+const POPUP =`<div class="editor-validation-summary validation-summary" style="display:none"><i class="msg-inline-icon fa-solid fa-ban"></i><div class="msg-inline-close panel-icon clickable" role="alert" data-hide="alert" aria-label="close" tabindex="0"><span class="fa-solid fa-xmark" title="Close" data-role="tooltip"></span></div>Resolve the following form field errors and try again.<ul class="validation-errors"></ul></div>
 <div class="editor-req-field-row">Required Fields ( <span class="editor-req-field fa-solid fa-asterisk"></span>)</div>
 <div class="content-panel-container"><div class="content-panel-hdr">Source Configuration</div><div class="content-panel-bdy">
 <div class="editor-row">${field('Edit_ConfigName', 'Configuration Name', text('Edit_ConfigName', 'ConfigName', 'data-val="true" data-val-required="Configuration Name is a required field." data-val-length="Configuration Name has a maximum length of 50 characters." data-val-length-max="50" maxlength="50"'), 'Configuration Name', true)}
@@ -250,7 +286,8 @@ const DEST = `${field('DestAddress', 'Destination Address', text('DestAddress', 
 const rows = (n, f) => ({ Data: Array.from({ length: n }, (_, i) => f(i)), Total: n });
 
 export function startProviderPortal(port, { password, cookie }) {
-  return http.createServer((req, res) => {
+  const writes = []; // FlowsLab's writes that reached the server (smoke:flows asserts there are none)
+  const srv = http.createServer((req, res) => {
     const u = new URL(req.url, `http://localhost:${port}`);
     const authed = (req.headers.cookie || '').includes(cookie);
     const send = (code, type, body) => { res.writeHead(code, { 'content-type': type }); res.end(body); };
@@ -268,10 +305,15 @@ export function startProviderPortal(port, { password, cookie }) {
     if (u.pathname === '/FileTransfer/GetSourceLocations') return send(200, 'application/json', JSON.stringify(rows(23, (i) => ({ ConfigId: i + 4, ConfigName: `Config${i}`, Protocol: ['FTP', 'SFTP', 'UNC'][i % 3], Owner: `Owner ${i}`, Status: 'Active' }))));
     if (u.pathname === '/FileTransfer/GetFtp') return send(200, 'application/json', JSON.stringify(rows(5, (i) => ({ Server: `ftp${i}.example.test`, Status: 'Active' }))));
     if (u.pathname === '/FileTransfer/GetTracking') return send(200, 'application/json', JSON.stringify(rows(14, (i) => ({ FileId: `f${1000 + i}`, FileName: `\\\\share\\file${i}.txt`, Status: 'Complete', Created: '5/25/2021 7:37 AM' }))));
+    if (LAB_WRITES.has(u.pathname)) { writes.push(`${req.method} ${u.pathname}`); return send(200, 'application/json', '{"ok":true}'); }
+    if (u.pathname === '/FileTransfer/GetLab') return send(200, 'application/json', JSON.stringify(rows(3, (i) => ({ Name: `Lab ${i + 1}`, Status: 'Active' }))));
+    if (LAB[u.pathname]) return send(200, 'text/html', LAB[u.pathname]);
     if (u.pathname === '/FileTransfer/EditPopup') return send(200, 'text/html', POPUP);
     if (u.pathname === '/FileTransfer/DestinationPopup') return send(200, 'text/html', DEST);
     if (u.pathname === '/FileTransfer/TrackingView') return send(200, 'text/html', `${field('ViewFileName', 'File Name', text('ViewFileName', 'FileName', 'readonly'))}<div class="buttons"><span class="spacer"></span><button class="btn" type="button" id="btnCancelView" onclick="$(this).closest('.k-window').find('[data-role=window]').data('kendoWindow').close()">Cancel</button></div>`);
     const p = PAGES[u.pathname];
     send(p ? 200 : 404, 'text/html', layout(authed, p ? p() : { title: 'Not part of this test', body: '<h2>Not part of this test</h2>' }));
-  }).listen(port);
+  });
+  srv.writes = writes;
+  return srv.listen(port);
 }

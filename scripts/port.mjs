@@ -184,7 +184,12 @@ const cut = await page.evaluate(({ bands, controls, hoverKeys, scope, slot, kit 
       const s = document.createElement('div'); s.setAttribute('data-slot-kit', id); el.replaceWith(s);
       outer = outer.map((o) => (o === el ? s : o));
     }
-    if (kit.shell) for (const [k, m] of [['title', '__KIT_TITLE__'], ['module', '__KIT_MODULE__']]) { const e = document.querySelector(`[data-kit-shell=${k}]`); if (e) e.textContent = m; }
+    // only the text: a module tab that is a menu keeps its chevron and caret next to the name
+    if (kit.shell) for (const [k, m] of [['title', '__KIT_TITLE__'], ['module', '__KIT_MODULE__']]) {
+      const e = document.querySelector(`[data-kit-shell=${k}]`);
+      const tn = e && e.children.length ? [...e.childNodes].find((c) => c.nodeType === 3 && c.textContent.trim()) : null;
+      if (tn) tn.textContent = m; else if (e) e.textContent = m;
+    }
   }
   const parts = outer.map((e, i) => ({ i, tag: e.tagName.toLowerCase(), id: e.id, html: e.outerHTML }));
   outer.forEach((e, i) => { const s = document.createElement('div'); s.setAttribute('data-slot', String(i)); e.replaceWith(s); });
@@ -227,16 +232,19 @@ for (const p of cut.parts) {
 
 const head = '// @ts-nocheck - mechanical port of the captured DOM (unknown legacy attributes); drop this line once you hand-edit the file\n';
 const islands = (jsx) => jsx.replace(/<div data-slot-kit="([\w-]+)"><\/div>/g, '<KitWidget id="$1" />');
-const kitShell = (jsx) => jsx.replace(/\{"__KIT_TITLE__"\}/g, '{title}').replace(/\{"__KIT_MODULE__"\}/g, '{module}');
+// a route without a module name (a capture from before the module tab was stamped) shows the one this shell was ported with
+const kitShell = (jsx) => jsx.replace(/\{"__KIT_TITLE__"\}/g, '{title}').replace(/\{"__KIT_MODULE__"\}/g, `{module ?? ${JSON.stringify(kitScreen?.shell?.module ?? '')}}`);
 const usesKit = (jsx) => (kitImport && jsx.includes('<KitWidget') ? `import { KitWidget } from '${kitFrom(1)}';\n` : '');
 const withProps = new Set();
 for (const p of cut.parts) {
   const jsx = kitShell(islands(pretty(toJsx(p.html, rewriteAttr))));
-  const props = /\{(title|module)\}/.test(jsx);
+  const props = /\{(title|module)[ }]/.test(jsx);
   if (props) withProps.add(p.name);
+  // the title bar: a screen whose live page has none (a module's landing page, e.g. a Dashboard) shows none
+  const bar = /\{title\}/.test(jsx) && !/<header[\s>]|id="pageHeader"|\{children\}/.test(jsx) ?'  if (!title) return null; // the live page of a screen with no title has no title bar\n' : '';
   if (!flag('--dialogs')) fs.writeFileSync(path.join(dest, 'components', `${p.name}.tsx`),
     `${head}${usesKit(jsx)}// Band ${p.i + 1} of ${screen}: ported from ${relDir(screen)}/snapshot/rendered.html (${p.tag}${p.id ? '#' + p.id : ''}).\n` +
-    `export default function ${p.name}(${props ? '{ title, module }: { title?: string; module?: string }' : ''}) {\n  return (\n    ${jsx}\n  );\n}\n`);
+    `export default function ${p.name}(${props ? '{ title, module }: { title?: string; module?: string }' : ''}) {\n${bar}  return (\n    ${jsx}\n  );\n}\n`);
 }
 // the kit's dialogs: one component each, rendered by <KitScreen> when their opener is clicked
 const dialogNames = {};

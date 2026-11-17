@@ -1050,6 +1050,19 @@ export function todo(out, { route }) {
   }
   for (const d of k.missing ?? []) left.push(`dialog ${d.panel} (${d.opener ? `button ${d.opener}` : d.via}) is opened by the screen's script but was NOT captured: do not invent it. Write it in GUESSED.md as "not captured, re-capture needed"`);
   if (k.row && !k.row.dialog && k.plan?.rowDouble) left.push(`grid row double-click calls ${k.plan.rowDouble}${k.plan.rowOpens === 'navigate' ? ' (it navigates to another page: out of this screen, do nothing)' : ' but the capture saw no dialog: write it in GUESSED.md'}`);
+  // the flows stage (flows/index.json): the deeper states it reached. The kit replays the clicks that open a window or show a part (kit.json "flows");
+  // the rest (what a state's fields accept and say, Save's messages, the boundaries) is the screen's own code
+  const G = readJson(path.join(out, 'flows', 'index.json'));
+  if (G) {
+    const nodes = Object.values(G.nodes).filter((n) => n.id !== 'n0');
+    if ((k.flows ?? []).length) done.push(`${k.flows.length} click(s) found by the flows stage that open a window or show a part (kit.json "flows": ${k.flows.map((f) => f.node).join(', ')})`);
+    for (const n of nodes.filter((x) => x.fields?.some((f) => Object.keys(f.messages || {}).length || !f.accepts.letters || f.maxEnforced))) left.push(`flow ${n.id} "${n.title || n.name}": its fields as measured (flows/${n.dir}/node.json "fields"): ${n.fields.map((f) => `${f.label || f.name} accepts ${Object.entries(f.accepts).filter(([, v]) => v).map(([x]) => x).join('/') || 'nothing typed'}${f.maxLength ? `, max ${f.maxLength}` : ''}${Object.values(f.messages || {}).length ? `, says "${Object.values(f.messages)[0]}"` : ''}`).join('; ')}`);
+    for (const n of nodes.filter((x) => x.saveProbe?.validation)) left.push(`flow ${n.id} "${n.title || n.name}": Save with the form as it was shows ${n.saveProbe.validation.summaries.length} banner(s) and ${n.saveProbe.validation.fields.length} field message(s) (flows/${n.dir}/node.json "saveProbe")`);
+    const bounds = nodes.filter((x) => x.kind === 'boundary');
+    if (bounds.length) left.push(`boundaries (where the live page would write; the rebuild calls src/services instead): ${bounds.map((b) => `${b.id} ${(b.requests || []).map((r) => `${r.method} ${r.url}`).join(', ')}`).join('; ')}`);
+    const notReplayed = nodes.filter((x) => (x.kind === 'dialog' || x.kind === 'part') && !(k.flows ?? []).some((f) => f.node === x.id));
+    if (notReplayed.length) left.push(`states the kit does not reach by itself (a step that types or picks, or a click it could not place): ${notReplayed.map((x) => `${x.id} "${x.title || x.name}"`).join(', ')}: build what leads there from flows/FLOWS.md`);
+  }
   left.push("every task in spec/tasks.md that the list above does not cover (the screen's own messages and rules, exactly as its script has them: do not add a rule the script does not have)");
   return `# Checklist: ${k.shell?.title || route}\n\nGenerated from the capture (kit/screen.json). Route: \`#${route}\`.\n\n## Done by the kit (do not rebuild)\n${done.map((x) => `- [x] ${x}`).join('\n')}\n\n` +
     `## Left for you\n${left.map((x) => `- [ ] ${x}`).join('\n')}\n\n## The screen's own script (paths in the screen folder)\n${own.map((f) => `- ${f}`).join('\n') || '- (none saved)'}\n`;
@@ -1066,3 +1079,118 @@ export function prompt(kind, { dir }) {
   if (kind === 'code') return `\nThis screen belongs to a Provider portal (Kendo UI for jQuery). Read ${guide} first. The kit in src/kit already rebuilds every Kendo widget (dropdowns, pickers, numeric boxes, grids with sort/pager, tooltips, dialogs, collapsible panels, Search/Reset/Create New/Save, the side menu), and the port already uses it (<KitWidget id=… />, <KitScreen …>). Never write your own dropdown, date picker, tooltip, grid or dialog, and do not edit src/kit. Your job is what the kit cannot know: conditional fields and cascades from the screen's own script (${dir}/capture/js/), and anything the spec lists that the port does not show yet.`;
   return '';
 }
+
+// ---------- the flows stage (scripts/flows.mjs): what its engine needs to know about this portal ----------
+// The engine is site-agnostic; these hooks give it Kendo: the page stamped as the capture stamped it, the wait for a window's AJAX content
+// and opening zoom, a window harvested like the capture's dialogs, a dropdown picked through its widget, and the merge of what it found
+// into kit/screen.json + kit/states.json (new dialogs, the clicks that open them, the checks verify replays).
+const pathOf = (u) => String(u || '').replace(/^https?:\/\/[^/]+/, '').split('?')[0].replace(/\/+$/, '');
+export const flows = {
+  async ready({ page, cfg }) {
+    await inject(page);
+    const k = cfg.kit || {};
+    await page.evaluate((a) => window.__kit.rest(a), { scope: k.scope || null, module: k.module || null }).catch(() => {});
+  },
+  async wait({ page, s }) {
+    await waitLoaded(page, s, 15000);
+    for (let i = 0; i < 30; i++) { // a window still zooming in is not the state yet
+      const p = await page.evaluate(() => window.__kit.position()).catch(() => null);
+      if (!p || p.settled) break;
+      await page.waitForTimeout(200);
+    }
+  },
+  window: async ({ page }) => { await inject(page); return page.evaluate(() => window.__kit.dialog()); },
+  closeTop: ({ page }) => page.evaluate(() => window.__kit.closeDialog()).catch(() => false),
+  marks: ({ page }) => page.evaluate(() => window.__kit.marks()),
+  changed: ({ page, before }) => page.evaluate((b) => window.__kit.changed(b), before),
+  validation: ({ page }) => page.evaluate(() => window.__kit.validation()),
+  pick: ({ page, value }) => page.evaluate((v) => {
+    const el = document.querySelector('[data-xp-hit]');
+    const i = el?.matches('[data-role]') ? el : el?.querySelector('[data-role=dropdownlist], [data-role=combobox], [data-role]');
+    let w = null;
+    try { w = i && window.kendo?.widgetInstance?.(window.jQuery(i)); } catch {}
+    if (!w?.value) return false;
+    w.value(v);
+    w.trigger('change');
+    return true;
+  }, value).catch(() => false),
+  // a dropdown's values, so a plan can pick one (Kendo keeps them in its data source)
+  enrich: ({ page, candidates }) => page.evaluate((cs) => cs.map((c) => {
+    if (c.kind !== 'dropdown') return c;
+    const el = document.querySelector(`[data-xp="${c.el}"]`), i = el?.querySelector('[data-role]');
+    try {
+      const w = i && window.kendo.widgetInstance(window.jQuery(i)), vf = w.options.dataValueField, tf = w.options.dataTextField;
+      return { ...c, options: w.dataSource.data().toJSON().slice(0, 12).map((d) => (d && typeof d === 'object' ? String(d[vf || 'value'] ?? d.Value ?? d[tf] ?? '') : String(d))) };
+    } catch { return c; }
+  }), candidates),
+  // the writes the capture saw open an editor (a POST that renders a window): the flows guard lets these go
+  allow(out) {
+    const k = readJson(path.join(out, 'kit', 'screen.json'));
+    const reqs = [...Object.values(k?.dialogs ?? {}).flatMap((d) => d.requests ?? []), ...(k?.row?.requests ?? []), ...(k?.search?.requests ?? [])];
+    return new Set(reqs.filter((r) => r.method && r.method !== 'GET').map((r) => `${r.method} ${pathOf(r.url)}`));
+  },
+  rowVia: (out) => readJson(path.join(out, 'kit', 'screen.json'))?.row?.via ?? null,
+  // what the flows found, into the kit's data. Idempotent: what an earlier merge added is dropped first.
+  //  - a window not harvested by the capture: a dialog dN (widget ids renamed dN<kid>: the capture's own counter reused them), markup in kit/dialogs/
+  //  - the click that opened a window / showed a part: screen.flows (KitScreen replays it), as css + nth among the shown in its layer
+  //  - a check per state verify can replay (clicks only): states.json flow-<id>
+  async merge({ out, graph, scope }) {
+    const kd = path.join(out, 'kit'), sf = path.join(kd, 'screen.json'), stf = path.join(kd, 'states.json'), fdir = path.join(out, 'flows');
+    const screen = readJson(sf);
+    if (!screen) return null;
+    for (const [id, d] of Object.entries(screen.dialogs ?? {})) if (d.flow) { delete screen.dialogs[id]; fs.rmSync(path.join(kd, 'dialogs', `${id}.html`), { force: true }); }
+    const states = (readJson(stf) ?? []).filter((s) => !s.name.startsWith('flow-'));
+    screen.flows = [];
+    screen.links = (screen.links ?? []).filter((l) => l.kind !== 'flow');
+    let next = Math.max(0, ...Object.keys(screen.dialogs ?? {}).map((x) => +x.slice(1) || 0));
+    const dlg = {}, added = { dialogs: 0, flows: 0, states: 0 };
+    const nodes = Object.values(graph.nodes).sort((a, b) => a.depth - b.depth || a.id.localeCompare(b.id, 'en', { numeric: true }));
+    // the screen's area: "#pageBody > main" live, but the rebuild wraps each screen in <KitScreen>'s own element: any depth
+    const page = scope ? `${scope.replace(/\s*>\s*/g, ' ')} ` : '';
+    const rsel = (st, layerDlg) => (st.layer === 'top' ? (layerDlg ? `[data-kit-dialog-content="${layerDlg}"] ` : null) : page) + st.css;
+    const rsteps = {}; // node id -> the steps the rebuild replays to get there (null: a step it cannot replay)
+    rsteps.n0 = [];
+    for (const n of nodes) {
+      if (n.id === 'n0') continue;
+      const parentDlg = dlg[n.parent] ?? null;
+      if (n.kind === 'dialog') {
+        const w = readJson(path.join(fdir, n.dir, 'window.json')), f = path.join(fdir, n.dir, 'layer.html');
+        // the capture's own dialog with the same title and content; of two (an "Add Destination" in Add and another in Edit), the one inside the same parent
+        const twins = w ? Object.entries(screen.dialogs).filter(([, d]) => !d.flow && d.title === w.title && (d.contentId ?? null) === (w.contentId ?? null)) : [];
+        const same = twins.find(([, d]) => (d.parent ?? null) === parentDlg) ?? twins[0];
+        if (same) dlg[n.id] = same[0];
+        else if (w && fs.existsSync(f)) {
+          const id = `d${++next}`, ren = (s) => s.replace(/data-kit="(k\d+)"/g, (m, x) => (w.widgets?.[x] ? `data-kit="${id}${x}"` : m)).replace(/data-kit=\\"(k\d+)\\"/g, (m, x) => (w.widgets?.[x] ? `data-kit=\\"${id}${x}\\"` : m));
+          const { pageState, ...rest } = JSON.parse(ren(JSON.stringify(w)));
+          rest.widgets = Object.fromEntries(Object.entries(rest.widgets ?? {}).map(([x, def]) => [`${id}${x}`, def]));
+          fs.mkdirSync(path.join(kd, 'dialogs'), { recursive: true });
+          fs.writeFileSync(path.join(kd, 'dialogs', `${id}.html`), ren(fs.readFileSync(f, 'utf8')));
+          screen.dialogs[id] = { ...rest, opener: `flow ${n.id}`, children: [], creates: [], flow: n.id, ...(parentDlg ? { parent: parentDlg } : {}), requests: (n.requests ?? []).map(({ method, url }) => ({ method, url, params: [] })) };
+          dlg[n.id] = id;
+          added.dialogs++;
+        }
+      } else if (n.windows && parentDlg) dlg[n.id] = parentDlg; // a part shown in the same window
+      for (const l of n.links ?? []) screen.links.push({ kind: 'flow', text: l.text, url: l.url });
+      const steps = n.via?.steps ?? [], last = steps.at(-1);
+      // the click that led here, replayed by KitScreen (a step that types or picks first is the screen's own code)
+      if (last && steps.length === 1 && ['click', 'dblclick'].includes(last.do) && (n.kind === 'dialog' || n.kind === 'part') && (last.layer !== 'top' || parentDlg) && (n.kind !== 'dialog' || dlg[n.id])) {
+        screen.flows.push({ node: n.id, from: last.layer === 'top' ? parentDlg : null, css: last.css, nth: last.nth, text: last.text, via: last.do,
+          ...(n.kind === 'dialog' ? { opens: dlg[n.id] } : { show: n.change?.show ?? [], hide: n.change?.hide ?? [] }) });
+        added.flows++;
+      }
+      // the check verify replays: the same clicks from a fresh page
+      const before = rsteps[n.parent];
+      const mine = steps.map((st) => (['click', 'dblclick', 'hover'].includes(st.do) && rsel(st, parentDlg) ? { do: st.do, sel: rsel(st, parentDlg), nth: Math.max(0, st.nth) } : null));
+      rsteps[n.id] = before && mine.every(Boolean) ? [...before, ...mine] : null;
+      if (!rsteps[n.id] || !['dialog', 'part', 'results'].includes(n.kind)) continue;
+      const expect = n.kind === 'dialog' ? (dlg[n.id] ? [{ sel: `[data-kit-dialog="${dlg[n.id]}"]`, why: `"${last?.text}" opens it on the live page (flow ${n.id})` }] : [])
+        : (n.change?.show ?? []).slice(0, 4).map((x) => ({ sel: `${dlg[n.id] ? `[data-kit-dialog-content="${dlg[n.id]}"] ` : page}${x}`, why: `"${last?.text}" shows it on the live page (flow ${n.id})` }));
+      if (!expect.length) continue;
+      states.push({ name: `flow-${n.id}`, steps: rsteps[n.id], wait: 1200, expect });
+      added.states++;
+    }
+    writeJson(sf, screen);
+    writeJson(stf, states);
+    return added;
+  },
+};

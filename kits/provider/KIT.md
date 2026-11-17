@@ -216,6 +216,32 @@ at both ends and scrolls the list with them and the wheel.
 - `verify` checks all of this on every dialog and on the side menu, whether or not the capture's states mention it (focus in a window with fields, the page
   locked, the side menu's last item reachable by hovering its lower arrow). `ui` stops when the kit fails its own check on the raw port (`--ignore-kit` goes on).
 
+## The flows stage: every path below the capture's clicks (`npm run ui -- <pack> --flows`)
+
+The capture clicks a fixed few things (one dropdown, Search, up to 3 Create New, the first row, a Create New in a dialog). The flows stage
+(`scripts/flows.mjs`, after each screen's capture) goes on from there until every branch ends: the writer (Codex) plans each wave from the
+pictures, the script carries the plan out on the live page and records what each action did, and the new states are planned in the next wave.
+A **View** dialog's **Edit** mode, a grid inside a dialog and the window its row opens, a tab, a wizard's next step, a value that shows a section,
+all become states.
+
+- **Never writes.** Commit buttons (Save, Submit, Update, Delete, Approve, a bare Add / OK / Yes; `scripts/lib/safety.mjs`) are never clicked; every
+  write request is blocked, except a POST that reads (a grid's data source, a search, a lookup) or that opened an editor in the capture
+  (`dialogs.<id>.requests`; more in `pack.json` `flows.allow`). A click that tries a write is a **boundary**: the flow ends there, with the request it
+  would have sent. "Save" is pressed once per form with **all** writes blocked, to record its messages (`saveProbe`).
+- **Measures every text box itself**: what typing letters, digits, spaces and symbols leaves in it (a digits-only box), whether it stops at its
+  length limit, and the message a too long / badly formed / empty value shows (`fields` in each state's `node.json`).
+- **Output** in the screen folder: `flows/FLOWS.md` (the tree), `flows/index.json` (the graph; a re-run continues from it), and per state
+  `flows/<id>-<name>/` (`shot.png`, the numbered `map.png` the planner reads, `candidates.md`, `node.json`, a window's `layer.html`). Ids carry the
+  hierarchy: `n2.1.2` is the 2nd state reached from `n2.1`.
+- **Into the kit** (`kit.flows.merge`, idempotent): a window the capture did not see becomes a dialog `dN` (`flow: "<state>"`, widget ids `dN<kid>`)
+  with its markup in `kit/dialogs/`, so `port` builds it; the click that opened it or showed a part goes to `screen.json` `flows` (css + nth among the
+  shown in its layer), which `<KitScreen>` replays; each state reachable by clicks gets a check `flow-<id>` in `states.json`, replayed by `verify`
+  (reported like any state, never a reason for the preflight to stop). A grid inside a dialog no longer opens the page's row dialog.
+- **The spec cites every state** as `[flow:<id>]` (`npm run check` requires it when `flows/index.json` exists); TODO.md lists the measured fields,
+  Save's messages, the boundaries and the states the kit cannot reach by itself (a step that types or picks first).
+- Budget (`config.json` `flows`, `pack.json` `"flows": { ... }`): `maxNodes` 40, `maxDepth` 6, `maxWaves` 6, `maxActions` 12 per state,
+  `timeBudgetSec` 1500, `workers` 2 (browser contexts per screen, sharing the one login), `ai: false` for rule-based plans only.
+
 ## Known gaps (say them in GUESSED.md when a screen needs them)
 
 - Widgets the kit does not rebuild yet are ported as static markup and listed in `screen.json` `unknown` (and facts.md). The

@@ -502,6 +502,7 @@ function Grid({ id, def }: { id: string; def: WidgetDef }) {
       if (t.closest('.k-pager-refresh')) { e.preventDefault(); draw(); return; }
       const row = t.closest('tr[data-kit-row]');
       if (!row) return;
+      if (inDialog) return; // screen.row is the page grid's row; a grid inside a dialog opens what the flows stage saw (KitScreen)
       if (ctx.data.row?.via === 'dblclick') { // the portal's grids: a click selects the row, a double-click opens it
         w.querySelectorAll('tr.k-selected').forEach((r) => { r.classList.remove('k-selected'); r.setAttribute('aria-selected', 'false'); });
         row.classList.add('k-selected');
@@ -510,10 +511,11 @@ function Grid({ id, def }: { id: string; def: WidgetDef }) {
       else if (ctx.data.row?.navigates) { const hit = routeFor(ctx.data.row.navigates); if (hit) { e.preventDefault(); location.hash = `#${hit.path}`; } } // a row that leaves the page: its screen, when the pack rebuilt it
     };
     const onDbl = (e: MouseEvent) => {
-      if (ctx.data.row?.via !== 'dblclick' || !ctx.data.row.dialog || !(e.target as Element).closest('tr[data-kit-row]')) return;
+      if (inDialog || ctx.data.row?.via !== 'dblclick' || !ctx.data.row.dialog || !(e.target as Element).closest('tr[data-kit-row]')) return;
       e.preventDefault();
       ctx.openDialog(ctx.data.row.dialog);
     };
+    const inDialog = !!w.closest('[data-kit-dialog-content]');
     w.addEventListener('click', onClick);
     w.addEventListener('dblclick', onDbl);
     const off = ctx.bus.on('search', onSearch);
