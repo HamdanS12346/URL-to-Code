@@ -1,0 +1,2 @@
+
+	kendo.syncReady(function(){jQuery("#ApplicantContact_PreferredCommunicationMethodList").kendoDropDownList({"dataBound":initializePreferredCommunicationsDropdown,"dataSource":{"transport":{"read":{"url":"/api/ProviderEnrollment/GetPreferredCommunicationsByAddressType/","data":function() { return { '': 'Contact' }; },"type":"POST"},"prefix":""},"schema":{"errors":"Errors"}},"dataTextField":"FormattedText","dataValueField":"ID","optionLabel":"select a value..."});});

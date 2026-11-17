@@ -1,0 +1,38 @@
+{
+ "screen": "pe-v1/resume-enrollment-entry",
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/ResumeSecureEnrollment",
+ "mode": "safe",
+ "kit": "provider",
+ "sources": [],
+ "finger": "4c247130c11c69d08d2f70ae5b05b6d3",
+ "steps": {
+  "capture": {
+   "ok": true,
+   "at": "2026-11-17T05:41:57.748Z",
+   "ms": 36665
+  },
+  "stitch": {
+   "ok": true,
+   "at": "2026-11-17T05:41:57.757Z",
+   "ms": 2
+  },
+  "align": {
+   "ok": true,
+   "at": "2026-11-17T05:41:57.770Z",
+   "ms": 5
+  },
+  "facts": {
+   "ok": true,
+   "at": "2026-11-17T05:41:57.895Z",
+   "ms": 121
+  }
+ },
+ "warnings": [
+  "no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)"
+ ],
+ "viewport": {
+  "width": 1920,
+  "height": 1080
+ },
+ "dpr": 1
+}

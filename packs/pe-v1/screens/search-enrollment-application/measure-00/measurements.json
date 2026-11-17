@@ -1,0 +1,243 @@
+{
+  "source": "C:\\UI-specs\\URL-to-Code\\packs\\pe-v1\\screens\\search-enrollment-application\\reference.png",
+  "source_sha256": "26ca1cf6e8a6df3eeaf793220606efb91dee4dc5985a40f19f7f729959b6f1fa",
+  "source_size": [
+    1920,
+    1080
+  ],
+  "css_mapping": {
+    "assumed_viewport_width": 1920,
+    "css_per_image_pixel": 1.0,
+    "meaning": "实现约定，不证明参考图原始 DPR 或 CSS 视口"
+  },
+  "regions": [
+    {
+      "name": "band-01-search-enrollment-application",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        62,
+        1920,
+        76
+      ],
+      "normalized_box": [
+        0.0,
+        0.057407,
+        1.0,
+        0.07037
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        62.0,
+        1920.0,
+        76.0
+      ],
+      "selector": "#orientationLandscape > div:nth-of-type(2) > div:nth-of-type(3)",
+      "dom_comparable": true
+    },
+    {
+      "name": "band-02-pagebody",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        138,
+        1920,
+        653
+      ],
+      "normalized_box": [
+        0.0,
+        0.127778,
+        1.0,
+        0.60463
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        138.0,
+        1920.0,
+        653.0
+      ],
+      "selector": "#pageBody",
+      "dom_comparable": true
+    },
+    {
+      "name": "band-03-disclaimer-the-website-is-prov",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        791,
+        1920,
+        119
+      ],
+      "normalized_box": [
+        0.0,
+        0.732407,
+        1.0,
+        0.110185
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        791.0,
+        1920.0,
+        119.0
+      ],
+      "selector": "#orientationLandscape > div:nth-of-type(2) > footer",
+      "dom_comparable": true
+    },
+    {
+      "name": "img-logo-png-v-19-1-64-0",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        50,
+        2,
+        117,
+        57
+      ],
+      "normalized_box": [
+        0.026042,
+        0.001852,
+        0.060937,
+        0.052778
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        50.0,
+        2.0,
+        117.0,
+        57.0
+      ],
+      "dom_comparable": true
+    },
+    {
+      "name": "h1-search-enrollment-application",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        218,
+        62,
+        223,
+        30
+      ],
+      "normalized_box": [
+        0.113542,
+        0.057407,
+        0.116146,
+        0.027778
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        218.0,
+        62.0,
+        223.0,
+        30.0
+      ],
+      "dom_comparable": true
+    },
+    {
+      "name": "row1-item1",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        41,
+        231,
+        460,
+        93
+      ],
+      "normalized_box": [
+        0.021354,
+        0.213889,
+        0.239583,
+        0.086111
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        41.0,
+        231.0,
+        460.0,
+        93.0
+      ],
+      "dom_comparable": true,
+      "group": "row1"
+    },
+    {
+      "name": "row1-item2",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        500,
+        231,
+        460,
+        93
+      ],
+      "normalized_box": [
+        0.260417,
+        0.213889,
+        0.239583,
+        0.086111
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        500.0,
+        231.0,
+        460.0,
+        93.0
+      ],
+      "dom_comparable": true,
+      "group": "row1"
+    },
+    {
+      "name": "row1-item3",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        960,
+        231,
+        460,
+        92
+      ],
+      "normalized_box": [
+        0.5,
+        0.213889,
+        0.239583,
+        0.085185
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        960.0,
+        231.0,
+        460.0,
+        92.0
+      ],
+      "dom_comparable": true,
+      "group": "row1"
+    }
+  ],
+  "groups": [
+    {
+      "name": "row1",
+      "members": [
+        "row1-item1",
+        "row1-item2",
+        "row1-item3"
+      ],
+      "x_gaps": [
+        -1,
+        0
+      ],
+      "median_width": 460,
+      "median_height": 93,
+      "median_gap": -0.5,
+      "y_spread": 0,
+      "width_spread": 0,
+      "meaning": "横向重复结构的描述统计，不自动把不等宽设计改成等宽"
+    }
+  ],
+  "vertical_scans": [],
+  "input_manifest_sha256": "f1ae91f6d7560a15b32904028f8bf13e0545d8d4f9250c0fd3ee0972f18a5403"
+}

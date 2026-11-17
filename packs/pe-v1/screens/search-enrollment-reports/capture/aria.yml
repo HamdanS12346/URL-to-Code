@@ -1,0 +1,59 @@
+- banner:
+  - link "Client Logo":
+    - /url: /Home/MyHome/
+    - img "Client Logo"
+  - text: Medicaid Management Solutions Final Test
+  - menubar:
+    - menuitem "Messages":
+      - link "Messages":
+        - /url: javascript:getBroadcastMsg();
+    - menuitem "External Links":
+      - link "External Links":
+        - /url: javascript:toggleVisibilityStyle('divExternalLinks');
+    - menuitem "Favorites":
+      - link "Favorites":
+        - /url: javascript:getFavorites();
+    - menuitem "Contact Us":
+      - link "Contact Us":
+        - /url: javascript:getContactUs();
+    - menuitem "My Account":
+      - link "My Account":
+        - /url: /Home/MyAccount
+    - menuitem "Logout":
+      - link "Logout":
+        - /url: /Security/LogoutFromMenu
+  - navigation "Hamburger Menu":
+    - button "Main Menu": 
+- navigation:
+  - menubar:
+    - menuitem "Provider Enrollment ":
+      - link "Provider Enrollment ":
+        - /url: /ProviderEnrollment/Dashboard
+  - heading "Search Enrollment Reports" [level=1]
+- main:
+  - group:
+    - text: "* Search Enrollment Reports  Required Fields ( * )"
+    - paragraph: Complete the necessary criteria for the chosen search(s).
+    - paragraph: "Note: The name of the report file is displayed as Module Name, Timestamp in YYYYMMDDHHMMSS format, and the Report Name. The latest generated file is displayed at the top."
+    - text: "* From Date"
+    - img "HELP": 
+    - combobox "From Date Select From Date to display the exported excel": 11/17/2026
+    - button "select":
+      - img
+    - text: "* To Date"
+    - img "HELP": 
+    - combobox "To Date Select To Date to display the exported excel": 11/17/2026
+    - button "select":
+      - img
+    - text: User ID
+    - img "HELP": 
+    - textbox "User ID User ID": useradmin1
+    - button "Clear"
+    - button "Search"
+- contentinfo:
+  - text: Disclaimer Website Requirements Privacy Policy Cookie Policy © 2026 Gainwell Technologies. All rights reserved.
+  - strong: "Server:"
+  - text: 10.199.153.38
+  - strong: "Build Date:"
+  - text: 10/30/2026 3:28:37 AM
+  - strong: v30.0.0.2609

@@ -1,0 +1,4339 @@
+{
+ "viewport": [
+  1920,
+  1080
+ ],
+ "doc": [
+  1905,
+  1411
+ ],
+ "truncated": false,
+ "body": {
+  "t": "body",
+  "cls": "ProviderEnrollment Dashboard",
+  "box": [
+   0,
+   0,
+   1904.67,
+   1411.23
+  ],
+  "s": {
+   "color": "rgb(51, 51, 51)",
+   "fontFamily": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+   "fontSize": "14px",
+   "fontWeight": "400",
+   "fontStyle": "normal",
+   "lineHeight": "14px",
+   "textAlign": "start",
+   "textTransform": "none",
+   "letterSpacing": "normal",
+   "whiteSpace": "normal",
+   "listStyleType": "disc",
+   "wordSpacing": "0px",
+   "padding": "62px 0px 0px",
+   "backgroundColor": "rgb(255, 255, 255)"
+  },
+  "k": [
+   {
+    "t": "div",
+    "key": "orientationLandscape",
+    "id": "orientationLandscape",
+    "box": [
+     0,
+     62,
+     1904.67,
+     1349.23
+    ],
+    "k": [
+     {
+      "t": "div",
+      "cls": "body-well",
+      "box": [
+       0,
+       62,
+       1904.67,
+       1349.23
+      ],
+      "k": [
+       {
+        "t": "div",
+        "key": "pageHeader",
+        "id": "pageHeader",
+        "cls": "header headroom headroom--top headroom--not-bottom",
+        "box": [
+         0,
+         0,
+         1904.67,
+         66
+        ],
+        "s": {
+         "position": "fixed",
+         "backgroundColor": "rgb(43, 58, 68)",
+         "zIndex": "1000",
+         "top": "0px",
+         "right": "0px",
+         "bottom": "1014px",
+         "left": "0px",
+         "borderBottom": "4px solid rgb(48, 179, 254)"
+        },
+        "k": [
+         {
+          "t": "header",
+          "key": "pageBanner",
+          "role": "banner",
+          "id": "pageBanner",
+          "box": [
+           0,
+           0,
+           1904.67,
+           62
+          ],
+          "s": {
+           "display": "flex",
+           "justifyContent": "space-between",
+           "alignItems": "center"
+          },
+          "k": [
+           {
+            "t": "div",
+            "key": "pageBannerLogo",
+            "id": "pageBannerLogo",
+            "box": [
+             50,
+             1.81,
+             116.17,
+             58.36
+            ],
+            "s": {
+             "margin": "0px 0px 0px 50px"
+            },
+            "k": [
+             {
+              "t": "a",
+              "key": "link-client-logo",
+              "box": [
+               50,
+               45.51,
+               116.17,
+               15.33
+              ],
+              "s": {
+               "color": "rgb(0, 0, 0)",
+               "fontFamily": "Arial, sans-serif",
+               "cursor": "pointer"
+              },
+              "href": "/Home/MyHome/",
+              "k": [
+               {
+                "t": "img",
+                "label": "Client Logo",
+                "box": [
+                 50,
+                 1.81,
+                 116.17,
+                 56.36
+                ],
+                "s": {
+                 "cursor": "pointer",
+                 "overflow": "clip"
+                },
+                "src": "https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo.png?v=19.1.64.0",
+                "alt": "Client Logo",
+                "nat": [
+                 169,
+                 82
+                ],
+                "file": "assets/_ext/mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo__3659ec6d.png"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "t": "div",
+            "key": "pageBannerTitle",
+            "id": "pageBannerTitle",
+            "box": [
+             201.17,
+             12,
+             320,
+             38
+            ],
+            "s": {
+             "textAlign": "center",
+             "margin": "0px 35px"
+            },
+            "k": [
+             {
+              "t": "div",
+              "key": "button",
+              "cls": "system-name",
+              "box": [
+               201.17,
+               12,
+               320,
+               18
+              ],
+              "s": {
+               "color": "rgb(48, 179, 254)",
+               "fontFamily": "Poppins, Arial, Helvetica, sans-serif",
+               "fontSize": "18px",
+               "fontWeight": "700",
+               "lineHeight": "18px"
+              },
+              "k": [
+               {
+                "t": "#text",
+                "runs": [
+                 {
+                  "x": "Medicaid Management Solutions"
+                 }
+                ]
+               }
+              ]
+             },
+             {
+              "t": "div",
+              "key": "button-medicaid-management-solutions",
+              "cls": "app-title",
+              "box": [
+               201.17,
+               30,
+               320,
+               20
+              ],
+              "s": {
+               "color": "rgb(255, 255, 255)",
+               "fontFamily": "Poppins, Arial, Helvetica, sans-serif",
+               "fontSize": "15px",
+               "lineHeight": "15px",
+               "textTransform": "uppercase",
+               "whiteSpace": "nowrap",
+               "padding": "5px 0px 0px"
+              },
+              "k": [
+               {
+                "t": "#text",
+                "runs": [
+                 {
+                  "x": "Final Test"
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "t": "div",
+            "cls": "desktop-nav",
+            "box": [
+             556.17,
+             0,
+             1348.5,
+             62
+            ],
+            "s": {
+             "display": "flex"
+            },
+            "k": [
+             {
+              "t": "div",
+              "cls": "aag-menu-bar",
+              "box": [
+               556.17,
+               0,
+               1280.5,
+               62
+              ],
+              "s": {
+               "display": "flex",
+               "justifyContent": "flex-end",
+               "alignItems": "center",
+               "padding": "0px 30px 0px 0px"
+              },
+              "k": [
+               {
+                "t": "ul",
+                "key": "button-2",
+                "role": "menubar",
+                "cls": "aag-menu k-reset k-header k-menu k-menu-horizontal",
+                "box": [
+                 1183.91,
+                 21.43,
+                 622.76,
+                 19.14
+                ],
+                "s": {
+                 "color": "rgb(61, 61, 61)",
+                 "lineHeight": "20px",
+                 "listStyleType": "none",
+                 "display": "flex",
+                 "alignItems": "stretch",
+                 "position": "relative",
+                 "float": "right",
+                 "cursor": "default",
+                 "top": "0px",
+                 "right": "0px",
+                 "bottom": "0px",
+                 "left": "0px"
+                },
+                "k": [
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.BroadcastMsg",
+                  "role": "menuitem",
+                  "id": "AAGMenu.BroadcastMsg",
+                  "cls": "k-item k-menu-item k-first",
+                  "box": [
+                   1183.91,
+                   21.43,
+                   97.35,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1183.91,
+                     21.43,
+                     97.35,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-messages",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1193.91,
+                       21.43,
+                       87.35,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "javascript:getBroadcastMsg();",
+                      "runs": [
+                       {
+                        "x": "Messages"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.ExternalLinks",
+                  "role": "menuitem",
+                  "id": "AAGMenu.ExternalLinks",
+                  "cls": "k-item k-menu-item",
+                  "box": [
+                   1281.26,
+                   21.43,
+                   130.93,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1281.26,
+                     21.43,
+                     130.93,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-external-links",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1291.26,
+                       21.43,
+                       120.93,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "javascript:toggleVisibilityStyle('divExternalLinks');",
+                      "runs": [
+                       {
+                        "x": "External Links"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.Favorites",
+                  "role": "menuitem",
+                  "id": "AAGMenu.Favorites",
+                  "cls": "k-item k-menu-item",
+                  "box": [
+                   1412.19,
+                   21.43,
+                   96.46,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1412.19,
+                     21.43,
+                     96.46,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-favorites",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1422.19,
+                       21.43,
+                       86.46,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "javascript:getFavorites();",
+                      "runs": [
+                       {
+                        "x": "Favorites"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.ContactUs",
+                  "role": "menuitem",
+                  "id": "AAGMenu.ContactUs",
+                  "cls": "k-item k-menu-item",
+                  "box": [
+                   1508.65,
+                   21.43,
+                   106.9,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1508.65,
+                     21.43,
+                     106.9,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-contact-us",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1518.65,
+                       21.43,
+                       96.9,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "javascript:getContactUs();",
+                      "runs": [
+                       {
+                        "x": "Contact Us"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.MyAccount",
+                  "role": "menuitem",
+                  "id": "AAGMenu.MyAccount",
+                  "cls": "k-item k-menu-item",
+                  "box": [
+                   1615.54,
+                   21.43,
+                   109.79,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1615.54,
+                     21.43,
+                     109.79,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-my-account",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1625.54,
+                       21.43,
+                       99.79,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "/Home/MyAccount",
+                      "runs": [
+                       {
+                        "x": "My Account"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.Logout",
+                  "role": "menuitem",
+                  "id": "AAGMenu.Logout",
+                  "cls": "k-item k-menu-item k-last",
+                  "box": [
+                   1725.33,
+                   21.43,
+                   81.33,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1725.33,
+                     21.43,
+                     81.33,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-logout",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1735.33,
+                       21.43,
+                       71.33,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(0, 238, 174)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "fontWeight": "700",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "/Security/LogoutFromMenu",
+                      "runs": [
+                       {
+                        "x": "Logout"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             },
+             {
+              "t": "div",
+              "key": "pageBannerMenu",
+              "id": "pageBannerMenu",
+              "cls": "display-block",
+              "box": [
+               1836.67,
+               0,
+               68,
+               62
+              ],
+              "s": {
+               "color": "rgb(0, 0, 0)",
+               "fontSize": "32px",
+               "lineHeight": "32px",
+               "display": "flex",
+               "backgroundColor": "rgb(48, 179, 254)"
+              },
+              "k": [
+               {
+                "t": "nav",
+                "label": "Hamburger Menu",
+                "box": [
+                 1836.67,
+                 0,
+                 68,
+                 62
+                ],
+                "k": [
+                 {
+                  "t": "div",
+                  "cls": "hamburger",
+                  "box": [
+                   1836.67,
+                   0,
+                   68,
+                   62
+                  ],
+                  "s": {
+                   "display": "flex",
+                   "alignItems": "center"
+                  },
+                  "k": [
+                   {
+                    "t": "i",
+                    "key": "button-main-menu-2",
+                    "role": "button",
+                    "label": "Main Menu",
+                    "cls": "fa-solid fa-bars clickable",
+                    "box": [
+                     1846.67,
+                     5,
+                     48,
+                     52
+                    ],
+                    "s": {
+                     "fontFamily": "\"Font Awesome 6 Pro\"",
+                     "fontWeight": "900",
+                     "margin": "5px 10px",
+                     "padding": "10px",
+                     "cursor": "pointer"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\"\"",
+                      "font": "\"Font Awesome 6 Pro\"",
+                      "size": "32px",
+                      "weight": "900",
+                      "color": "rgb(0, 0, 0)",
+                      "display": "inline",
+                      "w": "auto",
+                      "h": "auto"
+                     }
+                    }
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": "div",
+        "key": "navigation-provider-enrollment",
+        "role": "navigation",
+        "cls": "menu",
+        "box": [
+         0,
+         62,
+         1904.67,
+         0
+        ],
+        "s": {
+         "backgroundColor": "rgb(0, 238, 174)"
+        },
+        "k": [
+         {
+          "t": "div",
+          "key": "activeModuleMenuNav",
+          "id": "activeModuleMenuNav",
+          "cls": "float-left",
+          "box": [
+           0,
+           62,
+           0,
+           0
+          ],
+          "s": {
+           "float": "left"
+          },
+          "k": [
+           {
+            "t": "div",
+            "key": "button-8",
+            "cls": "k-menu-scroll-wrapper",
+            "box": [
+             0,
+             62,
+             0,
+             0
+            ],
+            "s": {
+             "display": "flex",
+             "alignItems": "center",
+             "position": "relative",
+             "backgroundColor": "rgb(43, 58, 68)",
+             "top": "0px",
+             "right": "0px",
+             "bottom": "0px",
+             "left": "0px"
+            }
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": "div",
+        "key": "mcbRowBorder",
+        "id": "mcbRowBorder",
+        "cls": "row menu-row mcb-row-flex",
+        "box": [
+         0,
+         62,
+         1904.67,
+         44.17
+        ],
+        "s": {
+         "display": "flex",
+         "justifyContent": "flex-end",
+         "alignItems": "flex-start",
+         "borderBottom": "0.666667px solid rgb(179, 179, 179)"
+        },
+        "pseudo": {
+         "before": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         },
+         "after": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         }
+        },
+        "k": [
+         {
+          "t": "div",
+          "key": "mcbContentBar",
+          "id": "mcbContentBar",
+          "cls": "col-auto col-md-5",
+          "box": [
+           1766.92,
+           62,
+           30,
+           11
+          ],
+          "s": {
+           "position": "relative",
+           "float": "right",
+           "padding": "0px 15px",
+           "top": "0px",
+           "right": "0px",
+           "bottom": "0px",
+           "left": "0px"
+          }
+         },
+         {
+          "t": "div",
+          "key": "mcbHelpIcon",
+          "id": "mcbHelpIcon",
+          "cls": "help-icon-container",
+          "box": [
+           1828.92,
+           77,
+           43.75,
+           35
+          ],
+          "s": {
+           "float": "right",
+           "margin": "15px 32px -6.5px"
+          },
+          "k": [
+           {
+            "t": "span",
+            "key": "button-help",
+            "role": "button",
+            "label": "Help",
+            "cls": "fa-stack fa-lg clickable",
+            "box": [
+             1828.92,
+             77,
+             43.75,
+             35
+            ],
+            "s": {
+             "fontSize": "17.5px",
+             "lineHeight": "35px",
+             "display": "inline-block",
+             "position": "relative",
+             "cursor": "pointer",
+             "verticalAlign": "middle",
+             "top": "0px",
+             "right": "0px",
+             "bottom": "0px",
+             "left": "0px"
+            },
+            "k": [
+             {
+              "t": "i",
+              "cls": "fa-solid fa-book-open help-icon-stack-top",
+              "box": [
+               1832.92,
+               83.5,
+               18,
+               16
+              ],
+              "s": {
+               "color": "rgb(255, 255, 255)",
+               "fontFamily": "\"Font Awesome 6 Pro\"",
+               "fontSize": "16px",
+               "fontWeight": "900",
+               "lineHeight": "16px",
+               "position": "absolute",
+               "cursor": "pointer",
+               "top": "6.5px",
+               "right": "21.75px",
+               "bottom": "12.5px",
+               "left": "4px"
+              },
+              "pseudo": {
+               "before": {
+                "content": "\"\"",
+                "font": "\"Font Awesome 6 Pro\"",
+                "size": "16px",
+                "weight": "900",
+                "color": "rgb(255, 255, 255)",
+                "display": "inline",
+                "w": "auto",
+                "h": "auto"
+               }
+              }
+             },
+             {
+              "t": "i",
+              "cls": "fa-solid fa-circle help-icon-stack-bottom",
+              "box": [
+               1828.92,
+               77,
+               27,
+               30
+              ],
+              "s": {
+               "color": "rgb(51, 129, 255)",
+               "fontFamily": "\"Font Awesome 6 Pro\"",
+               "fontSize": "27px",
+               "fontWeight": "900",
+               "lineHeight": "30px",
+               "display": "inline-block",
+               "cursor": "pointer"
+              },
+              "pseudo": {
+               "before": {
+                "content": "\"\"",
+                "font": "\"Font Awesome 6 Pro\"",
+                "size": "27px",
+                "weight": "900",
+                "color": "rgb(51, 129, 255)",
+                "display": "inline",
+                "w": "auto",
+                "h": "auto"
+               }
+              }
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": "div",
+        "cls": "row",
+        "box": [
+         0,
+         106.17,
+         1904.67,
+         0
+        ],
+        "pseudo": {
+         "before": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         },
+         "after": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         }
+        },
+        "k": [
+         {
+          "t": "div",
+          "key": "mcbPanels",
+          "id": "mcbPanels",
+          "box": [
+           0,
+           106.17,
+           1904.67,
+           0
+          ]
+         }
+        ]
+       },
+       {
+        "t": "div",
+        "cls": "row",
+        "box": [
+         0,
+         106.17,
+         1904.67,
+         0
+        ],
+        "pseudo": {
+         "before": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         },
+         "after": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         }
+        }
+       },
+       {
+        "t": "div",
+        "key": "pageBody",
+        "id": "pageBody",
+        "cls": "row content",
+        "box": [
+         0,
+         106.17,
+         1904.67,
+         1186.56
+        ],
+        "pseudo": {
+         "before": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         },
+         "after": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         }
+        },
+        "k": [
+         {
+          "t": "main",
+          "key": "main",
+          "role": "main",
+          "box": [
+           0,
+           106.17,
+           1904.67,
+           1186.56
+          ],
+          "k": [
+           {
+            "t": "form",
+            "key": "EnrollmentDashboardForm",
+            "id": "EnrollmentDashboardForm",
+            "box": [
+             0,
+             106.17,
+             1904.67,
+             886
+            ],
+            "k": [
+             {
+              "t": "div",
+              "cls": "container",
+              "box": [
+               30,
+               106.17,
+               1844.67,
+               0
+              ],
+              "s": {
+               "maxWidth": "100%",
+               "margin": "0px 30px"
+              },
+              "pseudo": {
+               "before": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(51, 51, 51)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               },
+               "after": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(51, 51, 51)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               }
+              }
+             },
+             {
+              "t": "div",
+              "cls": "row",
+              "box": [
+               0,
+               106.17,
+               1904.67,
+               886
+              ],
+              "pseudo": {
+               "before": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(51, 51, 51)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               },
+               "after": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(51, 51, 51)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               }
+              },
+              "k": [
+               {
+                "t": "div",
+                "key": "DashboardStatus",
+                "id": "DashboardStatus",
+                "box": [
+                 0,
+                 106.17,
+                 1904.67,
+                 0
+                ]
+               },
+               {
+                "t": "div",
+                "key": "buttonRow",
+                "id": "buttonRow",
+                "cls": "align-right",
+                "box": [
+                 0,
+                 106.17,
+                 1904.67,
+                 28
+                ],
+                "s": {
+                 "textAlign": "right"
+                },
+                "k": [
+                 {
+                  "t": "i",
+                  "key": "settingPreferencesButton",
+                  "id": "settingPreferencesButton",
+                  "cls": "fa-solid fa-gear fa-2x clickable extprtlprv-int-detail-menu-back caret-active-module",
+                  "box": [
+                   1869.67,
+                   106.17,
+                   35,
+                   28
+                  ],
+                  "s": {
+                   "fontFamily": "\"Font Awesome 6 Pro\"",
+                   "fontSize": "28px",
+                   "fontWeight": "900",
+                   "lineHeight": "28px",
+                   "display": "inline-block",
+                   "padding": "0px 0px 0px 7px",
+                   "cursor": "pointer"
+                  },
+                  "pseudo": {
+                   "before": {
+                    "content": "\"\"",
+                    "font": "\"Font Awesome 6 Pro\"",
+                    "size": "28px",
+                    "weight": "900",
+                    "color": "rgb(51, 51, 51)",
+                    "display": "inline",
+                    "w": "auto",
+                    "h": "auto"
+                   }
+                  }
+                 }
+                ]
+               },
+               {
+                "t": "div",
+                "cls": "row",
+                "box": [
+                 0,
+                 134.17,
+                 1904.67,
+                 858
+                ],
+                "pseudo": {
+                 "before": {
+                  "content": "\" \"",
+                  "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                  "size": "14px",
+                  "weight": "400",
+                  "color": "rgb(51, 51, 51)",
+                  "display": "table",
+                  "w": "0px",
+                  "h": "0px"
+                 },
+                 "after": {
+                  "content": "\" \"",
+                  "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                  "size": "14px",
+                  "weight": "400",
+                  "color": "rgb(51, 51, 51)",
+                  "display": "table",
+                  "w": "0px",
+                  "h": "0px"
+                 }
+                },
+                "k": [
+                 {
+                  "t": "div",
+                  "key": "ProviderEnrollmentDashboard",
+                  "id": "ProviderEnrollmentDashboard",
+                  "cls": "dashboard paddingTop15px col-md-8",
+                  "box": [
+                   0,
+                   134.17,
+                   1269.77,
+                   858
+                  ],
+                  "s": {
+                   "position": "relative",
+                   "float": "left",
+                   "padding": "15px 15px 0px",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "key": "07f9f9c0-d730-4d9c-821b-722cd0e2124e",
+                    "id": "07f9f9c0-d730-4d9c-821b-722cd0e2124e",
+                    "cls": "row float-left ui-draggable ui-draggable-handle ui-droppable",
+                    "box": [
+                     15,
+                     149.17,
+                     256,
+                     281
+                    ],
+                    "s": {
+                     "float": "left"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     },
+                     "after": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     }
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-dashboard-8",
+                      "cls": "dshbrd-link-panes clickable",
+                      "box": [
+                       15,
+                       149.17,
+                       226,
+                       266
+                      ],
+                      "s": {
+                       "color": "rgb(0, 0, 0)",
+                       "fontWeight": "700",
+                       "textAlign": "center",
+                       "float": "left",
+                       "margin": "0px 30px 15px 0px",
+                       "padding": "44px 0px 0px",
+                       "borderRadius": "0px 0px 5px 5px",
+                       "cursor": "pointer",
+                       "borderTop": "2px solid rgb(0, 179, 136)",
+                       "borderRight": "2px solid rgb(0, 179, 136)",
+                       "borderBottom": "2px solid rgb(0, 179, 136)",
+                       "borderLeft": "2px solid rgb(0, 179, 136)"
+                      },
+                      "href": "/ProviderEnrollment/Dashboard",
+                      "k": [
+                       {
+                        "t": "span",
+                        "cls": "dshbrd-link-txt",
+                        "box": [
+                         17,
+                         195.17,
+                         222,
+                         30
+                        ],
+                        "s": {
+                         "color": "rgb(44, 101, 151)",
+                         "fontSize": "30px",
+                         "lineHeight": "30px",
+                         "cursor": "pointer"
+                        },
+                        "runs": [
+                         {
+                          "x": "Dashboard"
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   },
+                   {
+                    "t": "div",
+                    "key": "51c9bb65-30b2-69e0-e053-4c65a28f8a9e",
+                    "id": "51c9bb65-30b2-69e0-e053-4c65a28f8a9e",
+                    "cls": "row float-left ui-draggable ui-draggable-handle ui-droppable",
+                    "box": [
+                     271,
+                     149.17,
+                     256,
+                     281
+                    ],
+                    "s": {
+                     "float": "left"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     },
+                     "after": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     }
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-search-enrollment-application-2",
+                      "cls": "dshbrd-link-panes clickable",
+                      "box": [
+                       271,
+                       149.17,
+                       226,
+                       266
+                      ],
+                      "s": {
+                       "color": "rgb(0, 0, 0)",
+                       "fontWeight": "700",
+                       "textAlign": "center",
+                       "float": "left",
+                       "margin": "0px 30px 15px 0px",
+                       "padding": "44px 0px 0px",
+                       "borderRadius": "0px 0px 5px 5px",
+                       "cursor": "pointer",
+                       "borderTop": "2px solid rgb(0, 179, 136)",
+                       "borderRight": "2px solid rgb(0, 179, 136)",
+                       "borderBottom": "2px solid rgb(0, 179, 136)",
+                       "borderLeft": "2px solid rgb(0, 179, 136)"
+                      },
+                      "href": "/ProviderEnrollment/SearchProviderApplication",
+                      "k": [
+                       {
+                        "t": "span",
+                        "cls": "dshbrd-link-txt",
+                        "box": [
+                         273,
+                         195.17,
+                         222,
+                         90
+                        ],
+                        "s": {
+                         "color": "rgb(44, 101, 151)",
+                         "fontSize": "30px",
+                         "lineHeight": "30px",
+                         "cursor": "pointer"
+                        },
+                        "runs": [
+                         {
+                          "x": "Search Enrollment Application"
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   },
+                   {
+                    "t": "div",
+                    "key": "37791c1b-823b-438f-bc52-c5bfa08c88f5",
+                    "id": "37791c1b-823b-438f-bc52-c5bfa08c88f5",
+                    "cls": "row float-left ui-draggable ui-draggable-handle ui-droppable",
+                    "box": [
+                     527,
+                     149.17,
+                     256,
+                     281
+                    ],
+                    "s": {
+                     "float": "left"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     },
+                     "after": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     }
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-search-enrollment-reports-2",
+                      "cls": "dshbrd-link-panes clickable",
+                      "box": [
+                       527,
+                       149.17,
+                       226,
+                       266
+                      ],
+                      "s": {
+                       "color": "rgb(0, 0, 0)",
+                       "fontWeight": "700",
+                       "textAlign": "center",
+                       "float": "left",
+                       "margin": "0px 30px 15px 0px",
+                       "padding": "44px 0px 0px",
+                       "borderRadius": "0px 0px 5px 5px",
+                       "cursor": "pointer",
+                       "borderTop": "2px solid rgb(0, 179, 136)",
+                       "borderRight": "2px solid rgb(0, 179, 136)",
+                       "borderBottom": "2px solid rgb(0, 179, 136)",
+                       "borderLeft": "2px solid rgb(0, 179, 136)"
+                      },
+                      "href": "/ProviderEnrollment/SearchEnrollmentReports",
+                      "k": [
+                       {
+                        "t": "span",
+                        "cls": "dshbrd-link-txt",
+                        "box": [
+                         529,
+                         195.17,
+                         222,
+                         90
+                        ],
+                        "s": {
+                         "color": "rgb(44, 101, 151)",
+                         "fontSize": "30px",
+                         "lineHeight": "30px",
+                         "cursor": "pointer"
+                        },
+                        "runs": [
+                         {
+                          "x": "Search Enrollment Reports"
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   },
+                   {
+                    "t": "div",
+                    "key": "51c9bb65-afb8-69e0-e053-4c65a28f8a9e",
+                    "id": "51c9bb65-afb8-69e0-e053-4c65a28f8a9e",
+                    "cls": "row float-left ui-draggable ui-draggable-handle ui-droppable",
+                    "box": [
+                     783,
+                     149.17,
+                     256,
+                     281
+                    ],
+                    "s": {
+                     "float": "left"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     },
+                     "after": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     }
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-workflow-dashboard-2",
+                      "cls": "dshbrd-link-panes clickable",
+                      "box": [
+                       783,
+                       149.17,
+                       226,
+                       266
+                      ],
+                      "s": {
+                       "color": "rgb(0, 0, 0)",
+                       "fontWeight": "700",
+                       "textAlign": "center",
+                       "float": "left",
+                       "margin": "0px 30px 15px 0px",
+                       "padding": "44px 0px 0px",
+                       "borderRadius": "0px 0px 5px 5px",
+                       "cursor": "pointer",
+                       "borderTop": "2px solid rgb(0, 179, 136)",
+                       "borderRight": "2px solid rgb(0, 179, 136)",
+                       "borderBottom": "2px solid rgb(0, 179, 136)",
+                       "borderLeft": "2px solid rgb(0, 179, 136)"
+                      },
+                      "href": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/dashboard",
+                      "k": [
+                       {
+                        "t": "span",
+                        "cls": "dshbrd-link-txt",
+                        "box": [
+                         785,
+                         195.17,
+                         222,
+                         60
+                        ],
+                        "s": {
+                         "color": "rgb(44, 101, 151)",
+                         "fontSize": "30px",
+                         "lineHeight": "30px",
+                         "cursor": "pointer"
+                        },
+                        "runs": [
+                         {
+                          "x": "Workflow Dashboard"
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   },
+                   {
+                    "t": "div",
+                    "key": "51c9bb65-b0b8-69e0-e053-4c65a28f8a9e",
+                    "id": "51c9bb65-b0b8-69e0-e053-4c65a28f8a9e",
+                    "cls": "row float-left ui-draggable ui-draggable-handle ui-droppable",
+                    "box": [
+                     15,
+                     430.17,
+                     256,
+                     281
+                    ],
+                    "s": {
+                     "float": "left"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     },
+                     "after": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     }
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-workflow-applications-2",
+                      "cls": "dshbrd-link-panes clickable",
+                      "box": [
+                       15,
+                       430.17,
+                       226,
+                       266
+                      ],
+                      "s": {
+                       "color": "rgb(0, 0, 0)",
+                       "fontWeight": "700",
+                       "textAlign": "center",
+                       "float": "left",
+                       "margin": "0px 30px 15px 0px",
+                       "padding": "44px 0px 0px",
+                       "borderRadius": "0px 0px 5px 5px",
+                       "cursor": "pointer",
+                       "borderTop": "2px solid rgb(0, 179, 136)",
+                       "borderRight": "2px solid rgb(0, 179, 136)",
+                       "borderBottom": "2px solid rgb(0, 179, 136)",
+                       "borderLeft": "2px solid rgb(0, 179, 136)"
+                      },
+                      "href": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/applications",
+                      "k": [
+                       {
+                        "t": "span",
+                        "cls": "dshbrd-link-txt",
+                        "box": [
+                         17,
+                         476.17,
+                         222,
+                         60
+                        ],
+                        "s": {
+                         "color": "rgb(44, 101, 151)",
+                         "fontSize": "30px",
+                         "lineHeight": "30px",
+                         "cursor": "pointer"
+                        },
+                        "runs": [
+                         {
+                          "x": "Workflow Applications"
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   },
+                   {
+                    "t": "div",
+                    "key": "51c9bb65-b1b8-69e0-e053-4c65a28f8a9e",
+                    "id": "51c9bb65-b1b8-69e0-e053-4c65a28f8a9e",
+                    "cls": "row float-left ui-draggable ui-draggable-handle ui-droppable",
+                    "box": [
+                     271,
+                     430.17,
+                     256,
+                     281
+                    ],
+                    "s": {
+                     "float": "left"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     },
+                     "after": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     }
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-workflow-configuration-2",
+                      "cls": "dshbrd-link-panes clickable",
+                      "box": [
+                       271,
+                       430.17,
+                       226,
+                       266
+                      ],
+                      "s": {
+                       "color": "rgb(0, 0, 0)",
+                       "fontWeight": "700",
+                       "textAlign": "center",
+                       "float": "left",
+                       "margin": "0px 30px 15px 0px",
+                       "padding": "44px 0px 0px",
+                       "borderRadius": "0px 0px 5px 5px",
+                       "cursor": "pointer",
+                       "borderTop": "2px solid rgb(0, 179, 136)",
+                       "borderRight": "2px solid rgb(0, 179, 136)",
+                       "borderBottom": "2px solid rgb(0, 179, 136)",
+                       "borderLeft": "2px solid rgb(0, 179, 136)"
+                      },
+                      "href": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/configuration",
+                      "k": [
+                       {
+                        "t": "span",
+                        "cls": "dshbrd-link-txt",
+                        "box": [
+                         273,
+                         476.17,
+                         222,
+                         60
+                        ],
+                        "s": {
+                         "color": "rgb(44, 101, 151)",
+                         "fontSize": "30px",
+                         "lineHeight": "30px",
+                         "cursor": "pointer"
+                        },
+                        "runs": [
+                         {
+                          "x": "Workflow Configuration"
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   },
+                   {
+                    "t": "div",
+                    "key": "51c9bb65-adb8-69e0-e053-4c65a28f8a9e",
+                    "id": "51c9bb65-adb8-69e0-e053-4c65a28f8a9e",
+                    "cls": "row float-left ui-draggable ui-draggable-handle ui-droppable",
+                    "box": [
+                     527,
+                     430.17,
+                     256,
+                     281
+                    ],
+                    "s": {
+                     "float": "left"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     },
+                     "after": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     }
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-workflow-tasks-2",
+                      "cls": "dshbrd-link-panes clickable",
+                      "box": [
+                       527,
+                       430.17,
+                       226,
+                       266
+                      ],
+                      "s": {
+                       "color": "rgb(0, 0, 0)",
+                       "fontWeight": "700",
+                       "textAlign": "center",
+                       "float": "left",
+                       "margin": "0px 30px 15px 0px",
+                       "padding": "44px 0px 0px",
+                       "borderRadius": "0px 0px 5px 5px",
+                       "cursor": "pointer",
+                       "borderTop": "2px solid rgb(0, 179, 136)",
+                       "borderRight": "2px solid rgb(0, 179, 136)",
+                       "borderBottom": "2px solid rgb(0, 179, 136)",
+                       "borderLeft": "2px solid rgb(0, 179, 136)"
+                      },
+                      "href": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/tasks",
+                      "k": [
+                       {
+                        "t": "span",
+                        "cls": "dshbrd-link-txt",
+                        "box": [
+                         529,
+                         476.17,
+                         222,
+                         60
+                        ],
+                        "s": {
+                         "color": "rgb(44, 101, 151)",
+                         "fontSize": "30px",
+                         "lineHeight": "30px",
+                         "cursor": "pointer"
+                        },
+                        "runs": [
+                         {
+                          "x": "Workflow Tasks"
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   },
+                   {
+                    "t": "div",
+                    "key": "51c9bb65-66b8-69e0-e053-4c65a28f8a9e",
+                    "id": "51c9bb65-66b8-69e0-e053-4c65a28f8a9e",
+                    "cls": "row float-left ui-draggable ui-draggable-handle ui-droppable",
+                    "box": [
+                     783,
+                     430.17,
+                     256,
+                     281
+                    ],
+                    "s": {
+                     "float": "left"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     },
+                     "after": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     }
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-new-enrollment-entry-2",
+                      "cls": "dshbrd-link-panes clickable",
+                      "box": [
+                       783,
+                       430.17,
+                       226,
+                       266
+                      ],
+                      "s": {
+                       "color": "rgb(0, 0, 0)",
+                       "fontWeight": "700",
+                       "textAlign": "center",
+                       "float": "left",
+                       "margin": "0px 30px 15px 0px",
+                       "padding": "44px 0px 0px",
+                       "borderRadius": "0px 0px 5px 5px",
+                       "cursor": "pointer",
+                       "borderTop": "2px solid rgb(0, 179, 136)",
+                       "borderRight": "2px solid rgb(0, 179, 136)",
+                       "borderBottom": "2px solid rgb(0, 179, 136)",
+                       "borderLeft": "2px solid rgb(0, 179, 136)"
+                      },
+                      "href": "/ProviderEnrollment/CreateSecureEnrollment",
+                      "k": [
+                       {
+                        "t": "span",
+                        "cls": "dshbrd-link-txt",
+                        "box": [
+                         785,
+                         476.17,
+                         222,
+                         90
+                        ],
+                        "s": {
+                         "color": "rgb(44, 101, 151)",
+                         "fontSize": "30px",
+                         "lineHeight": "30px",
+                         "cursor": "pointer"
+                        },
+                        "runs": [
+                         {
+                          "x": "New Enrollment Entry"
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   },
+                   {
+                    "t": "div",
+                    "key": "51c9bb65-91b8-69e0-e053-4c65a28f8a9e",
+                    "id": "51c9bb65-91b8-69e0-e053-4c65a28f8a9e",
+                    "cls": "row float-left ui-draggable ui-draggable-handle ui-droppable",
+                    "box": [
+                     15,
+                     711.17,
+                     256,
+                     281
+                    ],
+                    "s": {
+                     "float": "left"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     },
+                     "after": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     }
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-resume-enrollment-entry-2",
+                      "cls": "dshbrd-link-panes clickable",
+                      "box": [
+                       15,
+                       711.17,
+                       226,
+                       266
+                      ],
+                      "s": {
+                       "color": "rgb(0, 0, 0)",
+                       "fontWeight": "700",
+                       "textAlign": "center",
+                       "float": "left",
+                       "margin": "0px 30px 15px 0px",
+                       "padding": "44px 0px 0px",
+                       "borderRadius": "0px 0px 5px 5px",
+                       "cursor": "pointer",
+                       "borderTop": "2px solid rgb(0, 179, 136)",
+                       "borderRight": "2px solid rgb(0, 179, 136)",
+                       "borderBottom": "2px solid rgb(0, 179, 136)",
+                       "borderLeft": "2px solid rgb(0, 179, 136)"
+                      },
+                      "href": "/ProviderEnrollment/ResumeSecureEnrollment",
+                      "k": [
+                       {
+                        "t": "span",
+                        "cls": "dshbrd-link-txt",
+                        "box": [
+                         17,
+                         757.17,
+                         222,
+                         90
+                        ],
+                        "s": {
+                         "color": "rgb(44, 101, 151)",
+                         "fontSize": "30px",
+                         "lineHeight": "30px",
+                         "cursor": "pointer"
+                        },
+                        "runs": [
+                         {
+                          "x": "Resume Enrollment Entry"
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "div",
+                  "cls": "col-md-3 float-right",
+                  "box": [
+                   1428.5,
+                   134.17,
+                   476.17,
+                   825.33
+                  ],
+                  "s": {
+                   "position": "relative",
+                   "float": "right",
+                   "padding": "0px 15px",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "cls": "row",
+                    "box": [
+                     1443.5,
+                     134.17,
+                     446.17,
+                     245.67
+                    ],
+                    "pseudo": {
+                     "before": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     },
+                     "after": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     }
+                    },
+                    "k": [
+                     {
+                      "t": "div",
+                      "cls": "dshbrd-panel-container",
+                      "box": [
+                       1443.5,
+                       134.17,
+                       431.17,
+                       230.67
+                      ],
+                      "s": {
+                       "color": "rgb(68, 68, 68)",
+                       "margin": "0px 15px 15px 0px",
+                       "padding": "0px 0px 2px",
+                       "backgroundColor": "rgb(255, 255, 255)",
+                       "borderRadius": "0px 0px 5px 5px",
+                       "boxShadow": "rgba(0, 0, 0, 0.05) 0px 1px 1px 0px",
+                       "verticalAlign": "top",
+                       "borderTop": "2px solid rgb(119, 119, 119)",
+                       "borderRight": "2px solid rgb(119, 119, 119)",
+                       "borderBottom": "2px solid rgb(119, 119, 119)",
+                       "borderLeft": "2px solid rgb(119, 119, 119)"
+                      },
+                      "k": [
+                       {
+                        "t": "div",
+                        "cls": "dshbrd-panel-hdr",
+                        "box": [
+                         1445.5,
+                         136.17,
+                         427.17,
+                         64
+                        ],
+                        "s": {
+                         "display": "flex"
+                        },
+                        "k": [
+                         {
+                          "t": "div",
+                          "cls": "dshbrd-icon-status",
+                          "box": [
+                           1445.5,
+                           136.17,
+                           64,
+                           64
+                          ],
+                          "s": {
+                           "backgroundColor": "rgb(119, 119, 119)",
+                           "backgroundImage": "url(\"https://uximc.mms.tst.pgwcloud.net/Content/dxc.ua3.core.icon.dshbrd.status.png\")",
+                           "backgroundSize": "auto",
+                           "backgroundPosition": "0% 0%",
+                           "backgroundRepeat": "repeat"
+                          },
+                          "runs": [
+                           {
+                            "x": "Status",
+                            "c": "rgb(102, 102, 102)",
+                            "fs": "28px"
+                           }
+                          ],
+                          "bgFiles": [
+                           "assets/Content/dxc.ua3.core.icon.dshbrd.status.png"
+                          ]
+                         }
+                        ]
+                       },
+                       {
+                        "t": "div",
+                        "cls": "dshbrd-panel-bdy",
+                        "box": [
+                         1445.5,
+                         200.17,
+                         427.17,
+                         160.67
+                        ],
+                        "s": {
+                         "backgroundColor": "rgb(255, 255, 255)",
+                         "borderTop": "0.666667px solid rgb(179, 179, 179)"
+                        },
+                        "k": [
+                         {
+                          "t": "div",
+                          "key": "recentlySubmitted",
+                          "id": "recentlySubmitted",
+                          "cls": "panel-body",
+                          "box": [
+                           1445.5,
+                           200.83,
+                           427.17,
+                           160
+                          ],
+                          "s": {
+                           "padding": "20px 10px 10px"
+                          },
+                          "pseudo": {
+                           "before": {
+                            "content": "\" \"",
+                            "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                            "size": "14px",
+                            "weight": "400",
+                            "color": "rgb(68, 68, 68)",
+                            "display": "table",
+                            "w": "0px",
+                            "h": "0px"
+                           },
+                           "after": {
+                            "content": "\" \"",
+                            "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                            "size": "14px",
+                            "weight": "400",
+                            "color": "rgb(68, 68, 68)",
+                            "display": "table",
+                            "w": "0px",
+                            "h": "0px"
+                           }
+                          },
+                          "k": [
+                           {
+                            "t": "ul",
+                            "cls": "unordered-list-container-horz",
+                            "box": [
+                             1470.5,
+                             220.83,
+                             392.17,
+                             120
+                            ],
+                            "s": {
+                             "fontSize": "16px",
+                             "lineHeight": "16px",
+                             "margin": "0px 0px 10px 15px"
+                            },
+                            "k": [
+                             {
+                              "t": "li",
+                              "cls": "dshbrd-panel-list-item",
+                              "box": [
+                               1470.5,
+                               220.83,
+                               392.17,
+                               30
+                              ],
+                              "s": {
+                               "display": "list-item"
+                              },
+                              "runs": [
+                               {
+                                "x": "Submitted - 31",
+                                "c": "rgb(0, 0, 0)"
+                               }
+                              ]
+                             },
+                             {
+                              "t": "li",
+                              "cls": "dshbrd-panel-list-item",
+                              "box": [
+                               1470.5,
+                               250.83,
+                               392.17,
+                               30
+                              ],
+                              "s": {
+                               "display": "list-item"
+                              },
+                              "runs": [
+                               {
+                                "x": "Pending - 770",
+                                "c": "rgb(0, 0, 0)"
+                               }
+                              ]
+                             },
+                             {
+                              "t": "li",
+                              "cls": "dshbrd-panel-list-item",
+                              "box": [
+                               1470.5,
+                               280.83,
+                               392.17,
+                               30
+                              ],
+                              "s": {
+                               "display": "list-item"
+                              },
+                              "runs": [
+                               {
+                                "x": "Return To Provider - 38",
+                                "c": "rgb(0, 0, 0)"
+                               }
+                              ]
+                             },
+                             {
+                              "t": "li",
+                              "cls": "dshbrd-panel-list-item",
+                              "box": [
+                               1470.5,
+                               310.83,
+                               392.17,
+                               30
+                              ],
+                              "s": {
+                               "display": "list-item"
+                              },
+                              "runs": [
+                               {
+                                "x": "Waiting for Attachments - 15",
+                                "c": "rgb(0, 0, 0)"
+                               }
+                              ]
+                             }
+                            ]
+                           }
+                          ]
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   },
+                   {
+                    "t": "form",
+                    "key": "QuickSearchEditForm",
+                    "id": "QuickSearchEditForm",
+                    "box": [
+                     1443.5,
+                     393.83,
+                     446.17,
+                     565.67
+                    ],
+                    "k": [
+                     {
+                      "t": "div",
+                      "cls": "row",
+                      "box": [
+                       1443.5,
+                       393.83,
+                       446.17,
+                       565.67
+                      ],
+                      "pseudo": {
+                       "before": {
+                        "content": "\" \"",
+                        "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                        "size": "14px",
+                        "weight": "400",
+                        "color": "rgb(51, 51, 51)",
+                        "display": "table",
+                        "w": "0px",
+                        "h": "0px"
+                       },
+                       "after": {
+                        "content": "\" \"",
+                        "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                        "size": "14px",
+                        "weight": "400",
+                        "color": "rgb(51, 51, 51)",
+                        "display": "table",
+                        "w": "0px",
+                        "h": "0px"
+                       }
+                      },
+                      "k": [
+                       {
+                        "t": "fieldset",
+                        "key": "fieldset-quick-search",
+                        "box": [
+                         1443.5,
+                         393.83,
+                         446.17,
+                         565.67
+                        ],
+                        "k": [
+                         {
+                          "t": "div",
+                          "cls": "content-panel-container",
+                          "box": [
+                           1443.5,
+                           393.83,
+                           446.17,
+                           541.67
+                          ],
+                          "s": {
+                           "margin": "0px 0px 24px",
+                           "padding": "0px 0px 15px",
+                           "backgroundColor": "rgb(255, 255, 255)",
+                           "borderRadius": "10px",
+                           "boxShadow": "rgba(0, 0, 0, 0.08) 0px 8px 10px 1px",
+                           "borderTop": "0.666667px solid rgb(222, 226, 230)",
+                           "borderRight": "0.666667px solid rgb(222, 226, 230)",
+                           "borderBottom": "0.666667px solid rgb(222, 226, 230)",
+                           "borderLeft": "0.666667px solid rgb(222, 226, 230)"
+                          },
+                          "k": [
+                           {
+                            "t": "div",
+                            "cls": "content-panel-hdr",
+                            "box": [
+                             1444.17,
+                             394.5,
+                             444.83,
+                             48
+                            ],
+                            "s": {
+                             "fontFamily": "\"Poppins Bold\", Arial, Helvetica, sans-serif",
+                             "fontSize": "24px",
+                             "fontWeight": "900",
+                             "lineHeight": "24px",
+                             "margin": "0px 0px 15px",
+                             "padding": "12px 24px",
+                             "backgroundColor": "rgb(250, 250, 250)",
+                             "borderRadius": "10px 10px 0px 0px"
+                            },
+                            "runs": [
+                             {
+                              "x": "Quick Search"
+                             }
+                            ]
+                           },
+                           {
+                            "t": "div",
+                            "cls": "content-panel-bdy",
+                            "box": [
+                             1444.17,
+                             457.5,
+                             444.83,
+                             462.33
+                            ],
+                            "s": {
+                             "padding": "15px 0px 0px"
+                            },
+                            "pseudo": {
+                             "before": {
+                              "content": "\" \"",
+                              "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                              "size": "14px",
+                              "weight": "400",
+                              "color": "rgb(51, 51, 51)",
+                              "display": "table",
+                              "w": "0px",
+                              "h": "0px"
+                             },
+                             "after": {
+                              "content": "\" \"",
+                              "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                              "size": "14px",
+                              "weight": "400",
+                              "color": "rgb(51, 51, 51)",
+                              "display": "table",
+                              "w": "0px",
+                              "h": "0px"
+                             }
+                            },
+                            "k": [
+                             {
+                              "t": "div",
+                              "cls": "panel-body",
+                              "box": [
+                               1444.17,
+                               472.5,
+                               444.83,
+                               447.33
+                              ],
+                              "s": {
+                               "padding": "20px 10px 10px"
+                              },
+                              "pseudo": {
+                               "before": {
+                                "content": "\" \"",
+                                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                                "size": "14px",
+                                "weight": "400",
+                                "color": "rgb(51, 51, 51)",
+                                "display": "table",
+                                "w": "0px",
+                                "h": "0px"
+                               },
+                               "after": {
+                                "content": "\" \"",
+                                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                                "size": "14px",
+                                "weight": "400",
+                                "color": "rgb(51, 51, 51)",
+                                "display": "table",
+                                "w": "0px",
+                                "h": "0px"
+                               }
+                              },
+                              "k": [
+                               {
+                                "t": "div",
+                                "key": "quickSearch",
+                                "id": "quickSearch",
+                                "box": [
+                                 1454.17,
+                                 492.5,
+                                 424.83,
+                                 379.33
+                                ],
+                                "k": [
+                                 {
+                                  "t": "div",
+                                  "cls": "editor-field",
+                                  "box": [
+                                   1454.17,
+                                   492.5,
+                                   424.83,
+                                   369.33
+                                  ],
+                                  "k": [
+                                   {
+                                    "t": "div",
+                                    "key": "ATN_parent",
+                                    "id": "ATN_parent",
+                                    "cls": "editor-col editor-clear",
+                                    "box": [
+                                     1454.17,
+                                     492.5,
+                                     424.83,
+                                     92.5
+                                    ],
+                                    "s": {
+                                     "padding": "0px 15px 30px 0px"
+                                    },
+                                    "k": [
+                                     {
+                                      "t": "div",
+                                      "cls": "editor-label",
+                                      "box": [
+                                       1454.17,
+                                       492.5,
+                                       409.83,
+                                       22.5
+                                      ],
+                                      "s": {
+                                       "fontSize": "16px",
+                                       "fontWeight": "700",
+                                       "lineHeight": "16px",
+                                       "display": "flex"
+                                      },
+                                      "k": [
+                                       {
+                                        "t": "label",
+                                        "key": "ATNLabel",
+                                        "label": "ATN",
+                                        "id": "ATNLabel",
+                                        "box": [
+                                         1454.17,
+                                         492.5,
+                                         380.83,
+                                         18
+                                        ],
+                                        "s": {
+                                         "color": "rgb(43, 58, 68)",
+                                         "fontFamily": "Arial, sans-serif",
+                                         "lineHeight": "18px",
+                                         "whiteSpace": "nowrap",
+                                         "margin": "0px 0px 4.5px",
+                                         "cursor": "default",
+                                         "overflow": "hidden"
+                                        },
+                                        "runs": [
+                                         {
+                                          "x": "ATN"
+                                         }
+                                        ]
+                                       },
+                                       {
+                                        "t": "span",
+                                        "key": "ATNHelp",
+                                        "role": "img",
+                                        "label": "HELP",
+                                        "id": "ATNHelp",
+                                        "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                        "box": [
+                                         1850,
+                                         492.5,
+                                         14,
+                                         22.5
+                                        ],
+                                        "s": {
+                                         "color": "rgb(51, 129, 255)",
+                                         "fontFamily": "\"Font Awesome 6 Pro\"",
+                                         "fontSize": "14px",
+                                         "fontWeight": "900",
+                                         "lineHeight": "14px",
+                                         "float": "right",
+                                         "margin": "0px 0px 0px 15px",
+                                         "cursor": "pointer"
+                                        },
+                                        "pseudo": {
+                                         "before": {
+                                          "content": "\"\"",
+                                          "font": "\"Font Awesome 6 Pro\"",
+                                          "size": "14px",
+                                          "weight": "900",
+                                          "color": "rgb(51, 129, 255)",
+                                          "display": "inline",
+                                          "w": "auto",
+                                          "h": "auto"
+                                         }
+                                        }
+                                       }
+                                      ]
+                                     },
+                                     {
+                                      "t": "div",
+                                      "cls": "editor-field",
+                                      "box": [
+                                       1454.17,
+                                       515,
+                                       409.83,
+                                       40
+                                      ],
+                                      "k": [
+                                       {
+                                        "t": "span",
+                                        "cls": "k-input k-textbox editor-control",
+                                        "box": [
+                                         1454.17,
+                                         515,
+                                         409.83,
+                                         40
+                                        ],
+                                        "s": {
+                                         "color": "rgb(43, 58, 68)",
+                                         "fontSize": "16px",
+                                         "lineHeight": "22.8571px",
+                                         "display": "inline-flex",
+                                         "alignItems": "stretch",
+                                         "position": "relative",
+                                         "padding": "4px 0px 4px 10px",
+                                         "backgroundColor": "rgb(255, 255, 255)",
+                                         "borderRadius": "5px",
+                                         "overflow": "hidden",
+                                         "verticalAlign": "middle",
+                                         "top": "0px",
+                                         "right": "0px",
+                                         "bottom": "0px",
+                                         "left": "0px",
+                                         "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                         "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                         "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                         "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                        },
+                                        "k": [
+                                         {
+                                          "t": "input",
+                                          "key": "ATN",
+                                          "id": "ATN",
+                                          "cls": "editor-control k-input-inner",
+                                          "box": [
+                                           1464.83,
+                                           519.67,
+                                           361.5,
+                                           30
+                                          ],
+                                          "s": {
+                                           "position": "relative",
+                                           "margin": "0px 37px 0px 0px",
+                                           "padding": "2.5px 5px",
+                                           "cursor": "text",
+                                           "overflow": "clip",
+                                           "top": "0px",
+                                           "right": "0px",
+                                           "bottom": "0px",
+                                           "left": "0px"
+                                          },
+                                          "type": "text",
+                                          "name": "ATN"
+                                         }
+                                        ]
+                                       },
+                                       {
+                                        "t": "span",
+                                        "key": "ATN_validationMessage",
+                                        "id": "ATN_validationMessage",
+                                        "cls": "k-invalid-msg",
+                                        "box": [
+                                         1864,
+                                         525.96,
+                                         0,
+                                         15.33
+                                        ]
+                                       }
+                                      ]
+                                     }
+                                    ]
+                                   },
+                                   {
+                                    "t": "div",
+                                    "key": "LastName_parent",
+                                    "id": "LastName_parent",
+                                    "cls": "editor-col editor-clear",
+                                    "box": [
+                                     1454.17,
+                                     585,
+                                     424.83,
+                                     92.5
+                                    ],
+                                    "s": {
+                                     "padding": "0px 15px 30px 0px"
+                                    },
+                                    "k": [
+                                     {
+                                      "t": "div",
+                                      "cls": "editor-label",
+                                      "box": [
+                                       1454.17,
+                                       585,
+                                       409.83,
+                                       22.5
+                                      ],
+                                      "s": {
+                                       "fontSize": "16px",
+                                       "fontWeight": "700",
+                                       "lineHeight": "16px",
+                                       "display": "flex"
+                                      },
+                                      "k": [
+                                       {
+                                        "t": "label",
+                                        "key": "LastNameLabel",
+                                        "label": "Last Name",
+                                        "id": "LastNameLabel",
+                                        "box": [
+                                         1454.17,
+                                         585,
+                                         380.83,
+                                         18
+                                        ],
+                                        "s": {
+                                         "color": "rgb(43, 58, 68)",
+                                         "fontFamily": "Arial, sans-serif",
+                                         "lineHeight": "18px",
+                                         "whiteSpace": "nowrap",
+                                         "margin": "0px 0px 4.5px",
+                                         "cursor": "default",
+                                         "overflow": "hidden"
+                                        },
+                                        "runs": [
+                                         {
+                                          "x": "Last Name"
+                                         }
+                                        ]
+                                       },
+                                       {
+                                        "t": "span",
+                                        "key": "LastNameHelp",
+                                        "role": "img",
+                                        "label": "HELP",
+                                        "id": "LastNameHelp",
+                                        "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                        "box": [
+                                         1850,
+                                         585,
+                                         14,
+                                         22.5
+                                        ],
+                                        "s": {
+                                         "color": "rgb(51, 129, 255)",
+                                         "fontFamily": "\"Font Awesome 6 Pro\"",
+                                         "fontSize": "14px",
+                                         "fontWeight": "900",
+                                         "lineHeight": "14px",
+                                         "float": "right",
+                                         "margin": "0px 0px 0px 15px",
+                                         "cursor": "pointer"
+                                        },
+                                        "pseudo": {
+                                         "before": {
+                                          "content": "\"\"",
+                                          "font": "\"Font Awesome 6 Pro\"",
+                                          "size": "14px",
+                                          "weight": "900",
+                                          "color": "rgb(51, 129, 255)",
+                                          "display": "inline",
+                                          "w": "auto",
+                                          "h": "auto"
+                                         }
+                                        }
+                                       }
+                                      ]
+                                     },
+                                     {
+                                      "t": "div",
+                                      "cls": "editor-field",
+                                      "box": [
+                                       1454.17,
+                                       607.5,
+                                       409.83,
+                                       40
+                                      ],
+                                      "k": [
+                                       {
+                                        "t": "span",
+                                        "cls": "k-input k-textbox editor-control",
+                                        "box": [
+                                         1454.17,
+                                         607.5,
+                                         409.83,
+                                         40
+                                        ],
+                                        "s": {
+                                         "color": "rgb(43, 58, 68)",
+                                         "fontSize": "16px",
+                                         "lineHeight": "22.8571px",
+                                         "display": "inline-flex",
+                                         "alignItems": "stretch",
+                                         "position": "relative",
+                                         "padding": "4px 0px 4px 10px",
+                                         "backgroundColor": "rgb(255, 255, 255)",
+                                         "borderRadius": "5px",
+                                         "overflow": "hidden",
+                                         "verticalAlign": "middle",
+                                         "top": "0px",
+                                         "right": "0px",
+                                         "bottom": "0px",
+                                         "left": "0px",
+                                         "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                         "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                         "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                         "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                        },
+                                        "k": [
+                                         {
+                                          "t": "input",
+                                          "key": "LastName",
+                                          "id": "LastName",
+                                          "cls": "editor-control k-input-inner",
+                                          "box": [
+                                           1464.83,
+                                           612.17,
+                                           361.5,
+                                           30
+                                          ],
+                                          "s": {
+                                           "position": "relative",
+                                           "margin": "0px 37px 0px 0px",
+                                           "padding": "2.5px 5px",
+                                           "cursor": "text",
+                                           "overflow": "clip",
+                                           "top": "0px",
+                                           "right": "0px",
+                                           "bottom": "0px",
+                                           "left": "0px"
+                                          },
+                                          "type": "text",
+                                          "name": "LastName"
+                                         }
+                                        ]
+                                       },
+                                       {
+                                        "t": "span",
+                                        "key": "LastName_validationMessage",
+                                        "id": "LastName_validationMessage",
+                                        "cls": "k-invalid-msg",
+                                        "box": [
+                                         1864,
+                                         618.46,
+                                         0,
+                                         15.33
+                                        ]
+                                       }
+                                      ]
+                                     }
+                                    ]
+                                   },
+                                   {
+                                    "t": "div",
+                                    "key": "BusinessName_parent",
+                                    "id": "BusinessName_parent",
+                                    "cls": "editor-col editor-clear",
+                                    "box": [
+                                     1454.17,
+                                     677.5,
+                                     424.83,
+                                     92.5
+                                    ],
+                                    "s": {
+                                     "padding": "0px 15px 30px 0px"
+                                    },
+                                    "k": [
+                                     {
+                                      "t": "div",
+                                      "cls": "editor-label",
+                                      "box": [
+                                       1454.17,
+                                       677.5,
+                                       409.83,
+                                       22.5
+                                      ],
+                                      "s": {
+                                       "fontSize": "16px",
+                                       "fontWeight": "700",
+                                       "lineHeight": "16px",
+                                       "display": "flex"
+                                      },
+                                      "k": [
+                                       {
+                                        "t": "label",
+                                        "key": "BusinessNameLabel",
+                                        "label": "Business Name",
+                                        "id": "BusinessNameLabel",
+                                        "box": [
+                                         1454.17,
+                                         677.5,
+                                         380.83,
+                                         18
+                                        ],
+                                        "s": {
+                                         "color": "rgb(43, 58, 68)",
+                                         "fontFamily": "Arial, sans-serif",
+                                         "lineHeight": "18px",
+                                         "whiteSpace": "nowrap",
+                                         "margin": "0px 0px 4.5px",
+                                         "cursor": "default",
+                                         "overflow": "hidden"
+                                        },
+                                        "runs": [
+                                         {
+                                          "x": "Business Name"
+                                         }
+                                        ]
+                                       },
+                                       {
+                                        "t": "span",
+                                        "key": "BusinessNameHelp",
+                                        "role": "img",
+                                        "label": "HELP",
+                                        "id": "BusinessNameHelp",
+                                        "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                        "box": [
+                                         1850,
+                                         677.5,
+                                         14,
+                                         22.5
+                                        ],
+                                        "s": {
+                                         "color": "rgb(51, 129, 255)",
+                                         "fontFamily": "\"Font Awesome 6 Pro\"",
+                                         "fontSize": "14px",
+                                         "fontWeight": "900",
+                                         "lineHeight": "14px",
+                                         "float": "right",
+                                         "margin": "0px 0px 0px 15px",
+                                         "cursor": "pointer"
+                                        },
+                                        "pseudo": {
+                                         "before": {
+                                          "content": "\"\"",
+                                          "font": "\"Font Awesome 6 Pro\"",
+                                          "size": "14px",
+                                          "weight": "900",
+                                          "color": "rgb(51, 129, 255)",
+                                          "display": "inline",
+                                          "w": "auto",
+                                          "h": "auto"
+                                         }
+                                        }
+                                       }
+                                      ]
+                                     },
+                                     {
+                                      "t": "div",
+                                      "cls": "editor-field",
+                                      "box": [
+                                       1454.17,
+                                       700,
+                                       409.83,
+                                       40
+                                      ],
+                                      "k": [
+                                       {
+                                        "t": "span",
+                                        "cls": "k-input k-textbox editor-control",
+                                        "box": [
+                                         1454.17,
+                                         700,
+                                         409.83,
+                                         40
+                                        ],
+                                        "s": {
+                                         "color": "rgb(43, 58, 68)",
+                                         "fontSize": "16px",
+                                         "lineHeight": "22.8571px",
+                                         "display": "inline-flex",
+                                         "alignItems": "stretch",
+                                         "position": "relative",
+                                         "padding": "4px 0px 4px 10px",
+                                         "backgroundColor": "rgb(255, 255, 255)",
+                                         "borderRadius": "5px",
+                                         "overflow": "hidden",
+                                         "verticalAlign": "middle",
+                                         "top": "0px",
+                                         "right": "0px",
+                                         "bottom": "0px",
+                                         "left": "0px",
+                                         "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                         "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                         "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                         "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                        },
+                                        "k": [
+                                         {
+                                          "t": "input",
+                                          "key": "BusinessName",
+                                          "id": "BusinessName",
+                                          "cls": "editor-control k-input-inner",
+                                          "box": [
+                                           1464.83,
+                                           704.67,
+                                           361.5,
+                                           30
+                                          ],
+                                          "s": {
+                                           "position": "relative",
+                                           "margin": "0px 37px 0px 0px",
+                                           "padding": "2.5px 5px",
+                                           "cursor": "text",
+                                           "overflow": "clip",
+                                           "top": "0px",
+                                           "right": "0px",
+                                           "bottom": "0px",
+                                           "left": "0px"
+                                          },
+                                          "type": "text",
+                                          "name": "BusinessName"
+                                         }
+                                        ]
+                                       },
+                                       {
+                                        "t": "span",
+                                        "key": "BusinessName_validationMessage",
+                                        "id": "BusinessName_validationMessage",
+                                        "cls": "k-invalid-msg",
+                                        "box": [
+                                         1864,
+                                         710.96,
+                                         0,
+                                         15.33
+                                        ]
+                                       }
+                                      ]
+                                     }
+                                    ]
+                                   },
+                                   {
+                                    "t": "div",
+                                    "key": "NPI_parent",
+                                    "id": "NPI_parent",
+                                    "cls": "editor-col",
+                                    "box": [
+                                     1454.17,
+                                     770,
+                                     424.83,
+                                     91.83
+                                    ],
+                                    "s": {
+                                     "padding": "0px 15px 30px 0px"
+                                    },
+                                    "k": [
+                                     {
+                                      "t": "div",
+                                      "cls": "editor-label",
+                                      "box": [
+                                       1454.17,
+                                       770,
+                                       409.83,
+                                       22.5
+                                      ],
+                                      "s": {
+                                       "fontSize": "16px",
+                                       "fontWeight": "700",
+                                       "lineHeight": "16px",
+                                       "display": "flex"
+                                      },
+                                      "k": [
+                                       {
+                                        "t": "label",
+                                        "key": "NPILabel",
+                                        "label": "NPI ",
+                                        "id": "NPILabel",
+                                        "box": [
+                                         1454.17,
+                                         770,
+                                         380.83,
+                                         18
+                                        ],
+                                        "s": {
+                                         "color": "rgb(43, 58, 68)",
+                                         "fontFamily": "Arial, sans-serif",
+                                         "lineHeight": "18px",
+                                         "whiteSpace": "nowrap",
+                                         "margin": "0px 0px 4.5px",
+                                         "cursor": "default",
+                                         "overflow": "hidden"
+                                        },
+                                        "runs": [
+                                         {
+                                          "x": "NPI"
+                                         }
+                                        ]
+                                       },
+                                       {
+                                        "t": "span",
+                                        "key": "NPIHelp",
+                                        "role": "img",
+                                        "label": "HELP",
+                                        "id": "NPIHelp",
+                                        "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                        "box": [
+                                         1850,
+                                         770,
+                                         14,
+                                         22.5
+                                        ],
+                                        "s": {
+                                         "color": "rgb(51, 129, 255)",
+                                         "fontFamily": "\"Font Awesome 6 Pro\"",
+                                         "fontSize": "14px",
+                                         "fontWeight": "900",
+                                         "lineHeight": "14px",
+                                         "float": "right",
+                                         "margin": "0px 0px 0px 15px",
+                                         "cursor": "pointer"
+                                        },
+                                        "pseudo": {
+                                         "before": {
+                                          "content": "\"\"",
+                                          "font": "\"Font Awesome 6 Pro\"",
+                                          "size": "14px",
+                                          "weight": "900",
+                                          "color": "rgb(51, 129, 255)",
+                                          "display": "inline",
+                                          "w": "auto",
+                                          "h": "auto"
+                                         }
+                                        }
+                                       }
+                                      ]
+                                     },
+                                     {
+                                      "t": "div",
+                                      "cls": "editor-field",
+                                      "box": [
+                                       1454.17,
+                                       792.5,
+                                       409.83,
+                                       39.33
+                                      ],
+                                      "k": [
+                                       {
+                                        "t": "span",
+                                        "cls": "k-input k-maskedtextbox editor-control",
+                                        "box": [
+                                         1454.17,
+                                         792.5,
+                                         409.83,
+                                         39.33
+                                        ],
+                                        "s": {
+                                         "color": "rgb(61, 61, 61)",
+                                         "lineHeight": "20px",
+                                         "display": "inline-flex",
+                                         "alignItems": "stretch",
+                                         "position": "relative",
+                                         "padding": "4px 0px",
+                                         "backgroundColor": "rgb(255, 255, 255)",
+                                         "borderRadius": "5px",
+                                         "overflow": "hidden",
+                                         "verticalAlign": "middle",
+                                         "top": "0px",
+                                         "right": "0px",
+                                         "bottom": "0px",
+                                         "left": "0px",
+                                         "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                         "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                         "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                         "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                        },
+                                        "k": [
+                                         {
+                                          "t": "input",
+                                          "key": "NPI",
+                                          "id": "NPI",
+                                          "cls": "editor-control k-input-inner k-widget",
+                                          "box": [
+                                           1454.83,
+                                           797.17,
+                                           371.5,
+                                           30
+                                          ],
+                                          "s": {
+                                           "color": "rgb(43, 58, 68)",
+                                           "fontSize": "16px",
+                                           "lineHeight": "22.8571px",
+                                           "position": "relative",
+                                           "margin": "0px 37px 0px 0px",
+                                           "padding": "2.5px 5px",
+                                           "cursor": "text",
+                                           "overflow": "clip",
+                                           "top": "0px",
+                                           "right": "0px",
+                                           "bottom": "0px",
+                                           "left": "0px"
+                                          },
+                                          "type": "text",
+                                          "name": "NPI"
+                                         }
+                                        ]
+                                       },
+                                       {
+                                        "t": "span",
+                                        "key": "NPI_validationMessage",
+                                        "id": "NPI_validationMessage",
+                                        "cls": "k-invalid-msg",
+                                        "box": [
+                                         1864,
+                                         803.13,
+                                         0,
+                                         15.33
+                                        ]
+                                       }
+                                      ]
+                                     }
+                                    ]
+                                   }
+                                  ]
+                                 },
+                                 {
+                                  "t": "div",
+                                  "cls": "editor-button-row",
+                                  "box": [
+                                   1454.17,
+                                   861.83,
+                                   424.83,
+                                   10
+                                  ],
+                                  "s": {
+                                   "maxWidth": "100%",
+                                   "padding": "10px 0px 0px"
+                                  },
+                                  "k": [
+                                   {
+                                    "t": "span",
+                                    "cls": "editor-button-nav",
+                                    "box": [
+                                     1637.72,
+                                     871.83,
+                                     226.28,
+                                     38
+                                    ],
+                                    "s": {
+                                     "display": "flex",
+                                     "float": "right",
+                                     "margin": "0px 15px 0px 0px"
+                                    },
+                                    "k": [
+                                     {
+                                      "t": "input",
+                                      "key": "clearButton",
+                                      "id": "clearButton",
+                                      "cls": "k-button btn-spacer-right",
+                                      "box": [
+                                       1637.72,
+                                       871.83,
+                                       99.57,
+                                       38
+                                      ],
+                                      "s": {
+                                       "color": "rgb(0, 98, 255)",
+                                       "fontFamily": "Arial, FontAwesome, sans-serif",
+                                       "fontSize": "16px",
+                                       "lineHeight": "16px",
+                                       "textAlign": "center",
+                                       "whiteSpace": "nowrap",
+                                       "display": "flex",
+                                       "justifyContent": "center",
+                                       "alignItems": "center",
+                                       "gap": "2.5px",
+                                       "position": "relative",
+                                       "margin": "0px 12px 0px 0px",
+                                       "padding": "5px 30px",
+                                       "backgroundColor": "rgb(255, 255, 255)",
+                                       "borderRadius": "4px",
+                                       "cursor": "pointer",
+                                       "overflow": "clip",
+                                       "verticalAlign": "middle",
+                                       "top": "0px",
+                                       "right": "0px",
+                                       "bottom": "0px",
+                                       "left": "0px",
+                                       "borderTop": "0.666667px solid rgb(0, 98, 255)",
+                                       "borderRight": "0.666667px solid rgb(0, 98, 255)",
+                                       "borderBottom": "0.666667px solid rgb(0, 98, 255)",
+                                       "borderLeft": "0.666667px solid rgb(0, 98, 255)"
+                                      },
+                                      "pseudo": {
+                                       "before": {
+                                        "content": "\"\"",
+                                        "font": "Arial, FontAwesome, sans-serif",
+                                        "size": "16px",
+                                        "weight": "400",
+                                        "color": "rgb(0, 98, 255)",
+                                        "display": "none",
+                                        "w": "auto",
+                                        "h": "auto",
+                                        "bg": "rgb(0, 98, 255)",
+                                        "position": "absolute"
+                                       },
+                                       "after": {
+                                        "content": "\"\"",
+                                        "font": "Arial, FontAwesome, sans-serif",
+                                        "size": "16px",
+                                        "weight": "400",
+                                        "color": "rgb(0, 98, 255)",
+                                        "display": "none",
+                                        "w": "auto",
+                                        "h": "auto",
+                                        "position": "absolute"
+                                       }
+                                      },
+                                      "type": "button",
+                                      "value": "Clear"
+                                     },
+                                     {
+                                      "t": "input",
+                                      "key": "searchButton",
+                                      "id": "searchButton",
+                                      "cls": "k-button primary-button",
+                                      "box": [
+                                       1749.29,
+                                       871.83,
+                                       114.71,
+                                       38
+                                      ],
+                                      "s": {
+                                       "color": "rgb(255, 255, 255)",
+                                       "fontFamily": "Arial, FontAwesome, sans-serif",
+                                       "fontSize": "16px",
+                                       "fontWeight": "700",
+                                       "lineHeight": "16px",
+                                       "textAlign": "center",
+                                       "whiteSpace": "nowrap",
+                                       "display": "flex",
+                                       "justifyContent": "center",
+                                       "alignItems": "center",
+                                       "gap": "2.5px",
+                                       "position": "relative",
+                                       "padding": "5px 30px",
+                                       "backgroundColor": "rgb(0, 98, 255)",
+                                       "borderRadius": "4px",
+                                       "cursor": "pointer",
+                                       "overflow": "clip",
+                                       "verticalAlign": "middle",
+                                       "top": "0px",
+                                       "right": "0px",
+                                       "bottom": "0px",
+                                       "left": "0px",
+                                       "borderTop": "0.666667px solid rgb(0, 98, 255)",
+                                       "borderRight": "0.666667px solid rgb(0, 98, 255)",
+                                       "borderBottom": "0.666667px solid rgb(0, 98, 255)",
+                                       "borderLeft": "0.666667px solid rgb(0, 98, 255)"
+                                      },
+                                      "pseudo": {
+                                       "before": {
+                                        "content": "\"\"",
+                                        "font": "Arial, FontAwesome, sans-serif",
+                                        "size": "16px",
+                                        "weight": "700",
+                                        "color": "rgb(255, 255, 255)",
+                                        "display": "none",
+                                        "w": "auto",
+                                        "h": "auto",
+                                        "bg": "rgb(255, 255, 255)",
+                                        "position": "absolute"
+                                       },
+                                       "after": {
+                                        "content": "\"\"",
+                                        "font": "Arial, FontAwesome, sans-serif",
+                                        "size": "16px",
+                                        "weight": "700",
+                                        "color": "rgb(255, 255, 255)",
+                                        "display": "none",
+                                        "w": "auto",
+                                        "h": "auto",
+                                        "position": "absolute"
+                                       }
+                                      },
+                                      "type": "button",
+                                      "value": "Search"
+                                     }
+                                    ]
+                                   }
+                                  ]
+                                 }
+                                ]
+                               }
+                              ]
+                             }
+                            ]
+                           }
+                          ]
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "t": "div",
+            "cls": "row",
+            "box": [
+             0,
+             1006.17,
+             1904.67,
+             286.56
+            ],
+            "pseudo": {
+             "before": {
+              "content": "\" \"",
+              "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+              "size": "14px",
+              "weight": "400",
+              "color": "rgb(51, 51, 51)",
+              "display": "table",
+              "w": "0px",
+              "h": "0px"
+             },
+             "after": {
+              "content": "\" \"",
+              "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+              "size": "14px",
+              "weight": "400",
+              "color": "rgb(51, 51, 51)",
+              "display": "table",
+              "w": "0px",
+              "h": "0px"
+             }
+            },
+            "k": [
+             {
+              "t": "form",
+              "key": "form-search-results",
+              "box": [
+               0,
+               1006.17,
+               1904.67,
+               262.56
+              ],
+              "k": [
+               {
+                "t": "div",
+                "key": "searchResultsGrid",
+                "id": "searchResultsGrid",
+                "box": [
+                 0,
+                 1006.17,
+                 1904.67,
+                 262.56
+                ],
+                "k": [
+                 {
+                  "t": "div",
+                  "cls": "content-panel-container",
+                  "box": [
+                   0,
+                   1006.17,
+                   1904.67,
+                   262.56
+                  ],
+                  "s": {
+                   "margin": "0px 0px 24px",
+                   "padding": "0px 0px 15px",
+                   "backgroundColor": "rgb(255, 255, 255)",
+                   "borderRadius": "10px",
+                   "boxShadow": "rgba(0, 0, 0, 0.08) 0px 8px 10px 1px",
+                   "borderTop": "0.666667px solid rgb(222, 226, 230)",
+                   "borderRight": "0.666667px solid rgb(222, 226, 230)",
+                   "borderBottom": "0.666667px solid rgb(222, 226, 230)",
+                   "borderLeft": "0.666667px solid rgb(222, 226, 230)"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "key": "searchResultHeader",
+                    "id": "searchResultHeader",
+                    "cls": "content-panel-hdr",
+                    "box": [
+                     0.67,
+                     1006.83,
+                     1903.33,
+                     48
+                    ],
+                    "s": {
+                     "fontFamily": "\"Poppins Bold\", Arial, Helvetica, sans-serif",
+                     "fontSize": "24px",
+                     "fontWeight": "900",
+                     "lineHeight": "24px",
+                     "margin": "0px 0px 15px",
+                     "padding": "12px 24px",
+                     "backgroundColor": "rgb(250, 250, 250)",
+                     "borderRadius": "10px 10px 0px 0px"
+                    },
+                    "runs": [
+                     {
+                      "x": "Search Results"
+                     }
+                    ]
+                   },
+                   {
+                    "t": "div",
+                    "cls": "content-panel-bdy",
+                    "box": [
+                     0.67,
+                     1069.83,
+                     1903.33,
+                     183.23
+                    ],
+                    "s": {
+                     "padding": "15px 0px 0px"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     },
+                     "after": {
+                      "content": "\" \"",
+                      "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                      "size": "14px",
+                      "weight": "400",
+                      "color": "rgb(51, 51, 51)",
+                      "display": "table",
+                      "w": "0px",
+                      "h": "0px"
+                     }
+                    },
+                    "k": [
+                     {
+                      "t": "div",
+                      "key": "ProviderEnrollmentSearchStatus",
+                      "id": "ProviderEnrollmentSearchStatus",
+                      "box": [
+                       0.67,
+                       1084.83,
+                       1903.33,
+                       0
+                      ]
+                     },
+                     {
+                      "t": "div",
+                      "key": "providerEnrollmentResultsGrid",
+                      "id": "providerEnrollmentResultsGrid",
+                      "cls": "k-grid editor-grid",
+                      "box": [
+                       0.67,
+                       1084.83,
+                       1903.33,
+                       168.23
+                      ],
+                      "s": {
+                       "color": "rgb(61, 61, 61)",
+                       "fontSize": "16px",
+                       "lineHeight": "22.8571px",
+                       "display": "flex",
+                       "flexDirection": "column",
+                       "position": "relative",
+                       "backgroundColor": "rgb(255, 255, 255)",
+                       "borderRadius": "5px",
+                       "top": "0px",
+                       "right": "0px",
+                       "bottom": "0px",
+                       "left": "0px"
+                      },
+                      "k": [
+                       {
+                        "t": "div",
+                        "cls": "k-grid-header",
+                        "box": [
+                         0.67,
+                         1084.83,
+                         1903.33,
+                         54.52
+                        ],
+                        "s": {
+                         "display": "flex",
+                         "alignItems": "stretch",
+                         "padding": "0px 16px 0px 0px",
+                         "backgroundColor": "rgb(255, 255, 255)",
+                         "borderRadius": "5px 5px 0px 0px",
+                         "borderTop": "0.666667px solid rgb(206, 212, 218)",
+                         "borderRight": "0.666667px solid rgb(206, 212, 218)",
+                         "borderBottom": "0.666667px solid rgb(206, 212, 218)",
+                         "borderLeft": "0.666667px solid rgb(206, 212, 218)"
+                        },
+                        "k": [
+                         {
+                          "t": "div",
+                          "key": "button-21",
+                          "cls": "k-grid-header-wrap k-auto-scrollable",
+                          "box": [
+                           1.33,
+                           1085.5,
+                           1887,
+                           53.19
+                          ],
+                          "s": {
+                           "position": "relative",
+                           "margin": "0px -1px 0px 0px",
+                           "overflow": "hidden",
+                           "verticalAlign": "top",
+                           "top": "0px",
+                           "right": "0px",
+                           "bottom": "0px",
+                           "left": "0px"
+                          },
+                          "k": [
+                           {
+                            "t": "table",
+                            "key": "button-22",
+                            "role": "none",
+                            "cls": "k-grid-header-table k-table",
+                            "box": [
+                             1.33,
+                             1085.5,
+                             1887.67,
+                             54.19
+                            ],
+                            "s": {
+                             "display": "table",
+                             "margin": "0px 0px -1px"
+                            },
+                            "rowCount": 1,
+                            "rows": [
+                             [
+                              {
+                               "x": "ATN",
+                               "h": 1
+                              },
+                              {
+                               "x": "Name",
+                               "h": 1
+                              },
+                              {
+                               "x": "NPI",
+                               "h": 1
+                              },
+                              {
+                               "x": "Date",
+                               "h": 1
+                              },
+                              {
+                               "x": "Date",
+                               "h": 1
+                              },
+                              {
+                               "x": "Status",
+                               "h": 1
+                              },
+                              {
+                               "x": "Quick Search Flag",
+                               "h": 1
+                              }
+                             ]
+                            ],
+                            "cellStyle": {
+                             "th": {
+                              "color": "rgb(43, 58, 68)",
+                              "whiteSpace": "nowrap",
+                              "display": "table-cell",
+                              "position": "relative",
+                              "padding": "10px",
+                              "cursor": "default",
+                              "overflow": "hidden",
+                              "verticalAlign": "top",
+                              "top": "0px",
+                              "right": "0px",
+                              "bottom": "0px",
+                              "left": "0px"
+                             }
+                            },
+                            "rowStyle": [
+                             {
+                              "bg": "rgb(255, 255, 255)",
+                              "color": "rgb(61, 61, 61)",
+                              "cls": "k-table-row"
+                             }
+                            ]
+                           }
+                          ]
+                         }
+                        ]
+                       },
+                       {
+                        "t": "div",
+                        "cls": "k-grid-container",
+                        "box": [
+                         0.67,
+                         1139.35,
+                         1903.33,
+                         63.71
+                        ],
+                        "s": {
+                         "display": "flex",
+                         "position": "relative",
+                         "borderRadius": "0px 0px 5px 5px",
+                         "overflow": "hidden",
+                         "top": "0px",
+                         "right": "0px",
+                         "bottom": "0px",
+                         "left": "0px",
+                         "borderTop": "0.666667px solid rgb(206, 212, 218)",
+                         "borderRight": "0.666667px solid rgb(206, 212, 218)",
+                         "borderBottom": "0.666667px solid rgb(206, 212, 218)",
+                         "borderLeft": "0.666667px solid rgb(206, 212, 218)"
+                        },
+                        "k": [
+                         {
+                          "t": "div",
+                          "cls": "k-grid-content k-auto-scrollable",
+                          "box": [
+                           1.33,
+                           1140.02,
+                           1902,
+                           62.38
+                          ],
+                          "s": {
+                           "position": "relative",
+                           "backgroundColor": "rgb(255, 255, 255)",
+                           "overflow": "auto",
+                           "verticalAlign": "top",
+                           "top": "0px",
+                           "right": "0px",
+                           "bottom": "0px",
+                           "left": "0px"
+                          },
+                          "k": [
+                           {
+                            "t": "table",
+                            "key": "3d62baa6-23a1-485a-9b96-f9e45af0200e",
+                            "role": "grid",
+                            "id": "3d62baa6-23a1-485a-9b96-f9e45af0200e",
+                            "cls": "k-grid-table k-table k-selectable",
+                            "box": [
+                             1.33,
+                             1140.02,
+                             1902,
+                             62.38
+                            ],
+                            "s": {
+                             "display": "table",
+                             "backgroundColor": "rgb(255, 255, 255)"
+                            },
+                            "k": [
+                             {
+                              "t": "tbody",
+                              "key": "6ac62358-cfeb-436f-88c7-ba28a994990a",
+                              "role": "rowgroup",
+                              "id": "6ac62358-cfeb-436f-88c7-ba28a994990a",
+                              "cls": "k-table-tbody",
+                              "box": [
+                               1.33,
+                               1140.02,
+                               1902,
+                               62.04
+                              ],
+                              "s": {
+                               "display": "table-row-group",
+                               "verticalAlign": "middle"
+                              },
+                              "k": [
+                               {
+                                "t": "tr",
+                                "key": "button-23",
+                                "cls": "kendo-data-row",
+                                "box": [
+                                 1.33,
+                                 1140.02,
+                                 1902,
+                                 62.04
+                                ],
+                                "s": {
+                                 "display": "table-row",
+                                 "verticalAlign": "middle"
+                                },
+                                "k": [
+                                 {
+                                  "t": "td",
+                                  "box": [
+                                   1.33,
+                                   1140.02,
+                                   1902,
+                                   62.04
+                                  ],
+                                  "s": {
+                                   "textAlign": "center",
+                                   "display": "table-cell",
+                                   "padding": "8px",
+                                   "backgroundColor": "rgb(255, 255, 255)",
+                                   "overflow": "hidden",
+                                   "verticalAlign": "top",
+                                   "borderBottom": "0.666667px solid rgb(224, 224, 224)"
+                                  },
+                                  "runs": [
+                                   {
+                                    "x": "There are no records found.",
+                                    "b": 1
+                                   }
+                                  ]
+                                 }
+                                ]
+                               }
+                              ]
+                             }
+                            ]
+                           }
+                          ]
+                         }
+                        ]
+                       },
+                       {
+                        "t": "div",
+                        "key": "5b442900-049b-4642-a72e-b97cb934c340",
+                        "role": "application",
+                        "label": "Page navigation, page 0 of 0",
+                        "id": "5b442900-049b-4642-a72e-b97cb934c340",
+                        "cls": "k-pager k-grid-pager",
+                        "box": [
+                         0.67,
+                         1203.06,
+                         1903.33,
+                         50
+                        ],
+                        "s": {
+                         "fontSize": "14px",
+                         "lineHeight": "20px",
+                         "whiteSpace": "nowrap",
+                         "display": "flex",
+                         "flexWrap": "wrap",
+                         "alignItems": "center",
+                         "gap": "8.75px",
+                         "position": "relative",
+                         "padding": "5px",
+                         "cursor": "default",
+                         "overflow": "hidden",
+                         "top": "0px",
+                         "right": "0px",
+                         "bottom": "0px",
+                         "left": "0px"
+                        },
+                        "k": [
+                         {
+                          "t": "a",
+                          "key": "link-refresh",
+                          "label": "Refresh",
+                          "cls": "k-pager-refresh k-button k-button-flat k-icon-button",
+                          "box": [
+                           1795.67,
+                           1208.06,
+                           81.33,
+                           40
+                          ],
+                          "s": {
+                           "color": "rgb(0, 98, 255)",
+                           "fontFamily": "Arial, FontAwesome, sans-serif",
+                           "fontSize": "16px",
+                           "lineHeight": "16px",
+                           "textAlign": "center",
+                           "position": "relative",
+                           "margin": "0px 22px 0px 0px",
+                           "padding": "5px 30px",
+                           "borderRadius": "4px",
+                           "cursor": "pointer",
+                           "verticalAlign": "middle",
+                           "top": "0px",
+                           "right": "0px",
+                           "bottom": "0px",
+                           "left": "0px",
+                           "borderTop": "0.666667px solid rgba(0, 0, 0, 0)",
+                           "borderRight": "0.666667px solid rgba(0, 0, 0, 0)",
+                           "borderBottom": "0.666667px solid rgba(0, 0, 0, 0)",
+                           "borderLeft": "0.666667px solid rgba(0, 0, 0, 0)"
+                          },
+                          "pseudo": {
+                           "before": {
+                            "content": "\"\"",
+                            "font": "Arial, FontAwesome, sans-serif",
+                            "size": "16px",
+                            "weight": "400",
+                            "color": "rgb(0, 98, 255)",
+                            "display": "block",
+                            "w": "82px",
+                            "h": "40.6667px",
+                            "bg": "rgb(0, 98, 255)",
+                            "position": "absolute"
+                           },
+                           "after": {
+                            "content": "\"\"",
+                            "font": "Arial, FontAwesome, sans-serif",
+                            "size": "16px",
+                            "weight": "400",
+                            "color": "rgb(0, 98, 255)",
+                            "display": "block",
+                            "w": "82px",
+                            "h": "40.6667px",
+                            "position": "absolute"
+                           }
+                          },
+                          "href": "/api/ProviderEnrollment/SearchProviderApplication/",
+                          "k": [
+                           {
+                            "t": "span",
+                            "cls": "k-icon k-svg-icon k-svg-i-arrow-rotate-cw k-button-icon",
+                            "box": [
+                             1826.33,
+                             1213.73,
+                             20,
+                             20
+                            ],
+                            "s": {
+                             "color": "rgb(43, 58, 68)",
+                             "fontFamily": "FontAwesome, Arial, sans-serif",
+                             "fontWeight": "700",
+                             "display": "inline-flex",
+                             "justifyContent": "center",
+                             "alignItems": "center",
+                             "position": "relative",
+                             "padding": "0px 10px 0px 0px",
+                             "cursor": "pointer",
+                             "verticalAlign": "middle",
+                             "top": "0px",
+                             "right": "0px",
+                             "bottom": "0px",
+                             "left": "0px"
+                            },
+                            "k": [
+                             {
+                              "t": "svg",
+                              "box": [
+                               1823.33,
+                               1215.73,
+                               16,
+                               16
+                              ],
+                              "s": {
+                               "cursor": "pointer"
+                              },
+                              "file": "assets/_svg/svg-1.svg"
+                             }
+                            ]
+                           }
+                          ]
+                         },
+                         {
+                          "t": "span",
+                          "cls": "k-pager-info",
+                          "box": [
+                           5.67,
+                           1218.06,
+                           1781.25,
+                           20
+                          ],
+                          "s": {
+                           "textAlign": "right",
+                           "cursor": "default"
+                          },
+                          "runs": [
+                           {
+                            "x": "No Items to display"
+                           }
+                          ]
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": "footer",
+        "key": "contentinfo",
+        "role": "contentinfo",
+        "box": [
+         0,
+         1292.73,
+         1904.67,
+         118.5
+        ],
+        "s": {
+         "color": "rgb(87, 87, 87)",
+         "fontSize": "12px",
+         "lineHeight": "12px"
+        },
+        "k": [
+         {
+          "t": "div",
+          "cls": "subfooter",
+          "box": [
+           0,
+           1292.73,
+           1904.67,
+           76.5
+          ],
+          "s": {
+           "textAlign": "center",
+           "padding": "25px 0px",
+           "backgroundColor": "rgb(43, 58, 68)"
+          },
+          "k": [
+           {
+            "t": "span",
+            "cls": "subfooter-lbl",
+            "box": [
+             624.98,
+             1317.73,
+             71.34,
+             26.5
+            ],
+            "s": {
+             "color": "rgb(255, 255, 255)",
+             "fontSize": "14px",
+             "lineHeight": "14px",
+             "display": "inline-block",
+             "padding": "6.25px 0px"
+            },
+            "runs": [
+             {
+              "x": "Disclaimer"
+             }
+            ]
+           },
+           {
+            "t": "span",
+            "cls": "subfooter-lbl subfooter-lbl-separator",
+            "box": [
+             739.67,
+             1317.73,
+             228.7,
+             26.5
+            ],
+            "s": {
+             "color": "rgb(255, 255, 255)",
+             "fontSize": "14px",
+             "lineHeight": "14px",
+             "display": "inline-block",
+             "margin": "0px 40px",
+             "padding": "6.25px 40px",
+             "borderRight": "0.666667px solid rgb(255, 255, 255)",
+             "borderLeft": "0.666667px solid rgb(255, 255, 255)"
+            },
+            "runs": [
+             {
+              "x": "Website Requirements"
+             }
+            ]
+           },
+           {
+            "t": "span",
+            "cls": "subfooter-lbl subfooter-lbl-right-separator",
+            "box": [
+             1011.71,
+             1317.73,
+             133.8,
+             26.5
+            ],
+            "s": {
+             "color": "rgb(255, 255, 255)",
+             "fontSize": "14px",
+             "lineHeight": "14px",
+             "display": "inline-block",
+             "margin": "0px 40px 0px 0px",
+             "padding": "6.25px 40px 6.25px 0px",
+             "borderRight": "0.666667px solid rgb(255, 255, 255)"
+            },
+            "runs": [
+             {
+              "x": "Privacy Policy"
+             }
+            ]
+           },
+           {
+            "t": "span",
+            "cls": "subfooter-lbl",
+            "box": [
+             1188.85,
+             1317.73,
+             90.82,
+             26.5
+            ],
+            "s": {
+             "color": "rgb(255, 255, 255)",
+             "fontSize": "14px",
+             "lineHeight": "14px",
+             "display": "inline-block",
+             "padding": "6.25px 0px"
+            },
+            "runs": [
+             {
+              "x": "Cookie Policy"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "t": "div",
+          "key": "pageFooter",
+          "id": "pageFooter",
+          "box": [
+           0,
+           1369.23,
+           1904.67,
+           42
+          ],
+          "k": [
+           {
+            "t": "div",
+            "key": "tenantFooter",
+            "id": "tenantFooter",
+            "box": [
+             0,
+             1369.23,
+             1904.67,
+             0
+            ],
+            "s": {
+             "backgroundColor": "rgb(0, 0, 0)"
+            }
+           },
+           {
+            "t": "div",
+            "key": "baseFooter",
+            "id": "baseFooter",
+            "cls": "row",
+            "box": [
+             0,
+             1369.23,
+             1904.67,
+             42
+            ],
+            "s": {
+             "lineHeight": "32px",
+             "display": "flex",
+             "padding": "4px 20px 0px"
+            },
+            "pseudo": {
+             "before": {
+              "content": "\" \"",
+              "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+              "size": "12px",
+              "weight": "400",
+              "color": "rgb(87, 87, 87)",
+              "display": "table",
+              "w": "0px",
+              "h": "38px"
+             },
+             "after": {
+              "content": "\" \"",
+              "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+              "size": "12px",
+              "weight": "400",
+              "color": "rgb(87, 87, 87)",
+              "display": "table",
+              "w": "0px",
+              "h": "38px"
+             }
+            },
+            "k": [
+             {
+              "t": "div",
+              "key": "footerCopyright",
+              "id": "footerCopyright",
+              "box": [
+               20,
+               1373.23,
+               266.77,
+               38
+              ],
+              "s": {
+               "whiteSpace": "nowrap",
+               "overflow": "hidden auto"
+              },
+              "runs": [
+               {
+                "x": "© 2026 Gainwell Technologies. All rights reserved."
+               }
+              ]
+             },
+             {
+              "t": "div",
+              "key": "footerBuild",
+              "id": "footerBuild",
+              "box": [
+               1495.7,
+               1373.23,
+               388.97,
+               38
+              ],
+              "s": {
+               "whiteSpace": "nowrap",
+               "margin": "0px 0px 0px 1208.93px",
+               "overflow": "hidden auto"
+              },
+              "runs": [
+               {
+                "x": "Server:",
+                "b": 1
+               },
+               {
+                "x": " 10.199.153.38 "
+               },
+               {
+                "x": "Build Date:",
+                "b": 1
+               },
+               {
+                "x": " 10/30/2026 3:28:37 AM "
+               },
+               {
+                "x": "v30.0.0.2609",
+                "b": 1
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

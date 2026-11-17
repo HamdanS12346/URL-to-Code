@@ -1,0 +1,146 @@
+{
+  "source": "C:\\UI-specs\\URL-to-Code\\packs\\pe-v1\\screens\\resume-enrollment-entry\\reference.png",
+  "source_sha256": "95a399b9adfb9b479f3b18ee84c6ccbfe1d3c9e143613e12d480b61c56592a99",
+  "source_size": [
+    1920,
+    1080
+  ],
+  "css_mapping": {
+    "assumed_viewport_width": 1920,
+    "css_per_image_pixel": 1.0,
+    "meaning": "实现约定，不证明参考图原始 DPR 或 CSS 视口"
+  },
+  "regions": [
+    {
+      "name": "band-01-resume-enrollment-entry",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        62,
+        1920,
+        76
+      ],
+      "normalized_box": [
+        0.0,
+        0.057407,
+        1.0,
+        0.07037
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        62.0,
+        1920.0,
+        76.0
+      ],
+      "selector": "#orientationLandscape > div:nth-of-type(2) > div:nth-of-type(3)",
+      "dom_comparable": true
+    },
+    {
+      "name": "band-02-pagebody",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        138,
+        1920,
+        479
+      ],
+      "normalized_box": [
+        0.0,
+        0.127778,
+        1.0,
+        0.443519
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        138.0,
+        1920.0,
+        479.0
+      ],
+      "selector": "#pageBody",
+      "dom_comparable": true
+    },
+    {
+      "name": "band-03-disclaimer-the-website-is-prov",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        618,
+        1920,
+        119
+      ],
+      "normalized_box": [
+        0.0,
+        0.572222,
+        1.0,
+        0.110185
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        618.0,
+        1920.0,
+        119.0
+      ],
+      "selector": "#orientationLandscape > div:nth-of-type(2) > footer",
+      "dom_comparable": true
+    },
+    {
+      "name": "img-logo-png-v-19-1-64-0",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        50,
+        2,
+        117,
+        57
+      ],
+      "normalized_box": [
+        0.026042,
+        0.001852,
+        0.060937,
+        0.052778
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        50.0,
+        2.0,
+        117.0,
+        57.0
+      ],
+      "dom_comparable": true
+    },
+    {
+      "name": "h1-resume-enrollment-entry",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        218,
+        62,
+        191,
+        30
+      ],
+      "normalized_box": [
+        0.113542,
+        0.057407,
+        0.099479,
+        0.027778
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        218.0,
+        62.0,
+        191.0,
+        30.0
+      ],
+      "dom_comparable": true
+    }
+  ],
+  "groups": [],
+  "vertical_scans": [],
+  "input_manifest_sha256": "3a4311858c1f6d41733ceb8c39da785d3635e7c47a82cbe6279c5f76586babcf"
+}

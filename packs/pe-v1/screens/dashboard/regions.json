@@ -1,0 +1,75 @@
+{
+ "reference": "reference.png",
+ "css_viewport_width": 1905,
+ "regions": [
+  {
+   "name": "band-01-mcbrowborder",
+   "box": [
+    0,
+    62,
+    1905,
+    1231
+   ],
+   "selector": "#mcbRowBorder"
+  },
+  {
+   "name": "band-02-disclaimer-the-website-is-prov",
+   "box": [
+    0,
+    1293,
+    1905,
+    118
+   ],
+   "selector": "#orientationLandscape > div:nth-of-type(2) > footer"
+  },
+  {
+   "name": "img-logo-png-v-19-1-64-0",
+   "box": [
+    50,
+    2,
+    116,
+    56
+   ]
+  },
+  {
+   "name": "row1-item1",
+   "box": [
+    15,
+    149,
+    256,
+    281
+   ],
+   "group": "row1"
+  },
+  {
+   "name": "row1-item2",
+   "box": [
+    271,
+    149,
+    256,
+    281
+   ],
+   "group": "row1"
+  },
+  {
+   "name": "row1-item3",
+   "box": [
+    527,
+    149,
+    256,
+    281
+   ],
+   "group": "row1"
+  },
+  {
+   "name": "row1-item4",
+   "box": [
+    783,
+    149,
+    256,
+    281
+   ],
+   "group": "row1"
+  }
+ ]
+}

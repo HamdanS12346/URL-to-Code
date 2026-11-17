@@ -1,0 +1,3871 @@
+{
+ "viewport": [
+  1920,
+  1080
+ ],
+ "doc": [
+  1920,
+  1080
+ ],
+ "truncated": false,
+ "body": {
+  "t": "body",
+  "cls": "ProviderEnrollment CreateSecureEnrollment",
+  "box": [
+   0,
+   0,
+   1920,
+   1028
+  ],
+  "s": {
+   "color": "rgb(51, 51, 51)",
+   "fontFamily": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+   "fontSize": "14px",
+   "fontWeight": "400",
+   "fontStyle": "normal",
+   "lineHeight": "14px",
+   "textAlign": "start",
+   "textTransform": "none",
+   "letterSpacing": "normal",
+   "whiteSpace": "normal",
+   "listStyleType": "disc",
+   "wordSpacing": "0px",
+   "padding": "62px 0px 0px",
+   "backgroundColor": "rgb(255, 255, 255)"
+  },
+  "k": [
+   {
+    "t": "div",
+    "key": "orientationLandscape",
+    "id": "orientationLandscape",
+    "box": [
+     0,
+     62,
+     1920,
+     966
+    ],
+    "k": [
+     {
+      "t": "div",
+      "cls": "body-well",
+      "box": [
+       0,
+       62,
+       1920,
+       966
+      ],
+      "k": [
+       {
+        "t": "div",
+        "key": "pageHeader",
+        "id": "pageHeader",
+        "cls": "header headroom headroom--top headroom--bottom",
+        "box": [
+         0,
+         0,
+         1920,
+         62
+        ],
+        "s": {
+         "position": "fixed",
+         "backgroundColor": "rgb(43, 58, 68)",
+         "zIndex": "1000",
+         "top": "0px",
+         "right": "0px",
+         "bottom": "1018px",
+         "left": "0px"
+        },
+        "k": [
+         {
+          "t": "header",
+          "key": "pageBanner",
+          "role": "banner",
+          "id": "pageBanner",
+          "box": [
+           0,
+           0,
+           1920,
+           62
+          ],
+          "s": {
+           "display": "flex",
+           "justifyContent": "space-between",
+           "alignItems": "center"
+          },
+          "k": [
+           {
+            "t": "div",
+            "key": "pageBannerLogo",
+            "id": "pageBannerLogo",
+            "box": [
+             50,
+             1.73,
+             116.52,
+             58.53
+            ],
+            "s": {
+             "margin": "0px 0px 0px 50px"
+            },
+            "k": [
+             {
+              "t": "a",
+              "key": "link-client-logo",
+              "box": [
+               50,
+               45.59,
+               116.52,
+               15.33
+              ],
+              "s": {
+               "color": "rgb(0, 0, 0)",
+               "fontFamily": "Arial, sans-serif",
+               "cursor": "pointer"
+              },
+              "href": "/Home/MyHome/",
+              "k": [
+               {
+                "t": "img",
+                "label": "Client Logo",
+                "box": [
+                 50,
+                 1.73,
+                 116.52,
+                 56.53
+                ],
+                "s": {
+                 "cursor": "pointer",
+                 "overflow": "clip"
+                },
+                "src": "https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo.png?v=19.1.64.0",
+                "alt": "Client Logo",
+                "nat": [
+                 169,
+                 82
+                ],
+                "file": "assets/_ext/mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo__3659ec6d.png"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "t": "div",
+            "key": "pageBannerTitle",
+            "id": "pageBannerTitle",
+            "box": [
+             201.52,
+             12,
+             320,
+             38
+            ],
+            "s": {
+             "textAlign": "center",
+             "margin": "0px 35px"
+            },
+            "k": [
+             {
+              "t": "div",
+              "key": "button",
+              "cls": "system-name",
+              "box": [
+               201.52,
+               12,
+               320,
+               18
+              ],
+              "s": {
+               "color": "rgb(48, 179, 254)",
+               "fontFamily": "Poppins, Arial, Helvetica, sans-serif",
+               "fontSize": "18px",
+               "fontWeight": "700",
+               "lineHeight": "18px"
+              },
+              "k": [
+               {
+                "t": "#text",
+                "runs": [
+                 {
+                  "x": "Medicaid Management Solutions"
+                 }
+                ]
+               }
+              ]
+             },
+             {
+              "t": "div",
+              "key": "button-medicaid-management-solutions",
+              "cls": "app-title",
+              "box": [
+               201.52,
+               30,
+               320,
+               20
+              ],
+              "s": {
+               "color": "rgb(255, 255, 255)",
+               "fontFamily": "Poppins, Arial, Helvetica, sans-serif",
+               "fontSize": "15px",
+               "lineHeight": "15px",
+               "textTransform": "uppercase",
+               "whiteSpace": "nowrap",
+               "padding": "5px 0px 0px"
+              },
+              "k": [
+               {
+                "t": "#text",
+                "runs": [
+                 {
+                  "x": "Final Test"
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "t": "div",
+            "cls": "desktop-nav",
+            "box": [
+             556.52,
+             0,
+             1363.48,
+             62
+            ],
+            "s": {
+             "display": "flex"
+            },
+            "k": [
+             {
+              "t": "div",
+              "cls": "aag-menu-bar",
+              "box": [
+               556.52,
+               0,
+               1295.48,
+               62
+              ],
+              "s": {
+               "display": "flex",
+               "justifyContent": "flex-end",
+               "alignItems": "center",
+               "padding": "0px 30px 0px 0px"
+              },
+              "k": [
+               {
+                "t": "ul",
+                "key": "button-2",
+                "role": "menubar",
+                "cls": "aag-menu k-reset k-header k-menu k-menu-horizontal",
+                "box": [
+                 1199.24,
+                 21.43,
+                 622.76,
+                 19.14
+                ],
+                "s": {
+                 "color": "rgb(61, 61, 61)",
+                 "lineHeight": "20px",
+                 "listStyleType": "none",
+                 "display": "flex",
+                 "alignItems": "stretch",
+                 "position": "relative",
+                 "float": "right",
+                 "cursor": "default",
+                 "top": "0px",
+                 "right": "0px",
+                 "bottom": "0px",
+                 "left": "0px"
+                },
+                "k": [
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.BroadcastMsg",
+                  "role": "menuitem",
+                  "id": "AAGMenu.BroadcastMsg",
+                  "cls": "k-item k-menu-item k-first",
+                  "box": [
+                   1199.24,
+                   21.43,
+                   97.35,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1199.24,
+                     21.43,
+                     97.35,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-messages",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1209.24,
+                       21.43,
+                       87.35,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "javascript:getBroadcastMsg();",
+                      "runs": [
+                       {
+                        "x": "Messages"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.ExternalLinks",
+                  "role": "menuitem",
+                  "id": "AAGMenu.ExternalLinks",
+                  "cls": "k-item k-menu-item",
+                  "box": [
+                   1296.59,
+                   21.43,
+                   130.93,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1296.59,
+                     21.43,
+                     130.93,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-external-links",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1306.59,
+                       21.43,
+                       120.93,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "javascript:toggleVisibilityStyle('divExternalLinks');",
+                      "runs": [
+                       {
+                        "x": "External Links"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.Favorites",
+                  "role": "menuitem",
+                  "id": "AAGMenu.Favorites",
+                  "cls": "k-item k-menu-item",
+                  "box": [
+                   1427.52,
+                   21.43,
+                   96.46,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1427.52,
+                     21.43,
+                     96.46,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-favorites",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1437.52,
+                       21.43,
+                       86.46,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "javascript:getFavorites();",
+                      "runs": [
+                       {
+                        "x": "Favorites"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.ContactUs",
+                  "role": "menuitem",
+                  "id": "AAGMenu.ContactUs",
+                  "cls": "k-item k-menu-item",
+                  "box": [
+                   1523.98,
+                   21.43,
+                   106.9,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1523.98,
+                     21.43,
+                     106.9,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-contact-us",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1533.98,
+                       21.43,
+                       96.9,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "javascript:getContactUs();",
+                      "runs": [
+                       {
+                        "x": "Contact Us"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.MyAccount",
+                  "role": "menuitem",
+                  "id": "AAGMenu.MyAccount",
+                  "cls": "k-item k-menu-item",
+                  "box": [
+                   1630.88,
+                   21.43,
+                   109.79,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1630.88,
+                     21.43,
+                     109.79,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-my-account",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1640.88,
+                       21.43,
+                       99.79,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "/Home/MyAccount",
+                      "runs": [
+                       {
+                        "x": "My Account"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.Logout",
+                  "role": "menuitem",
+                  "id": "AAGMenu.Logout",
+                  "cls": "k-item k-menu-item k-last",
+                  "box": [
+                   1740.67,
+                   21.43,
+                   81.33,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1740.67,
+                     21.43,
+                     81.33,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-logout",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1750.67,
+                       21.43,
+                       71.33,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(0, 238, 174)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "fontWeight": "700",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "/Security/LogoutFromMenu",
+                      "runs": [
+                       {
+                        "x": "Logout"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             },
+             {
+              "t": "div",
+              "key": "pageBannerMenu",
+              "id": "pageBannerMenu",
+              "cls": "display-block",
+              "box": [
+               1852,
+               0,
+               68,
+               62
+              ],
+              "s": {
+               "color": "rgb(0, 0, 0)",
+               "fontSize": "32px",
+               "lineHeight": "32px",
+               "display": "flex",
+               "backgroundColor": "rgb(48, 179, 254)"
+              },
+              "k": [
+               {
+                "t": "nav",
+                "label": "Hamburger Menu",
+                "box": [
+                 1852,
+                 0,
+                 68,
+                 62
+                ],
+                "k": [
+                 {
+                  "t": "div",
+                  "cls": "hamburger",
+                  "box": [
+                   1852,
+                   0,
+                   68,
+                   62
+                  ],
+                  "s": {
+                   "display": "flex",
+                   "alignItems": "center"
+                  },
+                  "k": [
+                   {
+                    "t": "i",
+                    "key": "button-main-menu-2",
+                    "role": "button",
+                    "label": "Main Menu",
+                    "cls": "fa-solid fa-bars clickable",
+                    "box": [
+                     1862,
+                     5,
+                     48,
+                     52
+                    ],
+                    "s": {
+                     "fontFamily": "\"Font Awesome 6 Pro\"",
+                     "fontWeight": "900",
+                     "margin": "5px 10px",
+                     "padding": "10px",
+                     "cursor": "pointer"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\"\"",
+                      "font": "\"Font Awesome 6 Pro\"",
+                      "size": "32px",
+                      "weight": "900",
+                      "color": "rgb(0, 0, 0)",
+                      "display": "inline",
+                      "w": "auto",
+                      "h": "auto"
+                     }
+                    }
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": "div",
+        "key": "navigation-provider-enrol",
+        "role": "navigation",
+        "cls": "menu",
+        "box": [
+         0,
+         62,
+         1920,
+         32
+        ],
+        "s": {
+         "backgroundColor": "rgb(0, 238, 174)"
+        },
+        "k": [
+         {
+          "t": "div",
+          "key": "activeModuleMenuNav",
+          "id": "activeModuleMenuNav",
+          "cls": "float-left",
+          "box": [
+           0,
+           62,
+           217.86,
+           32
+          ],
+          "s": {
+           "float": "left"
+          },
+          "k": [
+           {
+            "t": "div",
+            "key": "button-8",
+            "cls": "k-menu-scroll-wrapper",
+            "box": [
+             0,
+             62,
+             217.86,
+             32
+            ],
+            "s": {
+             "display": "flex",
+             "alignItems": "center",
+             "position": "relative",
+             "backgroundColor": "rgb(43, 58, 68)",
+             "top": "0px",
+             "right": "0px",
+             "bottom": "0px",
+             "left": "0px"
+            },
+            "k": [
+             {
+              "t": "ul",
+              "key": "activeModuleMenu",
+              "role": "menubar",
+              "id": "activeModuleMenu",
+              "cls": "k-reset k-header k-menu k-menu-horizontal",
+              "box": [
+               30,
+               62,
+               187.86,
+               32
+              ],
+              "s": {
+               "color": "rgb(255, 255, 255)",
+               "lineHeight": "20px",
+               "listStyleType": "none",
+               "position": "relative",
+               "margin": "0px 0px 0px 30px",
+               "backgroundColor": "rgb(43, 58, 68)",
+               "cursor": "default",
+               "overflow": "hidden",
+               "top": "0px",
+               "right": "0px",
+               "bottom": "0px",
+               "left": "0px"
+              },
+              "k": [
+               {
+                "t": "li",
+                "key": "activeModuleMenuFirstItem",
+                "role": "menuitem",
+                "id": "activeModuleMenuFirstItem",
+                "cls": "k-item k-menu-item k-first k-last",
+                "box": [
+                 30,
+                 62,
+                 187.86,
+                 32
+                ],
+                "s": {
+                 "display": "flex",
+                 "flexDirection": "column",
+                 "position": "relative",
+                 "cursor": "default",
+                 "top": "0px",
+                 "right": "0px",
+                 "bottom": "0px",
+                 "left": "0px"
+                },
+                "k": [
+                 {
+                  "t": "a",
+                  "key": "link-provider-enrollment-2",
+                  "cls": "k-link k-menu-link",
+                  "box": [
+                   30,
+                   62,
+                   187.86,
+                   32
+                  ],
+                  "s": {
+                   "fontFamily": "Arial, sans-serif",
+                   "fontSize": "13px",
+                   "textTransform": "uppercase",
+                   "whiteSpace": "nowrap",
+                   "display": "flex",
+                   "alignItems": "center",
+                   "gap": "2.5px",
+                   "position": "relative",
+                   "padding": "6px",
+                   "cursor": "pointer",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "href": "/ProviderEnrollment/Dashboard",
+                  "k": [
+                   {
+                    "t": "#text",
+                    "runs": [
+                     {
+                      "x": "Provider Enrollment"
+                     }
+                    ]
+                   },
+                   {
+                    "t": "i",
+                    "cls": "fa-solid fa-chevron-down",
+                    "box": [
+                     198.86,
+                     71.5,
+                     13,
+                     13
+                    ],
+                    "s": {
+                     "fontFamily": "\"Font Awesome 6 Pro\"",
+                     "fontWeight": "900",
+                     "lineHeight": "13px",
+                     "cursor": "pointer"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\"\"",
+                      "font": "\"Font Awesome 6 Pro\"",
+                      "size": "13px",
+                      "weight": "900",
+                      "color": "rgb(255, 255, 255)",
+                      "display": "inline",
+                      "w": "auto",
+                      "h": "auto"
+                     }
+                    }
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "t": "h1",
+          "key": "activeScreen",
+          "id": "activeScreen",
+          "cls": "float-left",
+          "box": [
+           217.86,
+           62,
+           165.47,
+           30
+          ],
+          "s": {
+           "color": "rgb(0, 0, 0)",
+           "fontWeight": "700",
+           "fontStyle": "italic",
+           "lineHeight": "18px",
+           "float": "left",
+           "padding": "6px 10px"
+          },
+          "runs": [
+           {
+            "x": "New Enrollment Entry"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": "div",
+        "key": "mcbRowBorder",
+        "id": "mcbRowBorder",
+        "cls": "row menu-row mcb-row-flex",
+        "box": [
+         0,
+         94,
+         1920,
+         44.17
+        ],
+        "s": {
+         "display": "flex",
+         "justifyContent": "flex-end",
+         "alignItems": "flex-start",
+         "borderBottom": "0.666667px solid rgb(179, 179, 179)"
+        },
+        "pseudo": {
+         "before": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         },
+         "after": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         }
+        },
+        "k": [
+         {
+          "t": "div",
+          "key": "mcbContentBar",
+          "id": "mcbContentBar",
+          "cls": "col-auto col-md-5",
+          "box": [
+           1782.25,
+           109,
+           30,
+           11
+          ],
+          "s": {
+           "position": "relative",
+           "float": "right",
+           "margin": "15px 0px 0px",
+           "padding": "0px 15px",
+           "top": "0px",
+           "right": "0px",
+           "bottom": "0px",
+           "left": "0px"
+          }
+         },
+         {
+          "t": "div",
+          "key": "mcbHelpIcon",
+          "id": "mcbHelpIcon",
+          "cls": "help-icon-container",
+          "box": [
+           1844.25,
+           109,
+           43.75,
+           35
+          ],
+          "s": {
+           "float": "right",
+           "margin": "15px 32px -6.5px"
+          },
+          "k": [
+           {
+            "t": "span",
+            "key": "button-help",
+            "role": "button",
+            "label": "Help",
+            "cls": "fa-stack fa-lg clickable",
+            "box": [
+             1844.25,
+             109,
+             43.75,
+             35
+            ],
+            "s": {
+             "fontSize": "17.5px",
+             "lineHeight": "35px",
+             "display": "inline-block",
+             "position": "relative",
+             "cursor": "pointer",
+             "verticalAlign": "middle",
+             "top": "0px",
+             "right": "0px",
+             "bottom": "0px",
+             "left": "0px"
+            },
+            "k": [
+             {
+              "t": "i",
+              "cls": "fa-solid fa-book-open help-icon-stack-top",
+              "box": [
+               1848.25,
+               115.5,
+               18,
+               16
+              ],
+              "s": {
+               "color": "rgb(255, 255, 255)",
+               "fontFamily": "\"Font Awesome 6 Pro\"",
+               "fontSize": "16px",
+               "fontWeight": "900",
+               "lineHeight": "16px",
+               "position": "absolute",
+               "cursor": "pointer",
+               "top": "6.5px",
+               "right": "21.75px",
+               "bottom": "12.5px",
+               "left": "4px"
+              },
+              "pseudo": {
+               "before": {
+                "content": "\"\"",
+                "font": "\"Font Awesome 6 Pro\"",
+                "size": "16px",
+                "weight": "900",
+                "color": "rgb(255, 255, 255)",
+                "display": "inline",
+                "w": "auto",
+                "h": "auto"
+               }
+              }
+             },
+             {
+              "t": "i",
+              "cls": "fa-solid fa-circle help-icon-stack-bottom",
+              "box": [
+               1844.25,
+               109,
+               27,
+               30
+              ],
+              "s": {
+               "color": "rgb(51, 129, 255)",
+               "fontFamily": "\"Font Awesome 6 Pro\"",
+               "fontSize": "27px",
+               "fontWeight": "900",
+               "lineHeight": "30px",
+               "display": "inline-block",
+               "cursor": "pointer"
+              },
+              "pseudo": {
+               "before": {
+                "content": "\"\"",
+                "font": "\"Font Awesome 6 Pro\"",
+                "size": "27px",
+                "weight": "900",
+                "color": "rgb(51, 129, 255)",
+                "display": "inline",
+                "w": "auto",
+                "h": "auto"
+               }
+              }
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": "div",
+        "cls": "row",
+        "box": [
+         0,
+         138.17,
+         1920,
+         0
+        ],
+        "pseudo": {
+         "before": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         },
+         "after": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         }
+        },
+        "k": [
+         {
+          "t": "div",
+          "key": "mcbPanels",
+          "id": "mcbPanels",
+          "box": [
+           0,
+           138.17,
+           1920,
+           0
+          ]
+         }
+        ]
+       },
+       {
+        "t": "div",
+        "cls": "row",
+        "box": [
+         0,
+         138.17,
+         1920,
+         0
+        ],
+        "pseudo": {
+         "before": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         },
+         "after": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         }
+        }
+       },
+       {
+        "t": "div",
+        "key": "pageBody",
+        "id": "pageBody",
+        "cls": "row content",
+        "box": [
+         0,
+         138.17,
+         1920,
+         771.33
+        ],
+        "pseudo": {
+         "before": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         },
+         "after": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         }
+        },
+        "k": [
+         {
+          "t": "main",
+          "key": "main",
+          "role": "main",
+          "box": [
+           0,
+           138.17,
+           1920,
+           771.33
+          ],
+          "k": [
+           {
+            "t": "form",
+            "key": "CreateEnrollmentForm",
+            "id": "CreateEnrollmentForm",
+            "cls": "k-content",
+            "box": [
+             0,
+             138.17,
+             1920,
+             771.33
+            ],
+            "s": {
+             "color": "rgb(61, 61, 61)",
+             "backgroundColor": "rgb(255, 255, 255)"
+            },
+            "k": [
+             {
+              "t": "div",
+              "cls": "container",
+              "box": [
+               30,
+               138.17,
+               1860,
+               0
+              ],
+              "s": {
+               "maxWidth": "100%",
+               "margin": "0px 30px"
+              },
+              "pseudo": {
+               "before": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(61, 61, 61)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               },
+               "after": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(61, 61, 61)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               }
+              }
+             },
+             {
+              "t": "div",
+              "key": "caqhReadOnlyBannerMsg",
+              "id": "caqhReadOnlyBannerMsg",
+              "cls": "sm-container",
+              "box": [
+               0,
+               138.17,
+               1920,
+               26
+              ],
+              "s": {
+               "maxWidth": "100%",
+               "padding": "13px"
+              }
+             },
+             {
+              "t": "div",
+              "cls": "container",
+              "box": [
+               30,
+               164.17,
+               1860,
+               745.33
+              ],
+              "s": {
+               "maxWidth": "100%",
+               "margin": "0px 30px"
+              },
+              "pseudo": {
+               "before": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(61, 61, 61)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               },
+               "after": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(61, 61, 61)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               }
+              },
+              "k": [
+               {
+                "t": "div",
+                "key": "step2",
+                "id": "step2",
+                "cls": "display-none",
+                "box": [
+                 30,
+                 164.17,
+                 1860,
+                 745.33
+                ],
+                "k": [
+                 {
+                  "t": "div",
+                  "cls": "row",
+                  "box": [
+                   30,
+                   164.17,
+                   1860,
+                   745.33
+                  ],
+                  "pseudo": {
+                   "before": {
+                    "content": "\" \"",
+                    "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                    "size": "14px",
+                    "weight": "400",
+                    "color": "rgb(61, 61, 61)",
+                    "display": "table",
+                    "w": "0px",
+                    "h": "0px"
+                   },
+                   "after": {
+                    "content": "\" \"",
+                    "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                    "size": "14px",
+                    "weight": "400",
+                    "color": "rgb(61, 61, 61)",
+                    "display": "table",
+                    "w": "0px",
+                    "h": "0px"
+                   }
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "cls": "content-panel-container",
+                    "box": [
+                     30,
+                     164.17,
+                     1860,
+                     721.33
+                    ],
+                    "s": {
+                     "margin": "0px 0px 24px",
+                     "padding": "0px 0px 15px",
+                     "backgroundColor": "rgb(255, 255, 255)",
+                     "borderRadius": "10px",
+                     "boxShadow": "rgba(0, 0, 0, 0.08) 0px 8px 10px 1px",
+                     "borderTop": "0.666667px solid rgb(222, 226, 230)",
+                     "borderRight": "0.666667px solid rgb(222, 226, 230)",
+                     "borderBottom": "0.666667px solid rgb(222, 226, 230)",
+                     "borderLeft": "0.666667px solid rgb(222, 226, 230)"
+                    },
+                    "k": [
+                     {
+                      "t": "div",
+                      "cls": "content-panel-hdr",
+                      "box": [
+                       30.67,
+                       164.83,
+                       1858.67,
+                       48
+                      ],
+                      "s": {
+                       "fontFamily": "\"Poppins Bold\", Arial, Helvetica, sans-serif",
+                       "fontSize": "24px",
+                       "fontWeight": "900",
+                       "lineHeight": "24px",
+                       "margin": "0px 0px 15px",
+                       "padding": "12px 24px",
+                       "backgroundColor": "rgb(250, 250, 250)",
+                       "borderRadius": "10px 10px 0px 0px"
+                      },
+                      "k": [
+                       {
+                        "t": "span",
+                        "label": "Panel contains one or more required fields.",
+                        "cls": "clickable editor-req-fields fa-solid fa-asterisk",
+                        "box": [
+                         54.67,
+                         179.83,
+                         12,
+                         16
+                        ],
+                        "s": {
+                         "color": "rgb(203, 26, 198)",
+                         "fontFamily": "\"Font Awesome 6 Pro\"",
+                         "fontSize": "16px",
+                         "lineHeight": "16px",
+                         "display": "inline-block",
+                         "position": "relative",
+                         "cursor": "pointer",
+                         "top": "-3px",
+                         "right": "0px",
+                         "bottom": "3px",
+                         "left": "0px"
+                        },
+                        "pseudo": {
+                         "before": {
+                          "content": "\"*\"",
+                          "font": "\"Font Awesome 6 Pro\"",
+                          "size": "16px",
+                          "weight": "900",
+                          "color": "rgb(203, 26, 198)",
+                          "display": "inline",
+                          "w": "auto",
+                          "h": "auto"
+                         }
+                        }
+                       },
+                       {
+                        "t": "#text",
+                        "runs": [
+                         {
+                          "x": "Registration"
+                         }
+                        ]
+                       }
+                      ]
+                     },
+                     {
+                      "t": "div",
+                      "cls": "content-panel-bdy",
+                      "box": [
+                       30.67,
+                       227.83,
+                       1858.67,
+                       642
+                      ],
+                      "s": {
+                       "padding": "15px 0px 0px"
+                      },
+                      "pseudo": {
+                       "before": {
+                        "content": "\" \"",
+                        "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                        "size": "14px",
+                        "weight": "400",
+                        "color": "rgb(61, 61, 61)",
+                        "display": "table",
+                        "w": "0px",
+                        "h": "0px"
+                       },
+                       "after": {
+                        "content": "\" \"",
+                        "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                        "size": "14px",
+                        "weight": "400",
+                        "color": "rgb(61, 61, 61)",
+                        "display": "table",
+                        "w": "0px",
+                        "h": "0px"
+                       }
+                      },
+                      "k": [
+                       {
+                        "t": "div",
+                        "cls": "editor-req-field-row",
+                        "box": [
+                         30.67,
+                         242.83,
+                         1858.67,
+                         21
+                        ],
+                        "s": {
+                         "color": "rgb(203, 26, 198)",
+                         "fontSize": "13px",
+                         "lineHeight": "13px",
+                         "textAlign": "right",
+                         "padding": "8px 10px 0px 0px"
+                        },
+                        "k": [
+                         {
+                          "t": "#text",
+                          "runs": [
+                           {
+                            "x": "Required Fields ("
+                           }
+                          ]
+                         },
+                         {
+                          "t": "span",
+                          "cls": "editor-req-field fa-solid fa-asterisk",
+                          "box": [
+                           1860.25,
+                           250.83,
+                           14.75,
+                           13
+                          ],
+                          "s": {
+                           "fontFamily": "\"Font Awesome 6 Pro\"",
+                           "fontWeight": "900",
+                           "display": "inline-block",
+                           "padding": "0px 5px 0px 0px"
+                          },
+                          "pseudo": {
+                           "before": {
+                            "content": "\"*\"",
+                            "font": "\"Font Awesome 6 Pro\"",
+                            "size": "13px",
+                            "weight": "900",
+                            "color": "rgb(203, 26, 198)",
+                            "display": "inline",
+                            "w": "auto",
+                            "h": "auto"
+                           }
+                          }
+                         },
+                         {
+                          "t": "#text",
+                          "runs": [
+                           {
+                            "x": ")"
+                           }
+                          ]
+                         }
+                        ]
+                       },
+                       {
+                        "t": "div",
+                        "cls": "panel-body",
+                        "box": [
+                         30.67,
+                         263.83,
+                         1858.67,
+                         606
+                        ],
+                        "s": {
+                         "padding": "20px 10px 10px"
+                        },
+                        "pseudo": {
+                         "before": {
+                          "content": "\" \"",
+                          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                          "size": "14px",
+                          "weight": "400",
+                          "color": "rgb(61, 61, 61)",
+                          "display": "table",
+                          "w": "0px",
+                          "h": "0px"
+                         },
+                         "after": {
+                          "content": "\" \"",
+                          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                          "size": "14px",
+                          "weight": "400",
+                          "color": "rgb(61, 61, 61)",
+                          "display": "table",
+                          "w": "0px",
+                          "h": "0px"
+                         }
+                        },
+                        "k": [
+                         {
+                          "t": "div",
+                          "cls": "editor-section",
+                          "box": [
+                           40.67,
+                           283.83,
+                           1838.67,
+                           576
+                          ],
+                          "k": [
+                           {
+                            "t": "p",
+                            "cls": "paragraph-text",
+                            "box": [
+                             40.67,
+                             283.83,
+                             1200,
+                             42
+                            ],
+                            "s": {
+                             "color": "rgb(68, 68, 68)",
+                             "fontSize": "15px",
+                             "lineHeight": "21px",
+                             "maxWidth": "1200px",
+                             "margin": "0px 0px 10px"
+                            },
+                            "runs": [
+                             {
+                              "x": "Register below to be assigned a unique enrollment tracking number. Be sure to write down your password. An email confirmation will be sent with the tracking number. If you don't submit your enrollment right away, you can use this tracking number and password to resume your enrollment application later."
+                             }
+                            ]
+                           },
+                           {
+                            "t": "div",
+                            "cls": "panel-desc",
+                            "box": [
+                             40.67,
+                             335.83,
+                             1838.67,
+                             474
+                            ],
+                            "s": {
+                             "padding": "10px"
+                            },
+                            "k": [
+                             {
+                              "t": "div",
+                              "key": "TrackingNumber_parent",
+                              "id": "TrackingNumber_parent",
+                              "cls": "col-md-2 editor-col",
+                              "box": [
+                               50.67,
+                               345.83,
+                               303.1,
+                               30
+                              ],
+                              "s": {
+                               "position": "relative",
+                               "float": "left",
+                               "padding": "0px 15px 30px 0px",
+                               "top": "0px",
+                               "right": "0px",
+                               "bottom": "0px",
+                               "left": "0px"
+                              }
+                             },
+                             {
+                              "t": "div",
+                              "key": "EnrollmentCreateCredentials.EmailAddress_parent",
+                              "id": "EnrollmentCreateCredentials.EmailAddress_parent",
+                              "cls": "col-md-4 editor-col editor-clear",
+                              "box": [
+                               50.67,
+                               375.83,
+                               606.22,
+                               92.5
+                              ],
+                              "s": {
+                               "position": "relative",
+                               "float": "left",
+                               "padding": "0px 15px 30px 0px",
+                               "top": "0px",
+                               "right": "0px",
+                               "bottom": "0px",
+                               "left": "0px"
+                              },
+                              "k": [
+                               {
+                                "t": "div",
+                                "cls": "editor-label",
+                                "box": [
+                                 50.67,
+                                 375.83,
+                                 591.22,
+                                 22.5
+                                ],
+                                "s": {
+                                 "fontSize": "16px",
+                                 "fontWeight": "700",
+                                 "lineHeight": "16px",
+                                 "display": "flex"
+                                },
+                                "k": [
+                                 {
+                                  "t": "span",
+                                  "key": "button-email-is-a-required-field",
+                                  "label": "Email is a required field.",
+                                  "cls": "clickable editor-req-field fa-solid fa-asterisk",
+                                  "box": [
+                                   50.67,
+                                   375.83,
+                                   14.75,
+                                   22.5
+                                  ],
+                                  "s": {
+                                   "color": "rgb(203, 26, 198)",
+                                   "fontFamily": "\"Font Awesome 6 Pro\"",
+                                   "fontSize": "13px",
+                                   "fontWeight": "900",
+                                   "lineHeight": "13px",
+                                   "padding": "0px 5px 0px 0px",
+                                   "cursor": "pointer"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"*\"",
+                                    "font": "\"Font Awesome 6 Pro\"",
+                                    "size": "13px",
+                                    "weight": "900",
+                                    "color": "rgb(203, 26, 198)",
+                                    "display": "inline",
+                                    "w": "auto",
+                                    "h": "auto"
+                                   }
+                                  }
+                                 },
+                                 {
+                                  "t": "label",
+                                  "key": "EnrollmentCreateCredentials_EmailAddressLabel",
+                                  "label": "Email",
+                                  "id": "EnrollmentCreateCredentials_EmailAddressLabel",
+                                  "box": [
+                                   65.42,
+                                   375.83,
+                                   547.47,
+                                   18
+                                  ],
+                                  "s": {
+                                   "color": "rgb(43, 58, 68)",
+                                   "fontFamily": "Arial, sans-serif",
+                                   "lineHeight": "18px",
+                                   "whiteSpace": "nowrap",
+                                   "margin": "0px 0px 4.5px",
+                                   "cursor": "default",
+                                   "overflow": "hidden"
+                                  },
+                                  "runs": [
+                                   {
+                                    "x": "Email"
+                                   }
+                                  ]
+                                 },
+                                 {
+                                  "t": "span",
+                                  "key": "EnrollmentCreateCredentials_EmailAddressHelp",
+                                  "role": "img",
+                                  "label": "HELP",
+                                  "id": "EnrollmentCreateCredentials_EmailAddressHelp",
+                                  "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                  "box": [
+                                   627.89,
+                                   375.83,
+                                   14,
+                                   22.5
+                                  ],
+                                  "s": {
+                                   "color": "rgb(51, 129, 255)",
+                                   "fontFamily": "\"Font Awesome 6 Pro\"",
+                                   "fontSize": "14px",
+                                   "fontWeight": "900",
+                                   "lineHeight": "14px",
+                                   "float": "right",
+                                   "margin": "0px 0px 0px 15px",
+                                   "cursor": "pointer"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"\"",
+                                    "font": "\"Font Awesome 6 Pro\"",
+                                    "size": "14px",
+                                    "weight": "900",
+                                    "color": "rgb(51, 129, 255)",
+                                    "display": "inline",
+                                    "w": "auto",
+                                    "h": "auto"
+                                   }
+                                  }
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "div",
+                                "cls": "editor-field",
+                                "box": [
+                                 50.67,
+                                 398.33,
+                                 591.22,
+                                 40
+                                ],
+                                "k": [
+                                 {
+                                  "t": "span",
+                                  "cls": "k-input k-textbox editor-control",
+                                  "box": [
+                                   50.67,
+                                   398.33,
+                                   591.22,
+                                   40
+                                  ],
+                                  "s": {
+                                   "color": "rgb(43, 58, 68)",
+                                   "fontSize": "16px",
+                                   "lineHeight": "22.8571px",
+                                   "display": "inline-flex",
+                                   "alignItems": "stretch",
+                                   "position": "relative",
+                                   "padding": "4px 0px 4px 10px",
+                                   "backgroundColor": "rgb(255, 255, 255)",
+                                   "borderRadius": "5px",
+                                   "overflow": "hidden",
+                                   "verticalAlign": "middle",
+                                   "top": "0px",
+                                   "right": "0px",
+                                   "bottom": "0px",
+                                   "left": "0px",
+                                   "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                  },
+                                  "k": [
+                                   {
+                                    "t": "input",
+                                    "key": "EnrollmentCreateCredentials_EmailAddress",
+                                    "id": "EnrollmentCreateCredentials_EmailAddress",
+                                    "cls": "editor-control k-input-inner",
+                                    "box": [
+                                     61.33,
+                                     403,
+                                     542.89,
+                                     30
+                                    ],
+                                    "s": {
+                                     "position": "relative",
+                                     "margin": "0px 37px 0px 0px",
+                                     "padding": "2.5px 5px",
+                                     "cursor": "text",
+                                     "overflow": "clip",
+                                     "top": "0px",
+                                     "right": "0px",
+                                     "bottom": "0px",
+                                     "left": "0px"
+                                    },
+                                    "type": "text",
+                                    "name": "EnrollmentCreateCredentials.EmailAddress"
+                                   }
+                                  ]
+                                 },
+                                 {
+                                  "t": "span",
+                                  "key": "EnrollmentCreateCredentials_EmailAddress_validationMessage",
+                                  "id": "EnrollmentCreateCredentials_EmailAddress_validationMessage",
+                                  "cls": "k-invalid-msg",
+                                  "box": [
+                                   641.89,
+                                   409.29,
+                                   0,
+                                   15.33
+                                  ]
+                                 }
+                                ]
+                               }
+                              ]
+                             },
+                             {
+                              "t": "div",
+                              "key": "EnrollmentCreateCredentials.EmailAddressConfirmation_parent",
+                              "id": "EnrollmentCreateCredentials.EmailAddressConfirmation_parent",
+                              "cls": "col-md-4 editor-col",
+                              "box": [
+                               656.89,
+                               375.83,
+                               606.22,
+                               92.5
+                              ],
+                              "s": {
+                               "position": "relative",
+                               "float": "left",
+                               "padding": "0px 15px 30px 0px",
+                               "top": "0px",
+                               "right": "0px",
+                               "bottom": "0px",
+                               "left": "0px"
+                              },
+                              "k": [
+                               {
+                                "t": "div",
+                                "cls": "editor-label",
+                                "box": [
+                                 656.89,
+                                 375.83,
+                                 591.22,
+                                 22.5
+                                ],
+                                "s": {
+                                 "fontSize": "16px",
+                                 "fontWeight": "700",
+                                 "lineHeight": "16px",
+                                 "display": "flex"
+                                },
+                                "k": [
+                                 {
+                                  "t": "span",
+                                  "key": "button-confirm-email-is-a-required-fiel",
+                                  "label": "Confirm Email is a required field.",
+                                  "cls": "clickable editor-req-field fa-solid fa-asterisk",
+                                  "box": [
+                                   656.89,
+                                   375.83,
+                                   14.75,
+                                   22.5
+                                  ],
+                                  "s": {
+                                   "color": "rgb(203, 26, 198)",
+                                   "fontFamily": "\"Font Awesome 6 Pro\"",
+                                   "fontSize": "13px",
+                                   "fontWeight": "900",
+                                   "lineHeight": "13px",
+                                   "padding": "0px 5px 0px 0px",
+                                   "cursor": "pointer"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"*\"",
+                                    "font": "\"Font Awesome 6 Pro\"",
+                                    "size": "13px",
+                                    "weight": "900",
+                                    "color": "rgb(203, 26, 198)",
+                                    "display": "inline",
+                                    "w": "auto",
+                                    "h": "auto"
+                                   }
+                                  }
+                                 },
+                                 {
+                                  "t": "label",
+                                  "key": "EnrollmentCreateCredentials_EmailAddressConfirmationLabel",
+                                  "label": "Confirm Email",
+                                  "id": "EnrollmentCreateCredentials_EmailAddressConfirmationLabel",
+                                  "box": [
+                                   671.64,
+                                   375.83,
+                                   547.47,
+                                   18
+                                  ],
+                                  "s": {
+                                   "color": "rgb(43, 58, 68)",
+                                   "fontFamily": "Arial, sans-serif",
+                                   "lineHeight": "18px",
+                                   "whiteSpace": "nowrap",
+                                   "margin": "0px 0px 4.5px",
+                                   "cursor": "default",
+                                   "overflow": "hidden"
+                                  },
+                                  "runs": [
+                                   {
+                                    "x": "Confirm Email"
+                                   }
+                                  ]
+                                 },
+                                 {
+                                  "t": "span",
+                                  "key": "EnrollmentCreateCredentials_EmailAddressConfirmationHelp",
+                                  "role": "img",
+                                  "label": "HELP",
+                                  "id": "EnrollmentCreateCredentials_EmailAddressConfirmationHelp",
+                                  "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                  "box": [
+                                   1234.1,
+                                   375.83,
+                                   14,
+                                   22.5
+                                  ],
+                                  "s": {
+                                   "color": "rgb(51, 129, 255)",
+                                   "fontFamily": "\"Font Awesome 6 Pro\"",
+                                   "fontSize": "14px",
+                                   "fontWeight": "900",
+                                   "lineHeight": "14px",
+                                   "float": "right",
+                                   "margin": "0px 0px 0px 15px",
+                                   "cursor": "pointer"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"\"",
+                                    "font": "\"Font Awesome 6 Pro\"",
+                                    "size": "14px",
+                                    "weight": "900",
+                                    "color": "rgb(51, 129, 255)",
+                                    "display": "inline",
+                                    "w": "auto",
+                                    "h": "auto"
+                                   }
+                                  }
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "div",
+                                "cls": "editor-field",
+                                "box": [
+                                 656.89,
+                                 398.33,
+                                 591.22,
+                                 40
+                                ],
+                                "k": [
+                                 {
+                                  "t": "span",
+                                  "cls": "k-input k-textbox editor-control",
+                                  "box": [
+                                   656.89,
+                                   398.33,
+                                   591.22,
+                                   40
+                                  ],
+                                  "s": {
+                                   "color": "rgb(43, 58, 68)",
+                                   "fontSize": "16px",
+                                   "lineHeight": "22.8571px",
+                                   "display": "inline-flex",
+                                   "alignItems": "stretch",
+                                   "position": "relative",
+                                   "padding": "4px 0px 4px 10px",
+                                   "backgroundColor": "rgb(255, 255, 255)",
+                                   "borderRadius": "5px",
+                                   "overflow": "hidden",
+                                   "verticalAlign": "middle",
+                                   "top": "0px",
+                                   "right": "0px",
+                                   "bottom": "0px",
+                                   "left": "0px",
+                                   "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                  },
+                                  "k": [
+                                   {
+                                    "t": "input",
+                                    "key": "EnrollmentCreateCredentials_EmailAddressConfirmation",
+                                    "id": "EnrollmentCreateCredentials_EmailAddressConfirmation",
+                                    "cls": "editor-control k-input-inner",
+                                    "box": [
+                                     667.55,
+                                     403,
+                                     542.89,
+                                     30
+                                    ],
+                                    "s": {
+                                     "position": "relative",
+                                     "margin": "0px 37px 0px 0px",
+                                     "padding": "2.5px 5px",
+                                     "cursor": "text",
+                                     "overflow": "clip",
+                                     "top": "0px",
+                                     "right": "0px",
+                                     "bottom": "0px",
+                                     "left": "0px"
+                                    },
+                                    "type": "text",
+                                    "name": "EnrollmentCreateCredentials.EmailAddressConfirmation"
+                                   }
+                                  ]
+                                 },
+                                 {
+                                  "t": "span",
+                                  "key": "EnrollmentCreateCredentials_EmailAddressConfirmation_validationMessage",
+                                  "id": "EnrollmentCreateCredentials_EmailAddressConfirmation_validationMessage",
+                                  "cls": "k-invalid-msg",
+                                  "box": [
+                                   1248.1,
+                                   409.29,
+                                   0,
+                                   15.33
+                                  ]
+                                 }
+                                ]
+                               }
+                              ]
+                             },
+                             {
+                              "t": "div",
+                              "key": "EnrollmentCreateCredentials.Password_parent",
+                              "id": "EnrollmentCreateCredentials.Password_parent",
+                              "cls": "col-md-4 editor-col editor-clear",
+                              "box": [
+                               50.67,
+                               468.33,
+                               606.22,
+                               92.5
+                              ],
+                              "s": {
+                               "position": "relative",
+                               "float": "left",
+                               "padding": "0px 15px 30px 0px",
+                               "top": "0px",
+                               "right": "0px",
+                               "bottom": "0px",
+                               "left": "0px"
+                              },
+                              "k": [
+                               {
+                                "t": "div",
+                                "cls": "editor-label",
+                                "box": [
+                                 50.67,
+                                 468.33,
+                                 591.22,
+                                 22.5
+                                ],
+                                "s": {
+                                 "fontSize": "16px",
+                                 "fontWeight": "700",
+                                 "lineHeight": "16px",
+                                 "display": "flex"
+                                },
+                                "k": [
+                                 {
+                                  "t": "span",
+                                  "key": "button-password-is-a-required-field",
+                                  "label": "Password is a required field.",
+                                  "cls": "clickable editor-req-field fa-solid fa-asterisk",
+                                  "box": [
+                                   50.67,
+                                   468.33,
+                                   14.75,
+                                   22.5
+                                  ],
+                                  "s": {
+                                   "color": "rgb(203, 26, 198)",
+                                   "fontFamily": "\"Font Awesome 6 Pro\"",
+                                   "fontSize": "13px",
+                                   "fontWeight": "900",
+                                   "lineHeight": "13px",
+                                   "padding": "0px 5px 0px 0px",
+                                   "cursor": "pointer"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"*\"",
+                                    "font": "\"Font Awesome 6 Pro\"",
+                                    "size": "13px",
+                                    "weight": "900",
+                                    "color": "rgb(203, 26, 198)",
+                                    "display": "inline",
+                                    "w": "auto",
+                                    "h": "auto"
+                                   }
+                                  }
+                                 },
+                                 {
+                                  "t": "label",
+                                  "key": "EnrollmentCreateCredentials_PasswordLabel",
+                                  "label": "Password",
+                                  "id": "EnrollmentCreateCredentials_PasswordLabel",
+                                  "box": [
+                                   65.42,
+                                   468.33,
+                                   516.72,
+                                   18
+                                  ],
+                                  "s": {
+                                   "color": "rgb(43, 58, 68)",
+                                   "fontFamily": "Arial, sans-serif",
+                                   "lineHeight": "18px",
+                                   "whiteSpace": "nowrap",
+                                   "margin": "0px 0px 4.5px",
+                                   "cursor": "default",
+                                   "overflow": "hidden"
+                                  },
+                                  "runs": [
+                                   {
+                                    "x": "Password"
+                                   }
+                                  ]
+                                 },
+                                 {
+                                  "t": "span",
+                                  "key": "button-fast-access-key-is-p",
+                                  "label": "Fast access key is 'P'.",
+                                  "cls": "clickable editor-icon fa-solid fa-keyboard",
+                                  "box": [
+                                   597.14,
+                                   468.33,
+                                   15.75,
+                                   22.5
+                                  ],
+                                  "s": {
+                                   "color": "rgb(51, 129, 255)",
+                                   "fontFamily": "\"Font Awesome 6 Pro\"",
+                                   "fontSize": "14px",
+                                   "fontWeight": "900",
+                                   "lineHeight": "14px",
+                                   "float": "right",
+                                   "margin": "0px 0px 0px 15px",
+                                   "cursor": "pointer"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"\"",
+                                    "font": "\"Font Awesome 6 Pro\"",
+                                    "size": "14px",
+                                    "weight": "900",
+                                    "color": "rgb(51, 129, 255)",
+                                    "display": "inline",
+                                    "w": "auto",
+                                    "h": "auto"
+                                   }
+                                  }
+                                 },
+                                 {
+                                  "t": "span",
+                                  "key": "EnrollmentCreateCredentials_PasswordHelp",
+                                  "role": "img",
+                                  "label": "HELP",
+                                  "id": "EnrollmentCreateCredentials_PasswordHelp",
+                                  "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                  "box": [
+                                   627.89,
+                                   468.33,
+                                   14,
+                                   22.5
+                                  ],
+                                  "s": {
+                                   "color": "rgb(51, 129, 255)",
+                                   "fontFamily": "\"Font Awesome 6 Pro\"",
+                                   "fontSize": "14px",
+                                   "fontWeight": "900",
+                                   "lineHeight": "14px",
+                                   "float": "right",
+                                   "margin": "0px 0px 0px 15px",
+                                   "cursor": "pointer"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"\"",
+                                    "font": "\"Font Awesome 6 Pro\"",
+                                    "size": "14px",
+                                    "weight": "900",
+                                    "color": "rgb(51, 129, 255)",
+                                    "display": "inline",
+                                    "w": "auto",
+                                    "h": "auto"
+                                   }
+                                  }
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "div",
+                                "cls": "editor-field",
+                                "box": [
+                                 50.67,
+                                 490.83,
+                                 591.22,
+                                 40
+                                ],
+                                "k": [
+                                 {
+                                  "t": "span",
+                                  "cls": "k-input k-textbox editor-control",
+                                  "box": [
+                                   50.67,
+                                   490.83,
+                                   591.22,
+                                   40
+                                  ],
+                                  "s": {
+                                   "color": "rgb(43, 58, 68)",
+                                   "fontSize": "16px",
+                                   "lineHeight": "22.8571px",
+                                   "display": "inline-flex",
+                                   "alignItems": "stretch",
+                                   "position": "relative",
+                                   "padding": "4px 0px 4px 10px",
+                                   "backgroundColor": "rgb(255, 255, 255)",
+                                   "borderRadius": "5px",
+                                   "overflow": "hidden",
+                                   "verticalAlign": "middle",
+                                   "top": "0px",
+                                   "right": "0px",
+                                   "bottom": "0px",
+                                   "left": "0px",
+                                   "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                  },
+                                  "k": [
+                                   {
+                                    "t": "input",
+                                    "key": "EnrollmentCreateCredentials_Password",
+                                    "id": "EnrollmentCreateCredentials_Password",
+                                    "cls": "editor-control k-input-inner",
+                                    "box": [
+                                     61.33,
+                                     495.5,
+                                     542.89,
+                                     30
+                                    ],
+                                    "s": {
+                                     "position": "relative",
+                                     "margin": "0px 37px 0px 0px",
+                                     "padding": "2.5px 5px",
+                                     "cursor": "text",
+                                     "overflow": "clip",
+                                     "top": "0px",
+                                     "right": "0px",
+                                     "bottom": "0px",
+                                     "left": "0px"
+                                    },
+                                    "type": "password",
+                                    "name": "EnrollmentCreateCredentials.Password"
+                                   },
+                                   {
+                                    "t": "span",
+                                    "key": "EnrollmentCreateCredentials_PasswordVisibilityToggle",
+                                    "id": "EnrollmentCreateCredentials_PasswordVisibilityToggle",
+                                    "cls": "textbox-combo-icon clickable",
+                                    "box": [
+                                     609.22,
+                                     491.5,
+                                     32,
+                                     30
+                                    ],
+                                    "s": {
+                                     "color": "rgb(255, 255, 255)",
+                                     "lineHeight": "30px",
+                                     "textAlign": "center",
+                                     "position": "absolute",
+                                     "cursor": "pointer",
+                                     "top": "0px",
+                                     "right": "0px",
+                                     "bottom": "8.66667px",
+                                     "left": "557.885px"
+                                    },
+                                    "k": [
+                                     {
+                                      "t": "i",
+                                      "key": "EnrollmentCreateCredentials_PasswordVisibilityToggleIcon",
+                                      "role": "button",
+                                      "label": "Password visibility toggle",
+                                      "id": "EnrollmentCreateCredentials_PasswordVisibilityToggleIcon",
+                                      "cls": "k-icon fa-solid fa-eye-slash",
+                                      "box": [
+                                       609.22,
+                                       491.5,
+                                       32,
+                                       32
+                                      ],
+                                      "s": {
+                                       "color": "rgb(43, 58, 68)",
+                                       "fontFamily": "\"Font Awesome 6 Pro\"",
+                                       "fontWeight": "900",
+                                       "lineHeight": "16px",
+                                       "display": "inline-block",
+                                       "padding": "16px",
+                                       "cursor": "pointer"
+                                      },
+                                      "pseudo": {
+                                       "before": {
+                                        "content": "\"\"",
+                                        "font": "\"Font Awesome 6 Pro\"",
+                                        "size": "12px",
+                                        "weight": "900",
+                                        "color": "rgb(43, 58, 68)",
+                                        "display": "block",
+                                        "w": "15px",
+                                        "h": "12px",
+                                        "position": "absolute"
+                                       }
+                                      }
+                                     }
+                                    ]
+                                   }
+                                  ]
+                                 },
+                                 {
+                                  "t": "span",
+                                  "key": "EnrollmentCreateCredentials_Password_validationMessage",
+                                  "id": "EnrollmentCreateCredentials_Password_validationMessage",
+                                  "cls": "k-invalid-msg",
+                                  "box": [
+                                   641.89,
+                                   501.79,
+                                   0,
+                                   15.33
+                                  ]
+                                 }
+                                ]
+                               }
+                              ]
+                             },
+                             {
+                              "t": "div",
+                              "key": "EnrollmentCreateCredentials.PasswordConfirmation_parent",
+                              "id": "EnrollmentCreateCredentials.PasswordConfirmation_parent",
+                              "cls": "col-md-4 editor-col",
+                              "box": [
+                               656.89,
+                               468.33,
+                               606.22,
+                               92.5
+                              ],
+                              "s": {
+                               "position": "relative",
+                               "float": "left",
+                               "padding": "0px 15px 30px 0px",
+                               "top": "0px",
+                               "right": "0px",
+                               "bottom": "0px",
+                               "left": "0px"
+                              },
+                              "k": [
+                               {
+                                "t": "div",
+                                "cls": "editor-label",
+                                "box": [
+                                 656.89,
+                                 468.33,
+                                 591.22,
+                                 22.5
+                                ],
+                                "s": {
+                                 "fontSize": "16px",
+                                 "fontWeight": "700",
+                                 "lineHeight": "16px",
+                                 "display": "flex"
+                                },
+                                "k": [
+                                 {
+                                  "t": "span",
+                                  "key": "button-confirm-password-is-a-required-f",
+                                  "label": "Confirm Password is a required field.",
+                                  "cls": "clickable editor-req-field fa-solid fa-asterisk",
+                                  "box": [
+                                   656.89,
+                                   468.33,
+                                   14.75,
+                                   22.5
+                                  ],
+                                  "s": {
+                                   "color": "rgb(203, 26, 198)",
+                                   "fontFamily": "\"Font Awesome 6 Pro\"",
+                                   "fontSize": "13px",
+                                   "fontWeight": "900",
+                                   "lineHeight": "13px",
+                                   "padding": "0px 5px 0px 0px",
+                                   "cursor": "pointer"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"*\"",
+                                    "font": "\"Font Awesome 6 Pro\"",
+                                    "size": "13px",
+                                    "weight": "900",
+                                    "color": "rgb(203, 26, 198)",
+                                    "display": "inline",
+                                    "w": "auto",
+                                    "h": "auto"
+                                   }
+                                  }
+                                 },
+                                 {
+                                  "t": "label",
+                                  "key": "EnrollmentCreateCredentials_PasswordConfirmationLabel",
+                                  "label": "Confirm Password",
+                                  "id": "EnrollmentCreateCredentials_PasswordConfirmationLabel",
+                                  "box": [
+                                   671.64,
+                                   468.33,
+                                   547.47,
+                                   18
+                                  ],
+                                  "s": {
+                                   "color": "rgb(43, 58, 68)",
+                                   "fontFamily": "Arial, sans-serif",
+                                   "lineHeight": "18px",
+                                   "whiteSpace": "nowrap",
+                                   "margin": "0px 0px 4.5px",
+                                   "cursor": "default",
+                                   "overflow": "hidden"
+                                  },
+                                  "runs": [
+                                   {
+                                    "x": "Confirm Password"
+                                   }
+                                  ]
+                                 },
+                                 {
+                                  "t": "span",
+                                  "key": "EnrollmentCreateCredentials_PasswordConfirmationHelp",
+                                  "role": "img",
+                                  "label": "HELP",
+                                  "id": "EnrollmentCreateCredentials_PasswordConfirmationHelp",
+                                  "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                  "box": [
+                                   1234.1,
+                                   468.33,
+                                   14,
+                                   22.5
+                                  ],
+                                  "s": {
+                                   "color": "rgb(51, 129, 255)",
+                                   "fontFamily": "\"Font Awesome 6 Pro\"",
+                                   "fontSize": "14px",
+                                   "fontWeight": "900",
+                                   "lineHeight": "14px",
+                                   "float": "right",
+                                   "margin": "0px 0px 0px 15px",
+                                   "cursor": "pointer"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"\"",
+                                    "font": "\"Font Awesome 6 Pro\"",
+                                    "size": "14px",
+                                    "weight": "900",
+                                    "color": "rgb(51, 129, 255)",
+                                    "display": "inline",
+                                    "w": "auto",
+                                    "h": "auto"
+                                   }
+                                  }
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "div",
+                                "cls": "editor-field",
+                                "box": [
+                                 656.89,
+                                 490.83,
+                                 591.22,
+                                 40
+                                ],
+                                "k": [
+                                 {
+                                  "t": "span",
+                                  "cls": "k-input k-textbox editor-control",
+                                  "box": [
+                                   656.89,
+                                   490.83,
+                                   591.22,
+                                   40
+                                  ],
+                                  "s": {
+                                   "color": "rgb(43, 58, 68)",
+                                   "fontSize": "16px",
+                                   "lineHeight": "22.8571px",
+                                   "display": "inline-flex",
+                                   "alignItems": "stretch",
+                                   "position": "relative",
+                                   "padding": "4px 0px 4px 10px",
+                                   "backgroundColor": "rgb(255, 255, 255)",
+                                   "borderRadius": "5px",
+                                   "overflow": "hidden",
+                                   "verticalAlign": "middle",
+                                   "top": "0px",
+                                   "right": "0px",
+                                   "bottom": "0px",
+                                   "left": "0px",
+                                   "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                  },
+                                  "k": [
+                                   {
+                                    "t": "input",
+                                    "key": "EnrollmentCreateCredentials_PasswordConfirmation",
+                                    "id": "EnrollmentCreateCredentials_PasswordConfirmation",
+                                    "cls": "editor-control k-input-inner",
+                                    "box": [
+                                     667.55,
+                                     495.5,
+                                     542.89,
+                                     30
+                                    ],
+                                    "s": {
+                                     "position": "relative",
+                                     "margin": "0px 37px 0px 0px",
+                                     "padding": "2.5px 5px",
+                                     "cursor": "text",
+                                     "overflow": "clip",
+                                     "top": "0px",
+                                     "right": "0px",
+                                     "bottom": "0px",
+                                     "left": "0px"
+                                    },
+                                    "type": "password",
+                                    "name": "EnrollmentCreateCredentials.PasswordConfirmation"
+                                   },
+                                   {
+                                    "t": "span",
+                                    "key": "EnrollmentCreateCredentials_PasswordConfirmationVisibilityToggle",
+                                    "id": "EnrollmentCreateCredentials_PasswordConfirmationVisibilityToggle",
+                                    "cls": "textbox-combo-icon clickable",
+                                    "box": [
+                                     1215.44,
+                                     491.5,
+                                     32,
+                                     30
+                                    ],
+                                    "s": {
+                                     "color": "rgb(255, 255, 255)",
+                                     "lineHeight": "30px",
+                                     "textAlign": "center",
+                                     "position": "absolute",
+                                     "cursor": "pointer",
+                                     "top": "0px",
+                                     "right": "0px",
+                                     "bottom": "8.66667px",
+                                     "left": "557.885px"
+                                    },
+                                    "k": [
+                                     {
+                                      "t": "i",
+                                      "key": "EnrollmentCreateCredentials_PasswordConfirmationVisibilityToggleIcon",
+                                      "role": "button",
+                                      "label": "Password visibility toggle",
+                                      "id": "EnrollmentCreateCredentials_PasswordConfirmationVisibilityToggleIcon",
+                                      "cls": "k-icon fa-solid fa-eye-slash",
+                                      "box": [
+                                       1215.44,
+                                       491.5,
+                                       32,
+                                       32
+                                      ],
+                                      "s": {
+                                       "color": "rgb(43, 58, 68)",
+                                       "fontFamily": "\"Font Awesome 6 Pro\"",
+                                       "fontWeight": "900",
+                                       "lineHeight": "16px",
+                                       "display": "inline-block",
+                                       "padding": "16px",
+                                       "cursor": "pointer"
+                                      },
+                                      "pseudo": {
+                                       "before": {
+                                        "content": "\"\"",
+                                        "font": "\"Font Awesome 6 Pro\"",
+                                        "size": "12px",
+                                        "weight": "900",
+                                        "color": "rgb(43, 58, 68)",
+                                        "display": "block",
+                                        "w": "15px",
+                                        "h": "12px",
+                                        "position": "absolute"
+                                       }
+                                      }
+                                     }
+                                    ]
+                                   }
+                                  ]
+                                 },
+                                 {
+                                  "t": "span",
+                                  "key": "EnrollmentCreateCredentials_PasswordConfirmation_validationMessage",
+                                  "id": "EnrollmentCreateCredentials_PasswordConfirmation_validationMessage",
+                                  "cls": "k-invalid-msg",
+                                  "box": [
+                                   1248.1,
+                                   501.79,
+                                   0,
+                                   15.33
+                                  ]
+                                 }
+                                ]
+                               }
+                              ]
+                             },
+                             {
+                              "t": "div",
+                              "key": "EnrollmentCreateCredentials.ProviderReference_parent",
+                              "id": "EnrollmentCreateCredentials.ProviderReference_parent",
+                              "cls": "col-md-8 editor-col editor-clear",
+                              "box": [
+                               50.67,
+                               560.83,
+                               1212.44,
+                               101.5
+                              ],
+                              "s": {
+                               "position": "relative",
+                               "float": "left",
+                               "padding": "0px 15px 30px 0px",
+                               "top": "0px",
+                               "right": "0px",
+                               "bottom": "0px",
+                               "left": "0px"
+                              },
+                              "k": [
+                               {
+                                "t": "div",
+                                "cls": "editor-label",
+                                "box": [
+                                 50.67,
+                                 560.83,
+                                 1197.44,
+                                 22.5
+                                ],
+                                "s": {
+                                 "fontSize": "16px",
+                                 "fontWeight": "700",
+                                 "lineHeight": "16px",
+                                 "display": "flex"
+                                },
+                                "k": [
+                                 {
+                                  "t": "label",
+                                  "key": "EnrollmentCreateCredentials_ProviderReferenceLabel",
+                                  "label": "Provider Reference",
+                                  "id": "EnrollmentCreateCredentials_ProviderReferenceLabel",
+                                  "box": [
+                                   50.67,
+                                   560.83,
+                                   1168.44,
+                                   18
+                                  ],
+                                  "s": {
+                                   "color": "rgb(43, 58, 68)",
+                                   "fontFamily": "Arial, sans-serif",
+                                   "lineHeight": "18px",
+                                   "whiteSpace": "nowrap",
+                                   "margin": "0px 0px 4.5px",
+                                   "cursor": "default",
+                                   "overflow": "hidden"
+                                  },
+                                  "runs": [
+                                   {
+                                    "x": "Provider Reference"
+                                   }
+                                  ]
+                                 },
+                                 {
+                                  "t": "span",
+                                  "key": "EnrollmentCreateCredentials_ProviderReferenceHelp",
+                                  "role": "img",
+                                  "label": "HELP",
+                                  "id": "EnrollmentCreateCredentials_ProviderReferenceHelp",
+                                  "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                  "box": [
+                                   1234.1,
+                                   560.83,
+                                   14,
+                                   22.5
+                                  ],
+                                  "s": {
+                                   "color": "rgb(51, 129, 255)",
+                                   "fontFamily": "\"Font Awesome 6 Pro\"",
+                                   "fontSize": "14px",
+                                   "fontWeight": "900",
+                                   "lineHeight": "14px",
+                                   "float": "right",
+                                   "margin": "0px 0px 0px 15px",
+                                   "cursor": "pointer"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"\"",
+                                    "font": "\"Font Awesome 6 Pro\"",
+                                    "size": "14px",
+                                    "weight": "900",
+                                    "color": "rgb(51, 129, 255)",
+                                    "display": "inline",
+                                    "w": "auto",
+                                    "h": "auto"
+                                   }
+                                  }
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "div",
+                                "cls": "editor-field",
+                                "box": [
+                                 50.67,
+                                 583.33,
+                                 1197.44,
+                                 40
+                                ],
+                                "k": [
+                                 {
+                                  "t": "span",
+                                  "cls": "k-input k-textbox editor-control",
+                                  "box": [
+                                   50.67,
+                                   583.33,
+                                   1197.44,
+                                   40
+                                  ],
+                                  "s": {
+                                   "color": "rgb(43, 58, 68)",
+                                   "fontSize": "16px",
+                                   "lineHeight": "22.8571px",
+                                   "display": "inline-flex",
+                                   "alignItems": "stretch",
+                                   "position": "relative",
+                                   "padding": "4px 0px 4px 10px",
+                                   "backgroundColor": "rgb(255, 255, 255)",
+                                   "borderRadius": "5px",
+                                   "overflow": "hidden",
+                                   "verticalAlign": "middle",
+                                   "top": "0px",
+                                   "right": "0px",
+                                   "bottom": "0px",
+                                   "left": "0px",
+                                   "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                   "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                  },
+                                  "k": [
+                                   {
+                                    "t": "input",
+                                    "key": "EnrollmentCreateCredentials_ProviderReference",
+                                    "id": "EnrollmentCreateCredentials_ProviderReference",
+                                    "cls": "editor-control k-input-inner",
+                                    "box": [
+                                     61.33,
+                                     588,
+                                     1149.1,
+                                     30
+                                    ],
+                                    "s": {
+                                     "position": "relative",
+                                     "margin": "0px 37px 0px 0px",
+                                     "padding": "2.5px 5px",
+                                     "cursor": "text",
+                                     "overflow": "clip",
+                                     "top": "0px",
+                                     "right": "0px",
+                                     "bottom": "0px",
+                                     "left": "0px"
+                                    },
+                                    "type": "text",
+                                    "name": "EnrollmentCreateCredentials.ProviderReference"
+                                   }
+                                  ]
+                                 },
+                                 {
+                                  "t": "span",
+                                  "key": "EnrollmentCreateCredentials_ProviderReference_validationMessage",
+                                  "id": "EnrollmentCreateCredentials_ProviderReference_validationMessage",
+                                  "cls": "k-invalid-msg",
+                                  "box": [
+                                   1248.1,
+                                   594.29,
+                                   0,
+                                   15.33
+                                  ]
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "div",
+                                "key": "textCounter",
+                                "id": "textCounter",
+                                "box": [
+                                 1248.1,
+                                 632.33,
+                                 0,
+                                 0
+                                ],
+                                "s": {
+                                 "fontSize": "12px",
+                                 "lineHeight": "12px",
+                                 "float": "right",
+                                 "margin": "9px 0px 0px"
+                                }
+                               }
+                              ]
+                             },
+                             {
+                              "t": "div",
+                              "cls": "content-panel-bdy",
+                              "box": [
+                               50.67,
+                               662.33,
+                               1818.67,
+                               137.5
+                              ],
+                              "s": {
+                               "padding": "15px 0px 0px"
+                              },
+                              "pseudo": {
+                               "before": {
+                                "content": "\" \"",
+                                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                                "size": "14px",
+                                "weight": "400",
+                                "color": "rgb(61, 61, 61)",
+                                "display": "table",
+                                "w": "0px",
+                                "h": "0px"
+                               },
+                               "after": {
+                                "content": "\" \"",
+                                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                                "size": "14px",
+                                "weight": "400",
+                                "color": "rgb(61, 61, 61)",
+                                "display": "table",
+                                "w": "0px",
+                                "h": "0px"
+                               }
+                              },
+                              "k": [
+                               {
+                                "t": "div",
+                                "cls": "panel-body",
+                                "box": [
+                                 50.67,
+                                 677.33,
+                                 1818.67,
+                                 122.5
+                                ],
+                                "s": {
+                                 "padding": "20px 10px 10px"
+                                },
+                                "pseudo": {
+                                 "before": {
+                                  "content": "\" \"",
+                                  "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                                  "size": "14px",
+                                  "weight": "400",
+                                  "color": "rgb(61, 61, 61)",
+                                  "display": "table",
+                                  "w": "0px",
+                                  "h": "0px"
+                                 },
+                                 "after": {
+                                  "content": "\" \"",
+                                  "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                                  "size": "14px",
+                                  "weight": "400",
+                                  "color": "rgb(61, 61, 61)",
+                                  "display": "table",
+                                  "w": "0px",
+                                  "h": "0px"
+                                 }
+                                },
+                                "k": [
+                                 {
+                                  "t": "div",
+                                  "key": "Provider.ChangeOfOwnership.IsSecurePortalChowRequired_parent",
+                                  "id": "Provider.ChangeOfOwnership.IsSecurePortalChowRequired_parent",
+                                  "cls": "col-md-4 editor-col editor-clear",
+                                  "box": [
+                                   60.67,
+                                   697.33,
+                                   599.55,
+                                   92.5
+                                  ],
+                                  "s": {
+                                   "position": "relative",
+                                   "float": "left",
+                                   "padding": "0px 15px 30px 0px",
+                                   "top": "0px",
+                                   "right": "0px",
+                                   "bottom": "0px",
+                                   "left": "0px"
+                                  },
+                                  "k": [
+                                   {
+                                    "t": "div",
+                                    "cls": "editor-label",
+                                    "box": [
+                                     60.67,
+                                     697.33,
+                                     584.55,
+                                     22.5
+                                    ],
+                                    "s": {
+                                     "fontSize": "16px",
+                                     "fontWeight": "700",
+                                     "lineHeight": "16px",
+                                     "display": "flex"
+                                    },
+                                    "k": [
+                                     {
+                                      "t": "span",
+                                      "key": "button-do-you-need-to-change-ownership--2",
+                                      "label": "Do you need to change ownership? is a required field.",
+                                      "cls": "clickable editor-req-field fa-solid fa-asterisk",
+                                      "box": [
+                                       60.67,
+                                       697.33,
+                                       14.75,
+                                       22.5
+                                      ],
+                                      "s": {
+                                       "color": "rgb(203, 26, 198)",
+                                       "fontFamily": "\"Font Awesome 6 Pro\"",
+                                       "fontSize": "13px",
+                                       "fontWeight": "900",
+                                       "lineHeight": "13px",
+                                       "padding": "0px 5px 0px 0px",
+                                       "cursor": "pointer"
+                                      },
+                                      "pseudo": {
+                                       "before": {
+                                        "content": "\"*\"",
+                                        "font": "\"Font Awesome 6 Pro\"",
+                                        "size": "13px",
+                                        "weight": "900",
+                                        "color": "rgb(203, 26, 198)",
+                                        "display": "inline",
+                                        "w": "auto",
+                                        "h": "auto"
+                                       }
+                                      }
+                                     },
+                                     {
+                                      "t": "label",
+                                      "key": "Provider_ChangeOfOwnership_IsSecurePortalChowRequiredLabel",
+                                      "label": "Do you need to change ownership?",
+                                      "id": "Provider_ChangeOfOwnership_IsSecurePortalChowRequiredLabel",
+                                      "box": [
+                                       75.42,
+                                       697.33,
+                                       540.8,
+                                       18
+                                      ],
+                                      "s": {
+                                       "color": "rgb(43, 58, 68)",
+                                       "fontFamily": "Arial, sans-serif",
+                                       "lineHeight": "18px",
+                                       "whiteSpace": "nowrap",
+                                       "margin": "0px 0px 4.5px",
+                                       "cursor": "default",
+                                       "overflow": "hidden"
+                                      },
+                                      "runs": [
+                                       {
+                                        "x": "Do you need to change ownership?"
+                                       }
+                                      ]
+                                     },
+                                     {
+                                      "t": "span",
+                                      "key": "Provider_ChangeOfOwnership_IsSecurePortalChowRequiredHelp",
+                                      "role": "img",
+                                      "label": "HELP",
+                                      "id": "Provider_ChangeOfOwnership_IsSecurePortalChowRequiredHelp",
+                                      "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                      "box": [
+                                       631.22,
+                                       697.33,
+                                       14,
+                                       22.5
+                                      ],
+                                      "s": {
+                                       "color": "rgb(51, 129, 255)",
+                                       "fontFamily": "\"Font Awesome 6 Pro\"",
+                                       "fontSize": "14px",
+                                       "fontWeight": "900",
+                                       "lineHeight": "14px",
+                                       "float": "right",
+                                       "margin": "0px 0px 0px 15px",
+                                       "cursor": "pointer"
+                                      },
+                                      "pseudo": {
+                                       "before": {
+                                        "content": "\"\"",
+                                        "font": "\"Font Awesome 6 Pro\"",
+                                        "size": "14px",
+                                        "weight": "900",
+                                        "color": "rgb(51, 129, 255)",
+                                        "display": "inline",
+                                        "w": "auto",
+                                        "h": "auto"
+                                       }
+                                      }
+                                     }
+                                    ]
+                                   },
+                                   {
+                                    "t": "div",
+                                    "cls": "editor-field",
+                                    "box": [
+                                     60.67,
+                                     719.83,
+                                     584.55,
+                                     40
+                                    ],
+                                    "k": [
+                                     {
+                                      "t": "div",
+                                      "cls": "assoc-box-radio-btn-list-horz",
+                                      "box": [
+                                       60.67,
+                                       719.83,
+                                       584.55,
+                                       40
+                                      ],
+                                      "s": {
+                                       "lineHeight": "34px",
+                                       "padding": "0px 8px",
+                                       "borderRadius": "5px",
+                                       "borderTop": "0.666667px solid rgb(206, 212, 218)",
+                                       "borderRight": "0.666667px solid rgb(206, 212, 218)",
+                                       "borderBottom": "0.666667px solid rgb(206, 212, 218)",
+                                       "borderLeft": "0.666667px solid rgb(206, 212, 218)"
+                                      },
+                                      "k": [
+                                       {
+                                        "t": "span",
+                                        "cls": "list-item",
+                                        "box": [
+                                         69.33,
+                                         720.5,
+                                         89.1,
+                                         35.88
+                                        ],
+                                        "s": {
+                                         "display": "inline-block",
+                                         "padding": "0px 35px 0px 0px"
+                                        },
+                                        "k": [
+                                         {
+                                          "t": "input",
+                                          "key": "Provider_ChangeOfOwnership_IsSecurePortalChowRequired_IDYes",
+                                          "id": "Provider_ChangeOfOwnership_IsSecurePortalChowRequired_IDYes",
+                                          "cls": "k-radio",
+                                          "box": [
+                                           69.33,
+                                           728.88,
+                                           18,
+                                           18
+                                          ],
+                                          "s": {
+                                           "color": "rgb(43, 58, 68)",
+                                           "fontFamily": "Arial",
+                                           "fontSize": "13.3333px",
+                                           "lineHeight": "normal",
+                                           "display": "inline-block",
+                                           "position": "relative",
+                                           "margin": "-2px 0px 0px",
+                                           "backgroundColor": "rgb(255, 255, 255)",
+                                           "borderRadius": "50%",
+                                           "cursor": "pointer",
+                                           "zIndex": "1",
+                                           "verticalAlign": "middle",
+                                           "top": "0px",
+                                           "right": "0px",
+                                           "bottom": "0px",
+                                           "left": "0px",
+                                           "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                           "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                           "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                           "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                          },
+                                          "pseudo": {
+                                           "before": {
+                                            "content": "\"\"",
+                                            "font": "Arial",
+                                            "size": "8.75px",
+                                            "weight": "400",
+                                            "color": "rgb(43, 58, 68)",
+                                            "display": "block",
+                                            "w": "16.6667px",
+                                            "h": "16.6667px"
+                                           }
+                                          },
+                                          "type": "radio",
+                                          "name": "Provider.ChangeOfOwnership.IsSecurePortalChowRequired.ID",
+                                          "value": "Yes",
+                                          "checked": false
+                                         },
+                                         {
+                                          "t": "label",
+                                          "cls": "k-radio-label",
+                                          "box": [
+                                           97.33,
+                                           721.38,
+                                           26.1,
+                                           34
+                                          ],
+                                          "s": {
+                                           "fontSize": "16px",
+                                           "display": "inline-flex",
+                                           "alignItems": "flex-start",
+                                           "gap": "2.5px",
+                                           "position": "relative",
+                                           "margin": "1px 0px 0px 10px",
+                                           "cursor": "pointer",
+                                           "verticalAlign": "middle",
+                                           "top": "-1px",
+                                           "right": "0px",
+                                           "bottom": "1px",
+                                           "left": "0px"
+                                          },
+                                          "runs": [
+                                           {
+                                            "x": "Yes"
+                                           }
+                                          ]
+                                         }
+                                        ]
+                                       },
+                                       {
+                                        "t": "span",
+                                        "cls": "list-item",
+                                        "box": [
+                                         158.44,
+                                         720.5,
+                                         48.46,
+                                         35.88
+                                        ],
+                                        "s": {
+                                         "display": "inline-block"
+                                        },
+                                        "k": [
+                                         {
+                                          "t": "input",
+                                          "key": "Provider_ChangeOfOwnership_IsSecurePortalChowRequired_IDNo",
+                                          "id": "Provider_ChangeOfOwnership_IsSecurePortalChowRequired_IDNo",
+                                          "cls": "k-radio",
+                                          "box": [
+                                           158.44,
+                                           728.88,
+                                           18,
+                                           18
+                                          ],
+                                          "s": {
+                                           "color": "rgb(43, 58, 68)",
+                                           "fontFamily": "Arial",
+                                           "fontSize": "13.3333px",
+                                           "lineHeight": "normal",
+                                           "display": "inline-block",
+                                           "position": "relative",
+                                           "margin": "-2px 0px 0px",
+                                           "backgroundColor": "rgb(255, 255, 255)",
+                                           "borderRadius": "50%",
+                                           "cursor": "pointer",
+                                           "zIndex": "1",
+                                           "verticalAlign": "middle",
+                                           "top": "0px",
+                                           "right": "0px",
+                                           "bottom": "0px",
+                                           "left": "0px",
+                                           "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                           "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                           "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                           "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                          },
+                                          "pseudo": {
+                                           "before": {
+                                            "content": "\"\"",
+                                            "font": "Arial",
+                                            "size": "8.75px",
+                                            "weight": "400",
+                                            "color": "rgb(43, 58, 68)",
+                                            "display": "block",
+                                            "w": "16.6667px",
+                                            "h": "16.6667px",
+                                            "bg": "rgb(43, 58, 68)"
+                                           }
+                                          },
+                                          "type": "radio",
+                                          "name": "Provider.ChangeOfOwnership.IsSecurePortalChowRequired.ID",
+                                          "value": "No",
+                                          "checked": true
+                                         },
+                                         {
+                                          "t": "label",
+                                          "cls": "k-radio-label",
+                                          "box": [
+                                           186.44,
+                                           721.38,
+                                           20.46,
+                                           34
+                                          ],
+                                          "s": {
+                                           "fontSize": "16px",
+                                           "display": "inline-flex",
+                                           "alignItems": "flex-start",
+                                           "gap": "2.5px",
+                                           "position": "relative",
+                                           "margin": "1px 0px 0px 10px",
+                                           "cursor": "pointer",
+                                           "verticalAlign": "middle",
+                                           "top": "-1px",
+                                           "right": "0px",
+                                           "bottom": "1px",
+                                           "left": "0px"
+                                          },
+                                          "runs": [
+                                           {
+                                            "x": "No"
+                                           }
+                                          ]
+                                         }
+                                        ]
+                                       }
+                                      ]
+                                     },
+                                     {
+                                      "t": "span",
+                                      "key": "Provider_ChangeOfOwnership_IsSecurePortalChowRequired_validationMessage",
+                                      "id": "Provider_ChangeOfOwnership_IsSecurePortalChowRequired_validationMessage",
+                                      "cls": "k-invalid-msg",
+                                      "box": [
+                                       60.67,
+                                       759.83,
+                                       0,
+                                       0
+                                      ]
+                                     }
+                                    ]
+                                   }
+                                  ]
+                                 }
+                                ]
+                               }
+                              ]
+                             }
+                            ]
+                           },
+                           {
+                            "t": "div",
+                            "key": "step2ButtonRow",
+                            "id": "step2ButtonRow",
+                            "box": [
+                             40.67,
+                             809.83,
+                             1838.67,
+                             50
+                            ],
+                            "k": [
+                             {
+                              "t": "div",
+                              "key": "modelEditorButtonRow",
+                              "id": "modelEditorButtonRow",
+                              "cls": "editor-button-row-parent",
+                              "box": [
+                               40.67,
+                               809.83,
+                               1838.67,
+                               48
+                              ],
+                              "s": {
+                               "display": "inline-block",
+                               "maxWidth": "100%",
+                               "padding": "10px 0px 0px"
+                              },
+                              "k": [
+                               {
+                                "t": "div",
+                                "cls": "editor-button-nav-right",
+                                "box": [
+                                 1726.97,
+                                 819.83,
+                                 137.36,
+                                 38
+                                ],
+                                "s": {
+                                 "display": "flex",
+                                 "float": "right",
+                                 "margin": "0px 15px 0px 0px"
+                                },
+                                "k": [
+                                 {
+                                  "t": "input",
+                                  "key": "nextButton",
+                                  "id": "nextButton",
+                                  "cls": "k-button btn-spacer-left primary-button",
+                                  "box": [
+                                   1738.97,
+                                   819.83,
+                                   125.36,
+                                   38
+                                  ],
+                                  "s": {
+                                   "color": "rgb(0, 0, 0)",
+                                   "fontFamily": "Arial, FontAwesome, sans-serif",
+                                   "fontSize": "16px",
+                                   "fontWeight": "700",
+                                   "lineHeight": "16px",
+                                   "textAlign": "center",
+                                   "whiteSpace": "nowrap",
+                                   "display": "flex",
+                                   "justifyContent": "center",
+                                   "alignItems": "center",
+                                   "gap": "2.5px",
+                                   "position": "relative",
+                                   "margin": "0px 0px 0px 12px",
+                                   "padding": "5px 30px",
+                                   "backgroundColor": "rgb(38, 143, 203)",
+                                   "borderRadius": "4px",
+                                   "cursor": "pointer",
+                                   "overflow": "clip",
+                                   "verticalAlign": "middle",
+                                   "top": "0px",
+                                   "right": "0px",
+                                   "bottom": "0px",
+                                   "left": "0px",
+                                   "borderTop": "0.666667px solid rgb(38, 143, 203)",
+                                   "borderRight": "0.666667px solid rgb(38, 143, 203)",
+                                   "borderBottom": "0.666667px solid rgb(0, 0, 0)",
+                                   "borderLeft": "0.666667px solid rgb(38, 143, 203)"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"\"",
+                                    "font": "Arial, FontAwesome, sans-serif",
+                                    "size": "16px",
+                                    "weight": "700",
+                                    "color": "rgb(0, 0, 0)",
+                                    "display": "none",
+                                    "w": "auto",
+                                    "h": "auto",
+                                    "bg": "rgb(0, 0, 0)",
+                                    "position": "absolute"
+                                   },
+                                   "after": {
+                                    "content": "\"\"",
+                                    "font": "Arial, FontAwesome, sans-serif",
+                                    "size": "16px",
+                                    "weight": "700",
+                                    "color": "rgb(0, 0, 0)",
+                                    "display": "none",
+                                    "w": "auto",
+                                    "h": "auto",
+                                    "position": "absolute"
+                                   }
+                                  },
+                                  "type": "button",
+                                  "value": "Register"
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "input",
+                                "key": "prevButton",
+                                "id": "prevButton",
+                                "cls": "k-button float-right btn-spacer-left",
+                                "box": [
+                                 1603.39,
+                                 819.83,
+                                 123.58,
+                                 38
+                                ],
+                                "s": {
+                                 "color": "rgb(0, 98, 255)",
+                                 "fontFamily": "Arial, FontAwesome, sans-serif",
+                                 "fontSize": "16px",
+                                 "lineHeight": "16px",
+                                 "textAlign": "center",
+                                 "whiteSpace": "nowrap",
+                                 "display": "flex",
+                                 "justifyContent": "center",
+                                 "alignItems": "center",
+                                 "gap": "2.5px",
+                                 "position": "relative",
+                                 "float": "right",
+                                 "margin": "0px 0px 0px 12px",
+                                 "padding": "5px 30px",
+                                 "backgroundColor": "rgb(255, 255, 255)",
+                                 "borderRadius": "4px",
+                                 "cursor": "pointer",
+                                 "overflow": "clip",
+                                 "verticalAlign": "middle",
+                                 "top": "0px",
+                                 "right": "0px",
+                                 "bottom": "0px",
+                                 "left": "0px",
+                                 "borderTop": "0.666667px solid rgb(0, 98, 255)",
+                                 "borderRight": "0.666667px solid rgb(0, 98, 255)",
+                                 "borderBottom": "0.666667px solid rgb(0, 98, 255)",
+                                 "borderLeft": "0.666667px solid rgb(0, 98, 255)"
+                                },
+                                "pseudo": {
+                                 "before": {
+                                  "content": "\"\"",
+                                  "font": "Arial, FontAwesome, sans-serif",
+                                  "size": "16px",
+                                  "weight": "400",
+                                  "color": "rgb(0, 98, 255)",
+                                  "display": "none",
+                                  "w": "auto",
+                                  "h": "auto",
+                                  "bg": "rgb(0, 98, 255)",
+                                  "position": "absolute"
+                                 },
+                                 "after": {
+                                  "content": "\"\"",
+                                  "font": "Arial, FontAwesome, sans-serif",
+                                  "size": "16px",
+                                  "weight": "400",
+                                  "color": "rgb(0, 98, 255)",
+                                  "display": "none",
+                                  "w": "auto",
+                                  "h": "auto",
+                                  "position": "absolute"
+                                 }
+                                },
+                                "type": "button",
+                                "value": "Previous"
+                               }
+                              ]
+                             }
+                            ]
+                           }
+                          ]
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ]
+               },
+               {
+                "t": "div",
+                "key": "generalView",
+                "id": "generalView",
+                "box": [
+                 30,
+                 909.5,
+                 1860,
+                 0
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": "footer",
+        "key": "contentinfo",
+        "role": "contentinfo",
+        "box": [
+         0,
+         909.5,
+         1920,
+         118.5
+        ],
+        "s": {
+         "color": "rgb(87, 87, 87)",
+         "fontSize": "12px",
+         "lineHeight": "12px"
+        },
+        "k": [
+         {
+          "t": "div",
+          "cls": "subfooter",
+          "box": [
+           0,
+           909.5,
+           1920,
+           76.5
+          ],
+          "s": {
+           "textAlign": "center",
+           "padding": "25px 0px",
+           "backgroundColor": "rgb(43, 58, 68)"
+          },
+          "k": [
+           {
+            "t": "span",
+            "cls": "subfooter-lbl",
+            "box": [
+             632.65,
+             934.5,
+             71.34,
+             26.5
+            ],
+            "s": {
+             "color": "rgb(255, 255, 255)",
+             "fontSize": "14px",
+             "lineHeight": "14px",
+             "display": "inline-block",
+             "padding": "6.25px 0px"
+            },
+            "runs": [
+             {
+              "x": "Disclaimer"
+             }
+            ]
+           },
+           {
+            "t": "span",
+            "cls": "subfooter-lbl subfooter-lbl-separator",
+            "box": [
+             747.33,
+             934.5,
+             228.7,
+             26.5
+            ],
+            "s": {
+             "color": "rgb(255, 255, 255)",
+             "fontSize": "14px",
+             "lineHeight": "14px",
+             "display": "inline-block",
+             "margin": "0px 40px",
+             "padding": "6.25px 40px",
+             "borderRight": "0.666667px solid rgb(255, 255, 255)",
+             "borderLeft": "0.666667px solid rgb(255, 255, 255)"
+            },
+            "runs": [
+             {
+              "x": "Website Requirements"
+             }
+            ]
+           },
+           {
+            "t": "span",
+            "cls": "subfooter-lbl subfooter-lbl-right-separator",
+            "box": [
+             1019.38,
+             934.5,
+             133.8,
+             26.5
+            ],
+            "s": {
+             "color": "rgb(255, 255, 255)",
+             "fontSize": "14px",
+             "lineHeight": "14px",
+             "display": "inline-block",
+             "margin": "0px 40px 0px 0px",
+             "padding": "6.25px 40px 6.25px 0px",
+             "borderRight": "0.666667px solid rgb(255, 255, 255)"
+            },
+            "runs": [
+             {
+              "x": "Privacy Policy"
+             }
+            ]
+           },
+           {
+            "t": "span",
+            "cls": "subfooter-lbl",
+            "box": [
+             1196.52,
+             934.5,
+             90.82,
+             26.5
+            ],
+            "s": {
+             "color": "rgb(255, 255, 255)",
+             "fontSize": "14px",
+             "lineHeight": "14px",
+             "display": "inline-block",
+             "padding": "6.25px 0px"
+            },
+            "runs": [
+             {
+              "x": "Cookie Policy"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "t": "div",
+          "key": "pageFooter",
+          "id": "pageFooter",
+          "box": [
+           0,
+           986,
+           1920,
+           42
+          ],
+          "k": [
+           {
+            "t": "div",
+            "key": "tenantFooter",
+            "id": "tenantFooter",
+            "box": [
+             0,
+             986,
+             1920,
+             0
+            ],
+            "s": {
+             "backgroundColor": "rgb(0, 0, 0)"
+            }
+           },
+           {
+            "t": "div",
+            "key": "baseFooter",
+            "id": "baseFooter",
+            "cls": "row",
+            "box": [
+             0,
+             986,
+             1920,
+             42
+            ],
+            "s": {
+             "lineHeight": "32px",
+             "display": "flex",
+             "padding": "4px 20px 0px"
+            },
+            "pseudo": {
+             "before": {
+              "content": "\" \"",
+              "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+              "size": "12px",
+              "weight": "400",
+              "color": "rgb(87, 87, 87)",
+              "display": "table",
+              "w": "0px",
+              "h": "38px"
+             },
+             "after": {
+              "content": "\" \"",
+              "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+              "size": "12px",
+              "weight": "400",
+              "color": "rgb(87, 87, 87)",
+              "display": "table",
+              "w": "0px",
+              "h": "38px"
+             }
+            },
+            "k": [
+             {
+              "t": "div",
+              "key": "footerCopyright",
+              "id": "footerCopyright",
+              "box": [
+               20,
+               990,
+               266.77,
+               38
+              ],
+              "s": {
+               "whiteSpace": "nowrap",
+               "overflow": "hidden auto"
+              },
+              "runs": [
+               {
+                "x": "© 2026 Gainwell Technologies. All rights reserved."
+               }
+              ]
+             },
+             {
+              "t": "div",
+              "key": "footerBuild",
+              "id": "footerBuild",
+              "box": [
+               1517.71,
+               990,
+               382.29,
+               38
+              ],
+              "s": {
+               "whiteSpace": "nowrap",
+               "margin": "0px 0px 0px 1230.94px",
+               "overflow": "hidden auto"
+              },
+              "runs": [
+               {
+                "x": "Server:",
+                "b": 1
+               },
+               {
+                "x": " 10.199.153.9 "
+               },
+               {
+                "x": "Build Date:",
+                "b": 1
+               },
+               {
+                "x": " 10/30/2026 3:28:36 AM "
+               },
+               {
+                "x": "v30.0.0.2609",
+                "b": 1
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

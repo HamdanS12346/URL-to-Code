@@ -1,0 +1,146 @@
+{
+  "source": "C:\\UI-specs\\URL-to-Code\\packs\\pe-v1\\screens\\new-enrollment-entry\\reference.png",
+  "source_sha256": "b8c21d7834e1a584c683bcaa62fc6a955b12ab086d78e86ddc79de5b3a5729c6",
+  "source_size": [
+    1920,
+    1080
+  ],
+  "css_mapping": {
+    "assumed_viewport_width": 1920,
+    "css_per_image_pixel": 1.0,
+    "meaning": "实现约定，不证明参考图原始 DPR 或 CSS 视口"
+  },
+  "regions": [
+    {
+      "name": "band-01-new-enrollment-entry",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        62,
+        1920,
+        76
+      ],
+      "normalized_box": [
+        0.0,
+        0.057407,
+        1.0,
+        0.07037
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        62.0,
+        1920.0,
+        76.0
+      ],
+      "selector": "#orientationLandscape > div:nth-of-type(2) > div:nth-of-type(3)",
+      "dom_comparable": true
+    },
+    {
+      "name": "band-02-pagebody",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        138,
+        1920,
+        771
+      ],
+      "normalized_box": [
+        0.0,
+        0.127778,
+        1.0,
+        0.713889
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        138.0,
+        1920.0,
+        771.0
+      ],
+      "selector": "#pageBody",
+      "dom_comparable": true
+    },
+    {
+      "name": "band-03-disclaimer-the-website-is-prov",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        910,
+        1920,
+        119
+      ],
+      "normalized_box": [
+        0.0,
+        0.842593,
+        1.0,
+        0.110185
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        910.0,
+        1920.0,
+        119.0
+      ],
+      "selector": "#orientationLandscape > div:nth-of-type(2) > footer",
+      "dom_comparable": true
+    },
+    {
+      "name": "img-logo-png-v-19-1-64-0",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        50,
+        2,
+        117,
+        57
+      ],
+      "normalized_box": [
+        0.026042,
+        0.001852,
+        0.060937,
+        0.052778
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        50.0,
+        2.0,
+        117.0,
+        57.0
+      ],
+      "dom_comparable": true
+    },
+    {
+      "name": "h1-new-enrollment-entry",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        218,
+        62,
+        165,
+        30
+      ],
+      "normalized_box": [
+        0.113542,
+        0.057407,
+        0.085938,
+        0.027778
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        218.0,
+        62.0,
+        165.0,
+        30.0
+      ],
+      "dom_comparable": true
+    }
+  ],
+  "groups": [],
+  "vertical_scans": [],
+  "input_manifest_sha256": "843dd10b87183b912e799f9324f005e5e47884c958406fa1f1aca93bb71df90c"
+}

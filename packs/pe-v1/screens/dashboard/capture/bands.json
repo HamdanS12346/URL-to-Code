@@ -1,0 +1,24 @@
+[
+ {
+  "sel": "#mcbRowBorder",
+  "tag": "div",
+  "id": "mcbRowBorder",
+  "cls": "row",
+  "x": 0,
+  "y": 62,
+  "w": 1904.67,
+  "h": 1230.73,
+  "label": "mcbrowborder"
+ },
+ {
+  "sel": "#orientationLandscape > div:nth-of-type(2) > footer",
+  "tag": "footer",
+  "id": "",
+  "cls": "",
+  "x": 0,
+  "y": 1292.73,
+  "w": 1904.67,
+  "h": 118.5,
+  "label": "disclaimer-the-website-is-prov"
+ }
+]

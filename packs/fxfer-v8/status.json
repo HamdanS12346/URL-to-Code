@@ -1,0 +1,65 @@
+{
+ "items": {
+  "capture:home": {
+   "status": "done",
+   "at": "2026-11-16T20:37:04.421Z"
+  },
+  "capture:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-16T20:39:41.050Z"
+  },
+  "capture:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-16T20:42:40.863Z"
+  },
+  "capture:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-16T20:44:49.516Z"
+  },
+  "spec:home": {
+   "status": "done",
+   "at": "2026-11-16T20:47:44.002Z",
+   "rounds": 1
+  },
+  "spec:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-16T20:52:21.574Z",
+   "rounds": 1
+  },
+  "spec:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-16T20:56:14.993Z",
+   "rounds": 1
+  },
+  "spec:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-16T21:00:35.005Z",
+   "rounds": 1
+  },
+  "port:home": {
+   "status": "done",
+   "at": "2026-11-16T21:01:03.077Z"
+  },
+  "port:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-16T21:01:20.508Z"
+  },
+  "port:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-16T21:01:27.189Z"
+  },
+  "port:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-16T21:01:37.927Z"
+  },
+  "preflight:kit": {
+   "status": "needs-review",
+   "at": "2026-11-16T21:03:31.939Z",
+   "screen": "file-transfer-configuration",
+   "problems": [
+    "the kit on the raw port (fix it in kits/<kit>, not in the app):",
+    "row-d2: 16.74% off"
+   ]
+  }
+ }
+}

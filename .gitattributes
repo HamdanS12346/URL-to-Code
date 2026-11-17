@@ -1,0 +1,14 @@
+# Keep UI pack artifacts stable across OSes.
+# text=auto avoids treating binaries (png/woff/...) as text.
+packs/** text=auto eol=lf
+
+# Common binary assets inside packs: never normalize
+packs/**/*.png -text
+packs/**/*.jpg -text
+packs/**/*.jpeg -text
+packs/**/*.gif -text
+packs/**/*.woff -text
+packs/**/*.woff2 -text
+packs/**/*.ttf -text
+packs/**/*.eot -text
+packs/**/*.ico -text

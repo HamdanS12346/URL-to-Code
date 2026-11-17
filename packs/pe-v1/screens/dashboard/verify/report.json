@@ -1,0 +1,309 @@
+{
+  "size_delta_px": [
+    0,
+    4
+  ],
+  "bad_pct": 3.42,
+  "mean_abs": 4.63,
+  "worst_band": {
+    "y": 1175,
+    "bad_pct": 6.19
+  },
+  "bands": [
+    {
+      "y": 0,
+      "bad_pct": 3.28
+    },
+    {
+      "y": 235,
+      "bad_pct": 2.9
+    },
+    {
+      "y": 470,
+      "bad_pct": 3.86
+    },
+    {
+      "y": 705,
+      "bad_pct": 1.45
+    },
+    {
+      "y": 940,
+      "bad_pct": 2.84
+    },
+    {
+      "y": 1175,
+      "bad_pct": 6.19
+    },
+    {
+      "y": 1410,
+      "bad_pct": 0
+    }
+  ],
+  "clusters": [
+    {
+      "box": [
+        0,
+        1272,
+        1905,
+        139
+      ],
+      "bad_px": 23170,
+      "css_box": [
+        0,
+        1272,
+        1905,
+        139
+      ],
+      "element": {
+        "el": "span.subfooter-lbl.subfooter-lbl-separator",
+        "text": "Website Requirements",
+        "box": [
+          739,
+          1321,
+          229,
+          27
+        ]
+      }
+    },
+    {
+      "box": [
+        0,
+        144,
+        1032,
+        840
+      ],
+      "bad_px": 23003,
+      "css_box": [
+        0,
+        144,
+        1032,
+        840
+      ],
+      "element": {
+        "el": "div#51c9bb65-b1b8-69e0-e053-4c65a28f8a9e.row.float-left[data-testid=51c9bb65-b1b8-69e0-e053-4c65a28f8a9e]",
+        "text": "Workflow Configuration",
+        "box": [
+          271,
+          431,
+          256,
+          281
+        ]
+      }
+    },
+    {
+      "box": [
+        0,
+        0,
+        1905,
+        384
+      ],
+      "bad_px": 21805,
+      "css_box": [
+        0,
+        0,
+        1905,
+        384
+      ],
+      "element": {
+        "el": "div#internalPortalMessagesInstructions.display-none",
+        "text": "Click Current Messages to view current b",
+        "box": [
+          374,
+          175,
+          1233,
+          19
+        ]
+      }
+    },
+    {
+      "box": [
+        0,
+        1080,
+        1905,
+        168
+      ],
+      "bad_px": 15409,
+      "css_box": [
+        0,
+        1080,
+        1905,
+        168
+      ],
+      "element": {
+        "el": "col",
+        "text": "",
+        "box": [
+          817,
+          1142,
+          272,
+          62
+        ]
+      }
+    },
+    {
+      "box": [
+        1440,
+        480,
+        432,
+        264
+      ],
+      "bad_px": 7374,
+      "css_box": [
+        1440,
+        480,
+        432,
+        264
+      ],
+      "element": {
+        "el": "div.editor-field",
+        "text": "Enter the Last Name.",
+        "box": [
+          1455,
+          609,
+          409,
+          40
+        ]
+      }
+    }
+  ],
+  "worst_crop": "worst.png",
+  "sections": [
+    {
+      "n": 1,
+      "label": "mcbrowborder",
+      "y": 62,
+      "h": 1230.73,
+      "bad_pct": 2.84
+    },
+    {
+      "n": 2,
+      "label": "disclaimer-the-website-is-prov",
+      "y": 1292.73,
+      "h": 118.5,
+      "bad_pct": 9.46
+    }
+  ],
+  "worst_section": {
+    "n": 2,
+    "label": "disclaimer-the-website-is-prov",
+    "y": 1292.73,
+    "h": 118.5,
+    "bad_pct": 9.46
+  },
+  "verdict": "SIZE MISMATCH - fix layout/DPR first",
+  "states": [
+    {
+      "name": "tooltip",
+      "ok": true,
+      "bad_pct": 6.94,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "search",
+      "ok": true,
+      "bad_pct": 7.23,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-open",
+      "ok": true,
+      "bad_pct": 2.74,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-flyout",
+      "ok": true,
+      "bad_pct": 11.27,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-close",
+      "ok": true
+    },
+    {
+      "name": "layout@client",
+      "ok": true,
+      "bad_pct": 3.44,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-open@client",
+      "ok": false,
+      "bad_pct": 3.3,
+      "size_delta_px": [
+        0,
+        0
+      ],
+      "error": "hovering the lower arrow of the side menu does not scroll the list to its last item"
+    },
+    {
+      "name": "menu-flyout@client",
+      "ok": true,
+      "bad_pct": 10.38,
+      "size_delta_px": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "menu-close@client",
+      "ok": true
+    }
+  ],
+  "past_reference_height": [
+    {
+      "el": "div#root",
+      "text": "For the best user experience, please vie",
+      "box": [
+        0,
+        62,
+        1905,
+        1353
+      ]
+    },
+    {
+      "el": "div#footerCopyright",
+      "text": "© 2026 Gainwell Technologies. All rights",
+      "box": [
+        20,
+        1377,
+        267,
+        38
+      ]
+    },
+    {
+      "el": "div#footerBuild",
+      "text": "Server: 10.199.153.38 Build Date: 10/30/",
+      "box": [
+        1496,
+        1377,
+        389,
+        38
+      ]
+    }
+  ],
+  "bands_note": "the rebuild has 0 top-level bands, the original 2: section heights not compared",
+  "motion": [
+    {
+      "id": "M01",
+      "kind": "css-animation",
+      "ok": true,
+      "detail": "animation autoFillEnd"
+    }
+  ]
+}

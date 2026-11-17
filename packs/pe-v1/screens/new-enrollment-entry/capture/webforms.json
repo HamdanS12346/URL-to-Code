@@ -1,0 +1,1082 @@
+{
+ "isWebForms": false,
+ "validators": [],
+ "summaries": [],
+ "updatePanels": null,
+ "components": [],
+ "grids": {},
+ "hiddenFields": [
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "ApplicationType",
+   "id": "ApplicationType",
+   "size": 13,
+   "value": "NewEnrollment"
+  },
+  {
+   "name": "IsCaqhReadOnlyActive",
+   "id": "IsCaqhReadOnlyActive",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "IsCreatedFromInternalPortal",
+   "id": "IsCreatedFromInternalPortal",
+   "size": 4,
+   "value": "True"
+  },
+  {
+   "name": "IsChowEnrollment",
+   "id": "IsChowEnrollment",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "",
+   "id": "HomeUrl",
+   "size": 46,
+   "value": "https://uximc.mms.tst.pgwcloud.net/Home/Index/"
+  },
+  {
+   "name": "EnrollmentPreChecklist.EnrollmentType.ID",
+   "id": "EnrollmentPreChecklist_EnrollmentType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentPreChecklist.EnrollmentType.Name",
+   "id": "EnrollmentPreChecklist_EnrollmentType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentPreChecklist.EnrollmentType.DisplayFormat",
+   "id": "EnrollmentPreChecklist_EnrollmentType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "EnrollmentPreChecklist.ProviderType.ID",
+   "id": "EnrollmentPreChecklist_ProviderType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentPreChecklist.ProviderType.Name",
+   "id": "EnrollmentPreChecklist_ProviderType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentPreChecklist.Specialty.ID",
+   "id": "EnrollmentPreChecklist_Specialty_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentPreChecklist.Specialty.Name",
+   "id": "EnrollmentPreChecklist_Specialty_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentPreChecklist.Specialty.DisplayFormat",
+   "id": "EnrollmentPreChecklist_Specialty_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "EnrollmentPreChecklist.ProgramType.ID",
+   "id": "EnrollmentPreChecklist_ProgramType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentPreChecklist.ProgramType.Name",
+   "id": "EnrollmentPreChecklist_ProgramType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentPreChecklist.ProgramType.DisplayFormat",
+   "id": "EnrollmentPreChecklist_ProgramType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "EnrollmentApplicationId",
+   "id": "EnrollmentApplicationId",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Status.ID",
+   "id": "Status_ID",
+   "size": 1,
+   "value": "4"
+  },
+  {
+   "name": "Status.Name",
+   "id": "Status_Name",
+   "size": 7,
+   "value": "Partial"
+  },
+  {
+   "name": "Status.DisplayFormat",
+   "id": "Status_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "CurrentStep",
+   "id": "CurrentStep",
+   "size": 1,
+   "value": "3"
+  },
+  {
+   "name": "ProviderOperationType",
+   "id": "ProviderOperationType",
+   "size": 1,
+   "value": "0"
+  },
+  {
+   "name": "EnrollmentCriteria.EnrollmentType.ID",
+   "id": "EnrollmentCriteria_EnrollmentType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentCriteria.EnrollmentType.Name",
+   "id": "EnrollmentCriteria_EnrollmentType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentCriteria.EnrollmentType.DisplayFormat",
+   "id": "EnrollmentCriteria_EnrollmentType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "EnrollmentCriteria.ProviderType.ID",
+   "id": "EnrollmentCriteria_ProviderType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentCriteria.ProviderType.Name",
+   "id": "EnrollmentCriteria_ProviderType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "CreationDate",
+   "id": "CreationDate",
+   "size": 20,
+   "value": "1/1/1900 12:00:00 AM"
+  },
+  {
+   "name": "RiskLevel",
+   "id": "RiskLevel",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ReasonCode",
+   "id": "ReasonCode",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "IsCredentialingEnabled",
+   "id": "IsCredentialingEnabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "IsDuplicateEnrollmentAllowed",
+   "id": "IsDuplicateEnrollmentAllowed",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "IsPreviouslyRegisteredProvider",
+   "id": "IsPreviouslyRegisteredProvider",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "IsCAQHQuestionEnabled",
+   "id": "IsCAQHQuestionEnabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "IsCAQHEnrollment",
+   "id": "IsCAQHEnrollment",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "IsCaqhReadOnlyActive",
+   "id": "IsCaqhReadOnlyActive",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "EnrollmentAllowed",
+   "id": "EnrollmentAllowed",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "MedicareCrossoverOnly",
+   "id": "MedicareCrossoverOnly",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "AllowReenrollmentRequest",
+   "id": "AllowReenrollmentRequest",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "IsSpecialtyEnrollmentAllowed",
+   "id": "IsSpecialtyEnrollmentAllowed",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "RAIndicatorAdjustmentConfirmation",
+   "id": "RAIndicatorAdjustmentConfirmation",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.IsNPIInvalid",
+   "id": "Provider_IsNPIInvalid",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Provider.IsEINInvalid",
+   "id": "Provider_IsEINInvalid",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Provider.IsSSNInvalid",
+   "id": "Provider_IsSSNInvalid",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Provider.IsEmailInvalid",
+   "id": "Provider_IsEmailInvalid",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "ChowNPI",
+   "id": "ChowNPI",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ChowTaxId",
+   "id": "ChowTaxId",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.SelectedProgramTypeCode",
+   "id": "Provider_SelectedProgramTypeCode",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.IndividualProvider.Gender.ID",
+   "id": "Provider_IndividualProvider_Gender_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.IndividualProvider.Gender.Name",
+   "id": "Provider_IndividualProvider_Gender_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.IndividualProvider.Gender.DisplayFormat",
+   "id": "Provider_IndividualProvider_Gender_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "Provider.IndividualProvider.Ethnicity.ID",
+   "id": "Provider_IndividualProvider_Ethnicity_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.IndividualProvider.Ethnicity.Name",
+   "id": "Provider_IndividualProvider_Ethnicity_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.IndividualProvider.Ethnicity.DisplayFormat",
+   "id": "Provider_IndividualProvider_Ethnicity_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "Provider.IsNPPESDirtyDataAllowed",
+   "id": "Provider_IsNPPESDirtyDataAllowed",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Provider.TaxIdentification.TaxIdType",
+   "id": "Provider_TaxIdentification_TaxIdType",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.TaxIdentification.SSNVerification.IsSSNVerificationAccepted",
+   "id": "Provider_TaxIdentification_SSNVerification_IsSSNVerificationAccepted",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Provider.TaxIdentification.EINVerification.IsEINVerificationAccepted",
+   "id": "Provider_TaxIdentification_EINVerification_IsEINVerificationAccepted",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Provider.TaxIdentification.SSNVerification.IRSSSNValidationCode",
+   "id": "Provider_TaxIdentification_SSNVerification_IRSSSNValidationCode",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.TaxIdentification.EINVerification.IRSEINValidationCode",
+   "id": "Provider_TaxIdentification_EINVerification_IRSEINValidationCode",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.CredentialType.ID",
+   "id": "Provider_CredentialType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.CredentialType.Name",
+   "id": "Provider_CredentialType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.CredentialType.DisplayFormat",
+   "id": "Provider_CredentialType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "Provider.TaxIdentification.RevalSSNHidden",
+   "id": "Provider_TaxIdentification_RevalSSNHidden",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.TaxIdentification.SSNHidden",
+   "id": "Provider_TaxIdentification_SSNHidden",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.TaxIdentification.TaxIdHidden",
+   "id": "Provider_TaxIdentification_TaxIdHidden",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.TaxIdentification.RevalTaxIdHidden",
+   "id": "Provider_TaxIdentification_RevalTaxIdHidden",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.PreferredCommunicationDetails.LanguageList.ID",
+   "id": "Provider_PreferredCommunicationDetails_LanguageList_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.PreferredCommunicationDetails.LanguageList.Name",
+   "id": "Provider_PreferredCommunicationDetails_LanguageList_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.PreferredCommunicationDetails.LanguageList.DisplayFormat",
+   "id": "Provider_PreferredCommunicationDetails_LanguageList_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "Provider.ProgramType.ID",
+   "id": "Provider_ProgramType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.ProgramType.Name",
+   "id": "Provider_ProgramType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.ProgramType.DisplayFormat",
+   "id": "Provider_ProgramType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "",
+   "id": "ProgramType",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.StateMalpracticeCoverage",
+   "id": "Provider_StateMalpracticeCoverage",
+   "size": 67,
+   "value": "HP.HSP.UA3.ProviderEnrollment.UX.Data.StateMalpracticeCoverageModel"
+  },
+  {
+   "name": "IsMCO",
+   "id": "IsMCO",
+   "size": 4,
+   "value": "True"
+  },
+  {
+   "name": "Provider.PossibleDuplicateProviderLocationId",
+   "id": "Provider_PossibleDuplicateProviderLocationId",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.PMSelectedProgramTypeCode",
+   "id": "Provider_PMSelectedProgramTypeCode",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider.IsServiceLocationExist",
+   "id": "Provider_IsServiceLocationExist",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "NpiTaxIdExists",
+   "id": "NpiTaxIdExists",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "ApplicantContact.Address.States.ID",
+   "id": "ApplicantContact_Address_States_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ApplicantContact.Address.States.Name",
+   "id": "ApplicantContact_Address_States_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ApplicantContact.Address.States.DisplayFormat",
+   "id": "ApplicantContact_Address_States_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "ApplicantContact.Address.Country.ID",
+   "id": "ApplicantContact_Address_Country_ID",
+   "size": 2,
+   "value": "US"
+  },
+  {
+   "name": "ApplicantContact.Address.Country.Name",
+   "id": "ApplicantContact_Address_Country_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ApplicantContact.PhoneNumberType.ID",
+   "id": "ApplicantContact_PhoneNumberType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ApplicantContact.PhoneNumberType.Name",
+   "id": "ApplicantContact_PhoneNumberType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ApplicantContact.PhoneNumberType.DisplayFormat",
+   "id": "ApplicantContact_PhoneNumberType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "ApplicantContact.AllowTextNotifications",
+   "size": 5,
+   "value": "false"
+  },
+  {
+   "name": "ApplicantContact.PreferredCommunicationMethod.ID",
+   "id": "ApplicantContact_PreferredCommunicationMethod_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ApplicantContact.PreferredCommunicationMethod.Name",
+   "id": "ApplicantContact_PreferredCommunicationMethod_Name",
+   "size": 17,
+   "value": "select a value..."
+  },
+  {
+   "name": "ApplicantContact.Address.ValidationInfo.Latitude",
+   "id": "ApplicantContact_Address_ValidationInfo_Latitude",
+   "size": 1,
+   "value": "0"
+  },
+  {
+   "name": "ApplicantContact.Address.ValidationInfo.Longitude",
+   "id": "ApplicantContact_Address_ValidationInfo_Longitude",
+   "size": 1,
+   "value": "0"
+  },
+  {
+   "name": "ApplicantContact.Address.ValidationInfo.IsAddressValidated",
+   "id": "ApplicantContact_Address_ValidationInfo_IsAddressValidated",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "ApplicantContact.Address.ValidationInfo.Type",
+   "id": "ApplicantContact_Address_ValidationInfo_Type",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ApplicantContact.Address.ValidationInfo.ContainsInvalidType",
+   "id": "ApplicantContact_Address_ValidationInfo_ContainsInvalidType",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "ApplicantContact.Address.ValidationInfo.AddressConfirmed",
+   "id": "ApplicantContact_Address_ValidationInfo_AddressConfirmed",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Metadata.ModifiedDate",
+   "id": "Metadata_ModifiedDate",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Metadata.ModifiedId",
+   "id": "Metadata_ModifiedId",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Metadata.ModifiedTimestamp",
+   "id": "Metadata_ModifiedTimestamp",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt1ActionText",
+   "id": "Editor_Alt1ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt1ActionUrl",
+   "id": "Editor_Alt1ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt2ActionText",
+   "id": "Editor_Alt2ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt2ActionUrl",
+   "id": "Editor_Alt2ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt3ActionText",
+   "id": "Editor_Alt3ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt3ActionUrl",
+   "id": "Editor_Alt3ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt4ActionText",
+   "id": "Editor_Alt4ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt4ActionUrl",
+   "id": "Editor_Alt4ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt5ActionText",
+   "id": "Editor_Alt5ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt5ActionUrl",
+   "id": "Editor_Alt5ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt6ActionText",
+   "id": "Editor_Alt6ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt6ActionUrl",
+   "id": "Editor_Alt6ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt7ActionText",
+   "id": "Editor_Alt7ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt7ActionUrl",
+   "id": "Editor_Alt7ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt8ActionText",
+   "id": "Editor_Alt8ActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.Alt8ActionUrl",
+   "id": "Editor_Alt8ActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.CancelActionText",
+   "id": "Editor_CancelActionText",
+   "size": 6,
+   "value": "Cancel"
+  },
+  {
+   "name": "Editor.CancelActionUrl",
+   "id": "Editor_CancelActionUrl",
+   "size": 37,
+   "value": "/ProviderEnrollment/EnrollmentCreate/"
+  },
+  {
+   "name": "Editor.ConfirmDeleteMessage",
+   "id": "Editor_ConfirmDeleteMessage",
+   "size": 37,
+   "value": "Are you sure you want to delete the ?"
+  },
+  {
+   "name": "Editor.DeleteActionText",
+   "id": "Editor_DeleteActionText",
+   "size": 6,
+   "value": "Delete"
+  },
+  {
+   "name": "Editor.DeletedMessage",
+   "id": "Editor_DeletedMessage",
+   "size": 26,
+   "value": " was successfully deleted."
+  },
+  {
+   "name": "Editor.Direction",
+   "id": "Editor_Direction",
+   "size": 4,
+   "value": "Next"
+  },
+  {
+   "name": "Editor.DirtyDataMessage",
+   "id": "Editor_DirtyDataMessage",
+   "size": 111,
+   "value": "Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?"
+  },
+  {
+   "name": "Editor.EntityName",
+   "id": "Editor_EntityName",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.IsAlt1Enabled",
+   "id": "Editor_IsAlt1Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt2Enabled",
+   "id": "Editor_IsAlt2Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt3Enabled",
+   "id": "Editor_IsAlt3Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt4Enabled",
+   "id": "Editor_IsAlt4Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt5Enabled",
+   "id": "Editor_IsAlt5Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt6Enabled",
+   "id": "Editor_IsAlt6Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt7Enabled",
+   "id": "Editor_IsAlt7Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsAlt8Enabled",
+   "id": "Editor_IsAlt8Enabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsCancelEnabled",
+   "id": "Editor_IsCancelEnabled",
+   "size": 4,
+   "value": "True"
+  },
+  {
+   "name": "Editor.IsDirtyDataEnabled",
+   "id": "Editor_IsDirtyDataEnabled",
+   "size": 4,
+   "value": "True"
+  },
+  {
+   "name": "Editor.IsPrintEnabled",
+   "id": "Editor_IsPrintEnabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsProcessDirty",
+   "id": "Editor_IsProcessDirty",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.IsResetEnabled",
+   "id": "Editor_IsResetEnabled",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.Mode",
+   "id": "Editor_Mode",
+   "size": 6,
+   "value": "Create"
+  },
+  {
+   "name": "Editor.NextActionText",
+   "id": "Editor_NextActionText",
+   "size": 17,
+   "value": "Save and Continue"
+  },
+  {
+   "name": "Editor.PrevActionText",
+   "id": "Editor_PrevActionText",
+   "size": 8,
+   "value": "Previous"
+  },
+  {
+   "name": "Editor.PrintActionText",
+   "id": "Editor_PrintActionText",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.PrintActionUrl",
+   "id": "Editor_PrintActionUrl",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.ResetActionText",
+   "id": "Editor_ResetActionText",
+   "size": 5,
+   "value": "Reset"
+  },
+  {
+   "name": "Editor.SaveActionText",
+   "id": "Editor_SaveActionText",
+   "size": 6,
+   "value": "Submit"
+  },
+  {
+   "name": "Editor.SavedMessage",
+   "id": "Editor_SavedMessage",
+   "size": 24,
+   "value": " was successfully saved."
+  },
+  {
+   "name": "Editor.ShowSummaryError",
+   "id": "Editor_ShowSummaryError",
+   "size": 5,
+   "value": "False"
+  },
+  {
+   "name": "Editor.Step",
+   "id": "Editor_Step",
+   "size": 1,
+   "value": "2"
+  },
+  {
+   "name": "Editor.StepCount",
+   "id": "Editor_StepCount",
+   "size": 2,
+   "value": "28"
+  },
+  {
+   "name": "Editor.TitleFormatText",
+   "id": "Editor_TitleFormatText",
+   "size": 25,
+   "value": "{0} {1} - Step {2} of {3}"
+  },
+  {
+   "name": "Provider_TaxIdentification_SSNRawVal",
+   "id": "Provider_TaxIdentification_SSNRawVal",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Provider_TaxIdentification_TaxIdRawVal",
+   "id": "Provider_TaxIdentification_TaxIdRawVal",
+   "size": 0,
+   "value": ""
+  }
+ ],
+ "defaultButtons": [],
+ "forms": [
+  {
+   "index": 0,
+   "id": "CreateEnrollmentForm",
+   "key": "CreateEnrollmentForm",
+   "action": "/ProviderEnrollment/EnrollmentCreate",
+   "method": "POST",
+   "enctype": "application/x-www-form-urlencoded",
+   "fields": [
+    "text",
+    "text-2",
+    "ActiveStep",
+    "tocBtnCancel",
+    "tocBtnPrev",
+    "tocBtnNext",
+    "Provider_ChangeOfOwnership_IsChowRequired_IDYes",
+    "Provider_ChangeOfOwnership_IsChowRequired_IDNo",
+    "Provider_ChangeOfOwnership_TaxIdTransfer_IsTaxIdTransfer_IDYes",
+    "Provider_ChangeOfOwnership_TaxIdTransfer_IsTaxIdTransfer_IDNo",
+    "Provider_ChangeOfOwnership_NPITransfer_IsNPITransfer_IDYes",
+    "Provider_ChangeOfOwnership_NPITransfer_IsNPITransfer_IDNo",
+    "text-what-is-the-total-change-of-owne",
+    "Provider_ChangeOfOwnership_TotalPercentageChange",
+    "button-increase-value",
+    "button-decrease-value",
+    "button-select",
+    "EnrollmentPreChecklist_EnrollmentTypeList",
+    "button-select-2",
+    "EnrollmentPreChecklist_ProviderTypeList",
+    "button-select-3",
+    "EnrollmentPreChecklist_SpecialtyList",
+    "EnrollmentPreChecklist_TaxIdTypes_IDEIN",
+    "EnrollmentPreChecklist_TaxIdTypes_IDSSN",
+    "EnrollmentPreChecklist_IsMedicareEnrolled_IDY",
+    "EnrollmentPreChecklist_IsMedicareEnrolled_IDN",
+    "button-select-4",
+    "EnrollmentPreChecklist_ProgramTypeList",
+    "prechecklistClearButton",
+    "TrackingNumber",
+    "button-select-5",
+    "StatusList",
+    "EnrollmentCreateCredentials_EmailAddress",
+    "EnrollmentCreateCredentials_EmailAddressConfirmation",
+    "EnrollmentCreateCredentials_Password",
+    "EnrollmentCreateCredentials_PasswordConfirmation",
+    "EnrollmentCreateCredentials_ProviderReference",
+    "Provider_ChangeOfOwnership_IsSecurePortalChowRequired_IDYes",
+    "Provider_ChangeOfOwnership_IsSecurePortalChowRequired_IDNo",
+    "resetButton",
+    "alt1Button",
+    "alt4Button",
+    "alt5Button",
+    "alt6Button",
+    "alt7Button",
+    "alt8Button",
+    "printButton",
+    "cancelButton",
+    "alt2Button",
+    "alt3Button",
+    "nextButton",
+    "prevButton",
+    "button-select-6",
+    "EnrollmentCriteria_EnrollmentTypeList",
+    "button-select-7",
+    "EnrollmentCriteria_ProviderTypeList",
+    "TextOfEnrollmentType",
+    "TextOfProviderType",
+    "RequestedEffectiveDate",
+    "button-select-8",
+    "ReceiptDate",
+    "button-select-9",
+    "Provider_IsIndividualOrBusiness_IDIndividual",
+    "Provider_IsIndividualOrBusiness_IDBusiness",
+    "Provider_ProviderName_PersonName_Title",
+    "Provider_ProviderName_PersonName_Last",
+    "Provider_ProviderName_PersonName_First",
+    "Provider_ProviderName_PersonName_Middle",
+    "Provider_ProviderName_PersonName_Suffix",
+    "Provider_ProviderName_PersonName_RevalTitle",
+    "Provider_ProviderName_PersonName_RevalLastName",
+    "Provider_ProviderName_PersonName_RevalFirstName",
+    "Provider_ProviderName_PersonName_RevalMiddleName",
+    "Provider_ProviderName_PersonName_RevalSuffix",
+    "button-select-10",
+    "Provider_IndividualProvider_GenderList",
+    "button-select-11",
+    "Provider_IndividualProvider_EthnicityList",
+    "Provider_IndividualProvider_BirthDate",
+    "button-select-12",
+    "Provider_IndividualProvider_RevalBirthDate",
+    "Provider_ProviderLegalName_ProviderLegalName",
+    "Provider_ProviderLegalName_TaxName",
+    "Provider_ProviderLegalName_RevalProviderLegalName",
+    "Provider_ProviderLegalName_RevalTaxName",
+    "Provider_DoingBusinessAsName",
+    "Provider_NursePractitioner_PhysicianLastName",
+    "Provider_NursePractitioner_PhysicianFirstName",
+    "Provider_NursePractitioner_PhysicianMiddleName",
+    "Provider_RevalNationalProviderIdentifier",
+    "Provider_NationalProviderIdentifier",
+    "button-select-13",
+    "Provider_CredentialTypeList",
+    "Provider_TaxIdentification_TaxIdTypes_IDEIN",
+    "Provider_TaxIdentification_TaxIdTypes_IDSSN",
+    "Provider_TaxIdentification_RevalSSN",
+    "Provider_TaxIdentification_SSN",
+    "Provider_TaxIdentification_TaxId",
+    "Provider_TaxIdentification_EffectiveFromDate",
+    "button-select-14",
+    "Provider_TaxIdentification_RevalTaxId",
+    "Provider_TaxIdentification_RevalEffectiveFromDate",
+    "LegacyProviderID",
+    "button-select-15",
+    "Provider_PreferredCommunicationDetails_LanguageListList",
+    "Provider_IsCurrentlyEnrolled_IDYes",
+    "Provider_IsCurrentlyEnrolled_IDNo",
+    "Provider_CurrentLegacyProviderIdentifier",
+    "Provider_IsPreviouslyEnrolled_IDYes",
+    "Provider_IsPreviouslyEnrolled_IDNo",
+    "Provider_PreviousLegacyProviderIdentifier",
+    "Provider_IsMedicareEnrolled_IDYes",
+    "Provider_IsMedicareEnrolled_IDNo",
+    "Provider_MCOParticipatingContractsFormatted",
+    "button-select-16",
+    "Provider_ProgramTypeList",
+    "mcoPrograms",
+    "text-mcoprograms",
+    "Provider_ProviderCAQHRegistration_IsProviderCAQHRegistered_IDYes",
+    "Provider_ProviderCAQHRegistration_IsProviderCAQHRegistered_IDNo",
+    "Provider_ProviderCAQHRegistration_IsProviderCAQHRegisteredReval_IDYes",
+    "Provider_ProviderCAQHRegistration_IsProviderCAQHRegisteredReval_IDNo",
+    "Provider_ProviderCAQHRegistration_CAQHProviderID",
+    "ApplicantContact_ContactName_Title",
+    "ApplicantContact_ContactName_Last",
+    "ApplicantContact_ContactName_First",
+    "ApplicantContact_ContactName_Middle",
+    "ApplicantContact_ContactName_Suffix",
+    "ApplicantContact_Address_Line1",
+    "ApplicantContact_Address_Line2",
+    "ApplicantContact_Address_City",
+    "button-select-17",
+    "ApplicantContact_Address_StatesList",
+    "button-select-18",
+    "ApplicantContact_Address_CountryList",
+    "ApplicantContact_Address_PostalCode",
+    "button-select-19",
+    "ApplicantContact_PhoneNumberTypeList",
+    "ApplicantContact_PhoneNumber_PhoneNumber",
+    "ApplicantContact_PhoneNumber_PhoneExtension",
+    "ApplicantContact_AllowTextNotifications",
+    "ApplicantContact_FaxNumber_PhoneNumber",
+    "ApplicantContact_EmailAddress",
+    "ApplicantContact_EmailAddressConfirmation",
+    "button-select-20",
+    "ApplicantContact_PreferredCommunicationMethodList"
+   ]
+  }
+ ]
+}

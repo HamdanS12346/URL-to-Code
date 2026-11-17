@@ -1,0 +1,96 @@
+- banner:
+  - link "Client Logo":
+    - /url: /Home/MyHome/
+    - img "Client Logo"
+  - text: Medicaid Management Solutions Final Test
+  - menubar:
+    - menuitem "Messages":
+      - link "Messages":
+        - /url: javascript:getBroadcastMsg();
+    - menuitem "External Links":
+      - link "External Links":
+        - /url: javascript:toggleVisibilityStyle('divExternalLinks');
+    - menuitem "Favorites":
+      - link "Favorites":
+        - /url: javascript:getFavorites();
+    - menuitem "Contact Us":
+      - link "Contact Us":
+        - /url: javascript:getContactUs();
+    - menuitem "My Account":
+      - link "My Account":
+        - /url: /Home/MyAccount
+    - menuitem "Logout":
+      - link "Logout":
+        - /url: /Security/LogoutFromMenu
+  - navigation "Hamburger Menu":
+    - button "Main Menu": 
+- navigation:
+  - menubar:
+    - menuitem "File Transfer Services"
+  - heading "File Transfer Tracking" [level=1]
+- button "Help":  
+- main:
+  - group:
+    - text: Search Criteria  Required Fields ( * ) File ID
+    - img "HELP": 
+    - textbox "File ID File ID"
+    - text: File Name
+    - img "HELP": 
+    - textbox "File Name File Name"
+    - text: File Status
+    - img "HELP": 
+    - combobox "File Status File Status":
+      - text: select a value...
+      - button "select":
+        - img
+    - text: Direction
+    - img "HELP": 
+    - combobox "Direction Direction":
+      - text: select a value...
+      - button "select":
+        - img
+    - text: Transport Type
+    - img "HELP": 
+    - combobox "Transport Type Transport Type":
+      - text: select a value...
+      - button "select":
+        - img
+    - text: Source Location
+    - img "HELP": 
+    - combobox "Source Location Source Location":
+      - text: select a value...
+      - button "select":
+        - img
+    - text: Trading Partner ID
+    - img "HELP": 
+    - textbox "Trading Partner ID Trading Partner ID"
+    - text: From Date
+    - img "HELP": 
+    - combobox "From Date From Date"
+    - button "Open the date view":
+      - img
+    - button "Open the time view":
+      - img
+    - text: To Date
+    - img "HELP": 
+    - combobox "To Date To Date"
+    - button "Open the date view":
+      - img
+    - button "Open the time view":
+      - img
+    - text: From Size (KB)
+    - img "HELP": 
+    - spinbutton "From Size (KB) From Size (KB)"
+    - text: To Size (KB)
+    - img "HELP": 
+    - spinbutton "To Size (KB) To Size (KB)"
+    - button "Reset"
+    - button "Cancel"
+    - button "Search"
+- contentinfo:
+  - text: Disclaimer Website Requirements Privacy Policy Cookie Policy © 2026 Gainwell Technologies. All rights reserved.
+  - strong: "Server:"
+  - text: 10.199.153.9
+  - strong: "Build Date:"
+  - text: 10/30/2026 3:28:36 AM
+  - strong: v30.0.0.2609

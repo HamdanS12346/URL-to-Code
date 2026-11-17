@@ -7,21 +7,10 @@ test-results/
 playwright-report/
 __pycache__/
 
-# ignore packs by default, but keep the one we want to publish
+# ignore packs by default; keep only the ones we want to analyze
 packs/*
-!packs/claims-mgmt-v1/
-!packs/claims-mgmt-v1/**
-
-# also publish this pack
-!packs/fxfer-v4/
-!packs/fxfer-v4/**
-
-!packs/fxfer-v3/
-!packs/fxfer-v3/**
-
-!packs/fxfer-v6/
-!packs/fxfer-v6/**
-
-!packs/fxfer-v7/
-!packs/fxfer-v7/**
+!packs/fxfer-v8/
+!packs/fxfer-v8/**
+!packs/pe-v1/
+!packs/pe-v1/**
 

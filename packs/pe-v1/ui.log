@@ -1,0 +1,149 @@
+
+==== 2026-11-17T05:31:26.107Z  npm run ui -- PE-v1 --yes --url https://uximc.mms.tst.pgwcloud.net/Home/MyHome --menu Provider Enrollment --headed
+pack pe-v1: https://uximc.mms.tst.pgwcloud.net/Home/MyHome  menu "Provider Enrollment"  code -> packs/pe-v1/app
+writer: powershell -NoProfile -ExecutionPolicy Bypass -File C:\UI-specs\start_codex.ps1 exec -c web_search=disabled --skip-git-repo-check -C {workdir}
+>> login
+  ! the password comes from .env, which the writer (Codex) can read. Safer: remove PASSWORD from .env and type it when asked
+  logged in
+>> discover: reading the menu
+  menu: 19 modules (Administration, Alert Notification, Claims Management, Drug Rebate, UI Examples, File Transfer Services, Integration, Managed Care, Member Management, Plan Management, Program Integrity, PI Case Tracking, Provider Enrollment, Provider Management, Screening/Credentialing, TPL Case Tracking, TPL Policy, TPL HIPP, Task Management)
+  reading Administration…
+  reading Alert Notification…
+  reading Claims Management…
+  reading Drug Rebate…
+  reading UI Examples…
+  reading File Transfer Services…
+  reading Integration…
+  reading Managed Care…
+  reading Member Management…
+  reading Plan Management…
+  reading Program Integrity…
+  reading PI Case Tracking…
+  reading Provider Enrollment…
+  reading Provider Management…
+  reading Screening/Credentialing…
+  reading TPL Case Tracking…
+  reading TPL Policy…
+  reading TPL HIPP…
+  reading Task Management…
+  Provider Enrollment: 9 item(s)
+  content area of each screen (what the shared header/menu wraps):
+   home                             https://uximc.mms.tst.pgwcloud.net/Home/MyHome
+                                    content: #pageBody > main (1920x526 px)
+   dashboard                        https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/Dashboard
+                                    content: #pageBody > main (1905x1187 px)
+   search-enrollment-application    https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/SearchProviderApplication
+                                    content: #pageBody > main (1920x653 px)
+   search-enrollment-reports        https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/SearchEnrollmentReports
+                                    content: #pageBody > main (1920x376 px)
+   workflow-dashboard               https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/dashboard
+                                    content: #lightbox > div:nth-of-type(3) (352x206 px)
+   workflow-applications            https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/applications
+                                    content: #lightbox > div:nth-of-type(3) (352x206 px)
+   workflow-configuration           https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/configuration
+                                    content: #lightbox > div:nth-of-type(3) (352x206 px)
+   workflow-tasks                   https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/tasks
+                                    content: #lightbox > div:nth-of-type(3) (352x206 px)
+   new-enrollment-entry             https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/CreateSecureEnrollment
+                                    content: #pageBody > main (1920x771 px)
+   resume-enrollment-entry          https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/ResumeSecureEnrollment
+                                    content: #pageBody > main (1920x479 px)
+  9 screen(s) under "Provider Enrollment" + the home page. Menu: packs/pe-v1/menu.json, picture: menu.png
+site kit: provider (kits/provider): the harvest replaces plan + explore; screens are built on its runtime
+
+>> home: Home  https://uximc.mms.tst.pgwcloud.net/Home/MyHome
+   spec: queued (3 writer(s) at once)
+
+>> dashboard: Dashboard  https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/Dashboard
+   writer: spec:home, attempt 1 (log: packs/pe-v1/logs/spec-home-1.log)
+   spec: queued (3 writer(s) at once)
+
+>> search-enrollment-application: Search Enrollment Application  https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/SearchProviderApplication
+   writer: spec:dashboard, attempt 1 (log: packs/pe-v1/logs/spec-dashboard-1.log)
+   spec: queued (3 writer(s) at once)
+
+>> search-enrollment-reports: Search Enrollment Reports  https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/SearchEnrollmentReports
+   writer: spec:search-enrollment-application, attempt 1 (log: packs/pe-v1/logs/spec-search-enrollment-application-1.log)
+   spec: queued (3 writer(s) at once)
+
+>> workflow-dashboard: Workflow Dashboard  https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/dashboard
+   session lost (the page redirected to https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/oauth2/v2.0/authorize?response_type=code&client_id=f7eb0091-6d80-414e-ae1f-1d8b94ed2d33&scope=openid&state=Gc66np0JLLYKXOZFhIbK5WZCm7iXz_9icR6-15IRN2Y%3D&redirect_uri=https%3A%2F%2Fapnmc.shared.tst.pgwcloud.net%2Fsuite%2Foidc%2Fcallback&nonce=pKbccXVYh2zw4sV_JrDlNTovWl7Im5hJb_M2pZrlTgs. If that is a login page: npm run login -- "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/dashboard" (see README)): logging in again
+>> login
+  ! the password comes from .env, which the writer (Codex) can read. Safer: remove PASSWORD from .env and type it when asked
+  already logged in
+   !! workflow-dashboard: the page redirected to https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/oauth2/v2.0/authorize?response_type=code&client_id=f7eb0091-6d80-414e-ae1f-1d8b94ed2d33&scope=openid&state=x7I-JKjxjRbWm68COmEnLJ0YKx7zAJSZfc_AYLnogXc%3D&redirect_uri=https%3A%2F%2Fapnmc.shared.tst.pgwcloud.net%2Fsuite%2Foidc%2Fcallback&nonce=clDVxnpjOTb9dXi_rDre5EJMbx0YXxOmAHJVQYqfPZ8. If that is a login page: npm run login -- "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/dashboard" (see README) (details: packs/pe-v1/screens/workflow-dashboard/run.log)
+
+>> workflow-applications: Workflow Applications  https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/applications
+   session lost (the page redirected to https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/oauth2/v2.0/authorize?response_type=code&client_id=f7eb0091-6d80-414e-ae1f-1d8b94ed2d33&scope=openid&state=KswyjWk57PtMRgPXoMyQCfY4cGVxt0MUqz7fhlzWMxg%3D&redirect_uri=https%3A%2F%2Fapnmc.shared.tst.pgwcloud.net%2Fsuite%2Foidc%2Fcallback&nonce=RUBtPIWqew_Oi9cd2pVyc2Mv0UdsXTIftETGgjl8ZSY. If that is a login page: npm run login -- "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/applications" (see README)): logging in again
+>> login
+  ! the password comes from .env, which the writer (Codex) can read. Safer: remove PASSWORD from .env and type it when asked
+  already logged in
+   !! workflow-applications: the page redirected to https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/oauth2/v2.0/authorize?response_type=code&client_id=f7eb0091-6d80-414e-ae1f-1d8b94ed2d33&scope=openid&state=5TKNG5O35U3uoIkjLuPbARM3llmF61--ESwRn8pMYZ8%3D&redirect_uri=https%3A%2F%2Fapnmc.shared.tst.pgwcloud.net%2Fsuite%2Foidc%2Fcallback&nonce=lp8dJKAUYqkidLQ31gCaVjHwtpyBtGVHe--Ipqmex6s. If that is a login page: npm run login -- "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/applications" (see README) (details: packs/pe-v1/screens/workflow-applications/run.log)
+
+>> workflow-configuration: Workflow Configuration  https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/configuration
+   session lost (the page redirected to https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/oauth2/v2.0/authorize?response_type=code&client_id=f7eb0091-6d80-414e-ae1f-1d8b94ed2d33&scope=openid&state=ag-3QznWM-Mi2No19CvFjaoHgR3rvQcHhstNcW8Nmy8%3D&redirect_uri=https%3A%2F%2Fapnmc.shared.tst.pgwcloud.net%2Fsuite%2Foidc%2Fcallback&nonce=05AchiN5mrD8I8CzenkYcHn1Rg-chgKVw9FU-3YUmOY. If that is a login page: npm run login -- "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/configuration" (see README)): logging in again
+>> login
+  ! the password comes from .env, which the writer (Codex) can read. Safer: remove PASSWORD from .env and type it when asked
+  already logged in
+   !! workflow-configuration: the page redirected to https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/oauth2/v2.0/authorize?response_type=code&client_id=f7eb0091-6d80-414e-ae1f-1d8b94ed2d33&scope=openid&state=BC3UqYEIMI7DuMckTkz3UHpO63Pm0s9EbDkJe12BFyM%3D&redirect_uri=https%3A%2F%2Fapnmc.shared.tst.pgwcloud.net%2Fsuite%2Foidc%2Fcallback&nonce=28hso7y8vcEtEPs1VkWq9jqbaggGr7LnjX8esFF9y2Q. If that is a login page: npm run login -- "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/configuration" (see README) (details: packs/pe-v1/screens/workflow-configuration/run.log)
+
+>> workflow-tasks: Workflow Tasks  https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/tasks
+   session lost (the page redirected to https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/oauth2/v2.0/authorize?response_type=code&client_id=f7eb0091-6d80-414e-ae1f-1d8b94ed2d33&scope=openid&state=KX3bblXMI4_pJBmwCZ63K38zEFGHF5vYv3SSd465dEg%3D&redirect_uri=https%3A%2F%2Fapnmc.shared.tst.pgwcloud.net%2Fsuite%2Foidc%2Fcallback&nonce=mhYZ5-jTwlf7trWJAIAyIYCKuM8xdYeJXeXpRCtkJTE. If that is a login page: npm run login -- "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/tasks" (see README)): logging in again
+>> login
+  ! the password comes from .env, which the writer (Codex) can read. Safer: remove PASSWORD from .env and type it when asked
+  already logged in
+   !! workflow-tasks: the page redirected to https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/oauth2/v2.0/authorize?response_type=code&client_id=f7eb0091-6d80-414e-ae1f-1d8b94ed2d33&scope=openid&state=5J7NotYAO9GW7osgZocQbiGhZ87DU6FgkIICxWMDdZI%3D&redirect_uri=https%3A%2F%2Fapnmc.shared.tst.pgwcloud.net%2Fsuite%2Foidc%2Fcallback&nonce=KpXWbMyx9qBW40IQNp-Hv-us4DQxHRcQ3sAfPUbSHGA. If that is a login page: npm run login -- "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/tasks" (see README) (details: packs/pe-v1/screens/workflow-tasks/run.log)
+
+>> new-enrollment-entry: New Enrollment Entry  https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/CreateSecureEnrollment
+   spec: queued (3 writer(s) at once)
+
+>> resume-enrollment-entry: Resume Enrollment Entry  https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/ResumeSecureEnrollment
+   spec: queued (3 writer(s) at once)
+
+>> waiting for 6 spec writer(s)
+   writer finished: exit 0, 9.2 min
+   ✓ spec:home
+   writer: spec:search-enrollment-reports, attempt 1 (log: packs/pe-v1/logs/spec-search-enrollment-reports-1.log)
+   writer finished: exit 0, 8.4 min
+   ✓ spec:dashboard
+   writer: spec:new-enrollment-entry, attempt 1 (log: packs/pe-v1/logs/spec-new-enrollment-entry-1.log)
+   writer finished: exit 0, 9.3 min
+   ✓ spec:search-enrollment-application
+   writer: spec:resume-enrollment-entry, attempt 1 (log: packs/pe-v1/logs/spec-resume-enrollment-entry-1.log)
+   writer finished: exit 0, 5.6 min
+   ✓ spec:search-enrollment-reports
+   writer finished: exit 0, 6.6 min
+   ✓ spec:new-enrollment-entry
+   writer finished: exit 0, 9.3 min
+   ✓ spec:resume-enrollment-entry
+
+>> app: C:\UI-specs\URL-to-Code\packs\pe-v1\app
+   shell (header + side menu) ported from dashboard
+   pe-v1/home -> packs/pe-v1/app/src/screens/home: 2 band components, 521/521 data-testid keys stamped, 32 assets
+      McbRowBorder       div#mcbRowBorder
+      Footer             footer
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+46)
+   next: npm run verify -- pe-v1/home   (starts its own dev server)
+   pe-v1/dashboard -> packs/pe-v1/app/src/shell: 2 band components, 575/577 data-testid keys stamped, 40 assets
+      McbRowBorder       div#mcbRowBorder
+      Footer             footer
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+45)
+   next: npm run verify -- pe-v1/dashboard   (starts its own dev server)
+   pe-v1/dashboard -> packs/pe-v1/app/src/screens/dashboard: 0 band components, 575/577 data-testid keys stamped, 40 assets
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+45)
+   next: npm run verify -- pe-v1/dashboard   (starts its own dev server)
+   pe-v1/search-enrollment-application -> packs/pe-v1/app/src/screens/search-enrollment-application: 0 band components, 928/928 data-testid keys stamped, 36 assets
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+47)
+   next: npm run verify -- pe-v1/search-enrollment-application   (starts its own dev server)
+   pe-v1/search-enrollment-reports -> packs/pe-v1/app/src/screens/search-enrollment-reports: 0 band components, 574/574 data-testid keys stamped, 32 assets
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+47)
+   next: npm run verify -- pe-v1/search-enrollment-reports   (starts its own dev server)
+   pe-v1/new-enrollment-entry -> packs/pe-v1/app/src/screens/new-enrollment-entry: 0 band components, 1141/1141 data-testid keys stamped, 52 assets
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+46)
+   next: npm run verify -- pe-v1/new-enrollment-entry   (starts its own dev server)
+   pe-v1/resume-enrollment-entry -> packs/pe-v1/app/src/screens/resume-enrollment-entry: 0 band components, 562/562 data-testid keys stamped, 36 assets
+   unresolved css url(): ../webfonts/fa-brands-400.woff2, ../webfonts/fa-brands-400.ttf, ../webfonts/fa-duotone-900.woff2, ../webfonts/fa-duotone-900.ttf, ../webfonts/fa-light-300.woff2, ../webfonts/fa-light-300.ttf, ../webfonts/fa-regular-400.woff2, ../webfonts/fa-regular-400.ttf, ../webfonts/fa-solid-900.ttf, ../webfonts/fa-thin-100.woff2 (+47)
+   next: npm run verify -- pe-v1/resume-enrollment-entry   (starts its own dev server)
+
+>> kit preflight on dashboard (the port as it is, before any writer)
+   states: 8/9 match the live page | ✗ menu-open@client: hovering the lower arrow of the side menu does not scroll the list to its last item

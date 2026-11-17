@@ -1,0 +1,85 @@
+{
+ "isWebForms": false,
+ "validators": [],
+ "summaries": [],
+ "updatePanels": null,
+ "components": [],
+ "grids": {},
+ "hiddenFields": [
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  }
+ ],
+ "defaultButtons": [],
+ "forms": [
+  {
+   "index": 0,
+   "id": "EnrollmentDashboardForm",
+   "key": "EnrollmentDashboardForm",
+   "action": "/ProviderEnrollment/Dashboard",
+   "method": "POST",
+   "enctype": "application/x-www-form-urlencoded",
+   "fields": [
+    "text",
+    "text-2",
+    "savePreferencesButton"
+   ]
+  },
+  {
+   "index": 1,
+   "id": "QuickSearchEditForm",
+   "key": "QuickSearchEditForm",
+   "action": "/ProviderEnrollment/Dashboard",
+   "method": "POST",
+   "enctype": "application/x-www-form-urlencoded",
+   "fields": [
+    "text-3",
+    "text-4",
+    "fieldset-quick-search",
+    "ATN",
+    "LastName",
+    "BusinessName",
+    "NPI",
+    "clearButton",
+    "searchButton"
+   ]
+  },
+  {
+   "index": 2,
+   "key": "form-search-results",
+   "action": "/ProviderEnrollment/Dashboard",
+   "method": "POST",
+   "enctype": "application/x-www-form-urlencoded",
+   "fields": [
+    "text-5",
+    "text-6",
+    "button-go-to-the-first-page",
+    "button-go-to-the-previous-page",
+    "button-page-0",
+    "button-go-to-the-next-page",
+    "button-go-to-the-last-page",
+    "text-page",
+    "text-page-2",
+    "button-select",
+    "select-page-sizes-drop-down"
+   ]
+  }
+ ]
+}

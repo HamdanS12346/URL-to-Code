@@ -1,0 +1,68 @@
+- banner:
+  - link "Client Logo":
+    - /url: /Home/MyHome/
+    - img "Client Logo"
+  - text: Medicaid Management Solutions Final Test
+  - menubar:
+    - menuitem "Messages":
+      - link "Messages":
+        - /url: javascript:getBroadcastMsg();
+    - menuitem "External Links":
+      - link "External Links":
+        - /url: javascript:toggleVisibilityStyle('divExternalLinks');
+    - menuitem "Favorites":
+      - link "Favorites":
+        - /url: javascript:getFavorites();
+    - menuitem "Contact Us":
+      - link "Contact Us":
+        - /url: javascript:getContactUs();
+    - menuitem "My Account":
+      - link "My Account":
+        - /url: /Home/MyAccount
+    - menuitem "Logout":
+      - link "Logout":
+        - /url: /Security/LogoutFromMenu
+  - navigation "Hamburger Menu":
+    - button "Main Menu": 
+- navigation:
+  - menubar:
+    - menuitem "Provider Enrollment ":
+      - link "Provider Enrollment ":
+        - /url: /ProviderEnrollment/Dashboard
+  - heading "New Enrollment Entry" [level=1]
+- button "Help":  
+- main:
+  - text: "* Registration Required Fields ( * )"
+  - paragraph: Register below to be assigned a unique enrollment tracking number. Be sure to write down your password. An email confirmation will be sent with the tracking number. If you don't submit your enrollment right away, you can use this tracking number and password to resume your enrollment application later.
+  - text: "* Email"
+  - img "HELP": 
+  - textbox "Email The Application Tracking Number will be sent to this address."
+  - text: "* Confirm Email"
+  - img "HELP": 
+  - textbox "Confirm Email Enter the Email Address again to confirm it matches the previous entry."
+  - text: "* Password "
+  - img "HELP": 
+  - textbox "Password Passwords must be between 8 and 20 characters and include a minimum of one upper case letter, one lower case letter and one numeric digit"
+  - button "Password visibility toggle": 
+  - text: "* Confirm Password"
+  - img "HELP": 
+  - textbox "Confirm Password Passwords must be between 8 and 20 characters and include a minimum of one upper case letter, one lower case letter and one numeric digit."
+  - button "Password visibility toggle": 
+  - text: Provider Reference
+  - img "HELP": 
+  - textbox "Provider Reference Enter internal reference information to help you identify the enrollment, should not exceed 100 characters."
+  - text: "* Do you need to change ownership?"
+  - img "HELP": 
+  - radio "Yes"
+  - text: "Yes"
+  - radio "No" [checked]
+  - text: "No"
+  - button "Register"
+  - button "Previous"
+- contentinfo:
+  - text: Disclaimer Website Requirements Privacy Policy Cookie Policy © 2026 Gainwell Technologies. All rights reserved.
+  - strong: "Server:"
+  - text: 10.199.153.9
+  - strong: "Build Date:"
+  - text: 10/30/2026 3:28:36 AM
+  - strong: v30.0.0.2609

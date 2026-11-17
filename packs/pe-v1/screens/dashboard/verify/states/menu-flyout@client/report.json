@@ -1,0 +1,55 @@
+{
+  "size_delta_px": [
+    0,
+    0
+  ],
+  "bad_pct": 10.38,
+  "mean_abs": 11.62,
+  "worst_band": {
+    "y": 504,
+    "bad_pct": 32.26
+  },
+  "bands": [
+    {
+      "y": 0,
+      "bad_pct": 7.39
+    },
+    {
+      "y": 84,
+      "bad_pct": 14.49
+    },
+    {
+      "y": 168,
+      "bad_pct": 8.13
+    },
+    {
+      "y": 252,
+      "bad_pct": 12.19
+    },
+    {
+      "y": 336,
+      "bad_pct": 6.89
+    },
+    {
+      "y": 420,
+      "bad_pct": 12.41
+    },
+    {
+      "y": 504,
+      "bad_pct": 32.26
+    }
+  ],
+  "clusters": [
+    {
+      "box": [
+        0,
+        0,
+        374,
+        507
+      ],
+      "bad_px": 19682
+    }
+  ],
+  "worst_crop": "worst.png",
+  "verdict": "differs"
+}

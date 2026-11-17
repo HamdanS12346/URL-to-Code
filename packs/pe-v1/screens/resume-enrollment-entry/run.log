@@ -1,0 +1,33 @@
+
+== pe-v1/resume-enrollment-entry  https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/ResumeSecureEnrollment  (dpr 1, mode safe)
+  viewport 1920x1080 CSS px @ dpr 1
+
+>> STAGE 1/5  capture the page: assets, DOM, styles, motion, reference pictures
+  kit: the page focuses "TrackingNumber" on load
+  kit (provider): Kendo 2026.1.415, 0 widgets (none), 17 fields, 2 actions, 3 hidden parts, side menu div#mainMenuContainer (181 links, opens by class display-flex + div.disabled-backdrop, fly-out recorded), module tab fly-out recorded, 2 menu(s) with submenus, 1 shell panel(s) that collapse
+  frozen: clock paused; reset to slide 0: 0 swiper, 0 slick, 0 owl; 0 animations parked; 0 candidates still moving
+  reference.png 1920x1080 from 1 shots; 3 section crops in sections/ (4 bands merged to 3)
+  regions.json: 5 regions (0 repeated rows) measured by draw-ui -> measure-00/
+  snapshot/full.css: 2182 KB (18100 rules, all kept)
+  snapshot/: rendered.html 151 KB, used.css 119 KB (551/18100 rules), 4 keyframes
+  kit: the screen's script opens languageOverlay; a row double-click calls gridRowDoubleClickCallBack
+  kit: profile "client" 1272x588 @1.5
+  kit: no scrollable side menu at profile "client": scroll speed not measured
+  kit: dialogs are centered at every profile
+  kit: 0 dialog(s) ; 10 state check(s)
+  motion.json: 1 entries (1 css-animation); 3 transition groups
+  captured: 562 controls, 0 validators, 18 assets, 0 frames [mvcUnobtrusive, jquery, CSS1Compat]
+   done in 36.7s
+
+>> STAGE 1/5  stitch your own screenshots
+   done in 0.0s
+
+>> STAGE 1/5  compare your screenshots with the live page
+   done in 0.0s
+
+>> STAGE 4/5  collect everything into facts.md
+  facts.md: 562 controls, 0 behaviors (0 flaky), 1 assets in use; parity.spec.ts: 0 candidate tests
+   done in 0.1s
+  ! no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)
+
+== pe-v1/resume-enrollment-entry finished (0.6 min of work)
