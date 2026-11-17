@@ -23,7 +23,8 @@ const server = startProviderPortal(PORT, { password: PASSWORD, cookie: COOKIE })
 
 fs.rmSync(P, { recursive: true, force: true });
 fs.mkdirSync(P, { recursive: true });
-fs.writeFileSync(path.join(P, 'pack.json'), JSON.stringify({ devPort: 5181, config: { dpr: 1, defaultViewport: { width: 1400, height: 900 } } }));
+// flows off: this test checks the capture's own harvest (npm run smoke:flows checks the flows stage)
+fs.writeFileSync(path.join(P, 'pack.json'), JSON.stringify({ devPort: 5181, flows: false, config: { dpr: 1, defaultViewport: { width: 1400, height: 900 } } }));
 const envFile = path.join(ROOT, 'test-results', 'provider-smoke.env');
 fs.mkdirSync(path.dirname(envFile), { recursive: true });
 fs.writeFileSync(envFile, 'USERNAME=admin\n');

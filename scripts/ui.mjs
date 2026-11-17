@@ -21,9 +21,9 @@
 //   --kit <name|none> force a site kit, or none (default: detected on the home page and kept in pack.json)
 //   --parallel N      writer calls at once (3; pack.json "parallel"): each spec starts as soon as its capture is done (the
 //                     captures stay one at a time, one browser); with a kit the screens' code steps run side by side too
-//   --flows           the flows stage after each capture (kept in pack.json "flows"; an object there sets its budget, see
-//                     config.json "flows"): the writer plans, the script clicks, every path explored up to the save/create point
-//   --no-flows        skip it this run      --flow-workers N  browser contexts per screen (2)
+//   flows             ON by default: after each capture every path of the screen is explored up to the save/create point (the writer
+//                     plans, the script clicks, every write blocked). pack.json "flows": an object sets its budget (see config.json
+//                     "flows"); false turns it off for the pack. --no-flows skips it this run; --flow-workers N browser contexts per screen (2)
 import crypto from 'node:crypto';
 import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -280,9 +280,10 @@ try {
   }
   const kit = pack.kit ? await loadKit(pack.kit) : null;
   log(kit ? `site kit: ${pack.kit} (kits/${pack.kit}): the harvest replaces plan + explore; screens are built on its runtime` : 'site kit: none (generic capture, plan and explore)');
-  // the flows stage: on with --flows (kept in pack.json) or pack.json "flows"; its budget from config.json "flows" + pack.json "flows" (an object)
-  if (flag('--flows') && !pack.flows) { pack.flows = true; savePack(); }
-  const flowsOn = !!pack.flows && !flag('--no-flows');
+  // the flows stage: on in every run unless pack.json "flows": false or --no-flows; its budget from config.json "flows" + pack.json "flows" (an object).
+  // --flows is still accepted (it turns a pack's "flows": false back on)
+  if (flag('--flows') && pack.flows === false) { delete pack.flows; savePack(); }
+  const flowsOn = pack.flows !== false && !flag('--no-flows');
   const flowBudget = { ...base.flows, ...(typeof pack.flows === 'object' ? pack.flows : {}), ...(opt('--flow-workers') ? { workers: Math.max(1, +opt('--flow-workers') || 1) } : {}) };
   if (flowsOn) log(`flows: on (${flowBudget.workers ?? 2} browser context(s) per screen, at most ${flowBudget.maxNodes ?? 40} states, ${flowBudget.ai === false ? 'rule-based plans' : 'the writer plans each wave'})`);
   const screens = pack.screens.filter((s) => !opt('--only') || s.id === opt('--only'));
@@ -481,7 +482,12 @@ const data = kit as unknown as KitData;
   };
   for (const scr of screens) {
     if (!fs.existsSync(path.join(screenDir(`${name}/${scr.id}`), 'snapshot', 'rendered.html'))) continue;
-    if (ported(scr) && !forced('port')) continue;
+    // flows that ran after this screen was ported (a pack built before flows existed) added dialogs and clicks to its kit data:
+    // port it again, and its code step runs again on the new port
+    const fl = path.join(screenDir(`${name}/${scr.id}`), 'flows', 'index.json'), pg = path.join(out, 'src', 'screens', scr.id, 'Page.tsx');
+    const flowsNewer = ported(scr) && fs.existsSync(fl) && fs.statSync(fl).mtimeMs > fs.statSync(pg).mtimeMs;
+    if (flowsNewer) { log(`   ${scr.id}: its flows are newer than its port: porting it again (and its code step runs again)`); delete status.items[`code:${scr.id}`]; delete status.states0?.[scr.id]; }
+    if (ported(scr) && !forced('port') && !flowsNewer) continue;
     const id = `${name}/${scr.id}`;
     const port = (args) => { const r = nodeRun('port.mjs', [id, '--force', '--assets-dir', path.join(out, 'public', 'assets', scr.id), '--asset-base', `/assets/${scr.id}/`, ...args]); log(r.text.split('\n').map((l) => '   ' + l).join('\n')); if (!r.ok) throw new Error(`port ${id} failed`); };
     try {

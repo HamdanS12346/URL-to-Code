@@ -21,7 +21,7 @@ Its code goes to the pack's app, `packs/<pack>/app/` (or `--out`), not to the sc
 With a kit (`pack.json` `"kit"`), there is no planning step, the spec cites every widget and dialog as `[kit:<id>]`, and the code
 step builds only what the kit cannot know: read `kits/<kit>/KIT.md` first, and never edit the app's `src/kit` (fix the kit in `kits/<kit>/app`).
 Never open, print or copy `.env` or anything under `packs/*/auth/`: they hold the portal password and the logged-in session.
-**Flows** (`--flows`, stage `flows` after each capture): a screen explored to the end of every path, up to the click that would save or create.
+**Flows** (stage `flows` after each capture, on in every `npm run ui`; `--no-flows` / `pack.json "flows": false` turn it off): a screen explored to the end of every path, up to the click that would save or create.
 A pack-run task "flows <screen> wave N" asks you for one plan (`flows/plans/wave-N.json`, gate `node scripts/check-flows.mjs <plan> <frontier>`);
 a spec of a screen with `flows/index.json` cites every state as `[flow:<id>]`. Never plan a commit (Save, Delete...): the script refuses it anyway.
 

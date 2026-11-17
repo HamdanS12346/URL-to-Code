@@ -66,7 +66,7 @@ const server = http.createServer((req, res) => {
 fs.rmSync(P, { recursive: true, force: true });
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(P, { recursive: true });
-fs.writeFileSync(path.join(P, 'pack.json'), JSON.stringify({ config: { dpr: 1, defaultViewport: { width: 1200, height: 800 }, explore: { timeBudgetSec: 60 }, motion: { sampleSec: 2, intervalMs: 250 } } }));
+fs.writeFileSync(path.join(P, 'pack.json'), JSON.stringify({ flows: false, config: { dpr: 1, defaultViewport: { width: 1200, height: 800 }, explore: { timeBudgetSec: 60 }, motion: { sampleSec: 2, intervalMs: 250 } } }));
 // the user name from .env, the password from the shell (UI_PASSWORD): the way that keeps it out of every file
 const envFile = path.join(ROOT, 'test-results', 'ui-smoke.env');
 fs.mkdirSync(path.dirname(envFile), { recursive: true });

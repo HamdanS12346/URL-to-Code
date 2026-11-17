@@ -216,7 +216,7 @@ at both ends and scrolls the list with them and the wheel.
 - `verify` checks all of this on every dialog and on the side menu, whether or not the capture's states mention it (focus in a window with fields, the page
   locked, the side menu's last item reachable by hovering its lower arrow). `ui` stops when the kit fails its own check on the raw port (`--ignore-kit` goes on).
 
-## The flows stage: every path below the capture's clicks (`npm run ui -- <pack> --flows`)
+## The flows stage: every path below the capture's clicks (part of every `npm run ui`; `--no-flows` skips it)
 
 The capture clicks a fixed few things (one dropdown, Search, up to 3 Create New, the first row, a Create New in a dialog). The flows stage
 (`scripts/flows.mjs`, after each screen's capture) goes on from there until every branch ends: the writer (Codex) plans each wave from the
