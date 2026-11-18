@@ -1,0 +1,108 @@
+- banner:
+  - link "Client Logo":
+    - /url: /Home/MyHome/
+    - img "Client Logo"
+  - text: Medicaid Management Solutions Final Test
+  - menubar:
+    - menuitem "Messages":
+      - link "Messages":
+        - /url: javascript:getBroadcastMsg();
+    - menuitem "External Links":
+      - link "External Links":
+        - /url: javascript:toggleVisibilityStyle('divExternalLinks');
+    - menuitem "Favorites":
+      - link "Favorites":
+        - /url: javascript:getFavorites();
+    - menuitem "Contact Us":
+      - link "Contact Us":
+        - /url: javascript:getContactUs();
+    - menuitem "My Account":
+      - link "My Account":
+        - /url: /Home/MyAccount
+    - menuitem "Logout":
+      - link "Logout":
+        - /url: /Security/LogoutFromMenu
+  - navigation "Hamburger Menu":
+    - button "Main Menu": 
+- navigation:
+  - menubar:
+    - menuitem "Provider Enrollment ":
+      - link "Provider Enrollment ":
+        - /url: /ProviderEnrollment/Dashboard
+  - heading "Search Enrollment Application" [level=1]
+- button "Help":  
+- main:
+  - group:
+    - text: Search Enrollment Application  ATN
+    - img "HELP": 
+    - textbox "ATN The ATN is a unique number assigned to an enrollment application initiated by a provider."
+    - text: Service Location ID
+    - img "HELP": 
+    - textbox "Service Location ID Service Location ID"
+    - text: NPI
+    - img "HELP": 
+    - textbox "NPI Enter the ten digit National Provider Identifier as printed on the NPPES letter."
+    - text: Tax ID
+    - img "HELP": 
+    - radio "EIN"
+    - text: EIN
+    - radio "SSN"
+    - text: SSN Last Name
+    - img "HELP": 
+    - textbox "Last Name Enter the Last Name."
+    - text: First Name
+    - img "HELP": 
+    - textbox "First Name Enter the First Name."
+    - text: Business Name
+    - img "HELP": 
+    - textbox "Business Name Enter Business Name"
+    - text: Contact Email
+    - img "HELP": 
+    - textbox "Contact Email Contact Email"
+    - text: Enrollment Type
+    - img "HELP": 
+    - combobox "Enrollment Type Enrollment Type":
+      - text: select a value...
+      - button "select":
+        - img
+    - text: Provider Type
+    - img "HELP": 
+    - combobox "Provider Type Provider Type":
+      - text: select a value...
+      - button "select":
+        - img
+    - text: Status
+    - img "HELP": 
+    - combobox "Status Status":
+      - text: select a value...
+      - button "select":
+        - img
+    - text: Receipt Date
+    - img "HELP": 
+    - combobox "Receipt Date Receipt Date"
+    - button "select":
+      - img
+    - text: City
+    - img "HELP": 
+    - textbox "City Enter the City name."
+    - text: State
+    - img "HELP": 
+    - combobox "State Enter the state associated with the program.":
+      - text: select a value...
+      - button "select":
+        - img
+    - text: Application Type
+    - img "HELP": 
+    - combobox "Application Type Application Type":
+      - text: select a value...
+      - button "select":
+        - img
+    - button "Clear"
+    - button "Search"
+- contentinfo:
+  - text: Disclaimer Website Requirements Privacy Policy Cookie Policy © 2026 Gainwell Technologies. All rights reserved.
+  - strong: "Server:"
+  - text: 10.199.153.38
+  - strong: "Build Date:"
+  - text: 10/30/2026 3:28:37 AM
+  - strong: v30.0.0.2609

@@ -1,0 +1,94 @@
+{
+ "title": "Alert Confirmation",
+ "windowClass": "k-window k-focus",
+ "windowStyle": "min-width: 90px; min-height: 50px; display: inline-flex; top: 433.75px; left: 659.333px; z-index: 11504; opacity: 1; transform: scale(1);",
+ "titlebarHtml": "<div class=\"k-window-titlebar modal-msg-title-warn\"><i class=\"fa-solid modal-msg-icon-warn fa-circle-exclamation\"></i><span class=\"k-window-title\" id=\"modalMessagePopup_wnd_title\">Alert Confirmation</span><div class=\"k-window-titlebar-actions\"></div></div>",
+ "contentClass": "modal-msg-panel-container-warn k-window-content",
+ "contentId": "modalMessagePopup",
+ "contentStyle": "",
+ "overlay": {
+  "className": "k-overlay",
+  "style": "z-index: 11503; display: inline-flex; opacity: 0.5;",
+  "background": "rgb(61, 61, 61)",
+  "opacity": "0.5"
+ },
+ "options": {
+  "modal": {
+   "preventScroll": true
+  },
+  "width": null,
+  "height": null,
+  "actions": [],
+  "draggable": false,
+  "resizable": false,
+  "animation": {
+   "open": {
+    "effects": {},
+    "duration": 350
+   },
+   "close": {
+    "effects": {},
+    "duration": 350,
+    "hide": true
+   }
+  },
+  "position": {
+   "top": 433.75,
+   "left": 659.3335
+  }
+ },
+ "widgets": {},
+ "fields": [
+  {
+   "name": "cancelModalButton",
+   "id": "cancelModalButton",
+   "type": "button",
+   "role": null,
+   "label": "",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "No",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "okButton",
+   "id": "okButton",
+   "type": "button",
+   "role": null,
+   "label": "",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Yes",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  }
+ ],
+ "actions": [],
+ "hidden": [],
+ "unknown": {},
+ "autofocus": null,
+ "pageState": {
+  "htmlOverflow": "hidden",
+  "bodyOverflow": "hidden",
+  "htmlInline": "hidden",
+  "bodyClass": "FileTransfer SearchFTPServerCredentials",
+  "bodyScroll": "yes"
+ },
+ "rect": {
+  "x": 659.3333740234375,
+  "y": 433.75,
+  "width": 601.3333740234375,
+  "height": 212.5,
+  "top": 433.75,
+  "right": 1260.666748046875,
+  "bottom": 646.25,
+  "left": 659.3333740234375
+ }
+}

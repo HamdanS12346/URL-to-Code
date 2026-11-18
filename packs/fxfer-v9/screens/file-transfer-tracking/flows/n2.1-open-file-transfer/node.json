@@ -1,0 +1,56 @@
+{
+ "id": "n2.1",
+ "parent": "n2",
+ "depth": 2,
+ "status": "frontier",
+ "name": "open-file-transfer",
+ "kind": "dialog",
+ "fp": "714c66e3bfeb",
+ "fpText": "W:File Transfer Tracking\nH:Events|Exceptions|Information\nL:Check Sum Code|Create Date|Direction|File ID|File Name|File Status|Originating Server Name|Size (KB)|Source Location|Trading Partner ID|Transport Type\nB:Cancel\nF:1\nT:\nR:1\nV:0",
+ "via": {
+  "el": "e16",
+  "steps": [
+   {
+    "do": "dblclick",
+    "layer": "page",
+    "css": "tbody tr",
+    "nth": 0,
+    "text": "0b3ad742-223b-4bc1-8b5b-867d8dfde039\\\\mapsftshrfs01\\Commerci",
+    "kind": "row"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#nextButton",
+   "nth": 0,
+   "text": "Search",
+   "kind": "button"
+  },
+  {
+   "do": "dblclick",
+   "layer": "page",
+   "css": "tbody tr",
+   "nth": 0,
+   "text": "0b3ad742-223b-4bc1-8b5b-867d8dfde039\\\\mapsftshrfs01\\Commerci",
+   "kind": "row"
+  }
+ ],
+ "requests": [
+  {
+   "method": "POST",
+   "url": "/FileTransfer/FileTransferTrackingView/",
+   "status": "sent"
+  }
+ ],
+ "title": "File Transfer Tracking",
+ "dir": "n2.1-open-file-transfer",
+ "windows": 1,
+ "validation": null,
+ "same": [],
+ "skipped": [],
+ "probed": true,
+ "fields": []
+}

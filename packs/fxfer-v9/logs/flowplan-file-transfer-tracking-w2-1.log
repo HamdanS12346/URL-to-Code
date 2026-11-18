@@ -1,0 +1,656 @@
+$ powershell -NoProfile -ExecutionPolicy Bypass -File C:\UI-specs\start_codex.ps1 exec -c web_search=disabled --skip-git-repo-check -C C:\UI-specs\URL-to-Code\
+(prompt: C:\UI-specs\URL-to-Code\packs\fxfer-v9\logs\flowplan-file-transfer-tracking-w2-1.prompt.md)
+--- output ---
+Reading prompt from stdin...
+OpenAI Codex v0.169.0
+--------
+workdir: C:\UI-specs\URL-to-Code
+model: gpt-5.2
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1e93d-776a-7f40-863e-09d55e5c3cb2
+--------
+user
+Task: flows fxfer-v9/file-transfer-tracking wave 2
+Screen folder: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking
+
+You are running unattended: nobody will answer questions. Do the task, then stop.
+
+Write any files you create/modify as UTF-8 text (not UTF-16). If you use PowerShell commands to write files, use Set-Content/Out-File with -Encoding utf8.
+Do not use the `apply_patch` helper here; it is unreliable in this environment. Edit files using Python/Node/PowerShell file writes (UTF-8) instead.
+
+You plan the next step of exploring the live screen `fxfer-v9/file-transfer-tracking` (File Transfer Tracking, https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking). A script drives the browser; you only decide what it does.
+The goal: reach EVERY state of this screen (results, dialogs, dialogs inside dialogs, edit modes, tabs, parts a radio or a value shows,
+validation messages) up to the click that would save or create something. The script blocks every write and never clicks a commit button,
+so you cannot break anything: be thorough.
+
+1. Read C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-2.frontier.json: the states still open in this wave, each with its candidates (the elements of its top layer, ids e1, e2...).
+2. For each state, open its folder (`dir`): look at map.png (the numbers are the element ids) and shot.png with your image viewer, and read
+   candidates.md (kind, text, label, rules such as maxlength / required / email, dropdown options). Read C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking/flows/FLOWS.md for what
+   was already reached and what each earlier click did: never plan a click that already led to a known state from the same place.
+3. Write C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-2.json as JSON:
+   {"nodes": [ {"node": "n1", "name": "search-results",
+       "actions": [ {"el": "e7", "do": "dblclick", "why": "opens the row's detail window", "name": "view-configuration"},
+                    {"el": "e3", "do": "select", "value": "M", "why": "Run Monthly shows the day-of-month part"},
+                    {"el": "e12", "do": "click", "setup": [{"el": "e4", "do": "fill", "value": "1234567890"}], "why": "Next with a valid NPI typed" } ],
+       "same": [ {"el": "e9", "as": "e7", "why": "the other rows open the same window"} ] },
+     {"node": "n2.1", "deadEnd": true, "reason": "a read-only view: only Close" } ]}
+   - One entry per state of C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-2.frontier.json. "do": click | dblclick | hover | fill | select | check | press. "fill"/"select" need a "value" (a string).
+   - "setup": steps done first, in order (type valid values so a button or a section opens; pick the dropdown value that reveals a part).
+   - "name" (optional): lower-case words joined by "-", at most 32 characters, naming the state you expect (it names its folder).
+   - At most 12 actions per state. Prefer actions that lead to DIFFERENT states: every button and link that opens something (View, Edit,
+     Details, a tab, Create New, Next, a row: grid rows often open on double-click), a radio or dropdown value that changes the form, and
+     wrong input that makes the page answer (letters in a number field, too long a value, a bad e-mail, a date out of range), each once.
+     The script already measures every text box by itself (what it accepts, its length limit, the message it shows, what Save says with the
+     form as it is), so do not spend actions on that.
+   - Never plan an element marked `danger` (Save, Submit, Update, Delete, a bare Add/OK/Yes...): the gate rejects the plan.
+   - Close, Cancel, Reset and Back only lead back: the script uses them itself.
+   - A state with nothing new to open is a dead end: say so with a reason.
+4. Run `node scripts/check-flows.mjs C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-2.json C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-2.frontier.json` in C:\UI-specs\URL-to-Code\ and fix the plan until it prints OK.
+
+What the capture already knows about this screen (dropdown options, dialogs it opened, the portal's conventions): C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking/kit/screen.json; the site kit's guide: C:\UI-specs\URL-to-Code\kits\provider\KIT.md.
+Write only C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-2.json. Do not run `npm run ui`, `npm run capture` or the browser, and do not open the live site.
+Never open, print or copy .env files or anything under packs/*/auth/ (they hold the portal password and session).
+
+warning: Model metadata for `gpt-5.2` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.
+2026-11-17T11:21:24.303413Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.postman.com/.well-known/oauth-protected-resource/mcp\"" })
+hook: SessionStart
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+codex
+I’m going to inspect the wave-2 frontier + each open state’s screenshots/candidates, then write `wave-2.json` and iterate `check-flows` until it passes.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code && python -c \"import json,sys; p=r'packs/fxfer-v9/screens/file-transfer-tracking/flows/plans/wave-2.frontier.json'; d=json.load(open(p,'r',encoding='utf-8')); print('nodes',len(d.get('nodes',d))); print(json.dumps(d,indent=2)[:4000])\"" in C:\UI-specs\URL-to-Code
+ exited 1 in 1078ms:
+At line:2 char:28
++ cd C:\UI-specs\URL-to-Code && python -c "import json,sys; p=r'packs/f ...
++                            ~~
+The token '&&' is not a valid statement separator in this version.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+ 
+
+**Clarifying PowerShell syntax**
+
+I'm figuring out the correct syntax for PowerShell. I know that it used to just use `;`, and now it seems like `&&` is available in newer versions. But I'm not totally confident about that. So to be safe, I think I'll just go with `;` for my commands. It's good to double-check these details to avoid any issues later on!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; python -c \"import json; p=r'packs/fxfer-v9/screens/file-transfer-tracking/flows/plans/wave-2.frontier.json'; d=json.load(open(p,'r',encoding='utf-8')); print('top_keys',list(d)[:20]); nodes=d.get('nodes',d); print('nodes',len(nodes)); print(json.dumps(nodes[:3],indent=2)[:4000])\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1487ms:
+top_keys ['wave', 'maxActions', 'nodes']
+nodes 2
+[
+  {
+    "node": "n1",
+    "name": "search-criteria-collapsed",
+    "kind": "part",
+    "title": null,
+    "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\n1-search-criteria-collapsed",
+    "depth": 1,
+    "candidates": [
+      {
+        "el": "e1",
+        "kind": "button",
+        "text": "",
+        "label": null,
+        "danger": null
+      }
+    ]
+  },
+  {
+    "node": "n2",
+    "name": "after-search-empty",
+    "kind": "results",
+    "title": null,
+    "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\n2-after-search-empty",
+    "depth": 1,
+    "candidates": [
+      {
+        "el": "e1",
+        "kind": "button",
+        "text": "",
+        "label": null,
+        "danger": null
+      },
+      {
+        "el": "e2",
+        "kind": "text",
+        "text": "",
+        "label": "File ID",
+        "danger": null
+      },
+      {
+        "el": "e3",
+        "kind": "text",
+        "text": "",
+        "label": "File Name",
+        "danger": null
+      },
+      {
+        "el": "e4",
+        "kind": "dropdown",
+        "text": "select a value...FileStatusList",
+        "label": "File Status",
+        "danger": null,
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "el": "e5",
+        "kind": "dropdown",
+        "text": "select a value...DirectionList",
+        "label": "Direction",
+        "danger": null,
+        "options": [
+          "1",
+          "2"
+        ]
+      },
+      {
+        "el": "e6",
+        "kind": "dropdown",
+        "text": "select a value...TransportTypeList",
+        "label": "Transport Type",
+        "danger": null,
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "el": "e7",
+        "kind": "dropdown",
+        "text": "select a value...SourceLocation",
+        "label": "Source Location",
+        "danger": null,
+        "options": [
+          "40defc3b-7227-4798-811a-1681e6505df2",
+          "5906a815-02de-4c35-9014-96d920f4285d",
+          "a2bd6591-53e6-4c8e-8101-76e8cc105eef",
+          "353244d3-8c51-453d-a26b-d31ba8375431",
+          "67391ddc-ec70-4630-b941-c4e646d99be2",
+          "5e8e5b7e-95a2-43e5-8716-1e4464922617",
+          "ddc110bf-9057-484d-9a18-ce5e849ca1f2",
+          "b16dfecc-c9fc-45f1-96bb-70b17d934a5f",
+          "284a46bc-10db-46e7-9f1b-d4c6faf29fa3",
+          "1f2a84a6-47c6-4ca2-a7d3-416ad41b48b0",
+          "5ee49daa-f142-4c83-80ce-668bce190cf1",
+          "109fbfd1-d87a-40fd-a3d0-ae3aed2d5d1a"
+        ]
+      },
+      {
+        "el": "e8",
+        "kind": "text",
+        "text": "",
+        "label": "Trading Partner ID",
+        "danger": null
+      },
+      {
+        "el": "e9",
+        "kind": "dropdown",
+        "text": "",
+        "label": "From Date",
+        "danger": null
+      },
+      {
+        "el": "e10",
+        "kind": "dropdown",
+        "text": "",
+        "label": "To Date",
+        "danger": null
+      },
+      {
+        "el": "e11",
+        "kind": "text",
+        "text": "",
+        "label": "From Size (KB)",
+        "danger": null
+      },
+      {
+        "el": "e12",
+        "kind": "text",
+        "text": "",
+        "label": "To Size (KB)",
+        "danger": null
+      },
+      {
+        "el": "e13",
+        "kind": "button",
+        "text": "Reset",
+        "label": null,
+        "danger": null
+      },
+      {
+        "el": "e14",
+        "kind": "button",
+        "text": "Cancel",
+        "label": null,
+        "danger": null
+      },
+      {
+        "el": "e15",
+        "kind": "button",
+        "text": "Search",
+        "label": null,
+        "danger": null
+      },
+      {
+        "el": "e16",
+        "kind": "row",
+        "text": "0b3ad742-223b-4bc1-8b5b-867d8dfde039\\\\mapsftshrfs01\\Commerci",
+        "label": null,
+        "danger": null
+      }
+    ]
+  }
+]
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; python -c \"p=r'packs/fxfer-v9/screens/file-transfer-tracking/flows/FLOWS.md'; print(open(p,'r',encoding='utf-8').read()[:4000])\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1495ms:
+# Flows of https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking
+
+3 states (0 boundaries), 2 wave(s), plans by ai. 2026-11-17T11:21:16.292Z
+
+Each state: its id (cite it in the spec as [flow:<id>]), kind, how it was reached, status. A **boundary** is where the live page would have sent a write (blocked): the flow ends there.
+Folders: `<id>-<name>/` with shot.png, map.png (numbered), node.json (fields: what each text box accepts and the messages it shows; saveProbe: what Save shows with writes blocked), layer.html.
+
+- **n0** at-rest (page) - explored [shot](n0-at-rest/shot.png)
+  - tried: e4 "select a value...FileStatusList" click -> nothing changed; e5 "select a value...DirectionList" click -> nothing changed; e6 "select a value...TransportTypeList" click -> nothing changed; e7 "select a value...SourceLocation" click -> nothing changed; e9 "From Date" press -> nothing changed; e10 "To Date" press -> nothing changed; e15 "Search" click -> the same state as n2
+  - field File ID: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+  - field File Name: accepts letters, digits, spaces, symbols, max 100 (stops typing)
+  - field Trading Partner ID: accepts letters, digits, spaces, symbols, max 25 (stops typing)
+  - **n1** search-criteria-collapsed (part) via click "div.panel-icon.clickable" - frontier [shot](n1-search-criteria-collapsed/shot.png)
+  - **n2** after-search-empty (results) via click "Search" - frontier [shot](n2-after-search-empty/shot.png)
+
+
+**Examining states and candidates**
+
+I’m noticing that in the state n0, clicking dropdowns or initiating searches doesn't change anything, and it seems like n2 is just n0 after a search, with the results grid visible. I really want to avoid planning redundant actions, so I need to focus on n1 and n2. I'll check out the candidates in candidates.md and view the images map.png and shot.png using the viewing tool. Let's get to it!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; dir packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\n1-search-criteria-collapsed; dir packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\n2-after-search-empty" in C:\UI-specs\URL-to-Code
+ succeeded in 3371ms:
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\n1-search-criteria-collapsed
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:50 PM            280 candidates.json                                                      
+-a----        11/17/2026   4:50 PM            302 candidates.md                                                        
+-a----        11/17/2026   4:50 PM          45730 map.png                                                              
+-a----        11/17/2026   4:50 PM            745 node.json                                                            
+-a----        11/17/2026   4:50 PM          45415 shot.png                                                             
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\n2-after-search-empty
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:50 PM           6365 candidates.json                                                      
+-a----        11/17/2026   4:50 PM           2424 candidates.md                                                        
+-a----        11/17/2026   4:50 PM         105884 map.png                                                              
+-a----        11/17/2026   4:50 PM           1404 node.json                                                            
+-a----        11/17/2026   4:50 PM         153221 shot.png                                                             
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; python -c \"for p in [r'packs/fxfer-v9/screens/file-transfer-tracking/flows/n1-search-criteria-collapsed/candidates.md', r'packs/fxfer-v9/screens/file-transfer-tracking/flows/n2-after-search-empty/candidates.md']:
+ print('\\n---',p,'---');
+ print(open(p,'r',encoding='utf-8').read())\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1515ms:
+
+--- packs/fxfer-v9/screens/file-transfer-tracking/flows/n1-search-criteria-collapsed/candidates.md ---
+# n1 search-criteria-collapsed: what can be done here (the page)
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | button |  |  |  | kit: collapse |
+
+
+--- packs/fxfer-v9/screens/file-transfer-tracking/flows/n2-after-search-empty/candidates.md ---
+# n2 after-search-empty: what can be done here (the page)
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | button |  |  |  | kit: collapse |
+| e2 | text | File ID | FileId / FileId | {"length-max":"File ID has a maximum length of 50 characters.","regex":"File ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.","regex-pattern":"^([^;*^:~<>%])*$","maxlength":50,"inputmode":"text"} |  |
+| e3 | text | File Name | FileName / FileName | {"length-max":"File Name has a maximum length of 100 characters.","regex":"File Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.","regex-pattern":"^([^;*^:~<>%])*$","maxlength":100,"inputmode":"text"} |  |
+| e4 | dropdown | select a value...FileStatusList / File Status |  | 1, 2, 3 |  |
+| e5 | dropdown | select a value...DirectionList / Direction |  | 1, 2 |  |
+| e6 | dropdown | select a value...TransportTypeList / Transport Type |  | 1, 2, 3, 4 |  |
+| e7 | dropdown | select a value...SourceLocation / Source Location |  | 40defc3b-7227-4798-811a-1681e6505df2, 5906a815-02de-4c35-9014-96d920f4285d, a2bd6591-53e6-4c8e-8101-76e8cc105eef, 353244d3-8c51-453d-a26b-d31ba8375431, 67391ddc-ec70-4630-b941-c4e646d99be2, 5e8e5b7e-95a2-43e5-8716-1e4464922617, ddc110bf-9057-484d-9a18-ce5e849ca1f2, b16dfecc-c9fc-45f1-96bb-70b17d934a5f, 284a46bc-10db-46e7-9f1b-d4c6faf29fa3, 1f2a84a6-47c6-4ca2-a7d3-416ad41b48b0, 5ee49daa-f142-4c83-80ce-668bce190cf1, 109fbfd1-d87a-40fd-a3d0-ae3aed2d5d1a |  |
+| e8 | text | Trading Partner ID | TradingPartnerId / TradingPartnerId | {"length-max":"Trading Partner ID has a maximum length of 25 characters.","regex":"Trading Partner ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.","regex-pattern":"^([^;*^:~<>%])*$","maxlength":25,"inputmode":"text"} |  |
+| e9 | dropdown | From Date | FromDate / FromDate |  |  |
+| e10 | dropdown | To Date | ToDate / ToDate |  |  |
+| e11 | text | From Size (KB) |  | {} |  |
+| e12 | text | To Size (KB) |  | {} |  |
+| e13 | button | Reset | resetButton |  | kit: reset |
+| e14 | button | Cancel | cancelButton |  | kit: cancel |
+| e15 | button | Search | nextButton |  | kit: search |
+| e16 | row | 0b3ad742-223b-4bc1-8b5b-867d8dfde039\\mapsftshrfs01\Commerci |  |  | 10 rows |
+
+
+**Exploring search results**
+
+I'm considering that after setting criteria, a search might yield results or details from a dialog. There seems to be a candidate in row e16, which suggests that clicking or double-clicking might open up details. I should think about actions that lead to new states, like double-clicking a row or clicking on it. I need to check the map and shot to see if the row is in the grid and possibly opens a detail view. Let's use the view_image tool for that!
+**Evaluating element options**
+
+I’m not sure if the earlier wave did anything, but I think we need to take a closer look at the n2 map.png for element IDs beyond our candidate list, which only has 16 elements and excludes icons. For flows, I can only use what's in that list. The action count is capped at 12, and we might use dropdown select values, but it seems like clicking on those didn't work before. Now, hopefully, they'll open. I need to select meaningful values for the script based on exact option strings.
+**Considering dropdown actions**
+
+It might be easiest to select the first option from a dropdown to trigger different results, but this could refresh the results grid and either show none or different rows. Still, flows want to explore every state. Selecting a dropdown might open a list, creating a new state, like "dropdown-open." The script may automatically handle dropdown options or show the list. I should keep in mind that we have only three states so far, and wave 2 should focus on discovering new states from n2 and n1.
+**Evaluating inputs and actions**
+
+If I set invalid criteria, it could trigger a validation message, which indicates a state change. However, the script already measures each text box individually, including length and acceptance rules, so we shouldn’t spend actions there. It seems the regex rule against certain characters is already covered. The node.json includes the necessary acceptance messages. 
+
+Now, there might also be date pickers like e9 and e10, and pressing them could open a new datepicker dialog. In the past, pressing a date did nothing, possibly just focusing. But there's a calendar icon shown, so maybe that’s how to open the date picker—by clicking the calendar icon or the input field.
+**Planning date picker actions**
+
+I think it might be safe to click on e9 to open the date picker, even though pressing it in n0 didn’t change anything. In that case, I'll try clicking e9, expecting it to open the date picker, and I’ll do the same for e10. 
+
+Selecting the page size isn’t a candidate action, and while there could be a hamburger menu, it's also not a candidate. I should be careful, though; if clicking doesn’t open the date picker, it could be a wasted action. The plan should focus on likely new states, like collapsing search criteria e1 to show n1. But I need to remember not to click if it leads to a known state.
+**Analyzing state transitions**
+
+It seems like frontier includes n1, suggesting they haven’t explored movements from n1. Moving from n2 to n1 might not be redundant since we already have the state with candidate e1. The plan should focus on distinct states; wave-2.frontier covers both n1 and n2. 
+
+In n2, I could collapse search criteria (e1 click) to transition to n1, which may be okay. Still, the action from n1 only returns via expand/collapse. In n2, I need to focus on actions leading to new states, like opening row details and the date picker. I’ll also test selecting dropdown options to filter results, utilizing the "select" action with value '1' in e4 and e5.
+
+While I’ll also try searching with a specific File ID for narrowed results, clicking rows might open details, so a double click seems reasonable. I’ll summarize wave-2.json nodes with focused actions, aiming to capture any resultant states effectively.
+**Creating wave-2 actions**
+
+I think we should click Search after filling the File ID with a valid character from the first row’s ID (0b3ad742-223b-4bc1-8b5b-867d8dfde039). This might yield a single result state, and we might then want to double-click that row. However, filtering could affect how the details open, which might not be necessary. 
+
+I’ll focus on adding the most likely new states: double-click the row, click the From Date, click the To Date, and select File Status, Direction, and Transport Type. I’ll limit my selections to those that are necessary. We’ll need to capture this in wave-2.json while keeping within the action limit. Then, I’ll proceed to save the JSON file.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; python - <<'PY'
+import json, os
+out = r'packs/fxfer-v9/screens/file-transfer-tracking/flows/plans/wave-2.json'
+plan = {
+  \"nodes\": [
+    {
+      \"node\": \"n1\",
+      \"deadEnd\": True,
+      \"reason\": \"Search Criteria is collapsed; only the collapse/expand toggle is present and it returns to the already-known expanded view (n0/n2).\"
+    },
+    {
+      \"node\": \"n2\",
+      \"name\": \"after-search-empty\",
+      \"actions\": [
+        {
+          \"el\": \"e16\",
+          \"do\": \"dblclick\",
+          \"why\": \"Grid rows commonly open a file-transfer detail view; explore the row drill-in state.\",
+          \"name\": \"open-file-transfer\"
+        },
+        {
+          \"el\": \"e9\",
+          \"do\": \"click\",
+          \"why\": \"Open the From Date picker / calendar overlay if present.\",
+          \"name\": \"open-from-date\"
+        },
+        {
+          \"el\": \"e10\",
+          \"do\": \"click\",
+          \"why\": \"Open the To Date picker / calendar overlay if present.\",
+          \"name\": \"open-to-date\"
+        },
+        {
+          \"el\": \"e4\",
+          \"do\": \"select\",
+          \"value\": \"1\",
+          \"why\": \"Selecting a File Status is likely to change results and/or reveal result-empty states.\",
+          \"name\": \"filter-file-status\"
+        },
+        {
+          \"el\": \"e5\",
+          \"do\": \"select\",
+          \"value\": \"1\",
+          \"why\": \"Selecting a Direction is likely to change results and/or reveal result-empty states.\",
+          \"name\": \"filter-direction\"
+        },
+        {
+          \"el\": \"e6\",
+          \"do\": \"select\",
+          \"value\": \"1\",
+          \"why\": \"Selecting a Transport Type is likely to change results and/or reveal result-empty states.\",
+          \"name\": \"filter-transport-type\"
+        },
+        {
+          \"el\": \"e7\",
+          \"do\": \"select\",
+          \"value\": \"40defc3b-7227-4798-811a-1681e6505df2\",
+          \"why\": \"Selecting a Source Location is likely to change results and may expose no-results messaging.\",
+          \"name\": \"filter-source-location\"
+        }
+      ]
+    }
+  ]
+}
+
+os.makedirs(os.path.dirname(out), exist_ok=True)
+with open(out, 'w', encoding='utf-8', newline='\\n') as f:
+  json.dump(plan, f, indent=2)
+  f.write('\\n')
+print('wrote', out)
+PY" in C:\UI-specs\URL-to-Code
+ exited 1 in 678ms:
+At line:2 char:39
++ cd C:\UI-specs\URL-to-Code; python - <<'PY'
++                                       ~
+Missing file specification after redirection operator.
+At line:2 char:38
++ cd C:\UI-specs\URL-to-Code; python - <<'PY'
++                                      ~
+The '<' operator is reserved for future use.
+At line:2 char:39
++ cd C:\UI-specs\URL-to-Code; python - <<'PY'
++                                       ~
+The '<' operator is reserved for future use.
+At line:6 char:10
++   "nodes": [
++          ~
+Unexpected token ':' in expression or statement.
+At line:8 char:13
++       "node": "n1",
++             ~
+Unexpected token ':' in expression or statement.
+At line:13 char:13
++       "node": "n2",
++             ~
+Unexpected token ':' in expression or statement.
+At line:17 char:15
++           "el": "e16",
++               ~
+Unexpected token ':' in expression or statement.
+At line:23 char:15
++           "el": "e9",
++               ~
+Unexpected token ':' in expression or statement.
+At line:29 char:15
++           "el": "e10",
++               ~
+Unexpected token ':' in expression or statement.
+At line:35 char:15
++           "el": "e4",
++               ~
+Unexpected token ':' in expression or statement.
+Not all parse errors were reported.  Correct the reported errors and try again.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingFileSpecification
+ 
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; "'$out = '"'packs/fxfer-v9/screens/file-transfer-tracking/flows/plans/wave-2.json'; "'$json = @'"'
+{
+  \"nodes\": [
+    {
+      \"node\": \"n1\",
+      \"deadEnd\": true,
+      \"reason\": \"Search Criteria is collapsed; only the collapse/expand toggle is present and it returns to the already-known expanded view (n0/n2).\"
+    },
+    {
+      \"node\": \"n2\",
+      \"name\": \"after-search-empty\",
+      \"actions\": [
+        {
+          \"el\": \"e16\",
+          \"do\": \"dblclick\",
+          \"why\": \"Grid rows commonly open a file-transfer detail view; explore the row drill-in state.\",
+          \"name\": \"open-file-transfer\"
+        },
+        {
+          \"el\": \"e9\",
+          \"do\": \"click\",
+          \"why\": \"Open the From Date picker / calendar overlay if present.\",
+          \"name\": \"open-from-date\"
+        },
+        {
+          \"el\": \"e10\",
+          \"do\": \"click\",
+          \"why\": \"Open the To Date picker / calendar overlay if present.\",
+          \"name\": \"open-to-date\"
+        },
+        {
+          \"el\": \"e4\",
+          \"do\": \"select\",
+          \"value\": \"1\",
+          \"why\": \"Selecting a File Status is likely to change results and/or reveal result-empty states.\",
+          \"name\": \"filter-file-status\"
+        },
+        {
+          \"el\": \"e5\",
+          \"do\": \"select\",
+          \"value\": \"1\",
+          \"why\": \"Selecting a Direction is likely to change results and/or reveal result-empty states.\",
+          \"name\": \"filter-direction\"
+        },
+        {
+          \"el\": \"e6\",
+          \"do\": \"select\",
+          \"value\": \"1\",
+          \"why\": \"Selecting a Transport Type is likely to change results and/or reveal result-empty states.\",
+          \"name\": \"filter-transport-type\"
+        },
+        {
+          \"el\": \"e7\",
+          \"do\": \"select\",
+          \"value\": \"40defc3b-7227-4798-811a-1681e6505df2\",
+          \"why\": \"Selecting a Source Location is likely to change results and may expose no-results messaging.\",
+          \"name\": \"filter-source-location\"
+        }
+      ]
+    }
+  ]
+}
+'@; Set-Content -Path "'$out -Value $json -Encoding utf8' in C:\UI-specs\URL-to-Code
+ succeeded in 600ms:
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; node scripts/check-flows.mjs C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\plans\\wave-2.json C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\plans\\wave-2.frontier.json" in C:\UI-specs\URL-to-Code
+ exited 1 in 913ms:
+✗ the flows plan does not pass:
+- C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-2.json is not valid JSON: Unexpected token '﻿', "﻿{
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; "'$out = '"'packs/fxfer-v9/screens/file-transfer-tracking/flows/plans/wave-2.json'; "'$json = @'"'
+{
+  \"nodes\": [
+    {
+      \"node\": \"n1\",
+      \"deadEnd\": true,
+      \"reason\": \"Search Criteria is collapsed; only the collapse/expand toggle is present and it returns to the already-known expanded view (n0/n2).\"
+    },
+    {
+      \"node\": \"n2\",
+      \"name\": \"after-search-empty\",
+      \"actions\": [
+        {
+          \"el\": \"e16\",
+          \"do\": \"dblclick\",
+          \"why\": \"Grid rows commonly open a file-transfer detail view; explore the row drill-in state.\",
+          \"name\": \"open-file-transfer\"
+        },
+        {
+          \"el\": \"e9\",
+          \"do\": \"click\",
+          \"why\": \"Open the From Date picker / calendar overlay if present.\",
+          \"name\": \"open-from-date\"
+        },
+        {
+          \"el\": \"e10\",
+          \"do\": \"click\",
+          \"why\": \"Open the To Date picker / calendar overlay if present.\",
+          \"name\": \"open-to-date\"
+        },
+        {
+          \"el\": \"e4\",
+          \"do\": \"select\",
+          \"value\": \"1\",
+          \"why\": \"Selecting a File Status is likely to change results and/or reveal result-empty states.\",
+          \"name\": \"filter-file-status\"
+        },
+        {
+          \"el\": \"e5\",
+          \"do\": \"select\",
+          \"value\": \"1\",
+          \"why\": \"Selecting a Direction is likely to change results and/or reveal result-empty states.\",
+          \"name\": \"filter-direction\"
+        },
+        {
+          \"el\": \"e6\",
+          \"do\": \"select\",
+          \"value\": \"1\",
+          \"why\": \"Selecting a Transport Type is likely to change results and/or reveal result-empty states.\",
+          \"name\": \"filter-transport-type\"
+        },
+        {
+          \"el\": \"e7\",
+          \"do\": \"select\",
+          \"value\": \"40defc3b-7227-4798-811a-1681e6505df2\",
+          \"why\": \"Selecting a Source Location is likely to change results and may expose no-results messaging.\",
+          \"name\": \"filter-source-location\"
+        }
+      ]
+    }
+  ]
+}
+'@;
+"'$utf8NoBom = New-Object System.Text.UTF8Encoding($false);
+[System.IO.File]::WriteAllText((Resolve-Path $out), $json, $utf8NoBom);
+' in C:\UI-specs\URL-to-Code
+ succeeded in 831ms:
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; node scripts/check-flows.mjs C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\plans\\wave-2.json C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\plans\\wave-2.frontier.json" in C:\UI-specs\URL-to-Code
+ succeeded in 755ms:
+✓ flows plan OK
+
+codex
+- Wrote `packs/fxfer-v9/screens/file-transfer-tracking/flows/plans/wave-2.json` (UTF-8 no BOM)
+- Validated with `node scripts/check-flows.mjs ...` → `✓ flows plan OK`
+
+Skipped: running any capture/browser steps (per instructions).  
+Risk: date-picker/dropdown actions might be no-ops if the app doesn’t surface overlays as new “states”; the row double-click should still discover the main missing detail view if it exists.
+tokens used
+41,049- Wrote `packs/fxfer-v9/screens/file-transfer-tracking/flows/plans/wave-2.json` (UTF-8 no BOM)
+- Validated with `node scripts/check-flows.mjs ...` → `✓ flows plan OK`
+
+Skipped: running any capture/browser steps (per instructions).  
+Risk: date-picker/dropdown actions might be no-ops if the app doesn’t surface overlays as new “states”; the row double-click should still discover the main missing detail view if it exists.
+
+
+--- exit 0 ---

@@ -1,0 +1,30 @@
+{
+ "screen": "pe-v1/search-enrollment-application",
+ "pass": true,
+ "checkedAt": "2026-11-17T05:46:24.263Z",
+ "coverage": {
+  "controls": "65/65",
+  "transitions": "0/0",
+  "validators": "0/0",
+  "motion": "1/1",
+  "kit": "10/10"
+ },
+ "missing": {
+  "controls": [],
+  "transitions": [],
+  "validators": [],
+  "motion": [],
+  "scroll": [],
+  "media": [],
+  "kit": []
+ },
+ "unknown": [],
+ "untagged": [],
+ "missingSections": [],
+ "tasksFile": true,
+ "unknownMarkers": 14,
+ "optional": {
+  "linksNotCited": [],
+  "unexplainedNotCited": []
+ }
+}

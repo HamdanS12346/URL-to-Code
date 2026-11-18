@@ -1,0 +1,75 @@
+{
+ "isWebForms": false,
+ "validators": [],
+ "summaries": [],
+ "updatePanels": null,
+ "components": [],
+ "grids": {},
+ "hiddenFields": [
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "Metadata.ModifiedDate",
+   "id": "Metadata_ModifiedDate",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Metadata.ModifiedId",
+   "id": "Metadata_ModifiedId",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Metadata.ModifiedTimestamp",
+   "id": "Metadata_ModifiedTimestamp",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "Editor.EntityName",
+   "id": "Editor_EntityName",
+   "size": 12,
+   "value": "Panel layout"
+  },
+  {
+   "name": "Editor.Mode",
+   "id": "Editor_Mode",
+   "size": 6,
+   "value": "Update"
+  },
+  {
+   "name": "Editor.SaveActionText",
+   "id": "Editor_SaveActionText",
+   "size": 4,
+   "value": "Save"
+  },
+  {
+   "name": "Editor.SavedMessage",
+   "id": "Editor_SavedMessage",
+   "size": 36,
+   "value": "Panel layout was successfully saved."
+  }
+ ],
+ "defaultButtons": [],
+ "forms": [
+  {
+   "index": 0,
+   "id": "mainForm",
+   "key": "mainForm",
+   "action": "/Home/MyHome",
+   "method": "POST",
+   "enctype": "application/x-www-form-urlencoded",
+   "fields": [
+    "text",
+    "text-2"
+   ]
+  }
+ ]
+}

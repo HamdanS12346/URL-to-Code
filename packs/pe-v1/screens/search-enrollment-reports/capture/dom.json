@@ -1,0 +1,3004 @@
+{
+ "viewport": [
+  1920,
+  1080
+ ],
+ "doc": [
+  1920,
+  1080
+ ],
+ "truncated": false,
+ "body": {
+  "t": "body",
+  "cls": "ProviderEnrollment SearchEnrollmentReports",
+  "box": [
+   0,
+   0,
+   1920,
+   600
+  ],
+  "s": {
+   "color": "rgb(51, 51, 51)",
+   "fontFamily": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+   "fontSize": "14px",
+   "fontWeight": "400",
+   "fontStyle": "normal",
+   "lineHeight": "14px",
+   "textAlign": "start",
+   "textTransform": "none",
+   "letterSpacing": "normal",
+   "whiteSpace": "normal",
+   "listStyleType": "disc",
+   "wordSpacing": "0px",
+   "padding": "62px 0px 0px",
+   "backgroundColor": "rgb(255, 255, 255)"
+  },
+  "k": [
+   {
+    "t": "div",
+    "key": "orientationLandscape",
+    "id": "orientationLandscape",
+    "box": [
+     0,
+     62,
+     1920,
+     538
+    ],
+    "k": [
+     {
+      "t": "div",
+      "cls": "body-well",
+      "box": [
+       0,
+       62,
+       1920,
+       538
+      ],
+      "k": [
+       {
+        "t": "div",
+        "key": "pageHeader",
+        "id": "pageHeader",
+        "cls": "header headroom headroom--top headroom--bottom",
+        "box": [
+         0,
+         0,
+         1920,
+         62
+        ],
+        "s": {
+         "position": "fixed",
+         "backgroundColor": "rgb(43, 58, 68)",
+         "zIndex": "1000",
+         "top": "0px",
+         "right": "0px",
+         "bottom": "1018px",
+         "left": "0px"
+        },
+        "k": [
+         {
+          "t": "header",
+          "key": "pageBanner",
+          "role": "banner",
+          "id": "pageBanner",
+          "box": [
+           0,
+           0,
+           1920,
+           62
+          ],
+          "s": {
+           "display": "flex",
+           "justifyContent": "space-between",
+           "alignItems": "center"
+          },
+          "k": [
+           {
+            "t": "div",
+            "key": "pageBannerLogo",
+            "id": "pageBannerLogo",
+            "box": [
+             50,
+             1.73,
+             116.52,
+             58.53
+            ],
+            "s": {
+             "margin": "0px 0px 0px 50px"
+            },
+            "k": [
+             {
+              "t": "a",
+              "key": "link-client-logo",
+              "box": [
+               50,
+               45.59,
+               116.52,
+               15.33
+              ],
+              "s": {
+               "color": "rgb(0, 0, 0)",
+               "fontFamily": "Arial, sans-serif",
+               "cursor": "pointer"
+              },
+              "href": "/Home/MyHome/",
+              "k": [
+               {
+                "t": "img",
+                "label": "Client Logo",
+                "box": [
+                 50,
+                 1.73,
+                 116.52,
+                 56.53
+                ],
+                "s": {
+                 "cursor": "pointer",
+                 "overflow": "clip"
+                },
+                "src": "https://mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo.png?v=19.1.64.0",
+                "alt": "Client Logo",
+                "nat": [
+                 169,
+                 82
+                ],
+                "file": "assets/_ext/mapssharedstorage01.blob.core.windows.net/finaltest/TenantContent/Commercial/Images/logo__3659ec6d.png"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "t": "div",
+            "key": "pageBannerTitle",
+            "id": "pageBannerTitle",
+            "box": [
+             201.52,
+             12,
+             320,
+             38
+            ],
+            "s": {
+             "textAlign": "center",
+             "margin": "0px 35px"
+            },
+            "k": [
+             {
+              "t": "div",
+              "key": "button",
+              "cls": "system-name",
+              "box": [
+               201.52,
+               12,
+               320,
+               18
+              ],
+              "s": {
+               "color": "rgb(48, 179, 254)",
+               "fontFamily": "Poppins, Arial, Helvetica, sans-serif",
+               "fontSize": "18px",
+               "fontWeight": "700",
+               "lineHeight": "18px"
+              },
+              "k": [
+               {
+                "t": "#text",
+                "runs": [
+                 {
+                  "x": "Medicaid Management Solutions"
+                 }
+                ]
+               }
+              ]
+             },
+             {
+              "t": "div",
+              "key": "button-medicaid-management-solutions",
+              "cls": "app-title",
+              "box": [
+               201.52,
+               30,
+               320,
+               20
+              ],
+              "s": {
+               "color": "rgb(255, 255, 255)",
+               "fontFamily": "Poppins, Arial, Helvetica, sans-serif",
+               "fontSize": "15px",
+               "lineHeight": "15px",
+               "textTransform": "uppercase",
+               "whiteSpace": "nowrap",
+               "padding": "5px 0px 0px"
+              },
+              "k": [
+               {
+                "t": "#text",
+                "runs": [
+                 {
+                  "x": "Final Test"
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "t": "div",
+            "cls": "desktop-nav",
+            "box": [
+             556.52,
+             0,
+             1363.48,
+             62
+            ],
+            "s": {
+             "display": "flex"
+            },
+            "k": [
+             {
+              "t": "div",
+              "cls": "aag-menu-bar",
+              "box": [
+               556.52,
+               0,
+               1295.48,
+               62
+              ],
+              "s": {
+               "display": "flex",
+               "justifyContent": "flex-end",
+               "alignItems": "center",
+               "padding": "0px 30px 0px 0px"
+              },
+              "k": [
+               {
+                "t": "ul",
+                "key": "button-2",
+                "role": "menubar",
+                "cls": "aag-menu k-reset k-header k-menu k-menu-horizontal",
+                "box": [
+                 1199.24,
+                 21.43,
+                 622.76,
+                 19.14
+                ],
+                "s": {
+                 "color": "rgb(61, 61, 61)",
+                 "lineHeight": "20px",
+                 "listStyleType": "none",
+                 "display": "flex",
+                 "alignItems": "stretch",
+                 "position": "relative",
+                 "float": "right",
+                 "cursor": "default",
+                 "top": "0px",
+                 "right": "0px",
+                 "bottom": "0px",
+                 "left": "0px"
+                },
+                "k": [
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.BroadcastMsg",
+                  "role": "menuitem",
+                  "id": "AAGMenu.BroadcastMsg",
+                  "cls": "k-item k-menu-item k-first",
+                  "box": [
+                   1199.24,
+                   21.43,
+                   97.35,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1199.24,
+                     21.43,
+                     97.35,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-messages",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1209.24,
+                       21.43,
+                       87.35,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "javascript:getBroadcastMsg();",
+                      "runs": [
+                       {
+                        "x": "Messages"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.ExternalLinks",
+                  "role": "menuitem",
+                  "id": "AAGMenu.ExternalLinks",
+                  "cls": "k-item k-menu-item",
+                  "box": [
+                   1296.59,
+                   21.43,
+                   130.93,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1296.59,
+                     21.43,
+                     130.93,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-external-links",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1306.59,
+                       21.43,
+                       120.93,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "javascript:toggleVisibilityStyle('divExternalLinks');",
+                      "runs": [
+                       {
+                        "x": "External Links"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.Favorites",
+                  "role": "menuitem",
+                  "id": "AAGMenu.Favorites",
+                  "cls": "k-item k-menu-item",
+                  "box": [
+                   1427.52,
+                   21.43,
+                   96.46,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1427.52,
+                     21.43,
+                     96.46,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-favorites",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1437.52,
+                       21.43,
+                       86.46,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "javascript:getFavorites();",
+                      "runs": [
+                       {
+                        "x": "Favorites"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.ContactUs",
+                  "role": "menuitem",
+                  "id": "AAGMenu.ContactUs",
+                  "cls": "k-item k-menu-item",
+                  "box": [
+                   1523.98,
+                   21.43,
+                   106.9,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1523.98,
+                     21.43,
+                     106.9,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-contact-us",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1533.98,
+                       21.43,
+                       96.9,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "javascript:getContactUs();",
+                      "runs": [
+                       {
+                        "x": "Contact Us"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.MyAccount",
+                  "role": "menuitem",
+                  "id": "AAGMenu.MyAccount",
+                  "cls": "k-item k-menu-item",
+                  "box": [
+                   1630.88,
+                   21.43,
+                   109.79,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1630.88,
+                     21.43,
+                     109.79,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-my-account",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1640.88,
+                       21.43,
+                       99.79,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(255, 255, 255)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "/Home/MyAccount",
+                      "runs": [
+                       {
+                        "x": "My Account"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "t": "li",
+                  "key": "AAGMenu.Logout",
+                  "role": "menuitem",
+                  "id": "AAGMenu.Logout",
+                  "cls": "k-item k-menu-item k-last",
+                  "box": [
+                   1740.67,
+                   21.43,
+                   81.33,
+                   19.14
+                  ],
+                  "s": {
+                   "color": "rgb(102, 102, 102)",
+                   "fontSize": "16px",
+                   "lineHeight": "22.8571px",
+                   "display": "flex",
+                   "flexDirection": "column",
+                   "position": "relative",
+                   "cursor": "default",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "k": [
+                   {
+                    "t": "div",
+                    "box": [
+                     1740.67,
+                     21.43,
+                     81.33,
+                     19.14
+                    ],
+                    "s": {
+                     "cursor": "default"
+                    },
+                    "k": [
+                     {
+                      "t": "a",
+                      "key": "link-logout",
+                      "cls": "k-link display-block",
+                      "box": [
+                       1750.67,
+                       21.43,
+                       71.33,
+                       19.14
+                      ],
+                      "s": {
+                       "color": "rgb(0, 238, 174)",
+                       "fontFamily": "Arial, sans-serif",
+                       "fontSize": "12px",
+                       "fontWeight": "700",
+                       "lineHeight": "17.1429px",
+                       "textTransform": "uppercase",
+                       "margin": "0px 0px 0px 10px",
+                       "padding": "2px 10px 0px",
+                       "cursor": "pointer"
+                      },
+                      "href": "/Security/LogoutFromMenu",
+                      "runs": [
+                       {
+                        "x": "Logout"
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             },
+             {
+              "t": "div",
+              "key": "pageBannerMenu",
+              "id": "pageBannerMenu",
+              "cls": "display-block",
+              "box": [
+               1852,
+               0,
+               68,
+               62
+              ],
+              "s": {
+               "color": "rgb(0, 0, 0)",
+               "fontSize": "32px",
+               "lineHeight": "32px",
+               "display": "flex",
+               "backgroundColor": "rgb(48, 179, 254)"
+              },
+              "k": [
+               {
+                "t": "nav",
+                "label": "Hamburger Menu",
+                "box": [
+                 1852,
+                 0,
+                 68,
+                 62
+                ],
+                "k": [
+                 {
+                  "t": "div",
+                  "cls": "hamburger",
+                  "box": [
+                   1852,
+                   0,
+                   68,
+                   62
+                  ],
+                  "s": {
+                   "display": "flex",
+                   "alignItems": "center"
+                  },
+                  "k": [
+                   {
+                    "t": "i",
+                    "key": "button-main-menu-2",
+                    "role": "button",
+                    "label": "Main Menu",
+                    "cls": "fa-solid fa-bars clickable",
+                    "box": [
+                     1862,
+                     5,
+                     48,
+                     52
+                    ],
+                    "s": {
+                     "fontFamily": "\"Font Awesome 6 Pro\"",
+                     "fontWeight": "900",
+                     "margin": "5px 10px",
+                     "padding": "10px",
+                     "cursor": "pointer"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\"\"",
+                      "font": "\"Font Awesome 6 Pro\"",
+                      "size": "32px",
+                      "weight": "900",
+                      "color": "rgb(0, 0, 0)",
+                      "display": "inline",
+                      "w": "auto",
+                      "h": "auto"
+                     }
+                    }
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": "div",
+        "key": "navigation-provider-enrol",
+        "role": "navigation",
+        "cls": "menu",
+        "box": [
+         0,
+         62,
+         1920,
+         32
+        ],
+        "s": {
+         "backgroundColor": "rgb(0, 238, 174)"
+        },
+        "k": [
+         {
+          "t": "div",
+          "key": "activeModuleMenuNav",
+          "id": "activeModuleMenuNav",
+          "cls": "float-left",
+          "box": [
+           0,
+           62,
+           217.86,
+           32
+          ],
+          "s": {
+           "float": "left"
+          },
+          "k": [
+           {
+            "t": "div",
+            "key": "button-8",
+            "cls": "k-menu-scroll-wrapper",
+            "box": [
+             0,
+             62,
+             217.86,
+             32
+            ],
+            "s": {
+             "display": "flex",
+             "alignItems": "center",
+             "position": "relative",
+             "backgroundColor": "rgb(43, 58, 68)",
+             "top": "0px",
+             "right": "0px",
+             "bottom": "0px",
+             "left": "0px"
+            },
+            "k": [
+             {
+              "t": "ul",
+              "key": "activeModuleMenu",
+              "role": "menubar",
+              "id": "activeModuleMenu",
+              "cls": "k-reset k-header k-menu k-menu-horizontal",
+              "box": [
+               30,
+               62,
+               187.86,
+               32
+              ],
+              "s": {
+               "color": "rgb(255, 255, 255)",
+               "lineHeight": "20px",
+               "listStyleType": "none",
+               "position": "relative",
+               "margin": "0px 0px 0px 30px",
+               "backgroundColor": "rgb(43, 58, 68)",
+               "cursor": "default",
+               "overflow": "hidden",
+               "top": "0px",
+               "right": "0px",
+               "bottom": "0px",
+               "left": "0px"
+              },
+              "k": [
+               {
+                "t": "li",
+                "key": "activeModuleMenuFirstItem",
+                "role": "menuitem",
+                "id": "activeModuleMenuFirstItem",
+                "cls": "k-item k-menu-item k-first k-last",
+                "box": [
+                 30,
+                 62,
+                 187.86,
+                 32
+                ],
+                "s": {
+                 "display": "flex",
+                 "flexDirection": "column",
+                 "position": "relative",
+                 "cursor": "default",
+                 "top": "0px",
+                 "right": "0px",
+                 "bottom": "0px",
+                 "left": "0px"
+                },
+                "k": [
+                 {
+                  "t": "a",
+                  "key": "link-provider-enrollment-2",
+                  "cls": "k-link k-menu-link",
+                  "box": [
+                   30,
+                   62,
+                   187.86,
+                   32
+                  ],
+                  "s": {
+                   "fontFamily": "Arial, sans-serif",
+                   "fontSize": "13px",
+                   "textTransform": "uppercase",
+                   "whiteSpace": "nowrap",
+                   "display": "flex",
+                   "alignItems": "center",
+                   "gap": "2.5px",
+                   "position": "relative",
+                   "padding": "6px",
+                   "cursor": "pointer",
+                   "top": "0px",
+                   "right": "0px",
+                   "bottom": "0px",
+                   "left": "0px"
+                  },
+                  "href": "/ProviderEnrollment/Dashboard",
+                  "k": [
+                   {
+                    "t": "#text",
+                    "runs": [
+                     {
+                      "x": "Provider Enrollment"
+                     }
+                    ]
+                   },
+                   {
+                    "t": "i",
+                    "cls": "fa-solid fa-chevron-down",
+                    "box": [
+                     198.86,
+                     71.5,
+                     13,
+                     13
+                    ],
+                    "s": {
+                     "fontFamily": "\"Font Awesome 6 Pro\"",
+                     "fontWeight": "900",
+                     "lineHeight": "13px",
+                     "cursor": "pointer"
+                    },
+                    "pseudo": {
+                     "before": {
+                      "content": "\"\"",
+                      "font": "\"Font Awesome 6 Pro\"",
+                      "size": "13px",
+                      "weight": "900",
+                      "color": "rgb(255, 255, 255)",
+                      "display": "inline",
+                      "w": "auto",
+                      "h": "auto"
+                     }
+                    }
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "t": "h1",
+          "key": "activeScreen",
+          "id": "activeScreen",
+          "cls": "float-left",
+          "box": [
+           217.86,
+           62,
+           200.49,
+           30
+          ],
+          "s": {
+           "color": "rgb(0, 0, 0)",
+           "fontWeight": "700",
+           "fontStyle": "italic",
+           "lineHeight": "18px",
+           "float": "left",
+           "padding": "6px 10px"
+          },
+          "runs": [
+           {
+            "x": "Search Enrollment Reports"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": "div",
+        "key": "mcbRowBorder",
+        "id": "mcbRowBorder",
+        "cls": "row menu-row mcb-row-flex",
+        "box": [
+         0,
+         94,
+         1920,
+         11.67
+        ],
+        "s": {
+         "display": "flex",
+         "justifyContent": "flex-end",
+         "alignItems": "flex-start",
+         "borderBottom": "0.666667px solid rgb(179, 179, 179)"
+        },
+        "pseudo": {
+         "before": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         },
+         "after": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         }
+        },
+        "k": [
+         {
+          "t": "div",
+          "key": "mcbContentBar",
+          "id": "mcbContentBar",
+          "cls": "col-auto col-md-5",
+          "box": [
+           1890,
+           94,
+           30,
+           11
+          ],
+          "s": {
+           "position": "relative",
+           "float": "right",
+           "padding": "0px 15px",
+           "top": "0px",
+           "right": "0px",
+           "bottom": "0px",
+           "left": "0px"
+          }
+         }
+        ]
+       },
+       {
+        "t": "div",
+        "cls": "row",
+        "box": [
+         0,
+         105.67,
+         1920,
+         0
+        ],
+        "pseudo": {
+         "before": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         },
+         "after": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         }
+        },
+        "k": [
+         {
+          "t": "div",
+          "key": "mcbPanels",
+          "id": "mcbPanels",
+          "box": [
+           0,
+           105.67,
+           1920,
+           0
+          ]
+         }
+        ]
+       },
+       {
+        "t": "div",
+        "cls": "row",
+        "box": [
+         0,
+         105.67,
+         1920,
+         0
+        ],
+        "pseudo": {
+         "before": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         },
+         "after": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         }
+        }
+       },
+       {
+        "t": "div",
+        "key": "pageBody",
+        "id": "pageBody",
+        "cls": "row content",
+        "box": [
+         0,
+         105.67,
+         1920,
+         375.83
+        ],
+        "pseudo": {
+         "before": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         },
+         "after": {
+          "content": "\" \"",
+          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+          "size": "14px",
+          "weight": "400",
+          "color": "rgb(51, 51, 51)",
+          "display": "table",
+          "w": "0px",
+          "h": "0px"
+         }
+        },
+        "k": [
+         {
+          "t": "main",
+          "key": "main",
+          "role": "main",
+          "box": [
+           0,
+           105.67,
+           1920,
+           375.83
+          ],
+          "k": [
+           {
+            "t": "form",
+            "key": "EnrollmentReportSearchForm",
+            "id": "EnrollmentReportSearchForm",
+            "box": [
+             0,
+             105.67,
+             1920,
+             375.83
+            ],
+            "k": [
+             {
+              "t": "div",
+              "cls": "container",
+              "box": [
+               30,
+               105.67,
+               1860,
+               0
+              ],
+              "s": {
+               "maxWidth": "100%",
+               "margin": "0px 30px"
+              },
+              "pseudo": {
+               "before": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(51, 51, 51)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               },
+               "after": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(51, 51, 51)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               }
+              }
+             },
+             {
+              "t": "div",
+              "cls": "container",
+              "box": [
+               30,
+               105.67,
+               1860,
+               375.83
+              ],
+              "s": {
+               "maxWidth": "100%",
+               "margin": "0px 30px"
+              },
+              "pseudo": {
+               "before": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(51, 51, 51)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               },
+               "after": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(51, 51, 51)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               }
+              },
+              "k": [
+               {
+                "t": "div",
+                "cls": "row",
+                "box": [
+                 30,
+                 105.67,
+                 1860,
+                 375.83
+                ],
+                "pseudo": {
+                 "before": {
+                  "content": "\" \"",
+                  "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                  "size": "14px",
+                  "weight": "400",
+                  "color": "rgb(51, 51, 51)",
+                  "display": "table",
+                  "w": "0px",
+                  "h": "0px"
+                 },
+                 "after": {
+                  "content": "\" \"",
+                  "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                  "size": "14px",
+                  "weight": "400",
+                  "color": "rgb(51, 51, 51)",
+                  "display": "table",
+                  "w": "0px",
+                  "h": "0px"
+                 }
+                },
+                "k": [
+                 {
+                  "t": "fieldset",
+                  "key": "fieldset-search-enrollment",
+                  "box": [
+                   30,
+                   105.67,
+                   1860,
+                   375.83
+                  ],
+                  "k": [
+                   {
+                    "t": "div",
+                    "cls": "content-panel-container",
+                    "box": [
+                     30,
+                     105.67,
+                     1860,
+                     351.83
+                    ],
+                    "s": {
+                     "margin": "0px 0px 24px",
+                     "padding": "0px 0px 15px",
+                     "backgroundColor": "rgb(255, 255, 255)",
+                     "borderRadius": "10px",
+                     "boxShadow": "rgba(0, 0, 0, 0.08) 0px 8px 10px 1px",
+                     "borderTop": "0.666667px solid rgb(222, 226, 230)",
+                     "borderRight": "0.666667px solid rgb(222, 226, 230)",
+                     "borderBottom": "0.666667px solid rgb(222, 226, 230)",
+                     "borderLeft": "0.666667px solid rgb(222, 226, 230)"
+                    },
+                    "k": [
+                     {
+                      "t": "div",
+                      "cls": "content-panel-hdr",
+                      "box": [
+                       30.67,
+                       106.33,
+                       1858.67,
+                       48
+                      ],
+                      "s": {
+                       "fontFamily": "\"Poppins Bold\", Arial, Helvetica, sans-serif",
+                       "fontSize": "24px",
+                       "fontWeight": "900",
+                       "lineHeight": "24px",
+                       "margin": "0px 0px 15px",
+                       "padding": "12px 24px",
+                       "backgroundColor": "rgb(250, 250, 250)",
+                       "borderRadius": "10px 10px 0px 0px"
+                      },
+                      "k": [
+                       {
+                        "t": "span",
+                        "label": "Panel contains one or more required fields.",
+                        "cls": "clickable editor-req-fields fa-solid fa-asterisk",
+                        "box": [
+                         54.67,
+                         121.33,
+                         12,
+                         16
+                        ],
+                        "s": {
+                         "color": "rgb(203, 26, 198)",
+                         "fontFamily": "\"Font Awesome 6 Pro\"",
+                         "fontSize": "16px",
+                         "lineHeight": "16px",
+                         "display": "inline-block",
+                         "position": "relative",
+                         "cursor": "pointer",
+                         "top": "-3px",
+                         "right": "0px",
+                         "bottom": "3px",
+                         "left": "0px"
+                        },
+                        "pseudo": {
+                         "before": {
+                          "content": "\"*\"",
+                          "font": "\"Font Awesome 6 Pro\"",
+                          "size": "16px",
+                          "weight": "900",
+                          "color": "rgb(203, 26, 198)",
+                          "display": "inline",
+                          "w": "auto",
+                          "h": "auto"
+                         }
+                        }
+                       },
+                       {
+                        "t": "#text",
+                        "runs": [
+                         {
+                          "x": "Search Enrollment Reports"
+                         }
+                        ]
+                       }
+                      ]
+                     },
+                     {
+                      "t": "div",
+                      "key": "PlusMinusSearchEnrollmentReport",
+                      "id": "PlusMinusSearchEnrollmentReport",
+                      "cls": "content-panel-hdr-tools",
+                      "box": [
+                       30.67,
+                       133.33,
+                       1858.67,
+                       30
+                      ],
+                      "s": {
+                       "margin": "-36px 0px 0px"
+                      },
+                      "k": [
+                       {
+                        "t": "div",
+                        "cls": "content-ordered-panel-hdr-tools",
+                        "box": [
+                         30.67,
+                         133.33,
+                         1858.67,
+                         30
+                        ],
+                        "s": {
+                         "lineHeight": "30px",
+                         "display": "flex",
+                         "justifyContent": "flex-end",
+                         "margin": "-1px 0px 0px",
+                         "padding": "0px 15px"
+                        },
+                        "k": [
+                         {
+                          "t": "div",
+                          "key": "button-22",
+                          "cls": "panel-icon clickable",
+                          "box": [
+                           1846.83,
+                           133.33,
+                           27.5,
+                           30
+                          ],
+                          "s": {
+                           "color": "rgb(43, 58, 68)",
+                           "fontSize": "20px",
+                           "float": "right",
+                           "margin": "0px 0px 0px 20px",
+                           "padding": "0px 5px",
+                           "cursor": "pointer",
+                           "verticalAlign": "top"
+                          },
+                          "k": [
+                           {
+                            "t": "div",
+                            "key": "searchCriteriaPanelIcon",
+                            "label": "Collapse",
+                            "id": "searchCriteriaPanelIcon",
+                            "cls": "fa-solid fa-angle-up",
+                            "box": [
+                             1851.83,
+                             138,
+                             17.5,
+                             20
+                            ],
+                            "s": {
+                             "fontFamily": "\"Font Awesome 6 Pro\"",
+                             "fontWeight": "900",
+                             "lineHeight": "20px",
+                             "display": "inline-block",
+                             "cursor": "pointer"
+                            },
+                            "pseudo": {
+                             "before": {
+                              "content": "\"\"",
+                              "font": "\"Font Awesome 6 Pro\"",
+                              "size": "20px",
+                              "weight": "900",
+                              "color": "rgb(43, 58, 68)",
+                              "display": "inline",
+                              "w": "auto",
+                              "h": "auto"
+                             }
+                            }
+                           }
+                          ]
+                         }
+                        ]
+                       }
+                      ]
+                     },
+                     {
+                      "t": "div",
+                      "key": "SearchEnrollmentReport",
+                      "id": "SearchEnrollmentReport",
+                      "cls": "content-panel-bdy",
+                      "box": [
+                       30.67,
+                       163.33,
+                       1858.67,
+                       278.5
+                      ],
+                      "s": {
+                       "padding": "15px 0px 0px"
+                      },
+                      "pseudo": {
+                       "before": {
+                        "content": "\" \"",
+                        "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                        "size": "14px",
+                        "weight": "400",
+                        "color": "rgb(51, 51, 51)",
+                        "display": "table",
+                        "w": "0px",
+                        "h": "0px"
+                       },
+                       "after": {
+                        "content": "\" \"",
+                        "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                        "size": "14px",
+                        "weight": "400",
+                        "color": "rgb(51, 51, 51)",
+                        "display": "table",
+                        "w": "0px",
+                        "h": "0px"
+                       }
+                      },
+                      "k": [
+                       {
+                        "t": "div",
+                        "cls": "editor-req-field-row",
+                        "box": [
+                         30.67,
+                         178.33,
+                         1858.67,
+                         21
+                        ],
+                        "s": {
+                         "color": "rgb(203, 26, 198)",
+                         "fontSize": "13px",
+                         "lineHeight": "13px",
+                         "textAlign": "right",
+                         "padding": "8px 10px 0px 0px"
+                        },
+                        "k": [
+                         {
+                          "t": "#text",
+                          "runs": [
+                           {
+                            "x": "Required Fields ("
+                           }
+                          ]
+                         },
+                         {
+                          "t": "span",
+                          "cls": "editor-req-field fa-solid fa-asterisk",
+                          "box": [
+                           1860.25,
+                           186.33,
+                           14.75,
+                           13
+                          ],
+                          "s": {
+                           "fontFamily": "\"Font Awesome 6 Pro\"",
+                           "fontWeight": "900",
+                           "display": "inline-block",
+                           "padding": "0px 5px 0px 0px"
+                          },
+                          "pseudo": {
+                           "before": {
+                            "content": "\"*\"",
+                            "font": "\"Font Awesome 6 Pro\"",
+                            "size": "13px",
+                            "weight": "900",
+                            "color": "rgb(203, 26, 198)",
+                            "display": "inline",
+                            "w": "auto",
+                            "h": "auto"
+                           }
+                          }
+                         },
+                         {
+                          "t": "#text",
+                          "runs": [
+                           {
+                            "x": ")"
+                           }
+                          ]
+                         }
+                        ]
+                       },
+                       {
+                        "t": "div",
+                        "cls": "panel-body",
+                        "box": [
+                         30.67,
+                         199.33,
+                         1858.67,
+                         242.5
+                        ],
+                        "s": {
+                         "padding": "20px 10px 10px"
+                        },
+                        "pseudo": {
+                         "before": {
+                          "content": "\" \"",
+                          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                          "size": "14px",
+                          "weight": "400",
+                          "color": "rgb(51, 51, 51)",
+                          "display": "table",
+                          "w": "0px",
+                          "h": "0px"
+                         },
+                         "after": {
+                          "content": "\" \"",
+                          "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                          "size": "14px",
+                          "weight": "400",
+                          "color": "rgb(51, 51, 51)",
+                          "display": "table",
+                          "w": "0px",
+                          "h": "0px"
+                         }
+                        },
+                        "k": [
+                         {
+                          "t": "div",
+                          "cls": "rowpad",
+                          "box": [
+                           40.67,
+                           219.33,
+                           1838.67,
+                           72
+                          ],
+                          "s": {
+                           "padding": "5px 0px"
+                          },
+                          "pseudo": {
+                           "before": {
+                            "content": "\" \"",
+                            "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                            "size": "14px",
+                            "weight": "400",
+                            "color": "rgb(51, 51, 51)",
+                            "display": "table",
+                            "w": "0px",
+                            "h": "0px"
+                           },
+                           "after": {
+                            "content": "\" \"",
+                            "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                            "size": "14px",
+                            "weight": "400",
+                            "color": "rgb(51, 51, 51)",
+                            "display": "table",
+                            "w": "0px",
+                            "h": "0px"
+                           }
+                          },
+                          "k": [
+                           {
+                            "t": "p",
+                            "box": [
+                             40.67,
+                             224.33,
+                             1838.67,
+                             14
+                            ],
+                            "s": {
+                             "margin": "0px 0px 10px"
+                            },
+                            "runs": [
+                             {
+                              "x": "Complete the necessary criteria for the chosen search(s)."
+                             }
+                            ]
+                           },
+                           {
+                            "t": "p",
+                            "box": [
+                             40.67,
+                             262.33,
+                             1838.67,
+                             14
+                            ],
+                            "s": {
+                             "margin": "0px 0px 10px"
+                            },
+                            "runs": [
+                             {
+                              "x": "Note: The name of the report file is displayed as Module Name, Timestamp in YYYYMMDDHHMMSS format, and the Report Name. The latest generated file is displayed at the top."
+                             }
+                            ]
+                           }
+                          ]
+                         },
+                         {
+                          "t": "div",
+                          "box": [
+                           40.67,
+                           291.33,
+                           1838.67,
+                           0
+                          ],
+                          "k": [
+                           {
+                            "t": "div",
+                            "key": "FromDate_parent",
+                            "id": "FromDate_parent",
+                            "cls": "col-md-3 editor-col",
+                            "box": [
+                             40.67,
+                             291.33,
+                             459.67,
+                             92.5
+                            ],
+                            "s": {
+                             "position": "relative",
+                             "float": "left",
+                             "padding": "0px 15px 30px 0px",
+                             "top": "0px",
+                             "right": "0px",
+                             "bottom": "0px",
+                             "left": "0px"
+                            },
+                            "k": [
+                             {
+                              "t": "div",
+                              "cls": "editor-label",
+                              "box": [
+                               40.67,
+                               291.33,
+                               444.67,
+                               22.5
+                              ],
+                              "s": {
+                               "fontSize": "16px",
+                               "fontWeight": "700",
+                               "lineHeight": "16px",
+                               "display": "flex"
+                              },
+                              "k": [
+                               {
+                                "t": "span",
+                                "key": "button-from-date-is-a-required-field",
+                                "label": "From Date is a required field.",
+                                "cls": "clickable editor-req-field fa-solid fa-asterisk",
+                                "box": [
+                                 40.67,
+                                 291.33,
+                                 14.75,
+                                 22.5
+                                ],
+                                "s": {
+                                 "color": "rgb(203, 26, 198)",
+                                 "fontFamily": "\"Font Awesome 6 Pro\"",
+                                 "fontSize": "13px",
+                                 "fontWeight": "900",
+                                 "lineHeight": "13px",
+                                 "padding": "0px 5px 0px 0px",
+                                 "cursor": "pointer"
+                                },
+                                "pseudo": {
+                                 "before": {
+                                  "content": "\"*\"",
+                                  "font": "\"Font Awesome 6 Pro\"",
+                                  "size": "13px",
+                                  "weight": "900",
+                                  "color": "rgb(203, 26, 198)",
+                                  "display": "inline",
+                                  "w": "auto",
+                                  "h": "auto"
+                                 }
+                                }
+                               },
+                               {
+                                "t": "label",
+                                "key": "FromDateLabel",
+                                "label": "From Date",
+                                "id": "FromDateLabel",
+                                "box": [
+                                 55.42,
+                                 291.33,
+                                 400.92,
+                                 18
+                                ],
+                                "s": {
+                                 "color": "rgb(43, 58, 68)",
+                                 "fontFamily": "Arial, sans-serif",
+                                 "lineHeight": "18px",
+                                 "whiteSpace": "nowrap",
+                                 "margin": "0px 0px 4.5px",
+                                 "cursor": "default",
+                                 "overflow": "hidden"
+                                },
+                                "runs": [
+                                 {
+                                  "x": "From Date"
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "span",
+                                "key": "FromDateHelp",
+                                "role": "img",
+                                "label": "HELP",
+                                "id": "FromDateHelp",
+                                "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                "box": [
+                                 471.33,
+                                 291.33,
+                                 14,
+                                 22.5
+                                ],
+                                "s": {
+                                 "color": "rgb(51, 129, 255)",
+                                 "fontFamily": "\"Font Awesome 6 Pro\"",
+                                 "fontSize": "14px",
+                                 "fontWeight": "900",
+                                 "lineHeight": "14px",
+                                 "float": "right",
+                                 "margin": "0px 0px 0px 15px",
+                                 "cursor": "pointer"
+                                },
+                                "pseudo": {
+                                 "before": {
+                                  "content": "\"\"",
+                                  "font": "\"Font Awesome 6 Pro\"",
+                                  "size": "14px",
+                                  "weight": "900",
+                                  "color": "rgb(51, 129, 255)",
+                                  "display": "inline",
+                                  "w": "auto",
+                                  "h": "auto"
+                                 }
+                                }
+                               }
+                              ]
+                             },
+                             {
+                              "t": "div",
+                              "cls": "editor-field",
+                              "box": [
+                               40.67,
+                               313.83,
+                               444.67,
+                               40
+                              ],
+                              "k": [
+                               {
+                                "t": "span",
+                                "cls": "k-datepicker k-input editor-control k-input-inner",
+                                "box": [
+                                 40.67,
+                                 313.83,
+                                 444.67,
+                                 40
+                                ],
+                                "s": {
+                                 "color": "rgb(61, 61, 61)",
+                                 "whiteSpace": "nowrap",
+                                 "display": "flex",
+                                 "alignItems": "center",
+                                 "position": "relative",
+                                 "padding": "5px 0px",
+                                 "backgroundColor": "rgb(255, 255, 255)",
+                                 "borderRadius": "5px",
+                                 "overflow": "hidden",
+                                 "zIndex": "1",
+                                 "verticalAlign": "middle",
+                                 "top": "0px",
+                                 "right": "0px",
+                                 "bottom": "0px",
+                                 "left": "0px",
+                                 "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                 "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                 "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                 "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                },
+                                "k": [
+                                 {
+                                  "t": "input",
+                                  "key": "FromDate",
+                                  "role": "combobox",
+                                  "id": "FromDate",
+                                  "cls": "editor-control k-input-inner",
+                                  "box": [
+                                   41.33,
+                                   318.83,
+                                   374.33,
+                                   30
+                                  ],
+                                  "s": {
+                                   "color": "rgb(43, 58, 68)",
+                                   "fontSize": "16px",
+                                   "lineHeight": "16px",
+                                   "position": "relative",
+                                   "margin": "0px 37px 0px 0px",
+                                   "padding": "2.5px 5px",
+                                   "cursor": "text",
+                                   "overflow": "clip",
+                                   "top": "0px",
+                                   "right": "0px",
+                                   "bottom": "0px",
+                                   "left": "0px"
+                                  },
+                                  "type": "text",
+                                  "name": "FromDate",
+                                  "value": "11/17/2026"
+                                 },
+                                 {
+                                  "t": "button",
+                                  "key": "button-select",
+                                  "role": "button",
+                                  "label": "select",
+                                  "cls": "k-input-button k-button k-icon-button",
+                                  "box": [
+                                   452.67,
+                                   318.33,
+                                   32,
+                                   31
+                                  ],
+                                  "s": {
+                                   "color": "rgb(0, 98, 255)",
+                                   "fontFamily": "Arial, FontAwesome, sans-serif",
+                                   "fontSize": "16px",
+                                   "lineHeight": "16px",
+                                   "textAlign": "center",
+                                   "display": "flex",
+                                   "justifyContent": "center",
+                                   "alignItems": "center",
+                                   "gap": "0px",
+                                   "position": "relative",
+                                   "padding": "5px 0px",
+                                   "cursor": "pointer",
+                                   "verticalAlign": "middle",
+                                   "top": "0px",
+                                   "right": "0px",
+                                   "bottom": "0px",
+                                   "left": "0px"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"\"",
+                                    "font": "Arial, FontAwesome, sans-serif",
+                                    "size": "16px",
+                                    "weight": "400",
+                                    "color": "rgb(0, 98, 255)",
+                                    "display": "none",
+                                    "w": "auto",
+                                    "h": "auto",
+                                    "bg": "rgb(0, 98, 255)",
+                                    "position": "absolute"
+                                   },
+                                   "after": {
+                                    "content": "\"\"",
+                                    "font": "Arial, FontAwesome, sans-serif",
+                                    "size": "16px",
+                                    "weight": "400",
+                                    "color": "rgb(0, 98, 255)",
+                                    "display": "none",
+                                    "w": "auto",
+                                    "h": "auto",
+                                    "position": "absolute"
+                                   }
+                                  },
+                                  "k": [
+                                   {
+                                    "t": "span",
+                                    "cls": "k-icon k-svg-icon k-svg-i-calendar k-button-icon",
+                                    "box": [
+                                     459.86,
+                                     323.83,
+                                     17.59,
+                                     20
+                                    ],
+                                    "s": {
+                                     "color": "rgb(43, 58, 68)",
+                                     "fontFamily": "FontAwesome, Arial, sans-serif",
+                                     "fontWeight": "700",
+                                     "display": "flex",
+                                     "justifyContent": "center",
+                                     "alignItems": "center",
+                                     "position": "relative",
+                                     "cursor": "pointer",
+                                     "verticalAlign": "middle",
+                                     "top": "0px",
+                                     "right": "0px",
+                                     "bottom": "0px",
+                                     "left": "0px"
+                                    },
+                                    "k": [
+                                     {
+                                      "t": "svg",
+                                      "box": [
+                                       459.86,
+                                       325.83,
+                                       17.59,
+                                       16
+                                      ],
+                                      "s": {
+                                       "cursor": "pointer",
+                                       "overflow": "hidden"
+                                      },
+                                      "file": "assets/_svg/svg-1.svg"
+                                     }
+                                    ]
+                                   }
+                                  ]
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "span",
+                                "key": "FromDate_validationMessage",
+                                "id": "FromDate_validationMessage",
+                                "cls": "k-invalid-msg",
+                                "box": [
+                                 40.67,
+                                 353.83,
+                                 0,
+                                 0
+                                ]
+                               }
+                              ]
+                             }
+                            ]
+                           },
+                           {
+                            "t": "div",
+                            "key": "ToDate_parent",
+                            "id": "ToDate_parent",
+                            "cls": "col-md-3 editor-col",
+                            "box": [
+                             500.33,
+                             291.33,
+                             459.67,
+                             92.5
+                            ],
+                            "s": {
+                             "position": "relative",
+                             "float": "left",
+                             "padding": "0px 15px 30px 0px",
+                             "top": "0px",
+                             "right": "0px",
+                             "bottom": "0px",
+                             "left": "0px"
+                            },
+                            "k": [
+                             {
+                              "t": "div",
+                              "cls": "editor-label",
+                              "box": [
+                               500.33,
+                               291.33,
+                               444.67,
+                               22.5
+                              ],
+                              "s": {
+                               "fontSize": "16px",
+                               "fontWeight": "700",
+                               "lineHeight": "16px",
+                               "display": "flex"
+                              },
+                              "k": [
+                               {
+                                "t": "span",
+                                "key": "button-to-date-is-a-required-field",
+                                "label": "To Date is a required field.",
+                                "cls": "clickable editor-req-field fa-solid fa-asterisk",
+                                "box": [
+                                 500.33,
+                                 291.33,
+                                 14.75,
+                                 22.5
+                                ],
+                                "s": {
+                                 "color": "rgb(203, 26, 198)",
+                                 "fontFamily": "\"Font Awesome 6 Pro\"",
+                                 "fontSize": "13px",
+                                 "fontWeight": "900",
+                                 "lineHeight": "13px",
+                                 "padding": "0px 5px 0px 0px",
+                                 "cursor": "pointer"
+                                },
+                                "pseudo": {
+                                 "before": {
+                                  "content": "\"*\"",
+                                  "font": "\"Font Awesome 6 Pro\"",
+                                  "size": "13px",
+                                  "weight": "900",
+                                  "color": "rgb(203, 26, 198)",
+                                  "display": "inline",
+                                  "w": "auto",
+                                  "h": "auto"
+                                 }
+                                }
+                               },
+                               {
+                                "t": "label",
+                                "key": "ToDateLabel",
+                                "label": "To Date",
+                                "id": "ToDateLabel",
+                                "box": [
+                                 515.08,
+                                 291.33,
+                                 400.92,
+                                 18
+                                ],
+                                "s": {
+                                 "color": "rgb(43, 58, 68)",
+                                 "fontFamily": "Arial, sans-serif",
+                                 "lineHeight": "18px",
+                                 "whiteSpace": "nowrap",
+                                 "margin": "0px 0px 4.5px",
+                                 "cursor": "default",
+                                 "overflow": "hidden"
+                                },
+                                "runs": [
+                                 {
+                                  "x": "To Date"
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "span",
+                                "key": "ToDateHelp",
+                                "role": "img",
+                                "label": "HELP",
+                                "id": "ToDateHelp",
+                                "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                "box": [
+                                 931,
+                                 291.33,
+                                 14,
+                                 22.5
+                                ],
+                                "s": {
+                                 "color": "rgb(51, 129, 255)",
+                                 "fontFamily": "\"Font Awesome 6 Pro\"",
+                                 "fontSize": "14px",
+                                 "fontWeight": "900",
+                                 "lineHeight": "14px",
+                                 "float": "right",
+                                 "margin": "0px 0px 0px 15px",
+                                 "cursor": "pointer"
+                                },
+                                "pseudo": {
+                                 "before": {
+                                  "content": "\"\"",
+                                  "font": "\"Font Awesome 6 Pro\"",
+                                  "size": "14px",
+                                  "weight": "900",
+                                  "color": "rgb(51, 129, 255)",
+                                  "display": "inline",
+                                  "w": "auto",
+                                  "h": "auto"
+                                 }
+                                }
+                               }
+                              ]
+                             },
+                             {
+                              "t": "div",
+                              "cls": "editor-field",
+                              "box": [
+                               500.33,
+                               313.83,
+                               444.67,
+                               40
+                              ],
+                              "k": [
+                               {
+                                "t": "span",
+                                "cls": "k-datepicker k-input editor-control k-input-inner",
+                                "box": [
+                                 500.33,
+                                 313.83,
+                                 444.67,
+                                 40
+                                ],
+                                "s": {
+                                 "color": "rgb(61, 61, 61)",
+                                 "whiteSpace": "nowrap",
+                                 "display": "flex",
+                                 "alignItems": "center",
+                                 "position": "relative",
+                                 "padding": "5px 0px",
+                                 "backgroundColor": "rgb(255, 255, 255)",
+                                 "borderRadius": "5px",
+                                 "overflow": "hidden",
+                                 "zIndex": "1",
+                                 "verticalAlign": "middle",
+                                 "top": "0px",
+                                 "right": "0px",
+                                 "bottom": "0px",
+                                 "left": "0px",
+                                 "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                 "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                 "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                 "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                },
+                                "k": [
+                                 {
+                                  "t": "input",
+                                  "key": "ToDate",
+                                  "role": "combobox",
+                                  "id": "ToDate",
+                                  "cls": "editor-control k-input-inner",
+                                  "box": [
+                                   501,
+                                   318.83,
+                                   374.33,
+                                   30
+                                  ],
+                                  "s": {
+                                   "color": "rgb(43, 58, 68)",
+                                   "fontSize": "16px",
+                                   "lineHeight": "16px",
+                                   "position": "relative",
+                                   "margin": "0px 37px 0px 0px",
+                                   "padding": "2.5px 5px",
+                                   "cursor": "text",
+                                   "overflow": "clip",
+                                   "top": "0px",
+                                   "right": "0px",
+                                   "bottom": "0px",
+                                   "left": "0px"
+                                  },
+                                  "type": "text",
+                                  "name": "ToDate",
+                                  "value": "11/17/2026"
+                                 },
+                                 {
+                                  "t": "button",
+                                  "key": "button-select-2",
+                                  "role": "button",
+                                  "label": "select",
+                                  "cls": "k-input-button k-button k-icon-button",
+                                  "box": [
+                                   912.33,
+                                   318.33,
+                                   32,
+                                   31
+                                  ],
+                                  "s": {
+                                   "color": "rgb(0, 98, 255)",
+                                   "fontFamily": "Arial, FontAwesome, sans-serif",
+                                   "fontSize": "16px",
+                                   "lineHeight": "16px",
+                                   "textAlign": "center",
+                                   "display": "flex",
+                                   "justifyContent": "center",
+                                   "alignItems": "center",
+                                   "gap": "0px",
+                                   "position": "relative",
+                                   "padding": "5px 0px",
+                                   "cursor": "pointer",
+                                   "verticalAlign": "middle",
+                                   "top": "0px",
+                                   "right": "0px",
+                                   "bottom": "0px",
+                                   "left": "0px"
+                                  },
+                                  "pseudo": {
+                                   "before": {
+                                    "content": "\"\"",
+                                    "font": "Arial, FontAwesome, sans-serif",
+                                    "size": "16px",
+                                    "weight": "400",
+                                    "color": "rgb(0, 98, 255)",
+                                    "display": "none",
+                                    "w": "auto",
+                                    "h": "auto",
+                                    "bg": "rgb(0, 98, 255)",
+                                    "position": "absolute"
+                                   },
+                                   "after": {
+                                    "content": "\"\"",
+                                    "font": "Arial, FontAwesome, sans-serif",
+                                    "size": "16px",
+                                    "weight": "400",
+                                    "color": "rgb(0, 98, 255)",
+                                    "display": "none",
+                                    "w": "auto",
+                                    "h": "auto",
+                                    "position": "absolute"
+                                   }
+                                  },
+                                  "k": [
+                                   {
+                                    "t": "span",
+                                    "cls": "k-icon k-svg-icon k-svg-i-calendar k-button-icon",
+                                    "box": [
+                                     919.53,
+                                     323.83,
+                                     17.59,
+                                     20
+                                    ],
+                                    "s": {
+                                     "color": "rgb(43, 58, 68)",
+                                     "fontFamily": "FontAwesome, Arial, sans-serif",
+                                     "fontWeight": "700",
+                                     "display": "flex",
+                                     "justifyContent": "center",
+                                     "alignItems": "center",
+                                     "position": "relative",
+                                     "cursor": "pointer",
+                                     "verticalAlign": "middle",
+                                     "top": "0px",
+                                     "right": "0px",
+                                     "bottom": "0px",
+                                     "left": "0px"
+                                    },
+                                    "k": [
+                                     {
+                                      "t": "svg",
+                                      "box": [
+                                       919.53,
+                                       325.83,
+                                       17.59,
+                                       16
+                                      ],
+                                      "s": {
+                                       "cursor": "pointer",
+                                       "overflow": "hidden"
+                                      },
+                                      "file": "assets/_svg/svg-2.svg"
+                                     }
+                                    ]
+                                   }
+                                  ]
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "span",
+                                "key": "ToDate_validationMessage",
+                                "id": "ToDate_validationMessage",
+                                "cls": "k-invalid-msg",
+                                "box": [
+                                 500.33,
+                                 353.83,
+                                 0,
+                                 0
+                                ]
+                               }
+                              ]
+                             }
+                            ]
+                           },
+                           {
+                            "t": "div",
+                            "key": "UserId_parent",
+                            "id": "UserId_parent",
+                            "cls": "col-md-3 editor-col",
+                            "box": [
+                             960,
+                             291.33,
+                             459.67,
+                             92.5
+                            ],
+                            "s": {
+                             "position": "relative",
+                             "float": "left",
+                             "padding": "0px 15px 30px 0px",
+                             "top": "0px",
+                             "right": "0px",
+                             "bottom": "0px",
+                             "left": "0px"
+                            },
+                            "k": [
+                             {
+                              "t": "div",
+                              "cls": "editor-label",
+                              "box": [
+                               960,
+                               291.33,
+                               444.67,
+                               22.5
+                              ],
+                              "s": {
+                               "fontSize": "16px",
+                               "fontWeight": "700",
+                               "lineHeight": "16px",
+                               "display": "flex"
+                              },
+                              "k": [
+                               {
+                                "t": "label",
+                                "key": "UserIdLabel",
+                                "label": "User ID",
+                                "id": "UserIdLabel",
+                                "box": [
+                                 960,
+                                 291.33,
+                                 415.67,
+                                 18
+                                ],
+                                "s": {
+                                 "color": "rgb(43, 58, 68)",
+                                 "fontFamily": "Arial, sans-serif",
+                                 "lineHeight": "18px",
+                                 "whiteSpace": "nowrap",
+                                 "margin": "0px 0px 4.5px",
+                                 "cursor": "default",
+                                 "overflow": "hidden"
+                                },
+                                "runs": [
+                                 {
+                                  "x": "User ID"
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "span",
+                                "key": "UserIdHelp",
+                                "role": "img",
+                                "label": "HELP",
+                                "id": "UserIdHelp",
+                                "cls": "clickable editor-icon fa-solid fa-circle-question",
+                                "box": [
+                                 1390.67,
+                                 291.33,
+                                 14,
+                                 22.5
+                                ],
+                                "s": {
+                                 "color": "rgb(51, 129, 255)",
+                                 "fontFamily": "\"Font Awesome 6 Pro\"",
+                                 "fontSize": "14px",
+                                 "fontWeight": "900",
+                                 "lineHeight": "14px",
+                                 "float": "right",
+                                 "margin": "0px 0px 0px 15px",
+                                 "cursor": "pointer"
+                                },
+                                "pseudo": {
+                                 "before": {
+                                  "content": "\"\"",
+                                  "font": "\"Font Awesome 6 Pro\"",
+                                  "size": "14px",
+                                  "weight": "900",
+                                  "color": "rgb(51, 129, 255)",
+                                  "display": "inline",
+                                  "w": "auto",
+                                  "h": "auto"
+                                 }
+                                }
+                               }
+                              ]
+                             },
+                             {
+                              "t": "div",
+                              "cls": "editor-field",
+                              "box": [
+                               960,
+                               313.83,
+                               444.67,
+                               40
+                              ],
+                              "k": [
+                               {
+                                "t": "span",
+                                "cls": "k-input k-textbox editor-control",
+                                "box": [
+                                 960,
+                                 313.83,
+                                 444.67,
+                                 40
+                                ],
+                                "s": {
+                                 "color": "rgb(43, 58, 68)",
+                                 "fontSize": "16px",
+                                 "lineHeight": "22.8571px",
+                                 "display": "inline-flex",
+                                 "alignItems": "stretch",
+                                 "position": "relative",
+                                 "padding": "4px 0px 4px 10px",
+                                 "backgroundColor": "rgb(255, 255, 255)",
+                                 "borderRadius": "5px",
+                                 "overflow": "hidden",
+                                 "verticalAlign": "middle",
+                                 "top": "0px",
+                                 "right": "0px",
+                                 "bottom": "0px",
+                                 "left": "0px",
+                                 "borderTop": "0.666667px solid rgb(90, 105, 120)",
+                                 "borderRight": "0.666667px solid rgb(90, 105, 120)",
+                                 "borderBottom": "0.666667px solid rgb(90, 105, 120)",
+                                 "borderLeft": "0.666667px solid rgb(90, 105, 120)"
+                                },
+                                "k": [
+                                 {
+                                  "t": "input",
+                                  "key": "UserId",
+                                  "id": "UserId",
+                                  "cls": "editor-control k-input-inner",
+                                  "box": [
+                                   970.67,
+                                   318.5,
+                                   396.33,
+                                   30
+                                  ],
+                                  "s": {
+                                   "position": "relative",
+                                   "margin": "0px 37px 0px 0px",
+                                   "padding": "2.5px 5px",
+                                   "cursor": "text",
+                                   "overflow": "clip",
+                                   "top": "0px",
+                                   "right": "0px",
+                                   "bottom": "0px",
+                                   "left": "0px"
+                                  },
+                                  "type": "text",
+                                  "name": "UserId",
+                                  "value": "useradmin1"
+                                 }
+                                ]
+                               },
+                               {
+                                "t": "span",
+                                "key": "UserId_validationMessage",
+                                "id": "UserId_validationMessage",
+                                "cls": "k-invalid-msg",
+                                "box": [
+                                 1404.67,
+                                 324.79,
+                                 0,
+                                 15.33
+                                ]
+                               }
+                              ]
+                             }
+                            ]
+                           }
+                          ]
+                         },
+                         {
+                          "t": "div",
+                          "cls": "editor-button-row",
+                          "box": [
+                           40.67,
+                           383.83,
+                           1838.67,
+                           10
+                          ],
+                          "s": {
+                           "maxWidth": "100%",
+                           "padding": "10px 0px 0px"
+                          },
+                          "k": [
+                           {
+                            "t": "span",
+                            "cls": "editor-button-nav",
+                            "box": [
+                             1638.05,
+                             393.83,
+                             226.28,
+                             38
+                            ],
+                            "s": {
+                             "display": "flex",
+                             "float": "right",
+                             "margin": "0px 15px 0px 0px"
+                            },
+                            "k": [
+                             {
+                              "t": "input",
+                              "key": "clearButton",
+                              "id": "clearButton",
+                              "cls": "k-button btn-spacer-right",
+                              "box": [
+                               1638.05,
+                               393.83,
+                               99.57,
+                               38
+                              ],
+                              "s": {
+                               "color": "rgb(0, 98, 255)",
+                               "fontFamily": "Arial, FontAwesome, sans-serif",
+                               "fontSize": "16px",
+                               "lineHeight": "16px",
+                               "textAlign": "center",
+                               "whiteSpace": "nowrap",
+                               "display": "flex",
+                               "justifyContent": "center",
+                               "alignItems": "center",
+                               "gap": "2.5px",
+                               "position": "relative",
+                               "margin": "0px 12px 0px 0px",
+                               "padding": "5px 30px",
+                               "backgroundColor": "rgb(255, 255, 255)",
+                               "borderRadius": "4px",
+                               "cursor": "pointer",
+                               "overflow": "clip",
+                               "verticalAlign": "middle",
+                               "top": "0px",
+                               "right": "0px",
+                               "bottom": "0px",
+                               "left": "0px",
+                               "borderTop": "0.666667px solid rgb(0, 98, 255)",
+                               "borderRight": "0.666667px solid rgb(0, 98, 255)",
+                               "borderBottom": "0.666667px solid rgb(0, 98, 255)",
+                               "borderLeft": "0.666667px solid rgb(0, 98, 255)"
+                              },
+                              "pseudo": {
+                               "before": {
+                                "content": "\"\"",
+                                "font": "Arial, FontAwesome, sans-serif",
+                                "size": "16px",
+                                "weight": "400",
+                                "color": "rgb(0, 98, 255)",
+                                "display": "none",
+                                "w": "auto",
+                                "h": "auto",
+                                "bg": "rgb(0, 98, 255)",
+                                "position": "absolute"
+                               },
+                               "after": {
+                                "content": "\"\"",
+                                "font": "Arial, FontAwesome, sans-serif",
+                                "size": "16px",
+                                "weight": "400",
+                                "color": "rgb(0, 98, 255)",
+                                "display": "none",
+                                "w": "auto",
+                                "h": "auto",
+                                "position": "absolute"
+                               }
+                              },
+                              "type": "button",
+                              "value": "Clear"
+                             },
+                             {
+                              "t": "input",
+                              "key": "searchButton",
+                              "id": "searchButton",
+                              "cls": "k-button primary-button",
+                              "box": [
+                               1749.63,
+                               393.83,
+                               114.71,
+                               38
+                              ],
+                              "s": {
+                               "color": "rgb(255, 255, 255)",
+                               "fontFamily": "Arial, FontAwesome, sans-serif",
+                               "fontSize": "16px",
+                               "fontWeight": "700",
+                               "lineHeight": "16px",
+                               "textAlign": "center",
+                               "whiteSpace": "nowrap",
+                               "display": "flex",
+                               "justifyContent": "center",
+                               "alignItems": "center",
+                               "gap": "2.5px",
+                               "position": "relative",
+                               "padding": "5px 30px",
+                               "backgroundColor": "rgb(0, 98, 255)",
+                               "borderRadius": "4px",
+                               "cursor": "pointer",
+                               "overflow": "clip",
+                               "verticalAlign": "middle",
+                               "top": "0px",
+                               "right": "0px",
+                               "bottom": "0px",
+                               "left": "0px",
+                               "borderTop": "0.666667px solid rgb(0, 98, 255)",
+                               "borderRight": "0.666667px solid rgb(0, 98, 255)",
+                               "borderBottom": "0.666667px solid rgb(0, 98, 255)",
+                               "borderLeft": "0.666667px solid rgb(0, 98, 255)"
+                              },
+                              "pseudo": {
+                               "before": {
+                                "content": "\"\"",
+                                "font": "Arial, FontAwesome, sans-serif",
+                                "size": "16px",
+                                "weight": "700",
+                                "color": "rgb(255, 255, 255)",
+                                "display": "none",
+                                "w": "auto",
+                                "h": "auto",
+                                "bg": "rgb(255, 255, 255)",
+                                "position": "absolute"
+                               },
+                               "after": {
+                                "content": "\"\"",
+                                "font": "Arial, FontAwesome, sans-serif",
+                                "size": "16px",
+                                "weight": "700",
+                                "color": "rgb(255, 255, 255)",
+                                "display": "none",
+                                "w": "auto",
+                                "h": "auto",
+                                "position": "absolute"
+                               }
+                              },
+                              "type": "button",
+                              "value": "Search"
+                             }
+                            ]
+                           }
+                          ]
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             },
+             {
+              "t": "div",
+              "cls": "container",
+              "box": [
+               30,
+               481.5,
+               1860,
+               0
+              ],
+              "s": {
+               "maxWidth": "100%",
+               "margin": "0px 30px"
+              },
+              "pseudo": {
+               "before": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(51, 51, 51)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               },
+               "after": {
+                "content": "\" \"",
+                "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+                "size": "14px",
+                "weight": "400",
+                "color": "rgb(51, 51, 51)",
+                "display": "table",
+                "w": "0px",
+                "h": "0px"
+               }
+              }
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": "footer",
+        "key": "contentinfo",
+        "role": "contentinfo",
+        "box": [
+         0,
+         481.5,
+         1920,
+         118.5
+        ],
+        "s": {
+         "color": "rgb(87, 87, 87)",
+         "fontSize": "12px",
+         "lineHeight": "12px"
+        },
+        "k": [
+         {
+          "t": "div",
+          "cls": "subfooter",
+          "box": [
+           0,
+           481.5,
+           1920,
+           76.5
+          ],
+          "s": {
+           "textAlign": "center",
+           "padding": "25px 0px",
+           "backgroundColor": "rgb(43, 58, 68)"
+          },
+          "k": [
+           {
+            "t": "span",
+            "cls": "subfooter-lbl",
+            "box": [
+             632.65,
+             506.5,
+             71.34,
+             26.5
+            ],
+            "s": {
+             "color": "rgb(255, 255, 255)",
+             "fontSize": "14px",
+             "lineHeight": "14px",
+             "display": "inline-block",
+             "padding": "6.25px 0px"
+            },
+            "runs": [
+             {
+              "x": "Disclaimer"
+             }
+            ]
+           },
+           {
+            "t": "span",
+            "cls": "subfooter-lbl subfooter-lbl-separator",
+            "box": [
+             747.33,
+             506.5,
+             228.7,
+             26.5
+            ],
+            "s": {
+             "color": "rgb(255, 255, 255)",
+             "fontSize": "14px",
+             "lineHeight": "14px",
+             "display": "inline-block",
+             "margin": "0px 40px",
+             "padding": "6.25px 40px",
+             "borderRight": "0.666667px solid rgb(255, 255, 255)",
+             "borderLeft": "0.666667px solid rgb(255, 255, 255)"
+            },
+            "runs": [
+             {
+              "x": "Website Requirements"
+             }
+            ]
+           },
+           {
+            "t": "span",
+            "cls": "subfooter-lbl subfooter-lbl-right-separator",
+            "box": [
+             1019.38,
+             506.5,
+             133.8,
+             26.5
+            ],
+            "s": {
+             "color": "rgb(255, 255, 255)",
+             "fontSize": "14px",
+             "lineHeight": "14px",
+             "display": "inline-block",
+             "margin": "0px 40px 0px 0px",
+             "padding": "6.25px 40px 6.25px 0px",
+             "borderRight": "0.666667px solid rgb(255, 255, 255)"
+            },
+            "runs": [
+             {
+              "x": "Privacy Policy"
+             }
+            ]
+           },
+           {
+            "t": "span",
+            "cls": "subfooter-lbl",
+            "box": [
+             1196.52,
+             506.5,
+             90.82,
+             26.5
+            ],
+            "s": {
+             "color": "rgb(255, 255, 255)",
+             "fontSize": "14px",
+             "lineHeight": "14px",
+             "display": "inline-block",
+             "padding": "6.25px 0px"
+            },
+            "runs": [
+             {
+              "x": "Cookie Policy"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "t": "div",
+          "key": "pageFooter",
+          "id": "pageFooter",
+          "box": [
+           0,
+           558,
+           1920,
+           42
+          ],
+          "k": [
+           {
+            "t": "div",
+            "key": "tenantFooter",
+            "id": "tenantFooter",
+            "box": [
+             0,
+             558,
+             1920,
+             0
+            ],
+            "s": {
+             "backgroundColor": "rgb(0, 0, 0)"
+            }
+           },
+           {
+            "t": "div",
+            "key": "baseFooter",
+            "id": "baseFooter",
+            "cls": "row",
+            "box": [
+             0,
+             558,
+             1920,
+             42
+            ],
+            "s": {
+             "lineHeight": "32px",
+             "display": "flex",
+             "padding": "4px 20px 0px"
+            },
+            "pseudo": {
+             "before": {
+              "content": "\" \"",
+              "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+              "size": "12px",
+              "weight": "400",
+              "color": "rgb(87, 87, 87)",
+              "display": "table",
+              "w": "0px",
+              "h": "38px"
+             },
+             "after": {
+              "content": "\" \"",
+              "font": "Arial, \"Helvetica Neue\", Helvetica, sans-serif, FontAwesome",
+              "size": "12px",
+              "weight": "400",
+              "color": "rgb(87, 87, 87)",
+              "display": "table",
+              "w": "0px",
+              "h": "38px"
+             }
+            },
+            "k": [
+             {
+              "t": "div",
+              "key": "footerCopyright",
+              "id": "footerCopyright",
+              "box": [
+               20,
+               562,
+               266.77,
+               38
+              ],
+              "s": {
+               "whiteSpace": "nowrap",
+               "overflow": "hidden auto"
+              },
+              "runs": [
+               {
+                "x": "© 2026 Gainwell Technologies. All rights reserved."
+               }
+              ]
+             },
+             {
+              "t": "div",
+              "key": "footerBuild",
+              "id": "footerBuild",
+              "box": [
+               1511.03,
+               562,
+               388.97,
+               38
+              ],
+              "s": {
+               "whiteSpace": "nowrap",
+               "margin": "0px 0px 0px 1224.26px",
+               "overflow": "hidden auto"
+              },
+              "runs": [
+               {
+                "x": "Server:",
+                "b": 1
+               },
+               {
+                "x": " 10.199.153.38 "
+               },
+               {
+                "x": "Build Date:",
+                "b": 1
+               },
+               {
+                "x": " 10/30/2026 3:28:37 AM "
+               },
+               {
+                "x": "v30.0.0.2609",
+                "b": 1
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

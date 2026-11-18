@@ -1,0 +1,9 @@
+{
+  "nodes": [
+    {
+      "node": "n1.2.1",
+      "deadEnd": true,
+      "reason": "Alert Confirmation has only a commit (Yes); No just returns to the already-explored credential details dialog."
+    }
+  ]
+}

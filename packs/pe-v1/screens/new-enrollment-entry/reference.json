@@ -1,0 +1,11 @@
+{
+ "file": "reference.png",
+ "source": "tool",
+ "width": 1920,
+ "height": 1080,
+ "dpr": 1,
+ "css_width": 1920,
+ "shots": 1,
+ "sections": 3,
+ "truncated": false
+}

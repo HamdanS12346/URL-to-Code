@@ -1,0 +1,32 @@
+[
+ {
+  "n": 1,
+  "sel": "#orientationLandscape > div:nth-of-type(2) > div:nth-of-type(3)",
+  "tag": "div",
+  "id": "",
+  "cls": "menu",
+  "x": 0,
+  "y": 62,
+  "w": 1920,
+  "h": 419.5,
+  "label": "search-enrollment-reports",
+  "files": [
+   "01-search-enrollment-reports.png"
+  ]
+ },
+ {
+  "n": 2,
+  "sel": "#orientationLandscape > div:nth-of-type(2) > footer",
+  "tag": "footer",
+  "id": "",
+  "cls": "",
+  "x": 0,
+  "y": 481.5,
+  "w": 1920,
+  "h": 118.5,
+  "label": "disclaimer-the-website-is-prov",
+  "files": [
+   "02-disclaimer-the-website-is-prov.png"
+  ]
+ }
+]

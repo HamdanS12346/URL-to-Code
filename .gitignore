@@ -6,3 +6,9 @@ auth/
 test-results/
 playwright-report/
 __pycache__/
+
+# ignore packs by default; keep only the one we want to analyze
+packs/*
+!packs/fxfer-v9/
+!packs/fxfer-v9/**
+

@@ -1,0 +1,21 @@
+[
+ {
+  "el": "e1",
+  "kind": "button",
+  "layer": "top",
+  "css": "#closeDestinationConfigurationButton",
+  "nth": 0,
+  "text": "Close",
+  "label": null,
+  "id": "closeDestinationConfigurationButton",
+  "name": null,
+  "type": "button",
+  "kitAction": null,
+  "box": {
+   "x": 1549,
+   "y": 746,
+   "w": 105,
+   "h": 38
+  }
+ }
+]

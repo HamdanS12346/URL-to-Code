@@ -1,0 +1,45 @@
+{
+ "id": "n1",
+ "parent": "n0",
+ "depth": 1,
+ "status": "frontier",
+ "name": "search-criteria-collapsed",
+ "kind": "part",
+ "fp": "e4fc06a7e7c1",
+ "fpText": "W:\nH:Search Criteria\nL:\nB:\nF:0\nT:\nR:0\nV:0",
+ "via": {
+  "el": "e1",
+  "steps": [
+   {
+    "do": "click",
+    "layer": "page",
+    "css": "div.panel-icon.clickable",
+    "nth": 0,
+    "text": "",
+    "kind": "button"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "div.panel-icon.clickable",
+   "nth": 0,
+   "text": "",
+   "kind": "button"
+  }
+ ],
+ "requests": [],
+ "change": {
+  "show": [],
+  "hide": [
+   "#searchFileTrackingPanel"
+  ],
+  "scroll": null
+ },
+ "title": null,
+ "dir": "n1-search-criteria-collapsed",
+ "windows": 0,
+ "validation": null
+}

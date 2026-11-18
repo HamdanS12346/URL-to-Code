@@ -1,0 +1,80 @@
+[
+ {
+  "el": "e1",
+  "kind": "check",
+  "layer": "top",
+  "css": "#DestinationShowInactiveCheckBox",
+  "nth": 0,
+  "text": "true",
+  "label": "Show Inactives",
+  "id": "DestinationShowInactiveCheckBox",
+  "name": "DestinationShowInactiveCheckBox",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 1516,
+   "y": 1046,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e2",
+  "kind": "button",
+  "layer": "top",
+  "css": "#editFileTransferConfigurationButton",
+  "nth": 0,
+  "text": "Edit",
+  "label": null,
+  "id": "editFileTransferConfigurationButton",
+  "name": null,
+  "type": "button",
+  "kitAction": null,
+  "box": {
+   "x": 251,
+   "y": 1313,
+   "w": 89,
+   "h": 38
+  }
+ },
+ {
+  "el": "e3",
+  "kind": "button",
+  "layer": "top",
+  "css": "#closeFileTransferConfigurationButton",
+  "nth": 0,
+  "text": "Close",
+  "label": null,
+  "id": "closeFileTransferConfigurationButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "close",
+  "box": {
+   "x": 1537,
+   "y": 1313,
+   "w": 102,
+   "h": 38
+  }
+ },
+ {
+  "el": "e4",
+  "kind": "row",
+  "layer": "top",
+  "css": "tbody tr",
+  "nth": 0,
+  "text": "https://dxccommercial.test.mapshc.comFTPActivetrue",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "rows": 2,
+  "box": {
+   "x": 252,
+   "y": 1124,
+   "w": 1401,
+   "h": 40
+  }
+ }
+]

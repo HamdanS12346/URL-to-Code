@@ -1,0 +1,73 @@
+{
+  "nodes": [
+    {
+      "node": "n0",
+      "name": "at-rest",
+      "actions": [
+        {
+          "el": "e1",
+          "do": "click",
+          "why": "Collapse the Search Criteria panel to capture the collapsed layout/state.",
+          "name": "search-criteria-collapsed"
+        },
+        {
+          "el": "e4",
+          "do": "click",
+          "why": "Open the File Status dropdown list (Kendo dropdown list popup state).",
+          "name": "file-status-list-open"
+        },
+        {
+          "el": "e5",
+          "do": "click",
+          "why": "Open the Direction dropdown list (popup state).",
+          "name": "direction-list-open"
+        },
+        {
+          "el": "e6",
+          "do": "click",
+          "why": "Open the Transport Type dropdown list (popup state).",
+          "name": "transport-type-list-open"
+        },
+        {
+          "el": "e7",
+          "do": "click",
+          "why": "Open the Source Location dropdown list (popup state).",
+          "name": "source-location-list-open"
+        },
+        {
+          "el": "e9",
+          "do": "press",
+          "value": "Alt+ArrowDown",
+          "why": "Open the From Date picker calendar popup (Kendo date picker).",
+          "name": "from-date-picker-open"
+        },
+        {
+          "el": "e10",
+          "do": "press",
+          "value": "Alt+ArrowDown",
+          "why": "Open the To Date picker calendar popup (Kendo date picker).",
+          "name": "to-date-picker-open"
+        },
+        {
+          "el": "e15",
+          "do": "click",
+          "why": "Run Search with no criteria to capture the empty-search response (results grid, banner, or validation).",
+          "name": "after-search-empty"
+        },
+        {
+          "el": "e15",
+          "do": "click",
+          "setup": [
+            {
+              "el": "e4",
+              "do": "select",
+              "value": "1"
+            }
+          ],
+          "why": "Run Search with File Status = 1 in case empty search is blocked and to capture filtered results state.",
+          "name": "after-search-file-status-1"
+        }
+      ]
+    }
+  ]
+}

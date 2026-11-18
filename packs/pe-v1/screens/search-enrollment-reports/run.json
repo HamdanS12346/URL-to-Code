@@ -1,0 +1,38 @@
+{
+ "screen": "pe-v1/search-enrollment-reports",
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/SearchEnrollmentReports",
+ "mode": "safe",
+ "kit": "provider",
+ "sources": [],
+ "finger": "17f6f2f88e2562102fd76bbb8e2e96eb",
+ "steps": {
+  "capture": {
+   "ok": true,
+   "at": "2026-11-17T05:37:54.352Z",
+   "ms": 44786
+  },
+  "stitch": {
+   "ok": true,
+   "at": "2026-11-17T05:37:54.391Z",
+   "ms": 31
+  },
+  "align": {
+   "ok": true,
+   "at": "2026-11-17T05:37:54.423Z",
+   "ms": 8
+  },
+  "facts": {
+   "ok": true,
+   "at": "2026-11-17T05:37:54.775Z",
+   "ms": 266
+  }
+ },
+ "warnings": [
+  "no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)"
+ ],
+ "viewport": {
+  "width": 1920,
+  "height": 1080
+ },
+ "dpr": 1
+}

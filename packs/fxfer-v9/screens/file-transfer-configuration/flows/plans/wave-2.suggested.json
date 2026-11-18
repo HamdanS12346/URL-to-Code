@@ -1,0 +1,90 @@
+{
+ "source": "rules",
+ "nodes": [
+  {
+   "node": "n1",
+   "actions": [
+    {
+     "el": "e1",
+     "do": "click",
+     "why": "button \"Create New\""
+    },
+    {
+     "el": "e10",
+     "do": "click",
+     "why": "button \"Search\""
+    },
+    {
+     "el": "e12",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e11",
+     "do": "click",
+     "why": "check \"true\""
+    }
+   ]
+  },
+  {
+   "node": "n2",
+   "actions": [
+    {
+     "el": "e20",
+     "do": "click",
+     "why": "button \"Create New\""
+    },
+    {
+     "el": "e21",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e25",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e12",
+     "do": "click",
+     "why": "radio \"1\""
+    },
+    {
+     "el": "e13",
+     "do": "click",
+     "why": "radio \"2\""
+    },
+    {
+     "el": "e16",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e17",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e18",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e19",
+     "do": "click",
+     "why": "check \"true\""
+    }
+   ]
+  },
+  {
+   "node": "n3",
+   "actions": [
+    {
+     "el": "e1",
+     "do": "click",
+     "why": "button \"Create New\""
+    }
+   ]
+  }
+ ]
+}

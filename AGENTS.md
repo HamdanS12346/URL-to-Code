@@ -10,6 +10,26 @@ Scripts capture the facts; you write the spec, and later the code. Two phases, o
 and its React build lives in **`outputs/<screen>/app/`** (`Page.tsx`, `components/`, `style.css`, `assets/`, `BEHAVIOR.md`).
 Nothing screen-specific goes anywhere else: not `src/`, `public/`, `scripts/` or the repo root. The root `src/main.tsx` is a generic router that finds `outputs/*/app/Page.tsx`,
 so a new screen needs no edit outside its own folder. `scripts/` holds site-agnostic tools only; if a script names a site, it is wrong.
+What the tool knows about one family of sites lives in a **site kit**, `kits/<kit>/` (`kit.mjs` hooks the scripts call, an in-page harvest,
+the React runtime copied into each app as `src/kit`, and `KIT.md`, the guide you read for it). The only kit today is `kits/provider/`
+(Kendo UI for jQuery portals: the client's Provider portal). A screen captured with a kit has `run.json` `"kit"` and a `kit/` folder.
+
+**Packs** (`npm run ui`, see `SETUP.md`): one module of a logged-in portal at a time. A pack's screens live in `packs/<pack>/screens/<screen>/`
+and are addressed as `<pack>/<screen>` in every command (`npm run check -- file-transfer/home`). Wherever this file or a skill says `outputs/<screen>/`, read that folder instead.
+In a pack run, `scripts/ui.mjs` calls you (the writer) with one task per call and checks your output itself; the prompt names the task, the screen folder and the files you may write.
+Its code goes to the pack's app, `packs/<pack>/app/` (or `--out`), not to the screen's `app/`.
+With a kit (`pack.json` `"kit"`), there is no planning step, the spec cites every widget and dialog as `[kit:<id>]`, and the code
+step builds only what the kit cannot know: read `kits/<kit>/KIT.md` first, and never edit the app's `src/kit` (fix the kit in `kits/<kit>/app`).
+Never open, print or copy `.env` or anything under `packs/*/auth/`: they hold the portal password and the logged-in session.
+**Flows** (stage `flows` after each capture, on in every `npm run ui`; `--no-flows` / `pack.json "flows": false` turn it off): a screen explored to the end of every path, up to the click that would save or create.
+A pack-run task "flows <screen> wave N" asks you for one plan (`flows/plans/wave-N.json`, gate `node scripts/check-flows.mjs <plan> <frontier>`);
+a spec of a screen with `flows/index.json` cites every state as `[flow:<id>]`. Never plan a commit (Save, Delete...): the script refuses it anyway.
+
+**Viewport profiles.** The Provider portal has two layouts (switch at 1280 CSS px wide). `config.json` `"profiles"` lists extra sizes; the kit
+capture records each screen at each (`kit/screen.json` `profiles`, `responsive`, states `…@<profile>`), and `verify` replays them at that size.
+What a dialog does below the switch (left edge, 20 px from the top, 90% wide, at most 85% high) is the portal's own behavior, measured, and the
+kit applies it: never "fix" a dialog that touches the left edge at 1272 px, and never hard-code a size or a module in the kit or the scripts.
+`kits/provider/KIT.md` lists everything a screen records and what the kit does with it.
 
 ## Phase 0 — Exploration plan (skill `explore-plan`, stage 3 of `npm run go`)
 
@@ -59,7 +79,7 @@ Every build runs through the `draw-ui` skill in reconstruction mode (`.claude/sk
    `outputs/<screen>/regions.json` (draw-ui's region list, boxes taken from the real DOM: every band, h1–h3, large images, repeated card rows as `group`s)
    and `outputs/<screen>/measure-00/` (draw-ui's `measure_reference.py` run on it: `measurements.json`, `annotations.svg`). Start from these; add regions to a copy of `regions.json` for a new round instead of eyeballing boxes. The skill defaults to 1:1, which is wrong whenever dpr ≠ 1: set `css_viewport_width` per Step 0.
    Put measurement output in new folders under `outputs/<screen>/` (e.g. `measure-01/`); the task folder is `outputs/<screen>/`.
-2. Read `.claude/skills/draw-ui/references/html-reconstruction.md` — build it. Follow `docs/screen-recipe.md`.
+2. Read `.claude/skills/draw-ui/references/html-reconstruction.md` — build it.
    Work band by band: open `outputs/<screen>/sections/NN-*.png` (full resolution) for the band you are building, and take its layout and styles from `outputs/<screen>/snapshot/used.css` + `rendered.html` (real flex/grid/widths, `::before` content, hover rules, media queries, `@keyframes`). Port those rules; do not re-guess what the page already states. Keep the original class names where it keeps the CSS intact.
 3. Verify with **one command**, not devtools round-trips: `npm run verify -- <screen>`
    (it starts the repo's dev server itself when none is running; `BASE=http://localhost:<port>` if not 5173, or `URL=<full url>`).

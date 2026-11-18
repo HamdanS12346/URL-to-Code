@@ -1,0 +1,155 @@
+{
+ "wave": 2,
+ "maxActions": 12,
+ "nodes": [
+  {
+   "node": "n1",
+   "name": "search-results",
+   "kind": "results",
+   "title": null,
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\ftp-server-credentials\\flows\\n1-search-results",
+   "depth": 1,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "text": "Create New",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "text": "",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e3",
+     "kind": "button",
+     "text": "",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e4",
+     "kind": "check",
+     "text": "true",
+     "label": "Include Invalids",
+     "danger": null
+    },
+    {
+     "el": "e5",
+     "kind": "row",
+     "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+     "label": null,
+     "danger": null
+    }
+   ]
+  },
+  {
+   "node": "n2",
+   "name": "create-new",
+   "kind": "dialog",
+   "title": "Add FTP Server Credentials",
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\ftp-server-credentials\\flows\\n2-create-new",
+   "depth": 1,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "text",
+     "text": "",
+     "label": "Server Name",
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "text",
+     "text": "",
+     "label": "Description",
+     "danger": null
+    },
+    {
+     "el": "e3",
+     "kind": "text",
+     "text": "",
+     "label": "Transfer Mode",
+     "danger": null
+    },
+    {
+     "el": "e4",
+     "kind": "text",
+     "text": "",
+     "label": "IP Server",
+     "danger": null
+    },
+    {
+     "el": "e5",
+     "kind": "text",
+     "text": "0",
+     "label": "Port",
+     "danger": null
+    },
+    {
+     "el": "e6",
+     "kind": "text",
+     "text": "",
+     "label": "Proxy Address",
+     "danger": null
+    },
+    {
+     "el": "e7",
+     "kind": "text",
+     "text": "",
+     "label": "Proxy Port",
+     "danger": null
+    },
+    {
+     "el": "e8",
+     "kind": "text",
+     "text": "",
+     "label": "Server User",
+     "danger": null
+    },
+    {
+     "el": "e9",
+     "kind": "button",
+     "text": "Cancel",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e10",
+     "kind": "button",
+     "text": "Save",
+     "label": null,
+     "danger": "commit: the kit marks it a Save"
+    }
+   ]
+  },
+  {
+   "node": "n3",
+   "name": "criteria-collapsed",
+   "kind": "part",
+   "title": null,
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\ftp-server-credentials\\flows\\n3-criteria-collapsed",
+   "depth": 1,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "text": "Create New",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "text": "",
+     "label": null,
+     "danger": null
+    }
+   ]
+  }
+ ]
+}

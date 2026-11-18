@@ -1,0 +1,44 @@
+{
+ "wave": 3,
+ "maxActions": 12,
+ "nodes": [
+  {
+   "node": "n2.1",
+   "name": "open-file-transfer",
+   "kind": "dialog",
+   "title": "File Transfer Tracking",
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\n2.1-open-file-transfer",
+   "depth": 2,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "row",
+     "text": "There are no records found.",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "text": "Cancel",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e3",
+     "kind": "row",
+     "text": "T5/25/2021 1:07 PM\\\\mapsftshrfs01\\CommercialSharedFolder\\Pro",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e4",
+     "kind": "row",
+     "text": "There are no records found.",
+     "label": null,
+     "danger": null
+    }
+   ]
+  }
+ ]
+}

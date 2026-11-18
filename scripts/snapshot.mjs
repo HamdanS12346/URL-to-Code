@@ -8,6 +8,7 @@ import path from 'node:path';
 import { INPAGE, shoot } from './lib/freeze.mjs';
 import { py } from './lib/py.mjs';
 import { inlineImports } from './lib/cssimport.mjs';
+import { ROOT } from './lib/paths.mjs';
 
 const readJson = (f, d) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : d);
 
@@ -86,16 +87,25 @@ export async function reference({ page, context, out, dpr, userShots, tree, maxH
   const m00 = path.join(out, 'measure-00');
   fs.rmSync(m00, { recursive: true, force: true });
   try {
-    const m = py(path.join(out, '..', '..', '.claude', 'skills', 'draw-ui', 'scripts', 'measure_reference.py'), '--manifest', path.join(out, 'regions.json'), '--out-dir', m00);
+    const m = py(path.join(ROOT, '.claude', 'skills', 'draw-ui', 'scripts', 'measure_reference.py'), '--manifest', path.join(out, 'regions.json'), '--out-dir', m00);
     log(`  regions.json: ${regions.length} regions (${m.groups} repeated rows) measured by draw-ui -> measure-00/`);
   } catch (e) { log(`  ! draw-ui measure_reference failed on regions.json: ${e.message.split('\n')[0]}`); }
   return { file, bands: bands.length };
 }
 
-export async function snapshot({ page, out, log }) {
+export async function snapshot({ page, out, log, fullCss = false }) {
   const dir = path.join(out, 'snapshot');
   fs.mkdirSync(dir, { recursive: true });
   const html = await page.evaluate(() => {
+    // the copy carries what the fields hold NOW, not the value="" the server wrote (a number box written value="0"
+    // but shown empty by its widget must stay empty in the rebuild). Passwords are never written out.
+    for (const i of document.querySelectorAll('input, textarea, select')) {
+      if (i.type === 'password' || i.type === 'file') { i.removeAttribute('value'); continue; }
+      if (i.type === 'checkbox' || i.type === 'radio') { i.toggleAttribute('checked', i.checked); continue; }
+      if (i.tagName === 'SELECT') { for (const o of i.options) o.toggleAttribute('selected', o.selected); continue; }
+      if (i.tagName === 'TEXTAREA') { i.textContent = i.value; continue; }
+      if (!/^(submit|button|reset|image)$/.test(i.type)) i.setAttribute('value', i.value);
+    }
     const c = document.documentElement.cloneNode(true);
     c.querySelectorAll('script, noscript, link[rel=preload], link[rel=prefetch], link[rel=modulepreload]').forEach((e) => e.remove());
     c.querySelectorAll('[data-pw-hid]').forEach((e) => e.removeAttribute('data-pw-hid'));
@@ -116,6 +126,19 @@ export async function snapshot({ page, out, log }) {
   }
   if (u.keyframes.length) css += `\n/* ==== @keyframes in use ==== */\n${u.keyframes.map((k) => k.css).join('\n')}\n`;
   fs.writeFileSync(path.join(dir, 'used.css'), css);
+  if (fullCss) { // every rule of every sheet, in document order: popups, tooltips and dialogs are built later from markup the page does not have yet
+    const f = await page.evaluate(() => __pw.usedCss(true));
+    let all = `/* full.css: every rule of the page's ${f.sheets.length} stylesheets, unfiltered (port uses it instead of used.css) */\n`;
+    for (const s of f.sheets) if (s.text.trim()) all += `\n/* ==== ${s.href} ==== */\n${s.text}\n`;
+    for (const href of f.blocked) {
+      const a = assets[href];
+      const file = a && path.join(out, 'capture', a.file);
+      if (file && fs.existsSync(file)) all += `\n/* ==== ${href} (saved copy) ==== */\n${inlineImports(fs.readFileSync(file, 'utf8'), href, assets, out, new Set([href]))}\n`;
+    }
+    if (f.keyframes.length) all += `\n/* ==== @keyframes ==== */\n${f.keyframes.map((k) => k.css).join('\n')}\n`;
+    fs.writeFileSync(path.join(dir, 'full.css'), all);
+    log(`  snapshot/full.css: ${Math.round(all.length / 1024)} KB (${f.stats.rules} rules, all kept)`);
+  }
   log(`  snapshot/: rendered.html ${Math.round(html.length / 1024)} KB, used.css ${Math.round(css.length / 1024)} KB (${u.stats.kept}/${u.stats.rules} rules), ${u.keyframes.length} keyframes`);
   return { keyframes: u.keyframes };
 }

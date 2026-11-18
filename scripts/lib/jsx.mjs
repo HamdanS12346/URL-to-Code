@@ -72,6 +72,8 @@ function jsxAttrs(tag, raw, inSvg, rw) {
     if (/^on[a-z]+$/.test(low)) continue; // inline handlers: the page's scripts are not ported
     // a misspelt `classname` is not an attribute any browser reads; React warns about it and the page's own class is kept
     if (low === 'classname') continue;
+    // `aria-role` is not ARIA (the page meant `role`): React warns "Invalid aria prop"
+    if (low === 'aria-role') continue;
     // attributes the browser ignores: `size` on an <svg> (width/height already carry it), width/height="auto"
     if (low === 'size' && inSvg) continue;
     if ((low === 'width' || low === 'height') && val === 'auto') continue;
@@ -99,7 +101,7 @@ function jsxAttrs(tag, raw, inSvg, rw) {
 }
 
 const ENT = {
-  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', copy: '©', reg: '®',
+  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u00a0', copy: '©', reg: '®',
   trade: '™', hellip: '…', mdash: '—', ndash: '–', rsquo: '’', lsquo: '‘',
   ldquo: '“', rdquo: '”', middot: '·', bull: '•', deg: '°',
 };
@@ -117,17 +119,26 @@ export function toJsx(html, rw = (s) => s) {
   let svgDepth = 0;
   const text = (s) => {
     const t = decode(s);
-    if (!t.trim()) { if (t.length && out.length) out.push('{" "}'); return; }
+    if (!/[^\s]|\u00a0/.test(t)) { if (t.length && out.length) out.push('{" "}'); return; }
     out.push('{' + JSON.stringify(t) + '}');
   };
   const re = /<(\/?)([a-zA-Z][a-zA-Z0-9-]*)((?:"[^"]*"|'[^']*'|[^>"'])*?)(\/?)>|<!--[\s\S]*?-->/g;
-  let last = 0, m;
+  let last = 0, m, select = -1;
   while ((m = re.exec(html))) {
     text(html.slice(last, m.index));
     last = m.index + m[0].length;
     if (m[0].startsWith('<!--')) continue;
-    const [, slash, tag, attrs, self] = m;
+    let [, slash, tag, attrs, self] = m;
     const low = tag.toLowerCase();
+    // React warns about `selected` on <option>: the choice moves to the <select>'s defaultValue
+    if (!slash && low === 'select') select = out.length;
+    const sel = !slash && low === 'option' && /(^|\s)selected(?=[\s=/]|$)/i.test(attrs);
+    if (sel) {
+      attrs = attrs.replace(/(^|\s)selected(\s*=\s*("[^"]*"|'[^']*'|[^\s>]+))?/i, '');
+      const v = /(?:^|\s)value\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i.exec(attrs);
+      const val = v ? decode(v[1] ?? v[2] ?? v[3]) : decode(html.slice(last, html.indexOf('</option', last) >>> 0).replace(/<[^>]*>/g, '')).trim();
+      if (select >= 0 && !/defaultValue=|multiple/.test(out[select])) out[select] = out[select].replace(/^<select/, `<select defaultValue=${JSON.stringify(val)}`);
+    }
     // the snapshot writes void SVG/HTML elements as <path ...></path>; the opening tag already
     // became self-closing JSX, so the stray closing tag is dropped
     if (slash) { if (VOID.has(low)) continue; if (low === 'svg') svgDepth--; out.push(`</${low}>`); continue; }

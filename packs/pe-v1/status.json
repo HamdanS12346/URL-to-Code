@@ -1,0 +1,119 @@
+{
+ "items": {
+  "capture:home": {
+   "status": "done",
+   "at": "2026-11-17T05:34:59.383Z"
+  },
+  "capture:dashboard": {
+   "status": "done",
+   "at": "2026-11-17T05:35:53.344Z"
+  },
+  "capture:search-enrollment-application": {
+   "status": "done",
+   "at": "2026-11-17T05:37:04.382Z"
+  },
+  "capture:search-enrollment-reports": {
+   "status": "done",
+   "at": "2026-11-17T05:37:54.796Z"
+  },
+  "capture:workflow-dashboard": {
+   "status": "failed",
+   "at": "2026-11-17T05:38:15.943Z",
+   "problems": [
+    "the page redirected to https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/oauth2/v2.0/authorize?response_type=code&client_id=f7eb0091-6d80-414e-ae1f-1d8b94ed2d33&scope=openid&state=x7I-JKjxjRbWm68COmEnLJ0YKx7zAJSZfc_AYLnogXc%3D&redirect_uri=https%3A%2F%2Fapnmc.shared.tst.pgwcloud.net%2Fsuite%2Foidc%2Fcallback&nonce=clDVxnpjOTb9dXi_rDre5EJMbx0YXxOmAHJVQYqfPZ8. If that is a login page: npm run login -- \"https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/dashboard\" (see README)"
+   ]
+  },
+  "capture:workflow-applications": {
+   "status": "failed",
+   "at": "2026-11-17T05:38:37.890Z",
+   "problems": [
+    "the page redirected to https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/oauth2/v2.0/authorize?response_type=code&client_id=f7eb0091-6d80-414e-ae1f-1d8b94ed2d33&scope=openid&state=5TKNG5O35U3uoIkjLuPbARM3llmF61--ESwRn8pMYZ8%3D&redirect_uri=https%3A%2F%2Fapnmc.shared.tst.pgwcloud.net%2Fsuite%2Foidc%2Fcallback&nonce=lp8dJKAUYqkidLQ31gCaVjHwtpyBtGVHe--Ipqmex6s. If that is a login page: npm run login -- \"https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/applications\" (see README)"
+   ]
+  },
+  "capture:workflow-configuration": {
+   "status": "failed",
+   "at": "2026-11-17T05:38:58.218Z",
+   "problems": [
+    "the page redirected to https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/oauth2/v2.0/authorize?response_type=code&client_id=f7eb0091-6d80-414e-ae1f-1d8b94ed2d33&scope=openid&state=BC3UqYEIMI7DuMckTkz3UHpO63Pm0s9EbDkJe12BFyM%3D&redirect_uri=https%3A%2F%2Fapnmc.shared.tst.pgwcloud.net%2Fsuite%2Foidc%2Fcallback&nonce=28hso7y8vcEtEPs1VkWq9jqbaggGr7LnjX8esFF9y2Q. If that is a login page: npm run login -- \"https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/configuration\" (see README)"
+   ]
+  },
+  "capture:workflow-tasks": {
+   "status": "failed",
+   "at": "2026-11-17T05:39:19.833Z",
+   "problems": [
+    "the page redirected to https://login.microsoftonline.com/c663f89c-ef9b-418f-bd3d-41e46c0ce068/oauth2/v2.0/authorize?response_type=code&client_id=f7eb0091-6d80-414e-ae1f-1d8b94ed2d33&scope=openid&state=5J7NotYAO9GW7osgZocQbiGhZ87DU6FgkIICxWMDdZI%3D&redirect_uri=https%3A%2F%2Fapnmc.shared.tst.pgwcloud.net%2Fsuite%2Foidc%2Fcallback&nonce=KpXWbMyx9qBW40IQNp-Hv-us4DQxHRcQ3sAfPUbSHGA. If that is a login page: npm run login -- \"https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/tasks\" (see README)"
+   ]
+  },
+  "capture:new-enrollment-entry": {
+   "status": "done",
+   "at": "2026-11-17T05:41:14.628Z"
+  },
+  "capture:resume-enrollment-entry": {
+   "status": "done",
+   "at": "2026-11-17T05:41:57.912Z"
+  },
+  "spec:home": {
+   "status": "done",
+   "at": "2026-11-17T05:44:11.698Z",
+   "rounds": 1
+  },
+  "spec:dashboard": {
+   "status": "done",
+   "at": "2026-11-17T05:44:15.766Z",
+   "rounds": 1
+  },
+  "spec:search-enrollment-application": {
+   "status": "done",
+   "at": "2026-11-17T05:46:24.280Z",
+   "rounds": 1
+  },
+  "spec:search-enrollment-reports": {
+   "status": "done",
+   "at": "2026-11-17T05:49:45.478Z",
+   "rounds": 1
+  },
+  "spec:new-enrollment-entry": {
+   "status": "done",
+   "at": "2026-11-17T05:50:51.101Z",
+   "rounds": 1
+  },
+  "spec:resume-enrollment-entry": {
+   "status": "done",
+   "at": "2026-11-17T05:55:41.386Z",
+   "rounds": 1
+  },
+  "port:home": {
+   "status": "done",
+   "at": "2026-11-17T05:55:48.470Z"
+  },
+  "port:dashboard": {
+   "status": "done",
+   "at": "2026-11-17T05:56:00.301Z"
+  },
+  "port:search-enrollment-application": {
+   "status": "done",
+   "at": "2026-11-17T05:56:06.596Z"
+  },
+  "port:search-enrollment-reports": {
+   "status": "done",
+   "at": "2026-11-17T05:56:11.984Z"
+  },
+  "port:new-enrollment-entry": {
+   "status": "done",
+   "at": "2026-11-17T05:56:18.106Z"
+  },
+  "port:resume-enrollment-entry": {
+   "status": "done",
+   "at": "2026-11-17T05:56:24.655Z"
+  },
+  "preflight:kit": {
+   "status": "needs-review",
+   "at": "2026-11-17T05:57:44.013Z",
+   "screen": "dashboard",
+   "problems": [
+    "the kit on the raw port (fix it in kits/<kit>, not in the app):",
+    "menu-open@client: hovering the lower arrow of the side menu does not scroll the list to its last item"
+   ]
+  }
+ }
+}

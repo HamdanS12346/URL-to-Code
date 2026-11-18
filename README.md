@@ -3,6 +3,8 @@
 Turns one web page (a URL) into a React 19 copy of it, plus tests that check the copy looks and behaves like the original.
 Scripts capture the page. An AI coding agent (Claude Code, Codex, Cursor, Copilot, Gemini CLI…) plans, writes the spec, and writes the code.
 
+**Rebuilding a module of the Provider portal with Codex (`npm run ui`)? Start with [SETUP.md](SETUP.md).**
+
 ## Install (once)
 
 Needs Node.js 20.19+, Python 3.9+ and Git.
@@ -83,6 +85,20 @@ PowerShell: `$env:TARGET="react"; $env:URL="http://localhost:5173/#/portfolio"; 
 
 **Reading `verify`** (`outputs/<screen>/verify/report.json`): `size_delta_px` must be within ±2 (otherwise it's a scaling error, fix that first). Keep `bad_pct` low. `motion` and `behavior` should be N/M with N = M. `worst.png` shows original and copy side by side for the worst part.
 
+## A whole portal module (logged in, Codex)
+
+```
+npm run ui
+```
+Asks for a pack name (`ffxfer-v2`), the home page and a menu item. Logs in (USERNAME in `.env`; it asks for the password and keeps it in memory only),
+finds the screens under the menu item, specs the home page, its header/menu and every screen, and writes the React 19 app to `packs/<pack>/app/`,
+with Codex as the writer. Everything else runs unattended. A new pack name starts fresh; the same name continues.
+
+On the client's Provider portal (Kendo UI for jQuery) it uses the **Provider kit** (`kits/provider/`, guide `kits/provider/KIT.md`): the capture reads
+every widget from Kendo itself instead of exploring, and the app is built on the kit's runtime (dropdowns, pickers, grids, dialogs, tooltips, validation).
+Step-by-step setup and run guide: [SETUP.md](SETUP.md).
+Self-tests: `npm run smoke:ui` (generic portal), `npm run smoke:provider` (a Kendo portal like the client's, end to end, with the rebuild driven in a browser).
+
 ## Login pages
 
 ```
@@ -125,4 +141,6 @@ You or your agent only write `explore/plan.json`, `spec/UI_SPEC.md`, `spec/tasks
 | `npm run verify -- <screen>` | compare the copy with the original (`BASE=http://localhost:<port>` if not 5173) |
 | `npm run dev` | dev server, `http://localhost:5173/` lists all screens |
 | `npm run login -- "<url>"` | save a login session |
-| `npm run smoke`, `smoke:explore`, `smoke:behavior` | self-tests |
+| `npm run ui -- <pack>` | a whole portal module: login → menu → specs → app (see [SETUP.md](SETUP.md)) |
+| `npm run check:writer` | can the writer (Codex) do what `npm run ui` needs? (see [SETUP.md](SETUP.md)) |
+| `npm run smoke`, `smoke:explore`, `smoke:behavior`, `smoke:ui` | self-tests |

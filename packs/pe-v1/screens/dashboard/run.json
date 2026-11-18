@@ -1,0 +1,38 @@
+{
+ "screen": "pe-v1/dashboard",
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/Dashboard",
+ "mode": "safe",
+ "kit": "provider",
+ "sources": [],
+ "finger": "e89453e8fc521e0917355ee71ca45391",
+ "steps": {
+  "capture": {
+   "ok": true,
+   "at": "2026-11-17T05:35:52.633Z",
+   "ms": 48266
+  },
+  "stitch": {
+   "ok": true,
+   "at": "2026-11-17T05:35:52.725Z",
+   "ms": 17
+  },
+  "align": {
+   "ok": true,
+   "at": "2026-11-17T05:35:52.825Z",
+   "ms": 6
+  },
+  "facts": {
+   "ok": true,
+   "at": "2026-11-17T05:35:53.298Z",
+   "ms": 463
+  }
+ },
+ "warnings": [
+  "no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)"
+ ],
+ "viewport": {
+  "width": 1920,
+  "height": 1080
+ },
+ "dpr": 1
+}

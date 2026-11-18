@@ -1,0 +1,38 @@
+{
+ "screen": "pe-v1/new-enrollment-entry",
+ "url": "https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/CreateSecureEnrollment",
+ "mode": "safe",
+ "kit": "provider",
+ "sources": [],
+ "finger": "0073ec921a02e36caa2e7cf2d69d536a",
+ "steps": {
+  "capture": {
+   "ok": true,
+   "at": "2026-11-17T05:41:14.297Z",
+   "ms": 109352
+  },
+  "stitch": {
+   "ok": true,
+   "at": "2026-11-17T05:41:14.353Z",
+   "ms": 8
+  },
+  "align": {
+   "ok": true,
+   "at": "2026-11-17T05:41:14.364Z",
+   "ms": 2
+  },
+  "facts": {
+   "ok": true,
+   "at": "2026-11-17T05:41:14.525Z",
+   "ms": 143
+  }
+ },
+ "warnings": [
+  "no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)"
+ ],
+ "viewport": {
+  "width": 1920,
+  "height": 1080
+ },
+ "dpr": 1
+}

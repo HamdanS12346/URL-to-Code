@@ -1,0 +1,20 @@
+{
+ "source": "rules",
+ "nodes": [
+  {
+   "node": "n0",
+   "actions": [
+    {
+     "el": "e1",
+     "do": "click",
+     "why": "button \"Create New\""
+    },
+    {
+     "el": "e10",
+     "do": "click",
+     "why": "button \"Search\""
+    }
+   ]
+  }
+ ]
+}

@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { check } from './check-spec.mjs';
+import { screenDir } from './lib/paths.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 try { process.loadEnvFile(path.join(ROOT, '.env')); } catch {} // optional .env with GEMINI_API_KEY
@@ -21,7 +22,7 @@ const key = process.env.GEMINI_API_KEY;
 if (!screen) { console.error('usage: npm run spec:gemini -- <screen> [--model <name>] [--repairs N]'); process.exit(1); }
 if (!key) { console.error('set GEMINI_API_KEY'); process.exit(1); }
 
-const out = path.join(ROOT, 'outputs', screen), shotsDir = path.join(ROOT, 'screenshots', screen);
+const out = screenDir(screen), shotsDir = path.join(ROOT, 'screenshots', screen);
 const read = (p) => fs.readFileSync(p, 'utf8');
 if (!fs.existsSync(path.join(out, 'facts.md'))) { console.error(`no facts.md: run npm run capture -- ${screen} first`); process.exit(1); }
 
@@ -44,7 +45,7 @@ const IMG = /\.(png|jpe?g|webp)$/i;
 const mime = (f) => ({ '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp' })[path.extname(f).toLowerCase()] || 'image/png';
 const img = (p) => ({ inline_data: { mime_type: mime(p), data: fs.readFileSync(p).toString('base64') } });
 const parts = [{ text: `# outputs/${screen}/facts.md\n\n${read(path.join(out, 'facts.md'))}` }];
-const shots = fs.readdirSync(shotsDir).filter((f) => IMG.test(f)).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+const shots = (fs.existsSync(shotsDir) ? fs.readdirSync(shotsDir) : []).filter((f) => IMG.test(f)).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 shots.forEach((f, i) => parts.push({ text: `shot:${i + 1} = screenshots/${screen}/${f}` }, img(path.join(shotsDir, f))));
 parts.push({ text: `# outputs/${screen}/content.md\n\n${read(path.join(out, 'content.md'))}` });
 let budget = 14e6 - parts.reduce((n, p) => n + (p.inline_data?.data.length || p.text.length), 0);

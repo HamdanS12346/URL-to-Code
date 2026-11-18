@@ -6,8 +6,8 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { screenDir } from './lib/paths.mjs';
 
-const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const readJson = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
 
 // entries may be "key" or { key, why, value, enter, submit }; "skip" entries are { key, why }: left out on purpose
@@ -82,7 +82,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   if (!screens.length) { console.error('usage: npm run check:plan -- <screen>'); process.exit(1); }
   let bad = 0;
   for (const s of screens) {
-    const r = loadPlan(path.join(ROOT, 'outputs', s));
+    const r = loadPlan(screenDir(s));
     if (r.ok) console.log(`${s}: ✓ plan OK: ${r.plan.hover.length} hovers, ${r.plan.actions.length} actions (${r.source})${r.plan.budgetSec ? `, budget ${r.plan.budgetSec}s` : ''}`);
     else { bad++; console.log(`${s}: ✗ plan not usable`); for (const e of r.errors) console.log(`  - ${e}`); }
     for (const w of r.warnings) console.log(`  ! ${w}`);

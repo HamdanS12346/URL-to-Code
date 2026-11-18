@@ -5,6 +5,7 @@
 // report.json has bad_pct per top-level section (the reference's bands) and, when motion.json exists, whether every
 // carousel / counter / animation of the original also moves in the rebuild, at about the same speed.
 // BASE=http://localhost:5174 if vite picked another port. URL=<full url> overrides the whole address.
+// WAIT_ROOT=1 with URL: the address is a React app (another repo): wait for #root to render, as for this repo.
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
@@ -15,11 +16,12 @@ import { sample, check } from './lib/motion.mjs';
 import { py } from './lib/py.mjs';
 import { reportPreflight } from './lib/keys.mjs';
 import { verifyBehavior, printBehavior } from './lib/verify-behavior.mjs';
+import { screenDir } from './lib/paths.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const readJson = (f, d) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : d);
 const screen = process.argv[2] ?? (console.error('usage: npm run verify -- <screen>'), process.exit(1));
-const dir = path.join(ROOT, 'outputs', screen);
+const dir = screenDir(screen);
 const manifestFile = path.join(dir, 'manifest.json');
 if (!fs.existsSync(manifestFile)) { console.error(`${manifestFile} not found. Run: npm run capture -- ${screen}`); process.exit(2); }
 const manifest = readJson(manifestFile, {});
@@ -53,7 +55,7 @@ if (!process.env.URL && !(await up())) { // no dev server running: start this re
 }
 await page.goto(process.env.URL ?? `${base}/#/${screen}`, { timeout: 120000 }); // a cold Vite takes a while to transform the page
 // the router loads the screen lazily: wait until it has rendered before warming up and shooting
-if (!process.env.URL) await page.waitForFunction(() => document.getElementById('root')?.firstElementChild, null, { timeout: 120000 }).catch(() => {});
+if (!process.env.URL || process.env.WAIT_ROOT) await page.waitForFunction(() => document.getElementById('root')?.firstElementChild, null, { timeout: 120000 }).catch(() => {});
 await page.evaluate(() => document.fonts.ready);
 
 let motion = null, bandsNow = null;
@@ -97,10 +99,118 @@ let behavior = null;
 if (process.env.BEHAVIOR !== '0') {
   try {
     behavior = await verifyBehavior({
-      browser, viewport, dpr, url: process.env.URL ?? `${base}/#/${screen}`, initScript: INPAGE, waitRoot: !process.env.URL,
+      browser, viewport, dpr, url: process.env.URL ?? `${base}/#/${screen}`, initScript: INPAGE, waitRoot: !process.env.URL || !!process.env.WAIT_ROOT,
       ref: readJson(path.join(dir, 'explore', 'survey', 'behave.json'), null), states: readJson(path.join(dir, 'explore', 'states.json'), null),
     });
   } catch (e) { console.error(`behavior check could not run: ${e.message.split(String.fromCharCode(10))[0]}`); }
+}
+// a site kit's states (kit/states.json): the clicks the capture made on the live page (a dropdown open, a tooltip, Search,
+// each dialog), replayed on the rebuild by the same stamped selectors, each picture diffed against the live one
+const kitStates = readJson(path.join(dir, 'kit', 'states.json'), null);
+const kitScreenJson = readJson(path.join(dir, 'kit', 'screen.json'), null);
+if (kitStates?.length && process.env.STATES !== '0') {
+  rep.states = [];
+  const sdir = path.join(outDir, 'states');
+  fs.rmSync(sdir, { recursive: true, force: true });
+  if (clockOn) await context.clock.resume().catch(() => {}); // the freeze paused time for the whole context: delays (a tooltip's) must run
+  // a state recorded at another viewport profile (the capture's "profiles": e.g. 1272x588 @1.5, below the portal's small-screen switch) is replayed in a
+  // context of that size, so the page, the menus and the dialogs are checked where the live one was photographed
+  const profileCtx = {};
+  const ctxFor = async (st) => {
+    if (!st.profile || !st.viewport) return context;
+    const key = `${st.viewport.width}x${st.viewport.height}@${st.dpr ?? 1}`;
+    if (!profileCtx[key]) {
+      profileCtx[key] = await browser.newContext({ viewport: st.viewport, deviceScaleFactor: st.dpr ?? 1, ignoreHTTPSErrors: true, serviceWorkers: 'block' });
+      await profileCtx[key].addInitScript({ content: INPAGE });
+    }
+    return profileCtx[key];
+  };
+  for (const st of kitStates) {
+    const p = await (await ctxFor(st)).newPage();
+    const r = { name: st.name, ok: false };
+    try {
+      await p.goto(process.env.URL ?? `${base}/#/${screen}`, { timeout: 120000 });
+      await p.waitForFunction(() => document.getElementById('root')?.firstElementChild, null, { timeout: 60000 }).catch(() => {});
+      await p.waitForTimeout(400);
+      await p.mouse.move(0, 0);
+      for (const s of st.steps) {
+        const loc = p.locator(`${s.sel} >> visible=true`).nth(s.nth ?? 0); // a twin hidden by a media query (a second hamburger) is never the one
+        await loc.scrollIntoViewIfNeeded({ timeout: 5000 });
+        if (s.do === 'hover') await loc.hover({ timeout: 5000 }); else if (s.do === 'dblclick') await loc.dblclick({ timeout: 5000 });
+        else if (s.do === 'fill') { await loc.fill(s.value ?? '', { timeout: 5000 }); await loc.evaluate((e) => e.blur()).catch(() => {}); } // a flows state reached by typing
+        else if (s.do === 'check') await loc.setChecked(s.value !== 'false', { timeout: 5000 });
+        else await loc.click({ timeout: 5000 });
+        await p.waitForTimeout(s.wait ?? st.wait ?? 800);
+      }
+      if (st.name === 'search') await p.evaluate(() => scrollTo(0, 0));
+      // what must be true after the steps (the side menu open, its fly-out shown, closed again), checked in the DOM
+      const failed = [];
+      for (const e of st.expect ?? []) {
+        // per matched, shown element: its text lines, whether it is what the pointer would hit at its centre (an element
+        // clipped by an ancestor's overflow still has a box but is not on top), and whether its box overlaps `outside`'s
+        const seen = await p.locator(e.sel).evaluateAll((els, outside) => els.filter((x) => x.getClientRects().length && getComputedStyle(x).visibility !== 'hidden')
+          .map((x) => {
+            const t = x.querySelector('.k-tooltip-content') ?? x, lh = parseFloat(getComputedStyle(t).lineHeight) || 18, r = x.getBoundingClientRect();
+            const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2), o = outside && document.querySelector(outside)?.getBoundingClientRect();
+            return { lines: Math.round(t.getBoundingClientRect().height / lh), top: !!hit && x.contains(hit), overlaps: !!o && Math.min(r.right, o.right) - Math.max(r.left, o.left) > 1 && Math.min(r.bottom, o.bottom) - Math.max(r.top, o.top) > 1,
+              rect: { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height) } };
+          }), e.outside ?? null);
+        if ((e.visible ?? true) !== seen.length > 0) failed.push(`${e.sel} ${e.visible === false ? 'still shown' : 'not shown'}${e.why ? ` (${e.why})` : ''}`);
+        else if (e.lines && seen.length && seen[0].lines > e.lines) failed.push(`${e.sel} wraps onto ${seen[0].lines} lines, the live one has ${e.lines}`);
+        else if (e.rect && seen.length) { // where and how big the live element was (a dialog at this viewport profile): each of x, y, w, h within its tolerance
+          const tol = { x: 3, y: 3, w: 3, h: 14, ...e.tol }, got = seen[0].rect, off = ['x', 'y', 'w', 'h'].filter((k) => Math.abs(got[k] - e.rect[k]) > tol[k]);
+          const fmt = (r) => `x ${r.x}, y ${r.y}, ${r.w}x${r.h}`;
+          if (off.length) failed.push(`${e.sel} is at ${fmt(got)} but the live one is at ${fmt(e.rect)} (${off.join(', ')} differ)${e.why ? ` (${e.why})` : ''}`);
+        }
+        else if (e.top && seen.length && !seen.some((x) => x.top)) failed.push(`${e.sel} is shown but covered or clipped: not on top${e.why ? ` (${e.why})` : ''}`);
+        else if (e.outside && seen.some((x) => x.overlaps)) failed.push(`${e.sel} opens inside ${e.outside}, which clips it; the live one opens beside it${e.why ? ` (${e.why})` : ''}`);
+      }
+      // what every window of the portal does, whether or not the capture's states say so: it focuses a field, locks the page behind it (only its content scrolls),
+      // and a window taller than the room scrolls inside itself. A side menu taller than the room reaches its last item through its arrow button.
+      const dlg = (st.expect ?? []).find((e) => /^\[data-kit-dialog="[^"]+"\]$/.test(e.sel));
+      if (dlg) {
+        const id = /data-kit-dialog="([^"]+)"/.exec(dlg.sel)?.[1], locks = !!kitScreenJson?.dialogs?.[id]?.options?.modal?.preventScroll;
+        const got = await p.evaluate((sel) => {
+          const w = document.querySelector(sel), a = document.activeElement, c = w?.querySelector('.k-window-content');
+          const fields = w ? [...w.querySelectorAll('input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([type=button]):not([disabled]):not([readonly]), select:not([disabled]), textarea:not([disabled]):not([readonly])')].filter((x) => x.getClientRects().length).length : 0;
+          return { focus: !fields || (!!w && w.contains(a)) && (/^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName) || a.classList.contains('k-dropdownlist')), locked: getComputedStyle(document.documentElement).overflowY === 'hidden' || getComputedStyle(document.body).overflowY === 'hidden',
+            contentScrolls: !!c && c.scrollHeight > c.clientHeight + 1 && ['auto', 'scroll'].includes(getComputedStyle(c).overflowY) };
+        }, dlg.sel).catch(() => null);
+        if (got && !got.focus) failed.push(`${dlg.sel} opened with no field focused (the portal focuses one when a window opens)`);
+        if (got && locks && !got.locked) failed.push(`${dlg.sel} opened but the page behind it can still scroll (the portal's windows lock it)`);
+        if (got && got.contentScrolls === false && (await p.evaluate((sel) => { const c = document.querySelector(sel)?.querySelector('.k-window-content'); return !!c && c.scrollHeight > c.clientHeight + 1; }, dlg.sel).catch(() => false))) failed.push(`${dlg.sel}: its content is taller than the window but does not scroll inside it`);
+      }
+      if (failed.length) r.error = failed.join('; ');
+      if (!st.shot) { r.ok = !failed.length; } else {
+        const d = path.join(sdir, st.name);
+        fs.mkdirSync(d, { recursive: true });
+        await p.screenshot({ path: path.join(d, 'candidate.png'), animations: 'disabled', caret: 'hide', ...(st.clip ? { clip: st.clip } : {}) });
+        const res = py('diff.py', path.join(dir, 'kit', st.shot), path.join(d, 'candidate.png'), d);
+        Object.assign(r, { bad_pct: res.bad_pct, size_delta_px: res.size_delta_px, ok: !failed.length && res.bad_pct <= (+process.env.STATE_MAX_BAD_PCT || 15) });
+      }
+      const post = [];
+      if (st.name.startsWith('menu-open')) {
+        const reach = await p.evaluate(async () => {
+          const ul = [...document.querySelectorAll('[data-kit-menu] ul[data-role=menu]')].find((u) => u.getClientRects().length && u.scrollHeight > u.clientHeight + 1);
+          if (!ul) return null;
+          const next = ul.parentElement.querySelector('.k-menu-scroll-button-next');
+          return { shown: !!next && next.getClientRects().length > 0 };
+        }).catch(() => null);
+        if (reach && !reach.shown) post.push('the side menu is taller than its room but has no scroll arrow: its last items cannot be reached');
+        if (reach?.shown) {
+          const nb = p.locator('[data-kit-menu] .k-menu-scroll-button-next >> visible=true').first();
+          await nb.hover({ timeout: 3000 }).catch(() => {});
+          await p.waitForFunction(() => { const u = [...document.querySelectorAll('[data-kit-menu] ul[data-role=menu]')].find((x) => x.scrollHeight > x.clientHeight + 1 || x.scrollTop > 0); return !!u && u.scrollTop + u.clientHeight >= u.scrollHeight - 2; }, null, { timeout: 15000 }).catch(() => post.push('hovering the lower arrow of the side menu does not scroll the list to its last item'));
+          await p.mouse.move(0, 0);
+        }
+      }
+      if (post.length) { r.error = [r.error, ...post].filter(Boolean).join('; '); r.ok = false; }
+    } catch (e) { r.error = e.message.split('\n')[0]; }
+    await p.close();
+    rep.states.push(r);
+  }
+  for (const c of Object.values(profileCtx)) await c.close().catch(() => {});
+  console.log(`states: ${rep.states.filter((s) => s.ok).length}/${rep.states.length} match the live page${rep.states.filter((s) => !s.ok).map((s) => ` | ✗ ${s.name}: ${s.error ?? `${s.bad_pct}% off`}`).join('')}`);
 }
 await browser.close();
 if (diag) {

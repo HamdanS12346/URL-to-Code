@@ -1,0 +1,26 @@
+{
+    "nodes":  [
+                  {
+                      "node":  "n2.1",
+                      "name":  "open-file-transfer",
+                      "actions":  [
+                                      {
+                                          "el":  "e3",
+                                          "do":  "dblclick",
+                                          "why":  "Opens the Events grid row if it has a drill-down.",
+                                          "name":  "open-event-row"
+                                      },
+                                      {
+                                          "el":  "e1",
+                                          "do":  "dblclick",
+                                          "why":  "Confirms whether the empty-row placeholder has any interaction."
+                                      },
+                                      {
+                                          "el":  "e4",
+                                          "do":  "dblclick",
+                                          "why":  "Confirms whether the Exceptions empty state has any interaction."
+                                      }
+                                  ]
+                  }
+              ]
+}

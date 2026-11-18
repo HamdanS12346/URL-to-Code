@@ -1,0 +1,41 @@
+[
+ {
+  "el": "e1",
+  "kind": "button",
+  "layer": "top",
+  "css": "#cancelModalButton",
+  "nth": 0,
+  "text": "No",
+  "label": null,
+  "id": "cancelModalButton",
+  "name": null,
+  "type": "button",
+  "kitAction": null,
+  "box": {
+   "x": 867,
+   "y": 573,
+   "w": 82,
+   "h": 38
+  }
+ },
+ {
+  "el": "e2",
+  "kind": "button",
+  "layer": "top",
+  "css": "#okButton",
+  "nth": 0,
+  "text": "Yes",
+  "label": null,
+  "id": "okButton",
+  "name": null,
+  "type": "button",
+  "kitAction": null,
+  "box": {
+   "x": 965,
+   "y": 573,
+   "w": 87,
+   "h": 38
+  },
+  "danger": "commit: a bare \"Yes\""
+ }
+]

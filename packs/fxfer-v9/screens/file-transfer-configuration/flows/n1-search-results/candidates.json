@@ -1,0 +1,270 @@
+[
+ {
+  "el": "e1",
+  "kind": "button",
+  "layer": "page",
+  "css": "#FileTransferGridAddButton",
+  "nth": 0,
+  "text": "Create New",
+  "label": null,
+  "id": "FileTransferGridAddButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "create",
+  "box": {
+   "x": 1729,
+   "y": -81,
+   "w": 146,
+   "h": 38
+  }
+ },
+ {
+  "el": "e2",
+  "kind": "button",
+  "layer": "page",
+  "css": "div.panel-icon.clickable",
+  "nth": 0,
+  "text": "",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": "collapse",
+  "box": {
+   "x": 1847,
+   "y": 15,
+   "w": 28,
+   "h": 30
+  }
+ },
+ {
+  "el": "e3",
+  "kind": "text",
+  "layer": "page",
+  "css": "input.editor-control.k-input-inner[type=\"text\"]",
+  "nth": 0,
+  "text": "",
+  "label": "Configuration ID",
+  "id": null,
+  "name": null,
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {},
+  "box": {
+   "x": 41,
+   "y": 128,
+   "w": 253,
+   "h": 30
+  }
+ },
+ {
+  "el": "e4",
+  "kind": "text",
+  "layer": "page",
+  "css": "#ConfigName",
+  "nth": 0,
+  "text": "",
+  "label": "Configuration Name",
+  "id": "ConfigName",
+  "name": "ConfigName",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Configuration Name has a maximum length of 50 characters.",
+   "regex": "Configuration Name is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].",
+   "regex-pattern": "^([A-Za-z0-9]|[^\\x00-\\x7F])*$",
+   "maxlength": 50,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 358,
+   "y": 128,
+   "w": 703,
+   "h": 30
+  }
+ },
+ {
+  "el": "e5",
+  "kind": "text",
+  "layer": "page",
+  "css": "#OwnerName",
+  "nth": 0,
+  "text": "",
+  "label": "Owner Name",
+  "id": "OwnerName",
+  "name": "OwnerName",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Owner Name has a maximum length of 50 characters.",
+   "regex": "Owner Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "maxlength": 50,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 1124,
+   "y": 128,
+   "w": 703,
+   "h": 30
+  }
+ },
+ {
+  "el": "e6",
+  "kind": "dropdown",
+  "layer": "page",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 0,
+  "text": "select a value...SearchModuleList",
+  "label": "Owner Module",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "0b34481f-f69c-3ab6-e053-c9157aceff03",
+   "09df7d37-3bd5-7c9c-e053-c9157aceb3f2",
+   "bb31ef47-8d1e-c99a-e053-c9157ace53da",
+   "06c7121b-8166-4e32-e054-0017a4ab527b",
+   "98385830-7fc2-5bb4-e053-c9157ace364b",
+   "0e7b7146-aa81-5292-e053-c9157ace4cbe",
+   "96c6da47-0ae6-2bcd-e053-c9157ace38f9",
+   "fdf18357-3c14-7cb7-e053-c9157ace3990",
+   "ff19da47-cc91-e17d-e053-c9157ace99a5",
+   "2e60501f-f8aa-50b6-e053-c9157acefb50",
+   "30de9349-0e99-aec1-e053-c9157ace0401",
+   "f1612a4b-ff51-1a03-e053-c9157ace9264"
+  ],
+  "box": {
+   "x": 41,
+   "y": 220,
+   "w": 598,
+   "h": 40
+  }
+ },
+ {
+  "el": "e7",
+  "kind": "dropdown",
+  "layer": "page",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 1,
+  "text": "select a value...ProtocolList",
+  "label": "Protocol",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "box": {
+   "x": 654,
+   "y": 220,
+   "w": 445,
+   "h": 40
+  }
+ },
+ {
+  "el": "e8",
+  "kind": "button",
+  "layer": "page",
+  "css": "#resetButton",
+  "nth": 0,
+  "text": "Reset",
+  "label": null,
+  "id": "resetButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "reset",
+  "box": {
+   "x": 41,
+   "y": 310,
+   "w": 103,
+   "h": 38
+  }
+ },
+ {
+  "el": "e9",
+  "kind": "button",
+  "layer": "page",
+  "css": "#cancelButton",
+  "nth": 0,
+  "text": "Cancel",
+  "label": null,
+  "id": "cancelButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "cancel",
+  "box": {
+   "x": 1629,
+   "y": 310,
+   "w": 111,
+   "h": 38
+  }
+ },
+ {
+  "el": "e10",
+  "kind": "button",
+  "layer": "page",
+  "css": "#nextButton",
+  "nth": 0,
+  "text": "Search",
+  "label": null,
+  "id": "nextButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "search",
+  "box": {
+   "x": 1752,
+   "y": 310,
+   "w": 112,
+   "h": 38
+  }
+ },
+ {
+  "el": "e11",
+  "kind": "check",
+  "layer": "page",
+  "css": "#FileTransferShowInactiveCheckBox",
+  "nth": 0,
+  "text": "true",
+  "label": "Show Inactives",
+  "id": "FileTransferShowInactiveCheckBox",
+  "name": "FileTransferShowInactiveCheckBox",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 1752,
+   "y": 512,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e12",
+  "kind": "row",
+  "layer": "page",
+  "css": "tbody tr",
+  "nth": 0,
+  "text": "4TestFTP/testweryashwanthAdministrationActiveaab80b60-a4ec-4",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "rows": 10,
+  "box": {
+   "x": 31,
+   "y": 590,
+   "w": 1857,
+   "h": 40
+  }
+ }
+]

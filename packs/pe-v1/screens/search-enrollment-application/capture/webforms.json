@@ -1,0 +1,259 @@
+{
+ "isWebForms": false,
+ "validators": [],
+ "summaries": [],
+ "updatePanels": null,
+ "components": [],
+ "grids": {},
+ "hiddenFields": [
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "TaxIdType",
+   "id": "TaxIdType",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentType.ID",
+   "id": "EnrollmentType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentType.Name",
+   "id": "EnrollmentType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EnrollmentType.DisplayFormat",
+   "id": "EnrollmentType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "ProviderType.ID",
+   "id": "ProviderType_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ProviderType.Name",
+   "id": "ProviderType_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ProviderType.DisplayFormat",
+   "id": "ProviderType_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "LastStatus.ID",
+   "id": "LastStatus_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "LastStatus.Name",
+   "id": "LastStatus_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "LastStatus.DisplayFormat",
+   "id": "LastStatus_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "States.ID",
+   "id": "States_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "States.Name",
+   "id": "States_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "States.DisplayFormat",
+   "id": "States_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "ApplicationTypeList.ID",
+   "id": "ApplicationTypeList_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ApplicationTypeList.Name",
+   "id": "ApplicationTypeList_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ApplicationTypeList.DisplayFormat",
+   "id": "ApplicationTypeList_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "TaxID",
+   "id": "TaxID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ExportOptions.ID",
+   "id": "ExportOptions_ID",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ExportOptions.Name",
+   "id": "ExportOptions_Name",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "ExportOptions.DisplayFormat",
+   "id": "ExportOptions_DisplayFormat",
+   "size": 4,
+   "value": "Name"
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "fileId",
+   "id": "downloadFileId",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "SSNRawVal",
+   "id": "SSNRawVal",
+   "size": 0,
+   "value": ""
+  },
+  {
+   "name": "EINRawVal",
+   "id": "EINRawVal",
+   "size": 0,
+   "value": ""
+  }
+ ],
+ "defaultButtons": [],
+ "forms": [
+  {
+   "index": 0,
+   "id": "ProviderSearchForm",
+   "key": "ProviderSearchForm",
+   "action": "/ProviderEnrollment/SearchProviderApplication",
+   "method": "POST",
+   "enctype": "application/x-www-form-urlencoded",
+   "fields": [
+    "text",
+    "text-2",
+    "fieldset-search-enrollment",
+    "ATN",
+    "LegacyID",
+    "NPI",
+    "TaxIdSelection_IDEIN",
+    "TaxIdSelection_IDSSN",
+    "SSN",
+    "EIN",
+    "LastName",
+    "FirstName",
+    "BusinessName",
+    "ContactEmail",
+    "button-select",
+    "EnrollmentTypeList",
+    "button-select-2",
+    "ProviderTypeList",
+    "button-select-3",
+    "LastStatusList",
+    "ReceiptDate",
+    "button-select-4",
+    "City",
+    "button-select-5",
+    "StatesList",
+    "button-select-6",
+    "ApplicationTypeListList",
+    "ProviderName",
+    "clearButton",
+    "searchButton",
+    "gridExportButton",
+    "gridDataFilterButton",
+    "button-select-7",
+    "megaGridUserSelections",
+    "toggleGroup1",
+    "toggleGroup2",
+    "toggleGroup3",
+    "toggleGroup4",
+    "toggleGroup5",
+    "toggleGroup6",
+    "toggleGroup7",
+    "toggleGroup8",
+    "toggleGroup9",
+    "toggleGroupName1",
+    "toggleGroupName2",
+    "toggleGroupName3",
+    "toggleGroupName4",
+    "toggleGroupName5",
+    "toggleGroupName6",
+    "toggleGroupName7",
+    "toggleGroupName8",
+    "toggleGroupName9",
+    "sortGroup1",
+    "sortGroup2",
+    "sortGroup3",
+    "sortGroup4",
+    "sortGroup5",
+    "sortGroup6",
+    "sortGroup7",
+    "sortGroup8",
+    "sortGroup9",
+    "UserSelectionName",
+    "mgTemplateCheckbox",
+    "button-select-8",
+    "ExportOptionsList",
+    "button-go-to-the-first-page",
+    "button-go-to-the-previous-page",
+    "button-page-0",
+    "button-go-to-the-next-page",
+    "button-go-to-the-last-page",
+    "text-page",
+    "text-page-2",
+    "button-select-9",
+    "select-page-sizes-drop-down"
+   ]
+  },
+  {
+   "index": 1,
+   "id": "downloadFileForm",
+   "key": "downloadFileForm",
+   "action": "/api/ProviderEnrollment/GetFile/",
+   "method": "POST",
+   "enctype": "application/x-www-form-urlencoded",
+   "fields": [
+    "text-3",
+    "text-4"
+   ]
+  }
+ ]
+}

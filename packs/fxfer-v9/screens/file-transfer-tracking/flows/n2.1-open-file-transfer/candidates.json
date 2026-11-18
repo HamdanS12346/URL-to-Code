@@ -1,0 +1,81 @@
+[
+ {
+  "el": "e1",
+  "kind": "row",
+  "layer": "top",
+  "css": "tbody tr",
+  "nth": 1,
+  "text": "There are no records found.",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "rows": 1,
+  "box": {
+   "x": 252,
+   "y": 921,
+   "w": 1402,
+   "h": 62
+  }
+ },
+ {
+  "el": "e2",
+  "kind": "button",
+  "layer": "top",
+  "css": "#altRight1Button",
+  "nth": 0,
+  "text": "Cancel",
+  "label": null,
+  "id": "altRight1Button",
+  "name": null,
+  "type": "button",
+  "kitAction": "cancel",
+  "box": {
+   "x": 1525,
+   "y": 1034,
+   "w": 114,
+   "h": 38
+  }
+ },
+ {
+  "el": "e3",
+  "kind": "row",
+  "layer": "top",
+  "css": "tbody tr",
+  "nth": 0,
+  "text": "T5/25/2021 1:07 PM\\\\mapsftshrfs01\\CommercialSharedFolder\\Pro",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "rows": 1,
+  "box": {
+   "x": 252,
+   "y": 703,
+   "w": 1402,
+   "h": 56
+  }
+ },
+ {
+  "el": "e4",
+  "kind": "row",
+  "layer": "top",
+  "css": "tbody tr",
+  "nth": 1,
+  "text": "There are no records found.",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "rows": 1,
+  "box": {
+   "x": 252,
+   "y": 921,
+   "w": 1402,
+   "h": 62
+  }
+ }
+]

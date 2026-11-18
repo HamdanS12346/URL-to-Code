@@ -1,0 +1,25 @@
+{
+ "source": "rules",
+ "nodes": [
+  {
+   "node": "n2.1",
+   "actions": [
+    {
+     "el": "e1",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e3",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e4",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    }
+   ]
+  }
+ ]
+}

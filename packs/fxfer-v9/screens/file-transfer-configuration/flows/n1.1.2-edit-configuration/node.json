@@ -1,0 +1,201 @@
+{
+ "id": "n1.1.2",
+ "parent": "n1.1",
+ "depth": 3,
+ "status": "frontier",
+ "name": "edit-configuration",
+ "kind": "dialog",
+ "fp": "5b39c829297d",
+ "fpText": "W:Edit File Transfer Configuration\nH:Destination Configuration|Source Configuration\nL:Active|Configuration Name|Description|File Direction|Owner Email|Owner Module|Owner Name|Owner Phone|Protocol|Run Monthly|Run On First Day Month|Run On Last Day Month|Run On This Day Month|Run Schedule|Run Weekly|Send Notification|Server|Show Inactives|Source Address|Source File Mask|Suspend|Time Window End|Time Window Start|Trading Partner\nB:Cancel|Create New|Reset|Save|select\nF:19\nT:\nR:1\nV:0",
+ "via": {
+  "el": "e2",
+  "steps": [
+   {
+    "do": "click",
+    "layer": "top",
+    "css": "#editFileTransferConfigurationButton",
+    "nth": 0,
+    "text": "Edit",
+    "kind": "button"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#nextButton",
+   "nth": 0,
+   "text": "Search",
+   "kind": "button"
+  },
+  {
+   "do": "dblclick",
+   "layer": "page",
+   "css": "tbody tr",
+   "nth": 0,
+   "text": "4TestFTP/testweryashwanthAdministrationActiveaab80b60-a4ec-4",
+   "kind": "row"
+  },
+  {
+   "do": "click",
+   "layer": "top",
+   "css": "#editFileTransferConfigurationButton",
+   "nth": 0,
+   "text": "Edit",
+   "kind": "button"
+  }
+ ],
+ "requests": [
+  {
+   "method": "POST",
+   "url": "/FileTransfer/FileTransferConfigurationEdit/",
+   "status": "sent"
+  },
+  {
+   "method": "GET",
+   "url": "/api/FileTransfer/GetFtpServerDetails/",
+   "status": "sent"
+  },
+  {
+   "method": "GET",
+   "url": "/api/FileTransfer/GetDataListData/",
+   "status": "sent"
+  },
+  {
+   "method": "GET",
+   "url": "/api/FileTransfer/GetFtpServerDetails/",
+   "status": "sent"
+  }
+ ],
+ "title": "Edit File Transfer Configuration",
+ "dir": "n1.1.2-edit-configuration",
+ "windows": 1,
+ "validation": null,
+ "same": [],
+ "skipped": [
+  {
+   "el": "e27",
+   "text": "Save",
+   "why": "commit: the kit marks it a Save"
+  }
+ ],
+ "probed": true,
+ "fields": [
+  {
+   "name": "ConfigName",
+   "label": "Configuration Name",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  },
+  {
+   "name": "Description",
+   "label": "Description",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-"
+  },
+  {
+   "name": "SourceAddress",
+   "label": "Source Address",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-"
+  },
+  {
+   "name": "SourceFileMask",
+   "label": "Source File Mask",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  },
+  {
+   "name": "TradingPartner",
+   "label": "Trading Partner",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 10,
+   "maxEnforced": true
+  },
+  {
+   "name": "OwnerName",
+   "label": "Owner Name",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  },
+  {
+   "name": "OwnerPhoneNumber",
+   "label": "Owner Phone",
+   "messages": {},
+   "accepts": {
+    "letters": false,
+    "digits": true,
+    "spaces": false,
+    "symbols": true
+   },
+   "kept": "1__-___-____"
+  },
+  {
+   "name": "OwnerEmail",
+   "label": "Owner Email",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-"
+  }
+ ],
+ "saveProbe": {
+  "button": "Save",
+  "validation": null,
+  "wouldSend": [
+   {
+    "method": "PUT",
+    "url": "/api/FileTransfer/AddFileTransferBaseConfiguration/",
+    "fields": []
+   }
+  ]
+ }
+}

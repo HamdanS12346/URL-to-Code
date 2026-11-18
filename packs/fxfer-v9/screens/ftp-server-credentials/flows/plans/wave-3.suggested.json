@@ -1,0 +1,45 @@
+{
+ "source": "rules",
+ "nodes": [
+  {
+   "node": "n1.1",
+   "actions": [
+    {
+     "el": "e1",
+     "do": "click",
+     "why": "button \"Create New\""
+    },
+    {
+     "el": "e6",
+     "do": "click",
+     "why": "button \"Search\""
+    },
+    {
+     "el": "e9",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e7",
+     "do": "click",
+     "why": "button \"e7\""
+    },
+    {
+     "el": "e8",
+     "do": "click",
+     "why": "check \"true\""
+    }
+   ]
+  },
+  {
+   "node": "n1.2",
+   "actions": [
+    {
+     "el": "e8",
+     "do": "click",
+     "why": "button \"Invalidate\""
+    }
+   ]
+  }
+ ]
+}

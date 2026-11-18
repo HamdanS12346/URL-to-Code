@@ -23,7 +23,13 @@ export function preflight(outDir) {
   if (!fs.existsSync(specFile)) return null;
   const spec = fs.readFileSync(specFile, 'utf8');
   const used = new Set([...spec.matchAll(/(?:el|isDisabled)\(page, "([^"]+)"/g), ...spec.matchAll(/"key":"([^"]+)"/g)].map((m) => m[1]));
-  const { keys, dynamic } = appKeys(path.join(outDir, 'app'));
+  // the screen's own app/ (npm run port), else the pack's app (src/screens/<screen>, src/shell: Vite's layout)
+  const pack = outDir.match(/^(.*)[\\/]screens[\\/]([^\\/]+)$/);
+  let app = pack && path.join(pack[1], 'app');
+  try { app = JSON.parse(fs.readFileSync(path.join(pack[1], 'pack.json'), 'utf8')).outRepo || app; } catch { /* not a pack, or no pack.json */ }
+  const dirs = [path.join(outDir, 'app'), ...(pack ? [path.join(app, 'src', 'screens', pack[2]), path.join(app, 'src', 'shell')] : [])];
+  const found = dirs.map(appKeys);
+  const keys = new Set(found.flatMap((f) => [...f.keys])), dynamic = found.some((f) => f.dynamic);
   return { used: used.size, missing: [...used].filter((k) => !keys.has(k)).sort(), dynamic };
 }
 
@@ -31,6 +37,7 @@ export function reportPreflight(outDir, outFile) {
   const p = preflight(outDir);
   if (!p) return null;
   if (outFile) fs.writeFileSync(outFile, JSON.stringify(p, null, 2));
+  if (!p.used) return p; // no parity keys (a site-kit screen): nothing to report, and "0 keys" only misleads the writer
   const head = p.missing.slice(0, 8).join(', ') + (p.missing.length > 8 ? ` (+${p.missing.length - 8})` : '');
   console.log(`preflight: parity.spec.ts uses ${p.used} keys, ${p.missing.length} carried by no data-testid in app/${p.missing.length ? ': ' + head : ''}${p.dynamic ? ' [app builds some data-testids dynamically: list may over-report]' : ''}`);
   return p;

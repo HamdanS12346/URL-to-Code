@@ -1,0 +1,238 @@
+{
+ "id": "n2.1",
+ "parent": "n2",
+ "depth": 2,
+ "status": "frontier",
+ "name": "run-weekly",
+ "kind": "part",
+ "fp": "3ccd18ece251",
+ "fpText": "W:Add File Transfer Configuration\nH:Destination Configuration|Source Configuration\nL:Active|Configuration Name|Description|File Direction|Friday|Monday|Owner Email|Owner Module|Owner Name|Owner Phone|Protocol|Run Monthly|Run Schedule|Run Weekly|Saturday|Send Notification|Show Inactives|Source Address|Source File Mask|Sunday|Suspend|Thursday|Time Window End|Time Window Start|Trading Partner|Tuesday|Wednesday\nB:Cancel|Create New|Reset|Save|select\nF:24\nT:\nR:1\nV:0",
+ "via": {
+  "el": "e12",
+  "steps": [
+   {
+    "do": "click",
+    "layer": "top",
+    "css": "#RunSchedule_ID1",
+    "nth": 0,
+    "text": "1",
+    "kind": "radio"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#FileTransferGridAddButton",
+   "nth": 0,
+   "text": "Create New",
+   "kind": "button"
+  },
+  {
+   "do": "click",
+   "layer": "top",
+   "css": "#RunSchedule_ID1",
+   "nth": 0,
+   "text": "1",
+   "kind": "radio"
+  }
+ ],
+ "requests": [],
+ "change": {
+  "show": [
+   "#RunType_Weekly"
+  ],
+  "hide": [],
+  "scroll": 49
+ },
+ "title": "Add File Transfer Configuration",
+ "dir": "n2.1-run-weekly",
+ "windows": 1,
+ "validation": null,
+ "same": [
+  {
+   "el": "e32",
+   "as": "e28",
+   "why": "Both 'There are no records found.' rows represent the empty destination grid state."
+  }
+ ],
+ "skipped": [
+  {
+   "el": "e31",
+   "text": "Save",
+   "why": "commit: \"Save\""
+  }
+ ],
+ "probed": true,
+ "fields": [
+  {
+   "name": "ConfigName",
+   "label": "Configuration Name",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  },
+  {
+   "name": "Description",
+   "label": "Description",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-"
+  },
+  {
+   "name": "SourceAddress",
+   "label": "Source Address",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-"
+  },
+  {
+   "name": "SourceFileMask",
+   "label": "Source File Mask",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  },
+  {
+   "name": "TradingPartner",
+   "label": "Trading Partner",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 10,
+   "maxEnforced": true
+  },
+  {
+   "name": "OwnerName",
+   "label": "Owner Name",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  },
+  {
+   "name": "OwnerPhoneNumber",
+   "label": "Owner Phone",
+   "messages": {},
+   "accepts": {
+    "letters": false,
+    "digits": true,
+    "spaces": false,
+    "symbols": true
+   },
+   "kept": "1__-___-____"
+  },
+  {
+   "name": "OwnerEmail",
+   "label": "Owner Email",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-"
+  }
+ ],
+ "saveProbe": {
+  "button": "Save",
+  "validation": {
+   "summaries": [],
+   "fields": [
+    {
+     "for": "ConfigName",
+     "text": "Configuration Name is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "ProtocolTypeList",
+     "text": "Protocol is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "SourceAddress",
+     "text": "Source Address is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "SourceFileMask",
+     "text": "Source File Mask is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "OwnerName",
+     "text": "Owner Name is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "OwnerPhoneNumber",
+     "text": "Owner Phone is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "AddConfigModuleList",
+     "text": "Please input required information and try again.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "OwnerEmail",
+     "text": "Owner Email is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "TimeWindowStartList",
+     "text": "Time Window Start is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "TimeWindowEndList",
+     "text": "Time Window End is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "undefined",
+     "text": "At least one destination is required for the file transfer configuration",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    }
+   ]
+  },
+  "wouldSend": []
+ }
+}

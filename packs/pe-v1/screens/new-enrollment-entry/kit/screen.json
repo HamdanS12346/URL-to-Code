@@ -1,0 +1,3535 @@
+{
+ "shell": {
+  "title": "New Enrollment Entry",
+  "module": null,
+  "headerStyle": "border-bottom: 0px;",
+  "headerHeight": 62
+ },
+ "widgets": {
+  "k1": {
+   "role": "numerictextbox",
+   "id": "Provider_ChangeOfOwnership_TotalPercentageChange",
+   "name": "Provider.ChangeOfOwnership.TotalPercentageChange",
+   "label": "What is the total % change of ownership?",
+   "required": false,
+   "validation": {
+    "number": "What is the total % change of ownership? is restricted to numeric characters only [0-9].",
+    "regex": "What is the total % change of ownership? is restricted to numeric characters only [0-9]."
+   },
+   "validationParams": {
+    "length-max": "What is the total % change of ownership? has a maximum length of 3 characters.",
+    "regex-pattern": "^([0-9])*$"
+   },
+   "enabled": true,
+   "help": "Percentage change of ownership",
+   "html": "<span class=\"k-numerictextbox k-input editor-control\" data-kit=\"k1\" style=\"\"><input type=\"text\" data-validate=\"false\" title=\"\" tabindex=\"0\" class=\"editor-control k-input-inner\" role=\"spinbutton\" aria-valuemin=\"-2147483648\" aria-valuemax=\"2147483647\" autocomplete=\"off\" aria-disabled=\"false\" aria-labelledby=\"Provider_ChangeOfOwnership_TotalPercentageChangeLabel Provider_ChangeOfOwnership_TotalPercentageChangeHelpDesc\" style=\"\"><input class=\"editor-control k-input-inner\" data-val=\"true\" data-val-length-max=\"What is the total % change of ownership? has a maximum length of 3 characters.\" data-val-number=\"What is the total % change of ownership? is restricted to numeric characters only [0-9].\" data-val-regex=\"What is the total % change of ownership? is restricted to numeric characters only [0-9].\" data-val-regex-pattern=\"^([0-9])*$\" id=\"Provider_ChangeOfOwnership_TotalPercentageChange\" ignoredirtydata=\"False\" maxlength=\"3\" name=\"Provider.ChangeOfOwnership.TotalPercentageChange\" type=\"text\" data-role=\"numerictextbox\" role=\"spinbutton\" inputmode=\"text\" aria-valuemin=\"-2147483648\" aria-valuemax=\"2147483647\" aria-disabled=\"false\" not-data-val-required=\"What is the total % change of ownership? is a required field.\" style=\"display: none;\"><span class=\"k-icon k-svg-icon k-svg-i-exclamation-circle k-input-validation-icon k-hidden\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224 128h64v160h-64zm0 256h64v-64h-64zm256-128c0 123.7-100.3 224-224 224S32 379.7 32 256 132.3 32 256 32s224 100.3 224 224m-32 0c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192\"></path></svg></span><span class=\"k-input-spinner k-spin-button\" style=\"display: none;\"><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-increase k-button k-icon-button\" aria-label=\"Increase value\" title=\"Increase value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-up k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m256 160 128 192H128z\"></path></svg></span></button><button role=\"button\" tabindex=\"-1\" unselectable=\"on\" class=\"k-spinner-decrease k-button k-icon-button\" aria-label=\"Decrease value\" title=\"Decrease value\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button></span></span>",
+   "kind": "numeric",
+   "value": null,
+   "format": "n0",
+   "decimals": 0,
+   "min": -2147483648,
+   "max": 2147483647,
+   "step": 1,
+   "spinners": false,
+   "placeholder": ""
+  },
+  "k2": {
+   "role": "dropdownlist",
+   "id": "EnrollmentPreChecklist_EnrollmentTypeList",
+   "name": "EnrollmentPreChecklist.EnrollmentTypeList",
+   "label": "EnrollmentPreChecklist_EnrollmentTypeList",
+   "required": true,
+   "validation": {
+    "required": "Enrollment Type is a required field."
+   },
+   "validationParams": {
+    "length-max": "Enrollment Type has a maximum length of 15 characters."
+   },
+   "enabled": true,
+   "help": "Enrollment Type is a required field.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"EnrollmentPreChecklist_EnrollmentTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"ef5463fa-9ac5-401c-85c0-6b8477908a85\" aria-labelledby=\"EnrollmentPreChecklist_EnrollmentTypeLabel EnrollmentPreChecklist_EnrollmentTypeHelpDesc\" data-kit=\"k2\" style=\"\"><span id=\"ef5463fa-9ac5-401c-85c0-6b8477908a85\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"EnrollmentPreChecklist_EnrollmentTypeListLabel\" for=\"EnrollmentPreChecklist_EnrollmentTypeList\" class=\"display-none\">EnrollmentPreChecklist_EnrollmentTypeList</label><input class=\"editor-control\" data-val-length-max=\"Enrollment Type has a maximum length of 15 characters.\" id=\"EnrollmentPreChecklist_EnrollmentTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.EnrollTypes\" listviewdisplayformat=\"Name\" maxlength=\"15\" name=\"EnrollmentPreChecklist.EnrollmentTypeList\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.EnrollmentPreChecklistModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-EnrollmentType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" data-val-required=\"Enrollment Type is a required field.\" aria-labelledby=\"EnrollmentPreChecklist_EnrollmentTypeListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Individual",
+     "value": "I"
+    },
+    {
+     "text": "Facility",
+     "value": "F"
+    },
+    {
+     "text": "Group",
+     "value": "G"
+    },
+    {
+     "text": "Individual Within Group",
+     "value": "IG"
+    },
+    {
+     "text": "Atypical Providers",
+     "value": "AT"
+    },
+    {
+     "text": "Ordering, Prescribing, Referring",
+     "value": "O"
+    },
+    {
+     "text": "Test2025",
+     "value": "TT"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k3": {
+   "role": "dropdownlist",
+   "id": "EnrollmentPreChecklist_ProviderTypeList",
+   "name": "EnrollmentPreChecklist_ProviderTypeList",
+   "label": "EnrollmentPreChecklist_ProviderTypeList",
+   "required": true,
+   "validation": {
+    "required": "Provider Type is a required field."
+   },
+   "validationParams": {
+    "length-max": "Provider Type has a maximum length of 25 characters."
+   },
+   "enabled": true,
+   "help": "Provider Type is a required field.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"EnrollmentPreChecklist_ProviderTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"1f72af9f-2917-4b8c-9e3e-b8a4803ca6ec\" aria-labelledby=\"EnrollmentPreChecklist_ProviderTypeLabel EnrollmentPreChecklist_ProviderTypeHelpDesc\" data-kit=\"k3\" style=\"\"><span id=\"1f72af9f-2917-4b8c-9e3e-b8a4803ca6ec\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"EnrollmentPreChecklist_ProviderTypeListLabel\" for=\"EnrollmentPreChecklist_ProviderTypeList\" class=\"display-none\">EnrollmentPreChecklist_ProviderTypeList</label><input class=\"editor-control\" data-val-length-max=\"Provider Type has a maximum length of 25 characters.\" id=\"EnrollmentPreChecklist_ProviderTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"\" listviewdisplayformat=\"Name\" maxlength=\"25\" name=\"EnrollmentPreChecklist_ProviderTypeList\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.EnrollmentPreChecklistModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-ProviderType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" data-val-required=\"Provider Type is a required field.\" aria-labelledby=\"EnrollmentPreChecklist_ProviderTypeListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "contains",
+   "height": 200
+  },
+  "k4": {
+   "role": "dropdownlist",
+   "id": "EnrollmentPreChecklist_SpecialtyList",
+   "name": "EnrollmentPreChecklist.SpecialtyList",
+   "label": "EnrollmentPreChecklist_SpecialtyList",
+   "required": true,
+   "validation": {
+    "required": "Specialty is a required field."
+   },
+   "validationParams": {
+    "length-max": "Specialty has a maximum length of 15 characters."
+   },
+   "enabled": true,
+   "help": "Specialty is a required field.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"EnrollmentPreChecklist_SpecialtyList_listbox\" aria-labelledby=\"EnrollmentPreChecklist_SpecialtyLabel EnrollmentPreChecklist_SpecialtyHelpDesc\" data-kit=\"k4\" style=\"\"><span id=\"f6af0ade-11ee-46c1-a3f4-d8eca6131a7c\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"EnrollmentPreChecklist_SpecialtyListLabel\" for=\"EnrollmentPreChecklist_SpecialtyList\" class=\"display-none\">EnrollmentPreChecklist_SpecialtyList</label><input class=\"editor-control\" data-val-length-max=\"Specialty has a maximum length of 15 characters.\" id=\"EnrollmentPreChecklist_SpecialtyList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"\" listviewdisplayformat=\"Name\" maxlength=\"15\" name=\"EnrollmentPreChecklist.SpecialtyList\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.EnrollmentPreChecklistModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-Specialty\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" data-val-required=\"Specialty is a required field.\" aria-labelledby=\"EnrollmentPreChecklist_SpecialtyListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k5": {
+   "role": "dropdownlist",
+   "id": "EnrollmentPreChecklist_ProgramTypeList",
+   "name": "EnrollmentPreChecklist.ProgramTypeList",
+   "label": "EnrollmentPreChecklist_ProgramTypeList",
+   "required": true,
+   "validation": {
+    "required": "I will accept patients in the following programs: is a required field."
+   },
+   "validationParams": {
+    "length-max": "I will accept patients in the following programs: has a maximum length of 20 characters."
+   },
+   "enabled": true,
+   "help": "I will accept patients in the following programs: is a required field.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"EnrollmentPreChecklist_ProgramTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"715a530d-e50a-42d1-957f-870afaf02ad6\" aria-labelledby=\"EnrollmentPreChecklist_ProgramTypeLabel EnrollmentPreChecklist_ProgramTypeHelpDesc\" data-kit=\"k5\" style=\"\"><span id=\"715a530d-e50a-42d1-957f-870afaf02ad6\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"EnrollmentPreChecklist_ProgramTypeListLabel\" for=\"EnrollmentPreChecklist_ProgramTypeList\" class=\"display-none\">EnrollmentPreChecklist_ProgramTypeList</label><input class=\"editor-control\" data-val-length-max=\"I will accept patients in the following programs: has a maximum length of 20 characters.\" height=\"0\" id=\"EnrollmentPreChecklist_ProgramTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"ProviderEnrollment.DataList.ProgramType\" listviewdisplayformat=\"Name\" maxlength=\"20\" name=\"EnrollmentPreChecklist.ProgramTypeList\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.EnrollmentPreChecklistModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-ProgramType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" data-val-required=\"I will accept patients in the following programs: is a required field.\" aria-labelledby=\"EnrollmentPreChecklist_ProgramTypeListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k6": {
+   "role": "dropdownlist",
+   "id": "StatusList",
+   "name": "StatusList",
+   "label": "StatusList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Status",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"StatusList_listbox\" aria-busy=\"false\" aria-describedby=\"4eff36ba-6912-4072-ac55-d291b152b520\" aria-labelledby=\"StatusLabel StatusHelpDesc\" data-kit=\"k6\" style=\"\"><span id=\"4eff36ba-6912-4072-ac55-d291b152b520\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">Partial</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"StatusListLabel\" for=\"StatusList\" class=\"display-none\">StatusList</label><input class=\"editor-control\" id=\"StatusList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"ProviderEnrollment.DataList.StatusTypes\" listviewdisplayformat=\"Name\" name=\"StatusList\" not-data-val-required=\"Status is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.EnrollmentApplicationModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-Status\" type=\"text\" value=\"4\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"StatusListLabel\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Approved",
+     "value": "5"
+    },
+    {
+     "text": "Requested",
+     "value": "13"
+    },
+    {
+     "text": "Expired",
+     "value": "7"
+    },
+    {
+     "text": "Partial",
+     "value": "4"
+    },
+    {
+     "text": "Pending",
+     "value": "1"
+    },
+    {
+     "text": "Pending Credentialing",
+     "value": "12"
+    },
+    {
+     "text": "Rejected",
+     "value": "3"
+    },
+    {
+     "text": "Return To Provider",
+     "value": "6"
+    },
+    {
+     "text": "Started",
+     "value": "10"
+    },
+    {
+     "text": "Submitted",
+     "value": "2"
+    },
+    {
+     "text": "Submitted to Managed Care",
+     "value": "9"
+    },
+    {
+     "text": "Waiting for Attachments",
+     "value": "8"
+    },
+    {
+     "text": "Pending Adjudication",
+     "value": "11"
+    }
+   ],
+   "value": "4",
+   "text": "Partial",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k7": {
+   "role": "dropdownlist",
+   "id": "EnrollmentCriteria_EnrollmentTypeList",
+   "name": "EnrollmentCriteria.EnrollmentTypeList",
+   "label": "EnrollmentCriteria_EnrollmentTypeList",
+   "required": true,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Enrollment Type has a maximum length of 15 characters."
+   },
+   "enabled": true,
+   "help": "Enrollment Type is a required field.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"EnrollmentCriteria_EnrollmentTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"5fab2f2f-c528-43b0-b4d0-c9095d8f87b0\" aria-labelledby=\"EnrollmentCriteria_EnrollmentTypeLabel EnrollmentCriteria_EnrollmentTypeHelpDesc\" data-kit=\"k7\" style=\"\"><span id=\"5fab2f2f-c528-43b0-b4d0-c9095d8f87b0\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"EnrollmentCriteria_EnrollmentTypeListLabel\" for=\"EnrollmentCriteria_EnrollmentTypeList\" class=\"display-none\">EnrollmentCriteria_EnrollmentTypeList</label><input class=\"editor-control\" data-val=\"true\" data-val-length-max=\"Enrollment Type has a maximum length of 15 characters.\" id=\"EnrollmentCriteria_EnrollmentTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.EnrollTypes\" listviewdisplayformat=\"Name\" maxlength=\"15\" name=\"EnrollmentCriteria.EnrollmentTypeList\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.EnrollmentCriteriaModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-EnrollmentType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" skip-data-val-required=\"Enrollment Type is a required field.\" aria-labelledby=\"EnrollmentCriteria_EnrollmentTypeListLabel\" aria-hidden=\"false\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Individual",
+     "value": "I"
+    },
+    {
+     "text": "Facility",
+     "value": "F"
+    },
+    {
+     "text": "Group",
+     "value": "G"
+    },
+    {
+     "text": "Individual Within Group",
+     "value": "IG"
+    },
+    {
+     "text": "Atypical Providers",
+     "value": "AT"
+    },
+    {
+     "text": "Ordering, Prescribing, Referring",
+     "value": "O"
+    },
+    {
+     "text": "Test2025",
+     "value": "TT"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k8": {
+   "role": "dropdownlist",
+   "id": "EnrollmentCriteria_ProviderTypeList",
+   "name": "EnrollmentCriteria_ProviderTypeList",
+   "label": "EnrollmentCriteria_ProviderTypeList",
+   "required": true,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Provider Type has a maximum length of 25 characters."
+   },
+   "enabled": true,
+   "help": "Provider Type is a required field.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"EnrollmentCriteria_ProviderTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"28ca7721-f79a-495b-9f00-239d08473805\" aria-labelledby=\"EnrollmentCriteria_ProviderTypeLabel EnrollmentCriteria_ProviderTypeHelpDesc\" data-kit=\"k8\" style=\"\"><span id=\"28ca7721-f79a-495b-9f00-239d08473805\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"EnrollmentCriteria_ProviderTypeListLabel\" for=\"EnrollmentCriteria_ProviderTypeList\" class=\"display-none\">EnrollmentCriteria_ProviderTypeList</label><input class=\"editor-control\" data-val=\"true\" data-val-length-max=\"Provider Type has a maximum length of 25 characters.\" id=\"EnrollmentCriteria_ProviderTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"\" listviewdisplayformat=\"Name\" maxlength=\"25\" name=\"EnrollmentCriteria_ProviderTypeList\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.EnrollmentCriteriaModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-ProviderType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" skip-data-val-required=\"Provider Type is a required field.\" aria-labelledby=\"EnrollmentCriteria_ProviderTypeListLabel\" aria-hidden=\"false\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "contains",
+   "height": 200
+  },
+  "k9": {
+   "role": "datepicker",
+   "id": "RequestedEffectiveDate",
+   "name": "RequestedEffectiveDate",
+   "label": "Effective Date",
+   "required": true,
+   "validation": {
+    "date": "Effective Date must represent a valid date in the format 'MM/DD/YYYY'."
+   },
+   "validationParams": {
+    "length-max": "Effective Date has a maximum length of 10 characters.",
+    "minmax-date": "Effective Date must be within 01/01/1900 and 12/31/9999."
+   },
+   "enabled": true,
+   "help": "Effective Date is a required field.",
+   "animation": {},
+   "html": "<span class=\"k-datepicker k-input editor-control k-input-inner\" data-kit=\"k9\" style=\"\"><input class=\"editor-control k-input-inner\" data-val=\"true\" data-val-date=\"Effective Date must represent a valid date in the format 'MM/DD/YYYY'.\" data-val-length-max=\"Effective Date has a maximum length of 10 characters.\" data-val-minmax-date=\"Effective Date must be within 01/01/1900 and 12/31/9999.\" id=\"RequestedEffectiveDate\" ignoredirtydata=\"False\" name=\"RequestedEffectiveDate\" onblur=\"kendoMaskedDatePickerValidate(id);\" onkeydown=\"ClearKendoMaskedDateError(event,id);\" type=\"text\" value=\"11/16/2026\" data-role=\"datepicker\" inputmode=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"grid\" aria-controls=\"RequestedEffectiveDate_dateview\" autocomplete=\"off\" aria-disabled=\"false\" aria-readonly=\"false\" skip-data-val-required=\"Effective Date is a required field.\" style=\"\" aria-labelledby=\"RequestedEffectiveDateLabel RequestedEffectiveDateHelpDesc\" aria-hidden=\"false\"><button aria-label=\"select\" tabindex=\"0\" class=\"k-input-button k-button k-icon-button\" type=\"button\" role=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-calendar k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 416H288V288h128zm64-352v384c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h64V0h64v32h128V0h64v32h64c17.6 0 32 14.4 32 32m-32 128H64v255.9l.1.1 383.9-.1zm0-127.9q-.15-.15 0 0l-64-.1v32h-64V64H192v32h-64V64H64.1l-.1.1V160h384z\"></path></svg></span></button></span>",
+   "kind": "date",
+   "value": "2026-11-15T18:30:00.000Z",
+   "shows": "11/16/2026",
+   "offsetDays": -1,
+   "minutes": 0,
+   "format": "MM/dd/yyyy",
+   "timeFormat": null,
+   "interval": 30,
+   "min": "1899-12-31T18:38:50.000Z",
+   "max": "9999-12-30T18:30:00.000Z",
+   "minOffsetDays": -46341,
+   "maxOffsetDays": 2912122,
+   "placeholder": ""
+  },
+  "k10": {
+   "role": "datepicker",
+   "id": "ReceiptDate",
+   "name": "ReceiptDate",
+   "label": "Receipt Date",
+   "required": true,
+   "validation": {
+    "date": "Receipt Date must represent a valid date in the format 'MM/DD/YYYY'."
+   },
+   "validationParams": {
+    "minmax-date": "Receipt Date must be within 01/01/1900 and 12/31/9999."
+   },
+   "enabled": true,
+   "help": "Receipt Date is a required field.",
+   "animation": {},
+   "html": "<span class=\"k-datepicker k-input editor-control k-input-inner\" data-kit=\"k10\" style=\"\"><input class=\"editor-control k-input-inner\" data-val=\"true\" data-val-date=\"Receipt Date must represent a valid date in the format 'MM/DD/YYYY'.\" data-val-minmax-date=\"Receipt Date must be within 01/01/1900 and 12/31/9999.\" height=\"0\" id=\"ReceiptDate\" ignoredirtydata=\"False\" name=\"ReceiptDate\" onblur=\"kendoMaskedDatePickerValidate(id);\" onkeydown=\"ClearKendoMaskedDateError(event,id);\" type=\"text\" value=\"11/16/2026\" data-role=\"datepicker\" inputmode=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"grid\" aria-controls=\"ReceiptDate_dateview\" autocomplete=\"off\" aria-disabled=\"false\" aria-readonly=\"false\" skip-data-val-required=\"Receipt Date is a required field.\" style=\"\" aria-labelledby=\"ReceiptDateLabel ReceiptDateHelpDesc\" aria-hidden=\"false\"><button aria-label=\"select\" tabindex=\"0\" class=\"k-input-button k-button k-icon-button\" type=\"button\" role=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-calendar k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 416H288V288h128zm64-352v384c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h64V0h64v32h128V0h64v32h64c17.6 0 32 14.4 32 32m-32 128H64v255.9l.1.1 383.9-.1zm0-127.9q-.15-.15 0 0l-64-.1v32h-64V64H192v32h-64V64H64.1l-.1.1V160h384z\"></path></svg></span></button></span>",
+   "kind": "date",
+   "value": "2026-11-15T18:30:00.000Z",
+   "shows": "11/16/2026",
+   "offsetDays": -1,
+   "minutes": 0,
+   "format": "MM/dd/yyyy",
+   "timeFormat": null,
+   "interval": 30,
+   "min": "1899-12-31T18:38:50.000Z",
+   "max": "9999-12-30T18:30:00.000Z",
+   "minOffsetDays": -46341,
+   "maxOffsetDays": 2912122,
+   "placeholder": ""
+  },
+  "k11": {
+   "role": "dropdownlist",
+   "id": "Provider_IndividualProvider_GenderList",
+   "name": "Provider.IndividualProvider.GenderList",
+   "label": "Provider_IndividualProvider_GenderList",
+   "required": false,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Gender has a maximum length of 1 characters."
+   },
+   "enabled": true,
+   "help": "Enter the provider's gender. This information is included on provider directory searches conducted on the web portal.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"Provider_IndividualProvider_GenderList_listbox\" aria-busy=\"false\" aria-describedby=\"098ce118-ba50-4b13-bb26-a99e43d0fae8\" aria-labelledby=\"Provider_IndividualProvider_GenderLabel Provider_IndividualProvider_GenderHelpDesc\" data-kit=\"k11\" style=\"\"><span id=\"098ce118-ba50-4b13-bb26-a99e43d0fae8\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"Provider_IndividualProvider_GenderListLabel\" for=\"Provider_IndividualProvider_GenderList\" class=\"display-none\">Provider_IndividualProvider_GenderList</label><input class=\"editor-control\" data-val-length-max=\"Gender has a maximum length of 1 characters.\" id=\"Provider_IndividualProvider_GenderList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.Genders\" listviewdisplayformat=\"Name\" maxlength=\"1\" name=\"Provider.IndividualProvider.GenderList\" not-data-val-required=\"Gender is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.IndividualProviderModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-Gender\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"Provider_IndividualProvider_GenderListLabel\" aria-hidden=\"false\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Unknown",
+     "value": "U"
+    },
+    {
+     "text": "Female",
+     "value": "F"
+    },
+    {
+     "text": "Male",
+     "value": "M"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k12": {
+   "role": "dropdownlist",
+   "id": "Provider_IndividualProvider_EthnicityList",
+   "name": "Provider.IndividualProvider.EthnicityList",
+   "label": "Provider_IndividualProvider_EthnicityList",
+   "required": false,
+   "validation": {},
+   "validationParams": {
+    "length-max": "What is your ethnicity? has a maximum length of 1 characters."
+   },
+   "enabled": true,
+   "help": "Enter the Provider's Ethnicity",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"Provider_IndividualProvider_EthnicityList_listbox\" aria-busy=\"false\" aria-describedby=\"6656c183-31df-4533-94d6-e221225ab78b\" aria-labelledby=\"Provider_IndividualProvider_EthnicityLabel Provider_IndividualProvider_EthnicityHelpDesc\" data-kit=\"k12\" style=\"\"><span id=\"6656c183-31df-4533-94d6-e221225ab78b\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"Provider_IndividualProvider_EthnicityListLabel\" for=\"Provider_IndividualProvider_EthnicityList\" class=\"display-none\">Provider_IndividualProvider_EthnicityList</label><input class=\"editor-control\" data-val-length-max=\"What is your ethnicity? has a maximum length of 1 characters.\" id=\"Provider_IndividualProvider_EthnicityList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.Ethnicity\" listviewdisplayformat=\"Name\" maxlength=\"1\" name=\"Provider.IndividualProvider.EthnicityList\" not-data-val-required=\"What is your ethnicity? is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.IndividualProviderModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-Ethnicity\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"Provider_IndividualProvider_EthnicityListLabel\" aria-hidden=\"false\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Hispanic/Latino",
+     "value": "01"
+    },
+    {
+     "text": "Not Hispanic/Latino",
+     "value": "02"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k13": {
+   "role": "datepicker",
+   "id": "Provider_IndividualProvider_BirthDate",
+   "name": "Provider.IndividualProvider.BirthDate",
+   "label": "Birth Date",
+   "required": true,
+   "validation": {
+    "date": "Birth Date must represent a valid date in the format 'MM/DD/YYYY'."
+   },
+   "validationParams": {
+    "length-max": "Birth Date has a maximum length of 10 characters.",
+    "minmax-date": "Birth Date must be within 01/01/1900 and 12/31/9999."
+   },
+   "enabled": true,
+   "help": "Birth Date is a required field.",
+   "animation": {},
+   "html": "<span class=\"k-datepicker k-input editor-control k-input-inner\" data-kit=\"k13\" style=\"\"><input class=\"editor-control k-input-inner\" data-val=\"true\" data-val-date=\"Birth Date must represent a valid date in the format 'MM/DD/YYYY'.\" data-val-length-max=\"Birth Date has a maximum length of 10 characters.\" data-val-minmax-date=\"Birth Date must be within 01/01/1900 and 12/31/9999.\" id=\"Provider_IndividualProvider_BirthDate\" ignoredirtydata=\"False\" name=\"Provider.IndividualProvider.BirthDate\" onblur=\"kendoMaskedDatePickerValidate(id);\" onkeydown=\"ClearKendoMaskedDateError(event,id);\" type=\"text\" data-role=\"datepicker\" inputmode=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"grid\" aria-controls=\"Provider_IndividualProvider_BirthDate_dateview\" autocomplete=\"off\" aria-disabled=\"false\" aria-readonly=\"false\" skip-data-val-required=\"Birth Date is a required field.\" style=\"\" aria-labelledby=\"Provider_IndividualProvider_BirthDateLabel Provider_IndividualProvider_BirthDateHelpDesc\" aria-hidden=\"false\"><button aria-label=\"select\" tabindex=\"0\" class=\"k-input-button k-button k-icon-button\" type=\"button\" role=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-calendar k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 416H288V288h128zm64-352v384c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h64V0h64v32h128V0h64v32h64c17.6 0 32 14.4 32 32m-32 128H64v255.9l.1.1 383.9-.1zm0-127.9q-.15-.15 0 0l-64-.1v32h-64V64H192v32h-64V64H64.1l-.1.1V160h384z\"></path></svg></span></button></span>",
+   "kind": "date",
+   "value": null,
+   "shows": "",
+   "offsetDays": null,
+   "minutes": null,
+   "format": "MM/dd/yyyy",
+   "timeFormat": null,
+   "interval": 30,
+   "min": "1899-12-31T18:38:50.000Z",
+   "max": "9999-12-30T18:30:00.000Z",
+   "minOffsetDays": -46341,
+   "maxOffsetDays": 2912122,
+   "placeholder": ""
+  },
+  "k14": {
+   "role": "dropdownlist",
+   "id": "Provider_CredentialTypeList",
+   "name": "Provider.CredentialTypeList",
+   "label": "Provider_CredentialTypeList",
+   "required": false,
+   "validation": {
+    "regex": "Credential Type contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "enabled": true,
+   "help": "Credential Type used for Credential Provider Type",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"Provider_CredentialTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"324aede8-a90e-477e-b634-2aade9912de6\" aria-labelledby=\"Provider_CredentialTypeLabel Provider_CredentialTypeHelpDesc\" data-kit=\"k14\" style=\"\"><span id=\"324aede8-a90e-477e-b634-2aade9912de6\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"Provider_CredentialTypeListLabel\" for=\"Provider_CredentialTypeList\" class=\"display-none\">Provider_CredentialTypeList</label><input class=\"editor-control\" data-val-regex=\"Credential Type contains invalid characters. The characters ; * ^ : ~ &lt; &gt; % are not allowed.\" data-val-regex-pattern=\"^([^;*^:~&lt;&gt;%])*$\" id=\"Provider_CredentialTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.CredentialProviderTypes\" listviewdisplayformat=\"Name\" name=\"Provider.CredentialTypeList\" not-data-val-required=\"Credential Type is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.ProviderModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-CredentialType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" aria-labelledby=\"Provider_CredentialTypeListLabel\" aria-hidden=\"false\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Certified Registered Nurse Anesthetist",
+     "value": "CRNA"
+    },
+    {
+     "text": "Doctor of Chiropractic",
+     "value": "DC"
+    },
+    {
+     "text": "Doctor of Dental Surgery",
+     "value": "DDS"
+    },
+    {
+     "text": "Doctor of Dental Medicine",
+     "value": "DMD"
+    },
+    {
+     "text": "Osteopathic Doctor",
+     "value": "DO"
+    },
+    {
+     "text": "Doctor of Podiatric Medicine",
+     "value": "DPM"
+    },
+    {
+     "text": "Licensed Practical Nurse",
+     "value": "LPN"
+    },
+    {
+     "text": "Medical Doctor",
+     "value": "MD"
+    },
+    {
+     "text": "Optometrist",
+     "value": "OD"
+    },
+    {
+     "text": "Occupational Therapist",
+     "value": "OT"
+    },
+    {
+     "text": "Physician Assistant",
+     "value": "PA"
+    },
+    {
+     "text": "Physical Therapist",
+     "value": "PT"
+    },
+    {
+     "text": "Registered Nurse",
+     "value": "RN"
+    },
+    {
+     "text": "Respiratory Therapist",
+     "value": "RT"
+    },
+    {
+     "text": "Speech/Language Pathologist",
+     "value": "SLP"
+    },
+    {
+     "text": "Clinical Nurse Specialist",
+     "value": "CNS"
+    },
+    {
+     "text": "Marriage and Family Therapist",
+     "value": "MFT"
+    },
+    {
+     "text": "Doctor of Audiology",
+     "value": "Au.D."
+    },
+    {
+     "text": "Nurse Practitioner",
+     "value": "NP"
+    },
+    {
+     "text": "Clinical Social Worker",
+     "value": "CSW"
+    },
+    {
+     "text": "Christian Science Practitioner",
+     "value": "CSP"
+    },
+    {
+     "text": "Biofeedback Technician",
+     "value": "BT"
+    },
+    {
+     "text": "Genetic Counselor",
+     "value": "GC"
+    },
+    {
+     "text": "Clinical Psychologist",
+     "value": "CP"
+    },
+    {
+     "text": "Registered Nurse First Assistant",
+     "value": "RNFA"
+    },
+    {
+     "text": "Behavior Analyst",
+     "value": "BA"
+    },
+    {
+     "text": "Applied Behavior Analyst",
+     "value": "ABA"
+    },
+    {
+     "text": "Athletic Trainer",
+     "value": "AT"
+    },
+    {
+     "text": "Advanced Practice Nurse",
+     "value": "APN"
+    },
+    {
+     "text": "Acupuncturist",
+     "value": "ACU"
+    },
+    {
+     "text": "Alcohol/Drug Counselor",
+     "value": "ADC"
+    },
+    {
+     "text": "Anesthesia Assistant",
+     "value": "AA"
+    },
+    {
+     "text": "Hospitalist",
+     "value": "HOS"
+    },
+    {
+     "text": "Nurse Midwife",
+     "value": "NMW"
+    },
+    {
+     "text": "Neuropsychologist",
+     "value": "NEU"
+    },
+    {
+     "text": "Nutritionist",
+     "value": "LN"
+    },
+    {
+     "text": "Optician",
+     "value": "OPT"
+    },
+    {
+     "text": "Pharmacist",
+     "value": "PHA"
+    },
+    {
+     "text": "Audiologist",
+     "value": "ADU"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k15": {
+   "role": "datepicker",
+   "id": "Provider_TaxIdentification_EffectiveFromDate",
+   "name": "Provider.TaxIdentification.EffectiveFromDate",
+   "label": "IRS Effective Date",
+   "required": true,
+   "validation": {
+    "date": "IRS Effective Date must represent a valid date in the format 'MM/DD/YYYY'."
+   },
+   "validationParams": {
+    "length-max": "IRS Effective Date has a maximum length of 10 characters.",
+    "minmax-date": "IRS Effective Date must be within 01/01/1900 and 12/31/9999."
+   },
+   "enabled": true,
+   "help": "IRS Effective Date is a required field.",
+   "animation": {},
+   "html": "<span class=\"k-datepicker k-input editor-control k-input-inner\" data-kit=\"k15\" style=\"\"><input class=\"editor-control k-input-inner\" data-val=\"true\" data-val-date=\"IRS Effective Date must represent a valid date in the format 'MM/DD/YYYY'.\" data-val-length-max=\"IRS Effective Date has a maximum length of 10 characters.\" data-val-minmax-date=\"IRS Effective Date must be within 01/01/1900 and 12/31/9999.\" id=\"Provider_TaxIdentification_EffectiveFromDate\" ignoredirtydata=\"False\" name=\"Provider.TaxIdentification.EffectiveFromDate\" onblur=\"kendoMaskedDatePickerValidate(id);\" onkeydown=\"ClearKendoMaskedDateError(event,id);\" type=\"text\" data-role=\"datepicker\" inputmode=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"grid\" aria-controls=\"Provider_TaxIdentification_EffectiveFromDate_dateview\" autocomplete=\"off\" aria-disabled=\"false\" aria-readonly=\"false\" skip-data-val-required=\"IRS Effective Date is a required field.\" style=\"\" aria-labelledby=\"Provider_TaxIdentification_EffectiveFromDateLabel Provider_TaxIdentification_EffectiveFromDateHelpDesc\" aria-hidden=\"false\"><button aria-label=\"select\" tabindex=\"0\" class=\"k-input-button k-button k-icon-button\" type=\"button\" role=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-calendar k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 416H288V288h128zm64-352v384c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h64V0h64v32h128V0h64v32h64c17.6 0 32 14.4 32 32m-32 128H64v255.9l.1.1 383.9-.1zm0-127.9q-.15-.15 0 0l-64-.1v32h-64V64H192v32h-64V64H64.1l-.1.1V160h384z\"></path></svg></span></button></span>",
+   "kind": "date",
+   "value": null,
+   "shows": "",
+   "offsetDays": null,
+   "minutes": null,
+   "format": "MM/dd/yyyy",
+   "timeFormat": null,
+   "interval": 30,
+   "min": "1899-12-31T18:38:50.000Z",
+   "max": "9999-12-30T18:30:00.000Z",
+   "minOffsetDays": -46341,
+   "maxOffsetDays": 2912122,
+   "placeholder": ""
+  },
+  "k16": {
+   "role": "dropdownlist",
+   "id": "Provider_PreferredCommunicationDetails_LanguageListList",
+   "name": "Provider.PreferredCommunicationDetails.LanguageListList",
+   "label": "Provider_PreferredCommunicationDetails_LanguageListList",
+   "required": true,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Preferred Communication Language is a required field.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"Provider_PreferredCommunicationDetails_LanguageListList_listbox\" aria-busy=\"false\" aria-describedby=\"b477742c-9db5-4d77-be8e-bc9b4f020270\" aria-labelledby=\"Provider_PreferredCommunicationDetails_LanguageListLabel Provider_PreferredCommunicationDetails_LanguageListHelpDesc\" data-kit=\"k16\" style=\"\"><span id=\"b477742c-9db5-4d77-be8e-bc9b4f020270\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"Provider_PreferredCommunicationDetails_LanguageListListLabel\" for=\"Provider_PreferredCommunicationDetails_LanguageListList\" class=\"display-none\">Provider_PreferredCommunicationDetails_LanguageListList</label><input class=\"editor-control\" data-val=\"true\" height=\"0\" id=\"Provider_PreferredCommunicationDetails_LanguageListList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.PreferredCommunicationLanguage\" listviewdisplayformat=\"Name\" name=\"Provider.PreferredCommunicationDetails.LanguageListList\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.PreferredCommunicationDetailsModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-LanguageList\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" skip-data-val-required=\"Preferred Communication Language is a required field.\" aria-labelledby=\"Provider_PreferredCommunicationDetails_LanguageListListLabel\" aria-hidden=\"false\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "English",
+     "value": "en-us"
+    },
+    {
+     "text": "Spanish",
+     "value": "es-mx"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k17": {
+   "role": "dropdownlist",
+   "id": "Provider_ProgramTypeList",
+   "name": "Provider.ProgramTypeList",
+   "label": "Provider_ProgramTypeList",
+   "required": true,
+   "validation": {},
+   "validationParams": {
+    "length-max": "I will accept patients in the following programs: has a maximum length of 20 characters."
+   },
+   "enabled": true,
+   "help": "I will accept patients in the following programs: is a required field.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"Provider_ProgramTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"103602ad-26bf-408f-8f2d-99327ea26f71\" aria-labelledby=\"Provider_ProgramTypeLabel Provider_ProgramTypeHelpDesc\" data-kit=\"k17\" style=\"\"><span id=\"103602ad-26bf-408f-8f2d-99327ea26f71\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"Provider_ProgramTypeListLabel\" for=\"Provider_ProgramTypeList\" class=\"display-none\">Provider_ProgramTypeList</label><input class=\"editor-control\" data-val=\"true\" data-val-length-max=\"I will accept patients in the following programs: has a maximum length of 20 characters.\" height=\"0\" id=\"Provider_ProgramTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"ProviderEnrollment.DataList.ProgramType\" listviewdisplayformat=\"Name\" maxlength=\"20\" name=\"Provider.ProgramTypeList\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.ProviderModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-ProgramType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" skip-data-val-required=\"I will accept patients in the following programs: is a required field.\" aria-labelledby=\"Provider_ProgramTypeListLabel\" aria-hidden=\"false\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k18": {
+   "role": "dropdownlist",
+   "id": "ApplicantContact_Address_StatesList",
+   "name": "ApplicantContact.Address.StatesList",
+   "label": "ApplicantContact_Address_StatesList",
+   "required": true,
+   "validation": {},
+   "validationParams": {
+    "length-max": "State has a maximum length of 25 characters."
+   },
+   "enabled": true,
+   "help": "State is a required field.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"ApplicantContact_Address_StatesList_listbox\" aria-busy=\"false\" aria-describedby=\"98f6511b-0762-40af-b4b5-f51a576c05a9\" aria-labelledby=\"ApplicantContact_Address_StatesLabel ApplicantContact_Address_StatesHelpDesc\" data-kit=\"k18\" style=\"\"><span id=\"98f6511b-0762-40af-b4b5-f51a576c05a9\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"ApplicantContact_Address_StatesListLabel\" for=\"ApplicantContact_Address_StatesList\" class=\"display-none\">ApplicantContact_Address_StatesList</label><input class=\"editor-control\" data-val=\"true\" data-val-length-max=\"State has a maximum length of 25 characters.\" id=\"ApplicantContact_Address_StatesList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.States\" listviewdisplayformat=\"Name\" maxlength=\"25\" name=\"ApplicantContact.Address.StatesList\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.AddressModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-States\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" skip-data-val-required=\"State is a required field.\" aria-labelledby=\"ApplicantContact_Address_StatesListLabel\" aria-hidden=\"false\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Alabama",
+     "value": "AL"
+    },
+    {
+     "text": "Alaska",
+     "value": "AK"
+    },
+    {
+     "text": "American Samoa",
+     "value": "AS"
+    },
+    {
+     "text": "Arizona",
+     "value": "AZ"
+    },
+    {
+     "text": "Arkansas",
+     "value": "AR"
+    },
+    {
+     "text": "California",
+     "value": "CA"
+    },
+    {
+     "text": "Colorado",
+     "value": "CO"
+    },
+    {
+     "text": "Connecticut",
+     "value": "CT"
+    },
+    {
+     "text": "Delaware",
+     "value": "DE"
+    },
+    {
+     "text": "District of Columbia",
+     "value": "DC"
+    },
+    {
+     "text": "Florida",
+     "value": "FL"
+    },
+    {
+     "text": "Georgia",
+     "value": "GA"
+    },
+    {
+     "text": "Guam",
+     "value": "GU"
+    },
+    {
+     "text": "Hawaii",
+     "value": "HI"
+    },
+    {
+     "text": "Idaho",
+     "value": "ID"
+    },
+    {
+     "text": "Illinois",
+     "value": "IL"
+    },
+    {
+     "text": "Indiana",
+     "value": "IN"
+    },
+    {
+     "text": "Iowa",
+     "value": "IA"
+    },
+    {
+     "text": "Kansas",
+     "value": "KS"
+    },
+    {
+     "text": "Kentucky",
+     "value": "KY"
+    },
+    {
+     "text": "Louisiana",
+     "value": "LA"
+    },
+    {
+     "text": "Maine",
+     "value": "ME"
+    },
+    {
+     "text": "Maryland",
+     "value": "MD"
+    },
+    {
+     "text": "Massachusetts",
+     "value": "MA"
+    },
+    {
+     "text": "Michigan",
+     "value": "MI"
+    },
+    {
+     "text": "Minnesota",
+     "value": "MN"
+    },
+    {
+     "text": "Mississippi",
+     "value": "MS"
+    },
+    {
+     "text": "Missouri",
+     "value": "MO"
+    },
+    {
+     "text": "Montana",
+     "value": "MT"
+    },
+    {
+     "text": "Nebraska",
+     "value": "NE"
+    },
+    {
+     "text": "Nevada",
+     "value": "NV"
+    },
+    {
+     "text": "New Hampshire",
+     "value": "NH"
+    },
+    {
+     "text": "New Jersey",
+     "value": "NJ"
+    },
+    {
+     "text": "New Mexico",
+     "value": "NM"
+    },
+    {
+     "text": "New York",
+     "value": "NY"
+    },
+    {
+     "text": "North Carolina",
+     "value": "NC"
+    },
+    {
+     "text": "North Dakota",
+     "value": "ND"
+    },
+    {
+     "text": "Northern Mariana Islands",
+     "value": "MP"
+    },
+    {
+     "text": "Ohio",
+     "value": "OH"
+    },
+    {
+     "text": "Oklahoma",
+     "value": "OK"
+    },
+    {
+     "text": "Oregon",
+     "value": "OR"
+    },
+    {
+     "text": "Pennsylvania",
+     "value": "PA"
+    },
+    {
+     "text": "Puerto Rico",
+     "value": "PR"
+    },
+    {
+     "text": "Rhode Island",
+     "value": "RI"
+    },
+    {
+     "text": "South Carolina",
+     "value": "SC"
+    },
+    {
+     "text": "South Dakota",
+     "value": "SD"
+    },
+    {
+     "text": "Tennessee",
+     "value": "TN"
+    },
+    {
+     "text": "Texas",
+     "value": "TX"
+    },
+    {
+     "text": "Utah",
+     "value": "UT"
+    },
+    {
+     "text": "Vermont",
+     "value": "VT"
+    },
+    {
+     "text": "Virginia",
+     "value": "VA"
+    },
+    {
+     "text": "Virgin Islands",
+     "value": "VI"
+    },
+    {
+     "text": "Washington",
+     "value": "WA"
+    },
+    {
+     "text": "West Virginia",
+     "value": "WV"
+    },
+    {
+     "text": "Wisconsin",
+     "value": "WI"
+    },
+    {
+     "text": "Wyoming",
+     "value": "WY"
+    },
+    {
+     "text": "US Minor Outlying Islands",
+     "value": "UM"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k19": {
+   "role": "dropdownlist",
+   "id": "ApplicantContact_Address_CountryList",
+   "name": "ApplicantContact_Address_CountryList",
+   "label": "ApplicantContact_Address_CountryList",
+   "required": true,
+   "validation": {
+    "regex": "Country contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Country has a maximum length of 70 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "enabled": true,
+   "help": "Country is a required field.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"ApplicantContact_Address_CountryList_listbox\" aria-busy=\"false\" aria-describedby=\"32da83d7-6bfd-4838-aefa-1f414c1d6cb9\" aria-labelledby=\"ApplicantContact_Address_CountryLabel ApplicantContact_Address_CountryHelpDesc\" style=\"\" data-kit=\"k19\"><span id=\"32da83d7-6bfd-4838-aefa-1f414c1d6cb9\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">United States</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"ApplicantContact_Address_CountryListLabel\" for=\"ApplicantContact_Address_CountryList\" class=\"display-none\">ApplicantContact_Address_CountryList</label><input class=\"editor-control\" data-val=\"true\" data-val-length-max=\"Country has a maximum length of 70 characters.\" data-val-regex=\"Country contains invalid characters. The characters ; * ^ : ~ &lt; &gt; % are not allowed.\" data-val-regex-pattern=\"^([^;*^:~&lt;&gt;%])*$\" id=\"ApplicantContact_Address_CountryList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.CountryNames\" listviewdisplayformat=\"Name\" maxlength=\"70\" name=\"ApplicantContact_Address_CountryList\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.AddressModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-Country\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" skip-data-val-required=\"Country is a required field.\" aria-labelledby=\"ApplicantContact_Address_CountryListLabel\" aria-hidden=\"false\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "United States",
+     "value": "US"
+    },
+    {
+     "text": "CANADA",
+     "value": "CA"
+    },
+    {
+     "text": "MEXICO",
+     "value": "MX"
+    },
+    {
+     "text": "COSTA RICA",
+     "value": "CR"
+    },
+    {
+     "text": "COLOMBIA",
+     "value": "CO"
+    }
+   ],
+   "value": "US",
+   "text": "United States",
+   "cascadeFrom": null,
+   "filter": "contains",
+   "height": 200
+  },
+  "k20": {
+   "role": "dropdownlist",
+   "id": "ApplicantContact_PhoneNumberTypeList",
+   "name": "ApplicantContact.PhoneNumberTypeList",
+   "label": "ApplicantContact_PhoneNumberTypeList",
+   "required": true,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Phone Type is a required field.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"ApplicantContact_PhoneNumberTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"d01ac0cb-6851-4ca8-bba5-7ed11b2aaf9d\" aria-labelledby=\"ApplicantContact_PhoneNumberTypeLabel ApplicantContact_PhoneNumberTypeHelpDesc\" data-kit=\"k20\" style=\"\"><span id=\"d01ac0cb-6851-4ca8-bba5-7ed11b2aaf9d\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"ApplicantContact_PhoneNumberTypeListLabel\" for=\"ApplicantContact_PhoneNumberTypeList\" class=\"display-none\">ApplicantContact_PhoneNumberTypeList</label><input class=\"editor-control\" data-val=\"true\" height=\"0\" id=\"ApplicantContact_PhoneNumberTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.PhoneTypes\" listviewdisplayformat=\"Name\" name=\"ApplicantContact.PhoneNumberTypeList\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.ApplicantContactModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-PhoneNumberType\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" skip-data-val-required=\"Phone Type is a required field.\" aria-labelledby=\"ApplicantContact_PhoneNumberTypeListLabel\" aria-hidden=\"false\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Fax",
+     "value": "F"
+    },
+    {
+     "text": "Home",
+     "value": "H"
+    },
+    {
+     "text": "Mobile",
+     "value": "M"
+    },
+    {
+     "text": "Other",
+     "value": "O"
+    },
+    {
+     "text": "Pager",
+     "value": "P"
+    },
+    {
+     "text": "TTY",
+     "value": "TT"
+    },
+    {
+     "text": "Work",
+     "value": "W"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k21": {
+   "role": "dropdownlist",
+   "id": "ApplicantContact_PreferredCommunicationMethodList",
+   "name": "ApplicantContact_PreferredCommunicationMethodList",
+   "label": "ApplicantContact_PreferredCommunicationMethodList",
+   "required": true,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Preferred Communication has a maximum length of 25 characters."
+   },
+   "enabled": true,
+   "help": "Preferred Communication is a required field.",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"false\" aria-controls=\"ApplicantContact_PreferredCommunicationMethodList_listbox\" aria-labelledby=\"ApplicantContact_PreferredCommunicationMethodLabel ApplicantContact_PreferredCommunicationMethodHelpDesc\" aria-busy=\"false\" style=\"\" data-kit=\"k21\"><span id=\"bb3f0ee0-5c2c-4e20-8f7a-65a600b53c4c\" unselectable=\"on\" class=\"k-input-inner\"><span class=\"k-input-value-text\">select a value...</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"ApplicantContact_PreferredCommunicationMethodListLabel\" for=\"ApplicantContact_PreferredCommunicationMethodList\" class=\"display-none\">ApplicantContact_PreferredCommunicationMethodList</label><input class=\"editor-control\" data-val=\"true\" data-val-length-max=\"Preferred Communication has a maximum length of 25 characters.\" id=\"ApplicantContact_PreferredCommunicationMethodList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"PlanManagement.DataList.PreferredCommunications\" listviewdisplayformat=\"Name\" maxlength=\"25\" name=\"ApplicantContact_PreferredCommunicationMethodList\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.ProviderEnrollment.UX.Data.ApplicantContactModel-/ProviderEnrollment/CreateSecureEnrollment-Desktop-PreferredCommunicationMethod\" type=\"text\" data-role=\"dropdownlist\" style=\"display: none;\" skip-data-val-required=\"Preferred Communication is a required field.\" aria-labelledby=\"ApplicantContact_PreferredCommunicationMethodListLabel\" aria-hidden=\"false\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Email",
+     "value": "E"
+    },
+    {
+     "text": "Mail",
+     "value": "M"
+    }
+   ],
+   "value": "",
+   "text": "select a value...",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  }
+ },
+ "fields": [
+  {
+   "name": "fakeusernameremembered",
+   "id": null,
+   "type": "text",
+   "role": null,
+   "label": "",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "fakepasswordremembered",
+   "id": null,
+   "type": "password",
+   "role": null,
+   "label": "",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ActiveStep",
+   "id": "ActiveStep",
+   "type": "text",
+   "role": "textbox",
+   "label": "ActiveStep",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "3",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "tocBtnCancel",
+   "id": "tocBtnCancel",
+   "type": "button",
+   "role": null,
+   "label": "Cancel",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Cancel",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "tocBtnPrev",
+   "id": "tocBtnPrev",
+   "type": "button",
+   "role": null,
+   "label": "Previous",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Previous",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "tocBtnNext",
+   "id": "tocBtnNext",
+   "type": "button",
+   "role": null,
+   "label": "Save and Continue",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Save and Continue",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ChangeOfOwnership.IsChowRequired.ID",
+   "id": "Provider_ChangeOfOwnership_IsChowRequired_IDYes",
+   "type": "radio",
+   "role": null,
+   "label": "Yes",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ChangeOfOwnership.IsChowRequired.ID",
+   "id": "Provider_ChangeOfOwnership_IsChowRequired_IDNo",
+   "type": "radio",
+   "role": null,
+   "label": "No",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": true,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ChangeOfOwnership.TaxIdTransfer.IsTaxIdTransfer.ID",
+   "id": "Provider_ChangeOfOwnership_TaxIdTransfer_IsTaxIdTransfer_IDYes",
+   "type": "radio",
+   "role": null,
+   "label": "Yes",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ChangeOfOwnership.TaxIdTransfer.IsTaxIdTransfer.ID",
+   "id": "Provider_ChangeOfOwnership_TaxIdTransfer_IsTaxIdTransfer_IDNo",
+   "type": "radio",
+   "role": null,
+   "label": "No",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ChangeOfOwnership.NPITransfer.IsNPITransfer.ID",
+   "id": "Provider_ChangeOfOwnership_NPITransfer_IsNPITransfer_IDYes",
+   "type": "radio",
+   "role": null,
+   "label": "Yes",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ChangeOfOwnership.NPITransfer.IsNPITransfer.ID",
+   "id": "Provider_ChangeOfOwnership_NPITransfer_IsNPITransfer_IDNo",
+   "type": "radio",
+   "role": null,
+   "label": "No",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ChangeOfOwnership.TotalPercentageChange",
+   "id": "Provider_ChangeOfOwnership_TotalPercentageChange",
+   "type": "text",
+   "role": "numerictextbox",
+   "label": "What is the total % change of ownership?",
+   "required": false,
+   "maxLength": 3,
+   "validation": {
+    "number": "What is the total % change of ownership? is restricted to numeric characters only [0-9].",
+    "regex": "What is the total % change of ownership? is restricted to numeric characters only [0-9]."
+   },
+   "validationParams": {
+    "length-max": "What is the total % change of ownership? has a maximum length of 3 characters.",
+    "regex-pattern": "^([0-9])*$"
+   },
+   "value": "",
+   "widget": "k1",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentPreChecklist.EnrollmentTypeList",
+   "id": "EnrollmentPreChecklist_EnrollmentTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "EnrollmentPreChecklist_EnrollmentTypeList",
+   "required": true,
+   "maxLength": 15,
+   "validation": {
+    "required": "Enrollment Type is a required field."
+   },
+   "validationParams": {
+    "length-max": "Enrollment Type has a maximum length of 15 characters."
+   },
+   "value": "",
+   "widget": "k2",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentPreChecklist_ProviderTypeList",
+   "id": "EnrollmentPreChecklist_ProviderTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "EnrollmentPreChecklist_ProviderTypeList",
+   "required": true,
+   "maxLength": 25,
+   "validation": {
+    "required": "Provider Type is a required field."
+   },
+   "validationParams": {
+    "length-max": "Provider Type has a maximum length of 25 characters."
+   },
+   "value": "",
+   "widget": "k3",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentPreChecklist.SpecialtyList",
+   "id": "EnrollmentPreChecklist_SpecialtyList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "EnrollmentPreChecklist_SpecialtyList",
+   "required": true,
+   "maxLength": 15,
+   "validation": {
+    "required": "Specialty is a required field."
+   },
+   "validationParams": {
+    "length-max": "Specialty has a maximum length of 15 characters."
+   },
+   "value": "",
+   "widget": "k4",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentPreChecklist.TaxIdTypes.ID",
+   "id": "EnrollmentPreChecklist_TaxIdTypes_IDEIN",
+   "type": "radio",
+   "role": null,
+   "label": "EIN",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentPreChecklist.TaxIdTypes.ID",
+   "id": "EnrollmentPreChecklist_TaxIdTypes_IDSSN",
+   "type": "radio",
+   "role": null,
+   "label": "SSN",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentPreChecklist.IsMedicareEnrolled.ID",
+   "id": "EnrollmentPreChecklist_IsMedicareEnrolled_IDY",
+   "type": "radio",
+   "role": null,
+   "label": "Yes",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentPreChecklist.IsMedicareEnrolled.ID",
+   "id": "EnrollmentPreChecklist_IsMedicareEnrolled_IDN",
+   "type": "radio",
+   "role": null,
+   "label": "No",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentPreChecklist.ProgramTypeList",
+   "id": "EnrollmentPreChecklist_ProgramTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "EnrollmentPreChecklist_ProgramTypeList",
+   "required": true,
+   "maxLength": 20,
+   "validation": {
+    "required": "I will accept patients in the following programs: is a required field."
+   },
+   "validationParams": {
+    "length-max": "I will accept patients in the following programs: has a maximum length of 20 characters."
+   },
+   "value": "",
+   "widget": "k5",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "prechecklistClearButton",
+   "id": "prechecklistClearButton",
+   "type": "button",
+   "role": null,
+   "label": "Clear",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Clear",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "TrackingNumber",
+   "id": "TrackingNumber",
+   "type": "text",
+   "role": "textbox",
+   "label": "Tracking Number",
+   "required": false,
+   "maxLength": 25,
+   "validation": {
+    "regex": "Tracking Number contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Tracking Number has a maximum length of 25 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "StatusList",
+   "id": "StatusList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "StatusList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "4",
+   "widget": "k6",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentCreateCredentials.EmailAddress",
+   "id": "EnrollmentCreateCredentials_EmailAddress",
+   "type": "text",
+   "role": "textbox",
+   "label": "Email",
+   "required": true,
+   "maxLength": 150,
+   "validation": {
+    "regex": "Email is not a valid email address. Enter email with 'name@domain' format.",
+    "required": "Email is a required field."
+   },
+   "validationParams": {
+    "length-max": "Email has a maximum length of 150 characters.",
+    "regex-pattern": "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentCreateCredentials.EmailAddressConfirmation",
+   "id": "EnrollmentCreateCredentials_EmailAddressConfirmation",
+   "type": "text",
+   "role": "textbox",
+   "label": "Confirm Email",
+   "required": true,
+   "maxLength": 150,
+   "validation": {
+    "regex": "Confirm Email is not a valid email address. Enter email with 'name@domain' format.",
+    "required": "Confirm Email is a required field."
+   },
+   "validationParams": {
+    "equalto-other": "Email addresses do not match.",
+    "length-max": "Confirm Email has a maximum length of 150 characters.",
+    "regex-pattern": "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentCreateCredentials.Password",
+   "id": "EnrollmentCreateCredentials_Password",
+   "type": "password",
+   "role": "textbox",
+   "label": "Password",
+   "required": true,
+   "maxLength": 20,
+   "validation": {
+    "regex": "Password must be 8 to 20 characters in length, contain a minimum of 1 numeric digit, 1 uppercase letter and 1 lowercase letter. The characters ; * ^ : ~ < > % are not allowed.",
+    "required": "Password is a required field."
+   },
+   "validationParams": {
+    "length-max": "Password has a maximum length of 20 characters.",
+    "regex-pattern": "^(?=.{8,20}$)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])([^ ;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentCreateCredentials.PasswordConfirmation",
+   "id": "EnrollmentCreateCredentials_PasswordConfirmation",
+   "type": "password",
+   "role": "textbox",
+   "label": "Confirm Password",
+   "required": true,
+   "maxLength": 20,
+   "validation": {
+    "regex": "Confirm Password must be 8 to 20 characters in length, contain a minimum of 1 numeric digit, 1 uppercase letter and 1 lowercase letter. The characters ; * ^ : ~ < > % are not allowed.",
+    "required": "Confirm Password is a required field."
+   },
+   "validationParams": {
+    "equalto-other": "Passwords do not match.",
+    "length-max": "Confirm Password has a maximum length of 20 characters.",
+    "regex-pattern": "^(?=.{8,20}$)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])([^ ;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentCreateCredentials.ProviderReference",
+   "id": "EnrollmentCreateCredentials_ProviderReference",
+   "type": "text",
+   "role": "textbox",
+   "label": "Provider Reference",
+   "required": false,
+   "maxLength": 100,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Provider Reference has a maximum length of 100 characters."
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ChangeOfOwnership.IsSecurePortalChowRequired.ID",
+   "id": "Provider_ChangeOfOwnership_IsSecurePortalChowRequired_IDYes",
+   "type": "radio",
+   "role": null,
+   "label": "Yes",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ChangeOfOwnership.IsSecurePortalChowRequired.ID",
+   "id": "Provider_ChangeOfOwnership_IsSecurePortalChowRequired_IDNo",
+   "type": "radio",
+   "role": null,
+   "label": "No",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": true,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "resetButton",
+   "id": "resetButton",
+   "type": "button",
+   "role": null,
+   "label": "Reset",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Reset",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt1Button",
+   "id": "alt1Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt1",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt1",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt4Button",
+   "id": "alt4Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt4",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt4",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt5Button",
+   "id": "alt5Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt5",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt5",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt6Button",
+   "id": "alt6Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt6",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt6",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt7Button",
+   "id": "alt7Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt7",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt7",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt8Button",
+   "id": "alt8Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt8",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt8",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "printButton",
+   "id": "printButton",
+   "type": "button",
+   "role": null,
+   "label": "Print",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Print",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "cancelButton",
+   "id": "cancelButton",
+   "type": "button",
+   "role": null,
+   "label": "Cancel",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Cancel",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt2Button",
+   "id": "alt2Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt2",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt2",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "alt3Button",
+   "id": "alt3Button",
+   "type": "button",
+   "role": null,
+   "label": "Alt3",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Alt3",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "nextButton",
+   "id": "nextButton",
+   "type": "button",
+   "role": null,
+   "label": "Register",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Register",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "prevButton",
+   "id": "prevButton",
+   "type": "button",
+   "role": null,
+   "label": "Previous",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Previous",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentCriteria.EnrollmentTypeList",
+   "id": "EnrollmentCriteria_EnrollmentTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "EnrollmentCriteria_EnrollmentTypeList",
+   "required": true,
+   "maxLength": 15,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Enrollment Type has a maximum length of 15 characters."
+   },
+   "value": "",
+   "widget": "k7",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "EnrollmentCriteria_ProviderTypeList",
+   "id": "EnrollmentCriteria_ProviderTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "EnrollmentCriteria_ProviderTypeList",
+   "required": true,
+   "maxLength": 25,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Provider Type has a maximum length of 25 characters."
+   },
+   "value": "",
+   "widget": "k8",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "TextOfEnrollmentType",
+   "id": "TextOfEnrollmentType",
+   "type": "text",
+   "role": "textbox",
+   "label": "Enrollment Type",
+   "required": false,
+   "maxLength": 15,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Enrollment Type has a maximum length of 15 characters."
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "TextOfProviderType",
+   "id": "TextOfProviderType",
+   "type": "text",
+   "role": "textbox",
+   "label": "Provider Type",
+   "required": false,
+   "maxLength": 25,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Provider Type has a maximum length of 25 characters."
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "RequestedEffectiveDate",
+   "id": "RequestedEffectiveDate",
+   "type": "text",
+   "role": "datepicker",
+   "label": "Effective Date",
+   "required": true,
+   "maxLength": null,
+   "validation": {
+    "date": "Effective Date must represent a valid date in the format 'MM/DD/YYYY'."
+   },
+   "validationParams": {
+    "length-max": "Effective Date has a maximum length of 10 characters.",
+    "minmax-date": "Effective Date must be within 01/01/1900 and 12/31/9999."
+   },
+   "value": "11/16/2026",
+   "widget": "k9",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ReceiptDate",
+   "id": "ReceiptDate",
+   "type": "text",
+   "role": "datepicker",
+   "label": "Receipt Date",
+   "required": true,
+   "maxLength": null,
+   "validation": {
+    "date": "Receipt Date must represent a valid date in the format 'MM/DD/YYYY'."
+   },
+   "validationParams": {
+    "minmax-date": "Receipt Date must be within 01/01/1900 and 12/31/9999."
+   },
+   "value": "11/16/2026",
+   "widget": "k10",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.IsIndividualOrBusiness.ID",
+   "id": "Provider_IsIndividualOrBusiness_IDIndividual",
+   "type": "radio",
+   "role": null,
+   "label": "Individual",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.IsIndividualOrBusiness.ID",
+   "id": "Provider_IsIndividualOrBusiness_IDBusiness",
+   "type": "radio",
+   "role": null,
+   "label": "Business",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ProviderName.PersonName.Title",
+   "id": "Provider_ProviderName_PersonName_Title",
+   "type": "text",
+   "role": "textbox",
+   "label": "Title",
+   "required": false,
+   "maxLength": 40,
+   "validation": {
+    "regex": "Title contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "Title has a maximum length of 40 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ProviderName.PersonName.Last",
+   "id": "Provider_ProviderName_PersonName_Last",
+   "type": "text",
+   "role": "textbox",
+   "label": "Last Name",
+   "required": true,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Last Name contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "Last Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ProviderName.PersonName.First",
+   "id": "Provider_ProviderName_PersonName_First",
+   "type": "text",
+   "role": "textbox",
+   "label": "First Name",
+   "required": true,
+   "maxLength": 50,
+   "validation": {
+    "regex": "First Name contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "First Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ProviderName.PersonName.Middle",
+   "id": "Provider_ProviderName_PersonName_Middle",
+   "type": "text",
+   "role": "textbox",
+   "label": "Middle Name",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Middle Name contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "Middle Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ProviderName.PersonName.Suffix",
+   "id": "Provider_ProviderName_PersonName_Suffix",
+   "type": "text",
+   "role": "textbox",
+   "label": "Suffix",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Suffix  contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "Suffix  has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ProviderName.PersonName.RevalTitle",
+   "id": "Provider_ProviderName_PersonName_RevalTitle",
+   "type": "text",
+   "role": "textbox",
+   "label": "Title",
+   "required": false,
+   "maxLength": 40,
+   "validation": {
+    "regex": "Title contains invalid characters. The characters ; * ^ : ~ < > % and Unicode are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Title has a maximum length of 40 characters.",
+    "regex-pattern": "^[A-Za-z0-9 `!@#$&()_+\\-={}|[\\]\\\"',.\\/?]+$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.ProviderName.PersonName.RevalLastName",
+   "id": "Provider_ProviderName_PersonName_RevalLastName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Last Name",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Last Name contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "Last Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.ProviderName.PersonName.RevalFirstName",
+   "id": "Provider_ProviderName_PersonName_RevalFirstName",
+   "type": "text",
+   "role": "textbox",
+   "label": "First Name",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "First Name contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "First Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.ProviderName.PersonName.RevalMiddleName",
+   "id": "Provider_ProviderName_PersonName_RevalMiddleName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Middle Name",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Middle Name contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "Middle Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.ProviderName.PersonName.RevalSuffix",
+   "id": "Provider_ProviderName_PersonName_RevalSuffix",
+   "type": "text",
+   "role": "textbox",
+   "label": "Suffix",
+   "required": false,
+   "maxLength": null,
+   "validation": {
+    "regex": "Suffix contains invalid characters. The characters ; * ^ : ~ < > % and Unicode are not allowed."
+   },
+   "validationParams": {
+    "regex-pattern": "^[A-Za-z0-9 `!@#$&()_+\\-={}|[\\]\\\"',.\\/?]+$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.IndividualProvider.GenderList",
+   "id": "Provider_IndividualProvider_GenderList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "Provider_IndividualProvider_GenderList",
+   "required": false,
+   "maxLength": 1,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Gender has a maximum length of 1 characters."
+   },
+   "value": "",
+   "widget": "k11",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.IndividualProvider.EthnicityList",
+   "id": "Provider_IndividualProvider_EthnicityList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "Provider_IndividualProvider_EthnicityList",
+   "required": false,
+   "maxLength": 1,
+   "validation": {},
+   "validationParams": {
+    "length-max": "What is your ethnicity? has a maximum length of 1 characters."
+   },
+   "value": "",
+   "widget": "k12",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.IndividualProvider.BirthDate",
+   "id": "Provider_IndividualProvider_BirthDate",
+   "type": "text",
+   "role": "datepicker",
+   "label": "Birth Date",
+   "required": true,
+   "maxLength": null,
+   "validation": {
+    "date": "Birth Date must represent a valid date in the format 'MM/DD/YYYY'."
+   },
+   "validationParams": {
+    "length-max": "Birth Date has a maximum length of 10 characters.",
+    "minmax-date": "Birth Date must be within 01/01/1900 and 12/31/9999."
+   },
+   "value": "",
+   "widget": "k13",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.IndividualProvider.RevalBirthDate",
+   "id": "Provider_IndividualProvider_RevalBirthDate",
+   "type": "text",
+   "role": "textbox",
+   "label": "Birth Date",
+   "required": false,
+   "maxLength": 10,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Birth Date has a maximum length of 10 characters."
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.ProviderLegalName.ProviderLegalName",
+   "id": "Provider_ProviderLegalName_ProviderLegalName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Legal Business Name",
+   "required": true,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Legal Business Name contains invalid characters. Acceptable characters are [A-Z] [a-z] [0-9] Space ! @ $ & ( ) _ + - \" ' , . ? # /."
+   },
+   "validationParams": {
+    "length-max": "Legal Business Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z0-9_'\".?!,()\\-+@&$#/])([\\sA-Za-z0-9_'\".?!,()\\-+@&$#/])+$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ProviderLegalName.TaxName",
+   "id": "Provider_ProviderLegalName_TaxName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Tax Name",
+   "required": false,
+   "maxLength": 300,
+   "validation": {
+    "regex": "Tax Name contains invalid characters. Acceptable characters are [A-Z] [a-z] [0-9] Space ! @ $ & ( ) _ + - \" ' , . ? # /."
+   },
+   "validationParams": {
+    "length-max": "Tax Name has a maximum length of 300 characters.",
+    "regex-pattern": "^([A-Za-z0-9_'\".?!,()\\-+@&$#/])([\\sA-Za-z0-9_'\".?!,()\\-+@&$#/])+$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ProviderLegalName.RevalProviderLegalName",
+   "id": "Provider_ProviderLegalName_RevalProviderLegalName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Legal Name",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Legal Name contains invalid characters. Acceptable characters are [A-Z] [a-z] [0-9] Space ! @ $ & ( ) _ + - \" ' , . ? # /."
+   },
+   "validationParams": {
+    "length-max": "Legal Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z0-9_'\".?!,()\\-+@&$#/])([\\sA-Za-z0-9_'\".?!,()\\-+@&$#/])+$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.ProviderLegalName.RevalTaxName",
+   "id": "Provider_ProviderLegalName_RevalTaxName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Tax Name",
+   "required": false,
+   "maxLength": 300,
+   "validation": {
+    "regex": "Tax Name contains invalid characters. Acceptable characters are [A-Z] [a-z] [0-9] Space ! @ $ & ( ) _ + - \" ' , . ? # /."
+   },
+   "validationParams": {
+    "length-max": "Tax Name has a maximum length of 300 characters.",
+    "regex-pattern": "^([A-Za-z0-9_'\".?!,()\\-+@&$#/])([\\sA-Za-z0-9_'\".?!,()\\-+@&$#/])+$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.DoingBusinessAsName",
+   "id": "Provider_DoingBusinessAsName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Doing Business As Name",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Doing Business As Name contains invalid characters. Acceptable characters are [A-Z] [a-z] [0-9] Space ! @ $ & ( ) _ + - \" ' , . ? # /."
+   },
+   "validationParams": {
+    "length-max": "Doing Business As Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z0-9_'\".?!,()\\-+@&$#/])([\\sA-Za-z0-9_'\".?!,()\\-+@&$#/])+$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.NursePractitioner.PhysicianLastName",
+   "id": "Provider_NursePractitioner_PhysicianLastName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Last Name",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Last Name contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "Last Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([[a-zA-Z'.,\\-]+(?: [a-zA-Z'.,\\-]+)*|[^\\x00-\\x7F])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.NursePractitioner.PhysicianFirstName",
+   "id": "Provider_NursePractitioner_PhysicianFirstName",
+   "type": "text",
+   "role": "textbox",
+   "label": "First Name",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "First Name contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "First Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([[a-zA-Z'.,\\-]+(?: [a-zA-Z'.,\\-]+)*|[^\\x00-\\x7F])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.NursePractitioner.PhysicianMiddleName",
+   "id": "Provider_NursePractitioner_PhysicianMiddleName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Middle Name",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Middle Name contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "Middle Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([[a-zA-Z'.,\\-]+(?: [a-zA-Z'.,\\-]+)*|[^\\x00-\\x7F])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.RevalNationalProviderIdentifier",
+   "id": "Provider_RevalNationalProviderIdentifier",
+   "type": "text",
+   "role": "textbox",
+   "label": "NPI",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.NationalProviderIdentifier",
+   "id": "Provider_NationalProviderIdentifier",
+   "type": "text",
+   "role": "maskedtextbox",
+   "label": "NPI",
+   "required": true,
+   "maxLength": null,
+   "validation": {
+    "regex": "Enter Valid NPI."
+   },
+   "validationParams": {
+    "regex-pattern": "^([0-9])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.CredentialTypeList",
+   "id": "Provider_CredentialTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "Provider_CredentialTypeList",
+   "required": false,
+   "maxLength": null,
+   "validation": {
+    "regex": "Credential Type contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": "k14",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.TaxIdentification.TaxIdTypes.ID",
+   "id": "Provider_TaxIdentification_TaxIdTypes_IDEIN",
+   "type": "radio",
+   "role": null,
+   "label": "EIN",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.TaxIdentification.TaxIdTypes.ID",
+   "id": "Provider_TaxIdentification_TaxIdTypes_IDSSN",
+   "type": "radio",
+   "role": null,
+   "label": "SSN",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.TaxIdentification.RevalSSN",
+   "id": "Provider_TaxIdentification_RevalSSN",
+   "type": "text",
+   "role": "maskedtextbox",
+   "label": "SSN",
+   "required": false,
+   "maxLength": null,
+   "validation": {
+    "regex": "Enter a valid SSN."
+   },
+   "validationParams": {
+    "regex-pattern": "(?!000|666|9\\d{2})(\\d{3})[\\- ]?(?!00)(\\d{2})[\\- ]?(?!0000)(\\d{4})(?<!123[\\- ]?45[\\- ]?6789)$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.TaxIdentification.SSN",
+   "id": "Provider_TaxIdentification_SSN",
+   "type": "text",
+   "role": "maskedtextbox",
+   "label": "SSN",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {
+    "redact-regex": "Enter a valid SSN.",
+    "regex-pattern": "^(.)*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.TaxIdentification.TaxId",
+   "id": "Provider_TaxIdentification_TaxId",
+   "type": "text",
+   "role": "maskedtextbox",
+   "label": "EIN",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {
+    "redact-regex": "Enter a valid EIN.",
+    "regex-pattern": "^(.)*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.TaxIdentification.EffectiveFromDate",
+   "id": "Provider_TaxIdentification_EffectiveFromDate",
+   "type": "text",
+   "role": "datepicker",
+   "label": "IRS Effective Date",
+   "required": true,
+   "maxLength": null,
+   "validation": {
+    "date": "IRS Effective Date must represent a valid date in the format 'MM/DD/YYYY'."
+   },
+   "validationParams": {
+    "length-max": "IRS Effective Date has a maximum length of 10 characters.",
+    "minmax-date": "IRS Effective Date must be within 01/01/1900 and 12/31/9999."
+   },
+   "value": "",
+   "widget": "k15",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.TaxIdentification.RevalTaxId",
+   "id": "Provider_TaxIdentification_RevalTaxId",
+   "type": "text",
+   "role": "textbox",
+   "label": "EIN",
+   "required": false,
+   "maxLength": null,
+   "validation": {
+    "regex": "Enter a valid EIN."
+   },
+   "validationParams": {
+    "regex-pattern": "^(0[1-6]|1[0-6]|2[0-7]|3[0-9]|4[0-8]|5[0-9]|6[0-8]|7[1-7]|8[0-8]|9[0-5,8,9])-?(?!0000000)\\d{7}$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.TaxIdentification.RevalEffectiveFromDate",
+   "id": "Provider_TaxIdentification_RevalEffectiveFromDate",
+   "type": "text",
+   "role": "textbox",
+   "label": "IRS Effective Date",
+   "required": false,
+   "maxLength": 10,
+   "validation": {},
+   "validationParams": {
+    "length-max": "IRS Effective Date has a maximum length of 10 characters."
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "LegacyProviderID",
+   "id": "LegacyProviderID",
+   "type": "text",
+   "role": "textbox",
+   "label": "Provider ID",
+   "required": false,
+   "maxLength": 25,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Provider ID has a maximum length of 25 characters."
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.PreferredCommunicationDetails.LanguageListList",
+   "id": "Provider_PreferredCommunicationDetails_LanguageListList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "Provider_PreferredCommunicationDetails_LanguageListList",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": "k16",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.IsCurrentlyEnrolled.ID",
+   "id": "Provider_IsCurrentlyEnrolled_IDYes",
+   "type": "radio",
+   "role": null,
+   "label": "Yes",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.IsCurrentlyEnrolled.ID",
+   "id": "Provider_IsCurrentlyEnrolled_IDNo",
+   "type": "radio",
+   "role": null,
+   "label": "No",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": true,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.CurrentLegacyProviderIdentifier",
+   "id": "Provider_CurrentLegacyProviderIdentifier",
+   "type": "text",
+   "role": "textbox",
+   "label": "Current Provider Identifier",
+   "required": false,
+   "maxLength": 14,
+   "validation": {
+    "number": "Current Provider Identifier is restricted to numeric characters only [0-9].",
+    "regex": "Current Provider Identifier is restricted to numeric characters only [0-9]."
+   },
+   "validationParams": {
+    "length-max": "Current Provider Identifier has a maximum length of 15 characters.",
+    "regex-pattern": "^([0-9])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.IsPreviouslyEnrolled.ID",
+   "id": "Provider_IsPreviouslyEnrolled_IDYes",
+   "type": "radio",
+   "role": null,
+   "label": "Yes",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.IsPreviouslyEnrolled.ID",
+   "id": "Provider_IsPreviouslyEnrolled_IDNo",
+   "type": "radio",
+   "role": null,
+   "label": "No",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": true,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.PreviousLegacyProviderIdentifier",
+   "id": "Provider_PreviousLegacyProviderIdentifier",
+   "type": "text",
+   "role": "textbox",
+   "label": "Previous Provider Identifier",
+   "required": false,
+   "maxLength": 14,
+   "validation": {
+    "number": "Previous Provider Identifier is restricted to numeric characters only [0-9].",
+    "regex": "Previous Provider Identifier is restricted to numeric characters only [0-9]."
+   },
+   "validationParams": {
+    "length-max": "Previous Provider Identifier has a maximum length of 15 characters.",
+    "regex-pattern": "^([0-9])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.IsMedicareEnrolled.ID",
+   "id": "Provider_IsMedicareEnrolled_IDYes",
+   "type": "radio",
+   "role": null,
+   "label": "Yes",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.IsMedicareEnrolled.ID",
+   "id": "Provider_IsMedicareEnrolled_IDNo",
+   "type": "radio",
+   "role": null,
+   "label": "No",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": true,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.MCOParticipatingContractsFormatted",
+   "id": "Provider_MCOParticipatingContractsFormatted",
+   "type": "text",
+   "role": "textbox",
+   "label": "Participating MCO Programs",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Provider.ProgramTypeList",
+   "id": "Provider_ProgramTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "Provider_ProgramTypeList",
+   "required": true,
+   "maxLength": 20,
+   "validation": {},
+   "validationParams": {
+    "length-max": "I will accept patients in the following programs: has a maximum length of 20 characters."
+   },
+   "value": "",
+   "widget": "k17",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "mcoPrograms",
+   "id": "mcoPrograms",
+   "type": "select-multiple",
+   "role": "multiselect",
+   "label": "mcoPrograms",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": null,
+   "disabled": false
+  },
+  {
+   "name": "Provider.ProviderCAQHRegistration.IsProviderCAQHRegistered.ID",
+   "id": "Provider_ProviderCAQHRegistration_IsProviderCAQHRegistered_IDYes",
+   "type": "radio",
+   "role": null,
+   "label": "Yes",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ProviderCAQHRegistration.IsProviderCAQHRegistered.ID",
+   "id": "Provider_ProviderCAQHRegistration_IsProviderCAQHRegistered_IDNo",
+   "type": "radio",
+   "role": null,
+   "label": "No",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ProviderCAQHRegistration.IsProviderCAQHRegisteredReval.ID",
+   "id": "Provider_ProviderCAQHRegistration_IsProviderCAQHRegisteredReval_IDYes",
+   "type": "radio",
+   "role": null,
+   "label": "Yes",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ProviderCAQHRegistration.IsProviderCAQHRegisteredReval.ID",
+   "id": "Provider_ProviderCAQHRegistration_IsProviderCAQHRegisteredReval_IDNo",
+   "type": "radio",
+   "role": null,
+   "label": "No",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "Provider.ProviderCAQHRegistration.CAQHProviderID",
+   "id": "Provider_ProviderCAQHRegistration_CAQHProviderID",
+   "type": "text",
+   "role": "textbox",
+   "label": "CAQH Provider ID",
+   "required": false,
+   "maxLength": 10,
+   "validation": {
+    "number": "CAQH Provider ID is restricted to numeric characters only [0-9].",
+    "regex": "CAQH Provider ID is restricted to numeric characters only [0-9]."
+   },
+   "validationParams": {
+    "length-max": "CAQH Provider ID has a maximum length of 10 characters.",
+    "regex-pattern": "^([0-9])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.ContactName.Title",
+   "id": "ApplicantContact_ContactName_Title",
+   "type": "text",
+   "role": "textbox",
+   "label": "Title",
+   "required": false,
+   "maxLength": 40,
+   "validation": {
+    "regex": "Title contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "Title has a maximum length of 40 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.ContactName.Last",
+   "id": "ApplicantContact_ContactName_Last",
+   "type": "text",
+   "role": "textbox",
+   "label": "Last Name",
+   "required": true,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Last Name contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "Last Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.ContactName.First",
+   "id": "ApplicantContact_ContactName_First",
+   "type": "text",
+   "role": "textbox",
+   "label": "First Name",
+   "required": true,
+   "maxLength": 50,
+   "validation": {
+    "regex": "First Name contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "First Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.ContactName.Middle",
+   "id": "ApplicantContact_ContactName_Middle",
+   "type": "text",
+   "role": "textbox",
+   "label": "Middle Name",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Middle Name contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "Middle Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.ContactName.Suffix",
+   "id": "ApplicantContact_ContactName_Suffix",
+   "type": "text",
+   "role": "textbox",
+   "label": "Suffix",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Suffix  contains invalid characters: Must start with a letter. Allowed characters: letters, single spaces, and [' , . -]."
+   },
+   "validationParams": {
+    "length-max": "Suffix  has a maximum length of 50 characters.",
+    "regex-pattern": "^([A-Za-z'.,\\-][A-Z a-z'.,\\-]*[A-Za-z'.,\\-]|[A-Za-z'.,\\-])$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.Address.Line1",
+   "id": "ApplicantContact_Address_Line1",
+   "type": "text",
+   "role": "textbox",
+   "label": "Address Line 1",
+   "required": true,
+   "maxLength": 70,
+   "validation": {
+    "regex": "Address Line 1 contains invalid characters. The characters ; * ^ : ~ < > % and Unicode are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Address Line 1 has a maximum length of 70 characters.",
+    "regex-pattern": "^[A-Za-z0-9 `!@#$&()_+\\-={}|[\\]\\\"',.\\/?]+$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.Address.Line2",
+   "id": "ApplicantContact_Address_Line2",
+   "type": "text",
+   "role": "textbox",
+   "label": "Address Line 2",
+   "required": false,
+   "maxLength": 70,
+   "validation": {
+    "regex": "Address Line 2 contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Address Line 2 has a maximum length of 70 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.Address.City",
+   "id": "ApplicantContact_Address_City",
+   "type": "text",
+   "role": "textbox",
+   "label": "City",
+   "required": true,
+   "maxLength": 70,
+   "validation": {
+    "regex": "City  contains invalid characters. The characters ; * ^ : ~ < > % and Unicode are not allowed."
+   },
+   "validationParams": {
+    "length-max": "City  has a maximum length of 70 characters.",
+    "regex-pattern": "^[A-Za-z0-9 `!@#$&()_+\\-={}|[\\]\\\"',.\\/?]+$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.Address.StatesList",
+   "id": "ApplicantContact_Address_StatesList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "ApplicantContact_Address_StatesList",
+   "required": true,
+   "maxLength": 25,
+   "validation": {},
+   "validationParams": {
+    "length-max": "State has a maximum length of 25 characters."
+   },
+   "value": "",
+   "widget": "k18",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact_Address_CountryList",
+   "id": "ApplicantContact_Address_CountryList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "ApplicantContact_Address_CountryList",
+   "required": true,
+   "maxLength": 70,
+   "validation": {
+    "regex": "Country contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Country has a maximum length of 70 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "US",
+   "widget": "k19",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.Address.PostalCode",
+   "id": "ApplicantContact_Address_PostalCode",
+   "type": "text",
+   "role": "maskedtextbox",
+   "label": "ZIP Code/ Postal Code",
+   "required": true,
+   "maxLength": null,
+   "validation": {
+    "regex": "ZIP Code/ Postal Code contains invalid numbers. The value needs to be in the format nnnnn or nnnnn-nnnn."
+   },
+   "validationParams": {
+    "regex-pattern": "^(?!0+$)(?!00000)[0-9]{5}[- /]?([0-9]{4})?$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.PhoneNumberTypeList",
+   "id": "ApplicantContact_PhoneNumberTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "ApplicantContact_PhoneNumberTypeList",
+   "required": true,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": "k20",
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.PhoneNumber.PhoneNumber",
+   "id": "ApplicantContact_PhoneNumber_PhoneNumber",
+   "type": "text",
+   "role": "maskedtextbox",
+   "label": "Phone Number",
+   "required": true,
+   "maxLength": null,
+   "validation": {
+    "regex": "Enter Valid Phone Number."
+   },
+   "validationParams": {
+    "regex-pattern": "^(?!(^\\(?(0{3})\\)?( |-|\\.)?0{3}( |-|\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( |-|\\.)?\\d{3,3}( |-|\\.)?\\d{4,4}$)"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.PhoneNumber.PhoneExtension",
+   "id": "ApplicantContact_PhoneNumber_PhoneExtension",
+   "type": "text",
+   "role": "textbox",
+   "label": "Phone Extension",
+   "required": false,
+   "maxLength": 5,
+   "validation": {
+    "regex": "Enter Valid Phone Extension Number"
+   },
+   "validationParams": {
+    "length-max": "Phone Extension has a maximum length of 5 characters.",
+    "regex-pattern": "^(?!(^0{0,5}$))(^[0-9]{1,5}$)"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.AllowTextNotifications",
+   "id": "ApplicantContact_AllowTextNotifications",
+   "type": "checkbox",
+   "role": "checkbox",
+   "label": "Allow Text Notifications",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": false,
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.FaxNumber.PhoneNumber",
+   "id": "ApplicantContact_FaxNumber_PhoneNumber",
+   "type": "text",
+   "role": "maskedtextbox",
+   "label": "Fax Number",
+   "required": false,
+   "maxLength": null,
+   "validation": {
+    "regex": "Enter Valid Fax Number"
+   },
+   "validationParams": {
+    "length-max": "Fax Number has a maximum length of 10 characters.",
+    "regex-pattern": "^(?!(^\\(?(0{3})\\)?( |-|\\.)?0{3}( |-|\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( |-|\\.)?\\d{3,3}( |-|\\.)?\\d{4,4}$)"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.EmailAddress",
+   "id": "ApplicantContact_EmailAddress",
+   "type": "text",
+   "role": "textbox",
+   "label": "Email Address",
+   "required": false,
+   "maxLength": 150,
+   "validation": {
+    "regex": "Email Address is not a valid email address. Enter email with 'name@domain' format."
+   },
+   "validationParams": {
+    "length-max": "Email Address has a maximum length of 150 characters.",
+    "regex-pattern": "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact.EmailAddressConfirmation",
+   "id": "ApplicantContact_EmailAddressConfirmation",
+   "type": "text",
+   "role": "textbox",
+   "label": "Confirm Email",
+   "required": false,
+   "maxLength": 150,
+   "validation": {
+    "regex": "Confirm Email is not a valid email address. Enter email with 'name@domain' format."
+   },
+   "validationParams": {
+    "equalto-other": "Email addresses do not match.",
+    "length-max": "Confirm Email has a maximum length of 150 characters.",
+    "regex-pattern": "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "ApplicantContact_PreferredCommunicationMethodList",
+   "id": "ApplicantContact_PreferredCommunicationMethodList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "ApplicantContact_PreferredCommunicationMethodList",
+   "required": true,
+   "maxLength": 25,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Preferred Communication has a maximum length of 25 characters."
+   },
+   "value": "",
+   "widget": "k21",
+   "disabled": false,
+   "readOnly": false
+  }
+ ],
+ "actions": [
+  {
+   "action": "cancel",
+   "text": "Cancel",
+   "id": "tocBtnCancel"
+  },
+  {
+   "action": "reset",
+   "text": "Clear",
+   "id": "prechecklistClearButton"
+  },
+  {
+   "action": "reset",
+   "text": "Reset",
+   "id": "resetButton"
+  },
+  {
+   "action": "cancel",
+   "text": "Cancel",
+   "id": "cancelButton"
+  },
+  {
+   "action": "collapse",
+   "text": "Initial Enrollment Information",
+   "expanded": false
+  },
+  {
+   "action": "collapse",
+   "text": "Provider Information",
+   "expanded": false
+  },
+  {
+   "action": "collapse",
+   "text": "Contact Information",
+   "expanded": false
+  }
+ ],
+ "hidden": [
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "h7",
+  "h8",
+  "h9",
+  "h10",
+  "h11",
+  "h12",
+  "h13"
+ ],
+ "unknown": {
+  "maskedtextbox": {
+   "count": 7,
+   "ids": [
+    "Provider_NationalProviderIdentifier",
+    "Provider_TaxIdentification_RevalSSN",
+    "Provider_TaxIdentification_SSN",
+    "Provider_TaxIdentification_TaxId",
+    "ApplicantContact_Address_PostalCode"
+   ]
+  },
+  "multiselect": {
+   "count": 1,
+   "ids": [
+    "mcoPrograms"
+   ]
+  }
+ },
+ "autofocus": null,
+ "kendo": "2026.1.415",
+ "jquery": "3.7.1",
+ "help": "<div id=\"mcbHelpIcon\" class=\"help-icon-container\">\n                            <span class=\"fa-stack fa-lg clickable\" role=\"button\" onkeypress=\"displayPageLevelHelp()\" tabindex=\"0\" aria-label=\"Help\" title=\"Help\" onclick=\"displayPageLevelHelp(&quot;ProviderEnrollment.EnrollmentRegistration&quot;)\" data-role=\"tooltip\">\n                                <i class=\"fa-solid fa-book-open help-icon-stack-top\"></i>\n                                <i class=\"fa-solid fa-circle help-icon-stack-bottom\"></i>\n                            </span>\n                        </div>",
+ "menu": {
+  "root": "div#mainMenuContainer",
+  "add": [
+   "display-flex"
+  ],
+  "remove": [
+   "display-none"
+  ],
+  "backdrop": "div.disabled-backdrop",
+  "close": true,
+  "links": 181,
+  "flyClip": {
+   "x": 1395,
+   "y": 510,
+   "width": 249,
+   "height": 350
+  },
+  "flyRect": {
+   "x": 1407.479248046875,
+   "y": 522.6666870117188,
+   "width": 224.52084350585938,
+   "height": 325.32293701171875
+  },
+  "closed": true
+ },
+ "calibration": {
+  "defaults": {
+   "popup": {
+    "open": {
+     "effects": "slideIn:down",
+     "transition": true,
+     "duration": 200
+    },
+    "close": {
+     "duration": 100,
+     "hide": true
+    }
+   },
+   "tooltip": {
+    "prefix": "",
+    "name": "Tooltip",
+    "filter": "",
+    "offset": 0,
+    "showAfter": 100,
+    "hideAfter": 100,
+    "callout": true,
+    "position": "bottom",
+    "showOn": "mouseenter",
+    "animation": {
+     "open": {
+      "effects": "fade:in",
+      "duration": 0
+     },
+     "close": {
+      "duration": 40,
+      "hide": true
+     }
+    },
+    "autoHide": true,
+    "width": null,
+    "height": null
+   },
+   "window": {
+    "open": {
+     "effects": {},
+     "duration": 350
+    },
+    "close": {
+     "effects": {},
+     "duration": 350,
+     "hide": true
+    }
+   },
+   "menu": {
+    "open": {
+     "duration": 200
+    },
+    "close": {
+     "duration": 100
+    }
+   }
+  },
+  "dropdownPopup": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"height: 200px; display: block; position: absolute; top: 40px; z-index: 10002; left: 0px;\"><div class=\"k-child-animation-container\" style=\"height: 211.333px; width: 100px; display: block; transform: translateY(0px);\"><div class=\"k-list-container k-popup k-dropdownlist-popup\" data-role=\"popup\" aria-hidden=\"false\" style=\"font-size: 16px; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 400; line-height: 40px; width: 100px; min-width: 100px; white-space: normal; height: 211.333px;\" data-kit-drop=\"\"><div class=\"k-list\" id=\"EnrollmentPreChecklist_EnrollmentTypeList-list\" data-role=\"staticlist\" role=\"listbox\" style=\"height: 200px;\"><div role=\"option\" class=\"k-list-optionlabel k-selected k-focus\" id=\"87784f27-1922-409a-959a-3e15248653d6\">select a value...</div><div class=\"k-list-group-sticky-header\" style=\"display: none;\"></div><div class=\"k-list-content k-list-scroller\" unselectable=\"on\"><ul unselectable=\"on\" tabindex=\"-1\" aria-hidden=\"false\" id=\"EnrollmentPreChecklist_EnrollmentTypeList_listbox\" role=\"listbox\" aria-live=\"off\" class=\"k-list-ul\"><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"0\"><span class=\"k-list-item-text\">Individual</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"1\"><span class=\"k-list-item-text\">Facility</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"2\"><span class=\"k-list-item-text\">Group</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"3\"><span class=\"k-list-item-text\">Individual Within Group</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"4\"><span class=\"k-list-item-text\">Atypical Providers</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"5\"><span class=\"k-list-item-text\">Ordering, Prescribing, Referring</span></li><li tabindex=\"-1\" role=\"option\" unselectable=\"on\" class=\"k-list-item\" aria-selected=\"false\" data-offset-index=\"6\"><span class=\"k-list-item-text\">Test2025</span></li></ul></div><div class=\"k-no-data\" aria-live=\"polite\" style=\"display: none;\">No Data Found</div></div></div></div></div>",
+  "calendarPopup": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"display: block; position: absolute; top: 40px; z-index: 10002; left: 0px;\"><div class=\"k-child-animation-container\" style=\"width: 344.625px; height: 365px; display: block; transform: translateY(0px);\"><div aria-hidden=\"false\" class=\"k-calendar-container k-popup\" data-role=\"popup\" id=\"RequestedEffectiveDate_dateview\" data-kit-drop=\"\" style=\"font-size: 14px; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif, FontAwesome; font-stretch: 100%; font-style: normal; font-weight: 400; line-height: 14px;\"><div id=\"746c029e-f751-478f-8d33-f835b436a939\" data-role=\"calendar\" class=\"k-calendar\"><div class=\"k-header k-hstack\">\n            <span tabindex=\"-1\" data-href=\"#\" data-action=\"prev\" role=\"button\" class=\"k-calendar-nav-prev k-button k-button-flat k-icon-button\" aria-label=\"Previous\" aria-disabled=\"false\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-left k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m160 256 192-128v256z\"></path></svg></span></span>\n            <span tabindex=\"-1\" data-href=\"#\" data-action=\"nav-up\" id=\"df06c473-f916-4064-a304-c9fd7089f182\" role=\"button\" class=\"k-calendar-nav-fast k-button k-button-flat k-flex\" aria-disabled=\"false\" title=\"Navigate to year view\"><span class=\"k-button-text\">November 2026</span></span>\n            <span tabindex=\"-1\" data-href=\"#\" data-action=\"next\" role=\"button\" class=\"k-calendar-nav-next k-button k-button-flat k-icon-button\" aria-label=\"Next\" aria-disabled=\"false\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-right k-button-icon\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M352 256 160 384V128z\"></path></svg></span></span>\n        </div><div class=\"k-calendar-view k-align-items-start k-justify-content-center k-hstack k-calendar-monthview\"><table tabindex=\"0\" role=\"grid\" class=\"k-calendar-table\" cellspacing=\"0\" data-start=\"2026/10/1\" aria-labelledby=\"df06c473-f916-4064-a304-c9fd7089f182\" aria-activedescendant=\"a585b10d-ec50-4b8e-93be-32fadf7fc44f\"><thead class=\"k-calendar-thead\"><tr role=\"row\" class=\"k-calendar-tr\"><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Sunday\">Su</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Monday\">Mo</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Tuesday\">Tu</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Wednesday\">We</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Thursday\">Th</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Friday\">Fr</th><th scope=\"col\" class=\"k-calendar-th\" aria-label=\"Saturday\">Sa</th></tr></thead><tbody class=\"k-calendar-tbody\"><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/1\" title=\"Sunday, November 1, 2026\">1</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/2\" title=\"Monday, November 2, 2026\">2</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/3\" title=\"Tuesday, November 3, 2026\">3</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/4\" title=\"Wednesday, November 4, 2026\">4</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/5\" title=\"Thursday, November 5, 2026\">5</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/6\" title=\"Friday, November 6, 2026\">6</span></td><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/7\" title=\"Saturday, November 7, 2026\">7</span></td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/8\" title=\"Sunday, November 8, 2026\">8</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/9\" title=\"Monday, November 9, 2026\">9</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/10\" title=\"Tuesday, November 10, 2026\">10</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/11\" title=\"Wednesday, November 11, 2026\">11</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/12\" title=\"Thursday, November 12, 2026\">12</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/13\" title=\"Friday, November 13, 2026\">13</span></td><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/14\" title=\"Saturday, November 14, 2026\">14</span></td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/15\" title=\"Sunday, November 15, 2026\">15</span></td><td class=\"k-calendar-td k-selected k-focus\" role=\"gridcell\" aria-selected=\"true\" id=\"a585b10d-ec50-4b8e-93be-32fadf7fc44f\" aria-label=\"Current focused date is Monday, November 16, 2026\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/16\" title=\"Monday, November 16, 2026\">16</span></td><td class=\"k-calendar-td k-today\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/17\" title=\"Tuesday, November 17, 2026\">17</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/18\" title=\"Wednesday, November 18, 2026\">18</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/19\" title=\"Thursday, November 19, 2026\">19</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/20\" title=\"Friday, November 20, 2026\">20</span></td><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/21\" title=\"Saturday, November 21, 2026\">21</span></td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/22\" title=\"Sunday, November 22, 2026\">22</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/23\" title=\"Monday, November 23, 2026\">23</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/24\" title=\"Tuesday, November 24, 2026\">24</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/25\" title=\"Wednesday, November 25, 2026\">25</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/26\" title=\"Thursday, November 26, 2026\">26</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/27\" title=\"Friday, November 27, 2026\">27</span></td><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/28\" title=\"Saturday, November 28, 2026\">28</span></td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/29\" title=\"Sunday, November 29, 2026\">29</span></td><td class=\"k-calendar-td\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/10/30\" title=\"Monday, November 30, 2026\">30</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/11/1\" title=\"Tuesday, December 1, 2026\">1</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/11/2\" title=\"Wednesday, December 2, 2026\">2</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/11/3\" title=\"Thursday, December 3, 2026\">3</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/11/4\" title=\"Friday, December 4, 2026\">4</span></td><td class=\"k-calendar-td k-other-month k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/11/5\" title=\"Saturday, December 5, 2026\">5</span></td></tr><tr role=\"row\" class=\"k-calendar-tr\"><td class=\"k-calendar-td k-other-month k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/11/6\" title=\"Sunday, December 6, 2026\">6</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/11/7\" title=\"Monday, December 7, 2026\">7</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/11/8\" title=\"Tuesday, December 8, 2026\">8</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/11/9\" title=\"Wednesday, December 9, 2026\">9</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/11/10\" title=\"Thursday, December 10, 2026\">10</span></td><td class=\"k-calendar-td k-other-month\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/11/11\" title=\"Friday, December 11, 2026\">11</span></td><td class=\"k-calendar-td k-other-month k-weekend\" role=\"gridcell\"><span tabindex=\"-1\" class=\"k-link \" data-href=\"#\" data-value=\"2026/11/12\" title=\"Saturday, December 12, 2026\">12</span></td></tr></tbody></table></div><div class=\"k-calendar-footer\">\n                    <button tabindex=\"-1\" class=\"k-calendar-nav-today k-flex k-button k-button-flat k-button-primary\" role=\"link\" title=\"Tuesday, November 17, 2026\">\n                        <span class=\"k-button-text\">Tuesday, November 17, 2026</span>\n                    </button>\n                </div></div></div></div></div>",
+  "tooltip": "<div class=\"k-animation-container k-animation-container-shown\" role=\"region\" style=\"display: block; position: absolute; top: 58.2812px; z-index: 10002; left: 66px; margin-top: 6px;\"><div class=\"k-child-animation-container\" style=\"width: 83.1667px; height: 24.3333px; display: block; opacity: 1;\"><div role=\"tooltip\" class=\"k-tooltip k-popup\" data-role=\"popup\" style=\"\" id=\"aa5e55ab-0665-49b1-b6be-66f0e65d7ecb_tb_active\"><div class=\"k-tooltip-content\">Client Logo</div><div class=\"k-callout k-callout-n\" style=\"left: 42.2605px;\"></div></div></div></div>"
+ },
+ "grids": {},
+ "dialogs": {},
+ "search": null,
+ "row": null,
+ "requests": {},
+ "plan": {
+  "dialogs": [
+   {
+    "panel": "languageOverlay",
+    "opener": null,
+    "via": null
+   },
+   {
+    "panel": "PhoneNumberAuthenticationForm",
+    "opener": null,
+    "via": null
+   }
+  ],
+  "rowDouble": "gridRowDoubleClickCallBack",
+  "rowSingle": "gridRowSingleClickCallBack",
+  "rowOpens": null,
+  "phoneWidth": 1280
+ },
+ "missing": [],
+ "conditionals": [
+  {
+   "where": "page",
+   "kind": "radio",
+   "name": "Provider.ChangeOfOwnership.IsChowRequired.ID",
+   "values": {
+    "Yes": {
+     "#nextButton": false
+    },
+    "No": {
+     "#nextButton": true
+    }
+   },
+   "rest": {
+    "#nextButton": true
+   }
+  },
+  {
+   "where": "page",
+   "kind": "radio",
+   "name": "Provider.ChangeOfOwnership.TaxIdTransfer.IsTaxIdTransfer.ID",
+   "values": {
+    "Yes": {
+     "#nextButton": false
+    },
+    "No": {
+     "#nextButton": false
+    }
+   },
+   "rest": {
+    "#nextButton": true
+   }
+  }
+ ],
+ "profiles": {
+  "client": {
+   "viewport": {
+    "width": 1272,
+    "height": 588
+   },
+   "dpr": 1.5,
+   "layout": {
+    "inner": {
+     "w": 1272,
+     "h": 588,
+     "docW": 1257,
+     "dpr": 1.5
+    },
+    "breakpoints": {
+     "max1280": true,
+     "max768": false,
+     "portrait": false,
+     "isPhone": true
+    },
+    "header": {
+     "x": 0,
+     "y": 0,
+     "w": 1257,
+     "h": 62
+    },
+    "main": {
+     "x": 0,
+     "y": 138,
+     "w": 1257,
+     "h": 769
+    },
+    "footer": {
+     "x": 0,
+     "y": 908,
+     "w": 1257,
+     "h": 119
+    },
+    "burgers": 3,
+    "navLinks": 1,
+    "horizontalScroll": false
+   },
+   "dialogs": {},
+   "menu": {
+    "links": 181,
+    "closed": true
+   },
+   "dialogErrors": {}
+  }
+ },
+ "headroom": {
+  "offset": 150,
+  "tolerance": 0,
+  "viewport": "client"
+ },
+ "responsive": {
+  "query": "(max-width: 1280px)",
+  "source": "script",
+  "desktop": {
+   "maxHeightPct": null
+  },
+  "dialog": null
+ }
+}

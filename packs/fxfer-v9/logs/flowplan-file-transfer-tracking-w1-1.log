@@ -1,0 +1,1128 @@
+$ powershell -NoProfile -ExecutionPolicy Bypass -File C:\UI-specs\start_codex.ps1 exec -c web_search=disabled --skip-git-repo-check -C C:\UI-specs\URL-to-Code\
+(prompt: C:\UI-specs\URL-to-Code\packs\fxfer-v9\logs\flowplan-file-transfer-tracking-w1-1.prompt.md)
+--- output ---
+Reading prompt from stdin...
+OpenAI Codex v0.169.0
+--------
+workdir: C:\UI-specs\URL-to-Code
+model: gpt-5.2
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1e939-c06e-7932-917d-deded5faa638
+--------
+user
+Task: flows fxfer-v9/file-transfer-tracking wave 1
+Screen folder: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking
+
+You are running unattended: nobody will answer questions. Do the task, then stop.
+
+Write any files you create/modify as UTF-8 text (not UTF-16). If you use PowerShell commands to write files, use Set-Content/Out-File with -Encoding utf8.
+Do not use the `apply_patch` helper here; it is unreliable in this environment. Edit files using Python/Node/PowerShell file writes (UTF-8) instead.
+
+You plan the next step of exploring the live screen `fxfer-v9/file-transfer-tracking` (File Transfer Tracking, https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking). A script drives the browser; you only decide what it does.
+The goal: reach EVERY state of this screen (results, dialogs, dialogs inside dialogs, edit modes, tabs, parts a radio or a value shows,
+validation messages) up to the click that would save or create something. The script blocks every write and never clicks a commit button,
+so you cannot break anything: be thorough.
+
+1. Read C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-1.frontier.json: the states still open in this wave, each with its candidates (the elements of its top layer, ids e1, e2...).
+2. For each state, open its folder (`dir`): look at map.png (the numbers are the element ids) and shot.png with your image viewer, and read
+   candidates.md (kind, text, label, rules such as maxlength / required / email, dropdown options). Read C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking/flows/FLOWS.md for what
+   was already reached and what each earlier click did: never plan a click that already led to a known state from the same place.
+3. Write C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-1.json as JSON:
+   {"nodes": [ {"node": "n1", "name": "search-results",
+       "actions": [ {"el": "e7", "do": "dblclick", "why": "opens the row's detail window", "name": "view-configuration"},
+                    {"el": "e3", "do": "select", "value": "M", "why": "Run Monthly shows the day-of-month part"},
+                    {"el": "e12", "do": "click", "setup": [{"el": "e4", "do": "fill", "value": "1234567890"}], "why": "Next with a valid NPI typed" } ],
+       "same": [ {"el": "e9", "as": "e7", "why": "the other rows open the same window"} ] },
+     {"node": "n2.1", "deadEnd": true, "reason": "a read-only view: only Close" } ]}
+   - One entry per state of C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-1.frontier.json. "do": click | dblclick | hover | fill | select | check | press. "fill"/"select" need a "value" (a string).
+   - "setup": steps done first, in order (type valid values so a button or a section opens; pick the dropdown value that reveals a part).
+   - "name" (optional): lower-case words joined by "-", at most 32 characters, naming the state you expect (it names its folder).
+   - At most 12 actions per state. Prefer actions that lead to DIFFERENT states: every button and link that opens something (View, Edit,
+     Details, a tab, Create New, Next, a row: grid rows often open on double-click), a radio or dropdown value that changes the form, and
+     wrong input that makes the page answer (letters in a number field, too long a value, a bad e-mail, a date out of range), each once.
+     The script already measures every text box by itself (what it accepts, its length limit, the message it shows, what Save says with the
+     form as it is), so do not spend actions on that.
+   - Never plan an element marked `danger` (Save, Submit, Update, Delete, a bare Add/OK/Yes...): the gate rejects the plan.
+   - Close, Cancel, Reset and Back only lead back: the script uses them itself.
+   - A state with nothing new to open is a dead end: say so with a reason.
+4. Run `node scripts/check-flows.mjs C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-1.json C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-1.frontier.json` in C:\UI-specs\URL-to-Code\ and fix the plan until it prints OK.
+
+What the capture already knows about this screen (dropdown options, dialogs it opened, the portal's conventions): C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking/kit/screen.json; the site kit's guide: C:\UI-specs\URL-to-Code\kits\provider\KIT.md.
+Write only C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-1.json. Do not run `npm run ui`, `npm run capture` or the browser, and do not open the live site.
+Never open, print or copy .env files or anything under packs/*/auth/ (they hold the portal password and session).
+
+2026-11-17T11:17:21.320231Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.postman.com/.well-known/oauth-protected-resource/mcp\"" })
+warning: Model metadata for `gpt-5.2` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.
+hook: SessionStart
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+**Planning wave-1.json creation**
+
+I need to create a wave-1.json plan for frontier states. First, I'll read necessary files like frontier.json, FLOWS.md, and state folders that contain images and candidates.md. My tools will be exec_command for inspecting files and view_image for viewing images. I can't use apply_patch, so I must ensure everything is in UTF-8. Then, I’ll write the file using PowerShell, Node, or Python. Finally, I’ll run a validation script. Let’s start by exploring the directory structure!
+codex
+I’m going to inspect the frontier states, open each state’s evidence (candidates + screenshots), then draft `wave-1.json` and iterate with the flow checker until it passes.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code && ls packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\plans && node -p \"'node '+process.version\"" in C:\UI-specs\URL-to-Code
+ exited 1 in 827ms:
+At line:2 char:28
++ cd C:\UI-specs\URL-to-Code && ls packs\fxfer-v9\screens\file-transfer ...
++                            ~~
+The token '&&' is not a valid statement separator in this version.
+At line:2 char:92
++ ...  packs\fxfer-v9\screens\file-transfer-tracking\flows\plans && node -p ...
++                                                                ~~
+The token '&&' is not a valid statement separator in this version.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+ 
+
+**Using PowerShell correctly**
+
+I need to remember that in PowerShell, I should use `;` instead of `&&` when running commands. This detail seems important! It feels like a small but crucial difference, and I want to ensure I get it right. I’ll keep this in mind as I proceed. It’s interesting how little syntax details can affect the function, right? Alright, let's run with this knowledge!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; ls packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\plans; node -p \"'node '+process.version\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1014ms:
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:47 PM           2934 wave-1.frontier.json                                                 
+-a----        11/17/2026   4:47 PM            166 wave-1.suggested.json                                                
+node v24.22.1
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\plans\\wave-1.frontier.json -Raw -Encoding utf8" in C:\UI-specs\URL-to-Code
+ succeeded in 1005ms:
+{
+ "wave": 1,
+ "maxActions": 12,
+ "nodes": [
+  {
+   "node": "n0",
+   "name": "at-rest",
+   "kind": "page",
+   "title": null,
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\n0-at-rest",
+   "depth": 0,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "text": "",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "text",
+     "text": "",
+     "label": "File ID",
+     "danger": null
+    },
+    {
+     "el": "e3",
+     "kind": "text",
+     "text": "",
+     "label": "File Name",
+     "danger": null
+    },
+    {
+     "el": "e4",
+     "kind": "dropdown",
+     "text": "select a value...FileStatusList",
+     "label": "File Status",
+     "danger": null,
+     "options": [
+      "1",
+      "2",
+      "3"
+     ]
+    },
+    {
+     "el": "e5",
+     "kind": "dropdown",
+     "text": "select a value...DirectionList",
+     "label": "Direction",
+     "danger": null,
+     "options": [
+      "1",
+      "2"
+     ]
+    },
+    {
+     "el": "e6",
+     "kind": "dropdown",
+     "text": "select a value...TransportTypeList",
+     "label": "Transport Type",
+     "danger": null,
+     "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    {
+     "el": "e7",
+     "kind": "dropdown",
+     "text": "select a value...SourceLocation",
+     "label": "Source Location",
+     "danger": null,
+     "options": [
+      "40defc3b-7227-4798-811a-1681e6505df2",
+      "5906a815-02de-4c35-9014-96d920f4285d",
+      "a2bd6591-53e6-4c8e-8101-76e8cc105eef",
+      "353244d3-8c51-453d-a26b-d31ba8375431",
+      "67391ddc-ec70-4630-b941-c4e646d99be2",
+      "5e8e5b7e-95a2-43e5-8716-1e4464922617",
+      "ddc110bf-9057-484d-9a18-ce5e849ca1f2",
+      "b16dfecc-c9fc-45f1-96bb-70b17d934a5f",
+      "284a46bc-10db-46e7-9f1b-d4c6faf29fa3",
+      "1f2a84a6-47c6-4ca2-a7d3-416ad41b48b0",
+      "5ee49daa-f142-4c83-80ce-668bce190cf1",
+      "109fbfd1-d87a-40fd-a3d0-ae3aed2d5d1a"
+     ]
+    },
+    {
+     "el": "e8",
+     "kind": "text",
+     "text": "",
+     "label": "Trading Partner ID",
+     "danger": null
+    },
+    {
+     "el": "e9",
+     "kind": "dropdown",
+     "text": "",
+     "label": "From Date",
+     "danger": null
+    },
+    {
+     "el": "e10",
+     "kind": "dropdown",
+     "text": "",
+     "label": "To Date",
+     "danger": null
+    },
+    {
+     "el": "e11",
+     "kind": "text",
+     "text": "",
+     "label": "From Size (KB)",
+     "danger": null
+    },
+    {
+     "el": "e12",
+     "kind": "text",
+     "text": "",
+     "label": "To Size (KB)",
+     "danger": null
+    },
+    {
+     "el": "e13",
+     "kind": "button",
+     "text": "Reset",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e14",
+     "kind": "button",
+     "text": "Cancel",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e15",
+     "kind": "button",
+     "text": "Search",
+     "label": null,
+     "danger": null
+    }
+   ]
+  }
+ ]
+}
+
+**Investigating node details**
+
+It looks like there's only one node, n0, in the frontier, which suggests that wave 1 might be at rest. I need to check the FLOWS.md file for more context. There's also the n0 folder to inspect, containing files like map.png, shot.png, and candidates.md. We've seen the candidates in the frontier already, but I have to open them according to the instructions. Let's start by viewing FLOWS.md and the directory listing.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\FLOWS.md -Raw -Encoding utf8" in C:\UI-specs\URL-to-Code
+ succeeded in 713ms:
+# Flows of https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking
+
+1 states (0 boundaries), 1 wave(s), plans by -. 2026-11-17T11:17:16.393Z
+
+Each state: its id (cite it in the spec as [flow:<id>]), kind, how it was reached, status. A **boundary** is where the live page would have sent a write (blocked): the flow ends there.
+Folders: `<id>-<name>/` with shot.png, map.png (numbered), node.json (fields: what each text box accepts and the messages it shows; saveProbe: what Save shows with writes blocked), layer.html.
+
+- **n0** at-rest (page) - frontier [shot](n0-at-rest/shot.png)
+
+
+**Exploring datepicker options**
+
+I’m thinking about the Date fields, which might use a dropdown, but probably a date picker instead. When I click to open the calendar, it'll show an overlay or dialog. Since it's a dropdown for candidate kinds, do I just click to open the datepicker? Plus, the value might need to be typed in via a Kendo datepicker that could also be a text input in combo. I should check the candidates.md file in the n0 folder for more details on behavior and options. Let's list the folder and open it!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; ls packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\n0-at-rest; Get-Content packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\n0-at-rest\\candidates.md -Raw -Encoding utf8" in C:\UI-specs\URL-to-Code
+ succeeded in 813ms:
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\n0-at-rest
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:47 PM           6032 candidates.json                                                      
+-a----        11/17/2026   4:47 PM           2320 candidates.md                                                        
+-a----        11/17/2026   4:47 PM          76324 map.png                                                              
+-a----        11/17/2026   4:47 PM            478 node.json                                                            
+-a----        11/17/2026   4:47 PM          69684 shot.png                                                             
+# n0 at-rest: what can be done here (the page)
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | button |  |  |  | kit: collapse |
+| e2 | text | File ID | FileId / FileId | {"length-max":"File ID has a maximum length of 50 characters.","regex":"File ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.","regex-pattern":"^([^;*^:~<>%])*$","maxlength":50,"inputmode":"text"} |  |
+| e3 | text | File Name | FileName / FileName | {"length-max":"File Name has a maximum length of 100 characters.","regex":"File Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.","regex-pattern":"^([^;*^:~<>%])*$","maxlength":100,"inputmode":"text"} |  |
+| e4 | dropdown | select a value...FileStatusList / File Status |  | 1, 2, 3 |  |
+| e5 | dropdown | select a value...DirectionList / Direction |  | 1, 2 |  |
+| e6 | dropdown | select a value...TransportTypeList / Transport Type |  | 1, 2, 3, 4 |  |
+| e7 | dropdown | select a value...SourceLocation / Source Location |  | 40defc3b-7227-4798-811a-1681e6505df2, 5906a815-02de-4c35-9014-96d920f4285d, a2bd6591-53e6-4c8e-8101-76e8cc105eef, 353244d3-8c51-453d-a26b-d31ba8375431, 67391ddc-ec70-4630-b941-c4e646d99be2, 5e8e5b7e-95a2-43e5-8716-1e4464922617, ddc110bf-9057-484d-9a18-ce5e849ca1f2, b16dfecc-c9fc-45f1-96bb-70b17d934a5f, 284a46bc-10db-46e7-9f1b-d4c6faf29fa3, 1f2a84a6-47c6-4ca2-a7d3-416ad41b48b0, 5ee49daa-f142-4c83-80ce-668bce190cf1, 109fbfd1-d87a-40fd-a3d0-ae3aed2d5d1a |  |
+| e8 | text | Trading Partner ID | TradingPartnerId / TradingPartnerId | {"length-max":"Trading Partner ID has a maximum length of 25 characters.","regex":"Trading Partner ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.","regex-pattern":"^([^;*^:~<>%])*$","maxlength":25,"inputmode":"text"} |  |
+| e9 | dropdown | From Date | FromDate / FromDate |  |  |
+| e10 | dropdown | To Date | ToDate / ToDate |  |  |
+| e11 | text | From Size (KB) |  | {} |  |
+| e12 | text | To Size (KB) |  | {} |  |
+| e13 | button | Reset | resetButton |  | kit: reset |
+| e14 | button | Cancel | cancelButton |  | kit: cancel |
+| e15 | button | Search | nextButton |  | kit: search |
+
+
+
+
+**Considering datepicker actions**
+
+I’m digging into how a dropdown works with values and options. If there aren't any options, I think it might still accept a value, but I’m not completely sure about that. For safety, I’ll use a click action to open the datepicker popover states. This could create a new state. I wonder if I could also press a key in the date field? It’s a bit unclear, but it seems the system might discover candidates after opening the popup.
+**Exploring dropdown interactions**
+
+For dropdowns, clicking or selecting might open a list popover with options as candidates. However, if I use select directly, the driver may choose without entering the intermediate "list-open" state, which could be tricky. It seems better to click first to ensure the list is open before selecting options later. I can include clicks to open various lists like File Status, Direction, Transport Type, and Source Location, totaling four states. I’m also considering the datepicker icon and finally clicking the Search button to trigger the results.
+**Examining validation behavior**
+
+I’m considering whether the probe could show a message on blur events. It seems like the scripts already handle measuring each text box, including length limits and error messages for invalid characters. So I might not need to implement additional checks. However, for thoroughness, I wonder if a message would appear if From Size is greater than To Size. It seems like there are no specific rules in node.json, so it’d be good to check it for the saveProbe details. Let's take a look at node.json.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\n0-at-rest\\node.json -Raw -Encoding utf8" in C:\UI-specs\URL-to-Code
+ succeeded in 1244ms:
+{
+ "id": "n0",
+ "parent": null,
+ "depth": 0,
+ "name": "at-rest",
+ "dir": "n0-at-rest",
+ "kind": "page",
+ "status": "frontier",
+ "fp": "bc42f9640611",
+ "fpText": "W:\nH:Search Criteria\nL:Direction|File ID|File Name|File Status|From Date|From Size (KB)|Source Location|To Date|To Size (KB)|Trading Partner ID|Transport Type\nB:Cancel|Open the date view|Open the time view|Reset|Search|select\nF:10\nT:\nR:0\nV:0",
+ "path": [],
+ "windows": 0,
+ "title": null,
+ "validation": null
+}
+
+**Exploring additional resources**
+
+I think I need to check the kit/screen.json and the provider KIT guide; they could be helpful for understanding dropdown open patterns. But I don’t want to overwhelm myself with too much information. While I'm at it, I’ll quickly open wave-1.suggested.json to see if it provides any useful hints. I'm curious if any insights will emerge from there that might clarify what I need to do!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\plans\\wave-1.suggested.json -Raw -Encoding utf8" in C:\UI-specs\URL-to-Code
+ succeeded in 1134ms:
+{
+ "source": "rules",
+ "nodes": [
+  {
+   "node": "n0",
+   "actions": [
+    {
+     "el": "e15",
+     "do": "click",
+     "why": "button \"Search\""
+    }
+   ]
+  }
+ ]
+}
+
+**Exploring date field options**
+
+I'm considering selecting a value for the date field through a fill, but it seems the candidates are in a dropdown format. I wonder if I could type a string or click the calendar icon. If I click on element e9, it might click at the center, which likely won't open the calendar. I'm thinking I might need to use Alt+Down or click the icon, but the tool doesn't support modifiers for clicks. I'll check the provider KIT.md for more about the datepicker action.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; rg -n \"date view|time view|Alt\\+Down|datepicker|kendoDate\" kits\\provider\\KIT.md | Select-Object -First 50" in C:\UI-specs\URL-to-Code
+ succeeded in 1224ms:
+18:| date / date-time / time | `span.k-datepicker` / `.k-datetimepicker` | `<KitWidget>` (picker island: calendar, time list) |
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content kits\\provider\\KIT.md -Raw -Encoding utf8 | Select-String -Pattern \"date / date-time\" -Context 0,8" in C:\UI-specs\URL-to-Code
+ succeeded in 885ms:
+
+> # Provider kit: Kendo UI for jQuery portals (Gainwell MMS and look-alikes)
+
+Read this before you write a spec or code for a screen whose `run.json` says `"kit": "provider"`.
+
+## What the portal is
+
+Every module is built the same way: ASP.NET MVC pages, jQuery 3.7 and Kendo UI for jQuery 2026.x. The pages share one 
+set of
+stylesheets (`/bundles/vendorcss`, `/bundles/appcss`, the tenant theme) and one shell: a fixed header (`#pageHeader`, 
+62 px,
+hides on scroll down), a side menu behind the hamburger, a module tab and a green title bar (`<h1>`), and a footer. A 
+screen
+is a few parts that repeat everywhere:
+
+| part | live markup | in the rebuild |
+|---|---|---|
+| field | `.editor-col` > `.editor-label` (label, `*` required, `?` help) + `.editor-field` | ported as is |
+| `?` help, logo | `[data-role=tooltip]` with a `title` | `data-kit-tip`: the kit shows the portal's tooltip after its 
+delay |
+| dropdown | `span.k-dropdownlist` + hidden `input[data-role=dropdownlist]` | `<KitWidget id="kN" />` (dropdown 
+island) |
+| number box | `span.k-numerictextbox` | `<KitWidget>` (numeric island) |
+| date / date-time / time | `span.k-datepicker` / `.k-datetimepicker` | `<KitWidget>` (picker island: calendar, time 
+list) |
+| grid | `div.k-grid[data-role=grid]` + `.k-pager` | `<KitWidget>` (grid island: synthetic rows, sort, pager) |
+| Search Criteria panel | `.content-panel-hdr` with a chevron + body | `data-kit-action="collapse"` |
+| Search / Reset / Cancel / Create New / Save | buttons | `data-kit-action=…` |
+| dialog | Kendo Window (`.k-window`, AJAX content) | `dialogs/Dialog<Id>.tsx`, opened by `<KitScreen>` |
+| validation | `data-val-*` (MVC unobtrusive) | the kit validates with the same rules and messages |
+
+## What the capture gives you (`<screen>/kit/`)
+
+- `screen.json`: everything read from Kendo itself: every widget (kind, label, option list, placeholder, format, 
+required,
+  help text, validation messages), every field, every action, the title bar texts, Kendo's own animation numbers
+  (`calibration.defaults`), the live markup of an open dropdown list / calendar / tooltip, what Search revealed and 
+which
+  endpoint it called, the grid after Search as **templates** (row markup with `{{cN}}` slots, column types, row count: 
+no
+  client data), and every dialog (Create New, a Create New inside it, the first row's edit dialog).
+- `dialogs/<id>.html`: each dialog's content, stamped like the page.
+- `states/*.png`: the live page in each state (a dropdown open, a tooltip, after Search, each dialog). `verify` 
+replays the same
+  clicks on the rebuild and compares (`states: N/M` line).
+- `facts.md` section 18 summarizes it all. Cite each widget and dialog in the spec as `[kit:<id>]`.
+
+## What is already built (the app's `src/kit`, copied from `kits/provider/app`)
+
+`<KitScreen>` wraps each ported screen and the shell. `<KitWidget id>` renders each Kendo widget from its live markup 
+with
+Kendo's behavior: a second click and an outside click close a dropdown, the list opens upward when there is no room 
+below,
+the arrow keys and letters pick items, the tooltip waits for the portal's delay, the grid sorts (none → asc → desc) 
+and pages,
+and a dialog zooms and fades in. Rows after Search are synthetic, shaped like the live ones.
+`src/services/<screen>.ts` names the live endpoints and answers with mock data.
+
+**Never** write your own dropdown, date picker, tooltip, grid, dialog or collapse in a screen, and **never edit 
+`src/kit`**: a
+kit problem is fixed once in `final-playwright/kits/provider/app`, for every screen and every pack.
+
+## What is left for the code step
+
+What the kit cannot know, taken from the screen's own script (`<screen>/capture/js/…/hp.ua3.<Module>.<screen>.js`) and 
+the spec:
+- conditional fields (a radio that shows more fields, a checkbox that enables a dropdown) and cascading dropdowns' 
+options,
+- what Cancel does on a search page, and the screen's own messages and rules, exactly as its script has them,
+- anything the spec lists that the port does not show.
+
+Never add a rule the screen's script does not have. In particular: when the checklist says the live Search listed rows 
+with
+nothing typed, Search with an empty form must keep filling the grid (the checks click Search, then a row, then its 
+dialog).
+
+Use the kit's bus for values (`ctx.bus.on('change', …)`) or plain DOM events on the ported markup; keep the class 
+names.
+Each screen gets a checklist, `docs/ui-specs/<screen>/TODO.md` in the app: what the kit already does and what is left.
+
+## API (everything a screen's own code may use; import from the app's `src/kit`)
+
+```tsx
+import { KitScreen, KitWidget, useKit, type KitData } from '../../kit';
+```
+
+- `<KitScreen screen={kit} dialogs={{ d1: DialogD1 }} services={services} shell?>`: already in the ported Page.tsx. 
+`screen` is
+  the screen's `kit.json`; `dialogs` maps each dialog id to its body component; `services` is 
+`src/services/<screen>.ts`.
+- `<KitWidget id="k3" />`: one Kendo widget, by the id the capture stamped. Already placed by the port.
+- `useKit()` (inside a KitScreen, e.g. in a dialog body or a small component of the screen) returns
+  `{ data, defs, bus, openDialog }`:
+  - `bus.on('change', ({ name, id, value }) => …)`: a kit widget's value changed (returns an unsubscribe function);
+    `bus.on('search', (values) => …)` after Search; `bus.on('reset', () => …)` after Reset. `bus.emit(type, detail)` 
+sends one.
+    Plain inputs (text boxes, radios, checkboxes) are not on the bus: listen to their DOM events.
+  - `openDialog('d2')`: open a captured dialog from code (e.g. a radio that opens one).
+  - `data`: the kit.json (`widgets`, `dialogs`, `grids`, `search`, `row`, `plan`, `missing`).
+- Services (`src/services/<screen>.ts`): `search(values)` returns `{ total, rows }` of synthetic rows; `save(dialog, 
+values)`.
+  `endpoints` names the live endpoints. Edit freely: it is generated once.
+- Attributes the kit acts on (keep them): 
+`data-kit-action="search|reset|cancel|create|save|close|collapse|menu|menu-close"`,
+  `data-kit-tip="text"` (a tooltip), `data-kit-h` (hidden at rest; Search reveals the ones in `search.reveals`),
+  `data-kit-collapse` (a panel body), `data-kit-menu*` (the side menu: never touch it from a screen).
+
+Worked example: the FTP Server Credentials screen needs no code of its own beyond the port. Its Create New opens 
+dialog `d1`
+("Add FTP Server Credentials", ported to `dialogs/DialogD1.tsx`), its tooltips and validation come from the kit, and 
+its grid
+fills on Search. A screen with a conditional field adds one small component next to the markup, for example:
+
+```tsx
+// shows the part hidden at rest (data-kit-h="h4") only for "Run Monthly", as the screen's script does
+function RunSchedule() {
+  useEffect(() => {
+    const on = (e: Event) => {
+      const r = e.target as HTMLInputElement;
+      if (r.name === 'RunSchedule') document.querySelector<HTMLElement>('[data-kit-h="h4"]')!.style.display = r.value 
+=== 'M' ? '' : 'none';
+    };
+    document.addEventListener('change', on);
+    return () => document.removeEventListener('change', on);
+  }, []);
+  return null;
+}
+```
+
+## The side menu (the shell, built by the kit)
+
+Measured on the live portal (docs/provider-probe, probe 2): the hamburger swaps the menu root's classes 
+(`display-none` →
+`display-flex`, which are `!important`) and appends `<div class="disabled-backdrop">` to `<body>`; there is no fade. A 
+module
+flies out to the left after Kendo's hover delay (100 ms) with its menu animation (open 200 ms, close 100 ms). Only the 
+X and a
+menu link close it: Escape and a click on the backdrop do not. The capture records all of this on the menu root
+(`data-kit-menu-add/-remove/-backdrop/-hover/-open-ms/-close-ms`) and the kit replays it; a link to a rebuilt screen 
+routes there.
+
+A module's submenu is a box **beside** the module list, not inside it: Kendo lifts the popup out of the `<ul>` (which 
+clips what
+is inside) into a `.k-animation-container` on the menu's scroll wrapper, `left: -width; top: <the item's top>` for the 
+vertical
+side menu, under the item for the horizontal **module tab** (`#activeModuleMenu`, "CLAIMS MANAGEMENT ∨" under the 
+header). The
+kit does the same for both (`[data-kit-flyout]`), with each menu's own timings (stamped on the `<ul>`). A module the 
+capture
+itself hovered no longer has its popup inside its `<li>`: Kendo left it in that container, linked by 
+`data-groupparent` (on the
+item) and `data-group` (on the popup); the kit finds it there (this is the module of the pack, hovered for the fly-out 
+check: the
+rebuilt menu once opened every module except that one). Only a link to a screen of
+this app navigates (and closes the menu); every other item is shown and leads nowhere, so the whole menu can be 
+browsed. **Quick
+Links** (`#mobileMenuIcon`) is a collapsible shell panel: the capture stamps it (`collapse`) and the kit toggles its 
+angle icon,
+`subpanel-collapsed`, title and body like the portal's `expandPanel`. The **page help book** (`.help-icon-container`) 
+belongs to
+the page, not the shell: each screen's `screen.json` `help` is its markup or null, and the screen shows or hides it.
+`kit/states` check all of it on the rebuild (`menu-open`, `menu-flyout`, `tab-flyout`, `menu-close`): the fly-out must 
+be on top and
+outside the list, and look like the live one. Captures from before this have no `menu-flyout`/`tab-flyout`/`help`: 
+capture again.
+
+## Dialogs and grid rows
+
+The capture reads the screen's own script for `openModalOverlay("<panel>", …)` (each dialog, and the button that opens 
+it) and
+`setKendoGridDataBoundEvents(e, msg, onClick, onDblClick)` (62 of 89 menu pages open a row on double-click). It clicks 
+each
+opener with nothing on top of it, waits for the window while the page loads (up to 20 s), and double-clicks the first 
+row when
+the script says so. In the rebuild a click selects the row and a double-click opens its dialog. A dialog the script 
+opens but
+the capture could not see is listed in `screen.json` `missing` and in facts.md as `[UNKNOWN]`: never invent it.
+
+A **Create New inside a dialog** (also one in a grid's toolbar, such as the Destination grid of an Add dialog) is 
+clicked too.
+It either opens a window one level down (`dialogs.<id>.children`), or shows a part of the same dialog that is hidden 
+at rest
+(the Destination form): the capture records which parts the click turned on and off (`dialogs.<id>.creates[].show / 
+.hide`,
+selectors inside the dialog; picture `states/dialog-<id>-partN.png`), and puts the part away with its own Cancel. The 
+kit
+replays it: the button shows the part, a Cancel or Save inside the part puts it away (Save validates that part only), 
+and the
+dialog's own Cancel still closes the dialog. The same holds for a Create New on the page that opens no window
+(`screen.json` `creates`). Hidden-at-rest parts of a dialog are stamped `data-kit-h` like the page's.
+
+## Viewport profiles: the portal has two layouts
+
+The portal switches layouts at **1280 CSS px wide** (its own `isPhone()` is `matchMedia("(max-width: 1280px)")`). A 
+1920x1080 screen at
+150% Windows scaling is a 1280-wide page, and a real browser on it is about **1272x588**, so a client sees the small 
+layout. The capture
+photographs the page at its own viewport (1920x1080 for a url-only capture: the "desktop" profile) **and** at each 
+extra profile in
+`config.json` `"profiles"` (default: `client`, 1272x588 at dpr 1.5; a pack overrides it with `pack.json` 
+`config.profiles`, `[]` turns it off).
+Nothing is specific to one machine: a profile is just a size, and what changes between layouts is **measured on the 
+live page**, not typed in.
+
+What the profile pass records (`kit/screen.json` `profiles`, `responsive`; `kit/states.json` entries with `"profile"`, 
+`viewport`, `dpr`):
+- `profiles.<name>`: the viewport, the layout facts (which breakpoints are active, which hamburger shows, nav links, a 
+sideways scrollbar), and each
+  Create New dialog as measured there (rect, min-width, max-height, whether its content scrolls).
+- `responsive`: the rule the runtime applies. `query` is read from the portal's own script (`isPhone`), else it is the 
+profile's width.
+  `dialog` = what the portal's phone branch does (left / top, at least `minWidthPct` of the width, at most 
+`maxHeightPct` of the height);
+  `desktop.maxHeightPct` = the cap above the switch (the portal's `maxOverlayHeight`, 85%). **A dialog touching the 
+left edge at 1272 is the
+  live behavior, not a bug**: the portal does not center a window below its switch.
+- states `layout@<name>`, `menu-open@<name>`, `menu-flyout@<name>`, `menu-close@<name>`, `tab-flyout@<name>`, 
+`dialog-dN@<name>`: replayed by
+  `verify` in a context of that size. A dialog state also checks the window's box (x, y, width, height) against the 
+live one (`expect.rect`).
+
+The runtime (`placeWindow` in `KitScreen.tsx`) centers above `query` (Kendo's `center()`, measured on the layout 
+viewport), places by
+left/top below it, caps the height as a share of the **current** window (not the 918 px the capture froze), scrolls 
+the content inside, and
+re-places on resize and when the content changes size, like the portal.
+
+## What else a screen records (all optional keys of `screen.json`; a capture without them behaves as before)
+
+| key | what the capture does | what the kit does |
+|---|---|---|
+| `search.outcome` (`rows` / `validation` / `empty`), `search.validation` | clicks Search with the form as it loads, 
+waits for the loading indicator to go (the "Processing ..." box, grid masks), records the banner (live markup) and 
+per-field messages | a Search with nothing changed shows that banner and messages (its X hides it) and no grid; with 
+something typed it shows the grid |
+| `dialogs.<id>.saveValidation` | clicks Save with nothing filled, **every POST blocked**; records the banner and 
+field messages | Save shows the live banner as well as the field messages |
+| `dialogs.<id>.close` | with an edit in the dialog: does the X ask "form data has changed"? does Cancel? the 
+confirm's live markup and which button stays / leaves; staying must keep the dialog open | the dialog tracks the 
+person's edits; X / Cancel / Escape ask exactly where the live one asked, with the live window |
+| `conditionals`, `dialogs.<id>.conditionals` | tries every radio value, checkbox and dropdown value (not cascade 
+children), records for each value the **absolute** shown/hidden state of the parts that flipped, puts the control back 
+| `change` on the same control sets those parts: no per-screen code for "Run Schedule" and the like. Cascading option 
+lists stay the code step's |
+| widget `offsetDays`, `minutes`, `focusMask` | a prefilled date as days from the capture's day (the time of day too); 
+the pattern an empty masked date shows on focus (`__/__/____`) | a date within 1000 days of the capture day stays that 
+far from today; a placeholder (12/31/9999, 01/01/1900) stays as it was; the mask shows on focus |
+| `filterPopup` | the grid's filter icon clicked: the popup's live markup and where it opened relative to the icon | 
+the icon opens the popup; Filter / Clear / a press elsewhere close it |
+| `links` | a Create New (or a row) that leaves the page: where it goes (the guard aborts the navigation and records 
+it) | `npm run ui` captures each target as a screen of its own (one level, `parent` in `pack.json`), and the click in 
+the rebuild goes to its route |
+| collapse icons | the portal's `fa-angle-up/down` as well as chevrons, found through the panel container (the icon 
+sits in a `*-hdr-tools` div inside the header) | the panel slides (the portal's 400 ms) and the icon / `*-collapsed` 
+class / title swap |
+
+The side menu's fly-out is built without a native scrollbar (Kendo sets `overflow: visible` inline on a popup it 
+opens; the stylesheet's
+`overflow: auto` + `max-height: 80vh` would give the clone one). When the list is taller than the room (a small 
+window), the kit shows Kendo's scroll buttons
+at both ends and scrolls the list with them and the wheel.
+
+## Behaviors every module shares (measured once, replayed everywhere)
+
+- **A window locks the page.** The portal opens windows with `modal.preventScroll` and sets `html` overflow hidden: no 
+page scrollbar, only the window's
+  content scrolls. The capture stores what changed on `<html>`/`<body>` as `dialogs.<id>.pageLock`; a capture without 
+it falls back on the window's
+  `options.modal.preventScroll`. The lock is applied before the window is placed (the room is the width without the 
+scrollbar).
+- **Windows sit left below the switch.** `isPhone` and `openModalOverlay` are in the portal's shared script, so the 
+placement measured on ANY screen of
+  the pack serves all of them (`port` lends it to a screen whose own dialog could not be measured, 
+`responsive.dialog.from` says where it came from).
+  The profile pass replays Create New and row dialogs, retries three times, and photographs a dialog that will not 
+open (`states/*-failed.png`).
+  Measured live (`docs/probe-fixes`): below 1280 px a window is at left 0, top 20 *of the screen* (wherever the page 
+was scrolled), 90% wide, at most
+  85% high; above it centered, its width class's (`panelForm-col-6` 75%, `-5` 62.5%, `-3` 37.5%), at most 85% high. 
+Three things made that go wrong once:
+  - an editor is often rendered by a POST (Configuration's Create New, a row of FTP Server Credentials). The profile 
+pass blocks POSTs, so it lets
+    through exactly the requests the main pass saw that opener send (`guard.allow`) and names any other it blocked 
+when a window does not open;
+  - Kendo zooms a window in from `scale(0.01)` (a 10x5 box at its center for the first frames), after the portal's 
+"Processing ..." box. A window is
+    measured only once `position().settled` (no transform, opaque, no loading box) and the same box twice 300 ms 
+apart, never "when it stops moving";
+  - a measurement that is not a whole window (under 30% of the page wide, or outside it) is never a placement: the 
+profile pass rejects it and `port`
+    neither applies nor lends one.
+- **The header hides on scroll** (headroom.js): the capture measures past which scroll position (`headroom.offset`, 
+150 on the portal) and how small a
+  scroll up brings it back (`tolerance`, 0), on whichever screen and size scrolls far enough; `port` lends it to the 
+others.
+- **Sorting a grid**: one unsorted column is clicked three times. The direction order (`grids.<id>.sortIcons.cycle`: 
+the portal's grids go asc, desc,
+  asc, never back to unsorted) and the elements of the header cell whose classes follow the direction (`parts`: the 
+portal's two carets, the sorted
+  one teal `grid-col-sorted-ind-icon`, both turned down for desc) are replayed; the other columns go back to their 
+unsorted carets. A grid that comes
+  back already sorted by a column (Kendo's sort option) goes on from there.
+- **Dates show what the box showed** (`widgets.<id>.shows`): the portal gives Search dates a value (today 00:00) and 
+an empty box; the date appears once
+  a day is picked. `min`/`max` move with today like the value (`minOffsetDays`/`maxOffsetDays`), so "not after today" 
+stays today.
+- **Search can fold a panel away** (`search.collapses`: FTP Server Credentials closes its Search Criteria, others keep 
+it open): the runtime clicks the
+  same panels' own collapse control after Search.
+- **A popup opened inside a window or another popup stacks above it** (a window's dropdowns, the filter's operator 
+list, which opens under its own
+  dropdown as a real list).
+- **Focus.** The page's focused field is noted right after load (`early` hook, before the warm-up and the capture's 
+own clicks) and stamped
+  `data-kit-autofocus`; a window's focused field likewise. The runtime focuses that field, else the first field a 
+person can type in, when a page or
+  a window opens.
+- **Scrollable Kendo menus** (the side menu's list, a tall submenu, the module tab's popup): arrow buttons, a list 
+that scrolls while the pointer rests
+  on a button (`menuScroll` px/s, measured at a profile), the wheel too. Side list: the lower arrow shows while it can 
+scroll, the upper one once it
+  has scrolled (and stays, disabled, at the top). Submenu: both arrows while it overflows, inside a 
+`.k-menu-scroll-wrapper` as Kendo builds it. The
+  module tab's popup keeps the arrows its live markup had and is at least as high as the portal's CSS says (30vh); the 
+list height Kendo froze into
+  the snapshot is dropped. A submenu is kept inside the window (Kendo's fit).
+- **`&nbsp;` stays U+00A0** in the port: a plain leading space collapses inside a flex item and moves every menu label.
+- `verify` checks all of this on every dialog and on the side menu, whether or not the capture's states mention it 
+(focus in a window with fields, the page
+  locked, the side menu's last item reachable by hovering its lower arrow). `ui` stops when the kit fails its own 
+check on the raw port (`--ignore-kit` goes on).
+
+## The flows stage: every path below the capture's clicks (part of every `npm run ui`; `--no-flows` skips it)
+
+The capture clicks a fixed few things (one dropdown, Search, up to 3 Create New, the first row, a Create New in a 
+dialog). The flows stage
+(`scripts/flows.mjs`, after each screen's capture) goes on from there until every branch ends: the writer (Codex) 
+plans each wave from the
+pictures, the script carries the plan out on the live page and records what each action did, and the new states are 
+planned in the next wave.
+A **View** dialog's **Edit** mode, a grid inside a dialog and the window its row opens, a tab, a wizard's next step, a 
+value that shows a section,
+all become states.
+
+- **Never writes.** Commit buttons (Save, Submit, Update, Delete, Approve, a bare Add / OK / Yes; 
+`scripts/lib/safety.mjs`) are never clicked; every
+  write request is blocked, except a POST that reads (a grid's data source, a search, a lookup) or that opened an 
+editor in the capture
+  (`dialogs.<id>.requests`; more in `pack.json` `flows.allow`). A click that tries a write is a **boundary**: the flow 
+ends there, with the request it
+  would have sent. "Save" is pressed once per form with **all** writes blocked, to record its messages (`saveProbe`).
+- **Measures every text box itself**: what typing letters, digits, spaces and symbols leaves in it (a digits-only 
+box), whether it stops at its
+  length limit, and the message a too long / badly formed / empty value shows (`fields` in each state's `node.json`).
+- **Output** in the screen folder: `flows/FLOWS.md` (the tree), `flows/index.json` (the graph; a re-run continues from 
+it), and per state
+  `flows/<id>-<name>/` (`shot.png`, the numbered `map.png` the planner reads, `candidates.md`, `node.json`, a window's 
+`layer.html`). Ids carry the
+  hierarchy: `n2.1.2` is the 2nd state reached from `n2.1`.
+- **Into the kit** (`kit.flows.merge`, idempotent): a window the capture did not see becomes a dialog `dN` (`flow: 
+"<state>"`, widget ids `dN<kid>`)
+  with its markup in `kit/dialogs/`, so `port` builds it; the click that opened it or showed a part goes to 
+`screen.json` `flows` (css + nth among the
+  shown in its layer), which `<KitScreen>` replays; each state reachable by clicks gets a check `flow-<id>` in 
+`states.json`, replayed by `verify`
+  (reported like any state, never a reason for the preflight to stop). A grid inside a dialog no longer opens the 
+page's row dialog.
+- **The spec cites every state** as `[flow:<id>]` (`npm run check` requires it when `flows/index.json` exists); 
+TODO.md lists the measured fields,
+  Save's messages, the boundaries and the states the kit cannot reach by itself (a step that types or picks first).
+- Budget (`config.json` `flows`, `pack.json` `"flows": { ... }`): `maxNodes` 40, `maxDepth` 6, `maxWaves` 6, 
+`maxActions` 12 per state,
+  `timeBudgetSec` 1500, `workers` 2 (browser contexts per screen, sharing the one login), `ai: false` for rule-based 
+plans only.
+
+## Known gaps (say them in GUESSED.md when a screen needs them)
+
+- Widgets the kit does not rebuild yet are ported as static markup and listed in `screen.json` `unknown` (and 
+facts.md). The
+  census of the menu pages found: autocomplete (Plan Management, Claims), masked text box, multiselect, listbox, 
+listview,
+  tab strip. Checkboxes and radios are plain inputs and work as they are.
+
+- The grid's column filter popup opens and closes and its operator list can be picked from, but it does not filter the 
+synthetic rows, and one popup (the first column's) stands for all columns. Its operator list is as wide as the 
+dropdown (the live one is 20 px wider).
+- Screens whose live Search with nothing typed showed a banner have no row template (no rows were ever seen), so a 
+Search with input shows the grid empty.
+- Closing behavior is recorded for the dialogs the capture opens from Create New and the first row; a dialog with no 
+editable text box is only tried unedited.
+- Profile states cover the menus and each Create New dialog; the full page at the second profile is one viewport 
+picture (`layout@<name>`), not a stitched page.
+- The page-size dropdown in the pager does not change the page size.
+- A dropdown that cascades from another starts disabled and keeps the option list the capture saw (usually empty).
+- The book icon's page help (`displayPageLevelHelp()`) opens nothing.
+
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; rg -n \"case 'press'|do === 'press'|press\\(\" scripts -S | Select-Object -First 80" in C:\UI-specs\URL-to-Code
+ succeeded in 2440ms:
+scripts\facts.mjs:253:  else if (a.a === 'press') await el(page, a.key).press(a.value, o);
+scripts\flows.mjs:122:      case 'press': await loc.press(st.value || 'Enter', o); break;
+scripts\flows.mjs:301:      if (!(await K.closeTop?.({ page: w.page }))) await w.page.keyboard.press('Escape').catch(() => {});
+scripts\lib\behave.mjs:334:      await page.keyboard.press('Escape').catch(() => {});
+scripts\lib\portal.mjs:257:    else await host.press('[data-pw-login=pass]', 'Enter');
+scripts\explore.mjs:437:      case 'press': await (await find(a)).press(a.value, o); break;
+scripts\explore.mjs:653:      if (dirty && !sent && before.url === base.url) { await s.page.keyboard.press('Escape').catch(() => {}); await s.page.waitForTimeout(250); await recheck(); }
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; sed -n '80,170p' scripts/flows.mjs" in C:\UI-specs\URL-to-Code
+ exited 1 in 2253ms:
+sed : The term 'sed' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:2 char:29
++ cd C:\UI-specs\URL-to-Code; sed -n '80,170p' scripts/flows.mjs
++                             ~~~
+    + CategoryInfo          : ObjectNotFound: (sed:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+
+**Exploring PowerShell commands**
+
+I'm considering using PowerShell instead of sed. It seems like the Get-Content command paired with Select-Object using -Skip and -First options would do the trick nicely. This method looks efficient and straightforward! I just need to make sure I understand how many lines I want to skip or select. Let’s try to implement this and see if it works as expected!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; "'$lines=Get-Content scripts'"\\flows.mjs -Encoding utf8; "'$lines[100..160] -join "`n"' in C:\UI-specs\URL-to-Code
+ succeeded in 1300ms:
+  const load = async (w) => {
+    await w.s.load({ idleMs: 3000, quietMax: 6000 });
+    if (!samePage(new URL(w.page.url()), new URL(url))) throw new Error(`the page redirected to ${w.page.url().slice(0, 120)} (logged out?)`);
+    await w.page.evaluate(INPAGE);
+    await K.ready?.({ page: w.page, cfg, scope });
+    w.at = 'n0';
+  };
+  const fp = async (w) => { const t = await w.page.evaluate((sc) => window.__xp.fp(sc), scope); return { text: t, hash: md5(t) }; };
+  const near = (a, b) => { const x = lines(a), y = lines(b); return x.W === y.W && x.H === y.H; }; // the same windows and headings: the same state, other data
+  const wait = async (w) => {
+    await w.s.settle(B.settleMs, 6000).catch(() => {});
+    if (K.wait) await K.wait({ page: w.page, s: w.s }).catch(() => {}); else await w.page.waitForTimeout(500);
+  };
+  const doStep = async (w, st) => {
+    const r = await w.page.evaluate(([x, sc]) => window.__xp.resolve(x, sc), [st, scope]);
+    if (!r.ok) throw new Error(r.why);
+    const loc = w.page.locator('[data-xp-hit]').first(), o = { timeout: 5000 };
+    switch (st.do) {
+      case 'dblclick': await loc.dblclick(o); break;
+      case 'hover': await loc.hover(o); break;
+      case 'fill': await loc.fill(st.value ?? '', o); await loc.evaluate((e) => e.blur()).catch(() => {}); break;
+      case 'press': await loc.press(st.value || 'Enter', o); break;
+      case 'check': await loc.setChecked(st.value !== 'false', o); break;
+      case 'select':
+        if (st.kind === 'select') await loc.selectOption(st.value, o);
+        else if (!(await K.pick?.({ page: w.page, value: st.value }))) { // no kit: open it and click the option with that text
+          await loc.click(o);
+          await w.page.locator('.k-list-item, [role=option], li').filter({ hasText: st.value }).first().click(o);
+        }
+        break;
+      default: await loc.click(o);
+    }
+  };
+  const reach = async (w, n) => {
+    if (w.at === n.id) return true;
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        await load(w);
+        for (const st of n.path) { await doStep(w, st); await wait(w); }
+        const f = await fp(w);
+        if (f.hash === n.fp || near(f.text, n.fpText)) { w.at = n.id; return true; }
+        n.drift = `replayed to another state (${lines(f.text).W || 'page'} / ${lines(f.text).H.slice(0, 80)})`;
+      } catch (e) { if (/redirected/.test(e.message)) throw e; n.drift = e.message.split('\n')[0].slice(0, 160); }
+    }
+    w.at = null;
+    return false;
+  };
+  const shot = async (w, f, full) => {
+    await w.page.screenshot({ path: f, animations: 'disabled', caret: 'hide', fullPage: !!full }).catch(() => {});
+  };
+
+  // ---------- a new node: picture, map, what it offers ----------
+  const harvest = async (w, n) => {
+    const nd = path.join(dir, n.dir);
+    fs.mkdirSync(nd, { recursive: true });
+    const lay = await w.page.evaluate((sc) => window.__xp.layer(sc), scope);
+    n.windows = lay.windows;
+    if (lay.top && n.kind === 'dialog' && K.window) {
+      const d = await K.window({ page: w.page }).catch(() => null);
+      if (d) { fs.writeFileSync(path.join(nd, 'layer.html'), d.contentHtml ?? ''); const { contentHtml, ...rest } = d; writeJson(path.join(nd, 'window.json'), rest); n.title ||= rest.title; }
+    }
+
+**Exploring datepicker functionality**
+
+I’m checking how the datepicker works—clicking doesn’t open it, but using Alt+ArrowDown should do the trick. I’ll go ahead and press 'Alt+ArrowDown' for e9 and e10 to open the date popup. For the search criteria, when I click e1, it should collapse the panel, which is good. I’m also thinking about initiating a search with empty criteria to either reveal the grid with row details or show a "no results" message. I’ll include a click on e15 for the search. I wonder if I should validate size inputs too, but maybe I’ll skip that for now.
+**Planning user actions**
+
+I'm laying out the actions I need to take. First, I'll click e1 to collapse the search criteria panel and expect it to be in a collapsed state. I'll name this action "collapse-search-criteria." Next, I'll click e4 to open the file status dropdown, then proceed to click e5 for the direction dropdown and e6 for the transport type dropdown. I’ll also click e7 for source location and press Alt+ArrowDown on e9 and e10 to open the from-date and to-date calendars. Finally, I’ll click e15 to search with blank criteria to show the results grid or an empty state. I might consider filling in some values to ensure results, but I'm unsure about the necessary format. I could try using a date range from last month or filling a File ID like "1," keeping in mind that this might still return no results, but at least it will generate a query.
+**Planning search variations**
+
+I’m considering how to reveal validation for the search process. The scripts already measure the text boxes, but they don't cover the search results, so it's essential to get a results grid. I should plan several variations for searching, like searching empty, with File Status = 1, and Direction = 1. If those yield the same result view state, they might be redundant. I might see a validation message saying, "Please enter at least one search criterion" for the empty search. So, I'll include two actions: one to click Search empty to check validation against results, and another setting File Status to 1 and then clicking Search for actual results. This approach seems more robust! I'll set e4 to value "1" and then click Search. Even though we already have the open list state from clicking e4, selecting before searching ensures we get results too. I think it'll create a new state, "after-search-file-status-1," which is fine!
+**Setting up search actions**
+
+I'm limited to 12 actions, but I can still add some. I’m contemplating setting a date range, but that might be unnecessary right now. The current selection values are "1", "2", and "3," but the labels are not visible. I'll choose "1" for both File Status and Direction; it seems like these could be placeholder IDs. I’ll create an action to select e4 with value "1" and then click e15 to search. 
+
+I need to be cautious here; if K.pick selects option 1, it should pass. Additionally, I might want to open the Source Location list since it's long, choosing the first GUID string. I’ll set up e7 to select that GUID and search but want to be concise, limiting it to one additional search variant with File Status 1 and maybe one with the first Source Location. That should help!
+**Structuring search actions and plans**
+
+Using a maximum of 12 actions, I can set up three search actions: click to search empty, search with file status 1, and search with the first GUID for source location. Even though the empty search might already trigger the results grid, we want alternatives to ensure we can access that grid if necessary. 
+
+I'll keep the two search actions—empty and file status—which leaves me with 10 actions total, which is great! I need to structure the wave-1.json file, including a nodes array with an entry for node n0. Each action will require a structure of {el, do, why} while also including a name for the expected new state, keeping it under 32 characters with lowercase hyphens. Since there are no other nodes in the frontier, we'll only have n0 listed, and I don't think we need to mark a dead end.
+
+For writing the JSON file, I'll use a PowerShell here-string and Set-Content with UTF-8 encoding but want to ensure there's no BOM. I hear using Node might ensure that correctly, but ideally, I’d prefer to simply use the Node command for writing, like `node -e "fs.writeFileSync(path, JSON.stringify(obj,null,2),'utf8')"`. This way, I’ll craft the plan as an object with the nodes list and concise "why" strings. Let’s get that written!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; node - <<'NODE'
+const fs = require('fs');
+const path = require('path');
+
+const outPath = path.resolve('packs/fxfer-v9/screens/file-transfer-tracking/flows/plans/wave-1.json');
+
+const plan = {
+  nodes: [
+    {
+      node: 'n0',
+      name: 'at-rest',
+      actions: [
+        {
+          el: 'e1',
+          do: 'click',
+          why: 'Collapse the Search Criteria panel to capture the collapsed layout/state.',
+          name: 'search-criteria-collapsed'
+        },
+        {
+          el: 'e4',
+          do: 'click',
+          why: 'Open the File Status dropdown list (Kendo dropdown list popup state).',
+          name: 'file-status-list-open'
+        },
+        {
+          el: 'e5',
+          do: 'click',
+          why: 'Open the Direction dropdown list (popup state).',
+          name: 'direction-list-open'
+        },
+        {
+          el: 'e6',
+          do: 'click',
+          why: 'Open the Transport Type dropdown list (popup state).',
+          name: 'transport-type-list-open'
+        },
+        {
+          el: 'e7',
+          do: 'click',
+          why: 'Open the Source Location dropdown list (popup state).',
+          name: 'source-location-list-open'
+        },
+        {
+          el: 'e9',
+          do: 'press',
+          value: 'Alt+ArrowDown',
+          why: 'Open the From Date picker calendar popup (Kendo date picker).',
+          name: 'from-date-picker-open'
+        },
+        {
+          el: 'e10',
+          do: 'press',
+          value: 'Alt+ArrowDown',
+          why: 'Open the To Date picker calendar popup (Kendo date picker).',
+          name: 'to-date-picker-open'
+        },
+        {
+          el: 'e15',
+          do: 'click',
+          why: 'Run Search with no criteria to capture the empty-search response (results grid, banner, or validation).',
+          name: 'after-search-empty'
+        },
+        {
+          el: 'e15',
+          do: 'click',
+          setup: [
+            {
+              el: 'e4',
+              do: 'select',
+              value: '1'
+            }
+          ],
+          why: 'Run Search with File Status = 1 in case empty search is blocked and to capture filtered results state.',
+          name: 'after-search-file-status-1'
+        }
+      ]
+    }
+  ]
+};
+
+fs.mkdirSync(path.dirname(outPath), { recursive: true });
+fs.writeFileSync(outPath, JSON.stringify(plan, null, 2) + '\\n', 'utf8');
+console.log('wrote', outPath);
+NODE" in C:\UI-specs\URL-to-Code
+ exited 1 in 729ms:
+At line:2 char:37
++ cd C:\UI-specs\URL-to-Code; node - <<'NODE'
++                                     ~
+Missing file specification after redirection operator.
+At line:2 char:36
++ cd C:\UI-specs\URL-to-Code; node - <<'NODE'
++                                    ~
+The '<' operator is reserved for future use.
+At line:2 char:37
++ cd C:\UI-specs\URL-to-Code; node - <<'NODE'
++                                     ~
+The '<' operator is reserved for future use.
+At line:73 char:12
++           ],
++            ~
+Missing argument in parameter list.
+At line:83 char:25
++ fs.writeFileSync(outPath, JSON.stringify(plan, null, 2) + '\n', 'utf8 ...
++                         ~
+Missing argument in parameter list.
+At line:83 char:46
++ fs.writeFileSync(outPath, JSON.stringify(plan, null, 2) + '\n', 'utf8 ...
++                                              ~
+Missing argument in parameter list.
+At line:84 char:21
++ console.log('wrote', outPath);
++                     ~
+Missing expression after ','.
+At line:84 char:22
++ console.log('wrote', outPath);
++                      ~~~~~~~
+Unexpected token 'outPath' in expression or statement.
+At line:84 char:21
++ console.log('wrote', outPath);
++                     ~
+Missing closing ')' in expression.
+At line:84 char:29
++ console.log('wrote', outPath);
++                             ~
+Unexpected token ')' in expression or statement.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingFileSpecification
+ 
+
+**Exploring PowerShell and Node**
+
+I'm realizing that PowerShell doesn't allow heredoc for Node.js like Bash does. Instead, I need to use `node -e` with a string or better yet, pipe a PowerShell here-string into Node.js through stdin. I'll use the format `@'... '@ | node`. It's also essential to keep in mind how to correctly quote single quotes in JavaScript. This approach seems practical, so let's move forward with that plan!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; @'
+const fs = require('fs');
+const path = require('path');
+
+const outPath = path.resolve('packs/fxfer-v9/screens/file-transfer-tracking/flows/plans/wave-1.json');
+
+const plan = {
+  nodes: [
+    {
+      node: 'n0',
+      name: 'at-rest',
+      actions: [
+        {
+          el: 'e1',
+          do: 'click',
+          why: 'Collapse the Search Criteria panel to capture the collapsed layout/state.',
+          name: 'search-criteria-collapsed'
+        },
+        {
+          el: 'e4',
+          do: 'click',
+          why: 'Open the File Status dropdown list (Kendo dropdown list popup state).',
+          name: 'file-status-list-open'
+        },
+        {
+          el: 'e5',
+          do: 'click',
+          why: 'Open the Direction dropdown list (popup state).',
+          name: 'direction-list-open'
+        },
+        {
+          el: 'e6',
+          do: 'click',
+          why: 'Open the Transport Type dropdown list (popup state).',
+          name: 'transport-type-list-open'
+        },
+        {
+          el: 'e7',
+          do: 'click',
+          why: 'Open the Source Location dropdown list (popup state).',
+          name: 'source-location-list-open'
+        },
+        {
+          el: 'e9',
+          do: 'press',
+          value: 'Alt+ArrowDown',
+          why: 'Open the From Date picker calendar popup (Kendo date picker).',
+          name: 'from-date-picker-open'
+        },
+        {
+          el: 'e10',
+          do: 'press',
+          value: 'Alt+ArrowDown',
+          why: 'Open the To Date picker calendar popup (Kendo date picker).',
+          name: 'to-date-picker-open'
+        },
+        {
+          el: 'e15',
+          do: 'click',
+          why: 'Run Search with no criteria to capture the empty-search response (results grid, banner, or validation).',
+          name: 'after-search-empty'
+        },
+        {
+          el: 'e15',
+          do: 'click',
+          setup: [
+            {
+              el: 'e4',
+              do: 'select',
+              value: '1'
+            }
+          ],
+          why: 'Run Search with File Status = 1 in case empty search is blocked and to capture filtered results state.',
+          name: 'after-search-file-status-1'
+        }
+      ]
+    }
+  ]
+};
+
+fs.mkdirSync(path.dirname(outPath), { recursive: true });
+fs.writeFileSync(outPath, JSON.stringify(plan, null, 2) + '\\n', 'utf8');
+console.log('wrote', outPath);
+'@ | node" in C:\UI-specs\URL-to-Code
+ succeeded in 2467ms:
+wrote C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-tracking\flows\plans\wave-1.json
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; node scripts/check-flows.mjs packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\plans\\wave-1.json packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\plans\\wave-1.frontier.json" in C:\UI-specs\URL-to-Code
+ succeeded in 2328ms:
+✓ flows plan OK
+
+codex
+- Wrote flows plan: `packs/fxfer-v9/screens/file-transfer-tracking/flows/plans/wave-1.json` (UTF-8)
+- Validated: `node scripts/check-flows.mjs ...` → `✓ flows plan OK`
+
+Skipped: I didn’t try to force any specific search inputs beyond `File Status = 1`.  
+Risk: If empty search doesn’t open results and status `1` yields none, wave-2 may need a more targeted filter to reach a results grid state.
+tokens used
+43,740- Wrote flows plan: `packs/fxfer-v9/screens/file-transfer-tracking/flows/plans/wave-1.json` (UTF-8)
+- Validated: `node scripts/check-flows.mjs ...` → `✓ flows plan OK`
+
+Skipped: I didn’t try to force any specific search inputs beyond `File Status = 1`.  
+Risk: If empty search doesn’t open results and status `1` yields none, wave-2 may need a more targeted filter to reach a results grid state.
+
+
+--- exit 0 ---

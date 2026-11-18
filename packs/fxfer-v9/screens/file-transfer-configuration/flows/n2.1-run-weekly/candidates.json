@@ -1,0 +1,739 @@
+[
+ {
+  "el": "e1",
+  "kind": "text",
+  "layer": "top",
+  "css": "#Edit_ConfigName",
+  "nth": 0,
+  "text": "",
+  "label": "Configuration Name",
+  "id": "Edit_ConfigName",
+  "name": "ConfigName",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Configuration Name has a maximum length of 50 characters.",
+   "regex": "Configuration Name is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].",
+   "regex-pattern": "^([A-Za-z0-9]|[^\\x00-\\x7F])*$",
+   "required": "Configuration Name is a required field.",
+   "maxlength": 50,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 288,
+   "y": 246,
+   "w": 274,
+   "h": 30
+  }
+ },
+ {
+  "el": "e2",
+  "kind": "text",
+  "layer": "top",
+  "css": "#Description",
+  "nth": 0,
+  "text": "",
+  "label": "Description",
+  "id": "Description",
+  "name": "Description",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Description has a maximum length of 200 characters.",
+   "maxlength": 200,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 625,
+   "y": 246,
+   "w": 274,
+   "h": 30
+  }
+ },
+ {
+  "el": "e3",
+  "kind": "dropdown",
+  "layer": "top",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 0,
+  "text": "select a value...ProtocolTypeList",
+  "label": "Protocol",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "box": {
+   "x": 952,
+   "y": 242,
+   "w": 323,
+   "h": 40
+  }
+ },
+ {
+  "el": "e4",
+  "kind": "text",
+  "layer": "top",
+  "css": "#SourceAddress",
+  "nth": 0,
+  "text": "",
+  "label": "Source Address",
+  "id": "SourceAddress",
+  "name": "SourceAddress",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Source Address has a maximum length of 248 characters.",
+   "required": "Source Address is a required field.",
+   "maxlength": 248,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 288,
+   "y": 339,
+   "w": 274,
+   "h": 30
+  }
+ },
+ {
+  "el": "e5",
+  "kind": "text",
+  "layer": "top",
+  "css": "#SourceFileMask",
+  "nth": 0,
+  "text": "",
+  "label": "Source File Mask",
+  "id": "SourceFileMask",
+  "name": "SourceFileMask",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Source File Mask has a maximum length of 50 characters.",
+   "required": "Source File Mask is a required field.",
+   "maxlength": 50,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 625,
+   "y": 339,
+   "w": 274,
+   "h": 30
+  }
+ },
+ {
+  "el": "e6",
+  "kind": "dropdown",
+  "layer": "top",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 1,
+  "text": "select a value...FileDirectionList",
+  "label": "File Direction",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "1",
+   "2"
+  ],
+  "box": {
+   "x": 952,
+   "y": 334,
+   "w": 323,
+   "h": 40
+  }
+ },
+ {
+  "el": "e7",
+  "kind": "text",
+  "layer": "top",
+  "css": "#TradingPartner",
+  "nth": 0,
+  "text": "",
+  "label": "Trading Partner",
+  "id": "TradingPartner",
+  "name": "TradingPartner",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Trading Partner has a maximum length of 10 characters.",
+   "regex": "Trading Partner is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].",
+   "regex-pattern": "^([A-Za-z0-9]|[^\\x00-\\x7F])*$",
+   "maxlength": 10,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 1301,
+   "y": 339,
+   "w": 274,
+   "h": 30
+  }
+ },
+ {
+  "el": "e8",
+  "kind": "text",
+  "layer": "top",
+  "css": "#Edit_OwnerName",
+  "nth": 0,
+  "text": "",
+  "label": "Owner Name",
+  "id": "Edit_OwnerName",
+  "name": "OwnerName",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Owner Name has a maximum length of 50 characters.",
+   "required": "Owner Name is a required field.",
+   "maxlength": 50,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 288,
+   "y": 431,
+   "w": 274,
+   "h": 30
+  }
+ },
+ {
+  "el": "e9",
+  "kind": "text",
+  "layer": "top",
+  "css": "#OwnerPhoneNumber",
+  "nth": 0,
+  "text": "",
+  "label": "Owner Phone",
+  "id": "OwnerPhoneNumber",
+  "name": "OwnerPhoneNumber",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Owner Phone has a maximum length of 20 characters.",
+   "regex": "Enter Valid Phone Number.",
+   "regex-pattern": "^(?!(^\\(?(0{3})\\)?( |-|\\.)?0{3}( |-|\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( |-|\\.)?\\d{3,3}( |-|\\.)?\\d{4,4}$)",
+   "required": "Owner Phone is a required field.",
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 615,
+   "y": 431,
+   "w": 284,
+   "h": 30
+  }
+ },
+ {
+  "el": "e10",
+  "kind": "dropdown",
+  "layer": "top",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 2,
+  "text": "select a value...AddConfigModuleList",
+  "label": "Owner Module",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "0b34481f-f69c-3ab6-e053-c9157aceff03",
+   "09df7d37-3bd5-7c9c-e053-c9157aceb3f2",
+   "bb31ef47-8d1e-c99a-e053-c9157ace53da",
+   "06c7121b-8166-4e32-e054-0017a4ab527b",
+   "98385830-7fc2-5bb4-e053-c9157ace364b",
+   "0e7b7146-aa81-5292-e053-c9157ace4cbe",
+   "96c6da47-0ae6-2bcd-e053-c9157ace38f9",
+   "fdf18357-3c14-7cb7-e053-c9157ace3990",
+   "ff19da47-cc91-e17d-e053-c9157ace99a5",
+   "2e60501f-f8aa-50b6-e053-c9157acefb50",
+   "30de9349-0e99-aec1-e053-c9157ace0401",
+   "f1612a4b-ff51-1a03-e053-c9157ace9264"
+  ],
+  "box": {
+   "x": 952,
+   "y": 427,
+   "w": 323,
+   "h": 40
+  }
+ },
+ {
+  "el": "e11",
+  "kind": "text",
+  "layer": "top",
+  "css": "#OwnerEmail",
+  "nth": 0,
+  "text": "",
+  "label": "Owner Email",
+  "id": "OwnerEmail",
+  "name": "OwnerEmail",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Owner Email has a maximum length of 150 characters.",
+   "regex": "Owner Email is not a valid email address. Enter email with 'name@domain' format.",
+   "regex-pattern": "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$",
+   "required": "Owner Email is a required field.",
+   "maxlength": 150,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 1301,
+   "y": 431,
+   "w": 274,
+   "h": 30
+  }
+ },
+ {
+  "el": "e12",
+  "kind": "radio",
+  "layer": "top",
+  "css": "#RunSchedule_ID1",
+  "nth": 0,
+  "text": "1",
+  "label": "Run Weekly",
+  "id": "RunSchedule_ID1",
+  "name": "RunSchedule.ID",
+  "type": "radio",
+  "kitAction": null,
+  "checked": true,
+  "box": {
+   "x": 317,
+   "y": 550,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e13",
+  "kind": "radio",
+  "layer": "top",
+  "css": "#RunSchedule_ID2",
+  "nth": 0,
+  "text": "2",
+  "label": "Run Monthly",
+  "id": "RunSchedule_ID2",
+  "name": "RunSchedule.ID",
+  "type": "radio",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 466,
+   "y": 550,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e14",
+  "kind": "check",
+  "layer": "top",
+  "css": "#RunOnSunday",
+  "nth": 0,
+  "text": "true",
+  "label": "Sunday",
+  "id": "RunOnSunday",
+  "name": "RunOnSunday",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 317,
+   "y": 643,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e15",
+  "kind": "check",
+  "layer": "top",
+  "css": "#RunOnMonday",
+  "nth": 0,
+  "text": "true",
+  "label": "Monday",
+  "id": "RunOnMonday",
+  "name": "RunOnMonday",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 639,
+   "y": 643,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e16",
+  "kind": "check",
+  "layer": "top",
+  "css": "#RunOnTuesday",
+  "nth": 0,
+  "text": "true",
+  "label": "Tuesday",
+  "id": "RunOnTuesday",
+  "name": "RunOnTuesday",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 961,
+   "y": 643,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e17",
+  "kind": "check",
+  "layer": "top",
+  "css": "#RunOnWednesday",
+  "nth": 0,
+  "text": "true",
+  "label": "Wednesday",
+  "id": "RunOnWednesday",
+  "name": "RunOnWednesday",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 1283,
+   "y": 643,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e18",
+  "kind": "check",
+  "layer": "top",
+  "css": "#RunOnThursday",
+  "nth": 0,
+  "text": "true",
+  "label": "Thursday",
+  "id": "RunOnThursday",
+  "name": "RunOnThursday",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 317,
+   "y": 735,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e19",
+  "kind": "check",
+  "layer": "top",
+  "css": "#RunOnFriday",
+  "nth": 0,
+  "text": "true",
+  "label": "Friday",
+  "id": "RunOnFriday",
+  "name": "RunOnFriday",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 639,
+   "y": 735,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e20",
+  "kind": "check",
+  "layer": "top",
+  "css": "#RunOnSaturday",
+  "nth": 0,
+  "text": "true",
+  "label": "Saturday",
+  "id": "RunOnSaturday",
+  "name": "RunOnSaturday",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 961,
+   "y": 735,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e21",
+  "kind": "dropdown",
+  "layer": "top",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 3,
+  "text": "select a value...TimeWindowStartList",
+  "label": "Time Window Start",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "0000",
+   "0030",
+   "0100",
+   "0130",
+   "0200",
+   "0230",
+   "0300",
+   "0330",
+   "0400",
+   "0430",
+   "0500",
+   "0530"
+  ],
+  "box": {
+   "x": 293,
+   "y": 819,
+   "w": 315,
+   "h": 40
+  }
+ },
+ {
+  "el": "e22",
+  "kind": "dropdown",
+  "layer": "top",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 4,
+  "text": "select a value...TimeWindowEndList",
+  "label": "Time Window End",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "0000",
+   "0030",
+   "0100",
+   "0130",
+   "0200",
+   "0230",
+   "0300",
+   "0330",
+   "0400",
+   "0430",
+   "0500",
+   "0530"
+  ],
+  "box": {
+   "x": 623,
+   "y": 819,
+   "w": 315,
+   "h": 40
+  }
+ },
+ {
+  "el": "e23",
+  "kind": "check",
+  "layer": "top",
+  "css": "#SendNotification",
+  "nth": 0,
+  "text": "true",
+  "label": "Send Notification",
+  "id": "SendNotification",
+  "name": "SendNotification",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 961,
+   "y": 828,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e24",
+  "kind": "check",
+  "layer": "top",
+  "css": "#Suspended",
+  "nth": 0,
+  "text": "true",
+  "label": "Suspend",
+  "id": "Suspended",
+  "name": "Suspended",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 1291,
+   "y": 828,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e25",
+  "kind": "check",
+  "layer": "top",
+  "css": "#IsActive",
+  "nth": 0,
+  "text": "true",
+  "label": "Active",
+  "id": "IsActive",
+  "name": "IsActive",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": true,
+  "box": {
+   "x": 301,
+   "y": 921,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e26",
+  "kind": "check",
+  "layer": "top",
+  "css": "#DestinationShowInactiveCheckBox",
+  "nth": 0,
+  "text": "true",
+  "label": "Show Inactives",
+  "id": "DestinationShowInactiveCheckBox",
+  "name": "DestinationShowInactiveCheckBox",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 1370,
+   "y": 1130,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e27",
+  "kind": "button",
+  "layer": "top",
+  "css": "#DestinationGridAddButton",
+  "nth": 0,
+  "text": "Create New",
+  "label": null,
+  "id": "DestinationGridAddButton",
+  "name": null,
+  "type": "button",
+  "kitAction": null,
+  "box": {
+   "x": 1506,
+   "y": 1119,
+   "w": 146,
+   "h": 40
+  }
+ },
+ {
+  "el": "e28",
+  "kind": "row",
+  "layer": "top",
+  "css": "tbody tr",
+  "nth": 0,
+  "text": "There are no records found.",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "rows": 1,
+  "box": {
+   "x": 252,
+   "y": 1206,
+   "w": 1401,
+   "h": 62
+  }
+ },
+ {
+  "el": "e29",
+  "kind": "button",
+  "layer": "top",
+  "css": "#FileTransferConfigurationEditFormResetButton",
+  "nth": 0,
+  "text": "Reset",
+  "label": null,
+  "id": "FileTransferConfigurationEditFormResetButton",
+  "name": null,
+  "type": "button",
+  "kitAction": null,
+  "box": {
+   "x": 251,
+   "y": 1399,
+   "w": 103,
+   "h": 38
+  }
+ },
+ {
+  "el": "e30",
+  "kind": "button",
+  "layer": "top",
+  "css": "#FileTransferConfigurationEditFormCancelButton",
+  "nth": 0,
+  "text": "Cancel",
+  "label": null,
+  "id": "FileTransferConfigurationEditFormCancelButton",
+  "name": null,
+  "type": "button",
+  "kitAction": null,
+  "box": {
+   "x": 1417,
+   "y": 1399,
+   "w": 111,
+   "h": 38
+  }
+ },
+ {
+  "el": "e31",
+  "kind": "button",
+  "layer": "top",
+  "css": "#FileTransferConfigurationEditFormSaveButton",
+  "nth": 0,
+  "text": "Save",
+  "label": null,
+  "id": "FileTransferConfigurationEditFormSaveButton",
+  "name": null,
+  "type": "button",
+  "kitAction": null,
+  "box": {
+   "x": 1540,
+   "y": 1399,
+   "w": 99,
+   "h": 38
+  },
+  "danger": "commit: \"Save\""
+ },
+ {
+  "el": "e32",
+  "kind": "row",
+  "layer": "top",
+  "css": "tbody tr",
+  "nth": 0,
+  "text": "There are no records found.",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "rows": 1,
+  "box": {
+   "x": 252,
+   "y": 1206,
+   "w": 1401,
+   "h": 62
+  }
+ }
+]

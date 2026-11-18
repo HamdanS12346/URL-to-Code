@@ -1,0 +1,72 @@
+{
+ "isWebForms": false,
+ "validators": [],
+ "summaries": [],
+ "updatePanels": null,
+ "components": [],
+ "grids": {},
+ "hiddenFields": [
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "__RequestVerificationToken",
+   "size": 151
+  },
+  {
+   "name": "fileId",
+   "id": "downloadFileId",
+   "size": 0,
+   "value": ""
+  }
+ ],
+ "defaultButtons": [],
+ "forms": [
+  {
+   "index": 0,
+   "id": "EnrollmentReportSearchForm",
+   "key": "EnrollmentReportSearchForm",
+   "action": "/ProviderEnrollment/SearchEnrollmentReports",
+   "method": "POST",
+   "enctype": "application/x-www-form-urlencoded",
+   "fields": [
+    "text",
+    "text-2",
+    "fieldset-search-enrollment",
+    "FromDate",
+    "button-select",
+    "ToDate",
+    "button-select-2",
+    "UserId",
+    "clearButton",
+    "searchButton",
+    "button-go-to-the-first-page",
+    "button-go-to-the-previous-page",
+    "button-page-0",
+    "button-go-to-the-next-page",
+    "button-go-to-the-last-page",
+    "text-page",
+    "text-page-2",
+    "button-select-3",
+    "select-page-sizes-drop-down"
+   ]
+  },
+  {
+   "index": 1,
+   "id": "downloadFileForm",
+   "key": "downloadFileForm",
+   "action": "/api/ProviderEnrollment/GetFile/",
+   "method": "POST",
+   "enctype": "application/x-www-form-urlencoded",
+   "fields": [
+    "text-3",
+    "text-4"
+   ]
+  }
+ ]
+}

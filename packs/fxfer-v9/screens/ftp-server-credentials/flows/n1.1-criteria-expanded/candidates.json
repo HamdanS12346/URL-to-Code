@@ -1,0 +1,183 @@
+[
+ {
+  "el": "e1",
+  "kind": "button",
+  "layer": "page",
+  "css": "#ftpServerCredentialAddButton",
+  "nth": 0,
+  "text": "Create New",
+  "label": null,
+  "id": "ftpServerCredentialAddButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "create",
+  "box": {
+   "x": 1744,
+   "y": 138,
+   "w": 146,
+   "h": 38
+  }
+ },
+ {
+  "el": "e2",
+  "kind": "button",
+  "layer": "page",
+  "css": "div.panel-icon.clickable",
+  "nth": 0,
+  "text": "",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": "collapse",
+  "box": {
+   "x": 1847,
+   "y": 219,
+   "w": 28,
+   "h": 30
+  }
+ },
+ {
+  "el": "e3",
+  "kind": "text",
+  "layer": "page",
+  "css": "#FtpServerName",
+  "nth": 0,
+  "text": "",
+  "label": "Server Name",
+  "id": "FtpServerName",
+  "name": "FtpServerName",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Server Name has a maximum length of 50 characters.",
+   "regex": "Server Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "maxlength": 50,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 51,
+   "y": 332,
+   "w": 243,
+   "h": 30
+  }
+ },
+ {
+  "el": "e4",
+  "kind": "button",
+  "layer": "page",
+  "css": "#resetButton",
+  "nth": 0,
+  "text": "Reset",
+  "label": null,
+  "id": "resetButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "reset",
+  "box": {
+   "x": 41,
+   "y": 417,
+   "w": 103,
+   "h": 38
+  }
+ },
+ {
+  "el": "e5",
+  "kind": "button",
+  "layer": "page",
+  "css": "#cancelButton",
+  "nth": 0,
+  "text": "Cancel",
+  "label": null,
+  "id": "cancelButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "cancel",
+  "box": {
+   "x": 1629,
+   "y": 417,
+   "w": 111,
+   "h": 38
+  }
+ },
+ {
+  "el": "e6",
+  "kind": "button",
+  "layer": "page",
+  "css": "#nextButton",
+  "nth": 0,
+  "text": "Search",
+  "label": null,
+  "id": "nextButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "search",
+  "box": {
+   "x": 1752,
+   "y": 417,
+   "w": 112,
+   "h": 38
+  }
+ },
+ {
+  "el": "e7",
+  "kind": "button",
+  "layer": "page",
+  "css": "span.fa-stack.fa-lg",
+  "nth": 0,
+  "text": "",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "box": {
+   "x": 1842,
+   "y": 599,
+   "w": 44,
+   "h": 35
+  }
+ },
+ {
+  "el": "e8",
+  "kind": "check",
+  "layer": "page",
+  "css": "#showInvalidFTPServerCredentialsCheckBox",
+  "nth": 0,
+  "text": "true",
+  "label": "Include Invalids",
+  "id": "showInvalidFTPServerCredentialsCheckBox",
+  "name": "showInvalidFTPServerCredentialsCheckBox",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 1706,
+   "y": 603,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e9",
+  "kind": "row",
+  "layer": "page",
+  "css": "tbody tr",
+  "nth": 0,
+  "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "rows": 5,
+  "box": {
+   "x": 31,
+   "y": 704,
+   "w": 1857,
+   "h": 40
+  }
+ }
+]

@@ -1,0 +1,2 @@
+
+	kendo.syncReady(function(){jQuery("#ApplicantContact_Address_CountryList").kendoDropDownList({"close":clearDropDownSearchFilter,"dataSource":{"transport":{"read":{"url":"/api/ProviderEnrollment/GetCountriesByAddressType/","data":function() { return { '': 'Contact' }; },"type":"POST"},"prefix":""},"schema":{"errors":"Errors"}},"dataTextField":"Name","filter":"contains","dataValueField":"ID","optionLabel":"select a value...","filterTitle":"ApplicantContactAddressCountrySearch"});});

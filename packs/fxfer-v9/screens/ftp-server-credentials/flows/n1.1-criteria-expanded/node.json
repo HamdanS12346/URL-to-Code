@@ -1,0 +1,72 @@
+{
+ "id": "n1.1",
+ "parent": "n1",
+ "depth": 2,
+ "status": "frontier",
+ "name": "criteria-expanded",
+ "kind": "part",
+ "fp": "2cebdd40b531",
+ "fpText": "W:\nH:Search Criteria|Search Results\nL:Include Invalids|Server Name\nB:Cancel|Create New|Reset|Search\nF:5\nT:\nR:1\nV:0",
+ "via": {
+  "el": "e2",
+  "steps": [
+   {
+    "do": "click",
+    "layer": "page",
+    "css": "div.panel-icon.clickable",
+    "nth": 0,
+    "text": "",
+    "kind": "button"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#nextButton",
+   "nth": 0,
+   "text": "Search",
+   "kind": "button"
+  },
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "div.panel-icon.clickable",
+   "nth": 0,
+   "text": "",
+   "kind": "button"
+  }
+ ],
+ "requests": [],
+ "change": {
+  "show": [
+   "#FTPServerCredentialsSearch"
+  ],
+  "hide": [],
+  "scroll": null
+ },
+ "title": null,
+ "dir": "n1.1-criteria-expanded",
+ "windows": 0,
+ "validation": null,
+ "same": [],
+ "skipped": [],
+ "probed": true,
+ "fields": [
+  {
+   "name": "FtpServerName",
+   "label": "Server Name",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  }
+ ]
+}

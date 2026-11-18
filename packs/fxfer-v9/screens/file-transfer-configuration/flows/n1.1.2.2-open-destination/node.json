@@ -1,0 +1,82 @@
+{
+ "id": "n1.1.2.2",
+ "parent": "n1.1.2",
+ "depth": 4,
+ "status": "frontier",
+ "name": "open-destination",
+ "kind": "part",
+ "fp": "67a79d156834",
+ "fpText": "W:Edit File Transfer Configuration\nH:\nL:Active|Compress At Destination|Contact Email|Contact Name|Contact Phone|Destination Address|Destination Is Archive|Destination Protocol|Destination Type|Overwrite At Destination|Rename At Destination|Server\nB:Add Another|Cancel|Create from Existing|Reset|Save|select\nF:14\nT:\nR:0\nV:0",
+ "via": {
+  "el": "e28",
+  "steps": [
+   {
+    "do": "dblclick",
+    "layer": "top",
+    "css": "tbody tr",
+    "nth": 0,
+    "text": "https://dxccommercial.test.mapshc.comFTPActivetruefalsefalse",
+    "kind": "row"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#nextButton",
+   "nth": 0,
+   "text": "Search",
+   "kind": "button"
+  },
+  {
+   "do": "dblclick",
+   "layer": "page",
+   "css": "tbody tr",
+   "nth": 0,
+   "text": "4TestFTP/testweryashwanthAdministrationActiveaab80b60-a4ec-4",
+   "kind": "row"
+  },
+  {
+   "do": "click",
+   "layer": "top",
+   "css": "#editFileTransferConfigurationButton",
+   "nth": 0,
+   "text": "Edit",
+   "kind": "button"
+  },
+  {
+   "do": "dblclick",
+   "layer": "top",
+   "css": "tbody tr",
+   "nth": 0,
+   "text": "https://dxccommercial.test.mapshc.comFTPActivetruefalsefalse",
+   "kind": "row"
+  }
+ ],
+ "requests": [],
+ "change": {
+  "show": [
+   "#divDestinationId"
+  ],
+  "hide": [
+   "#FileTransferConfigurationEditStatus",
+   "#divSourceId"
+  ],
+  "scroll": null
+ },
+ "title": "Edit File Transfer Configuration",
+ "dir": "n1.1.2.2-open-destination",
+ "windows": 1,
+ "validation": null,
+ "same": [],
+ "skipped": [
+  {
+   "el": "e17",
+   "text": "Save",
+   "why": "commit: \"Save\""
+  }
+ ],
+ "probed": true,
+ "fields": []
+}

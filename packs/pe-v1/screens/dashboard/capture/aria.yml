@@ -1,0 +1,92 @@
+- banner:
+  - link "Client Logo":
+    - /url: /Home/MyHome/
+    - img "Client Logo"
+  - text: Medicaid Management Solutions Final Test
+  - menubar:
+    - menuitem "Messages":
+      - link "Messages":
+        - /url: javascript:getBroadcastMsg();
+    - menuitem "External Links":
+      - link "External Links":
+        - /url: javascript:toggleVisibilityStyle('divExternalLinks');
+    - menuitem "Favorites":
+      - link "Favorites":
+        - /url: javascript:getFavorites();
+    - menuitem "Contact Us":
+      - link "Contact Us":
+        - /url: javascript:getContactUs();
+    - menuitem "My Account":
+      - link "My Account":
+        - /url: /Home/MyAccount
+    - menuitem "Logout":
+      - link "Logout":
+        - /url: /Security/LogoutFromMenu
+  - navigation "Hamburger Menu":
+    - button "Main Menu": 
+- navigation
+- button "Help":  
+- main:
+  - link "Dashboard":
+    - /url: /ProviderEnrollment/Dashboard
+  - link "Search Enrollment Application":
+    - /url: /ProviderEnrollment/SearchProviderApplication
+  - link "Search Enrollment Reports":
+    - /url: /ProviderEnrollment/SearchEnrollmentReports
+  - link "Workflow Dashboard":
+    - /url: https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/dashboard
+  - link "Workflow Applications":
+    - /url: https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/applications
+  - link "Workflow Configuration":
+    - /url: https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/configuration
+  - link "Workflow Tasks":
+    - /url: https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/tasks
+  - link "New Enrollment Entry":
+    - /url: /ProviderEnrollment/CreateSecureEnrollment
+  - link "Resume Enrollment Entry":
+    - /url: /ProviderEnrollment/ResumeSecureEnrollment
+  - text: Status
+  - list:
+    - listitem: Submitted - 31
+    - listitem: Pending - 770
+    - listitem: Return To Provider - 38
+    - listitem: Waiting for Attachments - 15
+  - group:
+    - text: Quick Search ATN
+    - img "HELP": 
+    - textbox "ATN The ATN is a unique number assigned to an enrollment application initiated by a provider."
+    - text: Last Name
+    - img "HELP": 
+    - textbox "Last Name Enter the Last Name."
+    - text: Business Name
+    - img "HELP": 
+    - textbox "Business Name Enter Business Name"
+    - text: NPI
+    - img "HELP": 
+    - textbox "NPI Enter the ten digit National Provider Identifier as printed on the NPPES letter."
+    - button "Clear"
+    - button "Search"
+  - text: Search Results
+  - rowgroup:
+    - row "ATN Name NPI Date Status":
+      - columnheader "ATN"
+      - columnheader "Name"
+      - columnheader "NPI"
+      - columnheader "Date"
+      - columnheader "Status"
+  - grid:
+    - rowgroup:
+      - row "There are no records found.":
+        - gridcell "There are no records found.":
+          - strong: There are no records found.
+  - application "Page navigation, page 0 of 0":
+    - link "Refresh":
+      - /url: /api/ProviderEnrollment/SearchProviderApplication/
+    - text: No Items to display
+- contentinfo:
+  - text: Disclaimer Website Requirements Privacy Policy Cookie Policy © 2026 Gainwell Technologies. All rights reserved.
+  - strong: "Server:"
+  - text: 10.199.153.38
+  - strong: "Build Date:"
+  - text: 10/30/2026 3:28:37 AM
+  - strong: v30.0.0.2609

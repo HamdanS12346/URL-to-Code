@@ -1,0 +1,829 @@
+$ powershell -NoProfile -ExecutionPolicy Bypass -File C:\UI-specs\start_codex.ps1 exec -c web_search=disabled --skip-git-repo-check -C C:\UI-specs\URL-to-Code\
+(prompt: C:\UI-specs\URL-to-Code\packs\fxfer-v9\logs\flowplan-file-transfer-configuration-w5-1.prompt.md)
+--- output ---
+Reading prompt from stdin...
+OpenAI Codex v0.169.0
+--------
+workdir: C:\UI-specs\URL-to-Code
+model: gpt-5.2
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1e933-9f90-7c82-bfd2-ae9b11abd622
+--------
+user
+Task: flows fxfer-v9/file-transfer-configuration wave 5
+Screen folder: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration
+
+You are running unattended: nobody will answer questions. Do the task, then stop.
+
+Write any files you create/modify as UTF-8 text (not UTF-16). If you use PowerShell commands to write files, use Set-Content/Out-File with -Encoding utf8.
+Do not use the `apply_patch` helper here; it is unreliable in this environment. Edit files using Python/Node/PowerShell file writes (UTF-8) instead.
+
+You plan the next step of exploring the live screen `fxfer-v9/file-transfer-configuration` (File Transfer Configuration, https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations). A script drives the browser; you only decide what it does.
+The goal: reach EVERY state of this screen (results, dialogs, dialogs inside dialogs, edit modes, tabs, parts a radio or a value shows,
+validation messages) up to the click that would save or create something. The script blocks every write and never clicks a commit button,
+so you cannot break anything: be thorough.
+
+1. Read C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-5.frontier.json: the states still open in this wave, each with its candidates (the elements of its top layer, ids e1, e2...).
+2. For each state, open its folder (`dir`): look at map.png (the numbers are the element ids) and shot.png with your image viewer, and read
+   candidates.md (kind, text, label, rules such as maxlength / required / email, dropdown options). Read C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration/flows/FLOWS.md for what
+   was already reached and what each earlier click did: never plan a click that already led to a known state from the same place.
+3. Write C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-5.json as JSON:
+   {"nodes": [ {"node": "n1", "name": "search-results",
+       "actions": [ {"el": "e7", "do": "dblclick", "why": "opens the row's detail window", "name": "view-configuration"},
+                    {"el": "e3", "do": "select", "value": "M", "why": "Run Monthly shows the day-of-month part"},
+                    {"el": "e12", "do": "click", "setup": [{"el": "e4", "do": "fill", "value": "1234567890"}], "why": "Next with a valid NPI typed" } ],
+       "same": [ {"el": "e9", "as": "e7", "why": "the other rows open the same window"} ] },
+     {"node": "n2.1", "deadEnd": true, "reason": "a read-only view: only Close" } ]}
+   - One entry per state of C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-5.frontier.json. "do": click | dblclick | hover | fill | select | check | press. "fill"/"select" need a "value" (a string).
+   - "setup": steps done first, in order (type valid values so a button or a section opens; pick the dropdown value that reveals a part).
+   - "name" (optional): lower-case words joined by "-", at most 32 characters, naming the state you expect (it names its folder).
+   - At most 12 actions per state. Prefer actions that lead to DIFFERENT states: every button and link that opens something (View, Edit,
+     Details, a tab, Create New, Next, a row: grid rows often open on double-click), a radio or dropdown value that changes the form, and
+     wrong input that makes the page answer (letters in a number field, too long a value, a bad e-mail, a date out of range), each once.
+     The script already measures every text box by itself (what it accepts, its length limit, the message it shows, what Save says with the
+     form as it is), so do not spend actions on that.
+   - Never plan an element marked `danger` (Save, Submit, Update, Delete, a bare Add/OK/Yes...): the gate rejects the plan.
+   - Close, Cancel, Reset and Back only lead back: the script uses them itself.
+   - A state with nothing new to open is a dead end: say so with a reason.
+4. Run `node scripts/check-flows.mjs C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-5.json C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-5.frontier.json` in C:\UI-specs\URL-to-Code\ and fix the plan until it prints OK.
+
+What the capture already knows about this screen (dropdown options, dialogs it opened, the portal's conventions): C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration/kit/screen.json; the site kit's guide: C:\UI-specs\URL-to-Code\kits\provider\KIT.md.
+Write only C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-5.json. Do not run `npm run ui`, `npm run capture` or the browser, and do not open the live site.
+Never open, print or copy .env files or anything under packs/*/auth/ (they hold the portal password and session).
+
+warning: Model metadata for `gpt-5.2` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.
+2026-11-17T11:10:39.584833Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.postman.com/.well-known/oauth-protected-resource/mcp\"" })
+hook: SessionStart
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+**Planning wave-5.json creation**
+
+I need to create a wave-5.json plan for flows based on the frontier JSON and individual node folders that include candidates.md and images. It seems I don’t need to apply any patches. I'll be using commands like `cat`, `dir`, and maybe some Python to read the JSON files. The first step is to inspect the relevant files and follow the instructions to craft plan actions for each state. Let's begin by listing the frontier and using `exec_command` in PowerShell.
+codex
+I’m going to inspect the wave-5 frontier and each state’s candidates/maps, then write `wave-5.json` and run the flow-plan checker until it passes.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code && python -c \"import json,sys; p=r'packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-5.frontier.json'; print(p); data=json.load(open(p,'r',encoding='utf-8')); print('nodes',len(data.get('nodes',data))); print(json.dumps(data,indent=2)[:4000])\"" in C:\UI-specs\URL-to-Code
+ exited 1 in 819ms:
+At line:2 char:28
++ cd C:\UI-specs\URL-to-Code && python -c "import json,sys; p=r'packs/f ...
++                            ~~
+The token '&&' is not a valid statement separator in this version.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+ 
+
+**Correcting PowerShell syntax**
+
+I've realized that PowerShell doesn't recognize the "&&" operator, so I need to use ";" instead. It’s a little confusing; I hope I didn’t get too tangled up in the details earlier. Now I just need to rerun my code with the correct syntax to see if it works properly this time. I’m curious about how this change will affect the outcome, so let’s dive back into it!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; python -c \"import json; p=r'packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-5.frontier.json'; print(p); data=json.load(open(p,'r',encoding='utf-8')); nodes=data['nodes'] if isinstance(data,dict) and 'nodes' in data else data; print('nodes',len(nodes)); print(json.dumps(nodes,indent=2)[:6000])\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1524ms:
+packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-5.frontier.json
+nodes 5
+[
+  {
+    "node": "n1.1.2.1",
+    "name": "edit-create-destination",
+    "kind": "part",
+    "title": "Edit File Transfer Configuration",
+    "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n1.1.2.1-edit-create-destination",
+    "depth": 4,
+    "candidates": [
+      {
+        "el": "e1",
+        "kind": "dropdown",
+        "text": "select a value...DestinationProtocolList",
+        "label": "Destination Protocol",
+        "danger": null,
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "el": "e2",
+        "kind": "dropdown",
+        "text": "select a value...DestinationTypeList",
+        "label": "Destination Type",
+        "danger": null,
+        "options": [
+          "FileToEvent",
+          "UserDefined"
+        ]
+      },
+      {
+        "el": "e3",
+        "kind": "text",
+        "text": "",
+        "label": "Destination Address",
+        "danger": null
+      },
+      {
+        "el": "e4",
+        "kind": "text",
+        "text": "",
+        "label": "Contact Name",
+        "danger": null
+      },
+      {
+        "el": "e5",
+        "kind": "text",
+        "text": "",
+        "label": "Contact Phone",
+        "danger": null
+      },
+      {
+        "el": "e6",
+        "kind": "text",
+        "text": "",
+        "label": "Contact Email",
+        "danger": null
+      },
+      {
+        "el": "e7",
+        "kind": "check",
+        "text": "true",
+        "label": "Overwrite At Destination",
+        "danger": null
+      },
+      {
+        "el": "e8",
+        "kind": "check",
+        "text": "true",
+        "label": "Compress At Destination",
+        "danger": null
+      },
+      {
+        "el": "e9",
+        "kind": "check",
+        "text": "true",
+        "label": "Destination Is Archive",
+        "danger": null
+      },
+      {
+        "el": "e10",
+        "kind": "check",
+        "text": "true",
+        "label": "Rename At Destination",
+        "danger": null
+      },
+      {
+        "el": "e11",
+        "kind": "check",
+        "text": "true",
+        "label": "Active",
+        "danger": null
+      },
+      {
+        "el": "e12",
+        "kind": "button",
+        "text": "Reset",
+        "label": null,
+        "danger": null
+      },
+      {
+        "el": "e13",
+        "kind": "button",
+        "text": "Cancel",
+        "label": null,
+        "danger": null
+      },
+      {
+        "el": "e14",
+        "kind": "button",
+        "text": "Add Another",
+        "label": null,
+        "danger": null
+      },
+      {
+        "el": "e15",
+        "kind": "button",
+        "text": "Save",
+        "label": null,
+        "danger": "commit: \"Save\""
+      }
+    ]
+  },
+  {
+    "node": "n1.1.2.2",
+    "name": "open-destination",
+    "kind": "part",
+    "title": "Edit File Transfer Configuration",
+    "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n1.1.2.2-open-destination",
+    "depth": 4,
+    "candidates": [
+      {
+        "el": "e1",
+        "kind": "dropdown",
+        "text": "FTPDestinationProtocolList",
+        "label": "Destination Protocol",
+        "danger": null,
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "el": "e2",
+        "kind": "dropdown",
+        "text": "SFTP TESTServer",
+        "label": "Server",
+        "danger": null,
+        "options": [
+          "23a12f97-cdc4-4540-b833-9bc2a68d02a2",
+          "e0e6ef34-97c4-4a1c-b162-afea93332afb",
+          "680c7460-8189-4255-93e7-2b6424fdb650",
+          "785712c8-6112-45f1-a020-8d950d5fa7d6",
+          "94014542-6afc-427d-91fa-432f4e4da4a7"
+        ]
+      },
+      {
+        "el": "e3",
+        "kind": "dropdown",
+        "text": "select a value...DestinationTypeList",
+        "label": "Destination Type",
+        "danger": null,
+        "options": [
+          "FileToEvent",
+          "UserDefined"
+        ]
+      },
+      {
+        "el": "e4",
+        "kind": "text",
+        "text": "https://dxccommercial.test.mapshc.com",
+        "label": "Destination Address",
+        "danger": null
+      },
+      {
+        "el": "e5",
+        "kind": "text",
+        "text": "",
+        "label": "Contact Name",
+        "danger": null
+      },
+      {
+        "el": "e6",
+        "kind": "text",
+        "text": "",
+        "label": "Contact Phone",
+        "danger": null
+      },
+      {
+        "el": "e7",
+        "kind": "text",
+        "text": "",
+        "label": "Contact Email",
+        "danger": null
+      },
+      {
+        "el": "e8",
+        "kind": "check",
+        "text": "true",
+        "label": "Overwrite At Destination",
+        "danger": null
+      },
+      {
+        "el": "e9",
+        "kind": "check",
+        "text": "true",
+        "label": "Compress At Destination",
+        "danger": null
+      },
+      {
+        "el": "e10",
+        "kind": "check",
+        "text": "true",
+        "label": "Destination Is Archive",
+        "danger": null
+      },
+      {
+        "el": "e11",
+        "kind": "check",
+        "text": "true",
+        "label": "Rename At Destination",
+        "danger": null
+      },
+      {
+        "el": "e12",
+        "kind": "check",
+        "text": "true",
+        "label": "Active",
+        "danger": null
+      },
+      {
+        "el": "e13",
+        "kind": "button",
+        "text": "Reset",
+        "label": null,
+        "danger": null
+      },
+      {
+        "el": "e14",
+        "kind": "button",
+        "text": "Create from Existing",
+        "label": null,
+        "danger": null
+      },
+      {
+        "el": "e15",
+        "kind": "button",
+        "text": "Cancel",
+        "label": null,
+        "danger": null
+      },
+      {
+        "el": "e16",
+        "kind": "button",
+        "text": "Add Another",
+        "label": null,
+        "danger": null
+      },
+      {
+        "el": "e17",
+        "kind": "button",
+        "text": "Save",
+        "label": null,
+        "dang
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; python - <<'PY'
+import json
+p=r'packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-5.frontier.json'
+data=json.load(open(p,'r',encoding='utf-8'))
+nodes=data['nodes'] if isinstance(data,dict) and 'nodes' in data else data
+for n in nodes:
+    print(n['node'], n.get('name'), 'cands', len(n.get('candidates',[])), 'dir', n.get('dir'))
+PY" in C:\UI-specs\URL-to-Code
+ exited 1 in 1066ms:
+At line:2 char:39
++ cd C:\UI-specs\URL-to-Code; python - <<'PY'
++                                       ~
+Missing file specification after redirection operator.
+At line:2 char:38
++ cd C:\UI-specs\URL-to-Code; python - <<'PY'
++                                      ~
+The '<' operator is reserved for future use.
+At line:2 char:39
++ cd C:\UI-specs\URL-to-Code; python - <<'PY'
++                                       ~
+The '<' operator is reserved for future use.
+At line:5 char:22
++ data=json.load(open(p,'r',encoding='utf-8'))
++                      ~
+Missing argument in parameter list.
+At line:6 char:39
++ nodes=data['nodes'] if isinstance(data,dict) and 'nodes' in data else ...
++                                       ~
+Missing argument in parameter list.
+At line:7 char:4
++ for n in nodes:
++    ~
+Missing opening '(' after keyword 'for'.
+At line:8 char:20
++     print(n['node'], n.get('name'), 'cands', len(n.get('candidates',[ ...
++                    ~
+Missing argument in parameter list.
+At line:8 char:70
++ ... t(n['node'], n.get('name'), 'cands', len(n.get('candidates',[])), 'di ...
++                                                                  ~
+Missing type name after '['.
+At line:8 char:69
++ ... nt(n['node'], n.get('name'), 'cands', len(n.get('candidates',[])), 'd ...
++                                                                  ~
+Missing expression after ','.
+At line:8 char:69
++ ... (n['node'], n.get('name'), 'cands', len(n.get('candidates',[])), 'dir ...
++                                                                ~~
+Unexpected token '[]' in expression or statement.
+Not all parse errors were reported.  Correct the reported errors and try again.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingFileSpecification
+ 
+
+**Considering PowerShell alternatives**
+
+It seems like PowerShell's heredoc isn’t functioning as expected. I’ll need to consider using a Python one-liner instead, possibly utilizing `python -c` with semicolons or creating a temporary file. I think the quickest option is to just go for that `python -c` command using triple quotes. I feel like this will keep things tidy and efficient, allowing for a smooth execution of my code in one command. Let’s get to it!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; python -c \"import json; p=r'packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-5.frontier.json'; data=json.load(open(p,'r',encoding='utf-8')); nodes=data['nodes'] if isinstance(data,dict) and 'nodes' in data else data; [print(n['node'], n.get('name'), 'cands', len(n.get('candidates',[])), 'dir', n.get('dir')) for n in nodes]\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1042ms:
+n1.1.2.1 edit-create-destination cands 15 dir C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n1.1.2.1-edit-create-destination
+n1.1.2.2 open-destination cands 17 dir C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n1.1.2.2-open-destination
+n1.1.2.3 edit-run-weekly cands 32 dir C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n1.1.2.3-edit-run-weekly
+n2.3.1.1 add-another cands 17 dir C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.3.1.1-add-another
+n2.3.1.2 set-destination-type-filetoevent cands 16 dir C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.3.1.2-set-destination-type-filetoevent
+
+**Inspecting state folders**
+
+I need to look into 5 states and check each state's folder for files like map.png, shot.png, candidates.md, and FLOWS.md. It seems crucial to read FLOWS.md first so I can get an idea of what to expect. I’ll open that file to gather some context before examining the other documents. Let me make sure I'm thorough in this process to understand everything clearly.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content -Raw -Encoding utf8 packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\FLOWS.md" in C:\UI-specs\URL-to-Code
+ succeeded in 1899ms:
+# Flows of https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations
+
+17 states (0 boundaries), 5 wave(s), plans by ai. 2026-11-17T11:10:34.744Z
+
+Each state: its id (cite it in the spec as [flow:<id>]), kind, how it was reached, status. A **boundary** is where the live page would have sent a write (blocked): the flow ends there.
+Folders: `<id>-<name>/` with shot.png, map.png (numbered), node.json (fields: what each text box accepts and the messages it shows; saveProbe: what Save shows with writes blocked), layer.html.
+
+- **n0** at-rest (page) - explored [shot](n0-at-rest/shot.png)
+  - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+  - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+  - **n1** search-results (results) via click "Search" - explored [shot](n1-search-results/shot.png)
+    - tried: e10 "Search" click -> nothing changed
+    - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - **n1.1** open-configuration (dialog) "View File Transfer Configuration" via dblclick "4TestFTP/testweryashwanthAdministrationActiveaab80b60-a4ec-4" - explored [shot](n1.1-open-configuration/shot.png)
+      - tried: e1 "true" click -> nothing changed
+      - **n1.1.1** open-destination (part) "View File Transfer Configuration" via dblclick "https://dxccommercial.test.mapshc.comFTPActivetrue" - dead-end (Read-only destination view; only Close returns to the parent dialog.) [shot](n1.1.1-open-destination/shot.png)
+      - **n1.1.2** edit-configuration (dialog) "Edit File Transfer Configuration" via click "Edit" - explored [shot](n1.1.2-edit-configuration/shot.png)
+        - tried: e17 "select a value...RunOnThisDayList" select -> nothing changed; e3 "FTPProtocolTypeList" select -> nothing changed; e23 "true" click -> nothing changed
+        - never clicked: "Save" (commit: the kit marks it a Save)
+        - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+        - field Description: accepts letters, digits, spaces, symbols
+        - field Source Address: accepts letters, digits, spaces, symbols
+        - field Source File Mask: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+        - field Trading Partner: accepts letters, digits, spaces, symbols, max 10 (stops typing)
+        - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+        - field Owner Phone: accepts digits, symbols
+        - field Owner Email: accepts letters, digits, spaces, symbols
+        - Save with writes blocked ("Save"): no message; would send PUT /api/FileTransfer/AddFileTransferBaseConfiguration/
+        - **n1.1.2.1** edit-create-destination (part) "Edit File Transfer Configuration" via select "select a value...FileDirectionList"="1" > fill "#TradingPartner"="TP1" > click "Create New" - frontier [shot](n1.1.2.1-edit-create-destination/shot.png)
+        - **n1.1.2.2** open-destination (part) "Edit File Transfer Configuration" via dblclick "https://dxccommercial.test.mapshc.comFTPActivetruefalsefalse" - frontier [shot](n1.1.2.2-open-destination/shot.png)
+        - **n1.1.2.3** edit-run-weekly (part) "Edit File Transfer Configuration" via click "1" - frontier [shot](n1.1.2.3-edit-run-weekly/shot.png)
+  - **n2** create-new (dialog) "Add File Transfer Configuration" via click "Create New" - explored [shot](n2-create-new/shot.png)
+    - never clicked: "Save" (commit: the kit marks it a Save)
+    - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - field Description: accepts letters, digits, spaces, symbols
+    - field Source Address: accepts letters, digits, spaces, symbols
+    - field Source File Mask: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - field Trading Partner: accepts letters, digits, spaces, symbols, max 10 (stops typing)
+    - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - field Owner Phone: accepts digits, symbols
+    - field Owner Email: accepts letters, digits, spaces, symbols
+    - Save with writes blocked ("Save"): 0 banner(s), 12 field message(s)
+    - **n2.1** run-weekly (part) "Add File Transfer Configuration" via click "1" - explored [shot](n2.1-run-weekly/shot.png)
+      - tried: e13 "2" click -> the same state as n2.2; e26 "true" click -> nothing changed; e27 "Create New" click -> the same state as n2.3; e14 "true" click -> nothing changed; e23 "true" click -> nothing changed; e24 "true" click -> nothing changed; e21 "select a value...TimeWindowStartList" select -> nothing changed; e22 "select a value...TimeWindowEndList" select -> nothing changed
+      - never clicked: "Save" (commit: "Save")
+      - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Description: accepts letters, digits, spaces, symbols
+      - field Source Address: accepts letters, digits, spaces, symbols
+      - field Source File Mask: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Trading Partner: accepts letters, digits, spaces, symbols, max 10 (stops typing)
+      - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Owner Phone: accepts digits, symbols
+      - field Owner Email: accepts letters, digits, spaces, symbols
+      - Save with writes blocked ("Save"): 0 banner(s), 11 field message(s)
+    - **n2.2** run-monthly (part) "Add File Transfer Configuration" via click "2" - explored [shot](n2.2-run-monthly/shot.png)
+      - tried: e12 "1" click -> the same state as n2.1; e14 "true" click -> nothing changed; e15 "true" click -> nothing changed; e16 "select a value...RunOnThisDayList" select -> nothing changed; e19 "true" click -> nothing changed; e20 "true" click -> nothing changed; e22 "true" click -> nothing changed; e23 "Create New" click -> the same state as n2.3; e17 "select a value...TimeWindowStartList" select -> nothing changed; e18 "select a value...TimeWindowEndList" select -> nothing changed
+      - never clicked: "Save" (commit: "Save")
+      - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Description: accepts letters, digits, spaces, symbols
+      - field Source Address: accepts letters, digits, spaces, symbols
+      - field Source File Mask: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Trading Partner: accepts letters, digits, spaces, symbols, max 10 (stops typing)
+      - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Owner Phone: accepts digits, symbols
+      - field Owner Email: accepts letters, digits, spaces, symbols
+      - Save with writes blocked ("Save"): 0 banner(s), 11 field message(s)
+    - **n2.3** create-destination (part) "Add File Transfer Configuration" via fill "#Edit_ConfigName"="TestConfig1" > select "select a value...ProtocolTypeList"="1" > fill "#SourceAddress"="/test" > fill "#SourceFileMask"="test.txt" > select "select a value...FileDirectionList"="1" > fill "#Edit_OwnerName"="Owner1" > fill "#OwnerPhoneNumber"="5551234567" > select "select a value...AddConfigModuleList"="0b34481f-f69c-3ab6-e053-c9157aceff03" > fill "#OwnerEmail"="test.user@example.com" > click "1" > select "select a value...TimeWindowStartList"="0000" > select "select a value...TimeWindowEndList"="0030" > click "Create New" - explored [shot](n2.3-create-destination/shot.png)
+      - tried: e1 "select a value...DestinationProtocolList" select -> nothing changed; e2 "select a value...DestinationTypeList" select -> nothing changed; e7 "true" click -> nothing changed; e8 "true" click -> nothing changed; e9 "true" click -> nothing changed; e11 "true" click -> nothing changed
+      - never clicked: "Save" (commit: "Save")
+      - field Destination Address: accepts letters, digits, spaces, symbols
+      - field Contact Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Contact Phone: accepts digits, symbols
+      - field Contact Email: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - Save with writes blocked ("Save"): 0 banner(s), 3 field message(s)
+      - **n2.3.1** toggle-rename (part) "Add File Transfer Configuration" via click "true" - explored [shot](n2.3.1-toggle-rename/shot.png)
+        - tried: e1 "SFTPDestinationProtocolList" select -> the same state as n2.3.1.2
+        - never clicked: "Save" (commit: "Save")
+        - field Destination Address: accepts letters, digits, spaces, symbols
+        - field Contact Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+        - field Contact Phone: accepts digits, symbols
+        - field Contact Email: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+        - Save with writes blocked ("Save"): 0 banner(s), 4 field message(s)
+        - **n2.3.1.1** add-another (part) "Add File Transfer Configuration" via select "select a value...Server"="23a12f97-cdc4-4540-b833-9bc2a68d02a2" > fill "#DestinationAddress"="/dest" > select "select a value...RenamePatternList"="1" > click "Add Another" - frontier [shot](n2.3.1.1-add-another/shot.png)
+        - **n2.3.1.2** set-destination-type-filetoevent (part) "Add File Transfer Configuration" via select "User DefinedDestinationTypeList"="FileToEvent" - frontier [shot](n2.3.1.2-set-destination-type-filetoevent/shot.png)
+      - **n2.3.2** add-another (validation) "Add File Transfer Configuration" via click "Add Another" - leaf (only messages changed) [shot](n2.3.2-add-another/shot.png)
+  - **n3** criteria-collapsed (part) via click "div.panel-icon.clickable" - dead-end (Only actions are Expand Criteria and Create New, which lead back to already-known states (n1 and n2) from here.) [shot](n3-criteria-collapsed/shot.png)
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; dir packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n1.1.2.1-edit-create-destination" in C:\UI-specs\URL-to-Code
+ succeeded in 575ms:
+
+
+    Directory: 
+    C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n1.1.2.1-edit-create-destination
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:38 PM           6097 candidates.json                                                      
+-a----        11/17/2026   4:38 PM           2498 candidates.md                                                        
+-a----        11/17/2026   4:38 PM          98841 map.png                                                              
+-a----        11/17/2026   4:38 PM           2202 node.json                                                            
+-a----        11/17/2026   4:38 PM          93612 shot.png                                                             
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content -Raw -Encoding utf8 packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n1.1.2.1-edit-create-destination\\candidates.md" in C:\UI-specs\URL-to-Code
+ succeeded in 520ms:
+# n1.1.2.1 edit-create-destination: what can be done here (top window "Edit File Transfer Configuration")
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | dropdown | select a value...DestinationProtocolList / Destination Protocol |  | 1, 2, 3, 4 |  |
+| e2 | dropdown | select a value...DestinationTypeList / Destination Type |  | FileToEvent, UserDefined |  |
+| e3 | text | Destination Address | DestinationAddress / DestinationAddress | {"length-max":"Destination Address has a maximum length of 248 characters.","required":"Destination Address is a required field.","maxlength":248,"inputmode":"text"} |  |
+| e4 | text | Contact Name | ContactName / ContactName | {"length-max":"Contact Name has a maximum length of 50 characters.","regex":"Contact Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.","regex-pattern":"^([^;*^:~<>%])*$","maxlength":50,"inputmode":"text"} |  |
+| e5 | text | Contact Phone | ContactPhone / ContactPhone | {"length-max":"Contact Phone has a maximum length of 50 characters.","regex":"Enter Valid Phone Number.","regex-pattern":"^(?!(^\\(?(0{3})\\)?( /-/\\.)?0{3}( /-/\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( /-/\\.)?\\d{3,3}( /-/\\.)?\\d{4,4}$)","inputmode":"text"} |  |
+| e6 | text | Contact Email | ContactEmail / ContactEmail | {"length-max":"Contact Email has a maximum length of 50 characters.","regex":"Contact Email is not a valid email address. Enter email with 'name@domain' format.","regex-pattern":"^[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$","maxlength":50,"inputmode":"text"} |  |
+| e7 | check | true / Overwrite At Destination | OverwriteAtDestination / OverwriteAtDestination |  |  |
+| e8 | check | true / Compress At Destination | CompressAtDestination / CompressAtDestination |  |  |
+| e9 | check | true / Destination Is Archive | DestinationIsArchive / DestinationIsArchive |  |  |
+| e10 | check | true / Rename At Destination | RenameAtDestination / RenameAtDestination |  |  |
+| e11 | check | true / Active | Active / Active |  | checked |
+| e12 | button | Reset | DestinationResetButton |  |  |
+| e13 | button | Cancel | DestinationCancelButton |  |  |
+| e14 | button | Add Another | AddAnotherButton |  |  |
+| e15 | button | Save | SaveAndCloseButton |  | danger: commit: "Save" |
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; dir packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n1.1.2.2-open-destination" in C:\UI-specs\URL-to-Code
+ succeeded in 554ms:
+
+
+    Directory: 
+    C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n1.1.2.2-open-destination
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:38 PM           7000 candidates.json                                                      
+-a----        11/17/2026   4:38 PM           2829 candidates.md                                                        
+-a----        11/17/2026   4:38 PM         102819 map.png                                                              
+-a----        11/17/2026   4:38 PM           1649 node.json                                                            
+-a----        11/17/2026   4:38 PM          96626 shot.png                                                             
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content -Raw -Encoding utf8 packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n1.1.2.2-open-destination\\candidates.md" in C:\UI-specs\URL-to-Code
+ succeeded in 534ms:
+# n1.1.2.2 open-destination: what can be done here (top window "Edit File Transfer Configuration")
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | dropdown | FTPDestinationProtocolList / Destination Protocol |  | 1, 2, 3, 4 |  |
+| e2 | dropdown | SFTP TESTServer / Server |  | 23a12f97-cdc4-4540-b833-9bc2a68d02a2, e0e6ef34-97c4-4a1c-b162-afea93332afb, 680c7460-8189-4255-93e7-2b6424fdb650, 785712c8-6112-45f1-a020-8d950d5fa7d6, 94014542-6afc-427d-91fa-432f4e4da4a7 |  |
+| e3 | dropdown | select a value...DestinationTypeList / Destination Type |  | FileToEvent, UserDefined |  |
+| e4 | text | https://dxccommercial.test.mapshc.com / Destination Address | DestinationAddress / DestinationAddress | {"length-max":"Destination Address has a maximum length of 248 characters.","required":"Destination Address is a required field.","maxlength":248,"inputmode":"text"} |  |
+| e5 | text | Contact Name | ContactName / ContactName | {"length-max":"Contact Name has a maximum length of 50 characters.","regex":"Contact Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.","regex-pattern":"^([^;*^:~<>%])*$","maxlength":50,"inputmode":"text"} |  |
+| e6 | text | Contact Phone | ContactPhone / ContactPhone | {"length-max":"Contact Phone has a maximum length of 50 characters.","regex":"Enter Valid Phone Number.","regex-pattern":"^(?!(^\\(?(0{3})\\)?( /-/\\.)?0{3}( /-/\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( /-/\\.)?\\d{3,3}( /-/\\.)?\\d{4,4}$)","inputmode":"text"} |  |
+| e7 | text | Contact Email | ContactEmail / ContactEmail | {"length-max":"Contact Email has a maximum length of 50 characters.","regex":"Contact Email is not a valid email address. Enter email with 'name@domain' format.","regex-pattern":"^[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$","maxlength":50,"inputmode":"text"} |  |
+| e8 | check | true / Overwrite At Destination | OverwriteAtDestination / OverwriteAtDestination |  |  |
+| e9 | check | true / Compress At Destination | CompressAtDestination / CompressAtDestination |  |  |
+| e10 | check | true / Destination Is Archive | DestinationIsArchive / DestinationIsArchive |  |  |
+| e11 | check | true / Rename At Destination | RenameAtDestination / RenameAtDestination |  |  |
+| e12 | check | true / Active | Active / Active |  | checked |
+| e13 | button | Reset | DestinationResetButton |  |  |
+| e14 | button | Create from Existing | CreateFromExisting |  |  |
+| e15 | button | Cancel | DestinationCancelButton |  |  |
+| e16 | button | Add Another | AddAnotherButton |  |  |
+| e17 | button | Save | UpdateAndCloseButton |  | danger: commit: "Save" |
+
+
+**Evaluating UI options**
+
+I think "Create from Existing" probably opens a new dialog, so I'll plan on clicking it. It doesn't seem dangerous. Selecting the destination type might reveal more options in the UI. I wonder if changing the protocol toggles the server field, but the server is already set. Choosing a protocol value could show or hide the server options. I can also click "Add Another". For the next node, it looks like I need to inspect the candidates in "candidates.md".
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; dir packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n1.1.2.3-edit-run-weekly" in C:\UI-specs\URL-to-Code
+ succeeded in 659ms:
+
+
+    Directory: 
+    C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n1.1.2.3-edit-run-weekly
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:39 PM          13622 candidates.json                                                      
+-a----        11/17/2026   4:39 PM           5322 candidates.md                                                        
+-a----        11/17/2026   4:39 PM         118956 map.png                                                              
+-a----        11/17/2026   4:39 PM           1650 node.json                                                            
+-a----        11/17/2026   4:39 PM         109997 shot.png                                                             
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content -Raw -Encoding utf8 packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n1.1.2.3-edit-run-weekly\\candidates.md" in C:\UI-specs\URL-to-Code
+ succeeded in 562ms:
+# n1.1.2.3 edit-run-weekly: what can be done here (top window "Edit File Transfer Configuration")
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | text | Test / Configuration Name | Edit_ConfigName / ConfigName | {"length-max":"Configuration Name has a maximum length of 50 characters.","regex":"Configuration Name is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].","regex-pattern":"^([A-Za-z0-9]/[^\\x00-\\x7F])*$","required":"Configuration Name is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e2 | text | Description | Description / Description | {"length-max":"Description has a maximum length of 200 characters.","maxlength":200,"inputmode":"text"} |  |
+| e3 | dropdown | FTPProtocolTypeList / Protocol |  | 1, 2, 3, 4 |  |
+| e4 | dropdown | SFTP TESTFtsServerList / Server |  | 23a12f97-cdc4-4540-b833-9bc2a68d02a2, e0e6ef34-97c4-4a1c-b162-afea93332afb, 680c7460-8189-4255-93e7-2b6424fdb650, 785712c8-6112-45f1-a020-8d950d5fa7d6, 94014542-6afc-427d-91fa-432f4e4da4a7 |  |
+| e5 | text | /test / Source Address | SourceAddress / SourceAddress | {"length-max":"Source Address has a maximum length of 248 characters.","required":"Source Address is a required field.","maxlength":248,"inputmode":"text"} |  |
+| e6 | text | wer / Source File Mask | SourceFileMask / SourceFileMask | {"length-max":"Source File Mask has a maximum length of 50 characters.","required":"Source File Mask is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e7 | dropdown | select a value...FileDirectionList / File Direction |  | 1, 2 |  |
+| e8 | text | Trading Partner | TradingPartner / TradingPartner | {"length-max":"Trading Partner has a maximum length of 10 characters.","regex":"Trading Partner is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].","regex-pattern":"^([A-Za-z0-9]/[^\\x00-\\x7F])*$","maxlength":10,"inputmode":"text"} |  |
+| e9 | text | yashwanth / Owner Name | Edit_OwnerName / OwnerName | {"length-max":"Owner Name has a maximum length of 50 characters.","required":"Owner Name is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e10 | text | 123-333-3333 / Owner Phone | OwnerPhoneNumber / OwnerPhoneNumber | {"length-max":"Owner Phone has a maximum length of 20 characters.","regex":"Enter Valid Phone Number.","regex-pattern":"^(?!(^\\(?(0{3})\\)?( /-/\\.)?0{3}( /-/\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( /-/\\.)?\\d{3,3}( /-/\\.)?\\d{4,4}$)","required":"Owner Phone is a required field.","inputmode":"text"} |  |
+| e11 | dropdown | AdministrationAddConfigModuleList / Owner Module |  | 0b34481f-f69c-3ab6-e053-c9157aceff03, 09df7d37-3bd5-7c9c-e053-c9157aceb3f2, bb31ef47-8d1e-c99a-e053-c9157ace53da, 06c7121b-8166-4e32-e054-0017a4ab527b, 98385830-7fc2-5bb4-e053-c9157ace364b, 0e7b7146-aa81-5292-e053-c9157ace4cbe, 96c6da47-0ae6-2bcd-e053-c9157ace38f9, fdf18357-3c14-7cb7-e053-c9157ace3990, ff19da47-cc91-e17d-e053-c9157ace99a5, 2e60501f-f8aa-50b6-e053-c9157acefb50, 30de9349-0e99-aec1-e053-c9157ace0401, f1612a4b-ff51-1a03-e053-c9157ace9264 |  |
+| e12 | text | yashwanth.goduguchintha@dxc.com / Owner Email | OwnerEmail / OwnerEmail | {"length-max":"Owner Email has a maximum length of 150 characters.","regex":"Owner Email is not a valid email address. Enter email with 'name@domain' format.","regex-pattern":"^[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$","required":"Owner Email is a required field.","maxlength":150,"inputmode":"text"} |  |
+| e13 | radio | 1 / Run Weekly | RunSchedule_ID1 / RunSchedule.ID |  | checked |
+| e14 | radio | 2 / Run Monthly | RunSchedule_ID2 / RunSchedule.ID |  |  |
+| e15 | check | true / Sunday | RunOnSunday / RunOnSunday |  |  |
+| e16 | check | true / Monday | RunOnMonday / RunOnMonday |  |  |
+| e17 | check | true / Tuesday | RunOnTuesday / RunOnTuesday |  |  |
+| e18 | check | true / Wednesday | RunOnWednesday / RunOnWednesday |  |  |
+| e19 | check | true / Thursday | RunOnThursday / RunOnThursday |  |  |
+| e20 | check | true / Friday | RunOnFriday / RunOnFriday |  |  |
+| e21 | check | true / Saturday | RunOnSaturday / RunOnSaturday |  |  |
+| e22 | dropdown | 0000TimeWindowStartList / Time Window Start |  | 0000, 0030, 0100, 0130, 0200, 0230, 0300, 0330, 0400, 0430, 0500, 0530 |  |
+| e23 | dropdown | 0030TimeWindowEndList / Time Window End |  | 0000, 0030, 0100, 0130, 0200, 0230, 0300, 0330, 0400, 0430, 0500, 0530 |  |
+| e24 | check | true / Send Notification | SendNotification / SendNotification |  |  |
+| e25 | check | true / Suspend | Suspended / Suspended |  |  |
+| e26 | check | true / Active | IsActive / IsActive |  | checked |
+| e27 | check | true / Show Inactives | DestinationShowInactiveCheckBox / DestinationShowInactiveCheckBox |  |  |
+| e28 | button | Create New | DestinationGridAddButton |  |  |
+| e29 | button | Reset | FileTransferConfigurationEditFormResetButton |  |  |
+| e30 | button | Cancel | FileTransferConfigurationEditFormCancelButton |  |  |
+| e31 | button | Save | FileTransferConfigurationEditFormSaveButton |  | danger: commit: "Save" |
+| e32 | row | https://dxccommercial.test.mapshc.comFTPActivetruefalsefalse |  |  | 2 rows |
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; dir packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.3.1.1-add-another" in C:\UI-specs\URL-to-Code
+ succeeded in 519ms:
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.3.1.1-add-another
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:39 PM           6715 candidates.json                                                      
+-a----        11/17/2026   4:39 PM           2576 candidates.md                                                        
+-a----        11/17/2026   4:39 PM         102442 map.png                                                              
+-a----        11/17/2026   4:39 PM           5277 node.json                                                            
+-a----        11/17/2026   4:39 PM          95790 shot.png                                                             
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content -Raw -Encoding utf8 packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.3.1.1-add-another\\candidates.md" in C:\UI-specs\URL-to-Code
+ succeeded in 478ms:
+# n2.3.1.1 add-another: what can be done here (top window "Add File Transfer Configuration")
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | button | close |  |  |  |
+| e2 | dropdown | select a value...DestinationProtocolList / Destination Protocol |  | 1, 2, 3, 4 |  |
+| e3 | dropdown | select a value...DestinationTypeList / Destination Type |  | FileToEvent, UserDefined |  |
+| e4 | text | /dest / Destination Address | DestinationAddress / DestinationAddress | {"length-max":"Destination Address has a maximum length of 248 characters.","maxlength":248,"inputmode":"text"} |  |
+| e5 | text | Contact Name | ContactName / ContactName | {"length-max":"Contact Name has a maximum length of 50 characters.","regex":"Contact Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.","regex-pattern":"^([^;*^:~<>%])*$","maxlength":50,"inputmode":"text"} |  |
+| e6 | text | Contact Phone | ContactPhone / ContactPhone | {"length-max":"Contact Phone has a maximum length of 50 characters.","regex":"Enter Valid Phone Number.","regex-pattern":"^(?!(^\\(?(0{3})\\)?( /-/\\.)?0{3}( /-/\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( /-/\\.)?\\d{3,3}( /-/\\.)?\\d{4,4}$)","inputmode":"text"} |  |
+| e7 | text | Contact Email | ContactEmail / ContactEmail | {"length-max":"Contact Email has a maximum length of 50 characters.","regex":"Contact Email is not a valid email address. Enter email with 'name@domain' format.","regex-pattern":"^[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$","maxlength":50,"inputmode":"text"} |  |
+| e8 | check | true / Overwrite At Destination | OverwriteAtDestination / OverwriteAtDestination |  |  |
+| e9 | check | true / Compress At Destination | CompressAtDestination / CompressAtDestination |  |  |
+| e10 | check | true / Destination Is Archive | DestinationIsArchive / DestinationIsArchive |  |  |
+| e11 | check | true / Rename At Destination | RenameAtDestination / RenameAtDestination |  | checked |
+| e12 | dropdown | ORIG_<DATE>_<TIME>RenamePatternList / Rename Pattern |  | 1, 2, 3, 4, 5 |  |
+| e13 | check | true / Active | Active / Active |  | checked |
+| e14 | button | Reset | DestinationResetButton |  |  |
+| e15 | button | Cancel | DestinationCancelButton |  |  |
+| e16 | button | Add Another | AddAnotherButton |  |  |
+| e17 | button | Save | SaveAndCloseButton |  | danger: commit: "Save" |
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; dir packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.3.1.2-set-destination-type-filetoevent" in C:\UI-specs\URL-to-Code
+ succeeded in 548ms:
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.3.1.2-set-destinatio
+    n-type-filetoevent
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:39 PM           6479 candidates.json                                                      
+-a----        11/17/2026   4:39 PM           2608 candidates.md                                                        
+-a----        11/17/2026   4:39 PM          94352 map.png                                                              
+-a----        11/17/2026   4:39 PM           3579 node.json                                                            
+-a----        11/17/2026   4:39 PM          88368 shot.png                                                             
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content -Raw -Encoding utf8 packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.3.1.2-set-destination-type-filetoevent\\candidates.md" in C:\UI-specs\URL-to-Code
+ succeeded in 773ms:
+# n2.3.1.2 set-destination-type-filetoevent: what can be done here (top window "Add File Transfer Configuration")
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | dropdown | select a value...DestinationProtocolList / Destination Protocol |  | 1, 2, 3, 4 |  |
+| e2 | dropdown | select a value...DestinationTypeList / Destination Type |  | FileToEvent, UserDefined |  |
+| e3 | text | Destination Address | DestinationAddress / DestinationAddress | {"length-max":"Destination Address has a maximum length of 248 characters.","required":"Destination Address is a required field.","maxlength":248,"inputmode":"text"} |  |
+| e4 | text | Contact Name | ContactName / ContactName | {"length-max":"Contact Name has a maximum length of 50 characters.","regex":"Contact Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.","regex-pattern":"^([^;*^:~<>%])*$","maxlength":50,"inputmode":"text"} |  |
+| e5 | text | Contact Phone | ContactPhone / ContactPhone | {"length-max":"Contact Phone has a maximum length of 50 characters.","regex":"Enter Valid Phone Number.","regex-pattern":"^(?!(^\\(?(0{3})\\)?( /-/\\.)?0{3}( /-/\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( /-/\\.)?\\d{3,3}( /-/\\.)?\\d{4,4}$)","inputmode":"text"} |  |
+| e6 | text | Contact Email | ContactEmail / ContactEmail | {"length-max":"Contact Email has a maximum length of 50 characters.","regex":"Contact Email is not a valid email address. Enter email with 'name@domain' format.","regex-pattern":"^[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$","maxlength":50,"inputmode":"text"} |  |
+| e7 | check | true / Overwrite At Destination | OverwriteAtDestination / OverwriteAtDestination |  |  |
+| e8 | check | true / Compress At Destination | CompressAtDestination / CompressAtDestination |  |  |
+| e9 | check | true / Destination Is Archive | DestinationIsArchive / DestinationIsArchive |  |  |
+| e10 | check | true / Rename At Destination | RenameAtDestination / RenameAtDestination |  | checked |
+| e11 | dropdown | select a value...RenamePatternList / Rename Pattern |  | 1, 2, 3, 4, 5 |  |
+| e12 | check | true / Active | Active / Active |  | checked |
+| e13 | button | Reset | DestinationResetButton |  |  |
+| e14 | button | Cancel | DestinationCancelButton |  |  |
+| e15 | button | Add Another | AddAnotherButton |  |  |
+| e16 | button | Save | SaveAndCloseButton |  | danger: commit: "Save" |
+
+
+**Evaluating rename patterns and images**
+
+I’m noticing that this state shows a rename pattern but is currently empty. The destination type “FileToEvent” might need a rename pattern, so I'll choose "1" for that and toggle rename off. It could be beneficial to check the kit/screen.json to see how these controls behave, though I'm not sure it’s necessary. According to the instructions, I should also look at map.png and shot.png using an image viewer, so I’ll use view_image for that. Let’s view each map quickly!
+**Exploring map options**
+
+I see that the map shows a modal, which makes me think that selecting the dropdown may reveal a list of servers, but that’s not immediately visible on the map itself. I think it’s best to proceed by viewing the map for open destinations. It's always interesting to see what options are available! Let’s see if I can uncover some hidden gems within that dropdown menu.
+**Exploring UI elements**
+
+I can't find the "create new" button in the viewport. It seems to be missing, possibly below the map. The map appears truncated at the bottom, and some candidates, like e28, might be cut off. I wonder if they’re hidden below the fold. For the last two elements, we might not need images, but I'm willing to check. Let's take a look at the map for version n2.3.1.1.
+**Crafting plan file**
+
+I need to create a plan file called wave-5.json that includes one entry for each node in the frontier, with the node IDs formatted like "n1.1.2.1". The input specifies entries for "wave-5.frontier.json", and these entries must include fields like `node`, which can be "n1" or similar. I’ll also ensure to include actions, avoiding danger elements, and maintaining a maximum of 12 actions per state. I’ll focus on actions that lead to different states.
+**Developing action plan**
+
+For the node n1.1.2.1, I’m planning to select a destination protocol value, maybe "2" for SFTP. Then, I’ll choose between "FileToEvent" or "UserDefined" to see which reveals a rename pattern. I need to check or uncheck the "Rename At Destination" option to see if the rename pattern appears or disappears, even though the field isn't currently there. Toggling might reveal it. I should clarify how the "check" action works and if it sets the checkbox state or not. I might go with "click" to toggle, as that might be clearer.
+**Clarifying checkbox actions**
+
+I’m considering how to handle checkbox toggles without clear instructions. My instinct is to use "click" to avoid the tool expecting a “check” action. However, the schema mentions "check," which might actually toggle it. From past experiences, I've seen that “click” is typically used for checkboxes. So, I’ll use "click" for checkboxes like e10 and e7. Toggling the rename option could be necessary to hide or reveal the rename pattern, although it isn’t visible currently. Next, I’ll click “Add Another” (e14) to add a destination row. Selecting a protocol may require some setup to fill required fields. 
+
+For node n1.1.2.2's open-destination actions, I’ll click "Create from Existing" (e14), which should lead to a modal. Then, I’ll select the destination type, "UserDefined" or "FileToEvent," as that could reveal relevant patterns or server changes.
+**Selecting options for plan**
+
+I’ve decided to pick "FileToEvent" as the destination type. I’ll click "Rename At Destination" to see if the rename pattern field appears since it isn’t visible right now. After that, I’ll click "Add Another," possibly changing the protocol to see if any server options get hidden.
+
+For node n1.1.2.3's edit-run-weekly actions, I need to click the radio button for "Run Monthly" (e14), which should lead to a new section. I’ll also select a dropdown value of "2" for File Direction. Then, I’ll check the "DestinationShowInactive" (e27) checkbox to reveal more grid rows, even if they're outside the scroll area. 
+
+I’ll double-click row e32 to open the destination, although it might be the same as the previous one. I should still consider this step important for exploring different states, despite earlier attempts not opening anything new.
+**Creating a new flow state**
+
+Switching the schedule should create a new state in the flow, and I’m thinking of naming the expected folder "edit-run-monthly." I’ll click "Create New" (e28), but it might just lead back to n1.1.2.1, so I might skip that. Choosing the protocol value "4" could show different server options, but it didn’t work in n1.1.2 before, so I’ll keep three actions.
+
+For n2.3.1.1, the plan includes dealing with validation errors. I’ll start by clicking the banner to dismiss the errors and create a new state. Then, I’ll select destination protocol "1" and destination type as either "UserDefined" or "FileToEvent." After the initial setup, I’ll click “Add Another” (e16), ensuring the required protocol and type are selected to avoid validation issues. I’ll set the necessary protocol and type values as well, and click to add another destination, which should trigger a new state correctly.
+
+As for n2.3.1.2, I’ll select the rename pattern value to meet requirements, then double-check the rename checkbox to see if that hides the field. I need to ensure the destination address is filled, so I'll select the appropriate protocol and type again, ensuring necessary values are provided. The structure for wave-5.json needs to include an array of node objects with attributes like id, name, and actions.
+
+In constructing the JSON structure, I’ll follow the schema requirements, ensuring clarity with attributes like `name`. Each action will also have appropriate details. Finally, when writing the file, I’ll use Python to generate the JSON with the correct encoding format.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; python -c \"import json,os; out=r'packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-5.json'; plan={'nodes':[{'node':'n1.1.2.1','name':'edit-create-destination','actions':[{'el':'e1','do':'select','value':'2','why':'Switch Destination Protocol to a different value to reveal any protocol-specific fields/validation.'},{'el':'e2','do':'select','value':'FileToEvent','why':'Change Destination Type to exercise the alternate destination-type branch (may reveal/hide fields).','name':'set-destination-type-filetoevent'},{'el':'e10','do':'click','why':'Toggle Rename At Destination to reveal/hide any rename-related fields.'},{'el':'e14','do':'click','why':'Add Another to create an additional destination entry/section without saving.','name':'add-another-destination'}]},{'node':'n1.1.2.2','name':'open-destination','actions':[{'el':'e14','do':'click','why':'Open Create from Existing flow to capture any nested dialog/selector state.','name':'create-from-existing'},{'el':'e3','do':'select','value':'UserDefined','why':'Switch Destination Type to exercise the other branch and reveal/hide any additional fields.'},{'el':'e11','do':'click','why':'Toggle Rename At Destination to reveal/hide any rename-pattern fields.'},{'el':'e16','do':'click','why':'Add Another to create an additional destination entry/section without saving.'}]},{'node':'n1.1.2.3','name':'edit-run-weekly','actions':[{'el':'e14','do':'click','why':'Switch Run Schedule to Run Monthly to reach the monthly scheduling UI/state.','name':'switch-to-run-monthly'},{'el':'e7','do':'select','value':'2','why':'Select the other File Direction option to reach any direction-specific destination behavior/state.'},{'el':'e27','do':'click','why':'Toggle Show Inactives to expose any additional inactive destination rows in the grid.'}]},{'node':'n2.3.1.1','name':'add-another','actions':[{'el':'e1','do':'click','why':'Dismiss the validation banner/summary to capture the no-banner state.','name':'dismiss-validation-banner'},{'el':'e16','do':'click','setup':[{'el':'e2','do':'select','value':'1'},{'el':'e3','do':'select','value':'UserDefined'}],'why':'Retry Add Another after selecting required Destination Protocol/Type to reach the post-add state without the required-field errors.','name':'add-another-after-required'}]},{'node':'n2.3.1.2','name':'set-destination-type-filetoevent','actions':[{'el':'e11','do':'select','value':'1','why':'Pick a Rename Pattern option to exercise the rename-pattern branch for FileToEvent destinations.'},{'el':'e10','do':'click','why':'Toggle Rename At Destination to capture the state where rename pattern is hidden/disabled.'},{'el':'e15','do':'click','setup':[{'el':'e1','do':'select','value':'1'},{'el':'e3','do':'fill','value':'/dest2'},{'el':'e11','do':'select','value':'1'}],'why':'Add Another after providing required destination inputs to create a second destination entry without saving.','name':'add-another-filetoevent'}]}]}; os.makedirs(os.path.dirname(out),exist_ok=True); json.dump(plan,open(out,'w',encoding='utf-8',newline='\\n'),indent=2); print('wrote',out)\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1405ms:
+wrote packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-5.json
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; node scripts/check-flows.mjs C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\plans\\wave-5.json C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\plans\\wave-5.frontier.json" in C:\UI-specs\URL-to-Code
+ succeeded in 708ms:
+✓ flows plan OK
+
+codex
+- Wrote flow plan: `packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-5.json`
+- Validated with gate: `node scripts/check-flows.mjs ...` → `✓ flows plan OK`
+
+Skipped / risk:
+- Skipped reading `kits/provider/KIT.md` and `kit/screen.json` since the frontier candidates were sufficient; if protocol/type toggles don’t change the UI, wave-5 may discover fewer new states than expected.
+tokens used
+110,733
+- Wrote flow plan: `packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-5.json`
+- Validated with gate: `node scripts/check-flows.mjs ...` → `✓ flows plan OK`
+
+Skipped / risk:
+- Skipped reading `kits/provider/KIT.md` and `kit/screen.json` since the frontier candidates were sufficient; if protocol/type toggles don’t change the UI, wave-5 may discover fewer new states than expected.
+
+--- exit 0 ---

@@ -1,0 +1,109 @@
+{
+  "nodes": [
+    {
+      "node": "n1.1.1",
+      "name": "open-destination",
+      "deadEnd": true,
+      "reason": "Read-only destination view; only Close returns to the parent dialog."
+    },
+    {
+      "node": "n1.1.2",
+      "name": "edit-configuration",
+      "actions": [
+        {
+          "el": "e24",
+          "do": "click",
+          "setup": [
+            {
+              "el": "e7",
+              "do": "select",
+              "value": "1"
+            },
+            {
+              "el": "e8",
+              "do": "fill",
+              "value": "TP1"
+            }
+          ],
+          "why": "Opens the Create New destination workflow from the Edit Configuration dialog (ensure required-ish fields are populated so the action is enabled).",
+          "name": "edit-create-destination"
+        },
+        {
+          "el": "e28",
+          "do": "dblclick",
+          "why": "Destination grid rows typically open their detail window on double-click.",
+          "name": "open-destination"
+        },
+        {
+          "el": "e13",
+          "do": "click",
+          "why": "Switches Run Schedule from Monthly to Weekly to reveal the weekly schedule controls.",
+          "name": "edit-run-weekly"
+        },
+        {
+          "el": "e17",
+          "do": "select",
+          "value": "1",
+          "why": "Selects a Run On This Day Month value to exercise the day-of-month schedule path.",
+          "name": "set-run-on-this-day"
+        },
+        {
+          "el": "e3",
+          "do": "select",
+          "value": "2",
+          "why": "Selects a different Protocol value to expose any protocol-dependent state/validation.",
+          "name": "set-protocol"
+        },
+        {
+          "el": "e23",
+          "do": "click",
+          "why": "Toggles Show Inactives to change the destination grid contents.",
+          "name": "toggle-show-inactives"
+        }
+      ]
+    },
+    {
+      "node": "n2.3.1",
+      "name": "toggle-rename",
+      "actions": [
+        {
+          "el": "e16",
+          "do": "click",
+          "setup": [
+            {
+              "el": "e2",
+              "do": "select",
+              "value": "23a12f97-cdc4-4540-b833-9bc2a68d02a2"
+            },
+            {
+              "el": "e4",
+              "do": "fill",
+              "value": "/dest"
+            },
+            {
+              "el": "e12",
+              "do": "select",
+              "value": "1"
+            }
+          ],
+          "why": "Uses Add Another to reach the post-add destination flow without pressing Save (fill required fields so it can proceed).",
+          "name": "add-another"
+        },
+        {
+          "el": "e3",
+          "do": "select",
+          "value": "FileToEvent",
+          "why": "Switches Destination Type to reveal any conditional fields/state for the alternate type.",
+          "name": "set-destination-type-filetoevent"
+        },
+        {
+          "el": "e1",
+          "do": "select",
+          "value": "1",
+          "why": "Selects a different Destination Protocol value to expose protocol-dependent destination fields/state.",
+          "name": "set-destination-protocol"
+        }
+      ]
+    }
+  ]
+}

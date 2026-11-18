@@ -1,0 +1,501 @@
+{
+ "title": "Add FTP Server Credentials",
+ "windowClass": "k-window panelForm-col-6 ui-draggable",
+ "windowStyle": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 231.666px; left: 240px; z-index: 11502; opacity: 1; transform: scale(1);",
+ "titlebarHtml": "<div class=\"k-window-titlebar ui-draggable-handle\"><span class=\"k-window-title\" id=\"ViewEditFTPServerCredentials_wnd_title\">Add FTP Server Credentials</span><div class=\"k-window-titlebar-actions\"><button role=\"button\" class=\"k-window-titlebar-action k-button k-button-flat k-icon-button\" aria-label=\"Custom\" type=\"button\" title=\"HELP\"><span class=\"k-icon k-button-icon k-i-help\" title=\"HELP\" data-role=\"tooltip\" tabindex=\"0\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m462.7 317.9-41.5-31.4c1.8-9.9 2.8-20.1 2.8-30.5s-1-20.6-2.8-30.5l41.5-31.4c6.4-4.9 8.2-13.8 4.2-20.8L433 114.6c-4-7-12.6-9.9-20.1-6.7l-48 20.2c-15.4-13.2-33.3-23.6-52.8-30.5L305.8 46c-1-8-7.8-14-15.9-14h-67.8c-8.1 0-14.9 6-15.9 14l-6.5 51.6c-19.5 6.9-37.4 17.3-52.8 30.5l-48-20.2c-7.4-3.1-16-.2-20.1 6.7l-33.9 58.7c-4 7-2.2 15.9 4.2 20.8l41.5 31.4C89 235.4 88 245.6 88 256s1 20.6 2.8 30.5l-41.5 31.4c-6.4 4.9-8.2 13.8-4.2 20.8L79 397.4c4 7 12.6 9.9 20.1 6.7l48-20.2c15.4 13.2 33.3 23.6 52.8 30.5l6.5 51.6c1 8 7.8 14 15.9 14h67.8c8.1 0 14.9-6 15.9-14l6.5-51.6c19.5-6.9 37.4-17.3 52.8-30.5l48 20.2c7.4 3.1 16 .2 20.1-6.7l33.9-58.7c3.7-7 1.9-15.9-4.6-20.8M256 340c-46.4 0-84-37.6-84-84s37.6-84 84-84 84 37.6 84 84-37.6 84-84 84\"></path></svg></span></button><button role=\"button\" class=\"k-window-titlebar-action k-button k-button-flat k-icon-button\" aria-label=\"Close\" type=\"button\" title=\"Close\" data-kit-action=\"close\"><span class=\"k-icon k-button-icon k-i-custom-close\" title=\"Close\" data-role=\"tooltip\" tabindex=\"0\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 141.3 301.3 256 416 370.7 370.7 416 256 301.3 141.3 416 96 370.7 210.7 256 96 141.3 141.3 96 256 210.7 370.7 96z\"></path></svg></span></button></div></div>",
+ "contentClass": "k-window-content",
+ "contentId": "ViewEditFTPServerCredentials",
+ "contentStyle": "max-height: 918px;",
+ "overlay": {
+  "className": "k-overlay",
+  "style": "z-index: 11501; display: block; opacity: 0.5;",
+  "background": "rgb(61, 61, 61)",
+  "opacity": "0.5"
+ },
+ "options": {
+  "modal": {
+   "preventScroll": true
+  },
+  "width": null,
+  "height": null,
+  "actions": [
+   "Custom",
+   "Close"
+  ],
+  "draggable": false,
+  "resizable": false,
+  "animation": {
+   "open": {
+    "effects": {},
+    "duration": 350
+   },
+   "close": {
+    "effects": {},
+    "duration": 350,
+    "hide": true
+   }
+  },
+  "position": {
+   "top": 231.66649999999998,
+   "left": 240
+  }
+ },
+ "widgets": {
+  "k2": {
+   "role": "datepicker",
+   "id": "View_CreationDate",
+   "name": "CreationDate",
+   "label": "Creation Date",
+   "required": true,
+   "validation": {
+    "date": "Creation Date must represent a valid date in the format 'MM/DD/YYYY'.",
+    "required": "Creation Date is a required field."
+   },
+   "validationParams": {
+    "minmax-date": "Creation Date must be within 01/01/1900 and 12/31/9999."
+   },
+   "enabled": true,
+   "help": null,
+   "animation": {},
+   "html": "<span class=\"k-datepicker k-input editor-control k-input-inner readonly-bkgrnd-color\" style=\"padding: 0\" data-kit=\"k2\"><input readonly=\"readonly\" class=\"editor-control k-input-inner readonly-widget\" data-val=\"true\" data-val-date=\"Creation Date must represent a valid date in the format 'MM/DD/YYYY'.\" data-val-minmax-date=\"Creation Date must be within 01/01/1900 and 12/31/9999.\" data-val-required=\"Creation Date is a required field.\" id=\"View_CreationDate\" ignoredirtydata=\"False\" name=\"CreationDate\" onblur=\"kendoMaskedDatePickerValidate(id);\" onkeydown=\"ClearKendoMaskedDateError(event,id);\" type=\"text\" value=\"01/01/1900\" data-role=\"datepicker\" inputmode=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"grid\" aria-controls=\"View_CreationDate_dateview\" autocomplete=\"off\" aria-disabled=\"false\" aria-readonly=\"true\" style=\"\" aria-labelledby=\"View_CreationDateLabel\"><button aria-label=\"select\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button display-none-priority readonly-bkgrnd-color\" type=\"button\" role=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-calendar k-button-icon readonly-cursor display-none-priority\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 416H288V288h128zm64-352v384c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h64V0h64v32h128V0h64v32h64c17.6 0 32 14.4 32 32m-32 128H64v255.9l.1.1 383.9-.1zm0-127.9q-.15-.15 0 0l-64-.1v32h-64V64H192v32h-64V64H64.1l-.1.1V160h384z\"></path></svg></span></button></span>",
+   "kind": "date",
+   "value": "1899-12-31T18:38:50.000Z",
+   "shows": "01/01/1900",
+   "offsetDays": -46341,
+   "minutes": 0,
+   "format": "MM/dd/yyyy",
+   "timeFormat": null,
+   "interval": 30,
+   "min": "1899-12-31T18:38:50.000Z",
+   "max": "9999-12-30T18:30:00.000Z",
+   "minOffsetDays": -46341,
+   "maxOffsetDays": 2912122,
+   "placeholder": ""
+  },
+  "k3": {
+   "role": "datepicker",
+   "id": "View_LastModifiedDate",
+   "name": "LastModifiedDate",
+   "label": "Modified Date",
+   "required": false,
+   "validation": {
+    "date": "Modified Date must represent a valid date in the format 'MM/DD/YYYY'."
+   },
+   "validationParams": {
+    "minmax-date": "Modified Date must be within 01/01/1900 and 12/31/9999."
+   },
+   "enabled": true,
+   "help": null,
+   "animation": {},
+   "html": "<span class=\"k-datepicker k-input editor-control k-input-inner readonly-bkgrnd-color\" style=\"padding: 0\" data-kit=\"k3\"><input readonly=\"readonly\" class=\"editor-control k-input-inner readonly-widget\" data-val=\"true\" data-val-date=\"Modified Date must represent a valid date in the format 'MM/DD/YYYY'.\" data-val-minmax-date=\"Modified Date must be within 01/01/1900 and 12/31/9999.\" height=\"0\" id=\"View_LastModifiedDate\" ignoredirtydata=\"False\" name=\"LastModifiedDate\" not-data-val-required=\"Modified Date is a required field.\" onblur=\"kendoMaskedDatePickerValidate(id);\" onkeydown=\"ClearKendoMaskedDateError(event,id);\" type=\"text\" value=\"01/01/1900\" data-role=\"datepicker\" inputmode=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"grid\" aria-controls=\"View_LastModifiedDate_dateview\" autocomplete=\"off\" aria-disabled=\"false\" aria-readonly=\"true\" style=\"\" aria-labelledby=\"View_LastModifiedDateLabel\"><button aria-label=\"select\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button display-none-priority readonly-bkgrnd-color\" type=\"button\" role=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-calendar k-button-icon readonly-cursor display-none-priority\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 416H288V288h128zm64-352v384c0 17.6-14.4 32-32 32H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h64V0h64v32h128V0h64v32h64c17.6 0 32 14.4 32 32m-32 128H64v255.9l.1.1 383.9-.1zm0-127.9q-.15-.15 0 0l-64-.1v32h-64V64H192v32h-64V64H64.1l-.1.1V160h384z\"></path></svg></span></button></span>",
+   "kind": "date",
+   "value": "1899-12-31T18:38:50.000Z",
+   "shows": "01/01/1900",
+   "offsetDays": -46341,
+   "minutes": 0,
+   "format": "MM/dd/yyyy",
+   "timeFormat": null,
+   "interval": 30,
+   "min": "1899-12-31T18:38:50.000Z",
+   "max": "9999-12-30T18:30:00.000Z",
+   "minOffsetDays": -46341,
+   "maxOffsetDays": 2912122,
+   "placeholder": ""
+  }
+ },
+ "fields": [
+  {
+   "name": "FtpServerName",
+   "id": "Edit_FtpServerName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Server Name",
+   "required": true,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Server Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+    "required": "Server Name is a required field."
+   },
+   "validationParams": {
+    "length-max": "Server Name has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "FtpDescription",
+   "id": "Edit_FtpDescription",
+   "type": "text",
+   "role": "textbox",
+   "label": "Description",
+   "required": true,
+   "maxLength": 100,
+   "validation": {
+    "regex": "Description contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+    "required": "Description is a required field."
+   },
+   "validationParams": {
+    "length-max": "Description has a maximum length of 100 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "FtpTransferMode",
+   "id": "Edit_FtpTransferMode",
+   "type": "text",
+   "role": "textbox",
+   "label": "Transfer Mode",
+   "required": true,
+   "maxLength": 1,
+   "validation": {
+    "required": "Transfer Mode is a required field."
+   },
+   "validationParams": {
+    "length-max": "Transfer Mode has a maximum length of 1 characters."
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "FtpServerIp",
+   "id": "Edit_FtpServerIp",
+   "type": "text",
+   "role": "textbox",
+   "label": "IP Server",
+   "required": true,
+   "maxLength": 15,
+   "validation": {
+    "regex": "IP Server contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+    "required": "IP Server is a required field."
+   },
+   "validationParams": {
+    "length-max": "IP Server has a maximum length of 15 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "FtpPort",
+   "id": "Edit_FtpPort",
+   "type": "text",
+   "role": "textbox",
+   "label": "Port",
+   "required": true,
+   "maxLength": null,
+   "validation": {
+    "number": "The field Port must be a number.",
+    "regex": "Port contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+    "required": "Port is a required field."
+   },
+   "validationParams": {
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "0",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "FtpProxyAddress",
+   "id": "Edit_FtpProxyAddress",
+   "type": "text",
+   "role": "textbox",
+   "label": "Proxy Address",
+   "required": false,
+   "maxLength": 200,
+   "validation": {
+    "regex": "Proxy Address contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Proxy Address has a maximum length of 200 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "FtpProxyPort",
+   "id": "Edit_FtpProxyPort",
+   "type": "text",
+   "role": "textbox",
+   "label": "Proxy Port",
+   "required": false,
+   "maxLength": null,
+   "validation": {
+    "number": "The field Proxy Port must be a number.",
+    "regex": "Proxy Port contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "FtpUser",
+   "id": "Edit_FtpUser",
+   "type": "text",
+   "role": "textbox",
+   "label": "Server User",
+   "required": true,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Server User contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+    "required": "Server User is a required field."
+   },
+   "validationParams": {
+    "length-max": "Server User has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "FtpPassword",
+   "id": "Edit_FtpPassword",
+   "type": "password",
+   "role": "textbox",
+   "label": "Password",
+   "required": true,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Password contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+    "required": "Password is a required field."
+   },
+   "validationParams": {
+    "length-max": "Password has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "FtpPasswordConfirmation",
+   "id": "Edit_FtpPasswordConfirmation",
+   "type": "password",
+   "role": "textbox",
+   "label": "Password Confirmation",
+   "required": true,
+   "maxLength": 50,
+   "validation": {
+    "regex": "Password Confirmation contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+    "required": "Password Confirmation is a required field."
+   },
+   "validationParams": {
+    "equalto-other": "Passwords do not match.",
+    "length-max": "Password Confirmation has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "FtpServerId",
+   "id": "View_FtpServerId",
+   "type": "text",
+   "role": "textbox",
+   "label": "FtpServerId",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "OperatorId",
+   "id": "View_OperatorId",
+   "type": "text",
+   "role": "textbox",
+   "label": "Last Modified User Id",
+   "required": true,
+   "maxLength": 200,
+   "validation": {
+    "regex": "Last Modified User Id contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+    "required": "Last Modified User Id is a required field."
+   },
+   "validationParams": {
+    "length-max": "Last Modified User Id has a maximum length of 200 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "CreationDate",
+   "id": "View_CreationDate",
+   "type": "text",
+   "role": "datepicker",
+   "label": "Creation Date",
+   "required": true,
+   "maxLength": null,
+   "validation": {
+    "date": "Creation Date must represent a valid date in the format 'MM/DD/YYYY'.",
+    "required": "Creation Date is a required field."
+   },
+   "validationParams": {
+    "minmax-date": "Creation Date must be within 01/01/1900 and 12/31/9999."
+   },
+   "value": "01/01/1900",
+   "widget": "k2",
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "LastModifiedDate",
+   "id": "View_LastModifiedDate",
+   "type": "text",
+   "role": "datepicker",
+   "label": "Modified Date",
+   "required": false,
+   "maxLength": null,
+   "validation": {
+    "date": "Modified Date must represent a valid date in the format 'MM/DD/YYYY'."
+   },
+   "validationParams": {
+    "minmax-date": "Modified Date must be within 01/01/1900 and 12/31/9999."
+   },
+   "value": "01/01/1900",
+   "widget": "k3",
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "IsValid",
+   "id": "View_IsValid",
+   "type": "text",
+   "role": "textbox",
+   "label": "Is Valid",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "btnInvalidate",
+   "id": "btnInvalidate",
+   "type": "button",
+   "role": null,
+   "label": "",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Invalidate",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "viewEditFTPServerCredentialsIdCancelButton",
+   "id": "viewEditFTPServerCredentialsIdCancelButton",
+   "type": "button",
+   "role": null,
+   "label": "",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Cancel",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "btnSave",
+   "id": "btnSave",
+   "type": "button",
+   "role": null,
+   "label": "",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Save",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  }
+ ],
+ "actions": [
+  {
+   "action": "close",
+   "text": "Close",
+   "id": null
+  },
+  {
+   "action": "cancel",
+   "text": "Cancel",
+   "id": "viewEditFTPServerCredentialsIdCancelButton"
+  },
+  {
+   "action": "save",
+   "text": "Save",
+   "id": "btnSave"
+  }
+ ],
+ "hidden": [
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "h7",
+  "h8",
+  "h9",
+  "h10",
+  "h11",
+  "h12",
+  "h13",
+  "h14",
+  "h15"
+ ],
+ "unknown": {},
+ "autofocus": "Edit_FtpServerName",
+ "pageState": {
+  "htmlOverflow": "hidden",
+  "bodyOverflow": "hidden",
+  "htmlInline": "hidden",
+  "bodyClass": "FileTransfer SearchFTPServerCredentials",
+  "bodyScroll": "yes"
+ },
+ "rect": {
+  "x": 240,
+  "y": 231.65625,
+  "width": 1440,
+  "height": 616.6666870117188,
+  "top": 231.65625,
+  "right": 1680,
+  "bottom": 848.3229370117188,
+  "left": 240
+ }
+}

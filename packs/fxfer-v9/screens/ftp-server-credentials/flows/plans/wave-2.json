@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "node": "n1",
+      "name": "search-results",
+      "actions": [
+        {
+          "el": "e2",
+          "do": "click",
+          "why": "toggles the Search Criteria panel to capture the expanded/alternate layout",
+          "name": "criteria-expanded"
+        },
+        {
+          "el": "e5",
+          "do": "dblclick",
+          "why": "opens the selected credential row details (row double-click typically opens view/edit)",
+          "name": "credential-details"
+        },
+        {
+          "el": "e3",
+          "do": "click",
+          "why": "opens the Include Invalids help/tooltip popover",
+          "name": "include-invalids-help"
+        },
+        {
+          "el": "e4",
+          "do": "click",
+          "why": "toggles Include Invalids to capture results grid changes",
+          "name": "results-include-invalids"
+        }
+      ]
+    },
+    {
+      "node": "n2",
+      "name": "create-new",
+      "deadEnd": true,
+      "reason": "only Save is a commit (danger) and Cancel just closes the dialog"
+    },
+    {
+      "node": "n3",
+      "name": "criteria-collapsed",
+      "deadEnd": true,
+      "reason": "only Create New opens the already-known add dialog, and the chevron just returns to the already-known expanded criteria state"
+    }
+  ]
+}

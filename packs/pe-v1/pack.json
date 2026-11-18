@@ -1,0 +1,109 @@
+{
+ "selectors": {},
+ "config": {},
+ "pack": "pe-v1",
+ "url": "https://uximc.mms.tst.pgwcloud.net/Home/MyHome",
+ "menu": "Provider Enrollment",
+ "outRepo": "C:\\UI-specs\\URL-to-Code\\packs\\pe-v1\\app",
+ "menuButton": "#pageBannerMenu > nav > div > i",
+ "screens": [
+  {
+   "id": "home",
+   "label": "Home",
+   "url": "https://uximc.mms.tst.pgwcloud.net/Home/MyHome",
+   "home": true,
+   "scope": "#pageBody > main"
+  },
+  {
+   "id": "dashboard",
+   "label": "Dashboard",
+   "url": "https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/Dashboard",
+   "trail": [
+    "Provider Enrollment",
+    "Dashboard"
+   ],
+   "scope": "#pageBody > main"
+  },
+  {
+   "id": "search-enrollment-application",
+   "label": "Search Enrollment Application",
+   "url": "https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/SearchProviderApplication",
+   "trail": [
+    "Provider Enrollment",
+    "Search Enrollment Application"
+   ],
+   "scope": "#pageBody > main"
+  },
+  {
+   "id": "search-enrollment-reports",
+   "label": "Search Enrollment Reports",
+   "url": "https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/SearchEnrollmentReports",
+   "trail": [
+    "Provider Enrollment",
+    "Search Enrollment Reports"
+   ],
+   "scope": "#pageBody > main"
+  },
+  {
+   "id": "workflow-dashboard",
+   "label": "Workflow Dashboard",
+   "url": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/dashboard",
+   "trail": [
+    "Provider Enrollment",
+    "Workflow Dashboard"
+   ],
+   "scope": "#lightbox > div:nth-of-type(3)"
+  },
+  {
+   "id": "workflow-applications",
+   "label": "Workflow Applications",
+   "url": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/applications",
+   "trail": [
+    "Provider Enrollment",
+    "Workflow Applications"
+   ],
+   "scope": "#lightbox > div:nth-of-type(3)"
+  },
+  {
+   "id": "workflow-configuration",
+   "label": "Workflow Configuration",
+   "url": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/configuration",
+   "trail": [
+    "Provider Enrollment",
+    "Workflow Configuration"
+   ],
+   "scope": "#lightbox > div:nth-of-type(3)"
+  },
+  {
+   "id": "workflow-tasks",
+   "label": "Workflow Tasks",
+   "url": "https://apnmc.shared.tst.pgwcloud.net/suite/sites/provider-enrollment-review/page/tasks",
+   "trail": [
+    "Provider Enrollment",
+    "Workflow Tasks"
+   ],
+   "scope": "#lightbox > div:nth-of-type(3)"
+  },
+  {
+   "id": "new-enrollment-entry",
+   "label": "New Enrollment Entry",
+   "url": "https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/CreateSecureEnrollment",
+   "trail": [
+    "Provider Enrollment",
+    "New Enrollment Entry"
+   ],
+   "scope": "#pageBody > main"
+  },
+  {
+   "id": "resume-enrollment-entry",
+   "label": "Resume Enrollment Entry",
+   "url": "https://uximc.mms.tst.pgwcloud.net/ProviderEnrollment/ResumeSecureEnrollment",
+   "trail": [
+    "Provider Enrollment",
+    "Resume Enrollment Entry"
+   ],
+   "scope": "#pageBody > main"
+  }
+ ],
+ "kit": "provider"
+}

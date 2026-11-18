@@ -1,0 +1,57 @@
+{
+ "id": "n1",
+ "parent": "n0",
+ "depth": 1,
+ "status": "frontier",
+ "name": "search-results",
+ "kind": "results",
+ "fp": "c3470a2065b7",
+ "fpText": "W:\nH:Search Criteria|Search Results\nL:Include Invalids\nB:Create New\nF:1\nT:\nR:1\nV:0",
+ "via": {
+  "el": "e6",
+  "steps": [
+   {
+    "do": "click",
+    "layer": "page",
+    "css": "#nextButton",
+    "nth": 0,
+    "text": "Search",
+    "kind": "button"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#nextButton",
+   "nth": 0,
+   "text": "Search",
+   "kind": "button"
+  }
+ ],
+ "requests": [
+  {
+   "method": "GET",
+   "url": "/api/FileTransfer/GetFTPServerCredentials/",
+   "status": "sent"
+  }
+ ],
+ "change": {
+  "show": [
+   "[data-kit-h=\"h2\"]"
+  ],
+  "hide": [
+   "#FTPServerCredentialsSearch"
+  ],
+  "scroll": null
+ },
+ "title": null,
+ "dir": "n1-search-results",
+ "windows": 0,
+ "validation": null,
+ "same": [],
+ "skipped": [],
+ "probed": true,
+ "fields": []
+}

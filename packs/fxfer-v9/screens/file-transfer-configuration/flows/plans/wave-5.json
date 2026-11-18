@@ -1,0 +1,155 @@
+{
+  "nodes": [
+    {
+      "node": "n1.1.2.1",
+      "name": "edit-create-destination",
+      "actions": [
+        {
+          "el": "e1",
+          "do": "select",
+          "value": "2",
+          "why": "Switch Destination Protocol to a different value to reveal any protocol-specific fields/validation."
+        },
+        {
+          "el": "e2",
+          "do": "select",
+          "value": "FileToEvent",
+          "why": "Change Destination Type to exercise the alternate destination-type branch (may reveal/hide fields).",
+          "name": "set-destination-type-filetoevent"
+        },
+        {
+          "el": "e10",
+          "do": "click",
+          "why": "Toggle Rename At Destination to reveal/hide any rename-related fields."
+        },
+        {
+          "el": "e14",
+          "do": "click",
+          "why": "Add Another to create an additional destination entry/section without saving.",
+          "name": "add-another-destination"
+        }
+      ]
+    },
+    {
+      "node": "n1.1.2.2",
+      "name": "open-destination",
+      "actions": [
+        {
+          "el": "e14",
+          "do": "click",
+          "why": "Open Create from Existing flow to capture any nested dialog/selector state.",
+          "name": "create-from-existing"
+        },
+        {
+          "el": "e3",
+          "do": "select",
+          "value": "UserDefined",
+          "why": "Switch Destination Type to exercise the other branch and reveal/hide any additional fields."
+        },
+        {
+          "el": "e11",
+          "do": "click",
+          "why": "Toggle Rename At Destination to reveal/hide any rename-pattern fields."
+        },
+        {
+          "el": "e16",
+          "do": "click",
+          "why": "Add Another to create an additional destination entry/section without saving."
+        }
+      ]
+    },
+    {
+      "node": "n1.1.2.3",
+      "name": "edit-run-weekly",
+      "actions": [
+        {
+          "el": "e14",
+          "do": "click",
+          "why": "Switch Run Schedule to Run Monthly to reach the monthly scheduling UI/state.",
+          "name": "switch-to-run-monthly"
+        },
+        {
+          "el": "e7",
+          "do": "select",
+          "value": "2",
+          "why": "Select the other File Direction option to reach any direction-specific destination behavior/state."
+        },
+        {
+          "el": "e27",
+          "do": "click",
+          "why": "Toggle Show Inactives to expose any additional inactive destination rows in the grid."
+        }
+      ]
+    },
+    {
+      "node": "n2.3.1.1",
+      "name": "add-another",
+      "actions": [
+        {
+          "el": "e1",
+          "do": "click",
+          "why": "Dismiss the validation banner/summary to capture the no-banner state.",
+          "name": "dismiss-validation-banner"
+        },
+        {
+          "el": "e16",
+          "do": "click",
+          "setup": [
+            {
+              "el": "e2",
+              "do": "select",
+              "value": "1"
+            },
+            {
+              "el": "e3",
+              "do": "select",
+              "value": "UserDefined"
+            }
+          ],
+          "why": "Retry Add Another after selecting required Destination Protocol/Type to reach the post-add state without the required-field errors.",
+          "name": "add-another-after-required"
+        }
+      ]
+    },
+    {
+      "node": "n2.3.1.2",
+      "name": "set-destination-type-filetoevent",
+      "actions": [
+        {
+          "el": "e11",
+          "do": "select",
+          "value": "1",
+          "why": "Pick a Rename Pattern option to exercise the rename-pattern branch for FileToEvent destinations."
+        },
+        {
+          "el": "e10",
+          "do": "click",
+          "why": "Toggle Rename At Destination to capture the state where rename pattern is hidden/disabled."
+        },
+        {
+          "el": "e15",
+          "do": "click",
+          "setup": [
+            {
+              "el": "e1",
+              "do": "select",
+              "value": "1"
+            },
+            {
+              "el": "e3",
+              "do": "fill",
+              "value": "/dest2"
+            },
+            {
+              "el": "e11",
+              "do": "select",
+              "value": "1"
+            }
+          ],
+          "why": "Add Another after providing required destination inputs to create a second destination entry without saving.",
+          "name": "add-another-filetoevent"
+        }
+      ]
+    }
+  ]
+}

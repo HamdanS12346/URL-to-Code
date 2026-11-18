@@ -9,6 +9,7 @@ import { openPage } from './lib/browser.mjs';
 import { loadPlan } from './check-plan.mjs';
 import { RECORDER, scanHover, scrollProbe, mediaProbe, renderBrief } from './lib/behave.mjs';
 import { timingStart, timingStop, relevantTiming, timingPhrase } from './lib/timing.mjs';
+import { ROOT } from './lib/paths.mjs';
 
 const readJson = (f, d) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : d);
 const LISTS = ['shown', 'hidden', 'enabled', 'disabled', 'checked', 'unchecked', 'added', 'removed'];
@@ -391,7 +392,7 @@ export async function survey(ctx) {
     }
     fs.writeFileSync(path.join(dir, 'candidates.md'), w.join('\n') + '\n');
     log(`  [stage 2] ${els.size} interactive elements in ${members.size} groups -> ${rows.length} listed, ${hiddenAtLoad.length} hidden at load, ${maps.length} map picture(s)`);
-    log(`  [stage 2] for the planner: outputs/${path.basename(out)}/explore/survey/candidates.md + map/*.jpg`);
+    log(`  [stage 2] for the planner: ${path.relative(ROOT, out).split(path.sep).join('/')}/explore/survey/candidates.md + map/*.jpg`);
     return sv;
   } finally { await s.close(); }
 }

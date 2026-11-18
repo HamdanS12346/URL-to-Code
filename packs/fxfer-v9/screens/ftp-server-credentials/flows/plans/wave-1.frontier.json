@@ -1,0 +1,58 @@
+{
+ "wave": 1,
+ "maxActions": 12,
+ "nodes": [
+  {
+   "node": "n0",
+   "name": "at-rest",
+   "kind": "page",
+   "title": null,
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\ftp-server-credentials\\flows\\n0-at-rest",
+   "depth": 0,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "text": "Create New",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "text": "",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e3",
+     "kind": "text",
+     "text": "",
+     "label": "Server Name",
+     "danger": null
+    },
+    {
+     "el": "e4",
+     "kind": "button",
+     "text": "Reset",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e5",
+     "kind": "button",
+     "text": "Cancel",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e6",
+     "kind": "button",
+     "text": "Search",
+     "label": null,
+     "danger": null
+    }
+   ]
+  }
+ ]
+}

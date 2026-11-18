@@ -1,0 +1,38 @@
+{
+ "screen": "fxfer-v9/file-transfer-tracking",
+ "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking",
+ "mode": "safe",
+ "kit": "provider",
+ "sources": [],
+ "finger": "aad7cd2199b5d75c559920910ac067d9",
+ "steps": {
+  "capture": {
+   "ok": true,
+   "at": "2026-11-17T11:17:07.894Z",
+   "ms": 132428
+  },
+  "stitch": {
+   "ok": true,
+   "at": "2026-11-17T11:17:07.927Z",
+   "ms": 4
+  },
+  "align": {
+   "ok": true,
+   "at": "2026-11-17T11:17:07.953Z",
+   "ms": 16
+  },
+  "facts": {
+   "ok": true,
+   "at": "2026-11-17T11:17:08.100Z",
+   "ms": 136
+  }
+ },
+ "warnings": [
+  "no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)"
+ ],
+ "viewport": {
+  "width": 1920,
+  "height": 1080
+ },
+ "dpr": 1
+}

@@ -1,0 +1,99 @@
+[
+ {
+  "el": "e1",
+  "kind": "button",
+  "layer": "page",
+  "css": "#ftpServerCredentialAddButton",
+  "nth": 0,
+  "text": "Create New",
+  "label": null,
+  "id": "ftpServerCredentialAddButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "create",
+  "box": {
+   "x": 1744,
+   "y": 138,
+   "w": 146,
+   "h": 38
+  }
+ },
+ {
+  "el": "e2",
+  "kind": "button",
+  "layer": "page",
+  "css": "div.panel-icon.clickable",
+  "nth": 0,
+  "text": "",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": "collapse",
+  "box": {
+   "x": 1847,
+   "y": 219,
+   "w": 28,
+   "h": 30
+  }
+ },
+ {
+  "el": "e3",
+  "kind": "button",
+  "layer": "page",
+  "css": "span.fa-stack.fa-lg",
+  "nth": 0,
+  "text": "",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "box": {
+   "x": 1842,
+   "y": 380,
+   "w": 44,
+   "h": 35
+  }
+ },
+ {
+  "el": "e4",
+  "kind": "check",
+  "layer": "page",
+  "css": "#showInvalidFTPServerCredentialsCheckBox",
+  "nth": 0,
+  "text": "true",
+  "label": "Include Invalids",
+  "id": "showInvalidFTPServerCredentialsCheckBox",
+  "name": "showInvalidFTPServerCredentialsCheckBox",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 1706,
+   "y": 384,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e5",
+  "kind": "row",
+  "layer": "page",
+  "css": "tbody tr",
+  "nth": 0,
+  "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "rows": 5,
+  "box": {
+   "x": 31,
+   "y": 485,
+   "w": 1857,
+   "h": 40
+  }
+ }
+]

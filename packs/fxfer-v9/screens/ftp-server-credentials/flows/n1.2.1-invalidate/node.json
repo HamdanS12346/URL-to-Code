@@ -1,0 +1,54 @@
+{
+ "id": "n1.2.1",
+ "parent": "n1.2",
+ "depth": 3,
+ "status": "frontier",
+ "name": "invalidate",
+ "kind": "dialog",
+ "fp": "f5ab272bf1ae",
+ "fpText": "W:Edit FTP Server Credentials>Alert Confirmation\nH:\nL:\nB:No|Yes\nF:2\nT:\nR:0\nV:0",
+ "via": {
+  "el": "e8",
+  "steps": [
+   {
+    "do": "click",
+    "layer": "top",
+    "css": "#btnInvalidate",
+    "nth": 0,
+    "text": "Invalidate",
+    "kind": "button"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#nextButton",
+   "nth": 0,
+   "text": "Search",
+   "kind": "button"
+  },
+  {
+   "do": "dblclick",
+   "layer": "page",
+   "css": "tbody tr",
+   "nth": 0,
+   "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+   "kind": "row"
+  },
+  {
+   "do": "click",
+   "layer": "top",
+   "css": "#btnInvalidate",
+   "nth": 0,
+   "text": "Invalidate",
+   "kind": "button"
+  }
+ ],
+ "requests": [],
+ "title": "Alert Confirmation",
+ "dir": "n1.2.1-invalidate",
+ "windows": 2,
+ "validation": null
+}

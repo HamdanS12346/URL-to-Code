@@ -1,0 +1,81 @@
+{
+ "id": "n1.1.2.3",
+ "parent": "n1.1.2",
+ "depth": 4,
+ "status": "frontier",
+ "name": "edit-run-weekly",
+ "kind": "part",
+ "fp": "10ad49c9e7ed",
+ "fpText": "W:Edit File Transfer Configuration\nH:Destination Configuration|Source Configuration\nL:Active|Configuration Name|Description|File Direction|Friday|Monday|Owner Email|Owner Module|Owner Name|Owner Phone|Protocol|Run Monthly|Run Schedule|Run Weekly|Saturday|Send Notification|Server|Show Inactives|Source Address|Source File Mask|Sunday|Suspend|Thursday|Time Window End|Time Window Start|Trading Partner|Tuesday|Wednesday\nB:Cancel|Create New|Reset|Save|select\nF:24\nT:\nR:1\nV:0",
+ "via": {
+  "el": "e13",
+  "steps": [
+   {
+    "do": "click",
+    "layer": "top",
+    "css": "#RunSchedule_ID1",
+    "nth": 0,
+    "text": "1",
+    "kind": "radio"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#nextButton",
+   "nth": 0,
+   "text": "Search",
+   "kind": "button"
+  },
+  {
+   "do": "dblclick",
+   "layer": "page",
+   "css": "tbody tr",
+   "nth": 0,
+   "text": "4TestFTP/testweryashwanthAdministrationActiveaab80b60-a4ec-4",
+   "kind": "row"
+  },
+  {
+   "do": "click",
+   "layer": "top",
+   "css": "#editFileTransferConfigurationButton",
+   "nth": 0,
+   "text": "Edit",
+   "kind": "button"
+  },
+  {
+   "do": "click",
+   "layer": "top",
+   "css": "#RunSchedule_ID1",
+   "nth": 0,
+   "text": "1",
+   "kind": "radio"
+  }
+ ],
+ "requests": [],
+ "change": {
+  "show": [
+   "#RunType_Weekly"
+  ],
+  "hide": [
+   "#RunType_Monthly"
+  ],
+  "scroll": 49
+ },
+ "title": "Edit File Transfer Configuration",
+ "dir": "n1.1.2.3-edit-run-weekly",
+ "windows": 1,
+ "validation": null,
+ "same": [],
+ "skipped": [
+  {
+   "el": "e31",
+   "text": "Save",
+   "why": "commit: \"Save\""
+  }
+ ],
+ "probed": true,
+ "fields": []
+}

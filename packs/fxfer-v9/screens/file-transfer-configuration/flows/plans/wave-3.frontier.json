@@ -1,0 +1,727 @@
+{
+ "wave": 3,
+ "maxActions": 12,
+ "nodes": [
+  {
+   "node": "n1.1",
+   "name": "open-configuration",
+   "kind": "dialog",
+   "title": "View File Transfer Configuration",
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n1.1-open-configuration",
+   "depth": 2,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "check",
+     "text": "true",
+     "label": "Show Inactives",
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "text": "Edit",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e3",
+     "kind": "button",
+     "text": "Close",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e4",
+     "kind": "row",
+     "text": "https://dxccommercial.test.mapshc.comFTPActivetrue",
+     "label": null,
+     "danger": null
+    }
+   ]
+  },
+  {
+   "node": "n2.1",
+   "name": "run-weekly",
+   "kind": "part",
+   "title": "Add File Transfer Configuration",
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.1-run-weekly",
+   "depth": 2,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "text",
+     "text": "",
+     "label": "Configuration Name",
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "text",
+     "text": "",
+     "label": "Description",
+     "danger": null
+    },
+    {
+     "el": "e3",
+     "kind": "dropdown",
+     "text": "select a value...ProtocolTypeList",
+     "label": "Protocol",
+     "danger": null,
+     "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    {
+     "el": "e4",
+     "kind": "text",
+     "text": "",
+     "label": "Source Address",
+     "danger": null
+    },
+    {
+     "el": "e5",
+     "kind": "text",
+     "text": "",
+     "label": "Source File Mask",
+     "danger": null
+    },
+    {
+     "el": "e6",
+     "kind": "dropdown",
+     "text": "select a value...FileDirectionList",
+     "label": "File Direction",
+     "danger": null,
+     "options": [
+      "1",
+      "2"
+     ]
+    },
+    {
+     "el": "e7",
+     "kind": "text",
+     "text": "",
+     "label": "Trading Partner",
+     "danger": null
+    },
+    {
+     "el": "e8",
+     "kind": "text",
+     "text": "",
+     "label": "Owner Name",
+     "danger": null
+    },
+    {
+     "el": "e9",
+     "kind": "text",
+     "text": "",
+     "label": "Owner Phone",
+     "danger": null
+    },
+    {
+     "el": "e10",
+     "kind": "dropdown",
+     "text": "select a value...AddConfigModuleList",
+     "label": "Owner Module",
+     "danger": null,
+     "options": [
+      "0b34481f-f69c-3ab6-e053-c9157aceff03",
+      "09df7d37-3bd5-7c9c-e053-c9157aceb3f2",
+      "bb31ef47-8d1e-c99a-e053-c9157ace53da",
+      "06c7121b-8166-4e32-e054-0017a4ab527b",
+      "98385830-7fc2-5bb4-e053-c9157ace364b",
+      "0e7b7146-aa81-5292-e053-c9157ace4cbe",
+      "96c6da47-0ae6-2bcd-e053-c9157ace38f9",
+      "fdf18357-3c14-7cb7-e053-c9157ace3990",
+      "ff19da47-cc91-e17d-e053-c9157ace99a5",
+      "2e60501f-f8aa-50b6-e053-c9157acefb50",
+      "30de9349-0e99-aec1-e053-c9157ace0401",
+      "f1612a4b-ff51-1a03-e053-c9157ace9264"
+     ]
+    },
+    {
+     "el": "e11",
+     "kind": "text",
+     "text": "",
+     "label": "Owner Email",
+     "danger": null
+    },
+    {
+     "el": "e12",
+     "kind": "radio",
+     "text": "1",
+     "label": "Run Weekly",
+     "danger": null
+    },
+    {
+     "el": "e13",
+     "kind": "radio",
+     "text": "2",
+     "label": "Run Monthly",
+     "danger": null
+    },
+    {
+     "el": "e14",
+     "kind": "check",
+     "text": "true",
+     "label": "Sunday",
+     "danger": null
+    },
+    {
+     "el": "e15",
+     "kind": "check",
+     "text": "true",
+     "label": "Monday",
+     "danger": null
+    },
+    {
+     "el": "e16",
+     "kind": "check",
+     "text": "true",
+     "label": "Tuesday",
+     "danger": null
+    },
+    {
+     "el": "e17",
+     "kind": "check",
+     "text": "true",
+     "label": "Wednesday",
+     "danger": null
+    },
+    {
+     "el": "e18",
+     "kind": "check",
+     "text": "true",
+     "label": "Thursday",
+     "danger": null
+    },
+    {
+     "el": "e19",
+     "kind": "check",
+     "text": "true",
+     "label": "Friday",
+     "danger": null
+    },
+    {
+     "el": "e20",
+     "kind": "check",
+     "text": "true",
+     "label": "Saturday",
+     "danger": null
+    },
+    {
+     "el": "e21",
+     "kind": "dropdown",
+     "text": "select a value...TimeWindowStartList",
+     "label": "Time Window Start",
+     "danger": null,
+     "options": [
+      "0000",
+      "0030",
+      "0100",
+      "0130",
+      "0200",
+      "0230",
+      "0300",
+      "0330",
+      "0400",
+      "0430",
+      "0500",
+      "0530"
+     ]
+    },
+    {
+     "el": "e22",
+     "kind": "dropdown",
+     "text": "select a value...TimeWindowEndList",
+     "label": "Time Window End",
+     "danger": null,
+     "options": [
+      "0000",
+      "0030",
+      "0100",
+      "0130",
+      "0200",
+      "0230",
+      "0300",
+      "0330",
+      "0400",
+      "0430",
+      "0500",
+      "0530"
+     ]
+    },
+    {
+     "el": "e23",
+     "kind": "check",
+     "text": "true",
+     "label": "Send Notification",
+     "danger": null
+    },
+    {
+     "el": "e24",
+     "kind": "check",
+     "text": "true",
+     "label": "Suspend",
+     "danger": null
+    },
+    {
+     "el": "e25",
+     "kind": "check",
+     "text": "true",
+     "label": "Active",
+     "danger": null
+    },
+    {
+     "el": "e26",
+     "kind": "check",
+     "text": "true",
+     "label": "Show Inactives",
+     "danger": null
+    },
+    {
+     "el": "e27",
+     "kind": "button",
+     "text": "Create New",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e28",
+     "kind": "row",
+     "text": "There are no records found.",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e29",
+     "kind": "button",
+     "text": "Reset",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e30",
+     "kind": "button",
+     "text": "Cancel",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e31",
+     "kind": "button",
+     "text": "Save",
+     "label": null,
+     "danger": "commit: \"Save\""
+    },
+    {
+     "el": "e32",
+     "kind": "row",
+     "text": "There are no records found.",
+     "label": null,
+     "danger": null
+    }
+   ]
+  },
+  {
+   "node": "n2.2",
+   "name": "run-monthly",
+   "kind": "part",
+   "title": "Add File Transfer Configuration",
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.2-run-monthly",
+   "depth": 2,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "text",
+     "text": "",
+     "label": "Configuration Name",
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "text",
+     "text": "",
+     "label": "Description",
+     "danger": null
+    },
+    {
+     "el": "e3",
+     "kind": "dropdown",
+     "text": "select a value...ProtocolTypeList",
+     "label": "Protocol",
+     "danger": null,
+     "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    {
+     "el": "e4",
+     "kind": "text",
+     "text": "",
+     "label": "Source Address",
+     "danger": null
+    },
+    {
+     "el": "e5",
+     "kind": "text",
+     "text": "",
+     "label": "Source File Mask",
+     "danger": null
+    },
+    {
+     "el": "e6",
+     "kind": "dropdown",
+     "text": "select a value...FileDirectionList",
+     "label": "File Direction",
+     "danger": null,
+     "options": [
+      "1",
+      "2"
+     ]
+    },
+    {
+     "el": "e7",
+     "kind": "text",
+     "text": "",
+     "label": "Trading Partner",
+     "danger": null
+    },
+    {
+     "el": "e8",
+     "kind": "text",
+     "text": "",
+     "label": "Owner Name",
+     "danger": null
+    },
+    {
+     "el": "e9",
+     "kind": "text",
+     "text": "",
+     "label": "Owner Phone",
+     "danger": null
+    },
+    {
+     "el": "e10",
+     "kind": "dropdown",
+     "text": "select a value...AddConfigModuleList",
+     "label": "Owner Module",
+     "danger": null,
+     "options": [
+      "0b34481f-f69c-3ab6-e053-c9157aceff03",
+      "09df7d37-3bd5-7c9c-e053-c9157aceb3f2",
+      "bb31ef47-8d1e-c99a-e053-c9157ace53da",
+      "06c7121b-8166-4e32-e054-0017a4ab527b",
+      "98385830-7fc2-5bb4-e053-c9157ace364b",
+      "0e7b7146-aa81-5292-e053-c9157ace4cbe",
+      "96c6da47-0ae6-2bcd-e053-c9157ace38f9",
+      "fdf18357-3c14-7cb7-e053-c9157ace3990",
+      "ff19da47-cc91-e17d-e053-c9157ace99a5",
+      "2e60501f-f8aa-50b6-e053-c9157acefb50",
+      "30de9349-0e99-aec1-e053-c9157ace0401",
+      "f1612a4b-ff51-1a03-e053-c9157ace9264"
+     ]
+    },
+    {
+     "el": "e11",
+     "kind": "text",
+     "text": "",
+     "label": "Owner Email",
+     "danger": null
+    },
+    {
+     "el": "e12",
+     "kind": "radio",
+     "text": "1",
+     "label": "Run Weekly",
+     "danger": null
+    },
+    {
+     "el": "e13",
+     "kind": "radio",
+     "text": "2",
+     "label": "Run Monthly",
+     "danger": null
+    },
+    {
+     "el": "e14",
+     "kind": "check",
+     "text": "true",
+     "label": "Run On First Day Month",
+     "danger": null
+    },
+    {
+     "el": "e15",
+     "kind": "check",
+     "text": "true",
+     "label": "Run On Last Day Month",
+     "danger": null
+    },
+    {
+     "el": "e16",
+     "kind": "dropdown",
+     "text": "select a value...RunOnThisDayList",
+     "label": "Run On This Day Month",
+     "danger": null,
+     "options": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+     ]
+    },
+    {
+     "el": "e17",
+     "kind": "dropdown",
+     "text": "select a value...TimeWindowStartList",
+     "label": "Time Window Start",
+     "danger": null,
+     "options": [
+      "0000",
+      "0030",
+      "0100",
+      "0130",
+      "0200",
+      "0230",
+      "0300",
+      "0330",
+      "0400",
+      "0430",
+      "0500",
+      "0530"
+     ]
+    },
+    {
+     "el": "e18",
+     "kind": "dropdown",
+     "text": "select a value...TimeWindowEndList",
+     "label": "Time Window End",
+     "danger": null,
+     "options": [
+      "0000",
+      "0030",
+      "0100",
+      "0130",
+      "0200",
+      "0230",
+      "0300",
+      "0330",
+      "0400",
+      "0430",
+      "0500",
+      "0530"
+     ]
+    },
+    {
+     "el": "e19",
+     "kind": "check",
+     "text": "true",
+     "label": "Send Notification",
+     "danger": null
+    },
+    {
+     "el": "e20",
+     "kind": "check",
+     "text": "true",
+     "label": "Suspend",
+     "danger": null
+    },
+    {
+     "el": "e21",
+     "kind": "check",
+     "text": "true",
+     "label": "Active",
+     "danger": null
+    },
+    {
+     "el": "e22",
+     "kind": "check",
+     "text": "true",
+     "label": "Show Inactives",
+     "danger": null
+    },
+    {
+     "el": "e23",
+     "kind": "button",
+     "text": "Create New",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e24",
+     "kind": "row",
+     "text": "There are no records found.",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e25",
+     "kind": "button",
+     "text": "Reset",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e26",
+     "kind": "button",
+     "text": "Cancel",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e27",
+     "kind": "button",
+     "text": "Save",
+     "label": null,
+     "danger": "commit: \"Save\""
+    },
+    {
+     "el": "e28",
+     "kind": "row",
+     "text": "There are no records found.",
+     "label": null,
+     "danger": null
+    }
+   ]
+  },
+  {
+   "node": "n2.3",
+   "name": "create-destination",
+   "kind": "part",
+   "title": "Add File Transfer Configuration",
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.3-create-destination",
+   "depth": 2,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "dropdown",
+     "text": "select a value...DestinationProtocolList",
+     "label": "Destination Protocol",
+     "danger": null,
+     "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    {
+     "el": "e2",
+     "kind": "dropdown",
+     "text": "select a value...DestinationTypeList",
+     "label": "Destination Type",
+     "danger": null,
+     "options": [
+      "FileToEvent",
+      "UserDefined"
+     ]
+    },
+    {
+     "el": "e3",
+     "kind": "text",
+     "text": "",
+     "label": "Destination Address",
+     "danger": null
+    },
+    {
+     "el": "e4",
+     "kind": "text",
+     "text": "",
+     "label": "Contact Name",
+     "danger": null
+    },
+    {
+     "el": "e5",
+     "kind": "text",
+     "text": "",
+     "label": "Contact Phone",
+     "danger": null
+    },
+    {
+     "el": "e6",
+     "kind": "text",
+     "text": "",
+     "label": "Contact Email",
+     "danger": null
+    },
+    {
+     "el": "e7",
+     "kind": "check",
+     "text": "true",
+     "label": "Overwrite At Destination",
+     "danger": null
+    },
+    {
+     "el": "e8",
+     "kind": "check",
+     "text": "true",
+     "label": "Compress At Destination",
+     "danger": null
+    },
+    {
+     "el": "e9",
+     "kind": "check",
+     "text": "true",
+     "label": "Destination Is Archive",
+     "danger": null
+    },
+    {
+     "el": "e10",
+     "kind": "check",
+     "text": "true",
+     "label": "Rename At Destination",
+     "danger": null
+    },
+    {
+     "el": "e11",
+     "kind": "check",
+     "text": "true",
+     "label": "Active",
+     "danger": null
+    },
+    {
+     "el": "e12",
+     "kind": "button",
+     "text": "Reset",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e13",
+     "kind": "button",
+     "text": "Cancel",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e14",
+     "kind": "button",
+     "text": "Add Another",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e15",
+     "kind": "button",
+     "text": "Save",
+     "label": null,
+     "danger": "commit: \"Save\""
+    }
+   ]
+  }
+ ]
+}

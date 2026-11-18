@@ -1,0 +1,34 @@
+{
+ "id": "n0",
+ "parent": null,
+ "depth": 0,
+ "name": "at-rest",
+ "dir": "n0-at-rest",
+ "kind": "page",
+ "status": "frontier",
+ "fp": "5a9871dba99a",
+ "fpText": "W:\nH:Search Criteria\nL:Server Name\nB:Cancel|Create New|Reset|Search\nF:4\nT:\nR:0\nV:0",
+ "path": [],
+ "windows": 0,
+ "title": null,
+ "validation": null,
+ "same": [],
+ "skipped": [],
+ "probed": true,
+ "fields": [
+  {
+   "name": "FtpServerName",
+   "label": "Server Name",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  }
+ ]
+}
