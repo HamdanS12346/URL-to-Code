@@ -1,1 +1,0 @@
-﻿- Cancel (`cancelButton`) navigates to `#/home` (mapped from captured `Editor_CancelActionUrl` = `/Home/MyHome/`).

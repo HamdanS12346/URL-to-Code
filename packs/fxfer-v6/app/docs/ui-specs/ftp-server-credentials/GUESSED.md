@@ -1,1 +1,0 @@
-﻿- Cancel (page-level) hides Search Results and expands Search Criteria (spec [UNKNOWN]).

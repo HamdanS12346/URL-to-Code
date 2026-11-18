@@ -1,2 +1,0 @@
-
-	kendo.syncReady(function(){jQuery("#SearchModuleList").kendoDropDownList({"dataSource":{"transport":{"read":{"url":"/api/FileTransfer/GetDataListData/","data":function() { return {contentID: null,startsWith:'MODULE',localeId:locale };}},"prefix":""},"serverFiltering":true,"filter":[],"schema":{"errors":"Errors"}},"dataTextField":"FormattedText","autoBind":true,"dataValueField":"ID","optionLabel":"select a value..."});});
