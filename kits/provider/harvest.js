@@ -278,49 +278,45 @@
     revealed() { return [...document.querySelectorAll('[data-kit-h]')].filter(shown).map((e) => e.getAttribute('data-kit-h')); },
     // A click that opens no window may show a part of the page instead (the Destination form inside the Add dialog). marks():
     // which parts are shown now, inside the open dialog or else the page: the hidden-at-rest parts and every element with an
-    // id (the portal's scripts show and hide by id). changed(before): what a click turned on and off since, outermost
-    // parts only, as selectors the rebuild resolves inside the same dialog / page.
+    // id (the portal's scripts show and hide by id), and each one's OWN display (a button hidden inside a part that is itself
+    // hidden is hidden twice: only its own display tells a click that hid it). changed(before): what a click turned on and off
+    // since, outermost parts only (show / hide), and every element whose own display flipped, at any depth (deep: its state now).
+    // stable: keys another load of the page (and the rebuild) resolves the same way (the flows stage reloads between states, and
+    // the data-kit-h stamps of one load mean nothing on the next): the element's own id, else a path from the nearest id above it
     marksRoot() { const win = [...document.querySelectorAll('.k-window')].filter(shown).pop(); return win ? win.querySelector('.k-window-content') || win : document.body; },
-    marks() {
-      const root = this.marksRoot(), out = {};
+    keyOf(el, stable) {
+      if (!stable) return el.hasAttribute('data-kit-h') ? `[data-kit-h="${el.getAttribute('data-kit-h')}"]` : `#${CSS.escape(el.id)}`;
+      const GEN = /^(k-|_|ui-id)|[0-9a-f]{8}-[0-9a-f]{4}|\d{5,}/;
+      const path = [];
+      for (let e = el; e?.parentElement; e = e.parentElement) {
+        if (e.id && !GEN.test(e.id) && document.querySelectorAll(`#${CSS.escape(e.id)}`).length === 1) return e === el ? `#${CSS.escape(e.id)}` : `#${CSS.escape(e.id)} > ${path.join(' > ')}`;
+        if (path.length >= 6) return null;
+        path.unshift(`${e.tagName.toLowerCase()}:nth-of-type(${[...e.parentElement.children].filter((x) => x.tagName === e.tagName).indexOf(e) + 1})`);
+      }
+      return null;
+    },
+    marks(stable) {
+      const root = this.marksRoot(), out = {}, own = {};
       for (const el of root.querySelectorAll('[data-kit-h], [id]')) {
         if (el.closest('[data-kit], .k-animation-container, script') || (root === document.body && el.closest('.k-window, [data-kit-menu], #pageHeader'))) continue;
-        out[el.hasAttribute('data-kit-h') ? `[data-kit-h="${el.getAttribute('data-kit-h')}"]` : `#${CSS.escape(el.id)}`] = shown(el);
+        const k = this.keyOf(el, stable);
+        if (!k || k in out) continue;
+        const cs = getComputedStyle(el);
+        out[k] = shown(el);
+        own[k] = cs.display !== 'none' && cs.visibility !== 'hidden';
       }
-      return { parts: out, scroll: Math.round(root === document.body ? scrollY : root.scrollTop) };
+      return { parts: out, own, stable: !!stable, scroll: Math.round(root === document.body ? scrollY : root.scrollTop) };
     },
     changed(before) {
-      const root = this.marksRoot(), now = this.marks();
-      const flipped = Object.keys(now.parts).filter((k) => k in before.parts && now.parts[k] !== before.parts[k]);
-      const els = new Map(flipped.map((k) => [k, root.querySelector(k)]));
-      const outer = (k) => !flipped.some((o) => o !== k && now.parts[o] === now.parts[k] && els.get(o) !== els.get(k) && els.get(o)?.contains(els.get(k)));
-      const pick = (on) => flipped.filter((k) => now.parts[k] === on && outer(k)).slice(0, 20);
-      const show = pick(true);
-      if (show.length) els.get(show[0])?.scrollIntoView({ block: 'nearest' }); // for the picture; the live page's own scroll was read before this
-      return { show, hide: pick(false), scroll: now.scroll !== before.scroll ? now.scroll : null };
-    },
-    // A click that opens no window may show a part of the page instead (the Destination form inside the Add dialog). marks():
-    // which parts are shown now, inside the open dialog or else the page: the hidden-at-rest parts and every element with an
-    // id (the portal's scripts show and hide by id). changed(before): what a click turned on and off since, outermost
-    // parts only, as selectors the rebuild resolves inside the same dialog / page.
-    marksRoot() { const win = [...document.querySelectorAll('.k-window')].filter(shown).pop(); return win ? win.querySelector('.k-window-content') || win : document.body; },
-    marks() {
-      const root = this.marksRoot(), out = {};
-      for (const el of root.querySelectorAll('[data-kit-h], [id]')) {
-        if (el.closest('[data-kit], .k-animation-container, script') || (root === document.body && el.closest('.k-window, [data-kit-menu], #pageHeader'))) continue;
-        out[el.hasAttribute('data-kit-h') ? `[data-kit-h="${el.getAttribute('data-kit-h')}"]` : `#${CSS.escape(el.id)}`] = shown(el);
-      }
-      return { parts: out, scroll: Math.round(root === document.body ? scrollY : root.scrollTop) };
-    },
-    changed(before) {
-      const root = this.marksRoot(), now = this.marks();
+      const root = this.marksRoot(), now = this.marks(before.stable);
       const flipped = Object.keys(now.parts).filter((k) => k in before.parts && now.parts[k] !== before.parts[k]);
       const els = new Map(flipped.map((k) => [k, root.querySelector(k)]));
       const outer = (k) => !flipped.some((o) => o !== k && now.parts[o] === now.parts[k] && els.get(o)?.contains(els.get(k)) && els.get(o) !== els.get(k));
       const pick = (on) => flipped.filter((k) => now.parts[k] === on && outer(k)).slice(0, 20);
       const show = pick(true), first = show.length ? els.get(show[0]) : null;
       first?.scrollIntoView({ block: 'nearest' }); // for the picture; the live page's own scroll was read before this
-      return { show, hide: pick(false), scroll: now.scroll !== before.scroll ? now.scroll : null };
+      const deep = Object.fromEntries(Object.keys(now.own).filter((k) => before.own && k in before.own && now.own[k] !== before.own[k]).slice(0, 80).map((k) => [k, now.own[k]]));
+      return { show, hide: pick(false), deep, scroll: now.scroll !== before.scroll ? now.scroll : null };
     },
     // an open Kendo window: stamp it like the page, hand back its parts
     // what a modal does to the page behind it: scroll lock (html / body overflow, classes), read by kit.mjs against the state before it opened
@@ -341,6 +337,13 @@
       const content = win.querySelector('.k-window-content') || win;
       const fa = document.activeElement && content.contains(document.activeElement) ? document.activeElement : null;
       if (fa) fa.setAttribute('data-kit-autofocus', ''); // before contentHtml is read below
+      // the live values into the markup (innerHTML keeps attributes, not what the window's script set: the radio it checked from the record, a value it filled)
+      for (const i of content.querySelectorAll('input, textarea, select')) {
+        if (i.type === 'checkbox' || i.type === 'radio') i.toggleAttribute('checked', i.checked);
+        else if (i.tagName === 'SELECT') for (const o of i.options) o.toggleAttribute('selected', o.selected);
+        else if (i.tagName === 'TEXTAREA') { if (i.value !== i.defaultValue) i.defaultValue = i.value; }
+        else if (!/^(password|file|button|submit|reset|image)$/.test(i.type) && i.getAttribute('value') !== i.value) i.setAttribute('value', i.value);
+      }
       const defs = {};
       scan(content, defs);
       const acts = actions(win);
@@ -434,14 +437,16 @@
     tuncheck(t) { const el = document.querySelector(`[data-kit-t="${t}"]`); if (!el) return false; el.checked = false; el.dispatchEvent(new Event('change', { bubbles: true })); return true; },
     tpick(t, value) { const w = widgetOf(document.querySelector(`[data-kit-t="${t}"]`)); if (!w) return false; w.value(value); w.trigger('change'); return true; },
     // which of the parts (hidden-at-rest ones and ids) are shown right now, as selectors
-    parts() { return this.marks().parts; },
+    parts(stable) { return this.marks(stable).parts; },
 
     // ---------- validation as the page shows it ----------
     // the summary banners and per-field messages that are visible now (inside the open window, else the page)
     validation() {
       const R = this.marksRoot();
-      const summaries = [...R.querySelectorAll('.validation-summary, .editor-validation-summary, .validation-summary-errors, .k-messagebox-error')].filter(shown).filter((e, _, all) => !all.some((o) => o !== e && o.contains(e)))
-        .slice(0, 2).map((e) => ({ h: e.getAttribute('data-kit-h'), className: e.className.replace(/\bdata-kit\S*/g, '').trim(), style: e.getAttribute('style'), html: e.innerHTML.replace(/\sdata-kit[\w-]*="[^"]*"/g, ''), text: clean(e.textContent) }));
+      // .msg-inline: the banner the portal's scripts build on the spot (formatGeneralMessage) into a panel's status box; `at` is that box, which the markup has at rest
+      const summaries = [...R.querySelectorAll('.validation-summary, .editor-validation-summary, .validation-summary-errors, .k-messagebox-error, .msg-inline')].filter(shown).filter((e) => clean(e.textContent)).filter((e, _, all) => !all.some((o) => o !== e && o.contains(e)))
+        .slice(0, 2).map((e) => ({ h: e.getAttribute('data-kit-h'), className: e.className.replace(/\bdata-kit\S*/g, '').trim(), style: e.getAttribute('style'), html: e.innerHTML.replace(/\sdata-kit[\w-]*="[^"]*"/g, ''), text: clean(e.textContent),
+          at: !e.hasAttribute('data-kit-h') && e.matches('.msg-inline') && e.parentElement?.id ? `#${CSS.escape(e.parentElement.id)}` : null }));
       const fields = [...R.querySelectorAll('.field-validation-error, .k-invalid-msg, .k-form-error, span[data-valmsg-for]')].filter((e) => shown(e) && clean(e.textContent)).slice(0, 30)
         .map((e) => ({ for: e.getAttribute('data-valmsg-for') || e.getAttribute('data-for') || (e.previousElementSibling?.querySelector?.('[name]')?.name ?? e.previousElementSibling?.getAttribute?.('name')) || null, text: clean(e.textContent), className: e.className }));
       return summaries.length || fields.length ? { summaries, fields } : null;

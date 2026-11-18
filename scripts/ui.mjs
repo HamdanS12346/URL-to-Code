@@ -23,7 +23,8 @@
 //                     captures stay one at a time, one browser); with a kit the screens' code steps run side by side too
 //   flows             ON by default: after each capture every path of the screen is explored up to the save/create point (the writer
 //                     plans, the script clicks, every write blocked). pack.json "flows": an object sets its budget (see config.json
-//                     "flows"); false turns it off for the pack. --no-flows skips it this run; --flow-workers N browser contexts per screen (2)
+//                     "flows"); false turns it off for the pack. --no-flows skips it this run; --flow-workers N browser contexts per screen (2);
+//                     --flow-screens N screens whose flows run at once, beside the next capture (2)
 import crypto from 'node:crypto';
 import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -38,7 +39,7 @@ import { runFlows } from './flows.mjs';
 import { checkPlanFile } from './check-flows.mjs';
 
 const STAGES = ['login', 'discover', 'capture', 'plan', 'explore', 'flows', 'spec', 'port', 'code'];
-const VALUED = new Set(['--url', '--menu', '--out', '--writer', '--from', '--only', '--rounds', '--timeout', '--env', '--mode', '--kit', '--parallel', '--flow-workers']);
+const VALUED = new Set(['--url', '--menu', '--out', '--writer', '--from', '--only', '--rounds', '--timeout', '--env', '--mode', '--kit', '--parallel', '--flow-workers', '--flow-screens']);
 const argv = process.argv.slice(2);
 const flag = (n) => argv.includes(n);
 const opt = (n) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] : undefined; };
@@ -224,11 +225,13 @@ try {
   };
   await ensureLogin(forced('login'));
   // a capture that hit a login page throws "redirected": log in again and retry once
+  // one login at a time: a screen's flows and the next screen's capture may lose the session together (a second login could end the first's session)
+  let relog = null;
   const relogin = async (fn) => {
     try { return await fn(); } catch (e) {
       if (!/redirect|log ?in/i.test(e.message) || pack.login === false) throw e;
       log(`   session lost (${e.message.split('\n')[0]}): logging in again`);
-      await ensureLogin(true);
+      await (relog ||= ensureLogin(true).finally(() => { relog = null; }));
       return fn();
     }
   };
@@ -295,8 +298,18 @@ try {
   // is done, up to --parallel at once, while the next capture runs
   const specLimit = limiter(parallel), specs = [];
   const kebab = (t) => slug(t.replace(/([a-z0-9])([A-Z])/g, '$1-$2'));
+  // the wave's open states and their candidates, in the planner's prompt (it spent most of a wave printing these files)
+  const flowDigest = (frontierFile) => {
+    const fr = readJson(frontierFile, { nodes: [] });
+    const txt = fr.nodes.map((n) => `- ${n.node} ${n.kind}${n.title ? ` "${n.title}"` : ''} (dir ${n.dir}): ${n.candidates.map((c) => `${c.el} ${c.kind} "${(c.text || c.label || '').slice(0, 40)}"${c.danger ? ' [danger]' : ''}${c.options?.length ? ` [${c.options.slice(0, 6).join(', ')}]` : ''}`).join('; ')}`).join('\n');
+    return txt.length > 12000 ? `${txt.slice(0, 12000)}\n(cut: the rest is in the frontier file)` : txt;
+  };
+  // the flows of a screen (and what follows them: its linked pages, its spec) run beside the next screen's capture, at most this many screens at once
+  const flowLimit = limiter(Math.max(1, +(opt('--flow-screens') ?? flowBudget.screens ?? 2) || 1)), bg = [];
   // a queue, not a fixed list: a Create New / a row that goes to a page of its own adds that page (one level, same site) while the loop runs
-  for (let qi = 0; qi < screens.length; qi++) {
+  // (the outer loop: a screen's flows, still running when the queue ran out, may add linked pages to it)
+  for (let qi = 0; ;) {
+  for (; qi < screens.length; qi++) {
     const scr = screens[qi];
     const id = `${name}/${scr.id}`, dir = screenDir(id);
     log(`\n>> ${scr.id}: ${scr.label}  ${scr.url}`);
@@ -329,20 +342,23 @@ try {
       }
       if (r !== 'done') { mark(`capture:${scr.id}`, 'failed', { problems: [`run stopped: ${r}`] }); continue; }
       mark(`capture:${scr.id}`, 'done');
+      const willFlow = flowsOn && !scr.home && (!isDone(`flows:${scr.id}`) || forced('flows') || flag('--redo'));
+      // what follows the capture: flows, the linked pages, the spec. With flows to run it goes on beside the next screen's capture
+      const after = async () => {
       // ---------- flows: every path of the screen up to the click that would save or create (scripts/flows.mjs) ----------
       // Runs before the linked pages below, so a page a deeper click leads to is captured too. The writer plans each wave (what to click,
       // type, pick, from each new state), the script carries it out with every write blocked; a plan that fails its gate twice: the rules plan
-      if (flowsOn && !scr.home && (!isDone(`flows:${scr.id}`) || forced('flows') || flag('--redo'))) {
+      if (willFlow) {
         let fresh = forced('flows') || flag('--redo') || !fs.existsSync(path.join(dir, 'flows', 'index.json'));
         const planner = async ({ wave, file, frontierFile }) => writeStep(`flowplan:${scr.id}:w${wave}`, {
           workdir: ROOT, expect: [file],
           prompt: fill('flows', { id, dir, root: ROOT, label: scr.label, url: scr.url, wave, plan: file, frontier: frontierFile, max: flowBudget.maxActions ?? 12,
-            guide: kit ? kit.guide : '(no site kit)', kit: kit ? `${dir}/kit/screen.json` : '(none)' }),
+            guide: kit ? kit.guide : '(no site kit)', kit: kit ? `${dir}/kit/screen.json` : '(none)', digest: flowDigest(frontierFile) }),
           gate: async () => { const errs = checkPlanFile(file, frontierFile); return { ok: !errs.length, text: errs.length ? `The plan does not pass:\n${errs.map((x) => `- ${x}`).join('\n')}` : '' }; },
         });
         log(`   flows: ${fresh ? 'exploring' : 'continuing'} ${scr.id} up to the save/create point`);
         try {
-          const r = await relogin(() => { const f = fresh; fresh = false; return runFlows({ browser, cfg: withSession(structuredClone(cfg)), url: scr.url, out: dir, kit, log: (m) => log(`   ${m}`), planner, budget: flowBudget, fresh: f, scope: scr.scope || null }); });
+          const r = await relogin(() => { const f = fresh; fresh = false; return runFlows({ browser, cfg: withSession(structuredClone(cfg)), url: scr.url, out: dir, kit, log: (m) => log(`   [${scr.id}] ${m}`), planner, budget: flowBudget, fresh: f, scope: scr.scope || null }); });
           mark(`flows:${scr.id}`, r.ok ? 'done' : 'needs-review', { states: r.states, boundaries: r.boundaries, ...(r.ok ? {} : { problems: [`${r.left} state(s) left, ${r.unreachable} unreachable: see ${rel(path.join(dir, 'flows', 'FLOWS.md'))}; a re-run continues`] }) });
         } catch (e) {
           mark(`flows:${scr.id}`, 'failed', { problems: [e.message.split('\n')[0]] });
@@ -374,7 +390,7 @@ try {
       const specFile = path.join(dir, 'spec', 'UI_SPEC.md');
       const flowIdx = path.join(dir, 'flows', 'index.json'), hasFlows = fs.existsSync(flowIdx);
       const fresh = fs.existsSync(specFile) && fs.statSync(specFile).mtimeMs >= fs.statSync(path.join(dir, 'facts.md')).mtimeMs && (!hasFlows || fs.statSync(specFile).mtimeMs >= fs.statSync(flowIdx).mtimeMs);
-      if (isDone(`spec:${scr.id}`) && fresh && !forced('spec') && !flag('--redo')) { log('   spec: up to date'); continue; }
+      if (isDone(`spec:${scr.id}`) && fresh && !forced('spec') && !flag('--redo')) { log(`   spec: ${scr.id} up to date`); return; }
       if (scr.home) {
         fs.copyFileSync(path.join(P, 'menu.json'), path.join(dir, 'menu.json'));
         if (fs.existsSync(path.join(P, 'menu'))) fs.cpSync(path.join(P, 'menu'), path.join(dir, 'menu'), { recursive: true });
@@ -382,16 +398,24 @@ try {
       const specPrompt = fill('spec', { id, dir, root: ROOT, label: scr.label, url: scr.url, extra: (scr.home
         ? `\nThis is the HOME page, and it also defines the shell every screen of the rebuilt app shares: the header and the site menu (opened by \`${pack.menuButton ?? '?'}\`).\nThe menu's full tree, read from the live site, is in ${dir}/menu.json. List every module and item from it in Navigation and Components and cite it as [asset:menu.json].\nThe hover/flyout look of the menu is in ${dir}/menu/*.png: one picture per module, taken with the menu open and that module hovered (the explorer records the menu opening, not the CSS hover flyouts). Look at every one and cite them as [asset:menu/<file>.png]. Items under "${pack.menu}" open the screens of this app; every other item is shown (and hovers/opens the same way) but goes nowhere.`
         : `\nThis screen is shown inside the shared shell (header + site menu) that the home page's spec covers. The capture was scoped to its content area${scr.scope ? ` \`${scr.scope}\`` : ''}: specify that area; for the shell write one line under Layout: "Wrapped in the shared shell (see the home spec)."`) + (kit ? kit.prompt('spec', { dir }) : '') +
-        (hasFlows ? `\nThe flows stage explored this screen deeper than the capture: every state a click, a typed value or a picked option led to, up to the point where the live page would save or create something. The tree is ${dir}/flows/FLOWS.md; each state has a folder ${dir}/flows/<id>-<name>/ with shot.png (the live state), map.png, node.json ("fields": what each text box accepts when typed into and the message it shows; "saveProbe": what Save showed with every write blocked; "requests") and layer.html (a window's markup). Specify every state under Behavior / States (what leads there, what it shows, what can be done in it) and cite each as [flow:<id>] (ids from FLOWS.md, e.g. [flow:n1.2]). A "boundary" state is where the live page would have written (the request is listed): specify the button and the request it would send, as a call to the screen's service.` : '') });
+        (hasFlows ? `\nThe flows stage explored this screen deeper than the capture: every state a click, a typed value or a picked option led to, up to the point where the live page would save or create something. The tree is ${dir}/flows/FLOWS.md; each state has a folder ${dir}/flows/<id>-<name>/ with shot.png (the live state), map.png, node.json ("fields": what each text box accepts when typed into and the message it shows; "saveProbe": what Save showed with every write blocked, "appeared" the toasts / banners that came up; "conditionals": what each radio / checkbox / dropdown value shows and hides; "exits": where the X, Close and Cancel land, and how many windows they close; "dirtyExits": whether a way out asks "form data has changed" with an edit in the form, and where its answers land; "requests") and layer.html (a window's markup). Specify each of those as the live page does it: an X that closes two windows, a Close that only goes back to the window under it, a banner its script builds on Save. Specify every state under Behavior / States (what leads there, what it shows, what can be done in it) and cite each as [flow:<id>] (ids from FLOWS.md, e.g. [flow:n1.2]). A "boundary" state is where the live page would have written (the request is listed): specify the button and the request it would send, as a call to the screen's service.` : '') });
       log(`   spec: queued (${parallel} writer(s) at once)`);
       specs.push(specLimit(() => writeStep(`spec:${scr.id}`, {
         workdir: ROOT, expect: [specFile, path.join(dir, 'spec', 'tasks.md')], prompt: specPrompt,
         gate: async () => nodeRunAsync('check-spec.mjs', [id]),
       })).catch((e) => { mark(`spec:${scr.id}`, 'failed', { problems: [e.message.split('\n')[0]] }); log(`   !! spec ${scr.id}: ${e.message.split('\n')[0]}`); }));
+      };
+      if (willFlow) bg.push(flowLimit(after).catch((e) => log(`   !! ${scr.id} (after its capture): ${e.message.split('\n')[0]}`)));
+      else await after();
     } catch (e) {
       mark(`capture:${scr.id}`, 'failed', { problems: [e.message.split('\n')[0]] });
       log(`   !! ${scr.id}: ${e.message.split('\n')[0]} (details: ${rel(path.join(dir, 'run.log'))})`);
     }
+  }
+  if (!bg.length) break;
+  log(`\n>> waiting for the flows of ${bg.length} screen(s)`);
+  await Promise.all(bg.splice(0));
+  if (qi >= screens.length) break;
   }
   await browser.close().catch(() => {});
   if (specs.length) { log(`\n>> waiting for ${specs.length} spec writer(s)`); await Promise.all(specs); }

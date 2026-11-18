@@ -223,7 +223,7 @@ function onDisplayTrackingView() {
     title: 'Flows Lab', module: 'File Transfer Services', bodyClass: 'FileTransfer FlowsLab',
     body: `<div class="page-toolbar"><button class="btn" type="button" id="btnCreate">Create New</button></div>` +
       searchCriteria(`<div class="editor-row">${field('LabName', 'Lab Name', text('LabName', 'LabName', 'maxlength="20"'))}</div>`) + results() +
-      `<div id="labWindow"></div><div id="detailWindow"></div>
+      `<div id="labWindow"></div><div id="detailWindow"></div><div id="modalMessagePopup"></div>
 <script>$(function(){
   $('#grid').kendoGrid({ autoBind: false, rowLink: true, columns: [{ field: 'Name', title: 'Name' }, { field: 'Status', title: 'Status' }],
     dataSource: { pageSize: 10, transport: { read: { url: '/FileTransfer/GetLab', type: 'POST', dataType: 'json' } }, schema: { data: 'Data', total: 'Total' } } });
@@ -231,28 +231,54 @@ function onDisplayTrackingView() {
   ${collapse}
   const lab = $('#labWindow').kendoWindow({ title: 'View Lab', width: '70%', visible: false, modal: true }).data('kendoWindow');
   const det = $('#detailWindow').kendoWindow({ title: 'Destination Detail', width: '40%', visible: false, modal: true }).data('kendoWindow');
+  // the portal's alert window (Alert Confirmation): the "form data has changed" question and the Invalidate prompt
+  const msg = $('#modalMessagePopup').kendoWindow({ title: 'Alert Confirmation', width: 600, visible: false, modal: true }).data('kendoWindow');
+  msg.wrapper.find('.k-window-titlebar').addClass('modal-msg-title-alert');
+  let onYes = null, labDirty = false, detByButton = false;
+  const ask = (text, yes) => { onYes = yes; $('#modalMessagePopup').html('<div class="panel-body-modal modal-msg-content"><div class="clear-n-pad">' + text + '</div><div class="align-center"><input type="button" class="k-button" id="cancelModalButton" value="No"><input type="button" class="k-button" id="okButton" value="Yes"></div></div>'); msg.center().open(); };
+  $(document).on('click', '#cancelModalButton', () => msg.close());
+  $(document).on('click', '#okButton', () => { msg.close(); onYes && onYes(); });
+  // Add Lab's Close with an edit in it asks first (its X does not); Yes leaves without saving
+  $(document).on('click', '#btnCloseAdd', () => { if (labDirty) ask('Form data has changed and has not been saved. Are you sure you want to leave without saving your changes first?', () => { labDirty = false; lab.close(); }); else lab.close(); });
+  $(document).on('input', '#NewLab', () => { labDirty = true; });
+  // the destination's X closes the View under it too; its own Close button only itself
+  det.bind('close', () => { if (!detByButton) setTimeout(() => lab.close(), 0); });
+  $(document).on('click', '#btnCloseDest', () => { detByButton = true; det.close(); detByButton = false; });
   $('#grid').on('click', 'a.clickable', () => { lab.wrapper.find('.k-window-title').text('View Lab'); lab.refresh({ url: '/FileTransfer/LabView' }).then(() => lab.center().open()); });
-  $('#btnCreate').on('click', () => { lab.wrapper.find('.k-window-title').text('Add Lab'); lab.refresh({ url: '/FileTransfer/LabAdd' }).then(() => lab.center().open()); });
-  $(document).on('click', '#btnEditLab', () => { $('#labEdit').show(); $('#labRead').hide(); });
+  $('#btnCreate').on('click', () => { labDirty = false; lab.wrapper.find('.k-window-title').text('Add Lab'); lab.refresh({ url: '/FileTransfer/LabAdd' }).then(() => lab.center().open()); });
+  // Edit shows its part, a field inside it, and hides a button inside it (hidden twice before: its part was hidden too); Back puts the part away
+  $(document).on('click', '#btnEditLab', () => { $('#labEdit').show(); $('#labRead').hide(); $('#labEditExtra').show(); $('#btnFromExisting').hide(); });
+  $(document).on('click', '#btnBackLab', () => { $('#labEdit').hide(); $('#labRead').show(); });
+  $(document).on('click', '#btnInvalidate', () => ask('Are you sure you want to invalidate this lab?', () => $.post('/FileTransfer/InvalidateLab', { Id: 1 })));
+  $(document).on('change', 'input[name=Sched]', function(){ $('#weeklyPart').toggle(this.value === 'W'); $('#monthlyPart').toggle(this.value === 'M'); });
+  // Add Another with nothing typed: the banner the portal's script builds on the spot (formatGeneralMessage) into the panel's status box
+  $(document).on('click', '#btnAddAnother', () => { if (!$('#NewLab').val()) $('#addStatus').empty().append("<div class='msg-inline msg-error'><i class='msg-inline-icon fa-solid fa-ban'></i>Resolve the following form field errors and try again.</div>"); });
   $(document).on('click', '.dest-open', () => det.refresh({ url: '/FileTransfer/LabDest' }).then(() => det.center().open()));
   $(document).on('click', '#btnSaveLab', () => $.post('/FileTransfer/SaveLab', { Name: $('#LabEditName').val() }));
   $(document).on('click', '#btnRefreshLab', () => $.get('/FileTransfer/DeleteCache?id=1'));
   $(document).on('click', '#btnNextLab', () => $.post('/FileTransfer/AddLab', { Name: $('#NewLab').val() }));
   $(document).on('click', '#btnDeleteDest', () => $.post('/FileTransfer/DeleteDestination', { Id: 1 }));
-  $(document).on('click', '.k-window [id^=btnClose]', function(){ $(this).closest('.k-window').find('[data-role=window]').data('kendoWindow').close(); });
+  $(document).on('click', '.k-window [id^=btnClose]:not(#btnCloseDest):not(#btnCloseAdd)', function(){ $(this).closest('.k-window').find('[data-role=window]').data('kendoWindow').close(); });
 });</script>`,
   }),
 };
 const LAB = {
-  '/FileTransfer/LabView': `<div id="labRead"><div class="editor-row">${field('ViewName', 'Name', text('ViewName', 'ViewName', 'readonly value="Lab 1"'))}</div><button class="btn" type="button" id="btnEditLab">Edit</button></div>
+  '/FileTransfer/LabView': `<div id="labRead"><div class="editor-row">${field('ViewName', 'Name', text('ViewName', 'ViewName', 'readonly value="Lab 1"'))}</div><button class="btn" type="button" id="btnEditLab">Edit</button><button class="btn" type="button" id="btnInvalidate">Invalidate</button></div>
 <div id="labEdit" style="display:none"><div class="editor-row">${field('LabEditName', 'Name', text('LabEditName', 'LabEditName', 'maxlength="10" data-val="true" data-val-required="Name is required." data-val-length-max="10"'))}${field('LabCode', 'Code', text('LabCode', 'LabCode', 'oninput="this.value=this.value.replace(/[^0-9]/g,\'\')"'))}</div>
-<div class="buttons"><button class="btn btn-primary" type="button" id="btnSaveLab">Save</button><button class="btn" type="button" id="btnRefreshLab">Refresh Cache</button></div></div>
+<div id="labEditExtra" style="display:none"><p>Edited records keep their history.</p></div>
+<div class="buttons"><button class="btn btn-primary" type="button" id="btnSaveLab">Save</button><button class="btn" type="button" id="btnRefreshLab">Refresh Cache</button><button class="btn" type="button" id="btnFromExisting">Create from Existing</button><button class="btn" type="button" id="btnBackLab">Back</button></div></div>
 <div class="content-panel-container"><div class="content-panel-hdr">Destinations</div><table class="table"><tbody><tr><td><a class="clickable dest-open" href="javascript:void(0)">Dest A</a></td></tr><tr><td><a class="clickable dest-open" href="javascript:void(0)">Dest B</a></td></tr></tbody></table></div>
 <div class="buttons"><button class="btn" type="button" id="btnCloseLab">Close</button></div>`,
   '/FileTransfer/LabDest': '<p>Destination detail</p><div class="buttons"><button class="btn" type="button" id="btnDeleteDest">Delete Destination</button><button class="btn" type="button" id="btnCloseDest">Close</button></div>',
-  '/FileTransfer/LabAdd': `${field('NewLab', 'Lab Name', text('NewLab', 'NewLab', 'maxlength="15"'))}<div class="buttons"><button class="btn" type="button" id="btnNextLab">Continue</button><button class="btn" type="button" id="btnCloseAdd">Close</button></div>`,
+  // the record's schedule is set by the window's own script a moment after it opens (the markup alone shows the wrong part): the flows stage must wait for it
+  '/FileTransfer/LabAdd': `${field('NewLab', 'Lab Name', text('NewLab', 'NewLab', 'maxlength="15"'))}
+<div class="editor-row"><label><input type="radio" name="Sched" id="SchedW" value="W"> Run Weekly</label><label><input type="radio" name="Sched" id="SchedM" value="M"> Run Monthly</label></div>
+<div id="weeklyPart" style="display:none"><p>Runs every week.</p></div><div id="monthlyPart"><p>Runs every month.</p></div>
+<div id="addStatus"></div>
+<div class="buttons"><button class="btn" type="button" id="btnNextLab">Continue</button><button class="btn" type="button" id="btnAddAnother">Add Another</button><button class="btn" type="button" id="btnCloseAdd">Close</button></div>
+<script>setTimeout(function(){ $('#SchedW').prop('checked', true); $('#weeklyPart').show(); $('#monthlyPart').hide(); }, 600);</script>`,
 };
-const LAB_WRITES = new Set(['/FileTransfer/SaveLab', '/FileTransfer/DeleteCache', '/FileTransfer/AddLab', '/FileTransfer/DeleteDestination']);
+const LAB_WRITES = new Set(['/FileTransfer/SaveLab', '/FileTransfer/DeleteCache', '/FileTransfer/AddLab', '/FileTransfer/DeleteDestination', '/FileTransfer/InvalidateLab']);
 const POPUP =`<div class="editor-validation-summary validation-summary" style="display:none"><i class="msg-inline-icon fa-solid fa-ban"></i><div class="msg-inline-close panel-icon clickable" role="alert" data-hide="alert" aria-label="close" tabindex="0"><span class="fa-solid fa-xmark" title="Close" data-role="tooltip"></span></div>Resolve the following form field errors and try again.<ul class="validation-errors"></ul></div>
 <div class="editor-req-field-row">Required Fields ( <span class="editor-req-field fa-solid fa-asterisk"></span>)</div>
 <div class="content-panel-container"><div class="content-panel-hdr">Source Configuration</div><div class="content-panel-bdy">

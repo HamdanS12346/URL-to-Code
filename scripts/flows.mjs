@@ -8,7 +8,10 @@
 //   flows/<id>-<name>/     node.json, shot.png, map.png, candidates.md/.json, layer.html + window.json (a window)
 // Ids carry the hierarchy (n1.2.1 = the 1st state reached from n1.2): flat folders, short paths (Windows).
 // Safety (scripts/lib/safety.mjs): commit buttons are never clicked; every write is blocked; a click that tries one is a "boundary" leaf.
-// Site knowledge comes from the kit (kit.flows: ready, wait, window, closeTop, marks, changed, validation, pick, enrich, allow, rowVia, merge).
+// Site knowledge comes from the kit (kit.flows: ready, wait, window, closeTop, marks, changed, validation, pick, enrich, allow, rowVia, sweep, confirm, merge).
+// Besides the plan's actions, every window / part state gets the checks no planner has to think of: what each radio / checkbox / dropdown
+// value shows (sweep), where each way out lands (exits: the X, Close, Cancel...), and what a way out does with an edit in the form (dirtyExit:
+// the "form data has changed" window and where its answers land). They run while the planner plans the next wave.
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -17,7 +20,8 @@ import { danger, isWritePath, requestPolicy } from './lib/safety.mjs';
 import { checkPlan, DO } from './check-flows.mjs';
 
 const INPAGE = fs.readFileSync(new URL('./lib/flows-inpage.js', import.meta.url), 'utf8');
-export const DEFAULTS = { maxNodes: 40, maxDepth: 6, maxWaves: 6, maxActions: 12, timeBudgetSec: 1500, workers: 2, probeFields: 8, saveProbe: true, settleMs: 300, ai: true, allow: [] };
+export const DEFAULTS = { maxNodes: 40, maxDepth: 6, maxWaves: 6, maxActions: 12, timeBudgetSec: 1500, workers: 2, probeFields: 8, saveProbe: true, settleMs: 300, ai: true, allow: [],
+  sweep: true, exitProbe: true, dirtyProbe: true, recorder: true };
 const readJson = (f, d = null) => { try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch { return d; } };
 const writeJson = (f, o) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, JSON.stringify(o, null, 1)); };
 const slug = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 32) || 'state';
@@ -65,7 +69,12 @@ function flowsMd(G) {
     if (notes.length) out.push(`${'  '.repeat(d + 1)}- tried: ${notes.join('; ')}`);
     if (n.skipped?.length) out.push(`${'  '.repeat(d + 1)}- never clicked: ${n.skipped.map((s) => `"${s.text}" (${s.why})`).join('; ')}`);
     for (const f of n.fields || []) out.push(`${'  '.repeat(d + 1)}- field ${f.label || f.name}: accepts ${Object.entries(f.accepts).filter(([, v]) => v).map(([k]) => k).join(', ') || 'nothing typed'}${f.maxLength ? `, max ${f.maxLength}${f.maxEnforced ? ' (stops typing)' : ''}` : ''}${Object.entries(f.messages || {}).map(([k, v]) => `; ${k}: "${v}"`).join('')}`);
-    if (n.saveProbe) out.push(`${'  '.repeat(d + 1)}- Save with writes blocked ("${n.saveProbe.button}"): ${n.saveProbe.validation ? `${n.saveProbe.validation.summaries.length} banner(s), ${n.saveProbe.validation.fields.length} field message(s)` : 'no message'}${n.saveProbe.wouldSend.length ? `; would send ${n.saveProbe.wouldSend.map((r) => `${r.method} ${r.url}`).join(', ')}` : ''}`);
+    const shownUp = (a) => (a || []).map((x) => `"${x.text.slice(0, 80)}"${x.stays ? '' : ` (gone after ${x.ms} ms)`}`).join(', ');
+    if (n.saveProbe) out.push(`${'  '.repeat(d + 1)}- Save with writes blocked ("${n.saveProbe.button}"): ${n.saveProbe.validation ? `${n.saveProbe.validation.summaries.length} banner(s)${n.saveProbe.validation.summaries.length ? ` ("${n.saveProbe.validation.summaries[0].text.slice(0, 80)}")` : ''}, ${n.saveProbe.validation.fields.length} field message(s)` : 'no message'}${n.saveProbe.wouldSend?.length ? `; would send ${n.saveProbe.wouldSend.map((r) => `${r.method} ${r.url}`).join(', ')}` : ''}${n.saveProbe.appeared?.length ? `; showed ${shownUp(n.saveProbe.appeared)}` : ''}`);
+    for (const t of (n.tried || []).filter((x) => x.appeared?.length)) out.push(`${'  '.repeat(d + 1)}- ${t.do} "${t.text}" showed ${shownUp(t.appeared)}`);
+    if (n.conditionals?.length) out.push(`${'  '.repeat(d + 1)}- swept: ${n.conditionals.map((c) => `${c.kind} ${c.name} (${Object.keys(c.values).join(' / ')}) shows/hides ${Object.keys(c.rest).length} part(s)`).join('; ')}`);
+    if (n.exits?.length) out.push(`${'  '.repeat(d + 1)}- ways out: ${n.exits.map((x) => `${x.via === 'x' ? 'X' : `"${x.text}"`} -> ${x.error ? `error ${x.error}` : x.opens ? `opens "${x.opens}"` : x.lands ?? `${x.windows} window(s) open`}${x.closed > 1 ? ` (closes ${x.closed} windows)` : ''}`).join('; ')}`);
+    for (const de of n.dirtyExits ?? (n.dirtyExit ? [n.dirtyExit] : [])) out.push(`${'  '.repeat(d + 1)}- with an edit, ${de.via === 'x' ? 'X' : `"${de.text}"`} ${de.error ? `error ${de.error}` : de.asks ? `asks "${de.confirm?.title ?? '?'}" (${(de.confirm?.buttons ?? []).map((b) => `${b.text}${b.answer ? `=${b.answer}` : ''}`).join(' / ')}): stay -> ${de.stay?.lands ?? '?'}, leave -> ${de.leave?.lands ?? '?'}${de.leave?.closed > 1 ? ` (closes ${de.leave.closed} windows)` : ''}` : `does not ask (closes ${de.closed ?? '?'} window(s))`}`);
     for (const k of kids(n.id)) walk(k, d + 1);
   };
   if (G.nodes.n0) walk(G.nodes.n0, 0);
@@ -82,7 +91,7 @@ export async function runFlows({ browser, cfg, url, out, kit = null, log = conso
   const G = readJson(idx) ?? { url, at: new Date().toISOString(), waves: 0, planners: [], nodes: {} };
   const byHash = new Map(Object.values(G.nodes).filter((n) => n.fp).map((n) => [n.fp, n.id]));
   const save = () => { G.at = new Date().toISOString(); writeJson(idx, G); fs.writeFileSync(path.join(dir, 'FLOWS.md'), flowsMd(G)); };
-  const deadline = Date.now() + B.timeBudgetSec * 1000;
+  let deadline = Date.now() + B.timeBudgetSec * 1000; // moved on by the time the planner takes: the budget is the browser's
   const timeUp = () => Date.now() > deadline;
   const pol = requestPolicy({ allow: K.allow?.(out) ?? new Set(), extra: B.allow });
   const rowVia = K.rowVia?.(out) ?? null;
@@ -111,7 +120,9 @@ export async function runFlows({ browser, cfg, url, out, kit = null, log = conso
     await w.s.settle(B.settleMs, 6000).catch(() => {});
     if (K.wait) await K.wait({ page: w.page, s: w.s }).catch(() => {}); else await w.page.waitForTimeout(500);
   };
+  const quiet = (w) => w.page.evaluate(() => window.__xp.quiet(300, 2500)).catch(() => 0);
   const doStep = async (w, st) => {
+    if (st.do === 'key') { await w.page.keyboard.press(st.value || 'Escape'); return; }
     const r = await w.page.evaluate(([x, sc]) => window.__xp.resolve(x, sc), [st, scope]);
     if (!r.ok) throw new Error(r.why);
     const loc = w.page.locator('[data-xp-hit]').first(), o = { timeout: 5000 };
@@ -137,6 +148,7 @@ export async function runFlows({ browser, cfg, url, out, kit = null, log = conso
       try {
         await load(w);
         for (const st of n.path) { await doStep(w, st); await wait(w); }
+        await quiet(w);
         const f = await fp(w);
         if (f.hash === n.fp || near(f.text, n.fpText)) { w.at = n.id; return true; }
         n.drift = `replayed to another state (${lines(f.text).W || 'page'} / ${lines(f.text).H.slice(0, 80)})`;
@@ -153,6 +165,7 @@ export async function runFlows({ browser, cfg, url, out, kit = null, log = conso
   const harvest = async (w, n) => {
     const nd = path.join(dir, n.dir);
     fs.mkdirSync(nd, { recursive: true });
+    await quiet(w); // a window's own script may still be setting it up (the radio of its record, the parts that go with it)
     const lay = await w.page.evaluate((sc) => window.__xp.layer(sc), scope);
     n.windows = lay.windows;
     if (lay.top && n.kind === 'dialog' && K.window) {
@@ -186,12 +199,16 @@ export async function runFlows({ browser, cfg, url, out, kit = null, log = conso
   };
 
   // ---------- probes: what each text box accepts and says, and what Save says with every write blocked ----------
+  // the same form in another state (Add and Edit, Run Weekly and Run Monthly): its fields are measured once
+  const fieldCache = (G.fieldCache ||= {});
   const probe = async (w, n) => {
     if (n.probed) return;
     n.probed = true;
     const fields = (n.candidates || []).filter((c) => c.kind === 'text' && c.name).slice(0, B.probeFields);
+    const fkey = md5(JSON.stringify(fields.map((c) => [c.name, c.label, c.rules])));
     n.fields = [];
-    for (const c of fields) {
+    if (fields.length && fieldCache[fkey]) { n.fields = structuredClone(fieldCache[fkey]); n.fieldsFrom = 'cache'; }
+    for (const c of n.fieldsFrom ? [] : fields) {
       if (timeUp()) break;
       try {
         const st = stepOf(c), msg = () => w.page.evaluate((nm) => window.__xp.fieldMsg(nm), c.name);
@@ -220,21 +237,100 @@ export async function runFlows({ browser, cfg, url, out, kit = null, log = conso
         n.fields.push(f);
       } catch { /* a field that went away: the next one */ }
     }
-    if (n.fields.length) w.at = null; // typed into: the next action starts from a clean page
+    if (n.fields.length && !n.fieldsFrom) { w.at = null; fieldCache[fkey] = n.fields; } // typed into: the next action starts from a clean page
+    // nothing at all may be written while a check presses Save, a way out, or the answer of a confirm
+    const sealed = async (fn) => {
+      const g = w.s.guard, keep = { policy: g.policy, blockGet: g.blockGet };
+      g.policy = () => false;
+      g.blockGet = (m, u) => m === 'GET' && isWritePath(u.pathname);
+      try { return await fn(g); } finally { Object.assign(g, keep); w.at = null; }
+    };
     const save = B.saveProbe && (n.candidates || []).find((c) => c.danger && (c.kitAction === 'save' || /^(save|submit|update)\b/i.test(c.text || '')));
     if (save && !timeUp() && await reach(w, n)) {
-      const g = w.s.guard, keep = { policy: g.policy, blockGet: g.blockGet }, e0 = g.events.length;
-      g.policy = () => false; // nothing at all may be written while Save is pressed
-      g.blockGet = (m, u) => m === 'GET' && isWritePath(u.pathname);
-      try {
-        await doStep(w, stepOf(save));
-        await w.page.waitForTimeout(1200);
-        await wait(w);
-        const v = (await K.validation?.({ page: w.page }).catch(() => null)) ?? null;
-        n.saveProbe = { button: save.text, validation: v, wouldSend: g.events.slice(e0).filter((e) => e.status === 'blocked').map((e) => ({ method: e.method, url: e.url.replace(/^https?:\/\/[^/]+/, '').split('?')[0], fields: e.post && typeof e.post === 'object' ? Object.keys(e.post) : [] })) };
-        await shot(w, path.join(dir, n.dir, 'save-probe.png'), false);
-      } catch (e) { n.saveProbe = { button: save.text, error: e.message.split('\n')[0] }; }
-      finally { Object.assign(g, keep); w.at = null; }
+      await sealed(async (g) => {
+        const e0 = g.events.length;
+        try {
+          if (B.recorder) await w.page.evaluate(() => window.__xp.arm()).catch(() => {});
+          await doStep(w, stepOf(save));
+          await w.page.waitForTimeout(1200);
+          await wait(w);
+          const v = (await K.validation?.({ page: w.page }).catch(() => null)) ?? null;
+          const appeared = B.recorder ? await w.page.evaluate(() => window.__xp.appeared()).catch(() => []) : [];
+          n.saveProbe = { button: save.text, validation: v, appeared, wouldSend: g.events.slice(e0).filter((e) => e.status === 'blocked').map((e) => ({ method: e.method, url: e.url.replace(/^https?:\/\/[^/]+/, '').split('?')[0], fields: e.post && typeof e.post === 'object' ? Object.keys(e.post) : [] })) };
+          await shot(w, path.join(dir, n.dir, 'save-probe.png'), false);
+        } catch (e) { n.saveProbe = { button: save.text, error: e.message.split('\n')[0] }; }
+      });
+    }
+    const inWindow = (n.windows ?? 0) > 0 && ['dialog', 'part'].includes(n.kind);
+    // the radios / checkboxes / dropdown values of a window or a part: what each value shows and hides (the rebuild sets the parts from the value)
+    if (B.sweep && K.sweep && !n.conditionals && ['dialog', 'part'].includes(n.kind) && !timeUp() && await reach(w, n)) {
+      n.conditionals = await K.sweep({ page: w.page, where: inWindow ? 'dialog' : 'page' }).catch(() => []);
+      w.at = null;
+    }
+    // where each way out of a window lands: the state it goes back to, or how many windows it closes (an Edit opened from a View may close both)
+    if (B.exitProbe && inWindow && !n.exits && !timeUp() && await reach(w, n)) {
+      const list = (await w.page.evaluate(() => window.__xp.exits()).catch(() => [])).slice(0, 3);
+      n.exits = [];
+      for (const ex of list) {
+        if (timeUp() || !(await reach(w, n))) break;
+        n.exits.push(await sealed(async () => {
+          const r = { via: ex.via, text: ex.text, step: ex };
+          try {
+            await doStep(w, ex);
+            await wait(w);
+            await quiet(w);
+            const nw = await w.page.evaluate(() => window.__xp.windows());
+            const f = await fp(w);
+            Object.assign(r, { windows: nw, closed: (n.windows ?? 0) - nw, lands: f.hash === n.fp ? n.id : byHash.get(f.hash) ?? (nw === 0 ? 'page' : null) });
+            if (nw > (n.windows ?? 0)) r.opens = (await w.page.evaluate((sc) => window.__xp.layer(sc), scope)).title;
+          } catch (e) { r.error = e.message.split('\n')[0].slice(0, 120); }
+          return r;
+        }));
+      }
+      // with an edit in the form: does the way out ask first ("form data has changed")? Its window, and where each of its answers lands.
+      // The X and the first Close / Cancel each: a portal's form may ask on one and not the other
+      const field = (n.candidates || []).find((c) => c.kind === 'text' && !c.danger && c.type !== 'password');
+      const outs = [list.find((e) => e.via === 'x'), list.find((e) => e.via === 'button')].filter(Boolean);
+      if (B.dirtyProbe && n.kind === 'dialog' && field) n.dirtyExits = [];
+      for (const out1 of B.dirtyProbe && n.kind === 'dialog' && field ? outs : []) {
+        if (timeUp()) break;
+        // reached with the page's own requests let through (a window the portal loads by POST); only the edit and what follows is sealed.
+        // It asks when another window comes up on top (more windows, or the same number with another one on top: the form closed, the question open)
+        const edit = () => sealed(async () => {
+          await doStep(w, stepOf(field, { do: 'fill', value: 'probe' })); await doStep(w, out1); await wait(w); await quiet(w);
+          const nw = await w.page.evaluate(() => window.__xp.windows()), top = nw ? (await w.page.evaluate((sc) => window.__xp.layer(sc), scope)).title : null;
+          return { nw, asks: nw > (n.windows ?? 0) || (nw > 0 && nw === (n.windows ?? 0) && top !== n.title) };
+        });
+        const d = { via: out1.via, text: out1.text };
+        try {
+          if (await reach(w, n)) {
+            const e1 = await edit(), nw = e1.nw;
+            d.asks = e1.asks;
+            if (!d.asks) d.closed = (n.windows ?? 0) - nw;
+            else {
+              d.confirm = K.confirm ? await K.confirm({ page: w.page }).catch(() => null) : { title: (await w.page.evaluate((sc) => window.__xp.layer(sc), scope)).title };
+              await shot(w, path.join(dir, n.dir, 'dirty-exit.png'), false);
+              for (const ans of ['stay', 'leave']) {
+                if (ans === 'leave') { if (!(await reach(w, n)) || !(await edit()).asks) break; await K.confirm?.({ page: w.page }).catch(() => null); }
+                const r = await sealed(async () => {
+                  const b = w.page.locator(`[data-kit-confirm="${ans}"]:visible`).first();
+                  if (!(await b.count().catch(() => 0))) return null;
+                  await b.click({ timeout: 3000 });
+                  await wait(w);
+                  await quiet(w);
+                  const aw = await w.page.evaluate(() => window.__xp.windows()), f = await fp(w);
+                  return { windows: aw, closed: (n.windows ?? 0) - aw, lands: byHash.get(f.hash) ?? (aw === 0 ? 'page' : aw === (n.windows ?? 0) ? n.id : null) };
+                });
+                if (!r) break;
+                d[ans] = r;
+              }
+            }
+          }
+        } catch (e) { d.error = e.message.split('\n')[0].slice(0, 120); }
+        w.at = null;
+        n.dirtyExits.push(d);
+      }
+      if (n.dirtyExits?.length) n.dirtyExit = n.dirtyExits.find((d) => d.asks) ?? n.dirtyExits[0]; // the one the tree and the spec name first
     }
     writeJson(path.join(dir, n.dir, 'node.json'), { ...n, candidates: undefined });
   };
@@ -254,13 +350,18 @@ export async function runFlows({ browser, cfg, url, out, kit = null, log = conso
       if (!(await reach(w, n))) { t.outcome = 'could not get back to this state'; return; }
       e0 = g.events.length;
       before = await K.marks?.({ page: w.page }).catch(() => null);
-      try { for (const st of steps) { await doStep(w, st); await wait(w); } break; }
+      if (B.recorder) await w.page.evaluate(() => window.__xp.arm()).catch(() => {});
+      try { for (const st of steps) { await doStep(w, st); await wait(w); } await quiet(w); break; }
       catch (e) {
         w.at = null;
         if (attempt) { t.outcome = `error: ${e.message.split('\n')[0].slice(0, 120)}`; return; }
       }
     }
     const evs = g.events.slice(e0);
+    // a toast, a banner its script built, a message that showed up anywhere (outside the window too), even one gone again already
+    const appeared = B.recorder ? await w.page.evaluate(() => window.__xp.appeared()).catch(() => []) : [];
+    const msgLike = appeared.filter((x) => x.fixed || /msg|alert|notif|toast|error|summary|banner|message|valid/i.test(x.cls) || (!x.stays && !x.inWindow));
+    if (msgLike.length) t.appeared = msgLike.slice(0, 5);
     const blocked = evs.filter((e) => e.status === 'blocked');
     const nav = evs.find((e) => e.type === 'navigation' || e.type === 'popup');
     const reqs = evs.filter((e) => /request|postback/.test(e.type) && e.url && !ASSET.test(e.url)).map((e) => ({ method: e.method || 'GET', url: e.url.replace(/^https?:\/\/[^/]+/, '').split('?')[0], status: e.status }));
@@ -289,7 +390,8 @@ export async function runFlows({ browser, cfg, url, out, kit = null, log = conso
       const opened = lay.windows > (n.windows ?? 0) || (lay.top && now.W !== prev.W);
       const kind = opened ? 'dialog' : Object.keys(now).every((k) => k === 'V' || now[k] === prev[k]) ? 'validation' : now.R === '1' && prev.R === '0' ? 'results' : 'part';
       const change = !opened && before ? await K.changed?.({ page: w.page, before }).catch(() => null) : null;
-      const m = newNode(n, { name: slug(a.name || (opened ? lay.title : '') || `${t.text}-${kind}`), kind, fp: f.hash, fpText: f.text, via: { el: a.el, steps }, path: [...n.path, ...steps], requests: reqs, ...(change ? { change } : {}), title: opened ? lay.title : null });
+      const m = newNode(n, { name: slug(a.name || (opened ? lay.title : '') || `${t.text}-${kind}`), kind, fp: f.hash, fpText: f.text, via: { el: a.el, steps }, path: [...n.path, ...steps], requests: reqs, ...(change ? { change } : {}), title: opened ? lay.title : null,
+        ...(kind === 'validation' && appeared.length ? { appeared } : {}) });
       if (kind === 'validation' || m.depth >= B.maxDepth) { m.status = 'leaf'; m.reason = kind === 'validation' ? 'only messages changed' : 'maxDepth'; }
       await harvest(w, m);
       Object.assign(t, { outcome: `a new ${kind}${m.title ? ` "${m.title}"` : ''}`, child: m.id });
@@ -331,17 +433,31 @@ export async function runFlows({ browser, cfg, url, out, kit = null, log = conso
       const suggested = rulePlan(frontier, B, rowVia);
       writeJson(path.join(pdir, `wave-${wave}.suggested.json`), suggested);
       save();
+      // the checks of each open state need no plan (fields, Save, sweep, ways out): the workers run them while the planner plans.
+      // Windows and parts first: they are what a time budget must not leave unexplored
+      const rank = (n) => (['dialog', 'part'].includes(n.kind) ? 0 : 1) * 100 + n.depth;
+      const probes = [...frontier].sort((a, b) => rank(a) - rank(b));
+      const probing = Promise.all(workers.map(async (w) => {
+        for (let n = probes.shift(); n && !timeUp(); n = probes.shift()) {
+          try { if (await reach(w, n)) await probe(w, n); } catch (e) { if (/redirected/.test(e.message)) throw e; }
+          save();
+        }
+      })).then(() => null, (e) => e);
       let plan = null, source = 'rules';
       if (planner && B.ai !== false) {
+        const tp = Date.now();
         const ok = await planner({ wave, file, frontierFile }).catch((e) => (log(`flows: ! planner failed: ${e.message.split('\n')[0]}`), false));
+        deadline += Date.now() - tp;
         const p = ok ? readJson(file) : null;
         const errs = p ? checkPlan(p, front, B) : ['no plan'];
         if (!errs.length) { plan = p; source = 'ai'; } else if (ok) log(`flows: ! the plan of wave ${wave} does not pass (${errs[0]}): the rules plan instead`);
       }
+      const pe = await probing;
+      if (pe) throw pe;
       plan ||= suggested;
       G.planners.push(source);
       log(`flows: wave ${wave}: ${frontier.length} state(s) to explore, plan by ${source === 'ai' ? 'the writer' : 'the rules'}`);
-      const jobs = plan.nodes.map((p) => ({ p, n: G.nodes[p.node] })).filter((j) => j.n);
+      const jobs = plan.nodes.map((p) => ({ p, n: G.nodes[p.node] })).filter((j) => j.n).sort((a, b) => rank(a.n) - rank(b.n));
       // the nodes of a wave are independent: each worker takes the next one
       await Promise.all(workers.map(async (w) => {
         for (let j = jobs.shift(); j; j = jobs.shift()) {

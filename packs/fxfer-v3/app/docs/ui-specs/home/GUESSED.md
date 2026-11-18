@@ -1,3 +1,0 @@
-﻿- Implemented header menu javascript links as simple show/hide for existing panels: Messages -> #divCoreBroadcastMsg, External Links -> #divExternalLinks, Favorites -> #divFavorites, Contact Us -> #divCoreContactUs (legacy behavior not captured).
-- Implemented footer links (Disclaimer/Website Requirements/Privacy Policy/Cookie Policy) as opening #policyPanel and scrolling to in-panel anchors (legacy destinations not captured).
-- Implemented external-links javascript:popupCenteredWindow(url, ...) as window.open(url, '_blank', 'noopener,noreferrer') without centering/window sizing (legacy window features not captured).

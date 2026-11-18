@@ -52,6 +52,11 @@
     "workers": 2,
     "probeFields": 8,
     "saveProbe": true,
+    "sweep": true,
+    "exitProbe": true,
+    "dirtyProbe": true,
+    "recorder": true,
+    "screens": 2,
     "ai": true,
     "allow": []
   },

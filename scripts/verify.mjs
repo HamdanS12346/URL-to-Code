@@ -136,7 +136,10 @@ if (kitStates?.length && process.env.STATES !== '0') {
       for (const s of st.steps) {
         const loc = p.locator(`${s.sel} >> visible=true`).nth(s.nth ?? 0); // a twin hidden by a media query (a second hamburger) is never the one
         await loc.scrollIntoViewIfNeeded({ timeout: 5000 });
-        if (s.do === 'hover') await loc.hover({ timeout: 5000 }); else if (s.do === 'dblclick') await loc.dblclick({ timeout: 5000 }); else await loc.click({ timeout: 5000 });
+        if (s.do === 'hover') await loc.hover({ timeout: 5000 }); else if (s.do === 'dblclick') await loc.dblclick({ timeout: 5000 });
+        else if (s.do === 'fill') { await loc.fill(s.value ?? '', { timeout: 5000 }); await loc.evaluate((e) => e.blur()).catch(() => {}); } // a flows state reached by typing
+        else if (s.do === 'check') await loc.setChecked(s.value !== 'false', { timeout: 5000 });
+        else await loc.click({ timeout: 5000 });
         await p.waitForTimeout(s.wait ?? st.wait ?? 800);
       }
       if (st.name === 'search') await p.evaluate(() => scrollTo(0, 0));

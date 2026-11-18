@@ -229,18 +229,37 @@ all become states.
   (`dialogs.<id>.requests`; more in `pack.json` `flows.allow`). A click that tries a write is a **boundary**: the flow ends there, with the request it
   would have sent. "Save" is pressed once per form with **all** writes blocked, to record its messages (`saveProbe`).
 - **Measures every text box itself**: what typing letters, digits, spaces and symbols leaves in it (a digits-only box), whether it stops at its
-  length limit, and the message a too long / badly formed / empty value shows (`fields` in each state's `node.json`).
+  length limit, and the message a too long / badly formed / empty value shows (`fields` in each state's `node.json`; the same form in another
+  state is measured once).
+- **Checks every window and part itself** (no planner needed; they run while the planner plans the next wave):
+  - `conditionals`: what each radio / checkbox / dropdown value shows and hides (the capture's sweep, in selectors that resolve on any load);
+  - `exits`: where the X and each Close / Cancel / Back / No land, and how many windows they close (an Edit opened from a View closes both);
+  - `dirtyExits`: the X and the first Close / Cancel with an edit in the form: does it ask ("form data has changed"), its window, and where its
+    No / Yes land;
+  - `appeared` (on each action and on Save): toasts and banners that came up anywhere, even ones a script builds on the spot or hides again.
+  Each state is frozen once the page has been quiet for 300 ms (a window's own script still checking the radio of its record), with the live
+  values (a checked radio, a filled box) written into its markup. A part's `change.deep` lists every element whose own display flipped, at any
+  depth (a field shown inside the part, a button hidden inside it). Off one by one: `sweep`, `exitProbe`, `dirtyProbe`, `recorder` (`false`).
 - **Output** in the screen folder: `flows/FLOWS.md` (the tree), `flows/index.json` (the graph; a re-run continues from it), and per state
   `flows/<id>-<name>/` (`shot.png`, the numbered `map.png` the planner reads, `candidates.md`, `node.json`, a window's `layer.html`). Ids carry the
   hierarchy: `n2.1.2` is the 2nd state reached from `n2.1`.
 - **Into the kit** (`kit.flows.merge`, idempotent): a window the capture did not see becomes a dialog `dN` (`flow: "<state>"`, widget ids `dN<kid>`)
   with its markup in `kit/dialogs/`, so `port` builds it; the click that opened it or showed a part goes to `screen.json` `flows` (css + nth among the
-  shown in its layer), which `<KitScreen>` replays; each state reachable by clicks gets a check `flow-<id>` in `states.json`, replayed by `verify`
-  (reported like any state, never a reason for the preflight to stop). A grid inside a dialog no longer opens the page's row dialog.
+  shown in its layer), which `<KitScreen>` replays; each state reachable by clicks (and typing) gets a check `flow-<id>` in `states.json`, replayed by
+  `verify` (reported like any state, never a reason for the preflight to stop); a window's state is diffed against its live `shot.png`. A grid
+  inside a dialog no longer opens the page's row dialog. What the checks found goes on the dialog: `conditionals` (applied when it opens, from the
+  value it opens with), `close.x/cancel.closes` (`<KitScreen>` closes as many windows), `close.*.asks` + `confirm`, `saveValidation` (a banner built
+  on the spot goes into its box: `summaries[].at`), `message: true` (an alert window, drawn like the confirm at its own size); on a part's flow:
+  `deep` and `back` (its Close / X only put the part away); a click that only showed messages: `screen.validations` (validated with that banner).
+  A replayed click on a radio / checkbox keeps its own check (only what it shows is replayed). A capture dialog keeps what the capture measured:
+  the merge only fills what it lacks (`flowsWas` holds the capture's values for the next merge).
 - **The spec cites every state** as `[flow:<id>]` (`npm run check` requires it when `flows/index.json` exists); TODO.md lists the measured fields,
   Save's messages, the boundaries and the states the kit cannot reach by itself (a step that types or picks first).
 - Budget (`config.json` `flows`, `pack.json` `"flows": { ... }`): `maxNodes` 40, `maxDepth` 6, `maxWaves` 6, `maxActions` 12 per state,
-  `timeBudgetSec` 1500, `workers` 2 (browser contexts per screen, sharing the one login), `ai: false` for rule-based plans only.
+  `timeBudgetSec` 1500 (the browser's time: what the planner takes is not counted), `workers` 2 (browser contexts per screen, sharing the one
+  login), `screens` 2 (screens whose flows run at once, beside the next screen's capture; `--flow-screens N`), `ai: false` for rule-based plans only.
+- The side menu: the capture records whether the live page scrolls sideways with it open (`data-kit-menu-hscroll`); the kit hides the sideways
+  overflow while it is open unless the live one scrolled.
 
 ## Known gaps (say them in GUESSED.md when a screen needs them)
 
@@ -250,7 +269,7 @@ all become states.
 
 - The grid's column filter popup opens and closes and its operator list can be picked from, but it does not filter the synthetic rows, and one popup (the first column's) stands for all columns. Its operator list is as wide as the dropdown (the live one is 20 px wider).
 - Screens whose live Search with nothing typed showed a banner have no row template (no rows were ever seen), so a Search with input shows the grid empty.
-- Closing behavior is recorded for the dialogs the capture opens from Create New and the first row; a dialog with no editable text box is only tried unedited.
+- Closing behavior is recorded for the dialogs the capture opens from Create New and the first row, and by the flows stage for every other window; a dialog with no editable text box is only tried unedited.
 - Profile states cover the menus and each Create New dialog; the full page at the second profile is one viewport picture (`layout@<name>`), not a stitched page.
 - The page-size dropdown in the pager does not change the page size.
 - A dropdown that cascades from another starts disabled and keeps the option list the capture saw (usually empty).

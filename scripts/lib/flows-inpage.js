@@ -5,6 +5,9 @@
 //   __xp.fp(scope)           the state's fingerprint: windows open, the layer's headings, labels, buttons, tabs, rows>0, validation shown
 //   __xp.resolve(step, scope) find a recorded step's element again (stamped data-xp-hit), by css + nth among the shown, text as a check
 //   __xp.overlay(on)         numbered boxes over the stamped candidates (the map picture the planner reads)
+//   __xp.exits()             the ways out of the top window (its title bar's X, its Close / Cancel / Back / No), as steps
+//   __xp.quiet(q, cap)       resolves once the page has not changed for q ms (a window's script still setting it up)
+//   __xp.arm() / appeared()  what showed up anywhere since arm() (a toast, a banner built on the spot), even if gone again
 (() => {
   if (window.__xp) return;
   const clean = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
@@ -116,13 +119,71 @@
         `F:${vis('input:not([type=hidden]), select, textarea').filter((e) => !e.readOnly && !e.disabled).length}`,
         `T:${set(vis('[role=tab][aria-selected=true], .k-tabstrip-items .k-active, .nav-tabs .active').map((e) => textOf(e))).join('|')}`,
         `R:${vis('tbody tr').filter((r) => !r.matches('.k-grid-norecords, .k-no-data')).length > 0 ? 1 : 0}`,
-        `V:${vis('.field-validation-error, .validation-summary-errors, .k-invalid-msg, .k-form-error, .validation-summary').filter((e) => clean(e.textContent)).length > 0 ? 1 : 0}`,
+        `V:${vis('.field-validation-error, .validation-summary-errors, .k-invalid-msg, .k-form-error, .validation-summary, .msg-inline').filter((e) => clean(e.textContent)).length > 0 ? 1 : 0}`,
       ];
       return parts.join('\n');
     },
+    // the ways out of the top window: its title bar's close (layer "win": the window itself), and the buttons in it that only lead back
+    // (Close, Cancel, Back, No...). A step each, as resolve() takes it
+    exits() {
+      const w = topWindow();
+      if (!w) return [];
+      const out = [], BACK = /^(close|cancel|back|no|x|×|done|return)$/i;
+      const x = [...w.querySelectorAll('.k-window-titlebar .k-window-titlebar-action, .k-window-titlebar [aria-label=Close], .modal-header .close, .modal-header .btn-close')].filter(shown)
+        .find((e) => /close|×|x/i.test(`${e.getAttribute('aria-label') || ''} ${e.title || ''} ${e.className} ${e.textContent}`));
+      if (x) out.push({ do: 'click', layer: 'win', css: cssOf(x), nth: nthOf(x, cssOf(x), w), text: 'X', via: 'x' });
+      const C = contentOf(w);
+      for (const b of C.querySelectorAll('button, input[type=button], input[type=submit], a.k-button, a.btn, [role=button]')) {
+        if (!shown(b) || b.disabled || b.closest(SKIP) || !BACK.test(textOf(b))) continue;
+        const css = cssOf(b);
+        if (!out.some((o) => o.css === css && o.layer === 'top')) out.push({ do: 'click', layer: 'top', css, nth: nthOf(b, css, C), text: textOf(b), via: 'button' });
+        if (out.length >= 4) break;
+      }
+      return out;
+    },
+    // resolves when nothing in the page has changed for `q` ms (a window's own script still filling it, checking the radio of its record), at most `cap` ms
+    quiet(q = 300, cap = 3000) {
+      return new Promise((done) => {
+        let t = setTimeout(end, q);
+        const t0 = Date.now(), mo = new MutationObserver((ms) => {
+          if (ms.every((m) => m.target.closest?.('[data-xp-badge]') || (m.type === 'attributes' && /^data-xp/.test(m.attributeName)))) return;
+          clearTimeout(t);
+          t = setTimeout(end, Math.max(0, Math.min(q, cap - (Date.now() - t0))));
+        });
+        function end() { mo.disconnect(); done(Date.now() - t0); }
+        mo.observe(document.body, { subtree: true, childList: true, attributes: true, characterData: true });
+      });
+    },
+    // what showed up anywhere on the page since arm(): elements added or turned visible that carry text (a toast, a banner its script built, a message),
+    // kept even when they are gone again by the time it is read (a toast that hides itself)
+    arm() {
+      const seen = (window.__xpSeen = []);
+      window.__xpMo?.disconnect();
+      const note = (el) => {
+        // a message, not content: nothing a person fills or picks in it, no rows
+        if (!(el instanceof Element) || el.closest('[data-xp-badge], script, style, .k-animation-container .k-list, .k-tooltip, tr, li') || el.querySelector('input, select, textarea, button, table, tr, li') || seen.length >= 20) return;
+        const txt = clean(el.textContent);
+        if (!txt || !shown(el) || seen.some((s) => s.el === el || s.el.contains(el))) return;
+        const r = el.getBoundingClientRect(), cs = getComputedStyle(el);
+        seen.push({ el, text: txt.slice(0, 160), cls: (typeof el.className === 'string' ? el.className : '').slice(0, 80), at: el.parentElement?.id ? `#${el.parentElement.id}` : cssOf(el.parentElement || el),
+          fixed: cs.position === 'fixed' || !!el.closest('.k-notification, [role=alert], [role=status]'), inWindow: !!el.closest(MODAL), box: { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height) }, t: Date.now() });
+      };
+      window.__xpMo = new MutationObserver((ms) => {
+        for (const m of ms) {
+          if (m.type === 'childList') m.addedNodes.forEach((x) => setTimeout(() => note(x), 0));
+          else if (m.target instanceof Element && /msg|alert|notif|toast|error|summary|banner|message/i.test(`${m.target.className} ${m.target.getAttribute('role') || ''}`)) setTimeout(() => note(m.target), 0);
+        }
+      });
+      window.__xpMo.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['style', 'class'] });
+    },
+    appeared() {
+      window.__xpMo?.disconnect();
+      const now = Date.now();
+      return (window.__xpSeen || []).map(({ el, t, ...r }) => ({ ...r, stays: el.isConnected && shown(el), ms: el.isConnected && shown(el) ? null : now - t }));
+    },
     resolve(step, scope) {
       document.querySelectorAll('[data-xp-hit]').forEach((e) => e.removeAttribute('data-xp-hit'));
-      const R = step.layer === 'top' ? (topWindow() ? contentOf(topWindow()) : null) : root(scope);
+      const R = step.layer === 'win' ? topWindow() : step.layer === 'top' ? (topWindow() ? contentOf(topWindow()) : null) : root(scope);
       if (!R) return { ok: false, why: 'no window open' };
       let list = [];
       try { list = [...R.querySelectorAll(step.css)].filter(shown); } catch { return { ok: false, why: `bad selector ${step.css}` }; }

@@ -79,6 +79,9 @@ async function sideMenu(page, sel, log, module) {
         if (a.close?.duration != null) root.setAttribute('data-kit-menu-close-ms', String(a.close.duration));
       }
     } catch {}
+    // with the menu open, does the live page (or the menu itself) scroll sideways? The rebuild must not where the live one does not
+    const hs = (e) => e.scrollWidth > e.clientWidth + 1 && getComputedStyle(e).overflowX !== 'hidden';
+    root.setAttribute('data-kit-menu-hscroll', document.documentElement.scrollWidth > document.documentElement.clientWidth + 1 || hs(root) ? '1' : '0');
     const close = root.querySelector('#mainMenuClose, .fa-xmark, .fa-times, .fa-x, .k-i-close, [aria-label*=close i]')
       || [...document.querySelectorAll('.fa-xmark, .fa-times')].find((e) => vis(e) && !was.has(e));
     if (close) close.setAttribute('data-kit-action', 'menu-close');
@@ -264,10 +267,11 @@ async function waitLoaded(page, s, max = 30000) {
 // What radios, checkboxes and dropdown values show or hide on the page (where = 'page') or in the open window ('dialog'): each value is tried, the
 // parts that flipped are recorded with their ABSOLUTE state per value (so the rebuild can set any value from any other one), and the control is put back.
 // Result: [{ where, kind, name, values: { <value>: { <selector>: shown } }, rest: { <selector>: shown } }]
-async function sweep(page, where) {
+// stable: keys that resolve on another load of the page (the flows stage's: see marks() in harvest.js)
+async function sweep(page, where, stable = false) {
   const t = await page.evaluate((w) => window.__kit.triggers(w), where).catch(() => null);
   if (!t) return [];
-  const out = [], parts = () => page.evaluate(() => window.__kit.parts());
+  const out = [], parts = () => page.evaluate((s) => window.__kit.parts(s), stable);
   const group = async (kind, name, steps, restore, restKey) => {
     const rest = await parts(), states = {}, flipped = new Set();
     let prev = rest;
@@ -1101,7 +1105,16 @@ export const flows = {
   },
   window: async ({ page }) => { await inject(page); return page.evaluate(() => window.__kit.dialog()); },
   closeTop: ({ page }) => page.evaluate(() => window.__kit.closeDialog()).catch(() => false),
-  marks: ({ page }) => page.evaluate(() => window.__kit.marks()),
+  marks: ({ page }) => page.evaluate(() => window.__kit.marks(true)),
+  // what each radio / checkbox / dropdown value of the state shows or hides (put back afterwards), in stable selectors
+  sweep: async ({ page, where }) => { await inject(page); return sweep(page, where, true); },
+  // a window that opened on top (the "form data has changed" one, an Invalidate prompt): its chrome, markup and stay / leave buttons (stamped data-kit-confirm)
+  confirm: async ({ page }) => {
+    await inject(page);
+    const c = await page.evaluate(() => window.__kit.confirm());
+    return c && { title: c.title, windowClass: c.windowClass, windowStyle: c.windowStyle, titlebarHtml: c.titlebarHtml, contentClass: c.contentClass, contentId: c.contentId, contentStyle: c.contentStyle,
+      overlay: c.overlay, options: c.options, contentHtml: c.contentHtml, buttons: c.buttons, rect: c.rect };
+  },
   changed: ({ page, before }) => page.evaluate((b) => window.__kit.changed(b), before),
   validation: ({ page }) => page.evaluate(() => window.__kit.validation()),
   pick: ({ page, value }) => page.evaluate((v) => {
@@ -1133,14 +1146,24 @@ export const flows = {
   // what the flows found, into the kit's data. Idempotent: what an earlier merge added is dropped first.
   //  - a window not harvested by the capture: a dialog dN (widget ids renamed dN<kid>: the capture's own counter reused them), markup in kit/dialogs/
   //  - the click that opened a window / showed a part: screen.flows (KitScreen replays it), as css + nth among the shown in its layer
-  //  - a check per state verify can replay (clicks only): states.json flow-<id>
+  //  - a check per state verify can replay (clicks and typing): states.json flow-<id>, with the live picture when the state is a window
+  //  - per window: what its radios / checkboxes / dropdowns show (conditionals), where its X / Cancel land (close.*.closes: how many windows
+  //    go), whether it asks with an edit in it (close.*.asks + confirm), the banner its Save shows; a message box (an Alert Confirmation) as such
+  //  - per part: what it turned on and off at any depth (deep), and the ways out that only put it away again (back)
+  //  - a click that only showed validation (Add Another with nothing filled): screen.validations
   async merge({ out, graph, scope }) {
     const kd = path.join(out, 'kit'), sf = path.join(kd, 'screen.json'), stf = path.join(kd, 'states.json'), fdir = path.join(out, 'flows');
     const screen = readJson(sf);
     if (!screen) return null;
-    for (const [id, d] of Object.entries(screen.dialogs ?? {})) if (d.flow) { delete screen.dialogs[id]; fs.rmSync(path.join(kd, 'dialogs', `${id}.html`), { force: true }); }
+    for (const [id, d] of Object.entries(screen.dialogs ?? {})) {
+      if (d.flow) { delete screen.dialogs[id]; fs.rmSync(path.join(kd, 'dialogs', `${id}.html`), { force: true }); continue; }
+      // a capture dialog: back to what the capture had, before an earlier merge added to it
+      for (const [k, v] of Object.entries(d.flowsWas ?? {})) { if (v === null) delete d[k]; else d[k] = v; }
+      delete d.flowsWas;
+    }
     const states = (readJson(stf) ?? []).filter((s) => !s.name.startsWith('flow-'));
     screen.flows = [];
+    screen.validations = [];
     screen.links = (screen.links ?? []).filter((l) => l.kind !== 'flow');
     let next = Math.max(0, ...Object.keys(screen.dialogs ?? {}).map((x) => +x.slice(1) || 0));
     const dlg = {}, added = { dialogs: 0, flows: 0, states: 0 };
@@ -1170,23 +1193,61 @@ export const flows = {
           added.dialogs++;
         }
       } else if (n.windows && parentDlg) dlg[n.id] = parentDlg; // a part shown in the same window
+      // what the checks measured on the window (its own state, or a part of it)
+      const D = dlg[n.id] ? screen.dialogs[dlg[n.id]] : null;
+      if (D) {
+        const mine = !!D.flow;
+        // a capture dialog keeps what the capture measured: the first change to a key keeps its old value, which the next merge puts back
+        const keep = (k) => { if (!mine && !(k in (D.flowsWas ||= {}))) D.flowsWas[k] = D[k] === undefined ? null : structuredClone(D[k]); };
+        // radios / checkboxes / dropdowns: the window's own sweep first, then what a part of it added (a control the part showed)
+        if (n.conditionals?.length && (mine || !D.conditionals?.length || 'conditionals' in (D.flowsWas ?? {}))) {
+          keep('conditionals');
+          const conds = [...(D.conditionals ?? []), ...n.conditionals];
+          D.conditionals = conds.filter((c, i) => conds.findIndex((o) => o.kind === c.kind && o.name === c.name) === i);
+        }
+        if (n.kind === 'dialog') {
+          const v = n.saveProbe?.validation;
+          if (v && (!D.saveValidation || (D.saveValidation.summaries?.length ?? 0) < v.summaries.length)) { keep('saveValidation'); D.saveValidation = { ...v, postAttempted: !!n.saveProbe.wouldSend?.length }; }
+          // where its ways out go: X and Cancel / Close may close more than this window (an Edit opened from a View closes both)
+          keep('close');
+          const c = (D.close ||= {}), byVia = { x: n.exits?.find((e) => e.via === 'x' && !e.error && !e.opens), cancel: n.exits?.find((e) => e.via === 'button' && !e.error && !e.opens) };
+          for (const [v, e] of Object.entries(byVia)) if (e && e.closed >= 1) c[v] = { asks: false, ...(c[v] ?? {}), closes: e.closed };
+          // with an edit in it: does it ask (the capture's own answer wins), and how many windows its "leave" closes
+          for (const de of n.dirtyExits ?? (n.dirtyExit ? [n.dirtyExit] : [])) {
+            const dv = de.via === 'x' ? 'x' : 'cancel';
+            if (de.error || de.asks === undefined) continue;
+            const capAsks = mine ? undefined : D.flowsWas.close?.[dv]?.asks;
+            c[dv] = { ...(c[dv] ?? {}), asks: capAsks ?? !!de.asks, ...(de.leave?.closed >= 1 ? { leaveCloses: de.leave.closed } : {}) };
+            if (de.asks && de.confirm && !c.confirm) c.confirm = de.confirm;
+          }
+          // a message box (an Alert Confirmation, an Invalidate prompt): the portal's small alert window, at its own size, not a form panel
+          const w = readJson(path.join(fdir, n.dir, 'window.json'));
+          if (w && (/modal-msg/.test(w.titlebarHtml ?? '') || /^modalMessagePopup$/i.test(w.contentId ?? ''))) { keep('message'); D.message = true; }
+        }
+      }
       for (const l of n.links ?? []) screen.links.push({ kind: 'flow', text: l.text, url: l.url });
       const steps = n.via?.steps ?? [], last = steps.at(-1);
       // the click that led here, replayed by KitScreen (a step that types or picks first is the screen's own code)
       if (last && steps.length === 1 && ['click', 'dblclick'].includes(last.do) && (n.kind === 'dialog' || n.kind === 'part') && (last.layer !== 'top' || parentDlg) && (n.kind !== 'dialog' || dlg[n.id])) {
+        // a way out of the part that lands where the part was opened from: it puts the part away (the Close of a destination shown inside a View)
+        const back = (n.exits ?? []).filter((e) => e.lands === n.parent).map((e) => (e.via === 'x' ? 'x' : e.step?.css)).filter(Boolean);
         screen.flows.push({ node: n.id, from: last.layer === 'top' ? parentDlg : null, css: last.css, nth: last.nth, text: last.text, via: last.do,
-          ...(n.kind === 'dialog' ? { opens: dlg[n.id] } : { show: n.change?.show ?? [], hide: n.change?.hide ?? [] }) });
+          ...(n.kind === 'dialog' ? { opens: dlg[n.id] } : { show: n.change?.show ?? [], hide: n.change?.hide ?? [], ...(n.change?.deep && Object.keys(n.change.deep).length ? { deep: n.change.deep } : {}), ...(back.length ? { back } : {}) }) });
         added.flows++;
       }
-      // the check verify replays: the same clicks from a fresh page
+      // a click that only made the page answer with messages (Add Another with nothing filled): the rebuild validates on it and shows the same banner
+      if (n.kind === 'validation' && last && steps.length === 1 && last.do === 'click' && n.validation && (last.layer !== 'top' || parentDlg))
+        screen.validations.push({ node: n.id, from: last.layer === 'top' ? parentDlg : null, css: last.css, nth: last.nth, text: last.text, validation: n.validation });
+      // the check verify replays: the same clicks (and what was typed) from a fresh page, with the live picture of a window state
       const before = rsteps[n.parent];
-      const mine = steps.map((st) => (['click', 'dblclick', 'hover'].includes(st.do) && rsel(st, parentDlg) ? { do: st.do, sel: rsel(st, parentDlg), nth: Math.max(0, st.nth) } : null));
+      const mine = steps.map((st) => (['click', 'dblclick', 'hover', 'fill', 'check'].includes(st.do) && rsel(st, parentDlg) ? { do: st.do, sel: rsel(st, parentDlg), nth: Math.max(0, st.nth), ...(st.value !== undefined ? { value: st.value } : {}) } : null));
       rsteps[n.id] = before && mine.every(Boolean) ? [...before, ...mine] : null;
       if (!rsteps[n.id] || !['dialog', 'part', 'results'].includes(n.kind)) continue;
       const expect = n.kind === 'dialog' ? (dlg[n.id] ? [{ sel: `[data-kit-dialog="${dlg[n.id]}"]`, why: `"${last?.text}" opens it on the live page (flow ${n.id})` }] : [])
         : (n.change?.show ?? []).slice(0, 4).map((x) => ({ sel: `${dlg[n.id] ? `[data-kit-dialog-content="${dlg[n.id]}"] ` : page}${x}`, why: `"${last?.text}" shows it on the live page (flow ${n.id})` }));
       if (!expect.length) continue;
-      states.push({ name: `flow-${n.id}`, steps: rsteps[n.id], wait: 1200, expect });
+      const pic = (n.windows ?? 0) > 0 && fs.existsSync(path.join(fdir, n.dir, 'shot.png')) ? { shot: path.relative(kd, path.join(fdir, n.dir, 'shot.png')).replace(/\\/g, '/') } : {};
+      states.push({ name: `flow-${n.id}`, steps: rsteps[n.id], wait: 1200, expect, ...pic });
       added.states++;
     }
     writeJson(sf, screen);

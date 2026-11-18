@@ -30,13 +30,19 @@ export type DialogDef = { title: string; windowClass: string; windowStyle: strin
   conditionals?: Conditional[]; saveValidation?: Validation & { postAttempted?: boolean };
   // what opening the window did to the page behind it (a scroll lock), and the field the portal focused in it (stamped data-kit-autofocus in its markup)
   pageLock?: PageLock | null; autofocus?: string | null;
-  // closing with an edit in it: does the X / Cancel ask "form data has changed"? `confirm` is the live window that asked (its markup and buttons)
-  close?: { x?: { asks: boolean } | null; cancel?: { asks: boolean } | null; confirm?: Confirm | null } };
+  // closing with an edit in it: does the X / Cancel ask "form data has changed"? `confirm` is the live window that asked (its markup and buttons).
+  // closes: how many windows the X / Cancel closed on the live page (an Edit opened from a View may close both; 1 when absent); leaveCloses: the same
+  // for the confirm's answer that leaves
+  close?: { x?: CloseVia | null; cancel?: CloseVia | null; confirm?: Confirm | null };
+  // a message box (an Alert Confirmation, an Invalidate prompt): the portal's small alert window at its own size, placed like the confirm
+  message?: boolean };
+export type CloseVia = { asks: boolean; closes?: number; leaveCloses?: number };
 export type PageLock = { htmlOverflow: string | null; bodyOverflow: string | null; bodyAdd: string[]; bodyScroll: string | null };
 export type Confirm = { title: string; windowClass: string; windowStyle: string | null; titlebarHtml: string | null; contentClass: string; contentId: string | null; contentStyle: string | null;
   overlay: DialogDef['overlay']; options: Record<string, unknown> | null; contentHtml: string; buttons: { text: string; answer: 'stay' | 'leave' | null }[]; rect: { x: number; y: number; w: number; h: number } };
-// a validation summary banner (the live markup) and the per-field messages the page showed
-export type Validation = { summaries: { h: string | null; className: string; style: string | null; html: string; text: string }[]; fields: { for: string | null; text: string; className: string }[] };
+// a validation summary banner (the live markup) and the per-field messages the page showed. `at`: a banner the page's script built on the spot
+// (not in the markup at rest) goes into this box
+export type Validation = { summaries: { h: string | null; className: string; style: string | null; html: string; text: string; at?: string | null }[]; fields: { for: string | null; text: string; className: string }[] };
 // what a radio / checkbox / dropdown value shows or hides: per value, the absolute state of each part (selector -> shown)
 export type Conditional = { where: string; kind: 'radio' | 'checkbox' | 'dropdown'; name: string; values: Record<string, Record<string, boolean>>; rest: Record<string, boolean> };
 // below `query` the portal places a dialog by its own phone branch (left / top, at least minWidthPct wide, at most maxHeightPct high);
@@ -45,7 +51,12 @@ export type Responsive = { query: string | null; source: string | null; desktop:
 // what a Create New did on the live page, by the button's id (else its place among the shown ones): opened a dialog, or
 // showed / hid parts of the dialog (or page) it sits in (selectors inside it), scrolling it there
 export type Create = { index: number; id: string | null; text: string; dialog?: string; show?: string[]; hide?: string[]; scroll?: number | null };
-export type Flow = { node: string; from: string | null; css: string; nth: number; text?: string; via: 'click' | 'dblclick'; opens?: string; show?: string[]; hide?: string[] };
+// deep: elements at any depth the click turned on (true) or off (false) by their own display (a field shown inside the part, a button hidden in it);
+// back: the ways out that only put the part away again ('x': the window's X; else a button's selector in the window)
+export type Flow = { node: string; from: string | null; css: string; nth: number; text?: string; via: 'click' | 'dblclick'; opens?: string; show?: string[]; hide?: string[];
+  deep?: Record<string, boolean>; back?: string[] };
+// a click that only made the live page answer with messages (Add Another with nothing filled): the rebuild validates its form and shows the same banner
+export type FlowValidation = { node: string; from: string | null; css: string; nth: number; text?: string; validation: Validation };
 type Anim = { effects?: string; duration?: number };
 export type KitData = {
   shell?: { title: string | null; module: string | null };
@@ -61,7 +72,7 @@ export type KitData = {
   creates?: Create[]; // a Create New on the page that opens no dialog
   // clicks the flows stage saw open a window or show / hide parts, that nothing else of the kit replays: the element is the nth shown match of `css`
   // in its layer (the dialog `from`, else the screen)
-  flows?: Flow[];
+  flows?: Flow[]; validations?: FlowValidation[];
   row: { dialog: string | null; navigates: string | null; via?: 'link' | 'row' | 'dblclick' } | null;
   // what the screen's own script can open (openModalOverlay panels, the row's double-click handler), and which of those
   // the capture did not manage to harvest

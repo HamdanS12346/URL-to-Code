@@ -72,6 +72,25 @@ try {
   assert.ok(nm && nm.maxLength === 10 && nm.maxEnforced, `LabEditName stops at 10 (${JSON.stringify(nm)})`);
   assert.ok(edit.saveProbe?.wouldSend?.some((q) => q.url === '/FileTransfer/SaveLab'), `Save with writes blocked would send SaveLab (${JSON.stringify(edit.saveProbe)})`);
 
+  // ---- the checks every window / part gets: its radios swept, its ways out, an edit then a way out, what showed up ----
+  const add = nodes.find((n) => n.title === 'Add Lab');
+  assert.ok(add.conditionals?.some((c) => c.kind === 'radio' && c.name === 'Sched' && c.values.M?.['#monthlyPart'] === true && c.values.W?.['#weeklyPart'] === true), `Add Lab: what its radios show, swept (${JSON.stringify(add.conditionals)})`);
+  const addHtml = fs.readFileSync(path.join(OUT, 'flows', add.dir, 'layer.html'), 'utf8');
+  assert.ok(/id="SchedW"[^>]*checked|checked[^>]*id="SchedW"/.test(addHtml) && /id="monthlyPart"[^>]*display: none/.test(addHtml), 'Add Lab frozen once its own script set it up: Run Weekly checked, the monthly part hidden');
+  assert.ok(add.dirtyExit?.asks && add.dirtyExit.confirm?.title === 'Alert Confirmation', `Add Lab with an edit asks first (${JSON.stringify(add.dirtyExit)?.slice(0, 300)})`);
+  assert.equal(add.dirtyExit.stay?.lands, add.id, 'No keeps Add Lab open');
+  assert.equal(add.dirtyExit.leave?.closed, 1, 'Yes closes it');
+  assert.ok(add.dirtyExit.text === 'Close' && add.dirtyExits.some((d) => d.via === 'x' && d.asks === false), 'its Close asks, its X does not');
+  const dx = dest.exits?.find((e) => e.via === 'x'), dc = dest.exits?.find((e) => e.text === 'Close');
+  assert.equal(dx?.closed, 2, `the destination's X closes the View under it too (${JSON.stringify(dest.exits)})`);
+  assert.equal(dc?.lands, view.id, 'its Close goes back to the View');
+  assert.equal(edit.exits?.find((e) => e.text === 'Back')?.lands, view.id, `Back puts the Edit part away (${JSON.stringify(edit.exits)})`);
+  assert.equal(edit.change?.deep?.['#btnFromExisting'], false, `Edit hid a button inside its part (${JSON.stringify(edit.change)})`);
+  assert.equal(edit.change?.deep?.['#labEditExtra'], true, 'and showed a box inside it');
+  const another = nodes.find((n) => n.kind === 'validation' && n.parent === add.id);
+  assert.ok(another?.validation?.summaries?.some((s) => s.at === '#addStatus'), `Add Another: the banner its script built on the spot, and the box it went into (${JSON.stringify(another?.validation)})`);
+  assert.ok(nodes.some((n) => n.kind === 'dialog' && n.parent === view.id && n.title === 'Alert Confirmation'), 'Invalidate opens the alert window');
+
   // ---- files ----
   for (const n of nodes) assert.ok(fs.existsSync(path.join(OUT, 'flows', n.dir, 'shot.png')), `${n.dir}/shot.png`);
   assert.ok(fs.existsSync(path.join(OUT, 'flows', view.dir, 'map.png')) && fs.existsSync(path.join(OUT, 'flows', view.dir, 'layer.html')), 'a window has its map and markup');
@@ -98,6 +117,14 @@ try {
   assert.ok(ks.flows.some((f) => f.show?.length && f.from), 'Edit shows its part');
   const st = JSON.parse(fs.readFileSync(path.join(OUT, 'kit', 'states.json'), 'utf8'));
   assert.ok(st.some((s) => s.name === 'search') && st.some((s) => s.name === `flow-${dest.id}`), 'states: the capture\'s kept, one per flow state added');
+  assert.ok(st.filter((s) => s.name.startsWith('flow-') && s.shot).every((s) => fs.existsSync(path.join(OUT, 'kit', s.shot))) && st.some((s) => s.shot?.includes('flows/')), 'a window\'s flow state is compared with its live picture');
+  const ksAdd = Object.values(ks.dialogs).find((d) => d.title === 'Add Lab'), ksDest = Object.values(ks.dialogs).find((d) => d.title === 'Destination Detail');
+  assert.ok(ksAdd?.close?.cancel?.asks && ksAdd.close.x?.asks === false && ksAdd.close.confirm?.buttons?.length, `the kit asks before closing Add Lab with an edit (${JSON.stringify(ksAdd?.close)?.slice(0, 200)})`);
+  assert.ok(ksAdd.conditionals?.some((c) => c.name === 'Sched'), 'the kit sets Add Lab\'s parts from its radio');
+  assert.equal(ksDest?.close?.x?.closes, 2, 'the kit\'s X of the destination closes the View too');
+  assert.ok(ks.flows.some((f) => f.back?.length && f.deep), 'the Edit part: what it turned on and off inside, and its Back');
+  assert.ok(ks.validations?.some((v) => v.validation.summaries.some((s) => s.at === '#addStatus')), 'Add Another validates with the live banner');
+  assert.ok(Object.values(ks.dialogs).some((d) => d.message), 'the Invalidate prompt is a message box');
   const again = await kit.flows.merge({ out: OUT, graph: G, scope: '#mainContent' });
   assert.equal(Object.values(JSON.parse(fs.readFileSync(path.join(OUT, 'kit', 'screen.json'), 'utf8')).dialogs).filter((d) => d.flow).length, flowDialogs.length, `a second merge adds nothing twice (${JSON.stringify(again)})`);
 

@@ -47,9 +47,23 @@ export function checkPlan(plan, front, B = {}) {
   return errs;
 }
 
+// what a plan leaves out that is worth a look (not an error): a button or link of a window state that no action of the plan names
+// (a Create New inside an Edit, a row of a grid in a dialog). Printed by the gate, never fails it
+export function planWarnings(plan, front) {
+  const out = [];
+  for (const p of plan?.nodes ?? []) {
+    const f = front.find((x) => x.node === p.node);
+    if (!f || p.deadEnd || !/dialog|part/.test(f.kind ?? '')) continue;
+    const used = new Set([...(p.actions ?? []).flatMap((a) => [a.el, ...(a.setup ?? []).map((s) => s.el)]), ...(p.same ?? []).map((s) => s.el)]);
+    const left = f.candidates.filter((c) => !c.danger && ['button', 'link', 'row', 'tab'].includes(c.kind) && !used.has(c.el) && !/^(close|cancel|back|reset|x|×|no)$/i.test(c.text || ''));
+    if (left.length) out.push(`${p.node}: never tried here: ${left.slice(0, 6).map((c) => `${c.el} ${c.kind} "${(c.text || c.label || '').slice(0, 30)}"`).join(', ')}`);
+  }
+  return out;
+}
+
 export function checkPlanFile(planFile, frontierFile) {
   let plan, fr;
-  try { plan = JSON.parse(fs.readFileSync(planFile, 'utf8')); } catch (e) { return [`${planFile} is not valid JSON: ${e.message.split('\n')[0]}`]; }
+  try { plan = JSON.parse(fs.readFileSync(planFile, 'utf8').replace(/^﻿/, '')); } catch (e) { return [`${planFile} is not valid JSON: ${e.message.split('\n')[0]}`]; }
   try { fr = JSON.parse(fs.readFileSync(frontierFile, 'utf8')); } catch { return [`${frontierFile} is missing`]; }
   return checkPlan(plan, fr.nodes, { maxActions: fr.maxActions });
 }
@@ -59,5 +73,9 @@ if (process.argv[1] && (await import('node:url')).pathToFileURL(process.argv[1])
   if (!planFile || !frontierFile) { console.error('usage: node scripts/check-flows.mjs <plan.json> <wave-N.frontier.json>'); process.exit(2); }
   const errs = checkPlanFile(planFile, frontierFile);
   if (errs.length) { console.log(`✗ the flows plan does not pass:\n${errs.map((e) => `- ${e}`).join('\n')}`); process.exit(1); }
+  try {
+    const warn = planWarnings(JSON.parse(fs.readFileSync(planFile, 'utf8').replace(/^﻿/, '')), JSON.parse(fs.readFileSync(frontierFile, 'utf8')).nodes);
+    if (warn.length) console.log(`! worth a look (not required):\n${warn.map((w) => `- ${w}`).join('\n')}`);
+  } catch { /* the warnings are a hint only */ }
   console.log('✓ flows plan OK');
 }

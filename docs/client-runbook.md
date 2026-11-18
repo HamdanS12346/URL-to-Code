@@ -81,7 +81,11 @@ Save, Delete, Submit, Approve... are never clicked, and every request that would
 the request it would have sent is recorded). Each screen gets `screens\<screen>\flows\FLOWS.md` (the tree) and one folder per state
 (`n2.1.2-edit-part\`: picture, numbered map, what each text box accepts and says); the spec covers every state and the code rebuilds them.
 
-- It adds about 20-40 minutes per screen (budget in `config.json` `"flows"`, or `pack.json` `"flows": { ... }`).
+- On every window and part the script also checks by itself, without Codex: what each radio / checkbox / dropdown value shows, where X, Close and
+  Cancel go (back to the window under it, or closing two at once), whether closing with an edit asks "form data has changed", and any toast or
+  banner that comes up (on Save too). These run while Codex plans the next wave.
+- It adds about 20-40 minutes per screen (budget in `config.json` `"flows"`, or `pack.json` `"flows": { ... }`). A screen's flows run beside the
+  next screen's capture, two screens at once (`--flow-screens N` to change it); their log lines start with `[<screen>]`.
 - A pack built before flows existed gets them on its next plain run: the flows run, then each screen's spec, port and code are done again.
 - `--no-flows` skips them for one run; `pack.json` `"flows": false` for the pack; `--from flows` explores again from scratch.
 - Details: `kits/provider/KIT.md`, "The flows stage".

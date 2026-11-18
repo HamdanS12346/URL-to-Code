@@ -151,6 +151,21 @@ for (const s of pack.screens) assert.ok(states0?.[s.id] && Object.keys(states0[s
 assert.ok(fs.existsSync(path.join(APP, 'docs', 'ui-specs', 'file-transfer-tracking', 'TODO.md')), 'a checklist for the code writer');
 assert.match(read('docs/ui-specs/file-transfer-tracking/TODO.md'), /double-click opens dialog/, 'the checklist says what the kit does for the row');
 
+// what the flows stage adds to a screen's kit data, as its merge writes it (smoke:flows checks the stage and the merge; this checks that the
+// runtime does it): a window opened from a window whose X closes both, a part whose X only puts it away (what it hid inside comes back),
+// a click that validates with a banner built on the spot, and a flow on a radio, which must keep its own check
+const kj = path.join(APP, 'src', 'screens', 'file-transfer-configuration', 'kit.json'), K = j(kj);
+const addId = Object.entries(K.dialogs).find(([, d]) => d.title === 'Add File Transfer Configuration')[0];
+const otherId = Object.keys(K.dialogs).find((id) => id !== addId && !K.dialogs[id].parent);
+assert.ok(otherId, `a second dialog to open from the first: ${Object.keys(K.dialogs)}`);
+K.dialogs[otherId] = { ...K.dialogs[otherId], close: { ...(K.dialogs[otherId].close ?? {}), x: { asks: false, closes: 2 } } };
+K.flows = [...(K.flows ?? []),
+  { node: 'n91', from: addId, css: '.editor-req-field-row', nth: 0, via: 'click', opens: otherId },
+  { node: 'n92', from: addId, css: '.content-panel-hdr', nth: 0, via: 'click', show: ['#divDestinationId'], hide: [], deep: { '#SaveAndCloseButton': false }, back: ['x'] },
+  { node: 'n93', from: addId, css: 'input[value=M]', nth: 0, via: 'click', show: ['#monthlyPart'], hide: [] }];
+K.validations = [{ node: 'n94', from: addId, css: '.content-panel-hdr', nth: 1, validation: { fields: [], summaries: [{ h: null, className: 'msg-inline msg-error', style: null, html: 'Resolve the following form field errors and try again.', text: 'Resolve the following form field errors and try again.', at: '[data-kit-dialog-content]' }] } }];
+fs.writeFileSync(kj, JSON.stringify(K));
+
 // ---- behavior of the rebuild, in a browser ----
 const vite = spawn(process.execPath, [path.join(ROOT, 'node_modules', 'vite', 'bin', 'vite.js'), '--port', '5182', '--strictPort'], { cwd: APP, stdio: 'ignore' });
 const base = 'http://localhost:5182';
@@ -227,6 +242,30 @@ try {
   await p.locator('.k-window #btnCancelEdit').click();
   await p.waitForTimeout(700);
   assert.equal(await p.locator('.k-window').count(), 0, 'Cancel closes the dialog');
+  // the flows-made data above: a window from a window whose X closes both; a part whose X puts it away; a click that validates with a built banner
+  const openAdd = async () => { await p.click('[data-kit-action=create]'); await p.waitForSelector('.k-window [data-kit-dialog-content]', { timeout: 3000 }); await p.waitForTimeout(500); };
+  await openAdd();
+  await p.locator('.k-window .editor-req-field-row').first().click();
+  await p.waitForTimeout(700);
+  assert.equal(await p.locator('.k-window').count(), 2, 'a flow opens a window from the window');
+  await p.locator('.k-window').last().locator('.k-window-titlebar-action').first().click();
+  await p.waitForTimeout(900);
+  assert.equal(await p.locator('.k-window').count(), 0, 'its X closes both, as the live one did (close.x.closes 2)');
+  await openAdd();
+  await p.locator('.k-window .content-panel-hdr').first().click();
+  await p.waitForTimeout(300);
+  assert.ok(await p.locator('.k-window #divDestinationId').isVisible(), 'a flow shows a part of the window');
+  assert.equal(await p.locator('.k-window #SaveAndCloseButton').isVisible(), false, 'and hides what it hid inside it (deep)');
+  await p.locator('.k-window .k-window-titlebar-action').first().click();
+  await p.waitForTimeout(500);
+  assert.equal(await p.locator('.k-window').count(), 1, 'the X of a part shown in the window only puts the part away (back)');
+  assert.equal(await p.locator('.k-window #divDestinationId').isVisible(), false, 'the part is gone again');
+  await p.locator('.k-window .content-panel-hdr').nth(1).click({ position: { x: 5, y: 5 } });
+  await p.waitForTimeout(300);
+  assert.match(await p.locator('.k-window [data-kit-err].msg-inline').first().textContent(), /Resolve the following form field errors/, 'a click that validated on the live page shows its built banner');
+  await p.locator('.k-window #btnCancelEdit').click();
+  await p.waitForTimeout(700);
+  assert.equal(await p.locator('.k-window').count(), 0);
   // the side menu: opens like the portal's (its classes + the backdrop), Escape and the backdrop leave it open, a module
   // flies out on hover, the close icon closes it, a menu item of this app routes there and closes it
   assert.equal(await p.locator('#mainMenuContainer').isVisible(), false, 'the menu starts closed');

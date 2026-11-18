@@ -9,7 +9,7 @@
 // links to a rebuilt screen, the headroom header (hides on scroll down), and the dialogs (Kendo windows).
 import { useCallback, useLayoutEffect, useMemo, useRef, useState, type ComponentType, type KeyboardEvent as RKeyboardEvent, type ReactNode, type SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
-import { Bus, KitContext, DEFAULTS, parseHtml, routeFor, styleObject, useIsland, type Conditional, type Confirm, type Create, type Ctx, type DialogDef, type Flow, type KitData, type PageLock, type Responsive, type Services, type Validation } from './core';
+import { Bus, KitContext, DEFAULTS, esc, parseHtml, routeFor, styleObject, useIsland, type Conditional, type Confirm, type Create, type Ctx, type DialogDef, type Flow, type KitData, type PageLock, type Responsive, type Services, type Validation } from './core';
 
 type Open = { id: string; closing: boolean };
 const shown = (el: Element) => el.getClientRects().length > 0;
@@ -81,6 +81,13 @@ function showMessage(root: Element, name: string, msg: string) {
 // the summary banner a failed Search / Save shows (the live markup: icon, message, its X), found by the id the capture gave it, else the first one in the scope
 function showBanner(root: Element, v: Validation | null | undefined) {
   for (const b of v?.summaries ?? []) {
+    if (b.at) { // a banner the live page's script built on the spot into its panel's status box (not in the markup at rest)
+      const box = root.querySelector<HTMLElement>(b.at) ?? (root.matches(b.at) ? root as HTMLElement : null);
+      if (!box) continue;
+      box.querySelectorAll('[data-kit-err]').forEach((e) => e.remove());
+      box.insertAdjacentHTML('beforeend', `<div class="${esc(b.className)}" data-kit-err="">${b.html}</div>`);
+      continue;
+    }
     const el = (b.h ? root.querySelector<HTMLElement>(`[data-kit-h="${b.h}"]`) : null) ?? root.querySelector<HTMLElement>('.validation-summary, .editor-validation-summary, .validation-summary-errors');
     if (!el) continue;
     el.innerHTML = b.html;
@@ -414,15 +421,64 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
   const defs = useMemo(() => Object.assign({}, screen.widgets, ...Object.values(screen.dialogs ?? {}).map((d) => d.widgets)), [screen]);
   const openDialog = useCallback((id: string) => { if (screen.dialogs?.[id]) setOpen((o) => (o.some((x) => x.id === id) ? o : [...o, { id, closing: false }])); }, [screen]);
   const closeDialog = useCallback((id: string) => setOpen((o) => o.map((x) => (x.id === id ? { ...x, closing: true } : x))), []);
+  // a dialog and, when its live X / Cancel closed more than its own window (an Edit opened from a View closes both), the ones under it
+  const closeN = (id: string, n?: number) => setOpen((o) => { const i = o.findIndex((x) => x.id === id); return i < 0 ? o : o.map((x, k) => (k <= i && k > i - Math.max(1, n ?? 1) ? { ...x, closing: true } : x)); });
   const ctx: Ctx = useMemo(() => ({ data: screen, defs, bus, openDialog }), [screen, defs, bus, openDialog]);
   const menuTimer = useRef(0);
   const initial = useRef<Record<string, string>>({}); // the form as it loaded: a Search with nothing changed is the one the live capture clicked
   const [confirm, setConfirm] = useState<{ dlg: string; via: 'x' | 'cancel' } | null>(null);
   // Close / Cancel / Escape of a dialog: with an edit in it, and the live dialog asked "form data has changed", the same window asks here
   const requestClose = (id: string, via: 'x' | 'cancel') => {
-    const d = screen.dialogs[id], dirty = document.querySelector(`[data-kit-dialog-content="${id}"]`)?.hasAttribute('data-kit-dirty');
+    const d = screen.dialogs[id], box = document.querySelector(`[data-kit-dialog-content="${id}"]`), dirty = box?.hasAttribute('data-kit-dirty');
+    if (via === 'x' && box && putBack(box, null)) return; // the X of a part shown in the window only puts the part away (live)
     if (dirty && d?.close?.[via]?.asks && d.close.confirm) setConfirm({ dlg: id, via });
-    else closeDialog(id);
+    else closeN(id, d?.close?.[via]?.closes);
+  };
+  // a part the flows stage saw shown inside a window, whose live X (t null) or Close / Cancel (t: the button) only put it away again (a destination
+  // shown inside a View): undone, and the window stays
+  const undoFlow = (box: ParentNode, f: Flow) => {
+    for (const s of f.show ?? []) box.querySelectorAll<HTMLElement>(s).forEach((x) => { x.style.display = 'none'; x.removeAttribute('data-kit-flowpart'); });
+    for (const s of f.hide ?? []) box.querySelectorAll<HTMLElement>(s).forEach(reveal);
+    for (const [s, on] of Object.entries(f.deep ?? {})) box.querySelectorAll<HTMLElement>(s).forEach((x) => { if (on) x.style.display = 'none'; else reveal(x); });
+  };
+  const putBack = (box: Element, t: Element | null) => {
+    for (const el of box.querySelectorAll<HTMLElement>('[data-kit-flowpart]')) {
+      if (!shown(el)) continue;
+      const f = screen.flows?.find((x) => x.node === el.getAttribute('data-kit-flowpart'));
+      const hit = f?.back?.some((b) => (b === 'x' ? !t : !!t && (() => { try { return [...box.querySelectorAll(b)].some((x) => x.contains(t)); } catch { return false; } })()));
+      if (!f || !hit) continue;
+      undoFlow(box, f);
+      return true;
+    }
+    return false;
+  };
+  // the radios / checkboxes of a window that just opened: the parts that go with the value it opened with (the Edit of a record opens on its own
+  // Run Weekly, whatever the markup showed when it was frozen)
+  const condDone = useRef(new Set<string>());
+  useLayoutEffect(() => {
+    for (const o of open) {
+      const box = document.querySelector(`[data-kit-dialog-content="${o.id}"]`), list = screen.dialogs[o.id]?.conditionals;
+      if (o.closing || condDone.current.has(o.id) || !box) continue;
+      condDone.current.add(o.id);
+      for (const c of list ?? []) {
+        if (c.kind === 'dropdown') continue; // a dropdown's value is the widget's: it emits "change" itself
+        const el = c.kind === 'radio' ? box.querySelector<HTMLInputElement>(`input[type=radio][name="${CSS.escape(c.name)}"]:checked`)
+          : box.querySelector<HTMLInputElement>(`input[type=checkbox][name="${CSS.escape(c.name)}"], input[type=checkbox]#${CSS.escape(c.name)}`);
+        if (el) applyCond(list, box, c.kind, c.name, c.kind === 'radio' ? el.value : String(el.checked));
+      }
+    }
+    for (const id of [...condDone.current]) if (!open.some((o) => o.id === id)) condDone.current.delete(id);
+  }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+  // a click that made the live page answer with messages only (Add Another with nothing filled): its form validated here, with the live banner
+  const flowValidation = (t: Element) => {
+    if (shell) return null;
+    for (const v of screen.validations ?? []) {
+      const box = v.from ? document.querySelector(`[data-kit-dialog-content="${v.from}"]`) : root.current;
+      let el: Element | undefined;
+      try { el = box ? [...box.querySelectorAll(v.css)].filter(shown)[v.nth] : undefined; } catch { continue; }
+      if (el?.contains(t)) return { v, box: box! };
+    }
+    return null;
   };
   const markDirty = (e: SyntheticEvent) => { // a person's edit (not a script's) in a dialog makes it "changed"
     if (!(e.nativeEvent as Event).isTrusted) return;
@@ -507,11 +563,22 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
   // display-none / display-flex, which are !important, so an inline display can never show it) and append the backdrop
   // it adds to <body>. No fade: the live menu has none. Its close icon, a link in it, or the hamburger close it again.
   const backdrop = useRef<HTMLElement | null>(null);
+  // while it is open the live page shows no sideways scrollbar (measured: data-kit-menu-hscroll="0"; a capture from before that measurement: the same,
+  // only a measured "1" keeps it). Only on the page: the menu itself must not clip, its modules fly out beside it.
+  // ponytail: overflow-x hidden on the page, not the element that overflows; find that one if a module needs it
+  const menuX = useRef<{ html: string } | null>(null);
   const sideMenu = (show: boolean) => {
     for (const el of root.current!.querySelectorAll<HTMLElement>('[data-kit-menu]')) {
       const [add, rm] = menuClasses(el);
       if (add.length || rm.length) { el.classList.remove(...(show ? rm : add)); el.classList.add(...(show ? add : rm)); el.style.removeProperty('display'); }
       else el.style.display = show ? el.getAttribute('data-kit-menu') || 'block' : 'none';
+      if (show && el.getAttribute('data-kit-menu-hscroll') !== '1' && !menuX.current) {
+        menuX.current = { html: document.documentElement.style.overflowX };
+        document.documentElement.style.overflowX = 'hidden';
+      } else if (!show && menuX.current) {
+        document.documentElement.style.overflowX = menuX.current.html;
+        menuX.current = null;
+      }
       if (!show) closeFlys(el, true);
       const bd = el.getAttribute('data-kit-menu-backdrop');
       if (show && bd && !backdrop.current) {
@@ -551,9 +618,12 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
       try { el = [...box.querySelectorAll(f.css)].filter(shown)[f.nth]; } catch { continue; }
       if (!el || !el.contains(t)) continue;
       if (f.opens) openDialog(f.opens);
-      for (const s of f.show ?? []) box.querySelectorAll<HTMLElement>(s).forEach(reveal);
+      for (const s of f.show ?? []) box.querySelectorAll<HTMLElement>(s).forEach((x) => { reveal(x); x.setAttribute('data-kit-flowpart', f.node); });
       for (const s of f.hide ?? []) box.querySelectorAll<HTMLElement>(s).forEach((x) => { x.style.display = 'none'; });
-      return true;
+      // what the click turned on and off inside (a field the part shows, a button it hides): by their own display, at any depth
+      for (const [s, on] of Object.entries(f.deep ?? {})) { try { box.querySelectorAll<HTMLElement>(s).forEach((x) => { if (on) reveal(x); else x.style.display = 'none'; }); } catch { /* a selector the rebuild cannot resolve */ } }
+      // a radio / checkbox / select keeps its own click (its checked state is the form's: preventing it would undo the check)
+      return !t.closest('input, select, option, label');
     }
     return false;
   };
@@ -573,10 +643,21 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
     const t = e.target as Element;
     // the "form data has changed" window: the answer that stays closes it, the one that leaves closes it and the dialog
     const ans = t.closest('[data-kit-confirm]');
-    if (ans && confirm) { e.preventDefault(); e.stopPropagation(); const c = confirm; setConfirm(null); if (ans.getAttribute('data-kit-confirm') === 'leave') closeDialog(c.dlg); return; }
-    // a validation banner's X
+    if (ans && confirm) {
+      e.preventDefault(); e.stopPropagation();
+      const c = confirm, cv = screen.dialogs[c.dlg]?.close?.[c.via];
+      setConfirm(null);
+      if (ans.getAttribute('data-kit-confirm') === 'leave') closeN(c.dlg, cv?.leaveCloses ?? cv?.closes);
+      return;
+    }
+    // a validation banner's X (the one in the markup, or one built on the spot like the live script's)
     const x = t.closest('[data-hide=alert]');
     if (x) { e.preventDefault(); x.closest<HTMLElement>('.validation-summary, .editor-validation-summary, .validation-summary-errors, .k-messagebox')?.style.setProperty('display', 'none'); return; }
+    const mx = t.closest('.msg-inline-close')?.closest('[data-kit-err]');
+    if (mx) { e.preventDefault(); mx.remove(); return; }
+    // a click the live page answered with messages only: validate its form; with nothing wrong the click goes on as it would
+    const fv = flowValidation(t);
+    if (fv && !validate(t.closest('form') ?? fv.box, fv.v.validation)) { e.preventDefault(); e.stopPropagation(); return; }
     // a dialog being edited marks itself on a click on a list item / calendar day (a widget's pick is not an input event)
     if (t.closest('.k-list-item, .k-calendar-td .k-link, .k-list-optionlabel')) t.closest('[data-kit-dialog-content]')?.setAttribute('data-kit-dirty', '');
     const act = t.closest('[data-kit-action]');
@@ -663,7 +744,10 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
         if (part) { if (validate(part)) Promise.resolve(services?.save?.(dlg ?? 'page', values(part))).finally(putAway); }
         else if (dlg && validate(scope, screen.dialogs[dlg]?.saveValidation)) Promise.resolve(services?.save?.(dlg, values(scope))).finally(() => closeDialog(dlg));
         break;
-      case 'cancel': case 'close': if (part && kind === 'cancel') putAway(); else if (dlg) requestClose(dlg, kind === 'close' ? 'x' : 'cancel'); break;
+      case 'cancel': case 'close':
+        if (dlg && scope && putBack(scope, act)) break; // the Close of a part shown inside the window: back to the window as it was
+        if (part && kind === 'cancel') putAway(); else if (dlg) requestClose(dlg, kind === 'close' ? 'x' : 'cancel');
+        break;
       case 'collapse': {
         const box = act.closest<HTMLElement>('[class*=panel-container]');
         const body = collapseBody(act);
@@ -735,7 +819,7 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
       <div ref={root} data-kit-root="" style={{ display: 'contents' }} onClick={onClick} onDoubleClick={onDouble} onMouseOver={onOver} onMouseOut={onOut}
         onFocus={(e) => focusWrap(e, true)} onBlur={(e) => focusWrap(e, false)} onKeyDown={onKey} onInput={markDirty} onChange={onChangeEvt}>
         {children}
-        {open.map((o, i) => <Window key={o.id} id={o.id} def={screen.dialogs[o.id]} Body={dialogs[o.id]} depth={i} closing={o.closing} responsive={screen.responsive} onClosed={() => setOpen((x) => x.filter((y) => y.id !== o.id))} />)}
+        {open.map((o, i) => <Window key={o.id} id={o.id} def={screen.dialogs[o.id]} Body={dialogs[o.id]} depth={i} closing={o.closing} responsive={screen.responsive} plain={!!screen.dialogs[o.id]?.message} onClosed={() => setOpen((x) => x.filter((y) => y.id !== o.id))} />)}
         {confirm && screen.dialogs[confirm.dlg]?.close?.confirm && <ConfirmWindow c={screen.dialogs[confirm.dlg].close!.confirm!} depth={open.length} />}
       </div>
     </KitContext.Provider>

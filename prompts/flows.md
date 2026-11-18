@@ -11,10 +11,13 @@ The goal: reach EVERY state of this screen (results, dialogs, dialogs inside dia
 validation messages) up to the click that would save or create something. The script blocks every write and never clicks a commit button,
 so you cannot break anything: be thorough.
 
-1. Read {{frontier}}: the states still open in this wave, each with its candidates (the elements of its top layer, ids e1, e2...).
-2. For each state, open its folder (`dir`): look at map.png (the numbers are the element ids) and shot.png with your image viewer, and read
-   candidates.md (kind, text, label, rules such as maxlength / required / email, dropdown options). Read {{dir}}/flows/FLOWS.md for what
-   was already reached and what each earlier click did: never plan a click that already led to a known state from the same place.
+The states open in this wave, with their candidates (the same as {{frontier}}; you do not need to print that file):
+{{digest}}
+
+1. The list above is the wave: each state with its candidates (the elements of its top layer, ids e1, e2...).
+2. Open a state's map.png (the numbers are the element ids) and shot.png in its folder (`dir`) only where the list does not tell you what an
+   element does. Read {{dir}}/flows/FLOWS.md for what was already reached and what each earlier click did: never plan a click that already
+   led to a known state from the same place.
 3. Write {{plan}} as JSON:
    {"nodes": [ {"node": "n1", "name": "search-results",
        "actions": [ {"el": "e7", "do": "dblclick", "why": "opens the row's detail window", "name": "view-configuration"},
@@ -28,8 +31,13 @@ so you cannot break anything: be thorough.
    - At most {{max}} actions per state. Prefer actions that lead to DIFFERENT states: every button and link that opens something (View, Edit,
      Details, a tab, Create New, Next, a row: grid rows often open on double-click), a radio or dropdown value that changes the form, and
      wrong input that makes the page answer (letters in a number field, too long a value, a bad e-mail, a date out of range), each once.
-     The script already measures every text box by itself (what it accepts, its length limit, the message it shows, what Save says with the
-     form as it is), so do not spend actions on that.
+     The script already does these by itself in every state, so do not spend actions on them: every text box (what it accepts, its length
+     limit, its message), Save with the form as it is (writes blocked), what each radio / checkbox / dropdown value shows and hides in a
+     window or a part, and every way out of a window (X, Close, Cancel: where each lands, and whether it asks first with an edit in the form).
+   - Spend them on what only a plan can reach: a button or link INSIDE a window or a part (Create New, Add Another, Edit, Create from
+     Existing, View), a row of a grid inside a window (double-click), each tab, each value of a dropdown that switches the form to another
+     mode (a type, a protocol) with the setup that reveals what depends on it, and a button that validates with the form empty (Add Another).
+     The same control in an Edit window as in an Add window is worth trying again: the two often differ.
    - Never plan an element marked `danger` (Save, Submit, Update, Delete, a bare Add/OK/Yes...): the gate rejects the plan.
    - Close, Cancel, Reset and Back only lead back: the script uses them itself.
    - A state with nothing new to open is a dead end: say so with a reason.
