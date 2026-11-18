@@ -1,0 +1,10 @@
+{
+ "source": "rules",
+ "nodes": [
+  {
+   "node": "n1.2.1",
+   "deadEnd": true,
+   "reason": "nothing left to click that is not a commit or a way back"
+  }
+ ]
+}

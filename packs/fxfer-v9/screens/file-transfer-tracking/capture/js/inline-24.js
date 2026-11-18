@@ -1,0 +1,2 @@
+
+    var trackingViewUrl = '/FileTransfer/FileTransferTrackingView/';

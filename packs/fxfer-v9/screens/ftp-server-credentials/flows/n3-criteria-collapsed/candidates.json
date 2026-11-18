@@ -1,0 +1,40 @@
+[
+ {
+  "el": "e1",
+  "kind": "button",
+  "layer": "page",
+  "css": "#ftpServerCredentialAddButton",
+  "nth": 0,
+  "text": "Create New",
+  "label": null,
+  "id": "ftpServerCredentialAddButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "create",
+  "box": {
+   "x": 1744,
+   "y": 138,
+   "w": 146,
+   "h": 38
+  }
+ },
+ {
+  "el": "e2",
+  "kind": "button",
+  "layer": "page",
+  "css": "div.panel-icon.clickable",
+  "nth": 0,
+  "text": "",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": "collapse",
+  "box": {
+   "x": 1847,
+   "y": 219,
+   "w": 28,
+   "h": 30
+  }
+ }
+]

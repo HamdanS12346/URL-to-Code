@@ -1,0 +1,25 @@
+{
+ "source": "rules",
+ "nodes": [
+  {
+   "node": "n1",
+   "deadEnd": true,
+   "reason": "nothing left to click that is not a commit or a way back"
+  },
+  {
+   "node": "n2",
+   "actions": [
+    {
+     "el": "e15",
+     "do": "click",
+     "why": "button \"Search\""
+    },
+    {
+     "el": "e16",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    }
+   ]
+  }
+ ]
+}

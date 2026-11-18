@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    {
+      "node": "n1",
+      "deadEnd": true,
+      "reason": "Search Criteria is collapsed; only the collapse/expand toggle is present and it returns to the already-known expanded view (n0/n2)."
+    },
+    {
+      "node": "n2",
+      "name": "after-search-empty",
+      "actions": [
+        {
+          "el": "e16",
+          "do": "dblclick",
+          "why": "Grid rows commonly open a file-transfer detail view; explore the row drill-in state.",
+          "name": "open-file-transfer"
+        },
+        {
+          "el": "e9",
+          "do": "click",
+          "why": "Open the From Date picker / calendar overlay if present.",
+          "name": "open-from-date"
+        },
+        {
+          "el": "e10",
+          "do": "click",
+          "why": "Open the To Date picker / calendar overlay if present.",
+          "name": "open-to-date"
+        },
+        {
+          "el": "e4",
+          "do": "select",
+          "value": "1",
+          "why": "Selecting a File Status is likely to change results and/or reveal result-empty states.",
+          "name": "filter-file-status"
+        },
+        {
+          "el": "e5",
+          "do": "select",
+          "value": "1",
+          "why": "Selecting a Direction is likely to change results and/or reveal result-empty states.",
+          "name": "filter-direction"
+        },
+        {
+          "el": "e6",
+          "do": "select",
+          "value": "1",
+          "why": "Selecting a Transport Type is likely to change results and/or reveal result-empty states.",
+          "name": "filter-transport-type"
+        },
+        {
+          "el": "e7",
+          "do": "select",
+          "value": "40defc3b-7227-4798-811a-1681e6505df2",
+          "why": "Selecting a Source Location is likely to change results and may expose no-results messaging.",
+          "name": "filter-source-location"
+        }
+      ]
+    }
+  ]
+}

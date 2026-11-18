@@ -1,0 +1,66 @@
+{
+  "nodes": [
+    {
+      "node": "n1.1",
+      "name": "criteria-expanded",
+      "actions": [
+        {
+          "el": "e6",
+          "do": "click",
+          "setup": [
+            {
+              "el": "e3",
+              "do": "fill",
+              "value": "ZZZ_NO_SUCH_SERVER_123"
+            }
+          ],
+          "why": "Search with an unlikely Server Name to capture the empty/no-results state",
+          "name": "search-no-results"
+        },
+        {
+          "el": "e6",
+          "do": "click",
+          "setup": [
+            {
+              "el": "e3",
+              "do": "fill",
+              "value": "Ranjan"
+            }
+          ],
+          "why": "Search with a known Server Name to capture the filtered-results state",
+          "name": "search-filtered-results"
+        },
+        {
+          "el": "e9",
+          "do": "dblclick",
+          "why": "opens the credential details dialog for the selected row",
+          "name": "open-credential-details"
+        },
+        {
+          "el": "e7",
+          "do": "click",
+          "why": "opens the Include Invalids help/tooltip popover",
+          "name": "include-invalids-help"
+        },
+        {
+          "el": "e8",
+          "do": "click",
+          "why": "toggles Include Invalids to capture results grid changes",
+          "name": "results-include-invalids"
+        }
+      ]
+    },
+    {
+      "node": "n1.2",
+      "name": "credential-details",
+      "actions": [
+        {
+          "el": "e8",
+          "do": "click",
+          "why": "opens the invalidate confirmation flow or changes the credential validity state",
+          "name": "invalidate"
+        }
+      ]
+    }
+  ]
+}

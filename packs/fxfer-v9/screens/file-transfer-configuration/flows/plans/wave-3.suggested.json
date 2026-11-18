@@ -1,0 +1,180 @@
+{
+ "source": "rules",
+ "nodes": [
+  {
+   "node": "n1.1",
+   "actions": [
+    {
+     "el": "e4",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e2",
+     "do": "click",
+     "why": "button \"Edit\""
+    },
+    {
+     "el": "e1",
+     "do": "click",
+     "why": "check \"true\""
+    }
+   ]
+  },
+  {
+   "node": "n2.1",
+   "actions": [
+    {
+     "el": "e28",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e32",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e27",
+     "do": "click",
+     "why": "button \"Create New\""
+    },
+    {
+     "el": "e13",
+     "do": "click",
+     "why": "radio \"2\""
+    },
+    {
+     "el": "e14",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e15",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e16",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e17",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e18",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e19",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e20",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e23",
+     "do": "click",
+     "why": "check \"true\""
+    }
+   ]
+  },
+  {
+   "node": "n2.2",
+   "actions": [
+    {
+     "el": "e24",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e28",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e23",
+     "do": "click",
+     "why": "button \"Create New\""
+    },
+    {
+     "el": "e12",
+     "do": "click",
+     "why": "radio \"1\""
+    },
+    {
+     "el": "e14",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e15",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e19",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e20",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e21",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e22",
+     "do": "click",
+     "why": "check \"true\""
+    }
+   ]
+  },
+  {
+   "node": "n2.3",
+   "actions": [
+    {
+     "el": "e14",
+     "do": "click",
+     "why": "button \"Add Another\""
+    },
+    {
+     "el": "e7",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e8",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e9",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e10",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e11",
+     "do": "click",
+     "why": "check \"true\""
+    }
+   ]
+  }
+ ]
+}

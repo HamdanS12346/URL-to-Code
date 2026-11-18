@@ -1,0 +1,92 @@
+# Flows of https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations
+
+17 states (0 boundaries), 5 wave(s), plans by ai. 2026-11-17T11:14:47.938Z
+
+Each state: its id (cite it in the spec as [flow:<id>]), kind, how it was reached, status. A **boundary** is where the live page would have sent a write (blocked): the flow ends there.
+Folders: `<id>-<name>/` with shot.png, map.png (numbered), node.json (fields: what each text box accepts and the messages it shows; saveProbe: what Save shows with writes blocked), layer.html.
+
+- **n0** at-rest (page) - explored [shot](n0-at-rest/shot.png)
+  - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+  - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+  - **n1** search-results (results) via click "Search" - explored [shot](n1-search-results/shot.png)
+    - tried: e10 "Search" click -> nothing changed
+    - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - **n1.1** open-configuration (dialog) "View File Transfer Configuration" via dblclick "4TestFTP/testweryashwanthAdministrationActiveaab80b60-a4ec-4" - explored [shot](n1.1-open-configuration/shot.png)
+      - tried: e1 "true" click -> nothing changed
+      - **n1.1.1** open-destination (part) "View File Transfer Configuration" via dblclick "https://dxccommercial.test.mapshc.comFTPActivetrue" - dead-end (Read-only destination view; only Close returns to the parent dialog.) [shot](n1.1.1-open-destination/shot.png)
+      - **n1.1.2** edit-configuration (dialog) "Edit File Transfer Configuration" via click "Edit" - explored [shot](n1.1.2-edit-configuration/shot.png)
+        - tried: e17 "select a value...RunOnThisDayList" select -> nothing changed; e3 "FTPProtocolTypeList" select -> nothing changed; e23 "true" click -> nothing changed
+        - never clicked: "Save" (commit: the kit marks it a Save)
+        - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+        - field Description: accepts letters, digits, spaces, symbols
+        - field Source Address: accepts letters, digits, spaces, symbols
+        - field Source File Mask: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+        - field Trading Partner: accepts letters, digits, spaces, symbols, max 10 (stops typing)
+        - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+        - field Owner Phone: accepts digits, symbols
+        - field Owner Email: accepts letters, digits, spaces, symbols
+        - Save with writes blocked ("Save"): no message; would send PUT /api/FileTransfer/AddFileTransferBaseConfiguration/
+        - **n1.1.2.1** edit-create-destination (part) "Edit File Transfer Configuration" via select "select a value...FileDirectionList"="1" > fill "#TradingPartner"="TP1" > click "Create New" - frontier [shot](n1.1.2.1-edit-create-destination/shot.png)
+          - never clicked: "Save" (commit: "Save")
+        - **n1.1.2.2** open-destination (part) "Edit File Transfer Configuration" via dblclick "https://dxccommercial.test.mapshc.comFTPActivetruefalsefalse" - frontier [shot](n1.1.2.2-open-destination/shot.png)
+          - never clicked: "Save" (commit: "Save")
+        - **n1.1.2.3** edit-run-weekly (part) "Edit File Transfer Configuration" via click "1" - frontier [shot](n1.1.2.3-edit-run-weekly/shot.png)
+          - never clicked: "Save" (commit: "Save")
+  - **n2** create-new (dialog) "Add File Transfer Configuration" via click "Create New" - explored [shot](n2-create-new/shot.png)
+    - never clicked: "Save" (commit: the kit marks it a Save)
+    - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - field Description: accepts letters, digits, spaces, symbols
+    - field Source Address: accepts letters, digits, spaces, symbols
+    - field Source File Mask: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - field Trading Partner: accepts letters, digits, spaces, symbols, max 10 (stops typing)
+    - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - field Owner Phone: accepts digits, symbols
+    - field Owner Email: accepts letters, digits, spaces, symbols
+    - Save with writes blocked ("Save"): 0 banner(s), 12 field message(s)
+    - **n2.1** run-weekly (part) "Add File Transfer Configuration" via click "1" - explored [shot](n2.1-run-weekly/shot.png)
+      - tried: e13 "2" click -> the same state as n2.2; e26 "true" click -> nothing changed; e27 "Create New" click -> the same state as n2.3; e14 "true" click -> nothing changed; e23 "true" click -> nothing changed; e24 "true" click -> nothing changed; e21 "select a value...TimeWindowStartList" select -> nothing changed; e22 "select a value...TimeWindowEndList" select -> nothing changed
+      - never clicked: "Save" (commit: "Save")
+      - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Description: accepts letters, digits, spaces, symbols
+      - field Source Address: accepts letters, digits, spaces, symbols
+      - field Source File Mask: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Trading Partner: accepts letters, digits, spaces, symbols, max 10 (stops typing)
+      - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Owner Phone: accepts digits, symbols
+      - field Owner Email: accepts letters, digits, spaces, symbols
+      - Save with writes blocked ("Save"): 0 banner(s), 11 field message(s)
+    - **n2.2** run-monthly (part) "Add File Transfer Configuration" via click "2" - explored [shot](n2.2-run-monthly/shot.png)
+      - tried: e12 "1" click -> the same state as n2.1; e14 "true" click -> nothing changed; e15 "true" click -> nothing changed; e16 "select a value...RunOnThisDayList" select -> nothing changed; e19 "true" click -> nothing changed; e20 "true" click -> nothing changed; e22 "true" click -> nothing changed; e23 "Create New" click -> the same state as n2.3; e17 "select a value...TimeWindowStartList" select -> nothing changed; e18 "select a value...TimeWindowEndList" select -> nothing changed
+      - never clicked: "Save" (commit: "Save")
+      - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Description: accepts letters, digits, spaces, symbols
+      - field Source Address: accepts letters, digits, spaces, symbols
+      - field Source File Mask: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Trading Partner: accepts letters, digits, spaces, symbols, max 10 (stops typing)
+      - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Owner Phone: accepts digits, symbols
+      - field Owner Email: accepts letters, digits, spaces, symbols
+      - Save with writes blocked ("Save"): 0 banner(s), 11 field message(s)
+    - **n2.3** create-destination (part) "Add File Transfer Configuration" via fill "#Edit_ConfigName"="TestConfig1" > select "select a value...ProtocolTypeList"="1" > fill "#SourceAddress"="/test" > fill "#SourceFileMask"="test.txt" > select "select a value...FileDirectionList"="1" > fill "#Edit_OwnerName"="Owner1" > fill "#OwnerPhoneNumber"="5551234567" > select "select a value...AddConfigModuleList"="0b34481f-f69c-3ab6-e053-c9157aceff03" > fill "#OwnerEmail"="test.user@example.com" > click "1" > select "select a value...TimeWindowStartList"="0000" > select "select a value...TimeWindowEndList"="0030" > click "Create New" - explored [shot](n2.3-create-destination/shot.png)
+      - tried: e1 "select a value...DestinationProtocolList" select -> nothing changed; e2 "select a value...DestinationTypeList" select -> nothing changed; e7 "true" click -> nothing changed; e8 "true" click -> nothing changed; e9 "true" click -> nothing changed; e11 "true" click -> nothing changed
+      - never clicked: "Save" (commit: "Save")
+      - field Destination Address: accepts letters, digits, spaces, symbols
+      - field Contact Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - field Contact Phone: accepts digits, symbols
+      - field Contact Email: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+      - Save with writes blocked ("Save"): 0 banner(s), 3 field message(s)
+      - **n2.3.1** toggle-rename (part) "Add File Transfer Configuration" via click "true" - explored [shot](n2.3.1-toggle-rename/shot.png)
+        - tried: e1 "SFTPDestinationProtocolList" select -> the same state as n2.3.1.2
+        - never clicked: "Save" (commit: "Save")
+        - field Destination Address: accepts letters, digits, spaces, symbols
+        - field Contact Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+        - field Contact Phone: accepts digits, symbols
+        - field Contact Email: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+        - Save with writes blocked ("Save"): 0 banner(s), 4 field message(s)
+        - **n2.3.1.1** add-another (part) "Add File Transfer Configuration" via select "select a value...Server"="23a12f97-cdc4-4540-b833-9bc2a68d02a2" > fill "#DestinationAddress"="/dest" > select "select a value...RenamePatternList"="1" > click "Add Another" - frontier [shot](n2.3.1.1-add-another/shot.png)
+          - never clicked: "Save" (commit: "Save")
+        - **n2.3.1.2** set-destination-type-filetoevent (part) "Add File Transfer Configuration" via select "User DefinedDestinationTypeList"="FileToEvent" - frontier [shot](n2.3.1.2-set-destination-type-filetoevent/shot.png)
+          - never clicked: "Save" (commit: "Save")
+      - **n2.3.2** add-another (validation) "Add File Transfer Configuration" via click "Add Another" - leaf (only messages changed) [shot](n2.3.2-add-another/shot.png)
+  - **n3** criteria-collapsed (part) via click "div.panel-icon.clickable" - dead-end (Only actions are Expand Criteria and Create New, which lead back to already-known states (n1 and n2) from here.) [shot](n3-criteria-collapsed/shot.png)

@@ -1,0 +1,45 @@
+{
+ "source": "rules",
+ "nodes": [
+  {
+   "node": "n1",
+   "actions": [
+    {
+     "el": "e1",
+     "do": "click",
+     "why": "button \"Create New\""
+    },
+    {
+     "el": "e5",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e3",
+     "do": "click",
+     "why": "button \"e3\""
+    },
+    {
+     "el": "e4",
+     "do": "click",
+     "why": "check \"true\""
+    }
+   ]
+  },
+  {
+   "node": "n2",
+   "deadEnd": true,
+   "reason": "nothing left to click that is not a commit or a way back"
+  },
+  {
+   "node": "n3",
+   "actions": [
+    {
+     "el": "e1",
+     "do": "click",
+     "why": "button \"Create New\""
+    }
+   ]
+  }
+ ]
+}

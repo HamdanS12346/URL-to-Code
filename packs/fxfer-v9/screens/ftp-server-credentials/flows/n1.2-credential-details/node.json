@@ -1,0 +1,186 @@
+{
+ "id": "n1.2",
+ "parent": "n1",
+ "depth": 2,
+ "status": "frontier",
+ "name": "credential-details",
+ "kind": "dialog",
+ "fp": "9670aa287d19",
+ "fpText": "W:Edit FTP Server Credentials\nH:Audit Details|FTP Server Credentials\nL:Creation Date|Description|IP Server|Is Valid|Last Modified User Id|Modified Date|Password|Password Confirmation|Port|Proxy Address|Proxy Port|Server Name|Server User|Transfer Mode\nB:Cancel|Invalidate|Save\nF:12\nT:\nR:0\nV:0",
+ "via": {
+  "el": "e5",
+  "steps": [
+   {
+    "do": "dblclick",
+    "layer": "page",
+    "css": "tbody tr",
+    "nth": 0,
+    "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+    "kind": "row"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#nextButton",
+   "nth": 0,
+   "text": "Search",
+   "kind": "button"
+  },
+  {
+   "do": "dblclick",
+   "layer": "page",
+   "css": "tbody tr",
+   "nth": 0,
+   "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+   "kind": "row"
+  }
+ ],
+ "requests": [
+  {
+   "method": "POST",
+   "url": "/FileTransfer/AddFTPServerCredentials/",
+   "status": "sent"
+  }
+ ],
+ "title": "Edit FTP Server Credentials",
+ "dir": "n1.2-credential-details",
+ "windows": 1,
+ "validation": null,
+ "same": [],
+ "skipped": [
+  {
+   "el": "e10",
+   "text": "Save",
+   "why": "commit: the kit marks it a Save"
+  }
+ ],
+ "probed": true,
+ "fields": [
+  {
+   "name": "FtpDescription",
+   "label": "Description",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 100,
+   "maxEnforced": true
+  },
+  {
+   "name": "FtpTransferMode",
+   "label": "Transfer Mode",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": false,
+    "spaces": false,
+    "symbols": false
+   },
+   "kept": "A",
+   "maxLength": 1,
+   "maxEnforced": true
+  },
+  {
+   "name": "FtpServerIp",
+   "label": "IP Server",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 15,
+   "maxEnforced": true
+  },
+  {
+   "name": "FtpPort",
+   "label": "Port",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-"
+  },
+  {
+   "name": "FtpProxyAddress",
+   "label": "Proxy Address",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-"
+  },
+  {
+   "name": "FtpProxyPort",
+   "label": "Proxy Port",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-"
+  },
+  {
+   "name": "FtpUser",
+   "label": "Server User",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  }
+ ],
+ "saveProbe": {
+  "button": "Save",
+  "validation": null,
+  "wouldSend": [
+   {
+    "method": "POST",
+    "url": "/api/FileTransfer/AddFTPServerCredentials/",
+    "fields": [
+     "__RequestVerificationToken",
+     "FtpServerName",
+     "FtpDescription",
+     "FtpTransferMode",
+     "FtpServerIp",
+     "FtpPort",
+     "FtpProxyAddress",
+     "FtpProxyPort",
+     "FtpUser",
+     "FtpPassword",
+     "FtpPasswordConfirmation",
+     "FtpServerId",
+     "Metadata.ModifiedDate",
+     "Metadata.ModifiedId",
+     "Metadata.ModifiedTimestamp",
+     "OperatorId",
+     "CreationDate",
+     "LastModifiedDate",
+     "IsValid"
+    ]
+   }
+  ]
+ }
+}

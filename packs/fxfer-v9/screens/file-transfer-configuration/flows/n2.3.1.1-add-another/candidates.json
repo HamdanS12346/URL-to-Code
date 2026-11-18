@@ -1,0 +1,377 @@
+[
+ {
+  "el": "e1",
+  "kind": "button",
+  "layer": "top",
+  "css": "div.msg-inline-close.panel-icon",
+  "nth": 0,
+  "text": "close",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "box": {
+   "x": 1629,
+   "y": 334,
+   "w": 25,
+   "h": 35
+  }
+ },
+ {
+  "el": "e2",
+  "kind": "dropdown",
+  "layer": "top",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 0,
+  "text": "select a value...DestinationProtocolList",
+  "label": "Destination Protocol",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "box": {
+   "x": 251,
+   "y": 400,
+   "w": 340,
+   "h": 40
+  }
+ },
+ {
+  "el": "e3",
+  "kind": "dropdown",
+  "layer": "top",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 1,
+  "text": "select a value...DestinationTypeList",
+  "label": "Destination Type",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "FileToEvent",
+   "UserDefined"
+  ],
+  "box": {
+   "x": 605,
+   "y": 400,
+   "w": 340,
+   "h": 40
+  }
+ },
+ {
+  "el": "e4",
+  "kind": "text",
+  "layer": "top",
+  "css": "#DestinationAddress",
+  "nth": 0,
+  "text": "/dest",
+  "label": "Destination Address",
+  "id": "DestinationAddress",
+  "name": "DestinationAddress",
+  "type": "text",
+  "kitAction": null,
+  "value": "/dest",
+  "rules": {
+   "length-max": "Destination Address has a maximum length of 248 characters.",
+   "maxlength": 248,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 971,
+   "y": 404,
+   "w": 291,
+   "h": 30
+  }
+ },
+ {
+  "el": "e5",
+  "kind": "text",
+  "layer": "top",
+  "css": "#ContactName",
+  "nth": 0,
+  "text": "",
+  "label": "Contact Name",
+  "id": "ContactName",
+  "name": "ContactName",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Contact Name has a maximum length of 50 characters.",
+   "regex": "Contact Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "maxlength": 50,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 261,
+   "y": 526,
+   "w": 291,
+   "h": 30
+  }
+ },
+ {
+  "el": "e6",
+  "kind": "text",
+  "layer": "top",
+  "css": "#ContactPhone",
+  "nth": 0,
+  "text": "",
+  "label": "Contact Phone",
+  "id": "ContactPhone",
+  "name": "ContactPhone",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Contact Phone has a maximum length of 50 characters.",
+   "regex": "Enter Valid Phone Number.",
+   "regex-pattern": "^(?!(^\\(?(0{3})\\)?( |-|\\.)?0{3}( |-|\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( |-|\\.)?\\d{3,3}( |-|\\.)?\\d{4,4}$)",
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 606,
+   "y": 526,
+   "w": 301,
+   "h": 30
+  }
+ },
+ {
+  "el": "e7",
+  "kind": "text",
+  "layer": "top",
+  "css": "#ContactEmail",
+  "nth": 0,
+  "text": "",
+  "label": "Contact Email",
+  "id": "ContactEmail",
+  "name": "ContactEmail",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Contact Email has a maximum length of 50 characters.",
+   "regex": "Contact Email is not a valid email address. Enter email with 'name@domain' format.",
+   "regex-pattern": "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$",
+   "maxlength": 50,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 971,
+   "y": 526,
+   "w": 291,
+   "h": 30
+  }
+ },
+ {
+  "el": "e8",
+  "kind": "check",
+  "layer": "top",
+  "css": "#OverwriteAtDestination",
+  "nth": 0,
+  "text": "true",
+  "label": "Overwrite At Destination",
+  "id": "OverwriteAtDestination",
+  "name": "OverwriteAtDestination",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 259,
+   "y": 624,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e9",
+  "kind": "check",
+  "layer": "top",
+  "css": "#CompressAtDestination",
+  "nth": 0,
+  "text": "true",
+  "label": "Compress At Destination",
+  "id": "CompressAtDestination",
+  "name": "CompressAtDestination",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 614,
+   "y": 624,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e10",
+  "kind": "check",
+  "layer": "top",
+  "css": "#DestinationIsArchive",
+  "nth": 0,
+  "text": "true",
+  "label": "Destination Is Archive",
+  "id": "DestinationIsArchive",
+  "name": "DestinationIsArchive",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": false,
+  "box": {
+   "x": 969,
+   "y": 624,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e11",
+  "kind": "check",
+  "layer": "top",
+  "css": "#RenameAtDestination",
+  "nth": 0,
+  "text": "true",
+  "label": "Rename At Destination",
+  "id": "RenameAtDestination",
+  "name": "RenameAtDestination",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": true,
+  "box": {
+   "x": 259,
+   "y": 716,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e12",
+  "kind": "dropdown",
+  "layer": "top",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 2,
+  "text": "ORIG_<DATE>_<TIME>RenamePatternList",
+  "label": "Rename Pattern",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "box": {
+   "x": 605,
+   "y": 707,
+   "w": 340,
+   "h": 40
+  }
+ },
+ {
+  "el": "e13",
+  "kind": "check",
+  "layer": "top",
+  "css": "#Active",
+  "nth": 0,
+  "text": "true",
+  "label": "Active",
+  "id": "Active",
+  "name": "Active",
+  "type": "checkbox",
+  "kitAction": null,
+  "checked": true,
+  "box": {
+   "x": 969,
+   "y": 716,
+   "w": 18,
+   "h": 18
+  }
+ },
+ {
+  "el": "e14",
+  "kind": "button",
+  "layer": "top",
+  "css": "#DestinationResetButton",
+  "nth": 0,
+  "text": "Reset",
+  "label": null,
+  "id": "DestinationResetButton",
+  "name": null,
+  "type": "button",
+  "kitAction": null,
+  "box": {
+   "x": 251,
+   "y": 817,
+   "w": 103,
+   "h": 38
+  }
+ },
+ {
+  "el": "e15",
+  "kind": "button",
+  "layer": "top",
+  "css": "#DestinationCancelButton",
+  "nth": 0,
+  "text": "Cancel",
+  "label": null,
+  "id": "DestinationCancelButton",
+  "name": null,
+  "type": "button",
+  "kitAction": null,
+  "box": {
+   "x": 1271,
+   "y": 817,
+   "w": 111,
+   "h": 38
+  }
+ },
+ {
+  "el": "e16",
+  "kind": "button",
+  "layer": "top",
+  "css": "#AddAnotherButton",
+  "nth": 0,
+  "text": "Add Another",
+  "label": null,
+  "id": "AddAnotherButton",
+  "name": null,
+  "type": "button",
+  "kitAction": null,
+  "box": {
+   "x": 1394,
+   "y": 817,
+   "w": 149,
+   "h": 38
+  }
+ },
+ {
+  "el": "e17",
+  "kind": "button",
+  "layer": "top",
+  "css": "#SaveAndCloseButton",
+  "nth": 0,
+  "text": "Save",
+  "label": null,
+  "id": "SaveAndCloseButton",
+  "name": null,
+  "type": "button",
+  "kitAction": null,
+  "box": {
+   "x": 1556,
+   "y": 817,
+   "w": 99,
+   "h": 38
+  },
+  "danger": "commit: \"Save\""
+ }
+]

@@ -1,0 +1,146 @@
+{
+ "items": {
+  "capture:home": {
+   "status": "done",
+   "at": "2026-11-17T10:44:44.672Z"
+  },
+  "capture:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-17T10:47:20.248Z"
+  },
+  "flowplan:file-transfer-configuration:w1": {
+   "status": "done",
+   "at": "2026-11-17T10:49:04.053Z",
+   "rounds": 1
+  },
+  "flowplan:file-transfer-configuration:w2": {
+   "status": "done",
+   "at": "2026-11-17T10:53:27.685Z",
+   "rounds": 1
+  },
+  "flowplan:file-transfer-configuration:w3": {
+   "status": "done",
+   "at": "2026-11-17T10:58:36.322Z",
+   "rounds": 1
+  },
+  "flowplan:file-transfer-configuration:w4": {
+   "status": "done",
+   "at": "2026-11-17T11:06:50.881Z",
+   "rounds": 1
+  },
+  "spec:home": {
+   "status": "done",
+   "at": "2026-11-17T11:08:02.786Z",
+   "rounds": 1
+  },
+  "flowplan:file-transfer-configuration:w5": {
+   "status": "done",
+   "at": "2026-11-17T11:13:11.618Z",
+   "rounds": 1
+  },
+  "flows:file-transfer-configuration": {
+   "status": "needs-review",
+   "at": "2026-11-17T11:14:48.107Z",
+   "states": 17,
+   "boundaries": 0,
+   "problems": [
+    "5 state(s) left, 0 unreachable: see packs/fxfer-v9/screens/file-transfer-configuration/flows/FLOWS.md; a re-run continues"
+   ]
+  },
+  "capture:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-17T11:17:08.112Z"
+  },
+  "flowplan:file-transfer-tracking:w1": {
+   "status": "done",
+   "at": "2026-11-17T11:19:59.125Z",
+   "rounds": 1
+  },
+  "flowplan:file-transfer-tracking:w2": {
+   "status": "done",
+   "at": "2026-11-17T11:23:42.705Z",
+   "rounds": 1
+  },
+  "spec:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-17T11:25:05.312Z",
+   "rounds": 1
+  },
+  "flowplan:file-transfer-tracking:w3": {
+   "status": "done",
+   "at": "2026-11-17T11:26:10.848Z",
+   "rounds": 1
+  },
+  "flows:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-17T11:26:43.289Z",
+   "states": 4,
+   "boundaries": 0
+  },
+  "capture:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-17T11:28:42.104Z"
+  },
+  "flowplan:ftp-server-credentials:w1": {
+   "status": "done",
+   "at": "2026-11-17T11:30:40.191Z",
+   "rounds": 1
+  },
+  "flowplan:ftp-server-credentials:w2": {
+   "status": "done",
+   "at": "2026-11-17T11:33:26.156Z",
+   "rounds": 1
+  },
+  "flowplan:ftp-server-credentials:w3": {
+   "status": "done",
+   "at": "2026-11-17T11:36:10.828Z",
+   "rounds": 1
+  },
+  "flowplan:ftp-server-credentials:w4": {
+   "status": "done",
+   "at": "2026-11-17T11:38:34.243Z",
+   "rounds": 1
+  },
+  "flows:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-17T11:38:34.554Z",
+   "states": 7,
+   "boundaries": 0
+  },
+  "spec:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-17T11:39:04.547Z",
+   "rounds": 1
+  },
+  "spec:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-17T11:47:06.743Z",
+   "rounds": 1
+  },
+  "port:home": {
+   "status": "done",
+   "at": "2026-11-17T11:47:15.151Z"
+  },
+  "port:file-transfer-configuration": {
+   "status": "done",
+   "at": "2026-11-17T11:47:24.985Z"
+  },
+  "port:file-transfer-tracking": {
+   "status": "done",
+   "at": "2026-11-17T11:47:30.535Z"
+  },
+  "port:ftp-server-credentials": {
+   "status": "done",
+   "at": "2026-11-17T11:47:36.660Z"
+  },
+  "preflight:kit": {
+   "status": "needs-review",
+   "at": "2026-11-17T11:50:25.071Z",
+   "screen": "file-transfer-configuration",
+   "problems": [
+    "the kit on the raw port (fix it in kits/<kit>, not in the app):",
+    "row-d2: 16.74% off"
+   ]
+  }
+ }
+}

@@ -1,0 +1,28 @@
+{
+  "nodes": [
+    {
+      "node": "n0",
+      "name": "at-rest",
+      "actions": [
+        {
+          "el": "e10",
+          "do": "click",
+          "why": "Runs the search to reach the results grid state.",
+          "name": "search-results"
+        },
+        {
+          "el": "e1",
+          "do": "click",
+          "why": "Opens the Create New workflow to reach the create/edit form state.",
+          "name": "create-new"
+        },
+        {
+          "el": "e2",
+          "do": "click",
+          "why": "Toggles the Search Criteria collapse/expand control to capture the collapsed layout/state.",
+          "name": "criteria-collapsed"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+ "screen": "fxfer-v9/home",
+ "url": "https://uximc.mms.tst.pgwcloud.net/Home/MyHome",
+ "mode": "safe",
+ "kit": "provider",
+ "sources": [],
+ "finger": "6f4b9ccefcae5f0204cb8fb7b6c3645c",
+ "steps": {
+  "capture": {
+   "ok": true,
+   "at": "2026-11-17T10:44:44.357Z",
+   "ms": 31460
+  },
+  "stitch": {
+   "ok": true,
+   "at": "2026-11-17T10:44:44.377Z",
+   "ms": 12
+  },
+  "align": {
+   "ok": true,
+   "at": "2026-11-17T10:44:44.396Z",
+   "ms": 9
+  },
+  "facts": {
+   "ok": true,
+   "at": "2026-11-17T10:44:44.646Z",
+   "ms": 240
+  }
+ },
+ "warnings": [
+  "no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)"
+ ],
+ "viewport": {
+  "width": 1920,
+  "height": 1080
+ },
+ "dpr": 1
+}

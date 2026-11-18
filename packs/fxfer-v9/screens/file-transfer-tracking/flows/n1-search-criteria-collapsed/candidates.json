@@ -1,0 +1,21 @@
+[
+ {
+  "el": "e1",
+  "kind": "button",
+  "layer": "page",
+  "css": "div.panel-icon.clickable",
+  "nth": 0,
+  "text": "",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": "collapse",
+  "box": {
+   "x": 1847,
+   "y": 166,
+   "w": 28,
+   "h": 30
+  }
+ }
+]

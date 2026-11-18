@@ -1,0 +1,259 @@
+[
+ {
+  "el": "e1",
+  "kind": "text",
+  "layer": "top",
+  "css": "#Edit_FtpServerName",
+  "nth": 0,
+  "text": "",
+  "label": "Server Name",
+  "id": "Edit_FtpServerName",
+  "name": "FtpServerName",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Server Name has a maximum length of 50 characters.",
+   "regex": "Server Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "required": "Server Name is a required field.",
+   "maxlength": 50,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 288,
+   "y": 444,
+   "w": 278,
+   "h": 30
+  }
+ },
+ {
+  "el": "e2",
+  "kind": "text",
+  "layer": "top",
+  "css": "#Edit_FtpDescription",
+  "nth": 0,
+  "text": "",
+  "label": "Description",
+  "id": "Edit_FtpDescription",
+  "name": "FtpDescription",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Description has a maximum length of 100 characters.",
+   "regex": "Description contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "required": "Description is a required field.",
+   "maxlength": 100,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 629,
+   "y": 444,
+   "w": 392,
+   "h": 30
+  }
+ },
+ {
+  "el": "e3",
+  "kind": "text",
+  "layer": "top",
+  "css": "#Edit_FtpTransferMode",
+  "nth": 0,
+  "text": "",
+  "label": "Transfer Mode",
+  "id": "Edit_FtpTransferMode",
+  "name": "FtpTransferMode",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Transfer Mode has a maximum length of 1 characters.",
+   "required": "Transfer Mode is a required field.",
+   "maxlength": 1,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 1085,
+   "y": 444,
+   "w": 278,
+   "h": 30
+  }
+ },
+ {
+  "el": "e4",
+  "kind": "text",
+  "layer": "top",
+  "css": "#Edit_FtpServerIp",
+  "nth": 0,
+  "text": "",
+  "label": "IP Server",
+  "id": "Edit_FtpServerIp",
+  "name": "FtpServerIp",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "IP Server has a maximum length of 15 characters.",
+   "regex": "IP Server contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "required": "IP Server is a required field.",
+   "maxlength": 15,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 288,
+   "y": 536,
+   "w": 278,
+   "h": 30
+  }
+ },
+ {
+  "el": "e5",
+  "kind": "text",
+  "layer": "top",
+  "css": "#Edit_FtpPort",
+  "nth": 0,
+  "text": "0",
+  "label": "Port",
+  "id": "Edit_FtpPort",
+  "name": "FtpPort",
+  "type": "text",
+  "kitAction": null,
+  "value": "0",
+  "rules": {
+   "number": "The field Port must be a number.",
+   "regex": "Port contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "required": "Port is a required field.",
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 629,
+   "y": 536,
+   "w": 164,
+   "h": 30
+  }
+ },
+ {
+  "el": "e6",
+  "kind": "text",
+  "layer": "top",
+  "css": "#Edit_FtpProxyAddress",
+  "nth": 0,
+  "text": "",
+  "label": "Proxy Address",
+  "id": "Edit_FtpProxyAddress",
+  "name": "FtpProxyAddress",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Proxy Address has a maximum length of 200 characters.",
+   "regex": "Proxy Address contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "maxlength": 200,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 857,
+   "y": 536,
+   "w": 278,
+   "h": 30
+  }
+ },
+ {
+  "el": "e7",
+  "kind": "text",
+  "layer": "top",
+  "css": "#Edit_FtpProxyPort",
+  "nth": 0,
+  "text": "",
+  "label": "Proxy Port",
+  "id": "Edit_FtpProxyPort",
+  "name": "FtpProxyPort",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "number": "The field Proxy Port must be a number.",
+   "regex": "Proxy Port contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 1198,
+   "y": 536,
+   "w": 164,
+   "h": 30
+  }
+ },
+ {
+  "el": "e8",
+  "kind": "text",
+  "layer": "top",
+  "css": "#Edit_FtpUser",
+  "nth": 0,
+  "text": "",
+  "label": "Server User",
+  "id": "Edit_FtpUser",
+  "name": "FtpUser",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Server User has a maximum length of 50 characters.",
+   "regex": "Server User contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "required": "Server User is a required field.",
+   "maxlength": 50,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 288,
+   "y": 629,
+   "w": 278,
+   "h": 30
+  }
+ },
+ {
+  "el": "e9",
+  "kind": "button",
+  "layer": "top",
+  "css": "#viewEditFTPServerCredentialsIdCancelButton",
+  "nth": 0,
+  "text": "Cancel",
+  "label": null,
+  "id": "viewEditFTPServerCredentialsIdCancelButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "cancel",
+  "box": {
+   "x": 1433,
+   "y": 810,
+   "w": 111,
+   "h": 38
+  }
+ },
+ {
+  "el": "e10",
+  "kind": "button",
+  "layer": "top",
+  "css": "#btnSave",
+  "nth": 0,
+  "text": "Save",
+  "label": null,
+  "id": "btnSave",
+  "name": null,
+  "type": "button",
+  "kitAction": "save",
+  "box": {
+   "x": 1557,
+   "y": 810,
+   "w": 98,
+   "h": 38
+  },
+  "danger": "commit: the kit marks it a Save"
+ }
+]

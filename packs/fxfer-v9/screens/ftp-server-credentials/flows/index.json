@@ -1,0 +1,1647 @@
+{
+ "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFTPServerCredentials",
+ "at": "2026-11-17T11:38:34.305Z",
+ "waves": 4,
+ "planners": [
+  "ai",
+  "ai",
+  "ai",
+  "ai"
+ ],
+ "nodes": {
+  "n0": {
+   "id": "n0",
+   "parent": null,
+   "depth": 0,
+   "name": "at-rest",
+   "dir": "n0-at-rest",
+   "kind": "page",
+   "status": "explored",
+   "fp": "5a9871dba99a",
+   "fpText": "W:\nH:Search Criteria\nL:Server Name\nB:Cancel|Create New|Reset|Search\nF:4\nT:\nR:0\nV:0",
+   "path": [],
+   "windows": 0,
+   "title": null,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "layer": "page",
+     "css": "#ftpServerCredentialAddButton",
+     "nth": 0,
+     "text": "Create New",
+     "label": null,
+     "id": "ftpServerCredentialAddButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "create",
+     "box": {
+      "x": 1744,
+      "y": 138,
+      "w": 146,
+      "h": 38
+     }
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "layer": "page",
+     "css": "div.panel-icon.clickable",
+     "nth": 0,
+     "text": "",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": "collapse",
+     "box": {
+      "x": 1847,
+      "y": 219,
+      "w": 28,
+      "h": 30
+     }
+    },
+    {
+     "el": "e3",
+     "kind": "text",
+     "layer": "page",
+     "css": "#FtpServerName",
+     "nth": 0,
+     "text": "",
+     "label": "Server Name",
+     "id": "FtpServerName",
+     "name": "FtpServerName",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "Server Name has a maximum length of 50 characters.",
+      "regex": "Server Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "maxlength": 50,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 51,
+      "y": 332,
+      "w": 243,
+      "h": 30
+     }
+    },
+    {
+     "el": "e4",
+     "kind": "button",
+     "layer": "page",
+     "css": "#resetButton",
+     "nth": 0,
+     "text": "Reset",
+     "label": null,
+     "id": "resetButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "reset",
+     "box": {
+      "x": 41,
+      "y": 417,
+      "w": 103,
+      "h": 38
+     }
+    },
+    {
+     "el": "e5",
+     "kind": "button",
+     "layer": "page",
+     "css": "#cancelButton",
+     "nth": 0,
+     "text": "Cancel",
+     "label": null,
+     "id": "cancelButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "cancel",
+     "box": {
+      "x": 1629,
+      "y": 417,
+      "w": 111,
+      "h": 38
+     }
+    },
+    {
+     "el": "e6",
+     "kind": "button",
+     "layer": "page",
+     "css": "#nextButton",
+     "nth": 0,
+     "text": "Search",
+     "label": null,
+     "id": "nextButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "search",
+     "box": {
+      "x": 1752,
+      "y": 417,
+      "w": 112,
+      "h": 38
+     }
+    }
+   ],
+   "validation": null,
+   "same": [],
+   "skipped": [],
+   "probed": true,
+   "fields": [
+    {
+     "name": "FtpServerName",
+     "label": "Server Name",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-",
+     "maxLength": 50,
+     "maxEnforced": true
+    }
+   ],
+   "tried": [
+    {
+     "el": "e6",
+     "text": "Search",
+     "do": "click",
+     "why": "runs the search and reveals the results grid state",
+     "outcome": "a new results",
+     "child": "n1"
+    },
+    {
+     "el": "e1",
+     "text": "Create New",
+     "do": "click",
+     "why": "opens the Create New FTP Server Credential form/dialog",
+     "outcome": "a new dialog \"Add FTP Server Credentials\"",
+     "child": "n2"
+    },
+    {
+     "el": "e2",
+     "text": "",
+     "do": "click",
+     "why": "collapses the Search Criteria panel to capture the collapsed layout/state",
+     "outcome": "a new part",
+     "child": "n3"
+    }
+   ],
+   "kids": 3
+  },
+  "n1": {
+   "id": "n1",
+   "parent": "n0",
+   "depth": 1,
+   "status": "explored",
+   "name": "search-results",
+   "kind": "results",
+   "fp": "c3470a2065b7",
+   "fpText": "W:\nH:Search Criteria|Search Results\nL:Include Invalids\nB:Create New\nF:1\nT:\nR:1\nV:0",
+   "via": {
+    "el": "e6",
+    "steps": [
+     {
+      "do": "click",
+      "layer": "page",
+      "css": "#nextButton",
+      "nth": 0,
+      "text": "Search",
+      "kind": "button"
+     }
+    ]
+   },
+   "path": [
+    {
+     "do": "click",
+     "layer": "page",
+     "css": "#nextButton",
+     "nth": 0,
+     "text": "Search",
+     "kind": "button"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/FileTransfer/GetFTPServerCredentials/",
+     "status": "sent"
+    }
+   ],
+   "change": {
+    "show": [
+     "[data-kit-h=\"h2\"]"
+    ],
+    "hide": [
+     "#FTPServerCredentialsSearch"
+    ],
+    "scroll": null
+   },
+   "title": null,
+   "dir": "n1-search-results",
+   "windows": 0,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "layer": "page",
+     "css": "#ftpServerCredentialAddButton",
+     "nth": 0,
+     "text": "Create New",
+     "label": null,
+     "id": "ftpServerCredentialAddButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "create",
+     "box": {
+      "x": 1744,
+      "y": 138,
+      "w": 146,
+      "h": 38
+     }
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "layer": "page",
+     "css": "div.panel-icon.clickable",
+     "nth": 0,
+     "text": "",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": "collapse",
+     "box": {
+      "x": 1847,
+      "y": 219,
+      "w": 28,
+      "h": 30
+     }
+    },
+    {
+     "el": "e3",
+     "kind": "button",
+     "layer": "page",
+     "css": "span.fa-stack.fa-lg",
+     "nth": 0,
+     "text": "",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "box": {
+      "x": 1842,
+      "y": 380,
+      "w": 44,
+      "h": 35
+     }
+    },
+    {
+     "el": "e4",
+     "kind": "check",
+     "layer": "page",
+     "css": "#showInvalidFTPServerCredentialsCheckBox",
+     "nth": 0,
+     "text": "true",
+     "label": "Include Invalids",
+     "id": "showInvalidFTPServerCredentialsCheckBox",
+     "name": "showInvalidFTPServerCredentialsCheckBox",
+     "type": "checkbox",
+     "kitAction": null,
+     "checked": false,
+     "box": {
+      "x": 1706,
+      "y": 384,
+      "w": 18,
+      "h": 18
+     }
+    },
+    {
+     "el": "e5",
+     "kind": "row",
+     "layer": "page",
+     "css": "tbody tr",
+     "nth": 0,
+     "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "rows": 5,
+     "box": {
+      "x": 31,
+      "y": 485,
+      "w": 1857,
+      "h": 40
+     }
+    }
+   ],
+   "validation": null,
+   "same": [],
+   "skipped": [],
+   "probed": true,
+   "fields": [],
+   "tried": [
+    {
+     "el": "e2",
+     "text": "",
+     "do": "click",
+     "why": "toggles the Search Criteria panel to capture the expanded/alternate layout",
+     "outcome": "a new part",
+     "child": "n1.1"
+    },
+    {
+     "el": "e5",
+     "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+     "do": "dblclick",
+     "why": "opens the selected credential row details (row double-click typically opens view/edit)",
+     "outcome": "a new dialog \"Edit FTP Server Credentials\"",
+     "child": "n1.2"
+    },
+    {
+     "el": "e3",
+     "text": "",
+     "do": "click",
+     "why": "opens the Include Invalids help/tooltip popover",
+     "outcome": "leaves the page for  (not followed: captured as a screen of its own)"
+    },
+    {
+     "el": "e4",
+     "text": "true",
+     "do": "click",
+     "why": "toggles Include Invalids to capture results grid changes",
+     "outcome": "nothing changed"
+    }
+   ],
+   "kids": 2,
+   "links": [
+    {
+     "text": "",
+     "url": "",
+     "kind": "popup"
+    }
+   ]
+  },
+  "n2": {
+   "id": "n2",
+   "parent": "n0",
+   "depth": 1,
+   "status": "dead-end",
+   "name": "create-new",
+   "kind": "dialog",
+   "fp": "8e0567a82a39",
+   "fpText": "W:Add FTP Server Credentials\nH:FTP Server Credentials\nL:Description|IP Server|Password|Password Confirmation|Port|Proxy Address|Proxy Port|Server Name|Server User|Transfer Mode\nB:Cancel|Save\nF:12\nT:\nR:0\nV:0",
+   "via": {
+    "el": "e1",
+    "steps": [
+     {
+      "do": "click",
+      "layer": "page",
+      "css": "#ftpServerCredentialAddButton",
+      "nth": 0,
+      "text": "Create New",
+      "kind": "button"
+     }
+    ]
+   },
+   "path": [
+    {
+     "do": "click",
+     "layer": "page",
+     "css": "#ftpServerCredentialAddButton",
+     "nth": 0,
+     "text": "Create New",
+     "kind": "button"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/FileTransfer/AddFTPServerCredentials/",
+     "status": "sent"
+    }
+   ],
+   "title": "Add FTP Server Credentials",
+   "dir": "n2-create-new",
+   "windows": 1,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpServerName",
+     "nth": 0,
+     "text": "",
+     "label": "Server Name",
+     "id": "Edit_FtpServerName",
+     "name": "FtpServerName",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "Server Name has a maximum length of 50 characters.",
+      "regex": "Server Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "required": "Server Name is a required field.",
+      "maxlength": 50,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 288,
+      "y": 444,
+      "w": 278,
+      "h": 30
+     }
+    },
+    {
+     "el": "e2",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpDescription",
+     "nth": 0,
+     "text": "",
+     "label": "Description",
+     "id": "Edit_FtpDescription",
+     "name": "FtpDescription",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "Description has a maximum length of 100 characters.",
+      "regex": "Description contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "required": "Description is a required field.",
+      "maxlength": 100,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 629,
+      "y": 444,
+      "w": 392,
+      "h": 30
+     }
+    },
+    {
+     "el": "e3",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpTransferMode",
+     "nth": 0,
+     "text": "",
+     "label": "Transfer Mode",
+     "id": "Edit_FtpTransferMode",
+     "name": "FtpTransferMode",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "Transfer Mode has a maximum length of 1 characters.",
+      "required": "Transfer Mode is a required field.",
+      "maxlength": 1,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 1085,
+      "y": 444,
+      "w": 278,
+      "h": 30
+     }
+    },
+    {
+     "el": "e4",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpServerIp",
+     "nth": 0,
+     "text": "",
+     "label": "IP Server",
+     "id": "Edit_FtpServerIp",
+     "name": "FtpServerIp",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "IP Server has a maximum length of 15 characters.",
+      "regex": "IP Server contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "required": "IP Server is a required field.",
+      "maxlength": 15,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 288,
+      "y": 536,
+      "w": 278,
+      "h": 30
+     }
+    },
+    {
+     "el": "e5",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpPort",
+     "nth": 0,
+     "text": "0",
+     "label": "Port",
+     "id": "Edit_FtpPort",
+     "name": "FtpPort",
+     "type": "text",
+     "kitAction": null,
+     "value": "0",
+     "rules": {
+      "number": "The field Port must be a number.",
+      "regex": "Port contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "required": "Port is a required field.",
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 629,
+      "y": 536,
+      "w": 164,
+      "h": 30
+     }
+    },
+    {
+     "el": "e6",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpProxyAddress",
+     "nth": 0,
+     "text": "",
+     "label": "Proxy Address",
+     "id": "Edit_FtpProxyAddress",
+     "name": "FtpProxyAddress",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "Proxy Address has a maximum length of 200 characters.",
+      "regex": "Proxy Address contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "maxlength": 200,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 857,
+      "y": 536,
+      "w": 278,
+      "h": 30
+     }
+    },
+    {
+     "el": "e7",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpProxyPort",
+     "nth": 0,
+     "text": "",
+     "label": "Proxy Port",
+     "id": "Edit_FtpProxyPort",
+     "name": "FtpProxyPort",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "number": "The field Proxy Port must be a number.",
+      "regex": "Proxy Port contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 1198,
+      "y": 536,
+      "w": 164,
+      "h": 30
+     }
+    },
+    {
+     "el": "e8",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpUser",
+     "nth": 0,
+     "text": "",
+     "label": "Server User",
+     "id": "Edit_FtpUser",
+     "name": "FtpUser",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "Server User has a maximum length of 50 characters.",
+      "regex": "Server User contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "required": "Server User is a required field.",
+      "maxlength": 50,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 288,
+      "y": 629,
+      "w": 278,
+      "h": 30
+     }
+    },
+    {
+     "el": "e9",
+     "kind": "button",
+     "layer": "top",
+     "css": "#viewEditFTPServerCredentialsIdCancelButton",
+     "nth": 0,
+     "text": "Cancel",
+     "label": null,
+     "id": "viewEditFTPServerCredentialsIdCancelButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "cancel",
+     "box": {
+      "x": 1433,
+      "y": 810,
+      "w": 111,
+      "h": 38
+     }
+    },
+    {
+     "el": "e10",
+     "kind": "button",
+     "layer": "top",
+     "css": "#btnSave",
+     "nth": 0,
+     "text": "Save",
+     "label": null,
+     "id": "btnSave",
+     "name": null,
+     "type": "button",
+     "kitAction": "save",
+     "box": {
+      "x": 1557,
+      "y": 810,
+      "w": 98,
+      "h": 38
+     },
+     "danger": "commit: the kit marks it a Save"
+    }
+   ],
+   "validation": null,
+   "same": [],
+   "skipped": [
+    {
+     "el": "e10",
+     "text": "Save",
+     "why": "commit: the kit marks it a Save"
+    }
+   ],
+   "reason": "only Save is a commit (danger) and Cancel just closes the dialog"
+  },
+  "n3": {
+   "id": "n3",
+   "parent": "n0",
+   "depth": 1,
+   "status": "dead-end",
+   "name": "criteria-collapsed",
+   "kind": "part",
+   "fp": "07565ef3009a",
+   "fpText": "W:\nH:Search Criteria\nL:\nB:Create New\nF:0\nT:\nR:0\nV:0",
+   "via": {
+    "el": "e2",
+    "steps": [
+     {
+      "do": "click",
+      "layer": "page",
+      "css": "div.panel-icon.clickable",
+      "nth": 0,
+      "text": "",
+      "kind": "button"
+     }
+    ]
+   },
+   "path": [
+    {
+     "do": "click",
+     "layer": "page",
+     "css": "div.panel-icon.clickable",
+     "nth": 0,
+     "text": "",
+     "kind": "button"
+    }
+   ],
+   "requests": [],
+   "change": {
+    "show": [],
+    "hide": [
+     "#FTPServerCredentialsSearch"
+    ],
+    "scroll": null
+   },
+   "title": null,
+   "dir": "n3-criteria-collapsed",
+   "windows": 0,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "layer": "page",
+     "css": "#ftpServerCredentialAddButton",
+     "nth": 0,
+     "text": "Create New",
+     "label": null,
+     "id": "ftpServerCredentialAddButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "create",
+     "box": {
+      "x": 1744,
+      "y": 138,
+      "w": 146,
+      "h": 38
+     }
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "layer": "page",
+     "css": "div.panel-icon.clickable",
+     "nth": 0,
+     "text": "",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": "collapse",
+     "box": {
+      "x": 1847,
+      "y": 219,
+      "w": 28,
+      "h": 30
+     }
+    }
+   ],
+   "validation": null,
+   "same": [],
+   "skipped": [],
+   "reason": "only Create New opens the already-known add dialog, and the chevron just returns to the already-known expanded criteria state"
+  },
+  "n1.1": {
+   "id": "n1.1",
+   "parent": "n1",
+   "depth": 2,
+   "status": "explored",
+   "name": "criteria-expanded",
+   "kind": "part",
+   "fp": "2cebdd40b531",
+   "fpText": "W:\nH:Search Criteria|Search Results\nL:Include Invalids|Server Name\nB:Cancel|Create New|Reset|Search\nF:5\nT:\nR:1\nV:0",
+   "via": {
+    "el": "e2",
+    "steps": [
+     {
+      "do": "click",
+      "layer": "page",
+      "css": "div.panel-icon.clickable",
+      "nth": 0,
+      "text": "",
+      "kind": "button"
+     }
+    ]
+   },
+   "path": [
+    {
+     "do": "click",
+     "layer": "page",
+     "css": "#nextButton",
+     "nth": 0,
+     "text": "Search",
+     "kind": "button"
+    },
+    {
+     "do": "click",
+     "layer": "page",
+     "css": "div.panel-icon.clickable",
+     "nth": 0,
+     "text": "",
+     "kind": "button"
+    }
+   ],
+   "requests": [],
+   "change": {
+    "show": [
+     "#FTPServerCredentialsSearch"
+    ],
+    "hide": [],
+    "scroll": null
+   },
+   "title": null,
+   "dir": "n1.1-criteria-expanded",
+   "windows": 0,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "layer": "page",
+     "css": "#ftpServerCredentialAddButton",
+     "nth": 0,
+     "text": "Create New",
+     "label": null,
+     "id": "ftpServerCredentialAddButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "create",
+     "box": {
+      "x": 1744,
+      "y": 138,
+      "w": 146,
+      "h": 38
+     }
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "layer": "page",
+     "css": "div.panel-icon.clickable",
+     "nth": 0,
+     "text": "",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": "collapse",
+     "box": {
+      "x": 1847,
+      "y": 219,
+      "w": 28,
+      "h": 30
+     }
+    },
+    {
+     "el": "e3",
+     "kind": "text",
+     "layer": "page",
+     "css": "#FtpServerName",
+     "nth": 0,
+     "text": "",
+     "label": "Server Name",
+     "id": "FtpServerName",
+     "name": "FtpServerName",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "Server Name has a maximum length of 50 characters.",
+      "regex": "Server Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "maxlength": 50,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 51,
+      "y": 332,
+      "w": 243,
+      "h": 30
+     }
+    },
+    {
+     "el": "e4",
+     "kind": "button",
+     "layer": "page",
+     "css": "#resetButton",
+     "nth": 0,
+     "text": "Reset",
+     "label": null,
+     "id": "resetButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "reset",
+     "box": {
+      "x": 41,
+      "y": 417,
+      "w": 103,
+      "h": 38
+     }
+    },
+    {
+     "el": "e5",
+     "kind": "button",
+     "layer": "page",
+     "css": "#cancelButton",
+     "nth": 0,
+     "text": "Cancel",
+     "label": null,
+     "id": "cancelButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "cancel",
+     "box": {
+      "x": 1629,
+      "y": 417,
+      "w": 111,
+      "h": 38
+     }
+    },
+    {
+     "el": "e6",
+     "kind": "button",
+     "layer": "page",
+     "css": "#nextButton",
+     "nth": 0,
+     "text": "Search",
+     "label": null,
+     "id": "nextButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "search",
+     "box": {
+      "x": 1752,
+      "y": 417,
+      "w": 112,
+      "h": 38
+     }
+    },
+    {
+     "el": "e7",
+     "kind": "button",
+     "layer": "page",
+     "css": "span.fa-stack.fa-lg",
+     "nth": 0,
+     "text": "",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "box": {
+      "x": 1842,
+      "y": 599,
+      "w": 44,
+      "h": 35
+     }
+    },
+    {
+     "el": "e8",
+     "kind": "check",
+     "layer": "page",
+     "css": "#showInvalidFTPServerCredentialsCheckBox",
+     "nth": 0,
+     "text": "true",
+     "label": "Include Invalids",
+     "id": "showInvalidFTPServerCredentialsCheckBox",
+     "name": "showInvalidFTPServerCredentialsCheckBox",
+     "type": "checkbox",
+     "kitAction": null,
+     "checked": false,
+     "box": {
+      "x": 1706,
+      "y": 603,
+      "w": 18,
+      "h": 18
+     }
+    },
+    {
+     "el": "e9",
+     "kind": "row",
+     "layer": "page",
+     "css": "tbody tr",
+     "nth": 0,
+     "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "rows": 5,
+     "box": {
+      "x": 31,
+      "y": 704,
+      "w": 1857,
+      "h": 40
+     }
+    }
+   ],
+   "validation": null,
+   "same": [],
+   "skipped": [],
+   "probed": true,
+   "fields": [
+    {
+     "name": "FtpServerName",
+     "label": "Server Name",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-",
+     "maxLength": 50,
+     "maxEnforced": true
+    }
+   ],
+   "tried": [
+    {
+     "el": "e6",
+     "text": "Search",
+     "do": "click",
+     "why": "Search with an unlikely Server Name to capture the empty/no-results state",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e6",
+     "text": "Search",
+     "do": "click",
+     "why": "Search with a known Server Name to capture the filtered-results state",
+     "outcome": "the same state as n1",
+     "same": "n1"
+    },
+    {
+     "el": "e9",
+     "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+     "do": "dblclick",
+     "why": "opens the credential details dialog for the selected row",
+     "outcome": "the same state as n1.2",
+     "same": "n1.2"
+    },
+    {
+     "el": "e7",
+     "text": "",
+     "do": "click",
+     "why": "opens the Include Invalids help/tooltip popover",
+     "outcome": "leaves the page for  (not followed: captured as a screen of its own)"
+    },
+    {
+     "el": "e8",
+     "text": "true",
+     "do": "click",
+     "why": "toggles Include Invalids to capture results grid changes",
+     "outcome": "the same state as n1",
+     "same": "n1"
+    }
+   ],
+   "links": [
+    {
+     "text": "",
+     "url": "",
+     "kind": "popup"
+    }
+   ]
+  },
+  "n1.2": {
+   "id": "n1.2",
+   "parent": "n1",
+   "depth": 2,
+   "status": "explored",
+   "name": "credential-details",
+   "kind": "dialog",
+   "fp": "9670aa287d19",
+   "fpText": "W:Edit FTP Server Credentials\nH:Audit Details|FTP Server Credentials\nL:Creation Date|Description|IP Server|Is Valid|Last Modified User Id|Modified Date|Password|Password Confirmation|Port|Proxy Address|Proxy Port|Server Name|Server User|Transfer Mode\nB:Cancel|Invalidate|Save\nF:12\nT:\nR:0\nV:0",
+   "via": {
+    "el": "e5",
+    "steps": [
+     {
+      "do": "dblclick",
+      "layer": "page",
+      "css": "tbody tr",
+      "nth": 0,
+      "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+      "kind": "row"
+     }
+    ]
+   },
+   "path": [
+    {
+     "do": "click",
+     "layer": "page",
+     "css": "#nextButton",
+     "nth": 0,
+     "text": "Search",
+     "kind": "button"
+    },
+    {
+     "do": "dblclick",
+     "layer": "page",
+     "css": "tbody tr",
+     "nth": 0,
+     "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+     "kind": "row"
+    }
+   ],
+   "requests": [
+    {
+     "method": "POST",
+     "url": "/FileTransfer/AddFTPServerCredentials/",
+     "status": "sent"
+    }
+   ],
+   "title": "Edit FTP Server Credentials",
+   "dir": "n1.2-credential-details",
+   "windows": 1,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpDescription",
+     "nth": 0,
+     "text": "Ranjan",
+     "label": "Description",
+     "id": "Edit_FtpDescription",
+     "name": "FtpDescription",
+     "type": "text",
+     "kitAction": null,
+     "value": "Ranjan",
+     "rules": {
+      "length-max": "Description has a maximum length of 100 characters.",
+      "regex": "Description contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "required": "Description is a required field.",
+      "maxlength": 100,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 629,
+      "y": 309,
+      "w": 392,
+      "h": 30
+     }
+    },
+    {
+     "el": "e2",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpTransferMode",
+     "nth": 0,
+     "text": "2",
+     "label": "Transfer Mode",
+     "id": "Edit_FtpTransferMode",
+     "name": "FtpTransferMode",
+     "type": "text",
+     "kitAction": null,
+     "value": "2",
+     "rules": {
+      "length-max": "Transfer Mode has a maximum length of 1 characters.",
+      "required": "Transfer Mode is a required field.",
+      "maxlength": 1,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 1085,
+      "y": 309,
+      "w": 278,
+      "h": 30
+     }
+    },
+    {
+     "el": "e3",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpServerIp",
+     "nth": 0,
+     "text": "10.143.27.994",
+     "label": "IP Server",
+     "id": "Edit_FtpServerIp",
+     "name": "FtpServerIp",
+     "type": "text",
+     "kitAction": null,
+     "value": "10.143.27.994",
+     "rules": {
+      "length-max": "IP Server has a maximum length of 15 characters.",
+      "regex": "IP Server contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "required": "IP Server is a required field.",
+      "maxlength": 15,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 288,
+      "y": 402,
+      "w": 278,
+      "h": 30
+     }
+    },
+    {
+     "el": "e4",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpPort",
+     "nth": 0,
+     "text": "27",
+     "label": "Port",
+     "id": "Edit_FtpPort",
+     "name": "FtpPort",
+     "type": "text",
+     "kitAction": null,
+     "value": "27",
+     "rules": {
+      "number": "The field Port must be a number.",
+      "regex": "Port contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "required": "Port is a required field.",
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 629,
+      "y": 402,
+      "w": 164,
+      "h": 30
+     }
+    },
+    {
+     "el": "e5",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpProxyAddress",
+     "nth": 0,
+     "text": "",
+     "label": "Proxy Address",
+     "id": "Edit_FtpProxyAddress",
+     "name": "FtpProxyAddress",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "Proxy Address has a maximum length of 200 characters.",
+      "regex": "Proxy Address contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "maxlength": 200,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 857,
+      "y": 402,
+      "w": 278,
+      "h": 30
+     }
+    },
+    {
+     "el": "e6",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpProxyPort",
+     "nth": 0,
+     "text": "",
+     "label": "Proxy Port",
+     "id": "Edit_FtpProxyPort",
+     "name": "FtpProxyPort",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "number": "The field Proxy Port must be a number.",
+      "regex": "Proxy Port contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 1198,
+      "y": 402,
+      "w": 164,
+      "h": 30
+     }
+    },
+    {
+     "el": "e7",
+     "kind": "text",
+     "layer": "top",
+     "css": "#Edit_FtpUser",
+     "nth": 0,
+     "text": "ranjan2711",
+     "label": "Server User",
+     "id": "Edit_FtpUser",
+     "name": "FtpUser",
+     "type": "text",
+     "kitAction": null,
+     "value": "ranjan2711",
+     "rules": {
+      "length-max": "Server User has a maximum length of 50 characters.",
+      "regex": "Server User contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "required": "Server User is a required field.",
+      "maxlength": 50,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 288,
+      "y": 494,
+      "w": 278,
+      "h": 30
+     }
+    },
+    {
+     "el": "e8",
+     "kind": "button",
+     "layer": "top",
+     "css": "#btnInvalidate",
+     "nth": 0,
+     "text": "Invalidate",
+     "label": null,
+     "id": "btnInvalidate",
+     "name": null,
+     "type": "button",
+     "kitAction": null,
+     "box": {
+      "x": 251,
+      "y": 934,
+      "w": 130,
+      "h": 38
+     }
+    },
+    {
+     "el": "e9",
+     "kind": "button",
+     "layer": "top",
+     "css": "#viewEditFTPServerCredentialsIdCancelButton",
+     "nth": 0,
+     "text": "Cancel",
+     "label": null,
+     "id": "viewEditFTPServerCredentialsIdCancelButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "cancel",
+     "box": {
+      "x": 1433,
+      "y": 934,
+      "w": 111,
+      "h": 38
+     }
+    },
+    {
+     "el": "e10",
+     "kind": "button",
+     "layer": "top",
+     "css": "#btnSave",
+     "nth": 0,
+     "text": "Save",
+     "label": null,
+     "id": "btnSave",
+     "name": null,
+     "type": "button",
+     "kitAction": "save",
+     "box": {
+      "x": 1557,
+      "y": 934,
+      "w": 98,
+      "h": 38
+     },
+     "danger": "commit: the kit marks it a Save"
+    }
+   ],
+   "validation": null,
+   "same": [],
+   "skipped": [
+    {
+     "el": "e10",
+     "text": "Save",
+     "why": "commit: the kit marks it a Save"
+    }
+   ],
+   "probed": true,
+   "fields": [
+    {
+     "name": "FtpDescription",
+     "label": "Description",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-",
+     "maxLength": 100,
+     "maxEnforced": true
+    },
+    {
+     "name": "FtpTransferMode",
+     "label": "Transfer Mode",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": false,
+      "spaces": false,
+      "symbols": false
+     },
+     "kept": "A",
+     "maxLength": 1,
+     "maxEnforced": true
+    },
+    {
+     "name": "FtpServerIp",
+     "label": "IP Server",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-",
+     "maxLength": 15,
+     "maxEnforced": true
+    },
+    {
+     "name": "FtpPort",
+     "label": "Port",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-"
+    },
+    {
+     "name": "FtpProxyAddress",
+     "label": "Proxy Address",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-"
+    },
+    {
+     "name": "FtpProxyPort",
+     "label": "Proxy Port",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-"
+    },
+    {
+     "name": "FtpUser",
+     "label": "Server User",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-",
+     "maxLength": 50,
+     "maxEnforced": true
+    }
+   ],
+   "saveProbe": {
+    "button": "Save",
+    "validation": null,
+    "wouldSend": [
+     {
+      "method": "POST",
+      "url": "/api/FileTransfer/AddFTPServerCredentials/",
+      "fields": [
+       "__RequestVerificationToken",
+       "FtpServerName",
+       "FtpDescription",
+       "FtpTransferMode",
+       "FtpServerIp",
+       "FtpPort",
+       "FtpProxyAddress",
+       "FtpProxyPort",
+       "FtpUser",
+       "FtpPassword",
+       "FtpPasswordConfirmation",
+       "FtpServerId",
+       "Metadata.ModifiedDate",
+       "Metadata.ModifiedId",
+       "Metadata.ModifiedTimestamp",
+       "OperatorId",
+       "CreationDate",
+       "LastModifiedDate",
+       "IsValid"
+      ]
+     }
+    ]
+   },
+   "tried": [
+    {
+     "el": "e8",
+     "text": "Invalidate",
+     "do": "click",
+     "why": "opens the invalidate confirmation flow or changes the credential validity state",
+     "outcome": "a new dialog \"Alert Confirmation\"",
+     "child": "n1.2.1"
+    }
+   ],
+   "kids": 1
+  },
+  "n1.2.1": {
+   "id": "n1.2.1",
+   "parent": "n1.2",
+   "depth": 3,
+   "status": "dead-end",
+   "name": "invalidate",
+   "kind": "dialog",
+   "fp": "f5ab272bf1ae",
+   "fpText": "W:Edit FTP Server Credentials>Alert Confirmation\nH:\nL:\nB:No|Yes\nF:2\nT:\nR:0\nV:0",
+   "via": {
+    "el": "e8",
+    "steps": [
+     {
+      "do": "click",
+      "layer": "top",
+      "css": "#btnInvalidate",
+      "nth": 0,
+      "text": "Invalidate",
+      "kind": "button"
+     }
+    ]
+   },
+   "path": [
+    {
+     "do": "click",
+     "layer": "page",
+     "css": "#nextButton",
+     "nth": 0,
+     "text": "Search",
+     "kind": "button"
+    },
+    {
+     "do": "dblclick",
+     "layer": "page",
+     "css": "tbody tr",
+     "nth": 0,
+     "text": "RanjanRanjan10.143.27.994ranjan27113/28/2025 Yes",
+     "kind": "row"
+    },
+    {
+     "do": "click",
+     "layer": "top",
+     "css": "#btnInvalidate",
+     "nth": 0,
+     "text": "Invalidate",
+     "kind": "button"
+    }
+   ],
+   "requests": [],
+   "title": "Alert Confirmation",
+   "dir": "n1.2.1-invalidate",
+   "windows": 2,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "layer": "top",
+     "css": "#cancelModalButton",
+     "nth": 0,
+     "text": "No",
+     "label": null,
+     "id": "cancelModalButton",
+     "name": null,
+     "type": "button",
+     "kitAction": null,
+     "box": {
+      "x": 867,
+      "y": 573,
+      "w": 82,
+      "h": 38
+     }
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "layer": "top",
+     "css": "#okButton",
+     "nth": 0,
+     "text": "Yes",
+     "label": null,
+     "id": "okButton",
+     "name": null,
+     "type": "button",
+     "kitAction": null,
+     "box": {
+      "x": 965,
+      "y": 573,
+      "w": 87,
+      "h": 38
+     },
+     "danger": "commit: a bare \"Yes\""
+    }
+   ],
+   "validation": null,
+   "same": [],
+   "skipped": [
+    {
+     "el": "e2",
+     "text": "Yes",
+     "why": "commit: a bare \"Yes\""
+    }
+   ],
+   "reason": "Alert Confirmation has only a commit (Yes); No just returns to the already-explored credential details dialog."
+  }
+ }
+}

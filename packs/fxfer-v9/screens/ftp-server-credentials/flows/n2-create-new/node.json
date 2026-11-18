@@ -1,0 +1,44 @@
+{
+ "id": "n2",
+ "parent": "n0",
+ "depth": 1,
+ "status": "frontier",
+ "name": "create-new",
+ "kind": "dialog",
+ "fp": "8e0567a82a39",
+ "fpText": "W:Add FTP Server Credentials\nH:FTP Server Credentials\nL:Description|IP Server|Password|Password Confirmation|Port|Proxy Address|Proxy Port|Server Name|Server User|Transfer Mode\nB:Cancel|Save\nF:12\nT:\nR:0\nV:0",
+ "via": {
+  "el": "e1",
+  "steps": [
+   {
+    "do": "click",
+    "layer": "page",
+    "css": "#ftpServerCredentialAddButton",
+    "nth": 0,
+    "text": "Create New",
+    "kind": "button"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#ftpServerCredentialAddButton",
+   "nth": 0,
+   "text": "Create New",
+   "kind": "button"
+  }
+ ],
+ "requests": [
+  {
+   "method": "GET",
+   "url": "/FileTransfer/AddFTPServerCredentials/",
+   "status": "sent"
+  }
+ ],
+ "title": "Add FTP Server Credentials",
+ "dir": "n2-create-new",
+ "windows": 1,
+ "validation": null
+}

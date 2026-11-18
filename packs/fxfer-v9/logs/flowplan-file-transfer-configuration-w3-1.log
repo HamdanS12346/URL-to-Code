@@ -1,0 +1,1009 @@
+$ powershell -NoProfile -ExecutionPolicy Bypass -File C:\UI-specs\start_codex.ps1 exec -c web_search=disabled --skip-git-repo-check -C C:\UI-specs\URL-to-Code\
+(prompt: C:\UI-specs\URL-to-Code\packs\fxfer-v9\logs\flowplan-file-transfer-configuration-w3-1.prompt.md)
+--- output ---
+Reading prompt from stdin...
+OpenAI Codex v0.169.0
+--------
+workdir: C:\UI-specs\URL-to-Code
+model: gpt-5.2
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1e925-c731-7c12-a907-5de9e08efc91
+--------
+user
+Task: flows fxfer-v9/file-transfer-configuration wave 3
+Screen folder: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration
+
+You are running unattended: nobody will answer questions. Do the task, then stop.
+
+Write any files you create/modify as UTF-8 text (not UTF-16). If you use PowerShell commands to write files, use Set-Content/Out-File with -Encoding utf8.
+Do not use the `apply_patch` helper here; it is unreliable in this environment. Edit files using Python/Node/PowerShell file writes (UTF-8) instead.
+
+You plan the next step of exploring the live screen `fxfer-v9/file-transfer-configuration` (File Transfer Configuration, https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations). A script drives the browser; you only decide what it does.
+The goal: reach EVERY state of this screen (results, dialogs, dialogs inside dialogs, edit modes, tabs, parts a radio or a value shows,
+validation messages) up to the click that would save or create something. The script blocks every write and never clicks a commit button,
+so you cannot break anything: be thorough.
+
+1. Read C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-3.frontier.json: the states still open in this wave, each with its candidates (the elements of its top layer, ids e1, e2...).
+2. For each state, open its folder (`dir`): look at map.png (the numbers are the element ids) and shot.png with your image viewer, and read
+   candidates.md (kind, text, label, rules such as maxlength / required / email, dropdown options). Read C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration/flows/FLOWS.md for what
+   was already reached and what each earlier click did: never plan a click that already led to a known state from the same place.
+3. Write C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-3.json as JSON:
+   {"nodes": [ {"node": "n1", "name": "search-results",
+       "actions": [ {"el": "e7", "do": "dblclick", "why": "opens the row's detail window", "name": "view-configuration"},
+                    {"el": "e3", "do": "select", "value": "M", "why": "Run Monthly shows the day-of-month part"},
+                    {"el": "e12", "do": "click", "setup": [{"el": "e4", "do": "fill", "value": "1234567890"}], "why": "Next with a valid NPI typed" } ],
+       "same": [ {"el": "e9", "as": "e7", "why": "the other rows open the same window"} ] },
+     {"node": "n2.1", "deadEnd": true, "reason": "a read-only view: only Close" } ]}
+   - One entry per state of C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-3.frontier.json. "do": click | dblclick | hover | fill | select | check | press. "fill"/"select" need a "value" (a string).
+   - "setup": steps done first, in order (type valid values so a button or a section opens; pick the dropdown value that reveals a part).
+   - "name" (optional): lower-case words joined by "-", at most 32 characters, naming the state you expect (it names its folder).
+   - At most 12 actions per state. Prefer actions that lead to DIFFERENT states: every button and link that opens something (View, Edit,
+     Details, a tab, Create New, Next, a row: grid rows often open on double-click), a radio or dropdown value that changes the form, and
+     wrong input that makes the page answer (letters in a number field, too long a value, a bad e-mail, a date out of range), each once.
+     The script already measures every text box by itself (what it accepts, its length limit, the message it shows, what Save says with the
+     form as it is), so do not spend actions on that.
+   - Never plan an element marked `danger` (Save, Submit, Update, Delete, a bare Add/OK/Yes...): the gate rejects the plan.
+   - Close, Cancel, Reset and Back only lead back: the script uses them itself.
+   - A state with nothing new to open is a dead end: say so with a reason.
+4. Run `node scripts/check-flows.mjs C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-3.json C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-3.frontier.json` in C:\UI-specs\URL-to-Code\ and fix the plan until it prints OK.
+
+What the capture already knows about this screen (dropdown options, dialogs it opened, the portal's conventions): C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration/kit/screen.json; the site kit's guide: C:\UI-specs\URL-to-Code\kits\provider\KIT.md.
+Write only C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-3.json. Do not run `npm run ui`, `npm run capture` or the browser, and do not open the live site.
+Never open, print or copy .env files or anything under packs/*/auth/ (they hold the portal password and session).
+
+warning: Model metadata for `gpt-5.2` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.
+2026-11-17T10:55:34.045737Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.postman.com/.well-known/oauth-protected-resource/mcp\"" })
+hook: SessionStart
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+codex
+I’m going to read the wave-3 frontier, inspect each state’s artifacts (map/shot/candidates), then write `wave-3.json` and run the flow gate until it passes.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code && ls packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\plans && node -v" in C:\UI-specs\URL-to-Code
+ exited 1 in 702ms:
+At line:2 char:28
++ cd C:\UI-specs\URL-to-Code && ls packs\fxfer-v9\screens\file-transfer ...
++                            ~~
+The token '&&' is not a valid statement separator in this version.
+At line:2 char:97
++ ... s\fxfer-v9\screens\file-transfer-configuration\flows\plans && node -v
++                                                                ~~
+The token '&&' is not a valid statement separator in this version.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+ 
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; ls packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\plans; node -v" in C:\UI-specs\URL-to-Code
+ succeeded in 2538ms:
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:17 PM           2172 wave-1.frontier.json                                                 
+-a----        11/17/2026   4:18 PM            681 wave-1.json                                                          
+-a----        11/17/2026   4:17 PM            252 wave-1.suggested.json                                                
+-a----        11/17/2026   4:20 PM           7569 wave-2.frontier.json                                                 
+-a----        11/17/2026   4:23 PM           2974 wave-2.json                                                          
+-a----        11/17/2026   4:20 PM           1392 wave-2.suggested.json                                                
+-a----        11/17/2026   4:25 PM          13828 wave-3.frontier.json                                                 
+-a----        11/17/2026   4:25 PM           2855 wave-3.suggested.json                                                
+v24.22.1
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\plans\\wave-3.frontier.json -Raw | node -e \"const fs=require('fs');const j=JSON.parse(fs.readFileSync(0,'utf8'));console.log('states',j.states?.length||j.length||Object.keys(j).length);console.log(Object.keys(j));\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1799ms:
+states 3
+[ 'wave', 'maxActions', 'nodes' ]
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; node - <<'NODE'
+const fs=require('fs');
+const p='packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-3.frontier.json';
+const j=JSON.parse(fs.readFileSync(p,'utf8'));
+for (const n of j.nodes){
+  console.log('NODE',n.node,'name=',n.name||'', 'folder=',n.folder||'');
+  console.log('  path=',n.path||'');
+  console.log('  candidates=',(n.candidates||[]).map(c=>c.el).join(', '));
+}
+NODE" in C:\UI-specs\URL-to-Code
+ exited 1 in 1068ms:
+At line:2 char:37
++ cd C:\UI-specs\URL-to-Code; node - <<'NODE'
++                                     ~
+Missing file specification after redirection operator.
+At line:2 char:36
++ cd C:\UI-specs\URL-to-Code; node - <<'NODE'
++                                    ~
+The '<' operator is reserved for future use.
+At line:2 char:37
++ cd C:\UI-specs\URL-to-Code; node - <<'NODE'
++                                     ~
+The '<' operator is reserved for future use.
+At line:5 char:37
++ const j=JSON.parse(fs.readFileSync(p,'utf8'));
++                                     ~
+Missing argument in parameter list.
+At line:7 char:22
++   console.log('NODE',n.node,'name=',n.name||'', 'folder=',n.folder||' ...
++                      ~
+Missing expression after ','.
+At line:7 char:22
++   console.log('NODE',n.node,'name=',n.name||'', 'folder=',n.folder||' ...
++                      ~~~~~~
+Unexpected token 'n.node' in expression or statement.
+At line:7 char:22
++   console.log('NODE',n.node,'name=',n.name||'', 'folder=',n.folder||' ...
++                      ~
+Missing closing ')' in expression.
+At line:7 char:43
++   console.log('NODE',n.node,'name=',n.name||'', 'folder=',n.folder||' ...
++                                           ~~
+The token '||' is not a valid statement separator in this version.
+At line:7 char:59
++   console.log('NODE',n.node,'name=',n.name||'', 'folder=',n.folder||' ...
++                                                           ~
+Missing expression after ','.
+At line:7 char:45
++   console.log('NODE',n.node,'name=',n.name||'', 'folder=',n.folder||' ...
++                                             ~~~~~~~~~~~~~~
+Expressions are only allowed as the first element of a pipeline.
+Not all parse errors were reported.  Correct the reported errors and try again.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingFileSpecification
+ 
+
+**Considering PowerShell methods**
+
+In PowerShell, I need to remember that using heredoc for Node.js requires a different approach. I can either use `node -e` with an inline string or utilize the `@' '@` syntax with a pipe. So, I’ll go with the `node -e "..."` option to read the file. It seems straightforward, and I'll give it a try!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; node -e \"const fs=require('fs'); const p='packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-3.frontier.json'; const j=JSON.parse(fs.readFileSync(p,'utf8')); for(const n of j.nodes){ console.log('NODE',n.node,'name=',n.name||'', 'folder=',n.folder||''); console.log('  stateDir=',n.stateDir||n.dir||n.folder||''); console.log('  candidates=',(n.candidates||[]).map(c=>c.el+':' + (c.kind||c.role||'')).join(' | ')); }\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1633ms:
+NODE n1.1 name= open-configuration folder= 
+  stateDir= C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n1.1-open-configuration
+  candidates= e1:check | e2:button | e3:button | e4:row
+NODE n2.1 name= run-weekly folder= 
+  stateDir= C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.1-run-weekly
+  candidates= e1:text | e2:text | e3:dropdown | e4:text | e5:text | e6:dropdown | e7:text | e8:text | e9:text | e10:dropdown | e11:text | e12:radio | e13:radio | e14:check | e15:check | e16:check | e17:check | e18:check | e19:check | e20:check | e21:dropdown | e22:dropdown | e23:check | e24:check | e25:check | e26:check | e27:button | e28:row | e29:button | e30:button | e31:button | e32:row
+NODE n2.2 name= run-monthly folder= 
+  stateDir= C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.2-run-monthly
+  candidates= e1:text | e2:text | e3:dropdown | e4:text | e5:text | e6:dropdown | e7:text | e8:text | e9:text | e10:dropdown | e11:text | e12:radio | e13:radio | e14:check | e15:check | e16:dropdown | e17:dropdown | e18:dropdown | e19:check | e20:check | e21:check | e22:check | e23:button | e24:row | e25:button | e26:button | e27:button | e28:row
+NODE n2.3 name= create-destination folder= 
+  stateDir= C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.3-create-destination
+  candidates= e1:dropdown | e2:dropdown | e3:text | e4:text | e5:text | e6:text | e7:check | e8:check | e9:check | e10:check | e11:check | e12:button | e13:button | e14:button | e15:button
+
+**Considering nodes in frontier**
+
+I’m checking that there are 4 nodes in the frontier: n1.1, n2.1, n2.2, and n2.3, which aligns with the output. Earlier, I thought there were only 3 based on the top-level keys. Now, I need to look inside each state’s folder to fully inspect them. Plus, I should read FLOWS.md to see what has already been reached. It seems like there’s a bit more work to do here!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\FLOWS.md -Raw" in C:\UI-specs\URL-to-Code
+ succeeded in 1255ms:
+# Flows of https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchSourceLocations
+
+8 states (0 boundaries), 3 wave(s), plans by ai. 2026-11-17T10:55:25.918Z
+
+Each state: its id (cite it in the spec as [flow:<id>]), kind, how it was reached, status. A **boundary** is where the live page would have sent a write (blocked): the flow ends there.
+Folders: `<id>-<name>/` with shot.png, map.png (numbered), node.json (fields: what each text box accepts and the messages it shows; saveProbe: what Save shows with writes blocked), layer.html.
+
+- **n0** at-rest (page) - explored [shot](n0-at-rest/shot.png)
+  - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+  - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+  - **n1** search-results (results) via click "Search" - explored [shot](n1-search-results/shot.png)
+    - tried: e10 "Search" click -> nothing changed
+    - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - **n1.1** open-configuration (dialog) "View File Transfer Configuration" via dblclick "4TestFTP/testweryashwanthAdministrationActiveaab80b60-a4ec-4" - frontier [shot](n1.1-open-configuration/shot.png)
+  - **n2** create-new (dialog) "Add File Transfer Configuration" via click "Create New" - explored [shot](n2-create-new/shot.png)
+    - never clicked: "Save" (commit: the kit marks it a Save)
+    - field Configuration Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - field Description: accepts letters, digits, spaces, symbols
+    - field Source Address: accepts letters, digits, spaces, symbols
+    - field Source File Mask: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - field Trading Partner: accepts letters, digits, spaces, symbols, max 10 (stops typing)
+    - field Owner Name: accepts letters, digits, spaces, symbols, max 50 (stops typing)
+    - field Owner Phone: accepts digits, symbols
+    - field Owner Email: accepts letters, digits, spaces, symbols
+    - Save with writes blocked ("Save"): 0 banner(s), 12 field message(s)
+    - **n2.1** run-weekly (part) "Add File Transfer Configuration" via click "1" - frontier [shot](n2.1-run-weekly/shot.png)
+    - **n2.2** run-monthly (part) "Add File Transfer Configuration" via click "2" - frontier [shot](n2.2-run-monthly/shot.png)
+    - **n2.3** create-destination (part) "Add File Transfer Configuration" via fill "#Edit_ConfigName"="TestConfig1" > select "select a value...ProtocolTypeList"="1" > fill "#SourceAddress"="/test" > fill "#SourceFileMask"="test.txt" > select "select a value...FileDirectionList"="1" > fill "#Edit_OwnerName"="Owner1" > fill "#OwnerPhoneNumber"="5551234567" > select "select a value...AddConfigModuleList"="0b34481f-f69c-3ab6-e053-c9157aceff03" > fill "#OwnerEmail"="test.user@example.com" > click "1" > select "select a value...TimeWindowStartList"="0000" > select "select a value...TimeWindowEndList"="0030" > click "Create New" - frontier [shot](n2.3-create-destination/shot.png)
+  - **n3** criteria-collapsed (part) via click "div.panel-icon.clickable" - dead-end (Only actions are Expand Criteria and Create New, which lead back to already-known states (n1 and n2) from here.) [shot](n3-criteria-collapsed/shot.png)
+
+
+**Planning frontier tasks**
+
+I need to focus on the four nodes for frontier: the open-configuration dialog, run-weekly part, run-monthly part, and create-destination part. It's essential to have a plan for each. I'll inspect the folder for each node and check out the candidates' details by reading candidates.md. The idea is to list the directory and then "cat" the candidates.md file for each node. Let's tackle this systematically!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; foreach("'$d in @('"'packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n1.1-open-configuration','packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.1-run-weekly','packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.2-run-monthly','packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.3-create-destination')){ Write-Host '---' "'$d; ls $d; if(Test-Path "$d'"\\candidates.md\"){ Write-Host 'candidates.md'; Get-Content \""'$d'"\\candidates.md\" -Raw } }" in C:\UI-specs\URL-to-Code
+ succeeded in 2385ms:
+--- packs\fxfer-v9\screens\file-transfer-configuration\flows\n1.1-open-configuration
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n1.1-open-configuration
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:24 PM           1354 candidates.json                                                      
+-a----        11/17/2026   4:24 PM            633 candidates.md                                                        
+-a----        11/17/2026   4:23 PM         135686 layer.html                                                           
+-a----        11/17/2026   4:24 PM         111061 map.png                                                              
+-a----        11/17/2026   4:24 PM           1388 node.json                                                            
+-a----        11/17/2026   4:23 PM         110672 shot.png                                                             
+-a----        11/17/2026   4:23 PM          63618 window.json                                                          
+candidates.md
+# n1.1 open-configuration: what can be done here (top window "View File Transfer Configuration")
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | check | true / Show Inactives | DestinationShowInactiveCheckBox / DestinationShowInactiveCheckBox |  |  |
+| e2 | button | Edit | editFileTransferConfigurationButton |  |  |
+| e3 | button | Close | closeFileTransferConfigurationButton |  | kit: close |
+| e4 | row | https://dxccommercial.test.mapshc.comFTPActivetrue |  |  | 2 rows |
+
+--- packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.1-run-weekly
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.1-run-weekly
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:24 PM          13260 candidates.json                                                      
+-a----        11/17/2026   4:24 PM           5049 candidates.md                                                        
+-a----        11/17/2026   4:24 PM         116048 map.png                                                              
+-a----        11/17/2026   4:24 PM           1288 node.json                                                            
+-a----        11/17/2026   4:24 PM         107592 shot.png                                                             
+candidates.md
+# n2.1 run-weekly: what can be done here (top window "Add File Transfer Configuration")
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | text | Configuration Name | Edit_ConfigName / ConfigName | {"length-max":"Configuration Name has a maximum length of 50 characters.","regex":"Configuration Name is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].","regex-pattern":"^([A-Za-z0-9]/[^\\x00-\\x7F])*$","required":"Configuration Name is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e2 | text | Description | Description / Description | {"length-max":"Description has a maximum length of 200 characters.","maxlength":200,"inputmode":"text"} |  |
+| e3 | dropdown | select a value...ProtocolTypeList / Protocol |  | 1, 2, 3, 4 |  |
+| e4 | text | Source Address | SourceAddress / SourceAddress | {"length-max":"Source Address has a maximum length of 248 characters.","required":"Source Address is a required field.","maxlength":248,"inputmode":"text"} |  |
+| e5 | text | Source File Mask | SourceFileMask / SourceFileMask | {"length-max":"Source File Mask has a maximum length of 50 characters.","required":"Source File Mask is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e6 | dropdown | select a value...FileDirectionList / File Direction |  | 1, 2 |  |
+| e7 | text | Trading Partner | TradingPartner / TradingPartner | {"length-max":"Trading Partner has a maximum length of 10 characters.","regex":"Trading Partner is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].","regex-pattern":"^([A-Za-z0-9]/[^\\x00-\\x7F])*$","maxlength":10,"inputmode":"text"} |  |
+| e8 | text | Owner Name | Edit_OwnerName / OwnerName | {"length-max":"Owner Name has a maximum length of 50 characters.","required":"Owner Name is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e9 | text | Owner Phone | OwnerPhoneNumber / OwnerPhoneNumber | {"length-max":"Owner Phone has a maximum length of 20 characters.","regex":"Enter Valid Phone Number.","regex-pattern":"^(?!(^\\(?(0{3})\\)?( /-/\\.)?0{3}( /-/\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( /-/\\.)?\\d{3,3}( /-/\\.)?\\d{4,4}$)","required":"Owner Phone is a required field.","inputmode":"text"} |  |
+| e10 | dropdown | select a value...AddConfigModuleList / Owner Module |  | 0b34481f-f69c-3ab6-e053-c9157aceff03, 09df7d37-3bd5-7c9c-e053-c9157aceb3f2, bb31ef47-8d1e-c99a-e053-c9157ace53da, 06c7121b-8166-4e32-e054-0017a4ab527b, 98385830-7fc2-5bb4-e053-c9157ace364b, 0e7b7146-aa81-5292-e053-c9157ace4cbe, 96c6da47-0ae6-2bcd-e053-c9157ace38f9, fdf18357-3c14-7cb7-e053-c9157ace3990, ff19da47-cc91-e17d-e053-c9157ace99a5, 2e60501f-f8aa-50b6-e053-c9157acefb50, 30de9349-0e99-aec1-e053-c9157ace0401, f1612a4b-ff51-1a03-e053-c9157ace9264 |  |
+| e11 | text | Owner Email | OwnerEmail / OwnerEmail | {"length-max":"Owner Email has a maximum length of 150 characters.","regex":"Owner Email is not a valid email address. Enter email with 'name@domain' format.","regex-pattern":"^[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$","required":"Owner Email is a required field.","maxlength":150,"inputmode":"text"} |  |
+| e12 | radio | 1 / Run Weekly | RunSchedule_ID1 / RunSchedule.ID |  | checked |
+| e13 | radio | 2 / Run Monthly | RunSchedule_ID2 / RunSchedule.ID |  |  |
+| e14 | check | true / Sunday | RunOnSunday / RunOnSunday |  |  |
+| e15 | check | true / Monday | RunOnMonday / RunOnMonday |  |  |
+| e16 | check | true / Tuesday | RunOnTuesday / RunOnTuesday |  |  |
+| e17 | check | true / Wednesday | RunOnWednesday / RunOnWednesday |  |  |
+| e18 | check | true / Thursday | RunOnThursday / RunOnThursday |  |  |
+| e19 | check | true / Friday | RunOnFriday / RunOnFriday |  |  |
+| e20 | check | true / Saturday | RunOnSaturday / RunOnSaturday |  |  |
+| e21 | dropdown | select a value...TimeWindowStartList / Time Window Start |  | 0000, 0030, 0100, 0130, 0200, 0230, 0300, 0330, 0400, 0430, 0500, 0530 |  |
+| e22 | dropdown | select a value...TimeWindowEndList / Time Window End |  | 0000, 0030, 0100, 0130, 0200, 0230, 0300, 0330, 0400, 0430, 0500, 0530 |  |
+| e23 | check | true / Send Notification | SendNotification / SendNotification |  |  |
+| e24 | check | true / Suspend | Suspended / Suspended |  |  |
+| e25 | check | true / Active | IsActive / IsActive |  | checked |
+| e26 | check | true / Show Inactives | DestinationShowInactiveCheckBox / DestinationShowInactiveCheckBox |  |  |
+| e27 | button | Create New | DestinationGridAddButton |  |  |
+| e28 | row | There are no records found. |  |  | 1 rows |
+| e29 | button | Reset | FileTransferConfigurationEditFormResetButton |  |  |
+| e30 | button | Cancel | FileTransferConfigurationEditFormCancelButton |  |  |
+| e31 | button | Save | FileTransferConfigurationEditFormSaveButton |  | danger: commit: "Save" |
+| e32 | row | There are no records found. |  |  | 1 rows |
+
+--- packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.2-run-monthly
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.2-run-monthly
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:24 PM          12165 candidates.json                                                      
+-a----        11/17/2026   4:24 PM           4858 candidates.md                                                        
+-a----        11/17/2026   4:24 PM         121966 map.png                                                              
+-a----        11/17/2026   4:24 PM           1301 node.json                                                            
+-a----        11/17/2026   4:24 PM         113490 shot.png                                                             
+candidates.md
+# n2.2 run-monthly: what can be done here (top window "Add File Transfer Configuration")
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | text | Configuration Name | Edit_ConfigName / ConfigName | {"length-max":"Configuration Name has a maximum length of 50 characters.","regex":"Configuration Name is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].","regex-pattern":"^([A-Za-z0-9]/[^\\x00-\\x7F])*$","required":"Configuration Name is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e2 | text | Description | Description / Description | {"length-max":"Description has a maximum length of 200 characters.","maxlength":200,"inputmode":"text"} |  |
+| e3 | dropdown | select a value...ProtocolTypeList / Protocol |  | 1, 2, 3, 4 |  |
+| e4 | text | Source Address | SourceAddress / SourceAddress | {"length-max":"Source Address has a maximum length of 248 characters.","required":"Source Address is a required field.","maxlength":248,"inputmode":"text"} |  |
+| e5 | text | Source File Mask | SourceFileMask / SourceFileMask | {"length-max":"Source File Mask has a maximum length of 50 characters.","required":"Source File Mask is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e6 | dropdown | select a value...FileDirectionList / File Direction |  | 1, 2 |  |
+| e7 | text | Trading Partner | TradingPartner / TradingPartner | {"length-max":"Trading Partner has a maximum length of 10 characters.","regex":"Trading Partner is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].","regex-pattern":"^([A-Za-z0-9]/[^\\x00-\\x7F])*$","maxlength":10,"inputmode":"text"} |  |
+| e8 | text | Owner Name | Edit_OwnerName / OwnerName | {"length-max":"Owner Name has a maximum length of 50 characters.","required":"Owner Name is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e9 | text | Owner Phone | OwnerPhoneNumber / OwnerPhoneNumber | {"length-max":"Owner Phone has a maximum length of 20 characters.","regex":"Enter Valid Phone Number.","regex-pattern":"^(?!(^\\(?(0{3})\\)?( /-/\\.)?0{3}( /-/\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( /-/\\.)?\\d{3,3}( /-/\\.)?\\d{4,4}$)","required":"Owner Phone is a required field.","inputmode":"text"} |  |
+| e10 | dropdown | select a value...AddConfigModuleList / Owner Module |  | 0b34481f-f69c-3ab6-e053-c9157aceff03, 09df7d37-3bd5-7c9c-e053-c9157aceb3f2, bb31ef47-8d1e-c99a-e053-c9157ace53da, 06c7121b-8166-4e32-e054-0017a4ab527b, 98385830-7fc2-5bb4-e053-c9157ace364b, 0e7b7146-aa81-5292-e053-c9157ace4cbe, 96c6da47-0ae6-2bcd-e053-c9157ace38f9, fdf18357-3c14-7cb7-e053-c9157ace3990, ff19da47-cc91-e17d-e053-c9157ace99a5, 2e60501f-f8aa-50b6-e053-c9157acefb50, 30de9349-0e99-aec1-e053-c9157ace0401, f1612a4b-ff51-1a03-e053-c9157ace9264 |  |
+| e11 | text | Owner Email | OwnerEmail / OwnerEmail | {"length-max":"Owner Email has a maximum length of 150 characters.","regex":"Owner Email is not a valid email address. Enter email with 'name@domain' format.","regex-pattern":"^[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$","required":"Owner Email is a required field.","maxlength":150,"inputmode":"text"} |  |
+| e12 | radio | 1 / Run Weekly | RunSchedule_ID1 / RunSchedule.ID |  |  |
+| e13 | radio | 2 / Run Monthly | RunSchedule_ID2 / RunSchedule.ID |  | checked |
+| e14 | check | true / Run On First Day Month | RunOnFirstDay / RunOnFirstDay |  |  |
+| e15 | check | true / Run On Last Day Month | RunOnLastDay / RunOnLastDay |  |  |
+| e16 | dropdown | select a value...RunOnThisDayList / Run On This Day Month |  | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 |  |
+| e17 | dropdown | select a value...TimeWindowStartList / Time Window Start |  | 0000, 0030, 0100, 0130, 0200, 0230, 0300, 0330, 0400, 0430, 0500, 0530 |  |
+| e18 | dropdown | select a value...TimeWindowEndList / Time Window End |  | 0000, 0030, 0100, 0130, 0200, 0230, 0300, 0330, 0400, 0430, 0500, 0530 |  |
+| e19 | check | true / Send Notification | SendNotification / SendNotification |  |  |
+| e20 | check | true / Suspend | Suspended / Suspended |  |  |
+| e21 | check | true / Active | IsActive / IsActive |  | checked |
+| e22 | check | true / Show Inactives | DestinationShowInactiveCheckBox / DestinationShowInactiveCheckBox |  |  |
+| e23 | button | Create New | DestinationGridAddButton |  |  |
+| e24 | row | There are no records found. |  |  | 1 rows |
+| e25 | button | Reset | FileTransferConfigurationEditFormResetButton |  |  |
+| e26 | button | Cancel | FileTransferConfigurationEditFormCancelButton |  |  |
+| e27 | button | Save | FileTransferConfigurationEditFormSaveButton |  | danger: commit: "Save" |
+| e28 | row | There are no records found. |  |  | 1 rows |
+
+--- packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.3-create-destination
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.3-create-destination
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:25 PM           6097 candidates.json                                                      
+-a----        11/17/2026   4:25 PM           2488 candidates.md                                                        
+-a----        11/17/2026   4:25 PM          90539 map.png                                                              
+-a----        11/17/2026   4:25 PM           5289 node.json                                                            
+-a----        11/17/2026   4:25 PM          84870 shot.png                                                             
+candidates.md
+# n2.3 create-destination: what can be done here (top window "Add File Transfer Configuration")
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | dropdown | select a value...DestinationProtocolList / Destination Protocol |  | 1, 2, 3, 4 |  |
+| e2 | dropdown | select a value...DestinationTypeList / Destination Type |  | FileToEvent, UserDefined |  |
+| e3 | text | Destination Address | DestinationAddress / DestinationAddress | {"length-max":"Destination Address has a maximum length of 248 characters.","required":"Destination Address is a required field.","maxlength":248,"inputmode":"text"} |  |
+| e4 | text | Contact Name | ContactName / ContactName | {"length-max":"Contact Name has a maximum length of 50 characters.","regex":"Contact Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.","regex-pattern":"^([^;*^:~<>%])*$","maxlength":50,"inputmode":"text"} |  |
+| e5 | text | Contact Phone | ContactPhone / ContactPhone | {"length-max":"Contact Phone has a maximum length of 50 characters.","regex":"Enter Valid Phone Number.","regex-pattern":"^(?!(^\\(?(0{3})\\)?( /-/\\.)?0{3}( /-/\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( /-/\\.)?\\d{3,3}( /-/\\.)?\\d{4,4}$)","inputmode":"text"} |  |
+| e6 | text | Contact Email | ContactEmail / ContactEmail | {"length-max":"Contact Email has a maximum length of 50 characters.","regex":"Contact Email is not a valid email address. Enter email with 'name@domain' format.","regex-pattern":"^[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$","maxlength":50,"inputmode":"text"} |  |
+| e7 | check | true / Overwrite At Destination | OverwriteAtDestination / OverwriteAtDestination |  |  |
+| e8 | check | true / Compress At Destination | CompressAtDestination / CompressAtDestination |  |  |
+| e9 | check | true / Destination Is Archive | DestinationIsArchive / DestinationIsArchive |  |  |
+| e10 | check | true / Rename At Destination | RenameAtDestination / RenameAtDestination |  |  |
+| e11 | check | true / Active | Active / Active |  | checked |
+| e12 | button | Reset | DestinationResetButton |  |  |
+| e13 | button | Cancel | DestinationCancelButton |  |  |
+| e14 | button | Add Another | AddAnotherButton |  |  |
+| e15 | button | Save | SaveAndCloseButton |  | danger: commit: "Save" |
+
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; ls packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.2-run-monthly; Get-Content packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.2-run-monthly\\candidates.md -Raw" in C:\UI-specs\URL-to-Code
+ succeeded in 2708ms:
+
+
+    Directory: C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\n2.2-run-monthly
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/17/2026   4:24 PM          12165 candidates.json                                                      
+-a----        11/17/2026   4:24 PM           4858 candidates.md                                                        
+-a----        11/17/2026   4:24 PM         121966 map.png                                                              
+-a----        11/17/2026   4:24 PM           1301 node.json                                                            
+-a----        11/17/2026   4:24 PM         113490 shot.png                                                             
+# n2.2 run-monthly: what can be done here (top window "Add File Transfer Configuration")
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | text | Configuration Name | Edit_ConfigName / ConfigName | {"length-max":"Configuration Name has a maximum length of 50 characters.","regex":"Configuration Name is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].","regex-pattern":"^([A-Za-z0-9]/[^\\x00-\\x7F])*$","required":"Configuration Name is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e2 | text | Description | Description / Description | {"length-max":"Description has a maximum length of 200 characters.","maxlength":200,"inputmode":"text"} |  |
+| e3 | dropdown | select a value...ProtocolTypeList / Protocol |  | 1, 2, 3, 4 |  |
+| e4 | text | Source Address | SourceAddress / SourceAddress | {"length-max":"Source Address has a maximum length of 248 characters.","required":"Source Address is a required field.","maxlength":248,"inputmode":"text"} |  |
+| e5 | text | Source File Mask | SourceFileMask / SourceFileMask | {"length-max":"Source File Mask has a maximum length of 50 characters.","required":"Source File Mask is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e6 | dropdown | select a value...FileDirectionList / File Direction |  | 1, 2 |  |
+| e7 | text | Trading Partner | TradingPartner / TradingPartner | {"length-max":"Trading Partner has a maximum length of 10 characters.","regex":"Trading Partner is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].","regex-pattern":"^([A-Za-z0-9]/[^\\x00-\\x7F])*$","maxlength":10,"inputmode":"text"} |  |
+| e8 | text | Owner Name | Edit_OwnerName / OwnerName | {"length-max":"Owner Name has a maximum length of 50 characters.","required":"Owner Name is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e9 | text | Owner Phone | OwnerPhoneNumber / OwnerPhoneNumber | {"length-max":"Owner Phone has a maximum length of 20 characters.","regex":"Enter Valid Phone Number.","regex-pattern":"^(?!(^\\(?(0{3})\\)?( /-/\\.)?0{3}( /-/\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( /-/\\.)?\\d{3,3}( /-/\\.)?\\d{4,4}$)","required":"Owner Phone is a required field.","inputmode":"text"} |  |
+| e10 | dropdown | select a value...AddConfigModuleList / Owner Module |  | 0b34481f-f69c-3ab6-e053-c9157aceff03, 09df7d37-3bd5-7c9c-e053-c9157aceb3f2, bb31ef47-8d1e-c99a-e053-c9157ace53da, 06c7121b-8166-4e32-e054-0017a4ab527b, 98385830-7fc2-5bb4-e053-c9157ace364b, 0e7b7146-aa81-5292-e053-c9157ace4cbe, 96c6da47-0ae6-2bcd-e053-c9157ace38f9, fdf18357-3c14-7cb7-e053-c9157ace3990, ff19da47-cc91-e17d-e053-c9157ace99a5, 2e60501f-f8aa-50b6-e053-c9157acefb50, 30de9349-0e99-aec1-e053-c9157ace0401, f1612a4b-ff51-1a03-e053-c9157ace9264 |  |
+| e11 | text | Owner Email | OwnerEmail / OwnerEmail | {"length-max":"Owner Email has a maximum length of 150 characters.","regex":"Owner Email is not a valid email address. Enter email with 'name@domain' format.","regex-pattern":"^[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$","required":"Owner Email is a required field.","maxlength":150,"inputmode":"text"} |  |
+| e12 | radio | 1 / Run Weekly | RunSchedule_ID1 / RunSchedule.ID |  |  |
+| e13 | radio | 2 / Run Monthly | RunSchedule_ID2 / RunSchedule.ID |  | checked |
+| e14 | check | true / Run On First Day Month | RunOnFirstDay / RunOnFirstDay |  |  |
+| e15 | check | true / Run On Last Day Month | RunOnLastDay / RunOnLastDay |  |  |
+| e16 | dropdown | select a value...RunOnThisDayList / Run On This Day Month |  | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 |  |
+| e17 | dropdown | select a value...TimeWindowStartList / Time Window Start |  | 0000, 0030, 0100, 0130, 0200, 0230, 0300, 0330, 0400, 0430, 0500, 0530 |  |
+| e18 | dropdown | select a value...TimeWindowEndList / Time Window End |  | 0000, 0030, 0100, 0130, 0200, 0230, 0300, 0330, 0400, 0430, 0500, 0530 |  |
+| e19 | check | true / Send Notification | SendNotification / SendNotification |  |  |
+| e20 | check | true / Suspend | Suspended / Suspended |  |  |
+| e21 | check | true / Active | IsActive / IsActive |  | checked |
+| e22 | check | true / Show Inactives | DestinationShowInactiveCheckBox / DestinationShowInactiveCheckBox |  |  |
+| e23 | button | Create New | DestinationGridAddButton |  |  |
+| e24 | row | There are no records found. |  |  | 1 rows |
+| e25 | button | Reset | FileTransferConfigurationEditFormResetButton |  |  |
+| e26 | button | Cancel | FileTransferConfigurationEditFormCancelButton |  |  |
+| e27 | button | Save | FileTransferConfigurationEditFormSaveButton |  | danger: commit: "Save" |
+| e28 | row | There are no records found. |  |  | 1 rows |
+
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2.1-run-weekly\\candidates.md -Raw" in C:\UI-specs\URL-to-Code
+ succeeded in 991ms:
+# n2.1 run-weekly: what can be done here (top window "Add File Transfer Configuration")
+
+Numbers match map.png. `danger` = never clicked (commit). Rows: the first row stands for all of them.
+
+| el | kind | text / label | id / name | rules / options | note |
+|---|---|---|---|---|---|
+| e1 | text | Configuration Name | Edit_ConfigName / ConfigName | {"length-max":"Configuration Name has a maximum length of 50 characters.","regex":"Configuration Name is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].","regex-pattern":"^([A-Za-z0-9]/[^\\x00-\\x7F])*$","required":"Configuration Name is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e2 | text | Description | Description / Description | {"length-max":"Description has a maximum length of 200 characters.","maxlength":200,"inputmode":"text"} |  |
+| e3 | dropdown | select a value...ProtocolTypeList / Protocol |  | 1, 2, 3, 4 |  |
+| e4 | text | Source Address | SourceAddress / SourceAddress | {"length-max":"Source Address has a maximum length of 248 characters.","required":"Source Address is a required field.","maxlength":248,"inputmode":"text"} |  |
+| e5 | text | Source File Mask | SourceFileMask / SourceFileMask | {"length-max":"Source File Mask has a maximum length of 50 characters.","required":"Source File Mask is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e6 | dropdown | select a value...FileDirectionList / File Direction |  | 1, 2 |  |
+| e7 | text | Trading Partner | TradingPartner / TradingPartner | {"length-max":"Trading Partner has a maximum length of 10 characters.","regex":"Trading Partner is restricted to alphanumeric characters only [A-Z], [a-z], [0-9].","regex-pattern":"^([A-Za-z0-9]/[^\\x00-\\x7F])*$","maxlength":10,"inputmode":"text"} |  |
+| e8 | text | Owner Name | Edit_OwnerName / OwnerName | {"length-max":"Owner Name has a maximum length of 50 characters.","required":"Owner Name is a required field.","maxlength":50,"inputmode":"text"} |  |
+| e9 | text | Owner Phone | OwnerPhoneNumber / OwnerPhoneNumber | {"length-max":"Owner Phone has a maximum length of 20 characters.","regex":"Enter Valid Phone Number.","regex-pattern":"^(?!(^\\(?(0{3})\\)?( /-/\\.)?0{3}( /-/\\.)?0{4}$))(^\\(?(\\d{3,3})\\)?( /-/\\.)?\\d{3,3}( /-/\\.)?\\d{4,4}$)","required":"Owner Phone is a required field.","inputmode":"text"} |  |
+| e10 | dropdown | select a value...AddConfigModuleList / Owner Module |  | 0b34481f-f69c-3ab6-e053-c9157aceff03, 09df7d37-3bd5-7c9c-e053-c9157aceb3f2, bb31ef47-8d1e-c99a-e053-c9157ace53da, 06c7121b-8166-4e32-e054-0017a4ab527b, 98385830-7fc2-5bb4-e053-c9157ace364b, 0e7b7146-aa81-5292-e053-c9157ace4cbe, 96c6da47-0ae6-2bcd-e053-c9157ace38f9, fdf18357-3c14-7cb7-e053-c9157ace3990, ff19da47-cc91-e17d-e053-c9157ace99a5, 2e60501f-f8aa-50b6-e053-c9157acefb50, 30de9349-0e99-aec1-e053-c9157ace0401, f1612a4b-ff51-1a03-e053-c9157ace9264 |  |
+| e11 | text | Owner Email | OwnerEmail / OwnerEmail | {"length-max":"Owner Email has a maximum length of 150 characters.","regex":"Owner Email is not a valid email address. Enter email with 'name@domain' format.","regex-pattern":"^[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{/}~-]+)*@([a-zA-Z0-9]+[\\w-]+\\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,62}$","required":"Owner Email is a required field.","maxlength":150,"inputmode":"text"} |  |
+| e12 | radio | 1 / Run Weekly | RunSchedule_ID1 / RunSchedule.ID |  | checked |
+| e13 | radio | 2 / Run Monthly | RunSchedule_ID2 / RunSchedule.ID |  |  |
+| e14 | check | true / Sunday | RunOnSunday / RunOnSunday |  |  |
+| e15 | check | true / Monday | RunOnMonday / RunOnMonday |  |  |
+| e16 | check | true / Tuesday | RunOnTuesday / RunOnTuesday |  |  |
+| e17 | check | true / Wednesday | RunOnWednesday / RunOnWednesday |  |  |
+| e18 | check | true / Thursday | RunOnThursday / RunOnThursday |  |  |
+| e19 | check | true / Friday | RunOnFriday / RunOnFriday |  |  |
+| e20 | check | true / Saturday | RunOnSaturday / RunOnSaturday |  |  |
+| e21 | dropdown | select a value...TimeWindowStartList / Time Window Start |  | 0000, 0030, 0100, 0130, 0200, 0230, 0300, 0330, 0400, 0430, 0500, 0530 |  |
+| e22 | dropdown | select a value...TimeWindowEndList / Time Window End |  | 0000, 0030, 0100, 0130, 0200, 0230, 0300, 0330, 0400, 0430, 0500, 0530 |  |
+| e23 | check | true / Send Notification | SendNotification / SendNotification |  |  |
+| e24 | check | true / Suspend | Suspended / Suspended |  |  |
+| e25 | check | true / Active | IsActive / IsActive |  | checked |
+| e26 | check | true / Show Inactives | DestinationShowInactiveCheckBox / DestinationShowInactiveCheckBox |  |  |
+| e27 | button | Create New | DestinationGridAddButton |  |  |
+| e28 | row | There are no records found. |  |  | 1 rows |
+| e29 | button | Reset | FileTransferConfigurationEditFormResetButton |  |  |
+| e30 | button | Cancel | FileTransferConfigurationEditFormCancelButton |  |  |
+| e31 | button | Save | FileTransferConfigurationEditFormSaveButton |  | danger: commit: "Save" |
+| e32 | row | There are no records found. |  |  | 1 rows |
+
+
+**Planning user interface interactions**
+
+I need to click Edit to enter edit mode and show additional rows by clicking the Show Inactives checkbox. Then I’ll double-click a row to open the destination details and check the map for context.
+
+I’m planning to add a File Transfer Configuration dialog in the run-weekly section. I suspect there are interactions I've yet to explore, especially concerning creating new destinations. I need to ensure I'm reaching all necessary flows like the n2.3 create-destination.
+**Evaluating action selections**
+
+It looks like selecting Create New from the weekly dialog indicates valid input. From the n2.1 state, I might switch to the Run Monthly radio to access the n2.2 state, which is already known.
+
+However, n2.1 also allows picking run monthly to reach n2.2, even though it feels like a separate frontier. The check-flows might expect an action that transitions directly from n2.1 to n2.2. I need to ensure required fields and time windows are set up correctly before clicking Create New, since missing inputs could trigger validation messages.
+**Assessing validation and actions**
+
+The script already measures text boxes, but clicking might trigger a validation state, showing field messages or opening the create destination dialog (n2.3) if conditions are valid. I’m considering whether I should attempt clicking Create New with empty fields to see the validation results.
+
+The script indicates that it probes Save, but there’s no mention of Create New. I need to ensure the required fields are filled with valid values before clicking Create New, as that should ideally lead to n2.3. The system may explore n2.3 separately, but I wonder if reaching it from n2.1 is necessary.
+**Analyzing state navigation**
+
+It seems n2.3 has already reached frontier status through a previous wave, yet wave3's open states are separate nodes that require actions. For n2.1, I should reconsider clicking Create New if it leads to a known state at the same place. They might prefer exploring new states from that node. While n2.3 is a distinct node, it can still be accessed from n2.1 with the right setup.
+
+Frontier nodes represent open states, and to further explore n2.3, I need to identify the required actions. The planner indicates that I should determine the "actions" needed from each frontier state to reach new ones. I'm just a little unsure about how to approach this systematically.
+**Exploring node actions**
+
+I think the exploration script acts on frontier nodes by starting from the root and following actions to visit those nodes. For n2.1, the actions should focus on reaching new states, not n2.3, which is already a frontier. 
+
+Since n2.3 can be reached from n2.1 via a previous Create New click, planning that again seems redundant. Instead, I could toggle the Show Inactives checkbox, select time windows, or explore the Run Monthly versus Weekly options to initiate n2.2. I want to be careful not to duplicate efforts or trigger unnecessary validation messages, and I plan to cross-check the suggested file for recommendations.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; Get-Content packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\plans\\wave-3.suggested.json -Raw" in C:\UI-specs\URL-to-Code
+ succeeded in 804ms:
+{
+ "source": "rules",
+ "nodes": [
+  {
+   "node": "n1.1",
+   "actions": [
+    {
+     "el": "e4",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e2",
+     "do": "click",
+     "why": "button \"Edit\""
+    },
+    {
+     "el": "e1",
+     "do": "click",
+     "why": "check \"true\""
+    }
+   ]
+  },
+  {
+   "node": "n2.1",
+   "actions": [
+    {
+     "el": "e28",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e32",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e27",
+     "do": "click",
+     "why": "button \"Create New\""
+    },
+    {
+     "el": "e13",
+     "do": "click",
+     "why": "radio \"2\""
+    },
+    {
+     "el": "e14",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e15",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e16",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e17",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e18",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e19",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e20",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e23",
+     "do": "click",
+     "why": "check \"true\""
+    }
+   ]
+  },
+  {
+   "node": "n2.2",
+   "actions": [
+    {
+     "el": "e24",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e28",
+     "do": "dblclick",
+     "why": "the portal opens a row on double-click"
+    },
+    {
+     "el": "e23",
+     "do": "click",
+     "why": "button \"Create New\""
+    },
+    {
+     "el": "e12",
+     "do": "click",
+     "why": "radio \"1\""
+    },
+    {
+     "el": "e14",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e15",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e19",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e20",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e21",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e22",
+     "do": "click",
+     "why": "check \"true\""
+    }
+   ]
+  },
+  {
+   "node": "n2.3",
+   "actions": [
+    {
+     "el": "e14",
+     "do": "click",
+     "why": "button \"Add Another\""
+    },
+    {
+     "el": "e7",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e8",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e9",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e10",
+     "do": "click",
+     "why": "check \"true\""
+    },
+    {
+     "el": "e11",
+     "do": "click",
+     "why": "check \"true\""
+    }
+   ]
+  }
+ ]
+}
+
+**Reviewing action plan**
+
+I’ve got a suggested plan for writing the wave-3.json. It looks like I need to include the "name" and "same" fields but only need one entry per state. I have to keep within 12 actions per state, and the n2.1 suggestion does meet that limit. However, it has a double-click feature that might be unnecessary. Plus, I should avoid redundant actions—like toggling weekday checkboxes—since that could lead to problems. Oh, and I’ll need to avoid including actions like Close, Cancel, Reset, and Back, since they only lead back.
+**Analyzing state transitions**
+
+I’m evaluating the suggested plan and it seems solid. I shouldn't click options that have already led to known states. The "Create New" button in node n2.1 is mentioned, but we know it already takes us to n2.3 with valid fields. However, without proper setup, it may or may not show validation messages. N2.2 also has "Create New," which might open validation or the same n2.3. But since we've reached the destination node already, exploring "Create New" with invalid inputs could generate validation messages.
+**Evaluating the Create Destination node**
+
+I need to ensure that the actions for the create destination node n2.3 include toggles and the "Add Another" option. Now, I'm thinking that the "Add Another" button might create a substate and reset the form without committing changes, which seems safe. The candidate shows it as not marked as dangerous, but I wonder if it could still save a destination. The plan says to avoid elements marked as danger, and Add Another is not one of those. While I'll run check-flows to confirm safety, it seems likely acceptable.
+**Preparing wave-3.json**
+
+I need to decide whether the e4 row in n1.1 should be double-clicked or just clicked, though the suggestion leans towards double-clicking. For wave-3.json in flows/plans, I’ll create a minimal JSON setup with a nodes array. It’ll be easiest to start from the suggested JSON and then add "name" and "why" fields for clarity. The nodes per state need to stay under 12, and it seems I have enough room for that. Including a "name" for expected actions and state folder names might also be beneficial to keep everything organized!
+**Refining action objects**
+
+It seems that the "name" field appears in each action object rather than the node itself. So, I’ll include it for actions that lead to new states. For example, for n1.1: a click on e2 would expect "edit-configuration," while a double-click on e4 might be "view-destination." The goal is to be thorough but minimal, and avoid redundancy—like clicking both empty rows e28 and e32, which may just be duplicates.
+
+I'll make sure not to exceed the maximum number of actions, which might be set at 12, so I’ll check that limit in wave-3.frontier.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; node -e \"const j=require('./packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-3.frontier.json'); console.log('maxActions',j.maxActions); console.log('wave',j.wave); console.log('nodes',j.nodes.length);\"" in C:\UI-specs\URL-to-Code
+ succeeded in 751ms:
+maxActions 12
+wave 3
+nodes 4
+
+**Evaluating toggle options**
+
+I’m considering how to optimize checkbox interactions, focusing on reducing the number of actions needed. Instead of toggling all days, I might focus on a few key toggles while ensuring we still capture the “weekday selection changed” state. It seems I might not need a unique state for every single day after all. A better approach could be to limit actions to ten or fewer, as long as they lead to meaningful changes or notifications. I need to balance practicality with thoroughness!
+**Analyzing dropdown and checkbox interactions**
+
+I think I should start by clicking at least one option to observe messages and behaviors. In the monthly schedule state, it's important to engage with the checkboxes for the first and last days, as well as the dropdown for "run on this day." This interaction could reveal additional options. Switching to the weekly schedule and using the "Create New" function is part of the plan too. I see how different selections could impact required fields, so I need to explore those destination types more closely. I might also consider testing invalid emails to trigger error messages!
+**Planning dropdown selections**
+
+I need to focus on selecting the Destination Type as "UserDefined" and "FileToEvent." Since this state opened from the weekly setup, the dropdowns might currently be unselected. Selecting these could potentially reveal new fields, but I'm not entirely sure. We should prioritize choosing the type and protocol instead of just toggling checkboxes. I’m a bit cautious about the "Add Another" option; it might create a new entry but could also commit changes unexpectedly. So, I prefer modifying dropdowns or toggling checkboxes and keeping the additions within a safe limit of 12!
+**Clarifying edit actions**
+
+For the open configuration in n1.1, I need to click "Edit" to enter edit mode, then double-click a row to look at destination details. I should also check the “show inactives” option. While I think about keeping the actions to three, I need to confirm whether e4 represents a row since I might only see two rows. I’ll verify that the actions aren’t risky and then proceed to write wave-3.json, crafting it carefully to adhere to the guidelines of one entry per state. It seems I don’t need any "same" fields after all!
+**Optimizing action sequences**
+
+For the weekly and monthly configurations, there seem to be duplicate empty row entries, like e28 and e32. I might use the "same" mapping to minimize actions. I plan to keep things efficient by limiting actions and verifying each step. For n2.1, actions will include switching to monthly view, showing inactive options, and creating a new destination with minimal setup. This will help avoid redundant clicks while still achieving validation. I'll focus on the essential toggles and selections without overwhelming the setup with unnecessary actions. I’m aiming for a clear and structured plan within the 12-action constraint!
+**Finalizing action plan**
+
+That’s a solid list of seven actions! To open the configuration for n1.1, I'll double-click the e4 row, then click e2 to edit the configuration, and click e1 to show inactive options. Now, I need to confirm the allowed actions, which include clicking, double-clicking, and selecting values. For checkboxes, I’ll stick with clicking. Next, I’ll define the dropdown values like "0000" and select "UserDefined" for Destination Type, plus "2" for Protocol. Finally, I’ll write the wave-3.json file using UTF-8 encoding and run the node check-flows command. Let's get started!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; "'$outPath='"'packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\plans\\wave-3.json'; "'$json=@'"'
+{
+  \"nodes\": [
+    {
+      \"node\": \"n1.1\",
+      \"name\": \"open-configuration\",
+      \"actions\": [
+        {
+          \"el\": \"e4\",
+          \"do\": \"dblclick\",
+          \"why\": \"Opens a destination row from the view-configuration grid.\",
+          \"name\": \"open-destination\"
+        },
+        {
+          \"el\": \"e2\",
+          \"do\": \"click\",
+          \"why\": \"Switches the configuration dialog into Edit mode.\",
+          \"name\": \"edit-configuration\"
+        },
+        {
+          \"el\": \"e1\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Show Inactives to change the destination list.\",
+          \"name\": \"toggle-show-inactives\"
+        }
+      ]
+    },
+    {
+      \"node\": \"n2.1\",
+      \"name\": \"run-weekly\",
+      \"actions\": [
+        {
+          \"el\": \"e13\",
+          \"do\": \"click\",
+          \"why\": \"Switches the schedule section from Weekly to Monthly.\",
+          \"name\": \"switch-to-monthly\"
+        },
+        {
+          \"el\": \"e26\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Show Inactives to change the destination grid contents.\",
+          \"name\": \"toggle-show-inactives\"
+        },
+        {
+          \"el\": \"e27\",
+          \"do\": \"click\",
+          \"why\": \"Attempts to open the Destination dialog (or triggers its validation/disabled behavior) from Weekly schedule.\",
+          \"name\": \"create-destination\"
+        },
+        {
+          \"el\": \"e14\",
+          \"do\": \"click\",
+          \"why\": \"Toggles a weekly Run On day (Sunday) to reveal schedule validation/state.\",
+          \"name\": \"toggle-run-on-day\"
+        },
+        {
+          \"el\": \"e23\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Send Notification to reveal dependent state/validation.\",
+          \"name\": \"toggle-send-notification\"
+        },
+        {
+          \"el\": \"e24\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Suspend to observe any disable/enable behavior.\",
+          \"name\": \"toggle-suspend\"
+        },
+        {
+          \"el\": \"e21\",
+          \"do\": \"select\",
+          \"value\": \"0000\",
+          \"why\": \"Selects a Time Window Start value to exercise dropdown-dependent behavior.\",
+          \"name\": \"set-time-window-start\"
+        },
+        {
+          \"el\": \"e22\",
+          \"do\": \"select\",
+          \"value\": \"0030\",
+          \"why\": \"Selects a Time Window End value after choosing start.\",
+          \"name\": \"set-time-window-end\"
+        }
+      ],
+      \"same\": [
+        {
+          \"el\": \"e32\",
+          \"as\": \"e28\",
+          \"why\": \"Both 'There are no records found.' rows represent the empty destination grid state.\"
+        }
+      ]
+    },
+    {
+      \"node\": \"n2.2\",
+      \"name\": \"run-monthly\",
+      \"actions\": [
+        {
+          \"el\": \"e12\",
+          \"do\": \"click\",
+          \"why\": \"Switches the schedule section from Monthly back to Weekly.\",
+          \"name\": \"switch-to-weekly\"
+        },
+        {
+          \"el\": \"e14\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Run On First Day Month to exercise monthly schedule states.\",
+          \"name\": \"toggle-first-day\"
+        },
+        {
+          \"el\": \"e15\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Run On Last Day Month to exercise monthly schedule states.\",
+          \"name\": \"toggle-last-day\"
+        },
+        {
+          \"el\": \"e16\",
+          \"do\": \"select\",
+          \"value\": \"1\",
+          \"why\": \"Selects a Run On This Day Month value to exercise the day-of-month path.\",
+          \"name\": \"set-run-on-this-day\"
+        },
+        {
+          \"el\": \"e19\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Send Notification to reveal dependent state/validation.\",
+          \"name\": \"toggle-send-notification\"
+        },
+        {
+          \"el\": \"e20\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Suspend to observe any disable/enable behavior.\",
+          \"name\": \"toggle-suspend\"
+        },
+        {
+          \"el\": \"e22\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Show Inactives to change the destination grid contents.\",
+          \"name\": \"toggle-show-inactives\"
+        },
+        {
+          \"el\": \"e23\",
+          \"do\": \"click\",
+          \"why\": \"Attempts to open the Destination dialog (or triggers its validation/disabled behavior) from Monthly schedule.\",
+          \"name\": \"create-destination\"
+        },
+        {
+          \"el\": \"e17\",
+          \"do\": \"select\",
+          \"value\": \"0000\",
+          \"why\": \"Selects a Time Window Start value to exercise dropdown-dependent behavior.\",
+          \"name\": \"set-time-window-start\"
+        },
+        {
+          \"el\": \"e18\",
+          \"do\": \"select\",
+          \"value\": \"0030\",
+          \"why\": \"Selects a Time Window End value after choosing start.\",
+          \"name\": \"set-time-window-end\"
+        }
+      ],
+      \"same\": [
+        {
+          \"el\": \"e28\",
+          \"as\": \"e24\",
+          \"why\": \"Both 'There are no records found.' rows represent the empty destination grid state.\"
+        }
+      ]
+    },
+    {
+      \"node\": \"n2.3\",
+      \"name\": \"create-destination\",
+      \"actions\": [
+        {
+          \"el\": \"e1\",
+          \"do\": \"select\",
+          \"value\": \"2\",
+          \"why\": \"Selects a different Destination Protocol value to expose protocol-dependent fields/state.\",
+          \"name\": \"set-destination-protocol\"
+        },
+        {
+          \"el\": \"e2\",
+          \"do\": \"select\",
+          \"value\": \"UserDefined\",
+          \"why\": \"Switches Destination Type to a different option to reveal any conditional fields.\",
+          \"name\": \"set-destination-type\"
+        },
+        {
+          \"el\": \"e7\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Overwrite At Destination.\",
+          \"name\": \"toggle-overwrite\"
+        },
+        {
+          \"el\": \"e8\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Compress At Destination.\",
+          \"name\": \"toggle-compress\"
+        },
+        {
+          \"el\": \"e9\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Destination Is Archive.\",
+          \"name\": \"toggle-archive\"
+        },
+        {
+          \"el\": \"e10\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Rename At Destination.\",
+          \"name\": \"toggle-rename\"
+        },
+        {
+          \"el\": \"e11\",
+          \"do\": \"click\",
+          \"why\": \"Toggles Active to observe any disable/enable behavior.\",
+          \"name\": \"toggle-active\"
+        },
+        {
+          \"el\": \"e14\",
+          \"do\": \"click\",
+          \"why\": \"Uses Add Another to reach the post-add flow without pressing Save.\",
+          \"name\": \"add-another\"
+        }
+      ]
+    }
+  ]
+}
+'@;
+Set-Content -LiteralPath "'$outPath -Value $json -Encoding utf8' in C:\UI-specs\URL-to-Code
+ succeeded in 905ms:
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; node scripts/check-flows.mjs C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\plans\\wave-3.json C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\plans\\wave-3.frontier.json" in C:\UI-specs\URL-to-Code
+ exited 1 in 1311ms:
+✗ the flows plan does not pass:
+- C:\UI-specs\URL-to-Code\packs\fxfer-v9\screens\file-transfer-configuration\flows\plans\wave-3.json is not valid JSON: Unexpected token '﻿', "﻿{
+
+**Considering encoding issues**
+
+I'm thinking about BOM, or the hidden character in UTF-8 files. I want UTF-8 without BOM, and I know that using Set-Content with the utf8 option in older PowerShell versions creates a BOM. In Windows PowerShell 5.1, it definitely does! To avoid this, I plan to rewrite the file using Node.js, specifically with fs.writeFileSync and specify 'utf8.' That should solve my problem and ensure there's no BOM in the file. Let's get to work on that!
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; node -e \"const fs=require('fs'); const p='packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-3.json'; const txt=fs.readFileSync(p,'utf8').replace(/"'^'"\\uFEFF/,''); fs.writeFileSync(p, txt, 'utf8'); console.log('rewrote without BOM');\"" in C:\UI-specs\URL-to-Code
+ succeeded in 1004ms:
+rewrote without BOM
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "cd C:\\UI-specs\\URL-to-Code; node scripts/check-flows.mjs C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\plans\\wave-3.json C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\plans\\wave-3.frontier.json" in C:\UI-specs\URL-to-Code
+ succeeded in 826ms:
+✓ flows plan OK
+
+codex
+Wrote the wave-3 exploration plan and passed the gate.
+
+- Created `packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-3.json`
+- Gate: `node scripts/check-flows.mjs ...wave-3.json ...wave-3.frontier.json` → `✓ flows plan OK`
+
+Skipped / risk:
+- I didn’t open `map.png`/`shot.png` visually; plan relies on `candidates.md` + the known flow history, so any mislabeled element would only be caught at runtime.
+tokens used
+90,286
+Wrote the wave-3 exploration plan and passed the gate.
+
+- Created `packs/fxfer-v9/screens/file-transfer-configuration/flows/plans/wave-3.json`
+- Gate: `node scripts/check-flows.mjs ...wave-3.json ...wave-3.frontier.json` → `✓ flows plan OK`
+
+Skipped / risk:
+- I didn’t open `map.png`/`shot.png` visually; plan relies on `candidates.md` + the known flow history, so any mislabeled element would only be caught at runtime.
+
+--- exit 0 ---

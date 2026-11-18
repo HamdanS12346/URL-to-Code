@@ -1,0 +1,243 @@
+{
+ "id": "n2",
+ "parent": "n0",
+ "depth": 1,
+ "status": "frontier",
+ "name": "create-new",
+ "kind": "dialog",
+ "fp": "c3f669455208",
+ "fpText": "W:Add File Transfer Configuration\nH:Destination Configuration|Source Configuration\nL:Active|Configuration Name|Description|File Direction|Owner Email|Owner Module|Owner Name|Owner Phone|Protocol|Run Monthly|Run Schedule|Run Weekly|Send Notification|Show Inactives|Source Address|Source File Mask|Suspend|Time Window End|Time Window Start|Trading Partner\nB:Cancel|Create New|Reset|Save|select\nF:17\nT:\nR:1\nV:0",
+ "via": {
+  "el": "e1",
+  "steps": [
+   {
+    "do": "click",
+    "layer": "page",
+    "css": "#FileTransferGridAddButton",
+    "nth": 0,
+    "text": "Create New",
+    "kind": "button"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#FileTransferGridAddButton",
+   "nth": 0,
+   "text": "Create New",
+   "kind": "button"
+  }
+ ],
+ "requests": [
+  {
+   "method": "POST",
+   "url": "/FileTransfer/FileTransferConfigurationEdit/",
+   "status": "sent"
+  },
+  {
+   "method": "GET",
+   "url": "/api/FileTransfer/GetFtpServerDetails/",
+   "status": "sent"
+  },
+  {
+   "method": "GET",
+   "url": "/api/FileTransfer/GetDataListData/",
+   "status": "sent"
+  },
+  {
+   "method": "GET",
+   "url": "/api/FileTransfer/GetFtpServerDetails/",
+   "status": "sent"
+  }
+ ],
+ "title": "Add File Transfer Configuration",
+ "dir": "n2-create-new",
+ "windows": 1,
+ "validation": null,
+ "same": [],
+ "skipped": [
+  {
+   "el": "e24",
+   "text": "Save",
+   "why": "commit: the kit marks it a Save"
+  }
+ ],
+ "probed": true,
+ "fields": [
+  {
+   "name": "ConfigName",
+   "label": "Configuration Name",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  },
+  {
+   "name": "Description",
+   "label": "Description",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-"
+  },
+  {
+   "name": "SourceAddress",
+   "label": "Source Address",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-"
+  },
+  {
+   "name": "SourceFileMask",
+   "label": "Source File Mask",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  },
+  {
+   "name": "TradingPartner",
+   "label": "Trading Partner",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 10,
+   "maxEnforced": true
+  },
+  {
+   "name": "OwnerName",
+   "label": "Owner Name",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  },
+  {
+   "name": "OwnerPhoneNumber",
+   "label": "Owner Phone",
+   "messages": {},
+   "accepts": {
+    "letters": false,
+    "digits": true,
+    "spaces": false,
+    "symbols": true
+   },
+   "kept": "1__-___-____"
+  },
+  {
+   "name": "OwnerEmail",
+   "label": "Owner Email",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-"
+  }
+ ],
+ "saveProbe": {
+  "button": "Save",
+  "validation": {
+   "summaries": [],
+   "fields": [
+    {
+     "for": "ConfigName",
+     "text": "Configuration Name is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "ProtocolTypeList",
+     "text": "Protocol is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "SourceAddress",
+     "text": "Source Address is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "SourceFileMask",
+     "text": "Source File Mask is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "OwnerName",
+     "text": "Owner Name is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "OwnerPhoneNumber",
+     "text": "Owner Phone is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "AddConfigModuleList",
+     "text": "Please input required information and try again.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "OwnerEmail",
+     "text": "Owner Email is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "RunSchedule",
+     "text": "Run Schedule is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "TimeWindowStartList",
+     "text": "Time Window Start is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "TimeWindowEndList",
+     "text": "Time Window End is a required field.",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    },
+    {
+     "for": "undefined",
+     "text": "At least one destination is required for the file transfer configuration",
+     "className": "k-form-error k-invalid-msg field-validation-error"
+    }
+   ]
+  },
+  "wouldSend": []
+ }
+}

@@ -1,0 +1,174 @@
+{
+ "wave": 2,
+ "maxActions": 12,
+ "nodes": [
+  {
+   "node": "n1",
+   "name": "search-criteria-collapsed",
+   "kind": "part",
+   "title": null,
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\n1-search-criteria-collapsed",
+   "depth": 1,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "text": "",
+     "label": null,
+     "danger": null
+    }
+   ]
+  },
+  {
+   "node": "n2",
+   "name": "after-search-empty",
+   "kind": "results",
+   "title": null,
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-tracking\\flows\\n2-after-search-empty",
+   "depth": 1,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "text": "",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "text",
+     "text": "",
+     "label": "File ID",
+     "danger": null
+    },
+    {
+     "el": "e3",
+     "kind": "text",
+     "text": "",
+     "label": "File Name",
+     "danger": null
+    },
+    {
+     "el": "e4",
+     "kind": "dropdown",
+     "text": "select a value...FileStatusList",
+     "label": "File Status",
+     "danger": null,
+     "options": [
+      "1",
+      "2",
+      "3"
+     ]
+    },
+    {
+     "el": "e5",
+     "kind": "dropdown",
+     "text": "select a value...DirectionList",
+     "label": "Direction",
+     "danger": null,
+     "options": [
+      "1",
+      "2"
+     ]
+    },
+    {
+     "el": "e6",
+     "kind": "dropdown",
+     "text": "select a value...TransportTypeList",
+     "label": "Transport Type",
+     "danger": null,
+     "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    {
+     "el": "e7",
+     "kind": "dropdown",
+     "text": "select a value...SourceLocation",
+     "label": "Source Location",
+     "danger": null,
+     "options": [
+      "40defc3b-7227-4798-811a-1681e6505df2",
+      "5906a815-02de-4c35-9014-96d920f4285d",
+      "a2bd6591-53e6-4c8e-8101-76e8cc105eef",
+      "353244d3-8c51-453d-a26b-d31ba8375431",
+      "67391ddc-ec70-4630-b941-c4e646d99be2",
+      "5e8e5b7e-95a2-43e5-8716-1e4464922617",
+      "ddc110bf-9057-484d-9a18-ce5e849ca1f2",
+      "b16dfecc-c9fc-45f1-96bb-70b17d934a5f",
+      "284a46bc-10db-46e7-9f1b-d4c6faf29fa3",
+      "1f2a84a6-47c6-4ca2-a7d3-416ad41b48b0",
+      "5ee49daa-f142-4c83-80ce-668bce190cf1",
+      "109fbfd1-d87a-40fd-a3d0-ae3aed2d5d1a"
+     ]
+    },
+    {
+     "el": "e8",
+     "kind": "text",
+     "text": "",
+     "label": "Trading Partner ID",
+     "danger": null
+    },
+    {
+     "el": "e9",
+     "kind": "dropdown",
+     "text": "",
+     "label": "From Date",
+     "danger": null
+    },
+    {
+     "el": "e10",
+     "kind": "dropdown",
+     "text": "",
+     "label": "To Date",
+     "danger": null
+    },
+    {
+     "el": "e11",
+     "kind": "text",
+     "text": "",
+     "label": "From Size (KB)",
+     "danger": null
+    },
+    {
+     "el": "e12",
+     "kind": "text",
+     "text": "",
+     "label": "To Size (KB)",
+     "danger": null
+    },
+    {
+     "el": "e13",
+     "kind": "button",
+     "text": "Reset",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e14",
+     "kind": "button",
+     "text": "Cancel",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e15",
+     "kind": "button",
+     "text": "Search",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e16",
+     "kind": "row",
+     "text": "0b3ad742-223b-4bc1-8b5b-867d8dfde039\\\\mapsftshrfs01\\Commerci",
+     "label": null,
+     "danger": null
+    }
+   ]
+  }
+ ]
+}

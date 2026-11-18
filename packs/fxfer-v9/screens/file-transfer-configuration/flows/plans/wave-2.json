@@ -1,0 +1,119 @@
+{
+  "nodes": [
+    {
+      "node": "n1",
+      "name": "search-results",
+      "actions": [
+        {
+          "el": "e12",
+          "do": "dblclick",
+          "why": "opens the selected configuration in the edit/view dialog",
+          "name": "open-configuration"
+        },
+        {
+          "el": "e10",
+          "do": "click",
+          "setup": [
+            {
+              "el": "e11",
+              "do": "check"
+            }
+          ],
+          "why": "re-run search with Show Inactives enabled to capture any inactive-row variant",
+          "name": "search-with-inactives"
+        }
+      ]
+    },
+    {
+      "node": "n2",
+      "name": "create-new",
+      "actions": [
+        {
+          "el": "e12",
+          "do": "click",
+          "why": "selects Run Weekly to reveal the weekly schedule controls",
+          "name": "run-weekly"
+        },
+        {
+          "el": "e13",
+          "do": "click",
+          "why": "selects Run Monthly to reveal the monthly schedule controls",
+          "name": "run-monthly"
+        },
+        {
+          "el": "e20",
+          "do": "click",
+          "setup": [
+            {
+              "el": "e1",
+              "do": "fill",
+              "value": "TestConfig1"
+            },
+            {
+              "el": "e3",
+              "do": "select",
+              "value": "1"
+            },
+            {
+              "el": "e4",
+              "do": "fill",
+              "value": "/test"
+            },
+            {
+              "el": "e5",
+              "do": "fill",
+              "value": "test.txt"
+            },
+            {
+              "el": "e6",
+              "do": "select",
+              "value": "1"
+            },
+            {
+              "el": "e8",
+              "do": "fill",
+              "value": "Owner1"
+            },
+            {
+              "el": "e9",
+              "do": "fill",
+              "value": "5551234567"
+            },
+            {
+              "el": "e10",
+              "do": "select",
+              "value": "0b34481f-f69c-3ab6-e053-c9157aceff03"
+            },
+            {
+              "el": "e11",
+              "do": "fill",
+              "value": "test.user@example.com"
+            },
+            {
+              "el": "e12",
+              "do": "click"
+            },
+            {
+              "el": "e14",
+              "do": "select",
+              "value": "0000"
+            },
+            {
+              "el": "e15",
+              "do": "select",
+              "value": "0030"
+            }
+          ],
+          "why": "opens the Destination Configuration create flow (nested dialog) with required Source Configuration fields populated",
+          "name": "create-destination"
+        }
+      ]
+    },
+    {
+      "node": "n3",
+      "name": "criteria-collapsed",
+      "deadEnd": true,
+      "reason": "Only actions are Expand Criteria and Create New, which lead back to already-known states (n1 and n2) from here."
+    }
+  ]
+}

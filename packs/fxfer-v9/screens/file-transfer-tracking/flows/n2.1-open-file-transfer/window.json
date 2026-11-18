@@ -1,0 +1,723 @@
+{
+ "title": "File Transfer Tracking",
+ "windowClass": "k-window panelForm-col-6 ui-draggable",
+ "windowStyle": "min-width: 90px; min-height: 50px; max-height: 918px; display: inline-flex; top: 468.333px; left: 240px; z-index: 11502; opacity: 1; transform: scale(1);",
+ "titlebarHtml": "<div class=\"k-window-titlebar ui-draggable-handle\"><span class=\"k-window-title\" id=\"FileTransferTrackingViewPopup_wnd_title\">File Transfer Tracking</span><div class=\"k-window-titlebar-actions\"><button role=\"button\" class=\"k-window-titlebar-action k-button k-button-flat k-icon-button\" aria-label=\"Custom\" type=\"button\" title=\"HELP\" style=\"display: none;\"><span class=\"k-icon k-button-icon k-i-help\" title=\"HELP\" data-role=\"tooltip\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m462.7 317.9-41.5-31.4c1.8-9.9 2.8-20.1 2.8-30.5s-1-20.6-2.8-30.5l41.5-31.4c6.4-4.9 8.2-13.8 4.2-20.8L433 114.6c-4-7-12.6-9.9-20.1-6.7l-48 20.2c-15.4-13.2-33.3-23.6-52.8-30.5L305.8 46c-1-8-7.8-14-15.9-14h-67.8c-8.1 0-14.9 6-15.9 14l-6.5 51.6c-19.5 6.9-37.4 17.3-52.8 30.5l-48-20.2c-7.4-3.1-16-.2-20.1 6.7l-33.9 58.7c-4 7-2.2 15.9 4.2 20.8l41.5 31.4C89 235.4 88 245.6 88 256s1 20.6 2.8 30.5l-41.5 31.4c-6.4 4.9-8.2 13.8-4.2 20.8L79 397.4c4 7 12.6 9.9 20.1 6.7l48-20.2c15.4 13.2 33.3 23.6 52.8 30.5l6.5 51.6c1 8 7.8 14 15.9 14h67.8c8.1 0 14.9-6 15.9-14l6.5-51.6c19.5-6.9 37.4-17.3 52.8-30.5l48 20.2c7.4 3.1 16 .2 20.1-6.7l33.9-58.7c3.7-7 1.9-15.9-4.6-20.8M256 340c-46.4 0-84-37.6-84-84s37.6-84 84-84 84 37.6 84 84-37.6 84-84 84\"></path></svg></span></button><button role=\"button\" class=\"k-window-titlebar-action k-button k-button-flat k-icon-button\" aria-label=\"Close\" type=\"button\" title=\"Close\" data-kit-action=\"close\"><span class=\"k-icon k-button-icon k-i-custom-close\" title=\"Close\" data-role=\"tooltip\" tabindex=\"0\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 141.3 301.3 256 416 370.7 370.7 416 256 301.3 141.3 416 96 370.7 210.7 256 96 141.3 141.3 96 256 210.7 370.7 96z\"></path></svg></span></button></div></div>",
+ "contentClass": "k-window-content",
+ "contentId": "FileTransferTrackingViewPopup",
+ "contentStyle": "max-height: 918px;",
+ "overlay": {
+  "className": "k-overlay",
+  "style": "z-index: 11501; display: block; opacity: 0.5;",
+  "background": "rgb(61, 61, 61)",
+  "opacity": "0.5"
+ },
+ "options": {
+  "modal": {
+   "preventScroll": true
+  },
+  "width": null,
+  "height": null,
+  "actions": [
+   "Custom",
+   "Close"
+  ],
+  "draggable": false,
+  "resizable": false,
+  "animation": {
+   "open": {
+    "effects": {},
+    "duration": 350
+   },
+   "close": {
+    "effects": {},
+    "duration": 350,
+    "hide": true
+   }
+  },
+  "position": {
+   "top": 468.3333435058594,
+   "left": 240
+  }
+ },
+ "widgets": {
+  "k10": {
+   "role": "dropdownlist",
+   "id": "Information_DirectionList",
+   "name": "Information.DirectionList",
+   "label": "Information_DirectionList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Direction",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control readonly-widget readonly-cursor\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"true\" aria-controls=\"Information_DirectionList_listbox\" aria-busy=\"false\" aria-describedby=\"9b913ff0-e8ba-48cd-927e-e91a4cff1a02\" aria-labelledby=\"Information_DirectionLabel Information_DirectionHelpDesc\" data-kit=\"k10\" style=\"\"><span id=\"9b913ff0-e8ba-48cd-927e-e91a4cff1a02\" unselectable=\"on\" class=\"k-input-inner readonly-widget\"><span class=\"k-input-value-text\">OUTBOUND</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"Information_DirectionListLabel\" for=\"Information_DirectionList\" class=\"display-none\">Information_DirectionList</label><input class=\"editor-control\" id=\"Information_DirectionList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"FileTransfer.DataList.FileDirection\" listviewdisplayformat=\"Name\" name=\"Information.DirectionList\" not-data-val-required=\"Direction is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingInformationModel-/FileTransfer/FileTransferTrackingView-Desktop-Direction\" readonly=\"readonly\" type=\"text\" value=\"2\" data-role=\"dropdownlist\" aria-labelledby=\"Information_DirectionListLabel\" style=\"display: none;\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "INBOUND",
+     "value": "1"
+    },
+    {
+     "text": "OUTBOUND",
+     "value": "2"
+    }
+   ],
+   "value": "2",
+   "text": "OUTBOUND",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k11": {
+   "role": "dropdownlist",
+   "id": "Information_FileStatusList",
+   "name": "Information.FileStatusList",
+   "label": "Information_FileStatusList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "File Status",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control readonly-widget readonly-cursor\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"true\" aria-controls=\"Information_FileStatusList_listbox\" aria-busy=\"false\" aria-describedby=\"79c891a9-97da-4433-aee2-cb1509887896\" aria-labelledby=\"Information_FileStatusLabel Information_FileStatusHelpDesc\" data-kit=\"k11\" style=\"\"><span id=\"79c891a9-97da-4433-aee2-cb1509887896\" unselectable=\"on\" class=\"k-input-inner readonly-widget\"><span class=\"k-input-value-text\">Complete</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"Information_FileStatusListLabel\" for=\"Information_FileStatusList\" class=\"display-none\">Information_FileStatusList</label><input class=\"editor-control\" id=\"Information_FileStatusList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"FileTransfer.DataList.FileStatus\" listviewdisplayformat=\"Name\" name=\"Information.FileStatusList\" not-data-val-required=\"File Status is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingInformationModel-/FileTransfer/FileTransferTrackingView-Desktop-FileStatus\" readonly=\"readonly\" type=\"text\" value=\"1\" data-role=\"dropdownlist\" aria-labelledby=\"Information_FileStatusListLabel\" style=\"display: none;\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "Complete",
+     "value": "1"
+    },
+    {
+     "text": "Error",
+     "value": "2"
+    },
+    {
+     "text": "Transferring",
+     "value": "3"
+    }
+   ],
+   "value": "1",
+   "text": "Complete",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k12": {
+   "role": "dropdownlist",
+   "id": "Information_TransportTypeList",
+   "name": "Information.TransportTypeList",
+   "label": "Information_TransportTypeList",
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": "Transport Type",
+   "animation": {},
+   "html": "<span title=\"\" class=\"k-picker k-dropdownlist editor-control readonly-widget readonly-cursor\" unselectable=\"on\" role=\"combobox\" aria-expanded=\"false\" tabindex=\"0\" aria-disabled=\"false\" aria-readonly=\"true\" aria-controls=\"Information_TransportTypeList_listbox\" aria-busy=\"false\" aria-describedby=\"19b8a42a-f4aa-4a7e-8c7d-c5a2be6dbaf3\" aria-labelledby=\"Information_TransportTypeLabel Information_TransportTypeHelpDesc\" data-kit=\"k12\" style=\"\"><span id=\"19b8a42a-f4aa-4a7e-8c7d-c5a2be6dbaf3\" unselectable=\"on\" class=\"k-input-inner readonly-widget\"><span class=\"k-input-value-text\">UNC</span></span><button role=\"button\" tabindex=\"-1\" class=\"k-input-button k-button k-icon-button\" aria-label=\"select\" type=\"button\"><span class=\"k-icon k-svg-icon k-svg-i-caret-alt-down k-button-icon display-none-priority\"><svg viewBox=\"0 0 512 512\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 352 128 160h256z\"></path></svg></span></button><label id=\"Information_TransportTypeListLabel\" for=\"Information_TransportTypeList\" class=\"display-none\">Information_TransportTypeList</label><input class=\"editor-control\" id=\"Information_TransportTypeList\" ignoredirtydata=\"False\" listviewdatalistcontentid=\"FileTransfer.DataList.ProtocolType\" listviewdisplayformat=\"Name\" name=\"Information.TransportTypeList\" not-data-val-required=\"Transport Type is a required field.\" propertydefinitioncachekey=\"PD-HP.HSP.UA3.FileTransfer.UX.Data.FileTransferTracking.TrackingInformationModel-/FileTransfer/FileTransferTrackingView-Desktop-TransportType\" readonly=\"readonly\" type=\"text\" value=\"3\" data-role=\"dropdownlist\" aria-labelledby=\"Information_TransportTypeListLabel\" style=\"display: none;\"></span>",
+   "kind": "dropdown",
+   "optionLabel": "select a value...",
+   "items": [
+    {
+     "text": "FTP",
+     "value": "1"
+    },
+    {
+     "text": "SFTP",
+     "value": "2"
+    },
+    {
+     "text": "UNC",
+     "value": "3"
+    },
+    {
+     "text": "FTPS",
+     "value": "4"
+    }
+   ],
+   "value": "3",
+   "text": "UNC",
+   "cascadeFrom": null,
+   "filter": "none",
+   "height": 200
+  },
+  "k13": {
+   "role": "grid",
+   "id": "trackingEventsGrid",
+   "name": null,
+   "label": null,
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": null,
+   "html": "<div class=\"k-grid editor-grid\" id=\"trackingEventsGrid\" data-role=\"grid\" data-kit=\"k13\"><table id=\"34b47f27-171c-4f0d-93cb-5bdfefd1b155\" role=\"grid\" tabindex=\"0\" class=\"k-grid-table k-table\" aria-colcount=\"3\" style=\"\"><colgroup><col style=\"width: 21px;\"><col style=\"width: 21px;\"><col></colgroup><thead class=\"k-table-thead k-grid-header\" role=\"rowgroup\"><tr class=\"k-table-row\" role=\"row\"><th class=\"k-table-th k-header\" data-field=\"EventCode\" data-index=\"0\" data-resizable=\"true\" data-title=\"Event Code\" id=\"c44b6d5e-ee57-4f82-90e8-c29593958529\" role=\"columnheader\" scope=\"col\" aria-colindex=\"1\" data-header-styled=\"data-header-styled\"><span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Event Code</span></span></span></span></th><th class=\"k-table-th k-header\" data-field=\"CreateDate\" data-index=\"1\" data-resizable=\"true\" data-title=\"Create Date\" id=\"f5decfd2-d7d7-4ee8-8bed-313cf12b7af5\" role=\"columnheader\" scope=\"col\" aria-colindex=\"2\" data-header-styled=\"data-header-styled\"><span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Create Date</span></span></span></span></th><th class=\"k-table-th k-header\" data-field=\"Description\" data-index=\"2\" data-resizable=\"true\" data-title=\"Description\" id=\"76123bba-b6b1-41a4-87b8-12bc505de72d\" role=\"columnheader\" scope=\"col\" aria-colindex=\"3\" data-header-styled=\"data-header-styled\"><span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Description</span></span></span></span></th></tr></thead><tbody class=\"k-table-tbody\" role=\"rowgroup\"><tr class=\"k-table-row k-master-row\" data-uid=\"c9260591-b55f-41e4-b3e5-e28f95f25233\" role=\"row\"><td class=\"k-table-td\" role=\"gridcell\" aria-colindex=\"1\">T</td><td class=\"k-table-td\" role=\"gridcell\" aria-colindex=\"2\">5/25/2021 1:07 PM</td><td class=\"k-table-td\" role=\"gridcell\" aria-colindex=\"3\">\\\\mapsftshrfs01\\CommercialSharedFolder\\ProgramIntegrity\\Case\\Batch\\Input\\CaseTrackingInput_20210518.csv</td></tr></tbody></table></div>",
+   "kind": "grid",
+   "columns": [
+    {
+     "field": "EventCode",
+     "title": "Event Code",
+     "width": 21,
+     "hidden": false,
+     "sortable": false,
+     "filterable": false,
+     "command": false,
+     "format": null
+    },
+    {
+     "field": "CreateDate",
+     "title": "Create Date",
+     "width": 21,
+     "hidden": false,
+     "sortable": false,
+     "filterable": false,
+     "command": false,
+     "format": "{0:g}"
+    },
+    {
+     "field": "Description",
+     "title": "Description",
+     "width": null,
+     "hidden": false,
+     "sortable": false,
+     "filterable": false,
+     "command": false,
+     "format": null
+    }
+   ],
+   "sortable": false,
+   "filterable": false,
+   "pageable": false,
+   "autoBind": true
+  },
+  "k14": {
+   "role": "grid",
+   "id": "trackingExceptionsGrid",
+   "name": null,
+   "label": null,
+   "required": false,
+   "validation": {},
+   "validationParams": {},
+   "enabled": true,
+   "help": null,
+   "html": "<div class=\"k-grid editor-grid\" id=\"trackingExceptionsGrid\" data-role=\"grid\" data-kit=\"k14\"><table id=\"bb988309-7e0e-4fe5-8f97-0e40ebbdc1fb\" role=\"treegrid\" tabindex=\"0\" class=\"k-grid-table k-table\" aria-rowcount=\"1\" style=\"\"><colgroup><col class=\"k-hierarchy-col\"><col style=\"width: 21px;\"><col style=\"width: 21px;\"><col></colgroup><thead class=\"k-table-thead k-grid-header\" role=\"rowgroup\"><tr class=\"k-table-row\" role=\"row\" aria-rowindex=\"1\"><th class=\"k-hierarchy-cell k-table-th k-header\" scope=\"col\" role=\"columnheader\" data-header-styled=\"data-header-styled\"><span class=\"k-cell-inner\">&nbsp;</span></th><th class=\"k-table-th k-header\" data-field=\"Date\" data-index=\"0\" data-resizable=\"true\" data-title=\"Date\" id=\"329411be-c8a2-4606-a16e-8822b983f233\" role=\"columnheader\" scope=\"col\" data-header-styled=\"data-header-styled\"><span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Date</span></span></span></span></th><th class=\"k-table-th k-header\" data-field=\"ExceptionType\" data-index=\"1\" data-resizable=\"true\" data-title=\"Exception Type\" id=\"b845f12b-f280-4f13-b7b2-380f33aea7ac\" role=\"columnheader\" scope=\"col\" data-header-styled=\"data-header-styled\"><span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Exception Type</span></span></span></span></th><th class=\"k-table-th k-header\" data-field=\"MethodName\" data-index=\"2\" data-resizable=\"true\" data-title=\"Method Name\" id=\"172c73e6-6295-43ee-8723-18fa2cf4a888\" role=\"columnheader\" scope=\"col\" data-header-styled=\"data-header-styled\"><span class=\"k-cell-inner\"><span class=\"grid-col-hdr-cell\"><span class=\"k-link\"><span class=\"k-column-title\">Method Name</span></span></span></span></th></tr></thead><tbody class=\"k-table-tbody\" role=\"rowgroup\"><tr class=\"kendo-data-row\" onclick=\"preventAction(event)\" ondblclick=\"preventAction(event)\"><td colspan=\"4\" style=\"text-align:center\"><br><strong>There are no records found.</strong></td></tr></tbody></table></div>",
+   "kind": "grid",
+   "columns": [
+    {
+     "field": "Date",
+     "title": "Date",
+     "width": 21,
+     "hidden": false,
+     "sortable": false,
+     "filterable": false,
+     "command": false,
+     "format": "{0:g}"
+    },
+    {
+     "field": "ExceptionType",
+     "title": "Exception Type",
+     "width": 21,
+     "hidden": false,
+     "sortable": false,
+     "filterable": false,
+     "command": false,
+     "format": null
+    },
+    {
+     "field": "MethodName",
+     "title": "Method Name",
+     "width": null,
+     "hidden": false,
+     "sortable": false,
+     "filterable": false,
+     "command": false,
+     "format": null
+    }
+   ],
+   "sortable": false,
+   "filterable": false,
+   "pageable": false,
+   "autoBind": true
+  }
+ },
+ "fields": [
+  {
+   "name": "Information.FileId",
+   "id": "Information_FileId",
+   "type": "text",
+   "role": "textbox",
+   "label": "File ID",
+   "required": false,
+   "maxLength": 50,
+   "validation": {
+    "regex": "File ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "File ID has a maximum length of 50 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "0b3ad742-223b-4bc1-8b5b-867d8dfde039",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.CreateDate",
+   "id": "Information_CreateDate",
+   "type": "text",
+   "role": "textbox",
+   "label": "Create Date",
+   "required": false,
+   "maxLength": null,
+   "validation": {
+    "date": "The field Create Date must be a date.",
+    "datetime": "Create Date must represent a valid date time in the format 'M/d/yyyy h:mm tt'."
+   },
+   "validationParams": {},
+   "value": "5/25/2021 7:37:51 AM",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.DirectionListText",
+   "id": "Information_DirectionListText",
+   "type": "text",
+   "role": null,
+   "label": "Information_DirectionListText",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "OUTBOUND",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.DirectionList",
+   "id": "Information_DirectionList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "Information_DirectionList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "2",
+   "widget": "k10",
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.FileName",
+   "id": "Information_FileName",
+   "type": "text",
+   "role": "textbox",
+   "label": "File Name",
+   "required": false,
+   "maxLength": 100,
+   "validation": {
+    "regex": "File Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "File Name has a maximum length of 100 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "\\\\mapsftshrfs01\\CommercialSharedFolder\\ProgramIntegrityCT\\CaseListRefresh\\Batch\\Output\\CaseTrackingInput_20210518.csv",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.Size",
+   "id": "Information_Size",
+   "type": "text",
+   "role": "textbox",
+   "label": "Size (KB)",
+   "required": false,
+   "maxLength": 15,
+   "validation": {
+    "number": "Size (KB) is restricted to numeric values with at most 2 decimal places.",
+    "regex": "Size (KB) is restricted to numeric values with at most 2 decimal places."
+   },
+   "validationParams": {
+    "length-max": "Size (KB) has a maximum length of 15 characters.",
+    "regex-pattern": "^[+-]?(?=\\d|\\.\\d{0,2})\\d*(\\.\\d{0,2})?$"
+   },
+   "value": "0",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.CheckSumCode",
+   "id": "Information_CheckSumCode",
+   "type": "text",
+   "role": "textbox",
+   "label": "Check Sum Code",
+   "required": false,
+   "maxLength": 50,
+   "validation": {},
+   "validationParams": {
+    "length-max": "Check Sum Code has a maximum length of 50 characters."
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.FileStatusListText",
+   "id": "Information_FileStatusListText",
+   "type": "text",
+   "role": null,
+   "label": "Information_FileStatusListText",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Complete",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.FileStatusList",
+   "id": "Information_FileStatusList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "Information_FileStatusList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "1",
+   "widget": "k11",
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.TransportTypeListText",
+   "id": "Information_TransportTypeListText",
+   "type": "text",
+   "role": null,
+   "label": "Information_TransportTypeListText",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "UNC",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.TransportTypeList",
+   "id": "Information_TransportTypeList",
+   "type": "text",
+   "role": "dropdownlist",
+   "label": "Information_TransportTypeList",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "3",
+   "widget": "k12",
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.OriginatingServerName",
+   "id": "Information_OriginatingServerName",
+   "type": "text",
+   "role": "textbox",
+   "label": "Originating Server Name",
+   "required": false,
+   "maxLength": 100,
+   "validation": {
+    "regex": "Originating Server Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Originating Server Name has a maximum length of 100 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.SourceLocation",
+   "id": "Information_SourceLocation",
+   "type": "text",
+   "role": "textbox",
+   "label": "Source Location",
+   "required": false,
+   "maxLength": 250,
+   "validation": {
+    "regex": "Source Location contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Source Location has a maximum length of 250 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "PICTOutBound - \\\\mapsftshrfs01\\CommercialSharedFolder\\ProgramIntegrityCT\\CaseListRefresh\\Batch\\Output",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "Information.TradingPartnerId",
+   "id": "Information_TradingPartnerId",
+   "type": "text",
+   "role": "textbox",
+   "label": "Trading Partner ID",
+   "required": false,
+   "maxLength": 15,
+   "validation": {
+    "regex": "Trading Partner ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed."
+   },
+   "validationParams": {
+    "length-max": "Trading Partner ID has a maximum length of 15 characters.",
+    "regex-pattern": "^([^;*^:~<>%])*$"
+   },
+   "value": "",
+   "widget": null,
+   "disabled": false,
+   "readOnly": true
+  },
+  {
+   "name": "altLeft1Button",
+   "id": "altLeft1Button",
+   "type": "button",
+   "role": null,
+   "label": "altLeft1Button",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": " ",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "altLeft2Button",
+   "id": "altLeft2Button",
+   "type": "button",
+   "role": null,
+   "label": "altLeft2Button",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": " ",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "altLeft3Button",
+   "id": "altLeft3Button",
+   "type": "button",
+   "role": null,
+   "label": "altLeft3Button",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": " ",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "altLeft4Button",
+   "id": "altLeft4Button",
+   "type": "button",
+   "role": null,
+   "label": "altLeft4Button",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": " ",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "altLeft5Button",
+   "id": "altLeft5Button",
+   "type": "button",
+   "role": null,
+   "label": "altLeft5Button",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": " ",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "altLeft6Button",
+   "id": "altLeft6Button",
+   "type": "button",
+   "role": null,
+   "label": "altLeft6Button",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": " ",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "altRight6Button",
+   "id": "altRight6Button",
+   "type": "button",
+   "role": null,
+   "label": "altRight6Button",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": " ",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "altRight5Button",
+   "id": "altRight5Button",
+   "type": "button",
+   "role": null,
+   "label": "altRight5Button",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": " ",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "altRight4Button",
+   "id": "altRight4Button",
+   "type": "button",
+   "role": null,
+   "label": "altRight4Button",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": " ",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "altRight3Button",
+   "id": "altRight3Button",
+   "type": "button",
+   "role": null,
+   "label": "altRight3Button",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": " ",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "altRight2Button",
+   "id": "altRight2Button",
+   "type": "button",
+   "role": null,
+   "label": "altRight2Button",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": " ",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  },
+  {
+   "name": "altRight1Button",
+   "id": "altRight1Button",
+   "type": "button",
+   "role": null,
+   "label": "Cancel",
+   "required": false,
+   "maxLength": null,
+   "validation": {},
+   "validationParams": {},
+   "value": "Cancel",
+   "widget": null,
+   "disabled": false,
+   "readOnly": false
+  }
+ ],
+ "actions": [
+  {
+   "action": "close",
+   "text": "Close",
+   "id": null
+  },
+  {
+   "action": "cancel",
+   "text": "Cancel",
+   "id": "altRight1Button"
+  }
+ ],
+ "hidden": [
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "h7",
+  "h8",
+  "h9",
+  "h10",
+  "h11",
+  "h12",
+  "h13",
+  "h14",
+  "h15",
+  "h16",
+  "h17",
+  "h18",
+  "h19"
+ ],
+ "unknown": {},
+ "autofocus": "Information_FileId",
+ "pageState": {
+  "htmlOverflow": "hidden",
+  "bodyOverflow": "hidden",
+  "htmlInline": "hidden",
+  "bodyClass": "FileTransfer SearchFileTransferTracking",
+  "bodyScroll": "yes"
+ },
+ "rect": {
+  "x": 240,
+  "y": 81,
+  "width": 1440,
+  "height": 918,
+  "top": 81,
+  "right": 1680,
+  "bottom": 999,
+  "left": 240
+ }
+}

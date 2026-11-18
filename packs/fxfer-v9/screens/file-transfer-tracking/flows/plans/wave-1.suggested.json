@@ -1,0 +1,15 @@
+{
+ "source": "rules",
+ "nodes": [
+  {
+   "node": "n0",
+   "actions": [
+    {
+     "el": "e15",
+     "do": "click",
+     "why": "button \"Search\""
+    }
+   ]
+  }
+ ]
+}

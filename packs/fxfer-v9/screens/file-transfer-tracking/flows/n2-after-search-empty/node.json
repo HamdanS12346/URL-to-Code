@@ -1,0 +1,109 @@
+{
+ "id": "n2",
+ "parent": "n0",
+ "depth": 1,
+ "status": "frontier",
+ "name": "after-search-empty",
+ "kind": "results",
+ "fp": "c3ce26f905e3",
+ "fpText": "W:\nH:Search Criteria|Search Results\nL:Direction|File ID|File Name|File Status|From Date|From Size (KB)|Source Location|To Date|To Size (KB)|Trading Partner ID|Transport Type\nB:Cancel|Open the date view|Open the time view|Reset|Search|select\nF:10\nT:\nR:1\nV:0",
+ "via": {
+  "el": "e15",
+  "steps": [
+   {
+    "do": "click",
+    "layer": "page",
+    "css": "#nextButton",
+    "nth": 0,
+    "text": "Search",
+    "kind": "button"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#nextButton",
+   "nth": 0,
+   "text": "Search",
+   "kind": "button"
+  }
+ ],
+ "requests": [
+  {
+   "method": "GET",
+   "url": "/api/FileTransfer/SearchFileTransferTracking/",
+   "status": "sent"
+  }
+ ],
+ "change": {
+  "show": [
+   "[data-kit-h=\"h2\"]"
+  ],
+  "hide": [
+   "#FileId_validationMessage",
+   "#FileName_validationMessage",
+   "#FileStatusList_validationMessage",
+   "#DirectionList_validationMessage",
+   "#TransportTypeList_validationMessage",
+   "#TradingPartnerId_validationMessage",
+   "#FromDate_validationMessage",
+   "#ToDate_validationMessage",
+   "#FromSize_validationMessage",
+   "#ToSize_validationMessage"
+  ],
+  "scroll": null
+ },
+ "title": null,
+ "dir": "n2-after-search-empty",
+ "windows": 0,
+ "validation": null,
+ "same": [],
+ "skipped": [],
+ "probed": true,
+ "fields": [
+  {
+   "name": "FileId",
+   "label": "File ID",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 50,
+   "maxEnforced": true
+  },
+  {
+   "name": "FileName",
+   "label": "File Name",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 100,
+   "maxEnforced": true
+  },
+  {
+   "name": "TradingPartnerId",
+   "label": "Trading Partner ID",
+   "messages": {},
+   "accepts": {
+    "letters": true,
+    "digits": true,
+    "spaces": true,
+    "symbols": true
+   },
+   "kept": "Ab1 !@#.-",
+   "maxLength": 25,
+   "maxEnforced": true
+  }
+ ]
+}

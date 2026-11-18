@@ -1,0 +1,1248 @@
+{
+ "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFileTransferTracking",
+ "at": "2026-11-17T11:26:43.126Z",
+ "waves": 3,
+ "planners": [
+  "ai",
+  "ai",
+  "ai"
+ ],
+ "nodes": {
+  "n0": {
+   "id": "n0",
+   "parent": null,
+   "depth": 0,
+   "name": "at-rest",
+   "dir": "n0-at-rest",
+   "kind": "page",
+   "status": "explored",
+   "fp": "bc42f9640611",
+   "fpText": "W:\nH:Search Criteria\nL:Direction|File ID|File Name|File Status|From Date|From Size (KB)|Source Location|To Date|To Size (KB)|Trading Partner ID|Transport Type\nB:Cancel|Open the date view|Open the time view|Reset|Search|select\nF:10\nT:\nR:0\nV:0",
+   "path": [],
+   "windows": 0,
+   "title": null,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "layer": "page",
+     "css": "div.panel-icon.clickable",
+     "nth": 0,
+     "text": "",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": "collapse",
+     "box": {
+      "x": 1847,
+      "y": 166,
+      "w": 28,
+      "h": 30
+     }
+    },
+    {
+     "el": "e2",
+     "kind": "text",
+     "layer": "page",
+     "css": "#FileId",
+     "nth": 0,
+     "text": "",
+     "label": "File ID",
+     "id": "FileId",
+     "name": "FileId",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "File ID has a maximum length of 50 characters.",
+      "regex": "File ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "maxlength": 50,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 51,
+      "y": 279,
+      "w": 550,
+      "h": 30
+     }
+    },
+    {
+     "el": "e3",
+     "kind": "text",
+     "layer": "page",
+     "css": "#FileName",
+     "nth": 0,
+     "text": "",
+     "label": "File Name",
+     "id": "FileName",
+     "name": "FileName",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "File Name has a maximum length of 100 characters.",
+      "regex": "File Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "maxlength": 100,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 664,
+      "y": 279,
+      "w": 703,
+      "h": 30
+     }
+    },
+    {
+     "el": "e4",
+     "kind": "dropdown",
+     "layer": "page",
+     "css": "span.k-picker.k-dropdownlist",
+     "nth": 0,
+     "text": "select a value...FileStatusList",
+     "label": "File Status",
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "options": [
+      "1",
+      "2",
+      "3"
+     ],
+     "box": {
+      "x": 41,
+      "y": 367,
+      "w": 598,
+      "h": 40
+     }
+    },
+    {
+     "el": "e5",
+     "kind": "dropdown",
+     "layer": "page",
+     "css": "span.k-picker.k-dropdownlist",
+     "nth": 1,
+     "text": "select a value...DirectionList",
+     "label": "Direction",
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "options": [
+      "1",
+      "2"
+     ],
+     "box": {
+      "x": 654,
+      "y": 367,
+      "w": 445,
+      "h": 40
+     }
+    },
+    {
+     "el": "e6",
+     "kind": "dropdown",
+     "layer": "page",
+     "css": "span.k-picker.k-dropdownlist",
+     "nth": 2,
+     "text": "select a value...TransportTypeList",
+     "label": "Transport Type",
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "box": {
+      "x": 1113,
+      "y": 367,
+      "w": 598,
+      "h": 40
+     }
+    },
+    {
+     "el": "e7",
+     "kind": "dropdown",
+     "layer": "page",
+     "css": "span.k-picker.k-dropdownlist",
+     "nth": 3,
+     "text": "select a value...SourceLocation",
+     "label": "Source Location",
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "options": [
+      "40defc3b-7227-4798-811a-1681e6505df2",
+      "5906a815-02de-4c35-9014-96d920f4285d",
+      "a2bd6591-53e6-4c8e-8101-76e8cc105eef",
+      "353244d3-8c51-453d-a26b-d31ba8375431",
+      "67391ddc-ec70-4630-b941-c4e646d99be2",
+      "5e8e5b7e-95a2-43e5-8716-1e4464922617",
+      "ddc110bf-9057-484d-9a18-ce5e849ca1f2",
+      "b16dfecc-c9fc-45f1-96bb-70b17d934a5f",
+      "284a46bc-10db-46e7-9f1b-d4c6faf29fa3",
+      "1f2a84a6-47c6-4ca2-a7d3-416ad41b48b0",
+      "5ee49daa-f142-4c83-80ce-668bce190cf1",
+      "109fbfd1-d87a-40fd-a3d0-ae3aed2d5d1a"
+     ],
+     "box": {
+      "x": 41,
+      "y": 459,
+      "w": 751,
+      "h": 40
+     }
+    },
+    {
+     "el": "e8",
+     "kind": "text",
+     "layer": "page",
+     "css": "#TradingPartnerId",
+     "nth": 0,
+     "text": "",
+     "label": "Trading Partner ID",
+     "id": "TradingPartnerId",
+     "name": "TradingPartnerId",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "Trading Partner ID has a maximum length of 25 characters.",
+      "regex": "Trading Partner ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "maxlength": 25,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 817,
+      "y": 464,
+      "w": 243,
+      "h": 30
+     }
+    },
+    {
+     "el": "e9",
+     "kind": "dropdown",
+     "layer": "page",
+     "css": "#FromDate",
+     "nth": 0,
+     "text": "",
+     "label": "From Date",
+     "id": "FromDate",
+     "name": "FromDate",
+     "type": "text",
+     "kitAction": null,
+     "box": {
+      "x": 41,
+      "y": 558,
+      "w": 189,
+      "h": 30
+     }
+    },
+    {
+     "el": "e10",
+     "kind": "dropdown",
+     "layer": "page",
+     "css": "#ToDate",
+     "nth": 0,
+     "text": "",
+     "label": "To Date",
+     "id": "ToDate",
+     "name": "ToDate",
+     "type": "text",
+     "kitAction": null,
+     "box": {
+      "x": 348,
+      "y": 558,
+      "w": 189,
+      "h": 30
+     }
+    },
+    {
+     "el": "e11",
+     "kind": "text",
+     "layer": "page",
+     "css": "input.editor-control.k-input-inner[type=\"text\"]",
+     "nth": 2,
+     "text": "",
+     "label": "From Size (KB)",
+     "id": null,
+     "name": null,
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {},
+     "box": {
+      "x": 654,
+      "y": 557,
+      "w": 253,
+      "h": 30
+     }
+    },
+    {
+     "el": "e12",
+     "kind": "text",
+     "layer": "page",
+     "css": "input.editor-control.k-input-inner[type=\"text\"]",
+     "nth": 3,
+     "text": "",
+     "label": "To Size (KB)",
+     "id": null,
+     "name": null,
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {},
+     "box": {
+      "x": 961,
+      "y": 557,
+      "w": 253,
+      "h": 30
+     }
+    },
+    {
+     "el": "e13",
+     "kind": "button",
+     "layer": "page",
+     "css": "#resetButton",
+     "nth": 0,
+     "text": "Reset",
+     "label": null,
+     "id": "resetButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "reset",
+     "box": {
+      "x": 41,
+      "y": 646,
+      "w": 103,
+      "h": 38
+     }
+    },
+    {
+     "el": "e14",
+     "kind": "button",
+     "layer": "page",
+     "css": "#cancelButton",
+     "nth": 0,
+     "text": "Cancel",
+     "label": null,
+     "id": "cancelButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "cancel",
+     "box": {
+      "x": 1629,
+      "y": 646,
+      "w": 111,
+      "h": 38
+     }
+    },
+    {
+     "el": "e15",
+     "kind": "button",
+     "layer": "page",
+     "css": "#nextButton",
+     "nth": 0,
+     "text": "Search",
+     "label": null,
+     "id": "nextButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "search",
+     "box": {
+      "x": 1752,
+      "y": 646,
+      "w": 112,
+      "h": 38
+     }
+    }
+   ],
+   "validation": null,
+   "same": [],
+   "skipped": [],
+   "probed": true,
+   "fields": [
+    {
+     "name": "FileId",
+     "label": "File ID",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-",
+     "maxLength": 50,
+     "maxEnforced": true
+    },
+    {
+     "name": "FileName",
+     "label": "File Name",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-",
+     "maxLength": 100,
+     "maxEnforced": true
+    },
+    {
+     "name": "TradingPartnerId",
+     "label": "Trading Partner ID",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-",
+     "maxLength": 25,
+     "maxEnforced": true
+    }
+   ],
+   "tried": [
+    {
+     "el": "e1",
+     "text": "",
+     "do": "click",
+     "why": "Collapse the Search Criteria panel to capture the collapsed layout/state.",
+     "outcome": "a new part",
+     "child": "n1"
+    },
+    {
+     "el": "e4",
+     "text": "select a value...FileStatusList",
+     "do": "click",
+     "why": "Open the File Status dropdown list (Kendo dropdown list popup state).",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e5",
+     "text": "select a value...DirectionList",
+     "do": "click",
+     "why": "Open the Direction dropdown list (popup state).",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e6",
+     "text": "select a value...TransportTypeList",
+     "do": "click",
+     "why": "Open the Transport Type dropdown list (popup state).",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e7",
+     "text": "select a value...SourceLocation",
+     "do": "click",
+     "why": "Open the Source Location dropdown list (popup state).",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e9",
+     "text": "From Date",
+     "do": "press",
+     "value": "Alt+ArrowDown",
+     "why": "Open the From Date picker calendar popup (Kendo date picker).",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e10",
+     "text": "To Date",
+     "do": "press",
+     "value": "Alt+ArrowDown",
+     "why": "Open the To Date picker calendar popup (Kendo date picker).",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e15",
+     "text": "Search",
+     "do": "click",
+     "why": "Run Search with no criteria to capture the empty-search response (results grid, banner, or validation).",
+     "outcome": "a new results",
+     "child": "n2"
+    },
+    {
+     "el": "e15",
+     "text": "Search",
+     "do": "click",
+     "why": "Run Search with File Status = 1 in case empty search is blocked and to capture filtered results state.",
+     "outcome": "the same state as n2",
+     "same": "n2"
+    }
+   ],
+   "kids": 2
+  },
+  "n1": {
+   "id": "n1",
+   "parent": "n0",
+   "depth": 1,
+   "status": "dead-end",
+   "name": "search-criteria-collapsed",
+   "kind": "part",
+   "fp": "e4fc06a7e7c1",
+   "fpText": "W:\nH:Search Criteria\nL:\nB:\nF:0\nT:\nR:0\nV:0",
+   "via": {
+    "el": "e1",
+    "steps": [
+     {
+      "do": "click",
+      "layer": "page",
+      "css": "div.panel-icon.clickable",
+      "nth": 0,
+      "text": "",
+      "kind": "button"
+     }
+    ]
+   },
+   "path": [
+    {
+     "do": "click",
+     "layer": "page",
+     "css": "div.panel-icon.clickable",
+     "nth": 0,
+     "text": "",
+     "kind": "button"
+    }
+   ],
+   "requests": [],
+   "change": {
+    "show": [],
+    "hide": [
+     "#searchFileTrackingPanel"
+    ],
+    "scroll": null
+   },
+   "title": null,
+   "dir": "n1-search-criteria-collapsed",
+   "windows": 0,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "layer": "page",
+     "css": "div.panel-icon.clickable",
+     "nth": 0,
+     "text": "",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": "collapse",
+     "box": {
+      "x": 1847,
+      "y": 166,
+      "w": 28,
+      "h": 30
+     }
+    }
+   ],
+   "validation": null,
+   "same": [],
+   "skipped": [],
+   "reason": "Search Criteria is collapsed; only the collapse/expand toggle is present and it returns to the already-known expanded view (n0/n2)."
+  },
+  "n2": {
+   "id": "n2",
+   "parent": "n0",
+   "depth": 1,
+   "status": "explored",
+   "name": "after-search-empty",
+   "kind": "results",
+   "fp": "c3ce26f905e3",
+   "fpText": "W:\nH:Search Criteria|Search Results\nL:Direction|File ID|File Name|File Status|From Date|From Size (KB)|Source Location|To Date|To Size (KB)|Trading Partner ID|Transport Type\nB:Cancel|Open the date view|Open the time view|Reset|Search|select\nF:10\nT:\nR:1\nV:0",
+   "via": {
+    "el": "e15",
+    "steps": [
+     {
+      "do": "click",
+      "layer": "page",
+      "css": "#nextButton",
+      "nth": 0,
+      "text": "Search",
+      "kind": "button"
+     }
+    ]
+   },
+   "path": [
+    {
+     "do": "click",
+     "layer": "page",
+     "css": "#nextButton",
+     "nth": 0,
+     "text": "Search",
+     "kind": "button"
+    }
+   ],
+   "requests": [
+    {
+     "method": "GET",
+     "url": "/api/FileTransfer/SearchFileTransferTracking/",
+     "status": "sent"
+    }
+   ],
+   "change": {
+    "show": [
+     "[data-kit-h=\"h2\"]"
+    ],
+    "hide": [
+     "#FileId_validationMessage",
+     "#FileName_validationMessage",
+     "#FileStatusList_validationMessage",
+     "#DirectionList_validationMessage",
+     "#TransportTypeList_validationMessage",
+     "#TradingPartnerId_validationMessage",
+     "#FromDate_validationMessage",
+     "#ToDate_validationMessage",
+     "#FromSize_validationMessage",
+     "#ToSize_validationMessage"
+    ],
+    "scroll": null
+   },
+   "title": null,
+   "dir": "n2-after-search-empty",
+   "windows": 0,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "layer": "page",
+     "css": "div.panel-icon.clickable",
+     "nth": 0,
+     "text": "",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": "collapse",
+     "box": {
+      "x": 1847,
+      "y": -315,
+      "w": 28,
+      "h": 30
+     }
+    },
+    {
+     "el": "e2",
+     "kind": "text",
+     "layer": "page",
+     "css": "#FileId",
+     "nth": 0,
+     "text": "",
+     "label": "File ID",
+     "id": "FileId",
+     "name": "FileId",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "File ID has a maximum length of 50 characters.",
+      "regex": "File ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "maxlength": 50,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 51,
+      "y": -202,
+      "w": 550,
+      "h": 30
+     }
+    },
+    {
+     "el": "e3",
+     "kind": "text",
+     "layer": "page",
+     "css": "#FileName",
+     "nth": 0,
+     "text": "",
+     "label": "File Name",
+     "id": "FileName",
+     "name": "FileName",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "File Name has a maximum length of 100 characters.",
+      "regex": "File Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "maxlength": 100,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 664,
+      "y": -202,
+      "w": 703,
+      "h": 30
+     }
+    },
+    {
+     "el": "e4",
+     "kind": "dropdown",
+     "layer": "page",
+     "css": "span.k-picker.k-dropdownlist",
+     "nth": 0,
+     "text": "select a value...FileStatusList",
+     "label": "File Status",
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "options": [
+      "1",
+      "2",
+      "3"
+     ],
+     "box": {
+      "x": 41,
+      "y": -114,
+      "w": 598,
+      "h": 40
+     }
+    },
+    {
+     "el": "e5",
+     "kind": "dropdown",
+     "layer": "page",
+     "css": "span.k-picker.k-dropdownlist",
+     "nth": 1,
+     "text": "select a value...DirectionList",
+     "label": "Direction",
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "options": [
+      "1",
+      "2"
+     ],
+     "box": {
+      "x": 654,
+      "y": -114,
+      "w": 445,
+      "h": 40
+     }
+    },
+    {
+     "el": "e6",
+     "kind": "dropdown",
+     "layer": "page",
+     "css": "span.k-picker.k-dropdownlist",
+     "nth": 2,
+     "text": "select a value...TransportTypeList",
+     "label": "Transport Type",
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "box": {
+      "x": 1113,
+      "y": -114,
+      "w": 598,
+      "h": 40
+     }
+    },
+    {
+     "el": "e7",
+     "kind": "dropdown",
+     "layer": "page",
+     "css": "span.k-picker.k-dropdownlist",
+     "nth": 3,
+     "text": "select a value...SourceLocation",
+     "label": "Source Location",
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "options": [
+      "40defc3b-7227-4798-811a-1681e6505df2",
+      "5906a815-02de-4c35-9014-96d920f4285d",
+      "a2bd6591-53e6-4c8e-8101-76e8cc105eef",
+      "353244d3-8c51-453d-a26b-d31ba8375431",
+      "67391ddc-ec70-4630-b941-c4e646d99be2",
+      "5e8e5b7e-95a2-43e5-8716-1e4464922617",
+      "ddc110bf-9057-484d-9a18-ce5e849ca1f2",
+      "b16dfecc-c9fc-45f1-96bb-70b17d934a5f",
+      "284a46bc-10db-46e7-9f1b-d4c6faf29fa3",
+      "1f2a84a6-47c6-4ca2-a7d3-416ad41b48b0",
+      "5ee49daa-f142-4c83-80ce-668bce190cf1",
+      "109fbfd1-d87a-40fd-a3d0-ae3aed2d5d1a"
+     ],
+     "box": {
+      "x": 41,
+      "y": -21,
+      "w": 751,
+      "h": 40
+     }
+    },
+    {
+     "el": "e8",
+     "kind": "text",
+     "layer": "page",
+     "css": "#TradingPartnerId",
+     "nth": 0,
+     "text": "",
+     "label": "Trading Partner ID",
+     "id": "TradingPartnerId",
+     "name": "TradingPartnerId",
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {
+      "length-max": "Trading Partner ID has a maximum length of 25 characters.",
+      "regex": "Trading Partner ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+      "regex-pattern": "^([^;*^:~<>%])*$",
+      "maxlength": 25,
+      "inputmode": "text"
+     },
+     "box": {
+      "x": 817,
+      "y": -17,
+      "w": 243,
+      "h": 30
+     }
+    },
+    {
+     "el": "e9",
+     "kind": "dropdown",
+     "layer": "page",
+     "css": "#FromDate",
+     "nth": 0,
+     "text": "",
+     "label": "From Date",
+     "id": "FromDate",
+     "name": "FromDate",
+     "type": "text",
+     "kitAction": null,
+     "box": {
+      "x": 41,
+      "y": 76,
+      "w": 189,
+      "h": 30
+     }
+    },
+    {
+     "el": "e10",
+     "kind": "dropdown",
+     "layer": "page",
+     "css": "#ToDate",
+     "nth": 0,
+     "text": "",
+     "label": "To Date",
+     "id": "ToDate",
+     "name": "ToDate",
+     "type": "text",
+     "kitAction": null,
+     "box": {
+      "x": 348,
+      "y": 76,
+      "w": 189,
+      "h": 30
+     }
+    },
+    {
+     "el": "e11",
+     "kind": "text",
+     "layer": "page",
+     "css": "input.editor-control.k-input-inner[type=\"text\"]",
+     "nth": 2,
+     "text": "",
+     "label": "From Size (KB)",
+     "id": null,
+     "name": null,
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {},
+     "box": {
+      "x": 654,
+      "y": 76,
+      "w": 253,
+      "h": 30
+     }
+    },
+    {
+     "el": "e12",
+     "kind": "text",
+     "layer": "page",
+     "css": "input.editor-control.k-input-inner[type=\"text\"]",
+     "nth": 3,
+     "text": "",
+     "label": "To Size (KB)",
+     "id": null,
+     "name": null,
+     "type": "text",
+     "kitAction": null,
+     "value": "",
+     "rules": {},
+     "box": {
+      "x": 961,
+      "y": 76,
+      "w": 253,
+      "h": 30
+     }
+    },
+    {
+     "el": "e13",
+     "kind": "button",
+     "layer": "page",
+     "css": "#resetButton",
+     "nth": 0,
+     "text": "Reset",
+     "label": null,
+     "id": "resetButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "reset",
+     "box": {
+      "x": 41,
+      "y": 165,
+      "w": 103,
+      "h": 38
+     }
+    },
+    {
+     "el": "e14",
+     "kind": "button",
+     "layer": "page",
+     "css": "#cancelButton",
+     "nth": 0,
+     "text": "Cancel",
+     "label": null,
+     "id": "cancelButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "cancel",
+     "box": {
+      "x": 1629,
+      "y": 165,
+      "w": 111,
+      "h": 38
+     }
+    },
+    {
+     "el": "e15",
+     "kind": "button",
+     "layer": "page",
+     "css": "#nextButton",
+     "nth": 0,
+     "text": "Search",
+     "label": null,
+     "id": "nextButton",
+     "name": null,
+     "type": "button",
+     "kitAction": "search",
+     "box": {
+      "x": 1752,
+      "y": 165,
+      "w": 112,
+      "h": 38
+     }
+    },
+    {
+     "el": "e16",
+     "kind": "row",
+     "layer": "page",
+     "css": "tbody tr",
+     "nth": 0,
+     "text": "0b3ad742-223b-4bc1-8b5b-867d8dfde039\\\\mapsftshrfs01\\Commerci",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "rows": 10,
+     "box": {
+      "x": 31,
+      "y": 418,
+      "w": 1857,
+      "h": 56
+     }
+    }
+   ],
+   "validation": null,
+   "same": [],
+   "skipped": [],
+   "probed": true,
+   "fields": [
+    {
+     "name": "FileId",
+     "label": "File ID",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-",
+     "maxLength": 50,
+     "maxEnforced": true
+    },
+    {
+     "name": "FileName",
+     "label": "File Name",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-",
+     "maxLength": 100,
+     "maxEnforced": true
+    },
+    {
+     "name": "TradingPartnerId",
+     "label": "Trading Partner ID",
+     "messages": {},
+     "accepts": {
+      "letters": true,
+      "digits": true,
+      "spaces": true,
+      "symbols": true
+     },
+     "kept": "Ab1 !@#.-",
+     "maxLength": 25,
+     "maxEnforced": true
+    }
+   ],
+   "tried": [
+    {
+     "el": "e16",
+     "text": "0b3ad742-223b-4bc1-8b5b-867d8dfde039\\\\mapsftshrfs01\\Commerci",
+     "do": "dblclick",
+     "why": "Grid rows commonly open a file-transfer detail view; explore the row drill-in state.",
+     "outcome": "a new dialog \"File Transfer Tracking\"",
+     "child": "n2.1"
+    },
+    {
+     "el": "e9",
+     "text": "From Date",
+     "do": "click",
+     "why": "Open the From Date picker / calendar overlay if present.",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e10",
+     "text": "To Date",
+     "do": "click",
+     "why": "Open the To Date picker / calendar overlay if present.",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e4",
+     "text": "select a value...FileStatusList",
+     "do": "select",
+     "value": "1",
+     "why": "Selecting a File Status is likely to change results and/or reveal result-empty states.",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e5",
+     "text": "select a value...DirectionList",
+     "do": "select",
+     "value": "1",
+     "why": "Selecting a Direction is likely to change results and/or reveal result-empty states.",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e6",
+     "text": "select a value...TransportTypeList",
+     "do": "select",
+     "value": "1",
+     "why": "Selecting a Transport Type is likely to change results and/or reveal result-empty states.",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e7",
+     "text": "select a value...SourceLocation",
+     "do": "select",
+     "value": "40defc3b-7227-4798-811a-1681e6505df2",
+     "why": "Selecting a Source Location is likely to change results and may expose no-results messaging.",
+     "outcome": "nothing changed"
+    }
+   ],
+   "kids": 1
+  },
+  "n2.1": {
+   "id": "n2.1",
+   "parent": "n2",
+   "depth": 2,
+   "status": "explored",
+   "name": "open-file-transfer",
+   "kind": "dialog",
+   "fp": "714c66e3bfeb",
+   "fpText": "W:File Transfer Tracking\nH:Events|Exceptions|Information\nL:Check Sum Code|Create Date|Direction|File ID|File Name|File Status|Originating Server Name|Size (KB)|Source Location|Trading Partner ID|Transport Type\nB:Cancel\nF:1\nT:\nR:1\nV:0",
+   "via": {
+    "el": "e16",
+    "steps": [
+     {
+      "do": "dblclick",
+      "layer": "page",
+      "css": "tbody tr",
+      "nth": 0,
+      "text": "0b3ad742-223b-4bc1-8b5b-867d8dfde039\\\\mapsftshrfs01\\Commerci",
+      "kind": "row"
+     }
+    ]
+   },
+   "path": [
+    {
+     "do": "click",
+     "layer": "page",
+     "css": "#nextButton",
+     "nth": 0,
+     "text": "Search",
+     "kind": "button"
+    },
+    {
+     "do": "dblclick",
+     "layer": "page",
+     "css": "tbody tr",
+     "nth": 0,
+     "text": "0b3ad742-223b-4bc1-8b5b-867d8dfde039\\\\mapsftshrfs01\\Commerci",
+     "kind": "row"
+    }
+   ],
+   "requests": [
+    {
+     "method": "POST",
+     "url": "/FileTransfer/FileTransferTrackingView/",
+     "status": "sent"
+    }
+   ],
+   "title": "File Transfer Tracking",
+   "dir": "n2.1-open-file-transfer",
+   "windows": 1,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "row",
+     "layer": "top",
+     "css": "tbody tr",
+     "nth": 1,
+     "text": "There are no records found.",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "rows": 1,
+     "box": {
+      "x": 252,
+      "y": 921,
+      "w": 1402,
+      "h": 62
+     }
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "layer": "top",
+     "css": "#altRight1Button",
+     "nth": 0,
+     "text": "Cancel",
+     "label": null,
+     "id": "altRight1Button",
+     "name": null,
+     "type": "button",
+     "kitAction": "cancel",
+     "box": {
+      "x": 1525,
+      "y": 1034,
+      "w": 114,
+      "h": 38
+     }
+    },
+    {
+     "el": "e3",
+     "kind": "row",
+     "layer": "top",
+     "css": "tbody tr",
+     "nth": 0,
+     "text": "T5/25/2021 1:07 PM\\\\mapsftshrfs01\\CommercialSharedFolder\\Pro",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "rows": 1,
+     "box": {
+      "x": 252,
+      "y": 703,
+      "w": 1402,
+      "h": 56
+     }
+    },
+    {
+     "el": "e4",
+     "kind": "row",
+     "layer": "top",
+     "css": "tbody tr",
+     "nth": 1,
+     "text": "There are no records found.",
+     "label": null,
+     "id": null,
+     "name": null,
+     "type": null,
+     "kitAction": null,
+     "rows": 1,
+     "box": {
+      "x": 252,
+      "y": 921,
+      "w": 1402,
+      "h": 62
+     }
+    }
+   ],
+   "validation": null,
+   "same": [],
+   "skipped": [],
+   "probed": true,
+   "fields": [],
+   "tried": [
+    {
+     "el": "e3",
+     "text": "T5/25/2021 1:07 PM\\\\mapsftshrfs01\\CommercialSharedFolder\\Pro",
+     "do": "dblclick",
+     "why": "Opens the Events grid row if it has a drill-down.",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e1",
+     "text": "There are no records found.",
+     "do": "dblclick",
+     "why": "Confirms whether the empty-row placeholder has any interaction.",
+     "outcome": "nothing changed"
+    },
+    {
+     "el": "e4",
+     "text": "There are no records found.",
+     "do": "dblclick",
+     "why": "Confirms whether the Exceptions empty state has any interaction.",
+     "outcome": "nothing changed"
+    }
+   ]
+  }
+ }
+}

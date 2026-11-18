@@ -1,0 +1,56 @@
+{
+ "id": "n1.1",
+ "parent": "n1",
+ "depth": 2,
+ "status": "frontier",
+ "name": "open-configuration",
+ "kind": "dialog",
+ "fp": "af7df48e6af2",
+ "fpText": "W:View File Transfer Configuration\nH:Destination Configuration|Source Configuration\nL:Configuration Name|Description|File Direction|Friday|Monday|Owner Email|Owner Module|Owner Name|Owner Phone|Protocol|Run Schedule|Run Weekly|Saturday|Send Notification|Server|Show Inactives|Source Address|Source File Mask|Status|Sunday|Suspend|Thursday|Time Window End|Time Window Start|Trading Partner|Tuesday|Wednesday\nB:Close|Edit\nF:3\nT:\nR:1\nV:0",
+ "via": {
+  "el": "e12",
+  "steps": [
+   {
+    "do": "dblclick",
+    "layer": "page",
+    "css": "tbody tr",
+    "nth": 0,
+    "text": "4TestFTP/testweryashwanthAdministrationActiveaab80b60-a4ec-4",
+    "kind": "row"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#nextButton",
+   "nth": 0,
+   "text": "Search",
+   "kind": "button"
+  },
+  {
+   "do": "dblclick",
+   "layer": "page",
+   "css": "tbody tr",
+   "nth": 0,
+   "text": "4TestFTP/testweryashwanthAdministrationActiveaab80b60-a4ec-4",
+   "kind": "row"
+  }
+ ],
+ "requests": [
+  {
+   "method": "GET",
+   "url": "/FileTransfer/FileTransferConfigurationView/",
+   "status": "sent"
+  }
+ ],
+ "title": "View File Transfer Configuration",
+ "dir": "n1.1-open-configuration",
+ "windows": 1,
+ "validation": null,
+ "same": [],
+ "skipped": [],
+ "probed": true,
+ "fields": []
+}

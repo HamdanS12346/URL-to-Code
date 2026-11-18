@@ -1,0 +1,344 @@
+[
+ {
+  "el": "e1",
+  "kind": "button",
+  "layer": "page",
+  "css": "div.panel-icon.clickable",
+  "nth": 0,
+  "text": "",
+  "label": null,
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": "collapse",
+  "box": {
+   "x": 1847,
+   "y": 166,
+   "w": 28,
+   "h": 30
+  }
+ },
+ {
+  "el": "e2",
+  "kind": "text",
+  "layer": "page",
+  "css": "#FileId",
+  "nth": 0,
+  "text": "",
+  "label": "File ID",
+  "id": "FileId",
+  "name": "FileId",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "File ID has a maximum length of 50 characters.",
+   "regex": "File ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "maxlength": 50,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 51,
+   "y": 279,
+   "w": 550,
+   "h": 30
+  }
+ },
+ {
+  "el": "e3",
+  "kind": "text",
+  "layer": "page",
+  "css": "#FileName",
+  "nth": 0,
+  "text": "",
+  "label": "File Name",
+  "id": "FileName",
+  "name": "FileName",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "File Name has a maximum length of 100 characters.",
+   "regex": "File Name contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "maxlength": 100,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 664,
+   "y": 279,
+   "w": 703,
+   "h": 30
+  }
+ },
+ {
+  "el": "e4",
+  "kind": "dropdown",
+  "layer": "page",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 0,
+  "text": "select a value...FileStatusList",
+  "label": "File Status",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "1",
+   "2",
+   "3"
+  ],
+  "box": {
+   "x": 41,
+   "y": 367,
+   "w": 598,
+   "h": 40
+  }
+ },
+ {
+  "el": "e5",
+  "kind": "dropdown",
+  "layer": "page",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 1,
+  "text": "select a value...DirectionList",
+  "label": "Direction",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "1",
+   "2"
+  ],
+  "box": {
+   "x": 654,
+   "y": 367,
+   "w": 445,
+   "h": 40
+  }
+ },
+ {
+  "el": "e6",
+  "kind": "dropdown",
+  "layer": "page",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 2,
+  "text": "select a value...TransportTypeList",
+  "label": "Transport Type",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "box": {
+   "x": 1113,
+   "y": 367,
+   "w": 598,
+   "h": 40
+  }
+ },
+ {
+  "el": "e7",
+  "kind": "dropdown",
+  "layer": "page",
+  "css": "span.k-picker.k-dropdownlist",
+  "nth": 3,
+  "text": "select a value...SourceLocation",
+  "label": "Source Location",
+  "id": null,
+  "name": null,
+  "type": null,
+  "kitAction": null,
+  "options": [
+   "40defc3b-7227-4798-811a-1681e6505df2",
+   "5906a815-02de-4c35-9014-96d920f4285d",
+   "a2bd6591-53e6-4c8e-8101-76e8cc105eef",
+   "353244d3-8c51-453d-a26b-d31ba8375431",
+   "67391ddc-ec70-4630-b941-c4e646d99be2",
+   "5e8e5b7e-95a2-43e5-8716-1e4464922617",
+   "ddc110bf-9057-484d-9a18-ce5e849ca1f2",
+   "b16dfecc-c9fc-45f1-96bb-70b17d934a5f",
+   "284a46bc-10db-46e7-9f1b-d4c6faf29fa3",
+   "1f2a84a6-47c6-4ca2-a7d3-416ad41b48b0",
+   "5ee49daa-f142-4c83-80ce-668bce190cf1",
+   "109fbfd1-d87a-40fd-a3d0-ae3aed2d5d1a"
+  ],
+  "box": {
+   "x": 41,
+   "y": 459,
+   "w": 751,
+   "h": 40
+  }
+ },
+ {
+  "el": "e8",
+  "kind": "text",
+  "layer": "page",
+  "css": "#TradingPartnerId",
+  "nth": 0,
+  "text": "",
+  "label": "Trading Partner ID",
+  "id": "TradingPartnerId",
+  "name": "TradingPartnerId",
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {
+   "length-max": "Trading Partner ID has a maximum length of 25 characters.",
+   "regex": "Trading Partner ID contains invalid characters. The characters ; * ^ : ~ < > % are not allowed.",
+   "regex-pattern": "^([^;*^:~<>%])*$",
+   "maxlength": 25,
+   "inputmode": "text"
+  },
+  "box": {
+   "x": 817,
+   "y": 464,
+   "w": 243,
+   "h": 30
+  }
+ },
+ {
+  "el": "e9",
+  "kind": "dropdown",
+  "layer": "page",
+  "css": "#FromDate",
+  "nth": 0,
+  "text": "",
+  "label": "From Date",
+  "id": "FromDate",
+  "name": "FromDate",
+  "type": "text",
+  "kitAction": null,
+  "box": {
+   "x": 41,
+   "y": 558,
+   "w": 189,
+   "h": 30
+  }
+ },
+ {
+  "el": "e10",
+  "kind": "dropdown",
+  "layer": "page",
+  "css": "#ToDate",
+  "nth": 0,
+  "text": "",
+  "label": "To Date",
+  "id": "ToDate",
+  "name": "ToDate",
+  "type": "text",
+  "kitAction": null,
+  "box": {
+   "x": 348,
+   "y": 558,
+   "w": 189,
+   "h": 30
+  }
+ },
+ {
+  "el": "e11",
+  "kind": "text",
+  "layer": "page",
+  "css": "input.editor-control.k-input-inner[type=\"text\"]",
+  "nth": 2,
+  "text": "",
+  "label": "From Size (KB)",
+  "id": null,
+  "name": null,
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {},
+  "box": {
+   "x": 654,
+   "y": 557,
+   "w": 253,
+   "h": 30
+  }
+ },
+ {
+  "el": "e12",
+  "kind": "text",
+  "layer": "page",
+  "css": "input.editor-control.k-input-inner[type=\"text\"]",
+  "nth": 3,
+  "text": "",
+  "label": "To Size (KB)",
+  "id": null,
+  "name": null,
+  "type": "text",
+  "kitAction": null,
+  "value": "",
+  "rules": {},
+  "box": {
+   "x": 961,
+   "y": 557,
+   "w": 253,
+   "h": 30
+  }
+ },
+ {
+  "el": "e13",
+  "kind": "button",
+  "layer": "page",
+  "css": "#resetButton",
+  "nth": 0,
+  "text": "Reset",
+  "label": null,
+  "id": "resetButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "reset",
+  "box": {
+   "x": 41,
+   "y": 646,
+   "w": 103,
+   "h": 38
+  }
+ },
+ {
+  "el": "e14",
+  "kind": "button",
+  "layer": "page",
+  "css": "#cancelButton",
+  "nth": 0,
+  "text": "Cancel",
+  "label": null,
+  "id": "cancelButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "cancel",
+  "box": {
+   "x": 1629,
+   "y": 646,
+   "w": 111,
+   "h": 38
+  }
+ },
+ {
+  "el": "e15",
+  "kind": "button",
+  "layer": "page",
+  "css": "#nextButton",
+  "nth": 0,
+  "text": "Search",
+  "label": null,
+  "id": "nextButton",
+  "name": null,
+  "type": "button",
+  "kitAction": "search",
+  "box": {
+   "x": 1752,
+   "y": 646,
+   "w": 112,
+   "h": 38
+  }
+ }
+]

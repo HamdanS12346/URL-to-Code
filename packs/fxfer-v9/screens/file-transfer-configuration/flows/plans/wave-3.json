@@ -1,0 +1,223 @@
+{
+  "nodes": [
+    {
+      "node": "n1.1",
+      "name": "open-configuration",
+      "actions": [
+        {
+          "el": "e4",
+          "do": "dblclick",
+          "why": "Opens a destination row from the view-configuration grid.",
+          "name": "open-destination"
+        },
+        {
+          "el": "e2",
+          "do": "click",
+          "why": "Switches the configuration dialog into Edit mode.",
+          "name": "edit-configuration"
+        },
+        {
+          "el": "e1",
+          "do": "click",
+          "why": "Toggles Show Inactives to change the destination list.",
+          "name": "toggle-show-inactives"
+        }
+      ]
+    },
+    {
+      "node": "n2.1",
+      "name": "run-weekly",
+      "actions": [
+        {
+          "el": "e13",
+          "do": "click",
+          "why": "Switches the schedule section from Weekly to Monthly.",
+          "name": "switch-to-monthly"
+        },
+        {
+          "el": "e26",
+          "do": "click",
+          "why": "Toggles Show Inactives to change the destination grid contents.",
+          "name": "toggle-show-inactives"
+        },
+        {
+          "el": "e27",
+          "do": "click",
+          "why": "Attempts to open the Destination dialog (or triggers its validation/disabled behavior) from Weekly schedule.",
+          "name": "create-destination"
+        },
+        {
+          "el": "e14",
+          "do": "click",
+          "why": "Toggles a weekly Run On day (Sunday) to reveal schedule validation/state.",
+          "name": "toggle-run-on-day"
+        },
+        {
+          "el": "e23",
+          "do": "click",
+          "why": "Toggles Send Notification to reveal dependent state/validation.",
+          "name": "toggle-send-notification"
+        },
+        {
+          "el": "e24",
+          "do": "click",
+          "why": "Toggles Suspend to observe any disable/enable behavior.",
+          "name": "toggle-suspend"
+        },
+        {
+          "el": "e21",
+          "do": "select",
+          "value": "0000",
+          "why": "Selects a Time Window Start value to exercise dropdown-dependent behavior.",
+          "name": "set-time-window-start"
+        },
+        {
+          "el": "e22",
+          "do": "select",
+          "value": "0030",
+          "why": "Selects a Time Window End value after choosing start.",
+          "name": "set-time-window-end"
+        }
+      ],
+      "same": [
+        {
+          "el": "e32",
+          "as": "e28",
+          "why": "Both 'There are no records found.' rows represent the empty destination grid state."
+        }
+      ]
+    },
+    {
+      "node": "n2.2",
+      "name": "run-monthly",
+      "actions": [
+        {
+          "el": "e12",
+          "do": "click",
+          "why": "Switches the schedule section from Monthly back to Weekly.",
+          "name": "switch-to-weekly"
+        },
+        {
+          "el": "e14",
+          "do": "click",
+          "why": "Toggles Run On First Day Month to exercise monthly schedule states.",
+          "name": "toggle-first-day"
+        },
+        {
+          "el": "e15",
+          "do": "click",
+          "why": "Toggles Run On Last Day Month to exercise monthly schedule states.",
+          "name": "toggle-last-day"
+        },
+        {
+          "el": "e16",
+          "do": "select",
+          "value": "1",
+          "why": "Selects a Run On This Day Month value to exercise the day-of-month path.",
+          "name": "set-run-on-this-day"
+        },
+        {
+          "el": "e19",
+          "do": "click",
+          "why": "Toggles Send Notification to reveal dependent state/validation.",
+          "name": "toggle-send-notification"
+        },
+        {
+          "el": "e20",
+          "do": "click",
+          "why": "Toggles Suspend to observe any disable/enable behavior.",
+          "name": "toggle-suspend"
+        },
+        {
+          "el": "e22",
+          "do": "click",
+          "why": "Toggles Show Inactives to change the destination grid contents.",
+          "name": "toggle-show-inactives"
+        },
+        {
+          "el": "e23",
+          "do": "click",
+          "why": "Attempts to open the Destination dialog (or triggers its validation/disabled behavior) from Monthly schedule.",
+          "name": "create-destination"
+        },
+        {
+          "el": "e17",
+          "do": "select",
+          "value": "0000",
+          "why": "Selects a Time Window Start value to exercise dropdown-dependent behavior.",
+          "name": "set-time-window-start"
+        },
+        {
+          "el": "e18",
+          "do": "select",
+          "value": "0030",
+          "why": "Selects a Time Window End value after choosing start.",
+          "name": "set-time-window-end"
+        }
+      ],
+      "same": [
+        {
+          "el": "e28",
+          "as": "e24",
+          "why": "Both 'There are no records found.' rows represent the empty destination grid state."
+        }
+      ]
+    },
+    {
+      "node": "n2.3",
+      "name": "create-destination",
+      "actions": [
+        {
+          "el": "e1",
+          "do": "select",
+          "value": "2",
+          "why": "Selects a different Destination Protocol value to expose protocol-dependent fields/state.",
+          "name": "set-destination-protocol"
+        },
+        {
+          "el": "e2",
+          "do": "select",
+          "value": "UserDefined",
+          "why": "Switches Destination Type to a different option to reveal any conditional fields.",
+          "name": "set-destination-type"
+        },
+        {
+          "el": "e7",
+          "do": "click",
+          "why": "Toggles Overwrite At Destination.",
+          "name": "toggle-overwrite"
+        },
+        {
+          "el": "e8",
+          "do": "click",
+          "why": "Toggles Compress At Destination.",
+          "name": "toggle-compress"
+        },
+        {
+          "el": "e9",
+          "do": "click",
+          "why": "Toggles Destination Is Archive.",
+          "name": "toggle-archive"
+        },
+        {
+          "el": "e10",
+          "do": "click",
+          "why": "Toggles Rename At Destination.",
+          "name": "toggle-rename"
+        },
+        {
+          "el": "e11",
+          "do": "click",
+          "why": "Toggles Active to observe any disable/enable behavior.",
+          "name": "toggle-active"
+        },
+        {
+          "el": "e14",
+          "do": "click",
+          "why": "Uses Add Another to reach the post-add flow without pressing Save.",
+          "name": "add-another"
+        }
+      ]
+    }
+  ]
+}

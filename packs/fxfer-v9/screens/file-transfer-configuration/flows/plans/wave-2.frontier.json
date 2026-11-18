@@ -1,0 +1,381 @@
+{
+ "wave": 2,
+ "maxActions": 12,
+ "nodes": [
+  {
+   "node": "n1",
+   "name": "search-results",
+   "kind": "results",
+   "title": null,
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n1-search-results",
+   "depth": 1,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "text": "Create New",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "text": "",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e3",
+     "kind": "text",
+     "text": "",
+     "label": "Configuration ID",
+     "danger": null
+    },
+    {
+     "el": "e4",
+     "kind": "text",
+     "text": "",
+     "label": "Configuration Name",
+     "danger": null
+    },
+    {
+     "el": "e5",
+     "kind": "text",
+     "text": "",
+     "label": "Owner Name",
+     "danger": null
+    },
+    {
+     "el": "e6",
+     "kind": "dropdown",
+     "text": "select a value...SearchModuleList",
+     "label": "Owner Module",
+     "danger": null,
+     "options": [
+      "0b34481f-f69c-3ab6-e053-c9157aceff03",
+      "09df7d37-3bd5-7c9c-e053-c9157aceb3f2",
+      "bb31ef47-8d1e-c99a-e053-c9157ace53da",
+      "06c7121b-8166-4e32-e054-0017a4ab527b",
+      "98385830-7fc2-5bb4-e053-c9157ace364b",
+      "0e7b7146-aa81-5292-e053-c9157ace4cbe",
+      "96c6da47-0ae6-2bcd-e053-c9157ace38f9",
+      "fdf18357-3c14-7cb7-e053-c9157ace3990",
+      "ff19da47-cc91-e17d-e053-c9157ace99a5",
+      "2e60501f-f8aa-50b6-e053-c9157acefb50",
+      "30de9349-0e99-aec1-e053-c9157ace0401",
+      "f1612a4b-ff51-1a03-e053-c9157ace9264"
+     ]
+    },
+    {
+     "el": "e7",
+     "kind": "dropdown",
+     "text": "select a value...ProtocolList",
+     "label": "Protocol",
+     "danger": null,
+     "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    {
+     "el": "e8",
+     "kind": "button",
+     "text": "Reset",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e9",
+     "kind": "button",
+     "text": "Cancel",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e10",
+     "kind": "button",
+     "text": "Search",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e11",
+     "kind": "check",
+     "text": "true",
+     "label": "Show Inactives",
+     "danger": null
+    },
+    {
+     "el": "e12",
+     "kind": "row",
+     "text": "4TestFTP/testweryashwanthAdministrationActiveaab80b60-a4ec-4",
+     "label": null,
+     "danger": null
+    }
+   ]
+  },
+  {
+   "node": "n2",
+   "name": "create-new",
+   "kind": "dialog",
+   "title": "Add File Transfer Configuration",
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n2-create-new",
+   "depth": 1,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "text",
+     "text": "",
+     "label": "Configuration Name",
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "text",
+     "text": "",
+     "label": "Description",
+     "danger": null
+    },
+    {
+     "el": "e3",
+     "kind": "dropdown",
+     "text": "select a value...ProtocolTypeList",
+     "label": "Protocol",
+     "danger": null,
+     "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    {
+     "el": "e4",
+     "kind": "text",
+     "text": "",
+     "label": "Source Address",
+     "danger": null
+    },
+    {
+     "el": "e5",
+     "kind": "text",
+     "text": "",
+     "label": "Source File Mask",
+     "danger": null
+    },
+    {
+     "el": "e6",
+     "kind": "dropdown",
+     "text": "select a value...FileDirectionList",
+     "label": "File Direction",
+     "danger": null,
+     "options": [
+      "1",
+      "2"
+     ]
+    },
+    {
+     "el": "e7",
+     "kind": "text",
+     "text": "",
+     "label": "Trading Partner",
+     "danger": null
+    },
+    {
+     "el": "e8",
+     "kind": "text",
+     "text": "",
+     "label": "Owner Name",
+     "danger": null
+    },
+    {
+     "el": "e9",
+     "kind": "text",
+     "text": "",
+     "label": "Owner Phone",
+     "danger": null
+    },
+    {
+     "el": "e10",
+     "kind": "dropdown",
+     "text": "select a value...AddConfigModuleList",
+     "label": "Owner Module",
+     "danger": null,
+     "options": [
+      "0b34481f-f69c-3ab6-e053-c9157aceff03",
+      "09df7d37-3bd5-7c9c-e053-c9157aceb3f2",
+      "bb31ef47-8d1e-c99a-e053-c9157ace53da",
+      "06c7121b-8166-4e32-e054-0017a4ab527b",
+      "98385830-7fc2-5bb4-e053-c9157ace364b",
+      "0e7b7146-aa81-5292-e053-c9157ace4cbe",
+      "96c6da47-0ae6-2bcd-e053-c9157ace38f9",
+      "fdf18357-3c14-7cb7-e053-c9157ace3990",
+      "ff19da47-cc91-e17d-e053-c9157ace99a5",
+      "2e60501f-f8aa-50b6-e053-c9157acefb50",
+      "30de9349-0e99-aec1-e053-c9157ace0401",
+      "f1612a4b-ff51-1a03-e053-c9157ace9264"
+     ]
+    },
+    {
+     "el": "e11",
+     "kind": "text",
+     "text": "",
+     "label": "Owner Email",
+     "danger": null
+    },
+    {
+     "el": "e12",
+     "kind": "radio",
+     "text": "1",
+     "label": "Run Weekly",
+     "danger": null
+    },
+    {
+     "el": "e13",
+     "kind": "radio",
+     "text": "2",
+     "label": "Run Monthly",
+     "danger": null
+    },
+    {
+     "el": "e14",
+     "kind": "dropdown",
+     "text": "select a value...TimeWindowStartList",
+     "label": "Time Window Start",
+     "danger": null,
+     "options": [
+      "0000",
+      "0030",
+      "0100",
+      "0130",
+      "0200",
+      "0230",
+      "0300",
+      "0330",
+      "0400",
+      "0430",
+      "0500",
+      "0530"
+     ]
+    },
+    {
+     "el": "e15",
+     "kind": "dropdown",
+     "text": "select a value...TimeWindowEndList",
+     "label": "Time Window End",
+     "danger": null,
+     "options": [
+      "0000",
+      "0030",
+      "0100",
+      "0130",
+      "0200",
+      "0230",
+      "0300",
+      "0330",
+      "0400",
+      "0430",
+      "0500",
+      "0530"
+     ]
+    },
+    {
+     "el": "e16",
+     "kind": "check",
+     "text": "true",
+     "label": "Send Notification",
+     "danger": null
+    },
+    {
+     "el": "e17",
+     "kind": "check",
+     "text": "true",
+     "label": "Suspend",
+     "danger": null
+    },
+    {
+     "el": "e18",
+     "kind": "check",
+     "text": "true",
+     "label": "Active",
+     "danger": null
+    },
+    {
+     "el": "e19",
+     "kind": "check",
+     "text": "true",
+     "label": "Show Inactives",
+     "danger": null
+    },
+    {
+     "el": "e20",
+     "kind": "button",
+     "text": "Create New",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e21",
+     "kind": "row",
+     "text": "There are no records found.",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e22",
+     "kind": "button",
+     "text": "Reset",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e23",
+     "kind": "button",
+     "text": "Cancel",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e24",
+     "kind": "button",
+     "text": "Save",
+     "label": null,
+     "danger": "commit: the kit marks it a Save"
+    },
+    {
+     "el": "e25",
+     "kind": "row",
+     "text": "There are no records found.",
+     "label": null,
+     "danger": null
+    }
+   ]
+  },
+  {
+   "node": "n3",
+   "name": "criteria-collapsed",
+   "kind": "part",
+   "title": null,
+   "dir": "C:\\UI-specs\\URL-to-Code\\packs\\fxfer-v9\\screens\\file-transfer-configuration\\flows\\n3-criteria-collapsed",
+   "depth": 1,
+   "candidates": [
+    {
+     "el": "e1",
+     "kind": "button",
+     "text": "Create New",
+     "label": null,
+     "danger": null
+    },
+    {
+     "el": "e2",
+     "kind": "button",
+     "text": "",
+     "label": null,
+     "danger": null
+    }
+   ]
+  }
+ ]
+}

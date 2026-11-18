@@ -1,0 +1,38 @@
+{
+ "screen": "fxfer-v9/ftp-server-credentials",
+ "url": "https://uximc.mms.tst.pgwcloud.net/FileTransfer/SearchFTPServerCredentials",
+ "mode": "safe",
+ "kit": "provider",
+ "sources": [],
+ "finger": "339593168ba9a05bd0fb9201b2de4a27",
+ "steps": {
+  "capture": {
+   "ok": true,
+   "at": "2026-11-17T11:28:41.426Z",
+   "ms": 110849
+  },
+  "stitch": {
+   "ok": true,
+   "at": "2026-11-17T11:28:41.458Z",
+   "ms": 18
+  },
+  "align": {
+   "ok": true,
+   "at": "2026-11-17T11:28:41.520Z",
+   "ms": 34
+  },
+  "facts": {
+   "ok": true,
+   "at": "2026-11-17T11:28:42.018Z",
+   "ms": 473
+  }
+ },
+ "warnings": [
+  "no screenshots of yours: the tool shoots the reference itself at 1920x1080 CSS px @ dpr 1 (config urlOnly / defaultViewport)"
+ ],
+ "viewport": {
+  "width": 1920,
+  "height": 1080
+ },
+ "dpr": 1
+}

@@ -1,0 +1,191 @@
+{
+ "id": "n2.3.2",
+ "parent": "n2.3",
+ "depth": 3,
+ "status": "leaf",
+ "name": "add-another",
+ "kind": "validation",
+ "fp": "f0f02986b21b",
+ "fpText": "W:Add File Transfer Configuration\nH:\nL:Active|Compress At Destination|Contact Email|Contact Name|Contact Phone|Destination Address|Destination Is Archive|Destination Protocol|Destination Type|Overwrite At Destination|Rename At Destination\nB:Add Another|Cancel|Reset|Save|select\nF:13\nT:\nR:0\nV:1",
+ "via": {
+  "el": "e14",
+  "steps": [
+   {
+    "do": "click",
+    "layer": "top",
+    "css": "#AddAnotherButton",
+    "nth": 0,
+    "text": "Add Another",
+    "kind": "button"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#FileTransferGridAddButton",
+   "nth": 0,
+   "text": "Create New",
+   "kind": "button"
+  },
+  {
+   "do": "fill",
+   "layer": "top",
+   "css": "#Edit_ConfigName",
+   "nth": 0,
+   "text": "",
+   "value": "TestConfig1",
+   "kind": "text"
+  },
+  {
+   "do": "select",
+   "layer": "top",
+   "css": "span.k-picker.k-dropdownlist",
+   "nth": 0,
+   "text": "select a value...ProtocolTypeList",
+   "value": "1",
+   "kind": "dropdown"
+  },
+  {
+   "do": "fill",
+   "layer": "top",
+   "css": "#SourceAddress",
+   "nth": 0,
+   "text": "",
+   "value": "/test",
+   "kind": "text"
+  },
+  {
+   "do": "fill",
+   "layer": "top",
+   "css": "#SourceFileMask",
+   "nth": 0,
+   "text": "",
+   "value": "test.txt",
+   "kind": "text"
+  },
+  {
+   "do": "select",
+   "layer": "top",
+   "css": "span.k-picker.k-dropdownlist",
+   "nth": 1,
+   "text": "select a value...FileDirectionList",
+   "value": "1",
+   "kind": "dropdown"
+  },
+  {
+   "do": "fill",
+   "layer": "top",
+   "css": "#Edit_OwnerName",
+   "nth": 0,
+   "text": "",
+   "value": "Owner1",
+   "kind": "text"
+  },
+  {
+   "do": "fill",
+   "layer": "top",
+   "css": "#OwnerPhoneNumber",
+   "nth": 0,
+   "text": "",
+   "value": "5551234567",
+   "kind": "text"
+  },
+  {
+   "do": "select",
+   "layer": "top",
+   "css": "span.k-picker.k-dropdownlist",
+   "nth": 2,
+   "text": "select a value...AddConfigModuleList",
+   "value": "0b34481f-f69c-3ab6-e053-c9157aceff03",
+   "kind": "dropdown"
+  },
+  {
+   "do": "fill",
+   "layer": "top",
+   "css": "#OwnerEmail",
+   "nth": 0,
+   "text": "",
+   "value": "test.user@example.com",
+   "kind": "text"
+  },
+  {
+   "do": "click",
+   "layer": "top",
+   "css": "#RunSchedule_ID1",
+   "nth": 0,
+   "text": "1",
+   "kind": "radio"
+  },
+  {
+   "do": "select",
+   "layer": "top",
+   "css": "span.k-picker.k-dropdownlist",
+   "nth": 3,
+   "text": "select a value...TimeWindowStartList",
+   "value": "0000",
+   "kind": "dropdown"
+  },
+  {
+   "do": "select",
+   "layer": "top",
+   "css": "span.k-picker.k-dropdownlist",
+   "nth": 4,
+   "text": "select a value...TimeWindowEndList",
+   "value": "0030",
+   "kind": "dropdown"
+  },
+  {
+   "do": "click",
+   "layer": "top",
+   "css": "#DestinationGridAddButton",
+   "nth": 0,
+   "text": "Create New",
+   "kind": "button"
+  },
+  {
+   "do": "click",
+   "layer": "top",
+   "css": "#AddAnotherButton",
+   "nth": 0,
+   "text": "Add Another",
+   "kind": "button"
+  }
+ ],
+ "requests": [],
+ "change": {
+  "show": [
+   "#DestinationProtocolList_validationMessage",
+   "#DestinationTypeList_validationMessage"
+  ],
+  "hide": [
+   "#FileTransferConfigurationEditStatus",
+   "#OverwriteAtDestination_validationMessage",
+   "#CompressAtDestination_validationMessage",
+   "#DestinationIsArchive_validationMessage",
+   "#RenameAtDestination_validationMessage",
+   "#Active_validationMessage"
+  ],
+  "scroll": null
+ },
+ "title": "Add File Transfer Configuration",
+ "dir": "n2.3.2-add-another",
+ "reason": "only messages changed",
+ "windows": 1,
+ "validation": {
+  "summaries": [],
+  "fields": [
+   {
+    "for": "DestinationProtocolList",
+    "text": "Destination Protocol is a required field.",
+    "className": "k-form-error k-invalid-msg field-validation-error"
+   },
+   {
+    "for": "DestinationTypeList",
+    "text": "Destination Type is a required field.",
+    "className": "k-form-error k-invalid-msg field-validation-error"
+   }
+  ]
+ }
+}

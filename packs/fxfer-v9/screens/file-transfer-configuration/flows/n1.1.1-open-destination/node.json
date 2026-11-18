@@ -1,0 +1,63 @@
+{
+ "id": "n1.1.1",
+ "parent": "n1.1",
+ "depth": 3,
+ "status": "frontier",
+ "name": "open-destination",
+ "kind": "part",
+ "fp": "e4e2ca1f6cc1",
+ "fpText": "W:View File Transfer Configuration\nH:\nL:Active|Compress At Destination|Contact Email|Contact Name|Contact Phone|Destination Address|Destination Is Archive|Destination Protocol|Destination Type|Overwrite At Destination|Rename At Destination|Server\nB:Close\nF:1\nT:\nR:0\nV:0",
+ "via": {
+  "el": "e4",
+  "steps": [
+   {
+    "do": "dblclick",
+    "layer": "top",
+    "css": "tbody tr",
+    "nth": 0,
+    "text": "https://dxccommercial.test.mapshc.comFTPActivetrue",
+    "kind": "row"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#nextButton",
+   "nth": 0,
+   "text": "Search",
+   "kind": "button"
+  },
+  {
+   "do": "dblclick",
+   "layer": "page",
+   "css": "tbody tr",
+   "nth": 0,
+   "text": "4TestFTP/testweryashwanthAdministrationActiveaab80b60-a4ec-4",
+   "kind": "row"
+  },
+  {
+   "do": "dblclick",
+   "layer": "top",
+   "css": "tbody tr",
+   "nth": 0,
+   "text": "https://dxccommercial.test.mapshc.comFTPActivetrue",
+   "kind": "row"
+  }
+ ],
+ "requests": [],
+ "change": {
+  "show": [
+   "#divDestinationConfigurationView"
+  ],
+  "hide": [
+   "#divFileTransferConfigurationView"
+  ],
+  "scroll": null
+ },
+ "title": "View File Transfer Configuration",
+ "dir": "n1.1.1-open-destination",
+ "windows": 1,
+ "validation": null
+}

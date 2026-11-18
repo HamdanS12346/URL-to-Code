@@ -1,4 +1,4 @@
-﻿node_modules/
+node_modules/
 dist/
 outputs/
 auth/
@@ -7,10 +7,8 @@ test-results/
 playwright-report/
 __pycache__/
 
-# ignore packs by default; keep only the ones we want to analyze
+# ignore packs by default; keep only the one we want to analyze
 packs/*
-!packs/fxfer-v8/
-!packs/fxfer-v8/**
-!packs/pe-v1/
-!packs/pe-v1/**
+!packs/fxfer-v9/
+!packs/fxfer-v9/**
 

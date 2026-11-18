@@ -1,0 +1,117 @@
+{
+ "id": "n1.1.2.1",
+ "parent": "n1.1.2",
+ "depth": 4,
+ "status": "frontier",
+ "name": "edit-create-destination",
+ "kind": "part",
+ "fp": "bab6c5f48299",
+ "fpText": "W:Edit File Transfer Configuration\nH:\nL:Active|Compress At Destination|Contact Email|Contact Name|Contact Phone|Destination Address|Destination Is Archive|Destination Protocol|Destination Type|Overwrite At Destination|Rename At Destination\nB:Add Another|Cancel|Reset|Save|select\nF:13\nT:\nR:0\nV:0",
+ "via": {
+  "el": "e24",
+  "steps": [
+   {
+    "do": "select",
+    "layer": "top",
+    "css": "span.k-picker.k-dropdownlist",
+    "nth": 2,
+    "text": "select a value...FileDirectionList",
+    "value": "1",
+    "kind": "dropdown"
+   },
+   {
+    "do": "fill",
+    "layer": "top",
+    "css": "#TradingPartner",
+    "nth": 0,
+    "text": "",
+    "value": "TP1",
+    "kind": "text"
+   },
+   {
+    "do": "click",
+    "layer": "top",
+    "css": "#DestinationGridAddButton",
+    "nth": 0,
+    "text": "Create New",
+    "kind": "button"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "#nextButton",
+   "nth": 0,
+   "text": "Search",
+   "kind": "button"
+  },
+  {
+   "do": "dblclick",
+   "layer": "page",
+   "css": "tbody tr",
+   "nth": 0,
+   "text": "4TestFTP/testweryashwanthAdministrationActiveaab80b60-a4ec-4",
+   "kind": "row"
+  },
+  {
+   "do": "click",
+   "layer": "top",
+   "css": "#editFileTransferConfigurationButton",
+   "nth": 0,
+   "text": "Edit",
+   "kind": "button"
+  },
+  {
+   "do": "select",
+   "layer": "top",
+   "css": "span.k-picker.k-dropdownlist",
+   "nth": 2,
+   "text": "select a value...FileDirectionList",
+   "value": "1",
+   "kind": "dropdown"
+  },
+  {
+   "do": "fill",
+   "layer": "top",
+   "css": "#TradingPartner",
+   "nth": 0,
+   "text": "",
+   "value": "TP1",
+   "kind": "text"
+  },
+  {
+   "do": "click",
+   "layer": "top",
+   "css": "#DestinationGridAddButton",
+   "nth": 0,
+   "text": "Create New",
+   "kind": "button"
+  }
+ ],
+ "requests": [],
+ "change": {
+  "show": [
+   "#divDestinationId"
+  ],
+  "hide": [
+   "#divSourceId"
+  ],
+  "scroll": null
+ },
+ "title": "Edit File Transfer Configuration",
+ "dir": "n1.1.2.1-edit-create-destination",
+ "windows": 1,
+ "validation": null,
+ "same": [],
+ "skipped": [
+  {
+   "el": "e15",
+   "text": "Save",
+   "why": "commit: \"Save\""
+  }
+ ],
+ "probed": true,
+ "fields": []
+}

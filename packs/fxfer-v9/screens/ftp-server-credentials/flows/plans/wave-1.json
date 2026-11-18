@@ -1,0 +1,28 @@
+{
+  "nodes": [
+    {
+      "node": "n0",
+      "name": "at-rest",
+      "actions": [
+        {
+          "el": "e6",
+          "do": "click",
+          "why": "runs the search and reveals the results grid state",
+          "name": "search-results"
+        },
+        {
+          "el": "e1",
+          "do": "click",
+          "why": "opens the Create New FTP Server Credential form/dialog",
+          "name": "create-new"
+        },
+        {
+          "el": "e2",
+          "do": "click",
+          "why": "collapses the Search Criteria panel to capture the collapsed layout/state",
+          "name": "criteria-collapsed"
+        }
+      ]
+    }
+  ]
+}

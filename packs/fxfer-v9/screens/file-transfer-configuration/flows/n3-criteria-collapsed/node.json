@@ -1,0 +1,45 @@
+{
+ "id": "n3",
+ "parent": "n0",
+ "depth": 1,
+ "status": "frontier",
+ "name": "criteria-collapsed",
+ "kind": "part",
+ "fp": "07565ef3009a",
+ "fpText": "W:\nH:Search Criteria\nL:\nB:Create New\nF:0\nT:\nR:0\nV:0",
+ "via": {
+  "el": "e2",
+  "steps": [
+   {
+    "do": "click",
+    "layer": "page",
+    "css": "div.panel-icon.clickable",
+    "nth": 0,
+    "text": "",
+    "kind": "button"
+   }
+  ]
+ },
+ "path": [
+  {
+   "do": "click",
+   "layer": "page",
+   "css": "div.panel-icon.clickable",
+   "nth": 0,
+   "text": "",
+   "kind": "button"
+  }
+ ],
+ "requests": [],
+ "change": {
+  "show": [],
+  "hide": [
+   "#searchFileTransferPanel"
+  ],
+  "scroll": null
+ },
+ "title": null,
+ "dir": "n3-criteria-collapsed",
+ "windows": 0,
+ "validation": null
+}
