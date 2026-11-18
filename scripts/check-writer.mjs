@@ -2,7 +2,7 @@
 // npm run check:writer [-- --writer "<command with {workdir}>"] [--timeout S]
 // Can the writer (Codex through start_codex.ps1) do what `npm run ui` needs? One small task in a temp folder tests:
 // it gets the prompt, writes files in {workdir}, runs a command, reads a file outside {workdir}, and looks at a picture.
-// Prints one ✓/✗ line per ability, with the fix (see lookout.md). Exit 1 when anything fails.
+// Prints one ✓/✗ line per ability, with the fix. Exit 1 when anything fails.
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -57,11 +57,11 @@ const read = (f) => {
 };
 
 const checks = [
-  ['the writer starts and exits cleanly', w.code === 0 && !w.timedOut, `exit ${w.code}${w.timedOut ? ' (timed out)' : ''}. Wrong path to start_codex.ps1, a bare "-" at the end, or the model/base URL in the Codex .env (lookout.md: W1, W2)`],
-  ['it got the prompt and can write files in {workdir}', read('written.txt')?.toUpperCase() === 'OK', 'nothing written: the prompt did not arrive (put {prompt} in the writer command) or the sandbox is read-only (add --full-auto) (lookout.md: W3, W4)'],
-  ['it can run commands', /^v\d+/.test(read('node.txt') || ''), 'no `node -v` output: commands are blocked or node is not on its PATH (lookout.md: W5)'],
-  ['it can read files outside {workdir}', read('token.txt') === token, 'could not copy the token: reads outside the folder are blocked; the code step reads the specs from packs/ (lookout.md: W6)'],
-  ['it can look at pictures', /red/i.test(read('colour.txt') || ''), `answered "${read('colour.txt') ?? 'nothing'}" for a red picture: no image viewing, so plans and specs are written from text only (lookout.md: W7)`],
+  ['the writer starts and exits cleanly', w.code === 0 && !w.timedOut, `exit ${w.code}${w.timedOut ? ' (timed out)' : ''}. Wrong path to start_codex.ps1, a bare "-" at the end, or the model/base URL in the Codex .env`],
+  ['it got the prompt and can write files in {workdir}', read('written.txt')?.toUpperCase() === 'OK', 'nothing written: the prompt did not arrive (put {prompt} in the writer command) or the sandbox is read-only (add --full-auto)'],
+  ['it can run commands', /^v\d+/.test(read('node.txt') || ''), 'no `node -v` output: commands are blocked or node is not on its PATH'],
+  ['it can read files outside {workdir}', read('token.txt') === token, 'could not copy the token: reads outside the folder are blocked; the code step reads the specs from packs/'],
+  ['it can look at pictures', /red/i.test(read('colour.txt') || ''), `answered "${read('colour.txt') ?? 'nothing'}" for a red picture: no image viewing, so plans and specs are written from text only`],
 ];
 for (const [what, ok, fix] of checks) console.log(`${ok ? '✓' : '✗'} ${what}${ok ? '' : `\n    ${fix}`}`);
 const bad = checks.filter((c) => !c[1]).length;

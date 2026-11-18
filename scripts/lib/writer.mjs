@@ -1,4 +1,4 @@
-// The AI writer, run the way the client's csharp-doc-agent runs it: one command template with {workdir}, e.g.
+// The AI writer (Codex), run through one command template with {workdir}, e.g.
 //   powershell -NoProfile -ExecutionPolicy Bypass -File C:\UI-specs\start_codex.ps1 exec -c web_search=disabled --skip-git-repo-check -C {workdir}
 // The prompt goes on stdin (do not end the template with a bare "-": PowerShell treats it as a bad switch and the writer
 // fails silently). If stdin does not reach the model, put {prompt} in the template: it becomes one quoted sentence that

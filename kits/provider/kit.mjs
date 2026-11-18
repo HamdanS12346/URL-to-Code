@@ -1211,14 +1211,21 @@ export const flows = {
           // where its ways out go: X and Cancel / Close may close more than this window (an Edit opened from a View closes both)
           keep('close');
           const c = (D.close ||= {}), byVia = { x: n.exits?.find((e) => e.via === 'x' && !e.error && !e.opens), cancel: n.exits?.find((e) => e.via === 'button' && !e.error && !e.opens) };
-          for (const [v, e] of Object.entries(byVia)) if (e && e.closed >= 1) c[v] = { asks: false, ...(c[v] ?? {}), closes: e.closed };
+          // the button measured as the way out, whatever its words ("Close", "Return to list"): the rebuild closes on it as the live one did. Not on a
+          // capture dialog whose own Cancel the capture measured: that one stays as it was
+          const ownCancel = !mine && D.flowsWas.close?.cancel && D.flowsWas.close.cancel.button !== false;
+          for (const [v, e] of Object.entries(byVia)) if (e && e.closed >= 1) c[v] = { asks: false, ...(c[v] ?? {}), closes: e.closed, ...(v === 'cancel' && !ownCancel && e.step?.css ? { css: e.step.css, nth: e.step.nth ?? 0 } : {}) };
           // with an edit in it: does it ask (the capture's own answer wins), and how many windows its "leave" closes
           for (const de of n.dirtyExits ?? (n.dirtyExit ? [n.dirtyExit] : [])) {
             const dv = de.via === 'x' ? 'x' : 'cancel';
             if (de.error || de.asks === undefined) continue;
-            const capAsks = mine ? undefined : D.flowsWas.close?.[dv]?.asks;
+            // (only when the capture could edit the form: with no text box it never asked anything, flows' radio / dropdown edit did)
+            const cap = mine ? null : D.flowsWas.close?.[dv], capAsks = cap?.edited && cap.button !== false ? cap.asks : undefined;
             c[dv] = { ...(c[dv] ?? {}), asks: capAsks ?? !!de.asks, ...(de.leave?.closed >= 1 ? { leaveCloses: de.leave.closed } : {}) };
             if (de.asks && de.confirm && !c.confirm) c.confirm = de.confirm;
+            // the answers flows pressed and measured beat the ones read from the words
+            const norm = (t) => String(t || '').replace(/\s+/g, ' ').trim().toLowerCase();
+            for (const b of c.confirm?.buttons ?? []) { const m = (de.answers ?? []).find((a) => a.answer && norm(a.text) === norm(b.text)); if (m) b.answer = m.answer; }
           }
           // a message box (an Alert Confirmation, an Invalidate prompt): the portal's small alert window, at its own size, not a form panel
           const w = readJson(path.join(fdir, n.dir, 'window.json'));

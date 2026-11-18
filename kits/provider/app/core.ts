@@ -36,7 +36,8 @@ export type DialogDef = { title: string; windowClass: string; windowStyle: strin
   close?: { x?: CloseVia | null; cancel?: CloseVia | null; confirm?: Confirm | null };
   // a message box (an Alert Confirmation, an Invalidate prompt): the portal's small alert window at its own size, placed like the confirm
   message?: boolean };
-export type CloseVia = { asks: boolean; closes?: number; leaveCloses?: number };
+// css / nth: the button (in the window's content) the flows stage pressed and saw close the window, whatever its words
+export type CloseVia = { asks: boolean; closes?: number; leaveCloses?: number; css?: string; nth?: number };
 export type PageLock = { htmlOverflow: string | null; bodyOverflow: string | null; bodyAdd: string[]; bodyScroll: string | null };
 export type Confirm = { title: string; windowClass: string; windowStyle: string | null; titlebarHtml: string | null; contentClass: string; contentId: string | null; contentStyle: string | null;
   overlay: DialogDef['overlay']; options: Record<string, unknown> | null; contentHtml: string; buttons: { text: string; answer: 'stay' | 'leave' | null }[]; rect: { x: number; y: number; w: number; h: number } };

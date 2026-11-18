@@ -14,7 +14,7 @@ What the tool knows about one family of sites lives in a **site kit**, `kits/<ki
 the React runtime copied into each app as `src/kit`, and `KIT.md`, the guide you read for it). The only kit today is `kits/provider/`
 (Kendo UI for jQuery portals: the client's Provider portal). A screen captured with a kit has `run.json` `"kit"` and a `kit/` folder.
 
-**Packs** (`npm run ui`, see `docs/client-runbook.md`): one module of a logged-in portal at a time. A pack's screens live in `packs/<pack>/screens/<screen>/`
+**Packs** (`npm run ui`, see `SETUP.md`): one module of a logged-in portal at a time. A pack's screens live in `packs/<pack>/screens/<screen>/`
 and are addressed as `<pack>/<screen>` in every command (`npm run check -- file-transfer/home`). Wherever this file or a skill says `outputs/<screen>/`, read that folder instead.
 In a pack run, `scripts/ui.mjs` calls you (the writer) with one task per call and checks your output itself; the prompt names the task, the screen folder and the files you may write.
 Its code goes to the pack's app, `packs/<pack>/app/` (or `--out`), not to the screen's `app/`.
@@ -79,7 +79,7 @@ Every build runs through the `draw-ui` skill in reconstruction mode (`.claude/sk
    `outputs/<screen>/regions.json` (draw-ui's region list, boxes taken from the real DOM: every band, h1–h3, large images, repeated card rows as `group`s)
    and `outputs/<screen>/measure-00/` (draw-ui's `measure_reference.py` run on it: `measurements.json`, `annotations.svg`). Start from these; add regions to a copy of `regions.json` for a new round instead of eyeballing boxes. The skill defaults to 1:1, which is wrong whenever dpr ≠ 1: set `css_viewport_width` per Step 0.
    Put measurement output in new folders under `outputs/<screen>/` (e.g. `measure-01/`); the task folder is `outputs/<screen>/`.
-2. Read `.claude/skills/draw-ui/references/html-reconstruction.md` — build it. Follow `docs/screen-recipe.md`.
+2. Read `.claude/skills/draw-ui/references/html-reconstruction.md` — build it.
    Work band by band: open `outputs/<screen>/sections/NN-*.png` (full resolution) for the band you are building, and take its layout and styles from `outputs/<screen>/snapshot/used.css` + `rendered.html` (real flex/grid/widths, `::before` content, hover rules, media queries, `@keyframes`). Port those rules; do not re-guess what the page already states. Keep the original class names where it keeps the CSS intact.
 3. Verify with **one command**, not devtools round-trips: `npm run verify -- <screen>`
    (it starts the repo's dev server itself when none is running; `BASE=http://localhost:<port>` if not 5173, or `URL=<full url>`).

@@ -101,7 +101,7 @@ function RunSchedule() {
 
 ## The side menu (the shell, built by the kit)
 
-Measured on the live portal (docs/provider-probe, probe 2): the hamburger swaps the menu root's classes (`display-none` →
+Measured on the live portal (probe 2): the hamburger swaps the menu root's classes (`display-none` →
 `display-flex`, which are `!important`) and appends `<div class="disabled-backdrop">` to `<body>`; there is no fade. A module
 flies out to the left after Kendo's hover delay (100 ms) with its menu animation (open 200 ms, close 100 ms). Only the X and a
 menu link close it: Escape and a click on the backdrop do not. The capture records all of this on the menu root
@@ -184,7 +184,7 @@ at both ends and scrolls the list with them and the wheel.
 - **Windows sit left below the switch.** `isPhone` and `openModalOverlay` are in the portal's shared script, so the placement measured on ANY screen of
   the pack serves all of them (`port` lends it to a screen whose own dialog could not be measured, `responsive.dialog.from` says where it came from).
   The profile pass replays Create New and row dialogs, retries three times, and photographs a dialog that will not open (`states/*-failed.png`).
-  Measured live (`docs/probe-fixes`): below 1280 px a window is at left 0, top 20 *of the screen* (wherever the page was scrolled), 90% wide, at most
+  Measured live: below 1280 px a window is at left 0, top 20 *of the screen* (wherever the page was scrolled), 90% wide, at most
   85% high; above it centered, its width class's (`panelForm-col-6` 75%, `-5` 62.5%, `-3` 37.5%), at most 85% high. Three things made that go wrong once:
   - an editor is often rendered by a POST (Configuration's Create New, a row of FTP Server Credentials). The profile pass blocks POSTs, so it lets
     through exactly the requests the main pass saw that opener send (`guard.allow`) and names any other it blocked when a window does not open;

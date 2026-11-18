@@ -5,7 +5,8 @@
 //   __xp.fp(scope)           the state's fingerprint: windows open, the layer's headings, labels, buttons, tabs, rows>0, validation shown
 //   __xp.resolve(step, scope) find a recorded step's element again (stamped data-xp-hit), by css + nth among the shown, text as a check
 //   __xp.overlay(on)         numbered boxes over the stamped candidates (the map picture the planner reads)
-//   __xp.exits()             the ways out of the top window (its title bar's X, its Close / Cancel / Back / No), as steps
+//   __xp.exits()             the ways out of the top window (its title bar's X, its Close / Cancel / Back / No, then its other buttons), as steps
+//   __xp.buttons()           every button of the top window (the answers of a confirm), as steps
 //   __xp.quiet(q, cap)       resolves once the page has not changed for q ms (a window's script still setting it up)
 //   __xp.arm() / appeared()  what showed up anywhere since arm() (a toast, a banner built on the spot), even if gone again
 (() => {
@@ -99,7 +100,7 @@
         el.setAttribute('data-xp', id);
         const b = el.getBoundingClientRect(), kind = kindOf(el), tr = el.tagName === 'TR' ? el : null;
         out.push({ el: id, kind, layer: top ? 'top' : 'page', css, nth: nthOf(el, css, R), text: textOf(el), label: ['text', 'select', 'check', 'radio', 'dropdown'].includes(kind) ? labelOf(el) : null,
-          id: el.id || null, name: el.getAttribute('name') || null, type: el.type || null, kitAction: el.getAttribute('data-kit-action'), value: kind === 'text' && el.type !== 'password' ? el.value.slice(0, 40) : undefined,
+          id: el.id || null, name: el.getAttribute('name') || null, type: el.type || null, kitAction: el.getAttribute('data-kit-action'), value: kind === 'text' && el.type !== 'password' ? el.value.slice(0, 40) : kind === 'select' ? el.value : undefined,
           checked: /^(check|radio)$/.test(kind) ? el.checked : undefined, rules: kind === 'text' ? rules(el) : undefined,
           options: kind === 'select' ? [...el.options].slice(0, 12).map((o) => o.value) : undefined,
           rows: tr ? grids.get(tr.parentElement)?.length : undefined, inRow: !tr && !!el.closest('tbody tr') || undefined,
@@ -123,8 +124,8 @@
       ];
       return parts.join('\n');
     },
-    // the ways out of the top window: its title bar's close (layer "win": the window itself), and the buttons in it that only lead back
-    // (Close, Cancel, Back, No...). A step each, as resolve() takes it
+    // the ways out of the top window: its title bar's close (layer "win": the window itself), and the buttons in it that may lead back
+    // (Close, Cancel, Back, No... by name, then any other: which ones do is measured). A step each, as resolve() takes it
     exits() {
       const w = topWindow();
       if (!w) return [];
@@ -132,14 +133,24 @@
       const x = [...w.querySelectorAll('.k-window-titlebar .k-window-titlebar-action, .k-window-titlebar [aria-label=Close], .modal-header .close, .modal-header .btn-close')].filter(shown)
         .find((e) => /close|×|x/i.test(`${e.getAttribute('aria-label') || ''} ${e.title || ''} ${e.className} ${e.textContent}`));
       if (x) out.push({ do: 'click', layer: 'win', css: cssOf(x), nth: nthOf(x, cssOf(x), w), text: 'X', via: 'x' });
-      const C = contentOf(w);
+      // the buttons named like a way back first, then the others (a "Dismiss", a "Return to list"), lowest on the window first: the caller drops commits
+      const C = contentOf(w), named = [], other = [];
       for (const b of C.querySelectorAll('button, input[type=button], input[type=submit], a.k-button, a.btn, [role=button]')) {
-        if (!shown(b) || b.disabled || b.closest(SKIP) || !BACK.test(textOf(b))) continue;
-        const css = cssOf(b);
-        if (!out.some((o) => o.css === css && o.layer === 'top')) out.push({ do: 'click', layer: 'top', css, nth: nthOf(b, css, C), text: textOf(b), via: 'button' });
-        if (out.length >= 4) break;
+        if (!shown(b) || b.disabled || b.closest(SKIP) || !textOf(b)) continue;
+        const css = cssOf(b), back = BACK.test(textOf(b));
+        if ([...out, ...named, ...other].some((o) => o.css === css && o.nth === nthOf(b, css, C))) continue;
+        (back ? named : other).push({ do: 'click', layer: 'top', css, nth: nthOf(b, css, C), text: textOf(b), via: 'button', ...(back ? {} : { other: true, y: b.getBoundingClientRect().y }) });
       }
-      return out;
+      other.sort((a, b) => b.y - a.y);
+      return [...out, ...named.slice(0, 3), ...other.map(({ y, ...o }) => o)];
+    },
+    // every button of the top window (a confirm's answers), wherever it sits in the window, as steps
+    buttons() {
+      const w = topWindow();
+      if (!w) return [];
+      return [...w.querySelectorAll('button, input[type=button], input[type=submit], a.k-button, a.btn, [role=button]')]
+        .filter((b) => shown(b) && !b.disabled && !b.closest('.k-window-titlebar') && textOf(b))
+        .map((b) => { const css = cssOf(b); return { do: 'click', layer: 'win', css, nth: nthOf(b, css, w), text: textOf(b) }; });
     },
     // resolves when nothing in the page has changed for `q` ms (a window's own script still filling it, checking the radio of its record), at most `cap` ms
     quiet(q = 300, cap = 3000) {

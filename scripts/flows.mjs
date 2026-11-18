@@ -16,7 +16,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { openPage, samePage } from './lib/browser.mjs';
-import { danger, isWritePath, requestPolicy } from './lib/safety.mjs';
+import { COMMIT, danger, isWritePath, requestPolicy } from './lib/safety.mjs';
 import { checkPlan, DO } from './check-flows.mjs';
 
 const INPAGE = fs.readFileSync(new URL('./lib/flows-inpage.js', import.meta.url), 'utf8');
@@ -74,7 +74,7 @@ function flowsMd(G) {
     for (const t of (n.tried || []).filter((x) => x.appeared?.length)) out.push(`${'  '.repeat(d + 1)}- ${t.do} "${t.text}" showed ${shownUp(t.appeared)}`);
     if (n.conditionals?.length) out.push(`${'  '.repeat(d + 1)}- swept: ${n.conditionals.map((c) => `${c.kind} ${c.name} (${Object.keys(c.values).join(' / ')}) shows/hides ${Object.keys(c.rest).length} part(s)`).join('; ')}`);
     if (n.exits?.length) out.push(`${'  '.repeat(d + 1)}- ways out: ${n.exits.map((x) => `${x.via === 'x' ? 'X' : `"${x.text}"`} -> ${x.error ? `error ${x.error}` : x.opens ? `opens "${x.opens}"` : x.lands ?? `${x.windows} window(s) open`}${x.closed > 1 ? ` (closes ${x.closed} windows)` : ''}`).join('; ')}`);
-    for (const de of n.dirtyExits ?? (n.dirtyExit ? [n.dirtyExit] : [])) out.push(`${'  '.repeat(d + 1)}- with an edit, ${de.via === 'x' ? 'X' : `"${de.text}"`} ${de.error ? `error ${de.error}` : de.asks ? `asks "${de.confirm?.title ?? '?'}" (${(de.confirm?.buttons ?? []).map((b) => `${b.text}${b.answer ? `=${b.answer}` : ''}`).join(' / ')}): stay -> ${de.stay?.lands ?? '?'}, leave -> ${de.leave?.lands ?? '?'}${de.leave?.closed > 1 ? ` (closes ${de.leave.closed} windows)` : ''}` : `does not ask (closes ${de.closed ?? '?'} window(s))`}`);
+    for (const de of n.dirtyExits ?? (n.dirtyExit ? [n.dirtyExit] : [])) out.push(`${'  '.repeat(d + 1)}- with an edit${de.edit ? ` (${de.edit})` : ''}, ${de.via === 'x' ? 'X' : `"${de.text}"`} ${de.error ? `error ${de.error}` : de.asks ? `asks "${de.confirm?.title ?? '?'}" (${(de.confirm?.buttons ?? []).map((b) => `${b.text}${b.answer ? `=${b.answer}` : ''}`).join(' / ')}): stay -> ${de.stay?.lands ?? '?'}, leave -> ${de.leave?.lands ?? '?'}${de.leave?.closed > 1 ? ` (closes ${de.leave.closed} windows)` : ''}` : `does not ask (closes ${de.closed ?? '?'} window(s))`}`);
     for (const k of kids(n.id)) walk(k, d + 1);
   };
   if (G.nodes.n0) walk(G.nodes.n0, 0);
@@ -269,7 +269,9 @@ export async function runFlows({ browser, cfg, url, out, kit = null, log = conso
     }
     // where each way out of a window lands: the state it goes back to, or how many windows it closes (an Edit opened from a View may close both)
     if (B.exitProbe && inWindow && !n.exits && !timeUp() && await reach(w, n)) {
-      const list = (await w.page.evaluate(() => window.__xp.exits()).catch(() => [])).slice(0, 3);
+      // the X and the buttons named like a way back, then up to two others that are not a commit, open nothing outside, and do not download
+      const all = await w.page.evaluate(() => window.__xp.exits()).catch(() => []);
+      const list = [...all.filter((e) => !e.other), ...all.filter((e) => e.other && !danger({ text: e.text }, K.danger) && !/browse|upload|download|export|print|help/i.test(e.text)).slice(0, 2)].slice(0, 5);
       n.exits = [];
       for (const ex of list) {
         if (timeUp() || !(await reach(w, n))) break;
@@ -289,19 +291,27 @@ export async function runFlows({ browser, cfg, url, out, kit = null, log = conso
       }
       // with an edit in the form: does the way out ask first ("form data has changed")? Its window, and where each of its answers lands.
       // The X and the first Close / Cancel each: a portal's form may ask on one and not the other
-      const field = (n.candidates || []).find((c) => c.kind === 'text' && !c.danger && c.type !== 'password');
-      const outs = [list.find((e) => e.via === 'x'), list.find((e) => e.via === 'button')].filter(Boolean);
-      if (B.dirtyProbe && n.kind === 'dialog' && field) n.dirtyExits = [];
-      for (const out1 of B.dirtyProbe && n.kind === 'dialog' && field ? outs : []) {
+      // the edit: a text box, else a native dropdown set to another value, else a radio not picked, else a checkbox flipped (a form with no text box)
+      const cs = (n.candidates || []).filter((c) => !c.danger && c.layer === 'top' && !c.inRow);
+      const field = (n.candidates || []).find((c) => c.kind === 'text' && !c.danger && c.type !== 'password')
+        ?? cs.find((c) => c.kind === 'select' && c.options?.some((o) => o !== c.value)) ?? cs.find((c) => c.kind === 'radio' && !c.checked) ?? cs.find((c) => c.kind === 'check');
+      const dirtyStep = !field ? null : field.kind === 'text' ? stepOf(field, { do: 'fill', value: 'probe' })
+        : field.kind === 'select' ? stepOf(field, { do: 'select', value: field.options.find((o) => o !== field.value) })
+        : stepOf(field, { do: 'check', value: field.kind === 'check' ? String(!field.checked) : 'true' });
+      // the X, and the first button that measured as a way out (it closed the window or went elsewhere)
+      const outs = [list.find((e) => e.via === 'x'), n.exits.find((e) => e.via === 'button' && !e.error && !e.opens && (e.closed > 0 || (e.lands && e.lands !== n.id)))?.step
+        ?? list.find((e) => e.via === 'button' && !e.other && !n.exits.some((x) => x.step === e))].filter(Boolean);
+      if (B.dirtyProbe && n.kind === 'dialog' && dirtyStep) n.dirtyExits = [];
+      for (const out1 of B.dirtyProbe && n.kind === 'dialog' && dirtyStep ? outs : []) {
         if (timeUp()) break;
         // reached with the page's own requests let through (a window the portal loads by POST); only the edit and what follows is sealed.
         // It asks when another window comes up on top (more windows, or the same number with another one on top: the form closed, the question open)
         const edit = () => sealed(async () => {
-          await doStep(w, stepOf(field, { do: 'fill', value: 'probe' })); await doStep(w, out1); await wait(w); await quiet(w);
+          await doStep(w, dirtyStep); await quiet(w); await doStep(w, out1); await wait(w); await quiet(w);
           const nw = await w.page.evaluate(() => window.__xp.windows()), top = nw ? (await w.page.evaluate((sc) => window.__xp.layer(sc), scope)).title : null;
           return { nw, asks: nw > (n.windows ?? 0) || (nw > 0 && nw === (n.windows ?? 0) && top !== n.title) };
         });
-        const d = { via: out1.via, text: out1.text };
+        const d = { via: out1.via, text: out1.text, edit: `${dirtyStep.do} "${field.label || field.text || field.name || field.kind}"` };
         try {
           if (await reach(w, n)) {
             const e1 = await edit(), nw = e1.nw;
@@ -310,20 +320,30 @@ export async function runFlows({ browser, cfg, url, out, kit = null, log = conso
             else {
               d.confirm = K.confirm ? await K.confirm({ page: w.page }).catch(() => null) : { title: (await w.page.evaluate((sc) => window.__xp.layer(sc), scope)).title };
               await shot(w, path.join(dir, n.dir, 'dirty-exit.png'), false);
-              for (const ans of ['stay', 'leave']) {
-                if (ans === 'leave') { if (!(await reach(w, n)) || !(await edit()).asks) break; await K.confirm?.({ page: w.page }).catch(() => null); }
-                const r = await sealed(async () => {
-                  const b = w.page.locator(`[data-kit-confirm="${ans}"]:visible`).first();
-                  if (!(await b.count().catch(() => 0))) return null;
-                  await b.click({ timeout: 3000 });
-                  await wait(w);
-                  await quiet(w);
-                  const aw = await w.page.evaluate(() => window.__xp.windows()), f = await fp(w);
-                  return { windows: aw, closed: (n.windows ?? 0) - aw, lands: byHash.get(f.hash) ?? (aw === 0 ? 'page' : aw === (n.windows ?? 0) ? n.id : null) };
-                });
-                if (!r) break;
-                d[ans] = r;
+              // each of its buttons pressed (the question asked again for each): the one that keeps the form open with the edit is "stay", the one
+              // that closes it is "leave". Measured, not read from the words, so any wording works; a button that would commit is not pressed
+              const btns = (await w.page.evaluate(() => window.__xp.buttons()).catch(() => [])).slice(0, 3);
+              d.answers = [];
+              let pressed = false;
+              for (const b of btns) {
+                if (COMMIT.test(b.text) && !/\b(don.?t|do not|without)\b/i.test(b.text)) { d.answers.push({ text: b.text, answer: null, skipped: 'commit' }); continue; }
+                if (timeUp() || (pressed && (!(await reach(w, n)) || !(await edit()).asks))) break; // the question again, for the next button
+                pressed = true;
+                d.answers.push(await sealed(async () => {
+                  const r = { text: b.text };
+                  try {
+                    await doStep(w, b); await wait(w); await quiet(w);
+                    const aw = await w.page.evaluate(() => window.__xp.windows()), top = aw ? (await w.page.evaluate((sc) => window.__xp.layer(sc), scope)).title : null, f = await fp(w);
+                    r.answer = aw === (n.windows ?? 0) && top === n.title ? 'stay' : aw < (n.windows ?? 0) ? 'leave' : null;
+                    Object.assign(r, { windows: aw, closed: (n.windows ?? 0) - aw, lands: byHash.get(f.hash) ?? (aw === 0 ? 'page' : r.answer === 'stay' ? n.id : null) });
+                  } catch (e) { r.error = e.message.split('\n')[0].slice(0, 120); }
+                  return r;
+                }));
               }
+              for (const ans of ['stay', 'leave']) { const a = d.answers.find((x) => x.answer === ans); if (a) d[ans] = { windows: a.windows, closed: a.closed, lands: a.lands }; }
+              // what was measured beats what the words said: the rebuild stamps the confirm's buttons by these
+              const norm = (t) => String(t || '').replace(/\s+/g, ' ').trim().toLowerCase();
+              for (const cb of d.confirm?.buttons ?? []) { const m = d.answers.find((a) => a.answer && norm(a.text) === norm(cb.text)); if (m) cb.answer = m.answer; }
             }
           }
         } catch (e) { d.error = e.message.split('\n')[0].slice(0, 120); }

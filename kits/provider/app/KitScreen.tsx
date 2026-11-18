@@ -410,7 +410,12 @@ function Window({ id, def, Body, depth, closing, onClosed, responsive, plain = f
 function ConfirmWindow({ c, depth }: { c: Confirm; depth: number }) {
   const def = { title: c.title, windowClass: c.windowClass, windowStyle: c.windowStyle, titlebarHtml: c.titlebarHtml, contentClass: c.contentClass, contentId: null, contentStyle: c.contentStyle,
     overlay: c.overlay, options: c.options, widgets: {}, opener: '', children: [] } as DialogDef;
-  const Body = useMemo(() => () => <div dangerouslySetInnerHTML={{ __html: c.contentHtml }} />, [c]);
+  // its buttons carry the answer the live one measured (pressed: stays or closes), whatever their words
+  const Body = useMemo(() => () => <div ref={(el) => el?.querySelectorAll('button, input[type=button], .k-button').forEach((b) => {
+    const t = ((b as HTMLInputElement).value || b.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+    const a = c.buttons.find((x) => x.answer && x.text.replace(/\s+/g, ' ').trim().toLowerCase() === t)?.answer;
+    if (a) b.setAttribute('data-kit-confirm', a);
+  })} dangerouslySetInnerHTML={{ __html: c.contentHtml }} />, [c]);
   return <Window id="confirm" def={def} Body={Body} depth={depth + 1} closing={false} onClosed={() => {}} plain />;
 }
 
@@ -663,6 +668,13 @@ export function KitScreen({ screen, dialogs = {}, services, shell = false, child
     const act = t.closest('[data-kit-action]');
     const dlg = t.closest('[data-kit-dialog-content]')?.getAttribute('data-kit-dialog-content') ?? t.closest('[data-kit-dialog]')?.getAttribute('data-kit-dialog') ?? null;
     const scope = dlg ? document.querySelector(`[data-kit-dialog-content="${dlg}"]`) : root.current;
+    // the button the live window closed on, whatever its words ("Close", "Return to list"): it closes here too, asking first where the live one asked
+    const cv = dlg ? screen.dialogs[dlg]?.close?.cancel : null;
+    if (cv?.css && scope && !t.closest('[data-kit-part]') && (() => { try { return !![...scope.querySelectorAll(cv.css!)].filter(shown)[cv.nth ?? 0]?.contains(t); } catch { return false; } })()) {
+      e.preventDefault(); e.stopPropagation();
+      if (!putBack(scope, t)) requestClose(dlg!, 'cancel');
+      return;
+    }
     if (!act && runFlow(t, 'click')) { e.preventDefault(); e.stopPropagation(); return; }
     if (!act) {
       const a = t.closest('a[href]');

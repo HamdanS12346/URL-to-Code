@@ -1,5 +1,5 @@
 // Stand-ins for the Kendo widgets that are not in kendo-ui-core (Grid, Window, DateTimePicker), registered the way the real
-// ones are (kendo.ui.plugin + data-role), with the markup the client portal's probe recorded (docs/provider-probe/09, 10).
+// ones are (kendo.ui.plugin + data-role), with the markup the client portal's probe recorded.
 // Only for the offline test portal (npm run smoke:provider). Never part of a rebuild.
 (function ($, kendo) {
   const ui = kendo.ui;

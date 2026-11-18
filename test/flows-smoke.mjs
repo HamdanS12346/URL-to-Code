@@ -81,9 +81,16 @@ try {
   assert.equal(add.dirtyExit.stay?.lands, add.id, 'No keeps Add Lab open');
   assert.equal(add.dirtyExit.leave?.closed, 1, 'Yes closes it');
   assert.ok(add.dirtyExit.text === 'Close' && add.dirtyExits.some((d) => d.via === 'x' && d.asks === false), 'its Close asks, its X does not');
-  const dx = dest.exits?.find((e) => e.via === 'x'), dc = dest.exits?.find((e) => e.text === 'Close');
+  const dx = dest.exits?.find((e) => e.via === 'x'), dc = dest.exits?.find((e) => e.text === 'Return to list');
   assert.equal(dx?.closed, 2, `the destination's X closes the View under it too (${JSON.stringify(dest.exits)})`);
-  assert.equal(dc?.lands, view.id, 'its Close goes back to the View');
+  assert.equal(dc?.lands, view.id, 'its "Return to list" (a way out by what it does, not its name) goes back to the View');
+  assert.ok(!dest.exits.some((e) => /delete/i.test(e.text)), 'a commit is never tried as a way out');
+  // a form with no text box: the edit is its dropdown; the confirm's words are unknown, its answers measured by pressing them
+  const dd = dest.dirtyExits?.find((d) => d.text === 'Return to list');
+  assert.ok(dd?.asks && /select/.test(dd.edit ?? ''), `the destination with its dropdown changed asks on "Return to list" (${JSON.stringify(dest.dirtyExits)?.slice(0, 400)})`);
+  assert.deepEqual(Object.fromEntries((dd.answers ?? []).map((a) => [a.text, a.answer])), { 'Stay on page': 'stay', 'Leave anyway': 'leave' }, `its answers, measured (${JSON.stringify(dd.answers)})`);
+  assert.equal(dd.stay?.lands, dest.id, '"Stay on page" keeps the destination open');
+  assert.equal(dd.leave?.lands, view.id, '"Leave anyway" goes back to the View');
   assert.equal(edit.exits?.find((e) => e.text === 'Back')?.lands, view.id, `Back puts the Edit part away (${JSON.stringify(edit.exits)})`);
   assert.equal(edit.change?.deep?.['#btnFromExisting'], false, `Edit hid a button inside its part (${JSON.stringify(edit.change)})`);
   assert.equal(edit.change?.deep?.['#labEditExtra'], true, 'and showed a box inside it');
@@ -122,6 +129,9 @@ try {
   assert.ok(ksAdd?.close?.cancel?.asks && ksAdd.close.x?.asks === false && ksAdd.close.confirm?.buttons?.length, `the kit asks before closing Add Lab with an edit (${JSON.stringify(ksAdd?.close)?.slice(0, 200)})`);
   assert.ok(ksAdd.conditionals?.some((c) => c.name === 'Sched'), 'the kit sets Add Lab\'s parts from its radio');
   assert.equal(ksDest?.close?.x?.closes, 2, 'the kit\'s X of the destination closes the View too');
+  assert.ok(ksDest.close.cancel?.asks && ksDest.close.cancel.css, `the kit closes the destination on "Return to list", asking first (${JSON.stringify(ksDest.close.cancel)})`);
+  assert.deepEqual(ksDest.close.confirm?.buttons?.map((b) => b.answer).sort(), ['leave', 'stay'], `the kit's confirm answers are the measured ones (${JSON.stringify(ksDest.close.confirm?.buttons)})`);
+  assert.ok(ksAdd.close.cancel.css, 'Add Lab\'s Close is its measured way out in the kit');
   assert.ok(ks.flows.some((f) => f.back?.length && f.deep), 'the Edit part: what it turned on and off inside, and its Back');
   assert.ok(ks.validations?.some((v) => v.validation.summaries.some((s) => s.at === '#addStatus')), 'Add Another validates with the live banner');
   assert.ok(Object.values(ks.dialogs).some((d) => d.message), 'the Invalidate prompt is a message box');
